@@ -32,6 +32,8 @@ type LookupDataTaxonomyArgs struct {
 type LookupDataTaxonomyResult struct {
 	// The number of attributes in the DataTaxonomy.
 	AttributeCount int `pulumi:"attributeCount"`
+	// The number of classes in the DataTaxonomy.
+	ClassCount int `pulumi:"classCount"`
 	// The time when the DataTaxonomy was created.
 	CreateTime string `pulumi:"createTime"`
 	// Optional. Description of the DataTaxonomy.
@@ -96,6 +98,11 @@ func (o LookupDataTaxonomyResultOutput) ToOutput(ctx context.Context) pulumix.Ou
 // The number of attributes in the DataTaxonomy.
 func (o LookupDataTaxonomyResultOutput) AttributeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDataTaxonomyResult) int { return v.AttributeCount }).(pulumi.IntOutput)
+}
+
+// The number of classes in the DataTaxonomy.
+func (o LookupDataTaxonomyResultOutput) ClassCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDataTaxonomyResult) int { return v.ClassCount }).(pulumi.IntOutput)
 }
 
 // The time when the DataTaxonomy was created.

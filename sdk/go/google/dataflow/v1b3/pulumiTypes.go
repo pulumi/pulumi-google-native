@@ -1108,6 +1108,202 @@ func (o ComponentTransformResponseArrayOutput) Index(i pulumi.IntInput) Componen
 	}).(ComponentTransformResponseOutput)
 }
 
+// Configuration options for sampling elements.
+type DataSamplingConfig struct {
+	// List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+	Behaviors []DataSamplingConfigBehaviorsItem `pulumi:"behaviors"`
+}
+
+// DataSamplingConfigInput is an input type that accepts DataSamplingConfigArgs and DataSamplingConfigOutput values.
+// You can construct a concrete instance of `DataSamplingConfigInput` via:
+//
+//	DataSamplingConfigArgs{...}
+type DataSamplingConfigInput interface {
+	pulumi.Input
+
+	ToDataSamplingConfigOutput() DataSamplingConfigOutput
+	ToDataSamplingConfigOutputWithContext(context.Context) DataSamplingConfigOutput
+}
+
+// Configuration options for sampling elements.
+type DataSamplingConfigArgs struct {
+	// List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+	Behaviors DataSamplingConfigBehaviorsItemArrayInput `pulumi:"behaviors"`
+}
+
+func (DataSamplingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSamplingConfig)(nil)).Elem()
+}
+
+func (i DataSamplingConfigArgs) ToDataSamplingConfigOutput() DataSamplingConfigOutput {
+	return i.ToDataSamplingConfigOutputWithContext(context.Background())
+}
+
+func (i DataSamplingConfigArgs) ToDataSamplingConfigOutputWithContext(ctx context.Context) DataSamplingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSamplingConfigOutput)
+}
+
+func (i DataSamplingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DataSamplingConfig] {
+	return pulumix.Output[DataSamplingConfig]{
+		OutputState: i.ToDataSamplingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DataSamplingConfigArgs) ToDataSamplingConfigPtrOutput() DataSamplingConfigPtrOutput {
+	return i.ToDataSamplingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataSamplingConfigArgs) ToDataSamplingConfigPtrOutputWithContext(ctx context.Context) DataSamplingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSamplingConfigOutput).ToDataSamplingConfigPtrOutputWithContext(ctx)
+}
+
+// DataSamplingConfigPtrInput is an input type that accepts DataSamplingConfigArgs, DataSamplingConfigPtr and DataSamplingConfigPtrOutput values.
+// You can construct a concrete instance of `DataSamplingConfigPtrInput` via:
+//
+//	        DataSamplingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataSamplingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataSamplingConfigPtrOutput() DataSamplingConfigPtrOutput
+	ToDataSamplingConfigPtrOutputWithContext(context.Context) DataSamplingConfigPtrOutput
+}
+
+type dataSamplingConfigPtrType DataSamplingConfigArgs
+
+func DataSamplingConfigPtr(v *DataSamplingConfigArgs) DataSamplingConfigPtrInput {
+	return (*dataSamplingConfigPtrType)(v)
+}
+
+func (*dataSamplingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSamplingConfig)(nil)).Elem()
+}
+
+func (i *dataSamplingConfigPtrType) ToDataSamplingConfigPtrOutput() DataSamplingConfigPtrOutput {
+	return i.ToDataSamplingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataSamplingConfigPtrType) ToDataSamplingConfigPtrOutputWithContext(ctx context.Context) DataSamplingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSamplingConfigPtrOutput)
+}
+
+func (i *dataSamplingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataSamplingConfig] {
+	return pulumix.Output[*DataSamplingConfig]{
+		OutputState: i.ToDataSamplingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration options for sampling elements.
+type DataSamplingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataSamplingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSamplingConfig)(nil)).Elem()
+}
+
+func (o DataSamplingConfigOutput) ToDataSamplingConfigOutput() DataSamplingConfigOutput {
+	return o
+}
+
+func (o DataSamplingConfigOutput) ToDataSamplingConfigOutputWithContext(ctx context.Context) DataSamplingConfigOutput {
+	return o
+}
+
+func (o DataSamplingConfigOutput) ToDataSamplingConfigPtrOutput() DataSamplingConfigPtrOutput {
+	return o.ToDataSamplingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataSamplingConfigOutput) ToDataSamplingConfigPtrOutputWithContext(ctx context.Context) DataSamplingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataSamplingConfig) *DataSamplingConfig {
+		return &v
+	}).(DataSamplingConfigPtrOutput)
+}
+
+func (o DataSamplingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DataSamplingConfig] {
+	return pulumix.Output[DataSamplingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+func (o DataSamplingConfigOutput) Behaviors() DataSamplingConfigBehaviorsItemArrayOutput {
+	return o.ApplyT(func(v DataSamplingConfig) []DataSamplingConfigBehaviorsItem { return v.Behaviors }).(DataSamplingConfigBehaviorsItemArrayOutput)
+}
+
+type DataSamplingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataSamplingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSamplingConfig)(nil)).Elem()
+}
+
+func (o DataSamplingConfigPtrOutput) ToDataSamplingConfigPtrOutput() DataSamplingConfigPtrOutput {
+	return o
+}
+
+func (o DataSamplingConfigPtrOutput) ToDataSamplingConfigPtrOutputWithContext(ctx context.Context) DataSamplingConfigPtrOutput {
+	return o
+}
+
+func (o DataSamplingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataSamplingConfig] {
+	return pulumix.Output[*DataSamplingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DataSamplingConfigPtrOutput) Elem() DataSamplingConfigOutput {
+	return o.ApplyT(func(v *DataSamplingConfig) DataSamplingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataSamplingConfig
+		return ret
+	}).(DataSamplingConfigOutput)
+}
+
+// List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+func (o DataSamplingConfigPtrOutput) Behaviors() DataSamplingConfigBehaviorsItemArrayOutput {
+	return o.ApplyT(func(v *DataSamplingConfig) []DataSamplingConfigBehaviorsItem {
+		if v == nil {
+			return nil
+		}
+		return v.Behaviors
+	}).(DataSamplingConfigBehaviorsItemArrayOutput)
+}
+
+// Configuration options for sampling elements.
+type DataSamplingConfigResponse struct {
+	// List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+	Behaviors []string `pulumi:"behaviors"`
+}
+
+// Configuration options for sampling elements.
+type DataSamplingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DataSamplingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSamplingConfigResponse)(nil)).Elem()
+}
+
+func (o DataSamplingConfigResponseOutput) ToDataSamplingConfigResponseOutput() DataSamplingConfigResponseOutput {
+	return o
+}
+
+func (o DataSamplingConfigResponseOutput) ToDataSamplingConfigResponseOutputWithContext(ctx context.Context) DataSamplingConfigResponseOutput {
+	return o
+}
+
+func (o DataSamplingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataSamplingConfigResponse] {
+	return pulumix.Output[DataSamplingConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+func (o DataSamplingConfigResponseOutput) Behaviors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataSamplingConfigResponse) []string { return v.Behaviors }).(pulumi.StringArrayOutput)
+}
+
 // Metadata for a Datastore connector used by the job.
 type DatastoreIODetails struct {
 	// Namespace used in the connection.
@@ -1308,6 +1504,8 @@ func (o DatastoreIODetailsResponseArrayOutput) Index(i pulumi.IntInput) Datastor
 
 // Describes any options that have an effect on the debugging of pipelines.
 type DebugOptions struct {
+	// Configuration options for sampling elements from a running pipeline.
+	DataSampling *DataSamplingConfig `pulumi:"dataSampling"`
 	// When true, enables the logging of the literal hot key to the user's Cloud Logging.
 	EnableHotKeyLogging *bool `pulumi:"enableHotKeyLogging"`
 }
@@ -1325,6 +1523,8 @@ type DebugOptionsInput interface {
 
 // Describes any options that have an effect on the debugging of pipelines.
 type DebugOptionsArgs struct {
+	// Configuration options for sampling elements from a running pipeline.
+	DataSampling DataSamplingConfigPtrInput `pulumi:"dataSampling"`
 	// When true, enables the logging of the literal hot key to the user's Cloud Logging.
 	EnableHotKeyLogging pulumi.BoolPtrInput `pulumi:"enableHotKeyLogging"`
 }
@@ -1425,6 +1625,11 @@ func (o DebugOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DebugOp
 	}
 }
 
+// Configuration options for sampling elements from a running pipeline.
+func (o DebugOptionsOutput) DataSampling() DataSamplingConfigPtrOutput {
+	return o.ApplyT(func(v DebugOptions) *DataSamplingConfig { return v.DataSampling }).(DataSamplingConfigPtrOutput)
+}
+
 // When true, enables the logging of the literal hot key to the user's Cloud Logging.
 func (o DebugOptionsOutput) EnableHotKeyLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DebugOptions) *bool { return v.EnableHotKeyLogging }).(pulumi.BoolPtrOutput)
@@ -1460,6 +1665,16 @@ func (o DebugOptionsPtrOutput) Elem() DebugOptionsOutput {
 	}).(DebugOptionsOutput)
 }
 
+// Configuration options for sampling elements from a running pipeline.
+func (o DebugOptionsPtrOutput) DataSampling() DataSamplingConfigPtrOutput {
+	return o.ApplyT(func(v *DebugOptions) *DataSamplingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataSampling
+	}).(DataSamplingConfigPtrOutput)
+}
+
 // When true, enables the logging of the literal hot key to the user's Cloud Logging.
 func (o DebugOptionsPtrOutput) EnableHotKeyLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DebugOptions) *bool {
@@ -1472,6 +1687,8 @@ func (o DebugOptionsPtrOutput) EnableHotKeyLogging() pulumi.BoolPtrOutput {
 
 // Describes any options that have an effect on the debugging of pipelines.
 type DebugOptionsResponse struct {
+	// Configuration options for sampling elements from a running pipeline.
+	DataSampling DataSamplingConfigResponse `pulumi:"dataSampling"`
 	// When true, enables the logging of the literal hot key to the user's Cloud Logging.
 	EnableHotKeyLogging bool `pulumi:"enableHotKeyLogging"`
 }
@@ -1495,6 +1712,11 @@ func (o DebugOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output
 	return pulumix.Output[DebugOptionsResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Configuration options for sampling elements from a running pipeline.
+func (o DebugOptionsResponseOutput) DataSampling() DataSamplingConfigResponseOutput {
+	return o.ApplyT(func(v DebugOptionsResponse) DataSamplingConfigResponse { return v.DataSampling }).(DataSamplingConfigResponseOutput)
 }
 
 // When true, enables the logging of the literal hot key to the user's Cloud Logging.
@@ -2549,6 +2771,8 @@ type EnvironmentResponse struct {
 	ShuffleMode string `pulumi:"shuffleMode"`
 	// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempStoragePrefix string `pulumi:"tempStoragePrefix"`
+	// Whether the job uses the new streaming engine billing model based on resource usage.
+	UseStreamingEngineResourceBasedBilling bool `pulumi:"useStreamingEngineResourceBasedBilling"`
 	// A description of the process that generated the request.
 	UserAgent map[string]string `pulumi:"userAgent"`
 	// A structure describing which components and their versions of the service are required in order to run the job.
@@ -2640,6 +2864,11 @@ func (o EnvironmentResponseOutput) ShuffleMode() pulumi.StringOutput {
 // The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 func (o EnvironmentResponseOutput) TempStoragePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentResponse) string { return v.TempStoragePrefix }).(pulumi.StringOutput)
+}
+
+// Whether the job uses the new streaming engine billing model based on resource usage.
+func (o EnvironmentResponseOutput) UseStreamingEngineResourceBasedBilling() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnvironmentResponse) bool { return v.UseStreamingEngineResourceBasedBilling }).(pulumi.BoolOutput)
 }
 
 // A description of the process that generated the request.
@@ -4122,10 +4351,86 @@ func (o PackageResponseArrayOutput) Index(i pulumi.IntInput) PackageResponseOutp
 	}).(PackageResponseOutput)
 }
 
+// ParameterMetadataEnumOption specifies the option shown in the enum form.
+type ParameterMetadataEnumOptionResponse struct {
+	// Optional. The description to display for the enum option.
+	Description string `pulumi:"description"`
+	// Optional. The label to display for the enum option.
+	Label string `pulumi:"label"`
+	// The value of the enum option.
+	Value string `pulumi:"value"`
+}
+
+// ParameterMetadataEnumOption specifies the option shown in the enum form.
+type ParameterMetadataEnumOptionResponseOutput struct{ *pulumi.OutputState }
+
+func (ParameterMetadataEnumOptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterMetadataEnumOptionResponse)(nil)).Elem()
+}
+
+func (o ParameterMetadataEnumOptionResponseOutput) ToParameterMetadataEnumOptionResponseOutput() ParameterMetadataEnumOptionResponseOutput {
+	return o
+}
+
+func (o ParameterMetadataEnumOptionResponseOutput) ToParameterMetadataEnumOptionResponseOutputWithContext(ctx context.Context) ParameterMetadataEnumOptionResponseOutput {
+	return o
+}
+
+func (o ParameterMetadataEnumOptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterMetadataEnumOptionResponse] {
+	return pulumix.Output[ParameterMetadataEnumOptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The description to display for the enum option.
+func (o ParameterMetadataEnumOptionResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterMetadataEnumOptionResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. The label to display for the enum option.
+func (o ParameterMetadataEnumOptionResponseOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterMetadataEnumOptionResponse) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The value of the enum option.
+func (o ParameterMetadataEnumOptionResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterMetadataEnumOptionResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ParameterMetadataEnumOptionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterMetadataEnumOptionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterMetadataEnumOptionResponse)(nil)).Elem()
+}
+
+func (o ParameterMetadataEnumOptionResponseArrayOutput) ToParameterMetadataEnumOptionResponseArrayOutput() ParameterMetadataEnumOptionResponseArrayOutput {
+	return o
+}
+
+func (o ParameterMetadataEnumOptionResponseArrayOutput) ToParameterMetadataEnumOptionResponseArrayOutputWithContext(ctx context.Context) ParameterMetadataEnumOptionResponseArrayOutput {
+	return o
+}
+
+func (o ParameterMetadataEnumOptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ParameterMetadataEnumOptionResponse] {
+	return pulumix.Output[[]ParameterMetadataEnumOptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ParameterMetadataEnumOptionResponseArrayOutput) Index(i pulumi.IntInput) ParameterMetadataEnumOptionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterMetadataEnumOptionResponse {
+		return vs[0].([]ParameterMetadataEnumOptionResponse)[vs[1].(int)]
+	}).(ParameterMetadataEnumOptionResponseOutput)
+}
+
 // Metadata for a specific parameter.
 type ParameterMetadataResponse struct {
 	// Optional. Additional metadata for describing this parameter.
 	CustomMetadata map[string]string `pulumi:"customMetadata"`
+	// Optional. The default values will pre-populate the parameter with the given value from the proto. If default_value is left empty, the parameter will be populated with a default of the relevant type, e.g. false for a boolean.
+	DefaultValue string `pulumi:"defaultValue"`
+	// Optional. The options shown when ENUM ParameterType is specified.
+	EnumOptions []ParameterMetadataEnumOptionResponse `pulumi:"enumOptions"`
 	// Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided.
 	GroupName string `pulumi:"groupName"`
 	// The help text to display for the parameter.
@@ -4170,6 +4475,16 @@ func (o ParameterMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.O
 // Optional. Additional metadata for describing this parameter.
 func (o ParameterMetadataResponseOutput) CustomMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ParameterMetadataResponse) map[string]string { return v.CustomMetadata }).(pulumi.StringMapOutput)
+}
+
+// Optional. The default values will pre-populate the parameter with the given value from the proto. If default_value is left empty, the parameter will be populated with a default of the relevant type, e.g. false for a boolean.
+func (o ParameterMetadataResponseOutput) DefaultValue() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterMetadataResponse) string { return v.DefaultValue }).(pulumi.StringOutput)
+}
+
+// Optional. The options shown when ENUM ParameterType is specified.
+func (o ParameterMetadataResponseOutput) EnumOptions() ParameterMetadataEnumOptionResponseArrayOutput {
+	return o.ApplyT(func(v ParameterMetadataResponse) []ParameterMetadataEnumOptionResponse { return v.EnumOptions }).(ParameterMetadataEnumOptionResponseArrayOutput)
 }
 
 // Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided.
@@ -4723,6 +5038,8 @@ type RuntimeEnvironment struct {
 	AdditionalUserLabels map[string]string `pulumi:"additionalUserLabels"`
 	// Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
 	BypassTempDirValidation *bool `pulumi:"bypassTempDirValidation"`
+	// Optional. The disk size, in gigabytes, to use on each remote Compute Engine worker instance.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Optional. Whether to enable Streaming Engine for the job.
 	EnableStreamingEngine *bool `pulumi:"enableStreamingEngine"`
 	// Optional. Configuration for VM IPs.
@@ -4770,6 +5087,8 @@ type RuntimeEnvironmentArgs struct {
 	AdditionalUserLabels pulumi.StringMapInput `pulumi:"additionalUserLabels"`
 	// Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
 	BypassTempDirValidation pulumi.BoolPtrInput `pulumi:"bypassTempDirValidation"`
+	// Optional. The disk size, in gigabytes, to use on each remote Compute Engine worker instance.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Optional. Whether to enable Streaming Engine for the job.
 	EnableStreamingEngine pulumi.BoolPtrInput `pulumi:"enableStreamingEngine"`
 	// Optional. Configuration for VM IPs.
@@ -4909,6 +5228,11 @@ func (o RuntimeEnvironmentOutput) BypassTempDirValidation() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v RuntimeEnvironment) *bool { return v.BypassTempDirValidation }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. The disk size, in gigabytes, to use on each remote Compute Engine worker instance.
+func (o RuntimeEnvironmentOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuntimeEnvironment) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
 // Optional. Whether to enable Streaming Engine for the job.
 func (o RuntimeEnvironmentOutput) EnableStreamingEngine() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *bool { return v.EnableStreamingEngine }).(pulumi.BoolPtrOutput)
@@ -5032,6 +5356,16 @@ func (o RuntimeEnvironmentPtrOutput) BypassTempDirValidation() pulumi.BoolPtrOut
 		}
 		return v.BypassTempDirValidation
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The disk size, in gigabytes, to use on each remote Compute Engine worker instance.
+func (o RuntimeEnvironmentPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
 }
 
 // Optional. Whether to enable Streaming Engine for the job.
@@ -5462,6 +5796,78 @@ func (o SDKInfoResponseOutput) Language() pulumi.StringOutput {
 // Optional. The SDK version.
 func (o SDKInfoResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v SDKInfoResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// A bug found in the Dataflow SDK.
+type SdkBugResponse struct {
+	// How severe the SDK bug is.
+	Severity string `pulumi:"severity"`
+	// Describes the impact of this SDK bug.
+	Type string `pulumi:"type"`
+	// Link to more information on the bug.
+	Uri string `pulumi:"uri"`
+}
+
+// A bug found in the Dataflow SDK.
+type SdkBugResponseOutput struct{ *pulumi.OutputState }
+
+func (SdkBugResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SdkBugResponse)(nil)).Elem()
+}
+
+func (o SdkBugResponseOutput) ToSdkBugResponseOutput() SdkBugResponseOutput {
+	return o
+}
+
+func (o SdkBugResponseOutput) ToSdkBugResponseOutputWithContext(ctx context.Context) SdkBugResponseOutput {
+	return o
+}
+
+func (o SdkBugResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SdkBugResponse] {
+	return pulumix.Output[SdkBugResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How severe the SDK bug is.
+func (o SdkBugResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v SdkBugResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Describes the impact of this SDK bug.
+func (o SdkBugResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SdkBugResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Link to more information on the bug.
+func (o SdkBugResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v SdkBugResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type SdkBugResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SdkBugResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SdkBugResponse)(nil)).Elem()
+}
+
+func (o SdkBugResponseArrayOutput) ToSdkBugResponseArrayOutput() SdkBugResponseArrayOutput {
+	return o
+}
+
+func (o SdkBugResponseArrayOutput) ToSdkBugResponseArrayOutputWithContext(ctx context.Context) SdkBugResponseArrayOutput {
+	return o
+}
+
+func (o SdkBugResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SdkBugResponse] {
+	return pulumix.Output[[]SdkBugResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SdkBugResponseArrayOutput) Index(i pulumi.IntInput) SdkBugResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SdkBugResponse {
+		return vs[0].([]SdkBugResponse)[vs[1].(int)]
+	}).(SdkBugResponseOutput)
 }
 
 // Defines an SDK harness container for executing Dataflow pipelines.
@@ -5898,6 +6304,8 @@ func (o SdkVersionPtrOutput) VersionDisplayName() pulumi.StringPtrOutput {
 
 // The version of the SDK used to run the job.
 type SdkVersionResponse struct {
+	// Known bugs found in this SDK version.
+	Bugs []SdkBugResponse `pulumi:"bugs"`
 	// The support status for this SDK version.
 	SdkSupportStatus string `pulumi:"sdkSupportStatus"`
 	// The version of the SDK used to run the job.
@@ -5925,6 +6333,11 @@ func (o SdkVersionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[S
 	return pulumix.Output[SdkVersionResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Known bugs found in this SDK version.
+func (o SdkVersionResponseOutput) Bugs() SdkBugResponseArrayOutput {
+	return o.ApplyT(func(v SdkVersionResponse) []SdkBugResponse { return v.Bugs }).(SdkBugResponseArrayOutput)
 }
 
 // The support status for this SDK version.
@@ -8476,6 +8889,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentSourceArrayInput)(nil)).Elem(), ComponentSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTransformInput)(nil)).Elem(), ComponentTransformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTransformArrayInput)(nil)).Elem(), ComponentTransformArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataSamplingConfigInput)(nil)).Elem(), DataSamplingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataSamplingConfigPtrInput)(nil)).Elem(), DataSamplingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreIODetailsInput)(nil)).Elem(), DatastoreIODetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreIODetailsArrayInput)(nil)).Elem(), DatastoreIODetailsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsInput)(nil)).Elem(), DebugOptionsArgs{})
@@ -8543,6 +8958,9 @@ func init() {
 	pulumi.RegisterOutputType(ComponentTransformArrayOutput{})
 	pulumi.RegisterOutputType(ComponentTransformResponseOutput{})
 	pulumi.RegisterOutputType(ComponentTransformResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataSamplingConfigOutput{})
+	pulumi.RegisterOutputType(DataSamplingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataSamplingConfigResponseOutput{})
 	pulumi.RegisterOutputType(DatastoreIODetailsOutput{})
 	pulumi.RegisterOutputType(DatastoreIODetailsArrayOutput{})
 	pulumi.RegisterOutputType(DatastoreIODetailsResponseOutput{})
@@ -8583,6 +9001,8 @@ func init() {
 	pulumi.RegisterOutputType(PackageArrayOutput{})
 	pulumi.RegisterOutputType(PackageResponseOutput{})
 	pulumi.RegisterOutputType(PackageResponseArrayOutput{})
+	pulumi.RegisterOutputType(ParameterMetadataEnumOptionResponseOutput{})
+	pulumi.RegisterOutputType(ParameterMetadataEnumOptionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ParameterMetadataResponseOutput{})
 	pulumi.RegisterOutputType(ParameterMetadataResponseArrayOutput{})
 	pulumi.RegisterOutputType(PipelineDescriptionOutput{})
@@ -8599,6 +9019,8 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeUpdatableParamsPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeUpdatableParamsResponseOutput{})
 	pulumi.RegisterOutputType(SDKInfoResponseOutput{})
+	pulumi.RegisterOutputType(SdkBugResponseOutput{})
+	pulumi.RegisterOutputType(SdkBugResponseArrayOutput{})
 	pulumi.RegisterOutputType(SdkHarnessContainerImageOutput{})
 	pulumi.RegisterOutputType(SdkHarnessContainerImageArrayOutput{})
 	pulumi.RegisterOutputType(SdkHarnessContainerImageResponseOutput{})

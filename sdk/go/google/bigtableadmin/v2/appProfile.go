@@ -29,10 +29,14 @@ type AppProfile struct {
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny MultiClusterRoutingUseAnyResponseOutput `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+	Priority pulumi.StringOutput `pulumi:"priority"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	// Use a single-cluster routing policy.
 	SingleClusterRouting SingleClusterRoutingResponseOutput `pulumi:"singleClusterRouting"`
+	// The standard options used for isolating this app profile's traffic from other use cases.
+	StandardIsolation StandardIsolationResponseOutput `pulumi:"standardIsolation"`
 }
 
 // NewAppProfile registers a new resource with the given unique name, arguments, and options.
@@ -99,10 +103,14 @@ type appProfileArgs struct {
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny *MultiClusterRoutingUseAny `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Name *string `pulumi:"name"`
+	// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+	Priority *AppProfilePriority `pulumi:"priority"`
+	Project  *string             `pulumi:"project"`
 	// Use a single-cluster routing policy.
 	SingleClusterRouting *SingleClusterRouting `pulumi:"singleClusterRouting"`
+	// The standard options used for isolating this app profile's traffic from other use cases.
+	StandardIsolation *StandardIsolation `pulumi:"standardIsolation"`
 }
 
 // The set of arguments for constructing a AppProfile resource.
@@ -119,10 +127,14 @@ type AppProfileArgs struct {
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny MultiClusterRoutingUseAnyPtrInput
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+	Priority AppProfilePriorityPtrInput
+	Project  pulumi.StringPtrInput
 	// Use a single-cluster routing policy.
 	SingleClusterRouting SingleClusterRoutingPtrInput
+	// The standard options used for isolating this app profile's traffic from other use cases.
+	StandardIsolation StandardIsolationPtrInput
 }
 
 func (AppProfileArgs) ElementType() reflect.Type {
@@ -208,6 +220,11 @@ func (o AppProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+func (o AppProfileOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
+}
+
 func (o AppProfileOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -215,6 +232,11 @@ func (o AppProfileOutput) Project() pulumi.StringOutput {
 // Use a single-cluster routing policy.
 func (o AppProfileOutput) SingleClusterRouting() SingleClusterRoutingResponseOutput {
 	return o.ApplyT(func(v *AppProfile) SingleClusterRoutingResponseOutput { return v.SingleClusterRouting }).(SingleClusterRoutingResponseOutput)
+}
+
+// The standard options used for isolating this app profile's traffic from other use cases.
+func (o AppProfileOutput) StandardIsolation() StandardIsolationResponseOutput {
+	return o.ApplyT(func(v *AppProfile) StandardIsolationResponseOutput { return v.StandardIsolation }).(StandardIsolationResponseOutput)
 }
 
 func init() {

@@ -38,7 +38,7 @@ type LookupSubscriptionResult struct {
 	EndTime string `pulumi:"endTime"`
 	// Unique resource name of the Subscription. The name is ignored when creating a subscription.
 	Name string `pulumi:"name"`
-	// Number of seats in the subscription.
+	// Optional. Number of seats in the subscription.
 	SeatCount string `pulumi:"seatCount"`
 	// SKU of subscription.
 	Sku string `pulumi:"sku"`
@@ -113,7 +113,7 @@ func (o LookupSubscriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of seats in the subscription.
+// Optional. Number of seats in the subscription.
 func (o LookupSubscriptionResultOutput) SeatCount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.SeatCount }).(pulumi.StringOutput)
 }

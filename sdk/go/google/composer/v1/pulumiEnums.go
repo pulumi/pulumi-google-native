@@ -200,6 +200,191 @@ func (in *environmentConfigEnvironmentSizePtr) ToOutput(ctx context.Context) pul
 	}
 }
 
+// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+type EnvironmentConfigResilienceMode string
+
+const (
+	// Default mode doesn't change environment parameters.
+	EnvironmentConfigResilienceModeResilienceModeUnspecified = EnvironmentConfigResilienceMode("RESILIENCE_MODE_UNSPECIFIED")
+	// Enabled High Resilience mode, including Cloud SQL HA.
+	EnvironmentConfigResilienceModeHighResilience = EnvironmentConfigResilienceMode("HIGH_RESILIENCE")
+)
+
+func (EnvironmentConfigResilienceMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigResilienceMode)(nil)).Elem()
+}
+
+func (e EnvironmentConfigResilienceMode) ToEnvironmentConfigResilienceModeOutput() EnvironmentConfigResilienceModeOutput {
+	return pulumi.ToOutput(e).(EnvironmentConfigResilienceModeOutput)
+}
+
+func (e EnvironmentConfigResilienceMode) ToEnvironmentConfigResilienceModeOutputWithContext(ctx context.Context) EnvironmentConfigResilienceModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnvironmentConfigResilienceModeOutput)
+}
+
+func (e EnvironmentConfigResilienceMode) ToEnvironmentConfigResilienceModePtrOutput() EnvironmentConfigResilienceModePtrOutput {
+	return e.ToEnvironmentConfigResilienceModePtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentConfigResilienceMode) ToEnvironmentConfigResilienceModePtrOutputWithContext(ctx context.Context) EnvironmentConfigResilienceModePtrOutput {
+	return EnvironmentConfigResilienceMode(e).ToEnvironmentConfigResilienceModeOutputWithContext(ctx).ToEnvironmentConfigResilienceModePtrOutputWithContext(ctx)
+}
+
+func (e EnvironmentConfigResilienceMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentConfigResilienceMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentConfigResilienceMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentConfigResilienceMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnvironmentConfigResilienceModeOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigResilienceModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigResilienceMode)(nil)).Elem()
+}
+
+func (o EnvironmentConfigResilienceModeOutput) ToEnvironmentConfigResilienceModeOutput() EnvironmentConfigResilienceModeOutput {
+	return o
+}
+
+func (o EnvironmentConfigResilienceModeOutput) ToEnvironmentConfigResilienceModeOutputWithContext(ctx context.Context) EnvironmentConfigResilienceModeOutput {
+	return o
+}
+
+func (o EnvironmentConfigResilienceModeOutput) ToEnvironmentConfigResilienceModePtrOutput() EnvironmentConfigResilienceModePtrOutput {
+	return o.ToEnvironmentConfigResilienceModePtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigResilienceModeOutput) ToEnvironmentConfigResilienceModePtrOutputWithContext(ctx context.Context) EnvironmentConfigResilienceModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigResilienceMode) *EnvironmentConfigResilienceMode {
+		return &v
+	}).(EnvironmentConfigResilienceModePtrOutput)
+}
+
+func (o EnvironmentConfigResilienceModeOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentConfigResilienceMode] {
+	return pulumix.Output[EnvironmentConfigResilienceMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnvironmentConfigResilienceModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigResilienceModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentConfigResilienceMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnvironmentConfigResilienceModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigResilienceModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentConfigResilienceMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentConfigResilienceModePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigResilienceModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigResilienceMode)(nil)).Elem()
+}
+
+func (o EnvironmentConfigResilienceModePtrOutput) ToEnvironmentConfigResilienceModePtrOutput() EnvironmentConfigResilienceModePtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigResilienceModePtrOutput) ToEnvironmentConfigResilienceModePtrOutputWithContext(ctx context.Context) EnvironmentConfigResilienceModePtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigResilienceModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigResilienceMode] {
+	return pulumix.Output[*EnvironmentConfigResilienceMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnvironmentConfigResilienceModePtrOutput) Elem() EnvironmentConfigResilienceModeOutput {
+	return o.ApplyT(func(v *EnvironmentConfigResilienceMode) EnvironmentConfigResilienceMode {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigResilienceMode
+		return ret
+	}).(EnvironmentConfigResilienceModeOutput)
+}
+
+func (o EnvironmentConfigResilienceModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigResilienceModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnvironmentConfigResilienceMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EnvironmentConfigResilienceModeInput is an input type that accepts EnvironmentConfigResilienceModeArgs and EnvironmentConfigResilienceModeOutput values.
+// You can construct a concrete instance of `EnvironmentConfigResilienceModeInput` via:
+//
+//	EnvironmentConfigResilienceModeArgs{...}
+type EnvironmentConfigResilienceModeInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigResilienceModeOutput() EnvironmentConfigResilienceModeOutput
+	ToEnvironmentConfigResilienceModeOutputWithContext(context.Context) EnvironmentConfigResilienceModeOutput
+}
+
+var environmentConfigResilienceModePtrType = reflect.TypeOf((**EnvironmentConfigResilienceMode)(nil)).Elem()
+
+type EnvironmentConfigResilienceModePtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigResilienceModePtrOutput() EnvironmentConfigResilienceModePtrOutput
+	ToEnvironmentConfigResilienceModePtrOutputWithContext(context.Context) EnvironmentConfigResilienceModePtrOutput
+}
+
+type environmentConfigResilienceModePtr string
+
+func EnvironmentConfigResilienceModePtr(v string) EnvironmentConfigResilienceModePtrInput {
+	return (*environmentConfigResilienceModePtr)(&v)
+}
+
+func (*environmentConfigResilienceModePtr) ElementType() reflect.Type {
+	return environmentConfigResilienceModePtrType
+}
+
+func (in *environmentConfigResilienceModePtr) ToEnvironmentConfigResilienceModePtrOutput() EnvironmentConfigResilienceModePtrOutput {
+	return pulumi.ToOutput(in).(EnvironmentConfigResilienceModePtrOutput)
+}
+
+func (in *environmentConfigResilienceModePtr) ToEnvironmentConfigResilienceModePtrOutputWithContext(ctx context.Context) EnvironmentConfigResilienceModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentConfigResilienceModePtrOutput)
+}
+
+func (in *environmentConfigResilienceModePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentConfigResilienceMode] {
+	return pulumix.Output[*EnvironmentConfigResilienceMode]{
+		OutputState: in.ToEnvironmentConfigResilienceModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The current state of the environment.
 type EnvironmentStateEnum string
 
@@ -583,12 +768,16 @@ func (in *networkingConfigConnectionTypePtr) ToOutput(ctx context.Context) pulum
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEnvironmentSizeInput)(nil)).Elem(), EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEnvironmentSizePtrInput)(nil)).Elem(), EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigResilienceModeInput)(nil)).Elem(), EnvironmentConfigResilienceMode("RESILIENCE_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigResilienceModePtrInput)(nil)).Elem(), EnvironmentConfigResilienceMode("RESILIENCE_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumPtrInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingConfigConnectionTypeInput)(nil)).Elem(), NetworkingConfigConnectionType("CONNECTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingConfigConnectionTypePtrInput)(nil)).Elem(), NetworkingConfigConnectionType("CONNECTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(EnvironmentConfigEnvironmentSizeOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigEnvironmentSizePtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigResilienceModeOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigResilienceModePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentStateEnumOutput{})
 	pulumi.RegisterOutputType(EnvironmentStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(NetworkingConfigConnectionTypeOutput{})

@@ -37,7 +37,7 @@ type LookupDicomStoreResult struct {
 	Name string `pulumi:"name"`
 	// Notification destination for new DICOM instances. Supplied by the client.
 	NotificationConfig NotificationConfigResponse `pulumi:"notificationConfig"`
-	// A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+	// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
 	StreamConfigs []GoogleCloudHealthcareV1beta1DicomStreamConfigResponse `pulumi:"streamConfigs"`
 }
 
@@ -100,7 +100,7 @@ func (o LookupDicomStoreResultOutput) NotificationConfig() NotificationConfigRes
 	return o.ApplyT(func(v LookupDicomStoreResult) NotificationConfigResponse { return v.NotificationConfig }).(NotificationConfigResponseOutput)
 }
 
-// A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
 func (o LookupDicomStoreResultOutput) StreamConfigs() GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutput {
 	return o.ApplyT(func(v LookupDicomStoreResult) []GoogleCloudHealthcareV1beta1DicomStreamConfigResponse {
 		return v.StreamConfigs

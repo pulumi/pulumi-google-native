@@ -636,6 +636,193 @@ func (in *instanceGroupConfigPreemptibilityPtr) ToOutput(ctx context.Context) pu
 	}
 }
 
+// Optional. Kernel
+type JupyterConfigKernel string
+
+const (
+	// The kernel is unknown.
+	JupyterConfigKernelKernelUnspecified = JupyterConfigKernel("KERNEL_UNSPECIFIED")
+	// Python kernel.
+	JupyterConfigKernelPython = JupyterConfigKernel("PYTHON")
+	// Scala kernel.
+	JupyterConfigKernelScala = JupyterConfigKernel("SCALA")
+)
+
+func (JupyterConfigKernel) ElementType() reflect.Type {
+	return reflect.TypeOf((*JupyterConfigKernel)(nil)).Elem()
+}
+
+func (e JupyterConfigKernel) ToJupyterConfigKernelOutput() JupyterConfigKernelOutput {
+	return pulumi.ToOutput(e).(JupyterConfigKernelOutput)
+}
+
+func (e JupyterConfigKernel) ToJupyterConfigKernelOutputWithContext(ctx context.Context) JupyterConfigKernelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JupyterConfigKernelOutput)
+}
+
+func (e JupyterConfigKernel) ToJupyterConfigKernelPtrOutput() JupyterConfigKernelPtrOutput {
+	return e.ToJupyterConfigKernelPtrOutputWithContext(context.Background())
+}
+
+func (e JupyterConfigKernel) ToJupyterConfigKernelPtrOutputWithContext(ctx context.Context) JupyterConfigKernelPtrOutput {
+	return JupyterConfigKernel(e).ToJupyterConfigKernelOutputWithContext(ctx).ToJupyterConfigKernelPtrOutputWithContext(ctx)
+}
+
+func (e JupyterConfigKernel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JupyterConfigKernel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JupyterConfigKernel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JupyterConfigKernel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JupyterConfigKernelOutput struct{ *pulumi.OutputState }
+
+func (JupyterConfigKernelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JupyterConfigKernel)(nil)).Elem()
+}
+
+func (o JupyterConfigKernelOutput) ToJupyterConfigKernelOutput() JupyterConfigKernelOutput {
+	return o
+}
+
+func (o JupyterConfigKernelOutput) ToJupyterConfigKernelOutputWithContext(ctx context.Context) JupyterConfigKernelOutput {
+	return o
+}
+
+func (o JupyterConfigKernelOutput) ToJupyterConfigKernelPtrOutput() JupyterConfigKernelPtrOutput {
+	return o.ToJupyterConfigKernelPtrOutputWithContext(context.Background())
+}
+
+func (o JupyterConfigKernelOutput) ToJupyterConfigKernelPtrOutputWithContext(ctx context.Context) JupyterConfigKernelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JupyterConfigKernel) *JupyterConfigKernel {
+		return &v
+	}).(JupyterConfigKernelPtrOutput)
+}
+
+func (o JupyterConfigKernelOutput) ToOutput(ctx context.Context) pulumix.Output[JupyterConfigKernel] {
+	return pulumix.Output[JupyterConfigKernel]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JupyterConfigKernelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JupyterConfigKernelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JupyterConfigKernel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JupyterConfigKernelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JupyterConfigKernelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JupyterConfigKernel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JupyterConfigKernelPtrOutput struct{ *pulumi.OutputState }
+
+func (JupyterConfigKernelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JupyterConfigKernel)(nil)).Elem()
+}
+
+func (o JupyterConfigKernelPtrOutput) ToJupyterConfigKernelPtrOutput() JupyterConfigKernelPtrOutput {
+	return o
+}
+
+func (o JupyterConfigKernelPtrOutput) ToJupyterConfigKernelPtrOutputWithContext(ctx context.Context) JupyterConfigKernelPtrOutput {
+	return o
+}
+
+func (o JupyterConfigKernelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JupyterConfigKernel] {
+	return pulumix.Output[*JupyterConfigKernel]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JupyterConfigKernelPtrOutput) Elem() JupyterConfigKernelOutput {
+	return o.ApplyT(func(v *JupyterConfigKernel) JupyterConfigKernel {
+		if v != nil {
+			return *v
+		}
+		var ret JupyterConfigKernel
+		return ret
+	}).(JupyterConfigKernelOutput)
+}
+
+func (o JupyterConfigKernelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JupyterConfigKernelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JupyterConfigKernel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JupyterConfigKernelInput is an input type that accepts JupyterConfigKernelArgs and JupyterConfigKernelOutput values.
+// You can construct a concrete instance of `JupyterConfigKernelInput` via:
+//
+//	JupyterConfigKernelArgs{...}
+type JupyterConfigKernelInput interface {
+	pulumi.Input
+
+	ToJupyterConfigKernelOutput() JupyterConfigKernelOutput
+	ToJupyterConfigKernelOutputWithContext(context.Context) JupyterConfigKernelOutput
+}
+
+var jupyterConfigKernelPtrType = reflect.TypeOf((**JupyterConfigKernel)(nil)).Elem()
+
+type JupyterConfigKernelPtrInput interface {
+	pulumi.Input
+
+	ToJupyterConfigKernelPtrOutput() JupyterConfigKernelPtrOutput
+	ToJupyterConfigKernelPtrOutputWithContext(context.Context) JupyterConfigKernelPtrOutput
+}
+
+type jupyterConfigKernelPtr string
+
+func JupyterConfigKernelPtr(v string) JupyterConfigKernelPtrInput {
+	return (*jupyterConfigKernelPtr)(&v)
+}
+
+func (*jupyterConfigKernelPtr) ElementType() reflect.Type {
+	return jupyterConfigKernelPtrType
+}
+
+func (in *jupyterConfigKernelPtr) ToJupyterConfigKernelPtrOutput() JupyterConfigKernelPtrOutput {
+	return pulumi.ToOutput(in).(JupyterConfigKernelPtrOutput)
+}
+
+func (in *jupyterConfigKernelPtr) ToJupyterConfigKernelPtrOutputWithContext(ctx context.Context) JupyterConfigKernelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JupyterConfigKernelPtrOutput)
+}
+
+func (in *jupyterConfigKernelPtr) ToOutput(ctx context.Context) pulumix.Output[*JupyterConfigKernel] {
+	return pulumix.Output[*JupyterConfigKernel]{
+		OutputState: in.ToJupyterConfigKernelPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. A standard set of metrics is collected unless metricOverrides are specified for the metric source (see Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) for more information).
 type MetricMetricSource string
 
@@ -656,6 +843,8 @@ const (
 	MetricMetricSourceHiveserver2 = MetricMetricSource("HIVESERVER2")
 	// hivemetastore metric source
 	MetricMetricSourceHivemetastore = MetricMetricSource("HIVEMETASTORE")
+	// flink metric source
+	MetricMetricSourceFlink = MetricMetricSource("FLINK")
 )
 
 func (MetricMetricSource) ElementType() reflect.Type {
@@ -1537,6 +1726,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolTargetRolesItemArrayInput)(nil)).Elem(), GkeNodePoolTargetRolesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigPreemptibilityInput)(nil)).Elem(), InstanceGroupConfigPreemptibility("PREEMPTIBILITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigPreemptibilityPtrInput)(nil)).Elem(), InstanceGroupConfigPreemptibility("PREEMPTIBILITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JupyterConfigKernelInput)(nil)).Elem(), JupyterConfigKernel("KERNEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JupyterConfigKernelPtrInput)(nil)).Elem(), JupyterConfigKernel("KERNEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricSourceInput)(nil)).Elem(), MetricMetricSource("METRIC_SOURCE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricSourcePtrInput)(nil)).Elem(), MetricMetricSource("METRIC_SOURCE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupRolesItemInput)(nil)).Elem(), NodeGroupRolesItem("ROLE_UNSPECIFIED"))
@@ -1554,6 +1745,8 @@ func init() {
 	pulumi.RegisterOutputType(GkeNodePoolTargetRolesItemArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupConfigPreemptibilityOutput{})
 	pulumi.RegisterOutputType(InstanceGroupConfigPreemptibilityPtrOutput{})
+	pulumi.RegisterOutputType(JupyterConfigKernelOutput{})
+	pulumi.RegisterOutputType(JupyterConfigKernelPtrOutput{})
 	pulumi.RegisterOutputType(MetricMetricSourceOutput{})
 	pulumi.RegisterOutputType(MetricMetricSourcePtrOutput{})
 	pulumi.RegisterOutputType(NodeGroupRolesItemOutput{})

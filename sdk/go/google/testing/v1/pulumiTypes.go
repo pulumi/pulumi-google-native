@@ -4614,6 +4614,254 @@ func (o IosDeviceResponseArrayOutput) Index(i pulumi.IntInput) IosDeviceResponse
 	}).(IosDeviceResponseOutput)
 }
 
+// A test that explores an iOS application on an iOS device.
+type IosRoboTest struct {
+	// The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
+	AppBundleId *string `pulumi:"appBundleId"`
+	// The ipa stored at this file should be used to run the test.
+	AppIpa FileReference `pulumi:"appIpa"`
+	// An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
+	RoboScript *FileReference `pulumi:"roboScript"`
+}
+
+// IosRoboTestInput is an input type that accepts IosRoboTestArgs and IosRoboTestOutput values.
+// You can construct a concrete instance of `IosRoboTestInput` via:
+//
+//	IosRoboTestArgs{...}
+type IosRoboTestInput interface {
+	pulumi.Input
+
+	ToIosRoboTestOutput() IosRoboTestOutput
+	ToIosRoboTestOutputWithContext(context.Context) IosRoboTestOutput
+}
+
+// A test that explores an iOS application on an iOS device.
+type IosRoboTestArgs struct {
+	// The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
+	AppBundleId pulumi.StringPtrInput `pulumi:"appBundleId"`
+	// The ipa stored at this file should be used to run the test.
+	AppIpa FileReferenceInput `pulumi:"appIpa"`
+	// An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
+	RoboScript FileReferencePtrInput `pulumi:"roboScript"`
+}
+
+func (IosRoboTestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosRoboTest)(nil)).Elem()
+}
+
+func (i IosRoboTestArgs) ToIosRoboTestOutput() IosRoboTestOutput {
+	return i.ToIosRoboTestOutputWithContext(context.Background())
+}
+
+func (i IosRoboTestArgs) ToIosRoboTestOutputWithContext(ctx context.Context) IosRoboTestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosRoboTestOutput)
+}
+
+func (i IosRoboTestArgs) ToOutput(ctx context.Context) pulumix.Output[IosRoboTest] {
+	return pulumix.Output[IosRoboTest]{
+		OutputState: i.ToIosRoboTestOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i IosRoboTestArgs) ToIosRoboTestPtrOutput() IosRoboTestPtrOutput {
+	return i.ToIosRoboTestPtrOutputWithContext(context.Background())
+}
+
+func (i IosRoboTestArgs) ToIosRoboTestPtrOutputWithContext(ctx context.Context) IosRoboTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosRoboTestOutput).ToIosRoboTestPtrOutputWithContext(ctx)
+}
+
+// IosRoboTestPtrInput is an input type that accepts IosRoboTestArgs, IosRoboTestPtr and IosRoboTestPtrOutput values.
+// You can construct a concrete instance of `IosRoboTestPtrInput` via:
+//
+//	        IosRoboTestArgs{...}
+//
+//	or:
+//
+//	        nil
+type IosRoboTestPtrInput interface {
+	pulumi.Input
+
+	ToIosRoboTestPtrOutput() IosRoboTestPtrOutput
+	ToIosRoboTestPtrOutputWithContext(context.Context) IosRoboTestPtrOutput
+}
+
+type iosRoboTestPtrType IosRoboTestArgs
+
+func IosRoboTestPtr(v *IosRoboTestArgs) IosRoboTestPtrInput {
+	return (*iosRoboTestPtrType)(v)
+}
+
+func (*iosRoboTestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosRoboTest)(nil)).Elem()
+}
+
+func (i *iosRoboTestPtrType) ToIosRoboTestPtrOutput() IosRoboTestPtrOutput {
+	return i.ToIosRoboTestPtrOutputWithContext(context.Background())
+}
+
+func (i *iosRoboTestPtrType) ToIosRoboTestPtrOutputWithContext(ctx context.Context) IosRoboTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosRoboTestPtrOutput)
+}
+
+func (i *iosRoboTestPtrType) ToOutput(ctx context.Context) pulumix.Output[*IosRoboTest] {
+	return pulumix.Output[*IosRoboTest]{
+		OutputState: i.ToIosRoboTestPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A test that explores an iOS application on an iOS device.
+type IosRoboTestOutput struct{ *pulumi.OutputState }
+
+func (IosRoboTestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosRoboTest)(nil)).Elem()
+}
+
+func (o IosRoboTestOutput) ToIosRoboTestOutput() IosRoboTestOutput {
+	return o
+}
+
+func (o IosRoboTestOutput) ToIosRoboTestOutputWithContext(ctx context.Context) IosRoboTestOutput {
+	return o
+}
+
+func (o IosRoboTestOutput) ToIosRoboTestPtrOutput() IosRoboTestPtrOutput {
+	return o.ToIosRoboTestPtrOutputWithContext(context.Background())
+}
+
+func (o IosRoboTestOutput) ToIosRoboTestPtrOutputWithContext(ctx context.Context) IosRoboTestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IosRoboTest) *IosRoboTest {
+		return &v
+	}).(IosRoboTestPtrOutput)
+}
+
+func (o IosRoboTestOutput) ToOutput(ctx context.Context) pulumix.Output[IosRoboTest] {
+	return pulumix.Output[IosRoboTest]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
+func (o IosRoboTestOutput) AppBundleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IosRoboTest) *string { return v.AppBundleId }).(pulumi.StringPtrOutput)
+}
+
+// The ipa stored at this file should be used to run the test.
+func (o IosRoboTestOutput) AppIpa() FileReferenceOutput {
+	return o.ApplyT(func(v IosRoboTest) FileReference { return v.AppIpa }).(FileReferenceOutput)
+}
+
+// An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
+func (o IosRoboTestOutput) RoboScript() FileReferencePtrOutput {
+	return o.ApplyT(func(v IosRoboTest) *FileReference { return v.RoboScript }).(FileReferencePtrOutput)
+}
+
+type IosRoboTestPtrOutput struct{ *pulumi.OutputState }
+
+func (IosRoboTestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosRoboTest)(nil)).Elem()
+}
+
+func (o IosRoboTestPtrOutput) ToIosRoboTestPtrOutput() IosRoboTestPtrOutput {
+	return o
+}
+
+func (o IosRoboTestPtrOutput) ToIosRoboTestPtrOutputWithContext(ctx context.Context) IosRoboTestPtrOutput {
+	return o
+}
+
+func (o IosRoboTestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IosRoboTest] {
+	return pulumix.Output[*IosRoboTest]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IosRoboTestPtrOutput) Elem() IosRoboTestOutput {
+	return o.ApplyT(func(v *IosRoboTest) IosRoboTest {
+		if v != nil {
+			return *v
+		}
+		var ret IosRoboTest
+		return ret
+	}).(IosRoboTestOutput)
+}
+
+// The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
+func (o IosRoboTestPtrOutput) AppBundleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IosRoboTest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppBundleId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ipa stored at this file should be used to run the test.
+func (o IosRoboTestPtrOutput) AppIpa() FileReferencePtrOutput {
+	return o.ApplyT(func(v *IosRoboTest) *FileReference {
+		if v == nil {
+			return nil
+		}
+		return &v.AppIpa
+	}).(FileReferencePtrOutput)
+}
+
+// An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
+func (o IosRoboTestPtrOutput) RoboScript() FileReferencePtrOutput {
+	return o.ApplyT(func(v *IosRoboTest) *FileReference {
+		if v == nil {
+			return nil
+		}
+		return v.RoboScript
+	}).(FileReferencePtrOutput)
+}
+
+// A test that explores an iOS application on an iOS device.
+type IosRoboTestResponse struct {
+	// The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
+	AppBundleId string `pulumi:"appBundleId"`
+	// The ipa stored at this file should be used to run the test.
+	AppIpa FileReferenceResponse `pulumi:"appIpa"`
+	// An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
+	RoboScript FileReferenceResponse `pulumi:"roboScript"`
+}
+
+// A test that explores an iOS application on an iOS device.
+type IosRoboTestResponseOutput struct{ *pulumi.OutputState }
+
+func (IosRoboTestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosRoboTestResponse)(nil)).Elem()
+}
+
+func (o IosRoboTestResponseOutput) ToIosRoboTestResponseOutput() IosRoboTestResponseOutput {
+	return o
+}
+
+func (o IosRoboTestResponseOutput) ToIosRoboTestResponseOutputWithContext(ctx context.Context) IosRoboTestResponseOutput {
+	return o
+}
+
+func (o IosRoboTestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IosRoboTestResponse] {
+	return pulumix.Output[IosRoboTestResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
+func (o IosRoboTestResponseOutput) AppBundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v IosRoboTestResponse) string { return v.AppBundleId }).(pulumi.StringOutput)
+}
+
+// The ipa stored at this file should be used to run the test.
+func (o IosRoboTestResponseOutput) AppIpa() FileReferenceResponseOutput {
+	return o.ApplyT(func(v IosRoboTestResponse) FileReferenceResponse { return v.AppIpa }).(FileReferenceResponseOutput)
+}
+
+// An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
+func (o IosRoboTestResponseOutput) RoboScript() FileReferenceResponseOutput {
+	return o.ApplyT(func(v IosRoboTestResponse) FileReferenceResponse { return v.RoboScript }).(FileReferenceResponseOutput)
+}
+
 // A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
 type IosTestLoop struct {
 	// The .ipa of the application to test.
@@ -5570,7 +5818,7 @@ func (o LauncherActivityIntentResponseOutput) ToOutput(ctx context.Context) pulu
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualSharding struct {
-	// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+	// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 	TestTargetsForShard []TestTargetsForShard `pulumi:"testTargetsForShard"`
 }
 
@@ -5587,7 +5835,7 @@ type ManualShardingInput interface {
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualShardingArgs struct {
-	// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+	// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 	TestTargetsForShard TestTargetsForShardArrayInput `pulumi:"testTargetsForShard"`
 }
 
@@ -5687,7 +5935,7 @@ func (o ManualShardingOutput) ToOutput(ctx context.Context) pulumix.Output[Manua
 	}
 }
 
-// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 func (o ManualShardingOutput) TestTargetsForShard() TestTargetsForShardArrayOutput {
 	return o.ApplyT(func(v ManualSharding) []TestTargetsForShard { return v.TestTargetsForShard }).(TestTargetsForShardArrayOutput)
 }
@@ -5722,7 +5970,7 @@ func (o ManualShardingPtrOutput) Elem() ManualShardingOutput {
 	}).(ManualShardingOutput)
 }
 
-// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 func (o ManualShardingPtrOutput) TestTargetsForShard() TestTargetsForShardArrayOutput {
 	return o.ApplyT(func(v *ManualSharding) []TestTargetsForShard {
 		if v == nil {
@@ -5734,7 +5982,7 @@ func (o ManualShardingPtrOutput) TestTargetsForShard() TestTargetsForShardArrayO
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualShardingResponse struct {
-	// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+	// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 	TestTargetsForShard []TestTargetsForShardResponse `pulumi:"testTargetsForShard"`
 }
 
@@ -5759,9 +6007,179 @@ func (o ManualShardingResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 func (o ManualShardingResponseOutput) TestTargetsForShard() TestTargetsForShardResponseArrayOutput {
 	return o.ApplyT(func(v ManualShardingResponse) []TestTargetsForShardResponse { return v.TestTargetsForShard }).(TestTargetsForShardResponseArrayOutput)
+}
+
+// Skips the starting activity
+type NoActivityIntent struct {
+}
+
+// NoActivityIntentInput is an input type that accepts NoActivityIntentArgs and NoActivityIntentOutput values.
+// You can construct a concrete instance of `NoActivityIntentInput` via:
+//
+//	NoActivityIntentArgs{...}
+type NoActivityIntentInput interface {
+	pulumi.Input
+
+	ToNoActivityIntentOutput() NoActivityIntentOutput
+	ToNoActivityIntentOutputWithContext(context.Context) NoActivityIntentOutput
+}
+
+// Skips the starting activity
+type NoActivityIntentArgs struct {
+}
+
+func (NoActivityIntentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoActivityIntent)(nil)).Elem()
+}
+
+func (i NoActivityIntentArgs) ToNoActivityIntentOutput() NoActivityIntentOutput {
+	return i.ToNoActivityIntentOutputWithContext(context.Background())
+}
+
+func (i NoActivityIntentArgs) ToNoActivityIntentOutputWithContext(ctx context.Context) NoActivityIntentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoActivityIntentOutput)
+}
+
+func (i NoActivityIntentArgs) ToOutput(ctx context.Context) pulumix.Output[NoActivityIntent] {
+	return pulumix.Output[NoActivityIntent]{
+		OutputState: i.ToNoActivityIntentOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i NoActivityIntentArgs) ToNoActivityIntentPtrOutput() NoActivityIntentPtrOutput {
+	return i.ToNoActivityIntentPtrOutputWithContext(context.Background())
+}
+
+func (i NoActivityIntentArgs) ToNoActivityIntentPtrOutputWithContext(ctx context.Context) NoActivityIntentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoActivityIntentOutput).ToNoActivityIntentPtrOutputWithContext(ctx)
+}
+
+// NoActivityIntentPtrInput is an input type that accepts NoActivityIntentArgs, NoActivityIntentPtr and NoActivityIntentPtrOutput values.
+// You can construct a concrete instance of `NoActivityIntentPtrInput` via:
+//
+//	        NoActivityIntentArgs{...}
+//
+//	or:
+//
+//	        nil
+type NoActivityIntentPtrInput interface {
+	pulumi.Input
+
+	ToNoActivityIntentPtrOutput() NoActivityIntentPtrOutput
+	ToNoActivityIntentPtrOutputWithContext(context.Context) NoActivityIntentPtrOutput
+}
+
+type noActivityIntentPtrType NoActivityIntentArgs
+
+func NoActivityIntentPtr(v *NoActivityIntentArgs) NoActivityIntentPtrInput {
+	return (*noActivityIntentPtrType)(v)
+}
+
+func (*noActivityIntentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoActivityIntent)(nil)).Elem()
+}
+
+func (i *noActivityIntentPtrType) ToNoActivityIntentPtrOutput() NoActivityIntentPtrOutput {
+	return i.ToNoActivityIntentPtrOutputWithContext(context.Background())
+}
+
+func (i *noActivityIntentPtrType) ToNoActivityIntentPtrOutputWithContext(ctx context.Context) NoActivityIntentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoActivityIntentPtrOutput)
+}
+
+func (i *noActivityIntentPtrType) ToOutput(ctx context.Context) pulumix.Output[*NoActivityIntent] {
+	return pulumix.Output[*NoActivityIntent]{
+		OutputState: i.ToNoActivityIntentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Skips the starting activity
+type NoActivityIntentOutput struct{ *pulumi.OutputState }
+
+func (NoActivityIntentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoActivityIntent)(nil)).Elem()
+}
+
+func (o NoActivityIntentOutput) ToNoActivityIntentOutput() NoActivityIntentOutput {
+	return o
+}
+
+func (o NoActivityIntentOutput) ToNoActivityIntentOutputWithContext(ctx context.Context) NoActivityIntentOutput {
+	return o
+}
+
+func (o NoActivityIntentOutput) ToNoActivityIntentPtrOutput() NoActivityIntentPtrOutput {
+	return o.ToNoActivityIntentPtrOutputWithContext(context.Background())
+}
+
+func (o NoActivityIntentOutput) ToNoActivityIntentPtrOutputWithContext(ctx context.Context) NoActivityIntentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoActivityIntent) *NoActivityIntent {
+		return &v
+	}).(NoActivityIntentPtrOutput)
+}
+
+func (o NoActivityIntentOutput) ToOutput(ctx context.Context) pulumix.Output[NoActivityIntent] {
+	return pulumix.Output[NoActivityIntent]{
+		OutputState: o.OutputState,
+	}
+}
+
+type NoActivityIntentPtrOutput struct{ *pulumi.OutputState }
+
+func (NoActivityIntentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoActivityIntent)(nil)).Elem()
+}
+
+func (o NoActivityIntentPtrOutput) ToNoActivityIntentPtrOutput() NoActivityIntentPtrOutput {
+	return o
+}
+
+func (o NoActivityIntentPtrOutput) ToNoActivityIntentPtrOutputWithContext(ctx context.Context) NoActivityIntentPtrOutput {
+	return o
+}
+
+func (o NoActivityIntentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NoActivityIntent] {
+	return pulumix.Output[*NoActivityIntent]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NoActivityIntentPtrOutput) Elem() NoActivityIntentOutput {
+	return o.ApplyT(func(v *NoActivityIntent) NoActivityIntent {
+		if v != nil {
+			return *v
+		}
+		var ret NoActivityIntent
+		return ret
+	}).(NoActivityIntentOutput)
+}
+
+// Skips the starting activity
+type NoActivityIntentResponse struct {
+}
+
+// Skips the starting activity
+type NoActivityIntentResponseOutput struct{ *pulumi.OutputState }
+
+func (NoActivityIntentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoActivityIntentResponse)(nil)).Elem()
+}
+
+func (o NoActivityIntentResponseOutput) ToNoActivityIntentResponseOutput() NoActivityIntentResponseOutput {
+	return o
+}
+
+func (o NoActivityIntentResponseOutput) ToNoActivityIntentResponseOutputWithContext(ctx context.Context) NoActivityIntentResponseOutput {
+	return o
+}
+
+func (o NoActivityIntentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NoActivityIntentResponse] {
+	return pulumix.Output[NoActivityIntentResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An opaque binary blob file to install on the device before the test starts.
@@ -6555,6 +6973,8 @@ func (o RoboDirectiveResponseArrayOutput) Index(i pulumi.IntInput) RoboDirective
 type RoboStartingIntent struct {
 	// An intent that starts the main launcher activity.
 	LauncherActivity *LauncherActivityIntent `pulumi:"launcherActivity"`
+	// Skips the starting activity
+	NoActivity *NoActivityIntent `pulumi:"noActivity"`
 	// An intent that starts an activity with specific details.
 	StartActivity *StartActivityIntent `pulumi:"startActivity"`
 	// Timeout in seconds for each intent.
@@ -6576,6 +6996,8 @@ type RoboStartingIntentInput interface {
 type RoboStartingIntentArgs struct {
 	// An intent that starts the main launcher activity.
 	LauncherActivity LauncherActivityIntentPtrInput `pulumi:"launcherActivity"`
+	// Skips the starting activity
+	NoActivity NoActivityIntentPtrInput `pulumi:"noActivity"`
 	// An intent that starts an activity with specific details.
 	StartActivity StartActivityIntentPtrInput `pulumi:"startActivity"`
 	// Timeout in seconds for each intent.
@@ -6657,6 +7079,11 @@ func (o RoboStartingIntentOutput) LauncherActivity() LauncherActivityIntentPtrOu
 	return o.ApplyT(func(v RoboStartingIntent) *LauncherActivityIntent { return v.LauncherActivity }).(LauncherActivityIntentPtrOutput)
 }
 
+// Skips the starting activity
+func (o RoboStartingIntentOutput) NoActivity() NoActivityIntentPtrOutput {
+	return o.ApplyT(func(v RoboStartingIntent) *NoActivityIntent { return v.NoActivity }).(NoActivityIntentPtrOutput)
+}
+
 // An intent that starts an activity with specific details.
 func (o RoboStartingIntentOutput) StartActivity() StartActivityIntentPtrOutput {
 	return o.ApplyT(func(v RoboStartingIntent) *StartActivityIntent { return v.StartActivity }).(StartActivityIntentPtrOutput)
@@ -6697,6 +7124,8 @@ func (o RoboStartingIntentArrayOutput) Index(i pulumi.IntInput) RoboStartingInte
 type RoboStartingIntentResponse struct {
 	// An intent that starts the main launcher activity.
 	LauncherActivity LauncherActivityIntentResponse `pulumi:"launcherActivity"`
+	// Skips the starting activity
+	NoActivity NoActivityIntentResponse `pulumi:"noActivity"`
 	// An intent that starts an activity with specific details.
 	StartActivity StartActivityIntentResponse `pulumi:"startActivity"`
 	// Timeout in seconds for each intent.
@@ -6727,6 +7156,11 @@ func (o RoboStartingIntentResponseOutput) ToOutput(ctx context.Context) pulumix.
 // An intent that starts the main launcher activity.
 func (o RoboStartingIntentResponseOutput) LauncherActivity() LauncherActivityIntentResponseOutput {
 	return o.ApplyT(func(v RoboStartingIntentResponse) LauncherActivityIntentResponse { return v.LauncherActivity }).(LauncherActivityIntentResponseOutput)
+}
+
+// Skips the starting activity
+func (o RoboStartingIntentResponseOutput) NoActivity() NoActivityIntentResponseOutput {
+	return o.ApplyT(func(v RoboStartingIntentResponse) NoActivityIntentResponse { return v.NoActivity }).(NoActivityIntentResponseOutput)
 }
 
 // An intent that starts an activity with specific details.
@@ -6765,8 +7199,82 @@ func (o RoboStartingIntentResponseArrayOutput) Index(i pulumi.IntInput) RoboStar
 	}).(RoboStartingIntentResponseOutput)
 }
 
+// A message encapsulating a series of Session states and the time that the DeviceSession first entered those states.
+type SessionStateEventResponse struct {
+	// The time that the session_state first encountered that state.
+	EventTime string `pulumi:"eventTime"`
+	// The session_state tracked by this event
+	SessionState string `pulumi:"sessionState"`
+	// A human-readable message to explain the state.
+	StateMessage string `pulumi:"stateMessage"`
+}
+
+// A message encapsulating a series of Session states and the time that the DeviceSession first entered those states.
+type SessionStateEventResponseOutput struct{ *pulumi.OutputState }
+
+func (SessionStateEventResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionStateEventResponse)(nil)).Elem()
+}
+
+func (o SessionStateEventResponseOutput) ToSessionStateEventResponseOutput() SessionStateEventResponseOutput {
+	return o
+}
+
+func (o SessionStateEventResponseOutput) ToSessionStateEventResponseOutputWithContext(ctx context.Context) SessionStateEventResponseOutput {
+	return o
+}
+
+func (o SessionStateEventResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SessionStateEventResponse] {
+	return pulumix.Output[SessionStateEventResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The time that the session_state first encountered that state.
+func (o SessionStateEventResponseOutput) EventTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SessionStateEventResponse) string { return v.EventTime }).(pulumi.StringOutput)
+}
+
+// The session_state tracked by this event
+func (o SessionStateEventResponseOutput) SessionState() pulumi.StringOutput {
+	return o.ApplyT(func(v SessionStateEventResponse) string { return v.SessionState }).(pulumi.StringOutput)
+}
+
+// A human-readable message to explain the state.
+func (o SessionStateEventResponseOutput) StateMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v SessionStateEventResponse) string { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+type SessionStateEventResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SessionStateEventResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SessionStateEventResponse)(nil)).Elem()
+}
+
+func (o SessionStateEventResponseArrayOutput) ToSessionStateEventResponseArrayOutput() SessionStateEventResponseArrayOutput {
+	return o
+}
+
+func (o SessionStateEventResponseArrayOutput) ToSessionStateEventResponseArrayOutputWithContext(ctx context.Context) SessionStateEventResponseArrayOutput {
+	return o
+}
+
+func (o SessionStateEventResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SessionStateEventResponse] {
+	return pulumix.Output[[]SessionStateEventResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SessionStateEventResponseArrayOutput) Index(i pulumi.IntInput) SessionStateEventResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SessionStateEventResponse {
+		return vs[0].([]SessionStateEventResponse)[vs[1].(int)]
+	}).(SessionStateEventResponseOutput)
+}
+
 // Output only. Details about the shard.
 type ShardResponse struct {
+	// The estimated shard duration based on previous test case timing records, if available.
+	EstimatedShardDuration string `pulumi:"estimatedShardDuration"`
 	// The total number of shards.
 	NumShards int `pulumi:"numShards"`
 	// The index of the shard among all the shards.
@@ -6794,6 +7302,11 @@ func (o ShardResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ShardR
 	return pulumix.Output[ShardResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// The estimated shard duration based on previous test case timing records, if available.
+func (o ShardResponseOutput) EstimatedShardDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v ShardResponse) string { return v.EstimatedShardDuration }).(pulumi.StringOutput)
 }
 
 // The total number of shards.
@@ -7061,7 +7574,7 @@ func (o ShardingOptionResponseOutput) UniformSharding() UniformShardingResponseO
 
 // Shards test based on previous test case timing records.
 type SmartSharding struct {
-	// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+	// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.
 	TargetedShardDuration *string `pulumi:"targetedShardDuration"`
 }
 
@@ -7078,7 +7591,7 @@ type SmartShardingInput interface {
 
 // Shards test based on previous test case timing records.
 type SmartShardingArgs struct {
-	// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+	// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.
 	TargetedShardDuration pulumi.StringPtrInput `pulumi:"targetedShardDuration"`
 }
 
@@ -7178,7 +7691,7 @@ func (o SmartShardingOutput) ToOutput(ctx context.Context) pulumix.Output[SmartS
 	}
 }
 
-// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.
 func (o SmartShardingOutput) TargetedShardDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SmartSharding) *string { return v.TargetedShardDuration }).(pulumi.StringPtrOutput)
 }
@@ -7213,7 +7726,7 @@ func (o SmartShardingPtrOutput) Elem() SmartShardingOutput {
 	}).(SmartShardingOutput)
 }
 
-// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.
 func (o SmartShardingPtrOutput) TargetedShardDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SmartSharding) *string {
 		if v == nil {
@@ -7225,7 +7738,7 @@ func (o SmartShardingPtrOutput) TargetedShardDuration() pulumi.StringPtrOutput {
 
 // Shards test based on previous test case timing records.
 type SmartShardingResponse struct {
-	// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+	// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.
 	TargetedShardDuration string `pulumi:"targetedShardDuration"`
 }
 
@@ -7250,7 +7763,7 @@ func (o SmartShardingResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.
 func (o SmartShardingResponseOutput) TargetedShardDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v SmartShardingResponse) string { return v.TargetedShardDuration }).(pulumi.StringOutput)
 }
@@ -7851,7 +8364,7 @@ func (o TestExecutionResponseArrayOutput) Index(i pulumi.IntInput) TestExecution
 type TestSetup struct {
 	// The device will be logged in on this account for the duration of the test.
 	Account *Account `pulumi:"account"`
-	// APKs to install in addition to those being directly tested. Currently capped at 100.
+	// APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
 	AdditionalApks []Apk `pulumi:"additionalApks"`
 	// List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device.
 	DirectoriesToPull []string `pulumi:"directoriesToPull"`
@@ -7861,6 +8374,8 @@ type TestSetup struct {
 	EnvironmentVariables []EnvironmentVariable `pulumi:"environmentVariables"`
 	// List of files to push to the device before starting the test.
 	FilesToPush []DeviceFile `pulumi:"filesToPush"`
+	// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+	InitialSetupApks []Apk `pulumi:"initialSetupApks"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile *string `pulumi:"networkProfile"`
 	// Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
@@ -7884,7 +8399,7 @@ type TestSetupInput interface {
 type TestSetupArgs struct {
 	// The device will be logged in on this account for the duration of the test.
 	Account AccountPtrInput `pulumi:"account"`
-	// APKs to install in addition to those being directly tested. Currently capped at 100.
+	// APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
 	AdditionalApks ApkArrayInput `pulumi:"additionalApks"`
 	// List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device.
 	DirectoriesToPull pulumi.StringArrayInput `pulumi:"directoriesToPull"`
@@ -7894,6 +8409,8 @@ type TestSetupArgs struct {
 	EnvironmentVariables EnvironmentVariableArrayInput `pulumi:"environmentVariables"`
 	// List of files to push to the device before starting the test.
 	FilesToPush DeviceFileArrayInput `pulumi:"filesToPush"`
+	// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+	InitialSetupApks ApkArrayInput `pulumi:"initialSetupApks"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile pulumi.StringPtrInput `pulumi:"networkProfile"`
 	// Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
@@ -8003,7 +8520,7 @@ func (o TestSetupOutput) Account() AccountPtrOutput {
 	return o.ApplyT(func(v TestSetup) *Account { return v.Account }).(AccountPtrOutput)
 }
 
-// APKs to install in addition to those being directly tested. Currently capped at 100.
+// APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
 func (o TestSetupOutput) AdditionalApks() ApkArrayOutput {
 	return o.ApplyT(func(v TestSetup) []Apk { return v.AdditionalApks }).(ApkArrayOutput)
 }
@@ -8026,6 +8543,11 @@ func (o TestSetupOutput) EnvironmentVariables() EnvironmentVariableArrayOutput {
 // List of files to push to the device before starting the test.
 func (o TestSetupOutput) FilesToPush() DeviceFileArrayOutput {
 	return o.ApplyT(func(v TestSetup) []DeviceFile { return v.FilesToPush }).(DeviceFileArrayOutput)
+}
+
+// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+func (o TestSetupOutput) InitialSetupApks() ApkArrayOutput {
+	return o.ApplyT(func(v TestSetup) []Apk { return v.InitialSetupApks }).(ApkArrayOutput)
 }
 
 // The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
@@ -8080,7 +8602,7 @@ func (o TestSetupPtrOutput) Account() AccountPtrOutput {
 	}).(AccountPtrOutput)
 }
 
-// APKs to install in addition to those being directly tested. Currently capped at 100.
+// APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
 func (o TestSetupPtrOutput) AdditionalApks() ApkArrayOutput {
 	return o.ApplyT(func(v *TestSetup) []Apk {
 		if v == nil {
@@ -8130,6 +8652,16 @@ func (o TestSetupPtrOutput) FilesToPush() DeviceFileArrayOutput {
 	}).(DeviceFileArrayOutput)
 }
 
+// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+func (o TestSetupPtrOutput) InitialSetupApks() ApkArrayOutput {
+	return o.ApplyT(func(v *TestSetup) []Apk {
+		if v == nil {
+			return nil
+		}
+		return v.InitialSetupApks
+	}).(ApkArrayOutput)
+}
+
 // The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 func (o TestSetupPtrOutput) NetworkProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TestSetup) *string {
@@ -8156,7 +8688,7 @@ func (o TestSetupPtrOutput) Systrace() SystraceSetupPtrOutput {
 type TestSetupResponse struct {
 	// The device will be logged in on this account for the duration of the test.
 	Account AccountResponse `pulumi:"account"`
-	// APKs to install in addition to those being directly tested. Currently capped at 100.
+	// APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
 	AdditionalApks []ApkResponse `pulumi:"additionalApks"`
 	// List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device.
 	DirectoriesToPull []string `pulumi:"directoriesToPull"`
@@ -8166,6 +8698,8 @@ type TestSetupResponse struct {
 	EnvironmentVariables []EnvironmentVariableResponse `pulumi:"environmentVariables"`
 	// List of files to push to the device before starting the test.
 	FilesToPush []DeviceFileResponse `pulumi:"filesToPush"`
+	// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+	InitialSetupApks []ApkResponse `pulumi:"initialSetupApks"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile string `pulumi:"networkProfile"`
 	// Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
@@ -8200,7 +8734,7 @@ func (o TestSetupResponseOutput) Account() AccountResponseOutput {
 	return o.ApplyT(func(v TestSetupResponse) AccountResponse { return v.Account }).(AccountResponseOutput)
 }
 
-// APKs to install in addition to those being directly tested. Currently capped at 100.
+// APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
 func (o TestSetupResponseOutput) AdditionalApks() ApkResponseArrayOutput {
 	return o.ApplyT(func(v TestSetupResponse) []ApkResponse { return v.AdditionalApks }).(ApkResponseArrayOutput)
 }
@@ -8223,6 +8757,11 @@ func (o TestSetupResponseOutput) EnvironmentVariables() EnvironmentVariableRespo
 // List of files to push to the device before starting the test.
 func (o TestSetupResponseOutput) FilesToPush() DeviceFileResponseArrayOutput {
 	return o.ApplyT(func(v TestSetupResponse) []DeviceFileResponse { return v.FilesToPush }).(DeviceFileResponseArrayOutput)
+}
+
+// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
+func (o TestSetupResponseOutput) InitialSetupApks() ApkResponseArrayOutput {
+	return o.ApplyT(func(v TestSetupResponse) []ApkResponse { return v.InitialSetupApks }).(ApkResponseArrayOutput)
 }
 
 // The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
@@ -8249,6 +8788,8 @@ type TestSpecification struct {
 	DisablePerformanceMetrics *bool `pulumi:"disablePerformanceMetrics"`
 	// Disables video recording. May reduce test latency.
 	DisableVideoRecording *bool `pulumi:"disableVideoRecording"`
+	// An iOS Robo test.
+	IosRoboTest *IosRoboTest `pulumi:"iosRoboTest"`
 	// An iOS application with a test loop.
 	IosTestLoop *IosTestLoop `pulumi:"iosTestLoop"`
 	// Test setup requirements for iOS.
@@ -8284,6 +8825,8 @@ type TestSpecificationArgs struct {
 	DisablePerformanceMetrics pulumi.BoolPtrInput `pulumi:"disablePerformanceMetrics"`
 	// Disables video recording. May reduce test latency.
 	DisableVideoRecording pulumi.BoolPtrInput `pulumi:"disableVideoRecording"`
+	// An iOS Robo test.
+	IosRoboTest IosRoboTestPtrInput `pulumi:"iosRoboTest"`
 	// An iOS application with a test loop.
 	IosTestLoop IosTestLoopPtrInput `pulumi:"iosTestLoop"`
 	// Test setup requirements for iOS.
@@ -8360,6 +8903,11 @@ func (o TestSpecificationOutput) DisableVideoRecording() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TestSpecification) *bool { return v.DisableVideoRecording }).(pulumi.BoolPtrOutput)
 }
 
+// An iOS Robo test.
+func (o TestSpecificationOutput) IosRoboTest() IosRoboTestPtrOutput {
+	return o.ApplyT(func(v TestSpecification) *IosRoboTest { return v.IosRoboTest }).(IosRoboTestPtrOutput)
+}
+
 // An iOS application with a test loop.
 func (o TestSpecificationOutput) IosTestLoop() IosTestLoopPtrOutput {
 	return o.ApplyT(func(v TestSpecification) *IosTestLoop { return v.IosTestLoop }).(IosTestLoopPtrOutput)
@@ -8397,6 +8945,8 @@ type TestSpecificationResponse struct {
 	DisablePerformanceMetrics bool `pulumi:"disablePerformanceMetrics"`
 	// Disables video recording. May reduce test latency.
 	DisableVideoRecording bool `pulumi:"disableVideoRecording"`
+	// An iOS Robo test.
+	IosRoboTest IosRoboTestResponse `pulumi:"iosRoboTest"`
 	// An iOS application with a test loop.
 	IosTestLoop IosTestLoopResponse `pulumi:"iosTestLoop"`
 	// Test setup requirements for iOS.
@@ -8455,6 +9005,11 @@ func (o TestSpecificationResponseOutput) DisablePerformanceMetrics() pulumi.Bool
 // Disables video recording. May reduce test latency.
 func (o TestSpecificationResponseOutput) DisableVideoRecording() pulumi.BoolOutput {
 	return o.ApplyT(func(v TestSpecificationResponse) bool { return v.DisableVideoRecording }).(pulumi.BoolOutput)
+}
+
+// An iOS Robo test.
+func (o TestSpecificationResponseOutput) IosRoboTest() IosRoboTestResponseOutput {
+	return o.ApplyT(func(v TestSpecificationResponse) IosRoboTestResponse { return v.IosRoboTest }).(IosRoboTestResponseOutput)
 }
 
 // An iOS application with a test loop.
@@ -8987,7 +9542,7 @@ func (o ToolResultsStepResponseOutput) StepId() pulumi.StringOutput {
 
 // Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
 type UniformSharding struct {
-	// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+	// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 	NumShards int `pulumi:"numShards"`
 }
 
@@ -9004,7 +9559,7 @@ type UniformShardingInput interface {
 
 // Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
 type UniformShardingArgs struct {
-	// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+	// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 	NumShards pulumi.IntInput `pulumi:"numShards"`
 }
 
@@ -9104,7 +9659,7 @@ func (o UniformShardingOutput) ToOutput(ctx context.Context) pulumix.Output[Unif
 	}
 }
 
-// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 func (o UniformShardingOutput) NumShards() pulumi.IntOutput {
 	return o.ApplyT(func(v UniformSharding) int { return v.NumShards }).(pulumi.IntOutput)
 }
@@ -9139,7 +9694,7 @@ func (o UniformShardingPtrOutput) Elem() UniformShardingOutput {
 	}).(UniformShardingOutput)
 }
 
-// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 func (o UniformShardingPtrOutput) NumShards() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UniformSharding) *int {
 		if v == nil {
@@ -9151,7 +9706,7 @@ func (o UniformShardingPtrOutput) NumShards() pulumi.IntPtrOutput {
 
 // Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
 type UniformShardingResponse struct {
-	// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+	// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 	NumShards int `pulumi:"numShards"`
 }
 
@@ -9176,7 +9731,7 @@ func (o UniformShardingResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
+// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
 func (o UniformShardingResponseOutput) NumShards() pulumi.IntOutput {
 	return o.ApplyT(func(v UniformShardingResponse) int { return v.NumShards }).(pulumi.IntOutput)
 }
@@ -9221,6 +9776,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceFileArrayInput)(nil)).Elem(), IosDeviceFileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceListInput)(nil)).Elem(), IosDeviceListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosDeviceListPtrInput)(nil)).Elem(), IosDeviceListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IosRoboTestInput)(nil)).Elem(), IosRoboTestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IosRoboTestPtrInput)(nil)).Elem(), IosRoboTestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosTestLoopInput)(nil)).Elem(), IosTestLoopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosTestLoopPtrInput)(nil)).Elem(), IosTestLoopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IosTestSetupInput)(nil)).Elem(), IosTestSetupArgs{})
@@ -9231,6 +9788,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LauncherActivityIntentPtrInput)(nil)).Elem(), LauncherActivityIntentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManualShardingInput)(nil)).Elem(), ManualShardingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManualShardingPtrInput)(nil)).Elem(), ManualShardingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoActivityIntentInput)(nil)).Elem(), NoActivityIntentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoActivityIntentPtrInput)(nil)).Elem(), NoActivityIntentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObbFileInput)(nil)).Elem(), ObbFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObbFilePtrInput)(nil)).Elem(), ObbFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegularFileInput)(nil)).Elem(), RegularFileArgs{})
@@ -9325,6 +9884,9 @@ func init() {
 	pulumi.RegisterOutputType(IosDeviceListResponseOutput{})
 	pulumi.RegisterOutputType(IosDeviceResponseOutput{})
 	pulumi.RegisterOutputType(IosDeviceResponseArrayOutput{})
+	pulumi.RegisterOutputType(IosRoboTestOutput{})
+	pulumi.RegisterOutputType(IosRoboTestPtrOutput{})
+	pulumi.RegisterOutputType(IosRoboTestResponseOutput{})
 	pulumi.RegisterOutputType(IosTestLoopOutput{})
 	pulumi.RegisterOutputType(IosTestLoopPtrOutput{})
 	pulumi.RegisterOutputType(IosTestLoopResponseOutput{})
@@ -9340,6 +9902,9 @@ func init() {
 	pulumi.RegisterOutputType(ManualShardingOutput{})
 	pulumi.RegisterOutputType(ManualShardingPtrOutput{})
 	pulumi.RegisterOutputType(ManualShardingResponseOutput{})
+	pulumi.RegisterOutputType(NoActivityIntentOutput{})
+	pulumi.RegisterOutputType(NoActivityIntentPtrOutput{})
+	pulumi.RegisterOutputType(NoActivityIntentResponseOutput{})
 	pulumi.RegisterOutputType(ObbFileOutput{})
 	pulumi.RegisterOutputType(ObbFilePtrOutput{})
 	pulumi.RegisterOutputType(ObbFileResponseOutput{})
@@ -9356,6 +9921,8 @@ func init() {
 	pulumi.RegisterOutputType(RoboStartingIntentArrayOutput{})
 	pulumi.RegisterOutputType(RoboStartingIntentResponseOutput{})
 	pulumi.RegisterOutputType(RoboStartingIntentResponseArrayOutput{})
+	pulumi.RegisterOutputType(SessionStateEventResponseOutput{})
+	pulumi.RegisterOutputType(SessionStateEventResponseArrayOutput{})
 	pulumi.RegisterOutputType(ShardResponseOutput{})
 	pulumi.RegisterOutputType(ShardingOptionOutput{})
 	pulumi.RegisterOutputType(ShardingOptionPtrOutput{})

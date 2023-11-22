@@ -29,15 +29,17 @@ type LookupPublicAdvertisedPrefixArgs struct {
 }
 
 type LookupPublicAdvertisedPrefixResult struct {
+	// The version of BYOIP API.
+	ByoipApiVersion string `pulumi:"byoipApiVersion"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// The IPv4 address to be used for reverse DNS verification.
+	// The address to be used for reverse DNS verification.
 	DnsVerificationIp string `pulumi:"dnsVerificationIp"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
 	Fingerprint string `pulumi:"fingerprint"`
-	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+	// The address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
 	Kind string `pulumi:"kind"`
@@ -99,6 +101,11 @@ func (o LookupPublicAdvertisedPrefixResultOutput) ToOutput(ctx context.Context) 
 	}
 }
 
+// The version of BYOIP API.
+func (o LookupPublicAdvertisedPrefixResultOutput) ByoipApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.ByoipApiVersion }).(pulumi.StringOutput)
+}
+
 // Creation timestamp in RFC3339 text format.
 func (o LookupPublicAdvertisedPrefixResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
@@ -109,7 +116,7 @@ func (o LookupPublicAdvertisedPrefixResultOutput) Description() pulumi.StringOut
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The IPv4 address to be used for reverse DNS verification.
+// The address to be used for reverse DNS verification.
 func (o LookupPublicAdvertisedPrefixResultOutput) DnsVerificationIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.DnsVerificationIp }).(pulumi.StringOutput)
 }
@@ -119,7 +126,7 @@ func (o LookupPublicAdvertisedPrefixResultOutput) Fingerprint() pulumi.StringOut
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+// The address range, in CIDR format, represented by this public advertised prefix.
 func (o LookupPublicAdvertisedPrefixResultOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.IpCidrRange }).(pulumi.StringOutput)
 }

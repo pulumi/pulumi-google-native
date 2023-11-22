@@ -1426,7 +1426,7 @@ func (o GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput
 	}).(pulumi.IntOutput)
 }
 
-// The conversation source, which is a combination of transcript and audio.
+// The conversation source, which is a combination of transcript, audio, and metadata.
 type GoogleCloudContactcenterinsightsV1ConversationDataSource struct {
 	// The source when the conversation comes from Dialogflow.
 	DialogflowSource *GoogleCloudContactcenterinsightsV1DialogflowSource `pulumi:"dialogflowSource"`
@@ -1445,7 +1445,7 @@ type GoogleCloudContactcenterinsightsV1ConversationDataSourceInput interface {
 	ToGoogleCloudContactcenterinsightsV1ConversationDataSourceOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1ConversationDataSourceOutput
 }
 
-// The conversation source, which is a combination of transcript and audio.
+// The conversation source, which is a combination of transcript, audio, and metadata.
 type GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs struct {
 	// The source when the conversation comes from Dialogflow.
 	DialogflowSource GoogleCloudContactcenterinsightsV1DialogflowSourcePtrInput `pulumi:"dialogflowSource"`
@@ -1518,7 +1518,7 @@ func (i *googleCloudContactcenterinsightsV1ConversationDataSourcePtrType) ToOutp
 	}
 }
 
-// The conversation source, which is a combination of transcript and audio.
+// The conversation source, which is a combination of transcript, audio, and metadata.
 type GoogleCloudContactcenterinsightsV1ConversationDataSourceOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContactcenterinsightsV1ConversationDataSourceOutput) ElementType() reflect.Type {
@@ -1613,7 +1613,7 @@ func (o GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrOutput) GcsSo
 	}).(GoogleCloudContactcenterinsightsV1GcsSourcePtrOutput)
 }
 
-// The conversation source, which is a combination of transcript and audio.
+// The conversation source, which is a combination of transcript, audio, and metadata.
 type GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse struct {
 	// The source when the conversation comes from Dialogflow.
 	DialogflowSource GoogleCloudContactcenterinsightsV1DialogflowSourceResponse `pulumi:"dialogflowSource"`
@@ -1621,7 +1621,7 @@ type GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse struct {
 	GcsSource GoogleCloudContactcenterinsightsV1GcsSourceResponse `pulumi:"gcsSource"`
 }
 
-// The conversation source, which is a combination of transcript and audio.
+// The conversation source, which is a combination of transcript, audio, and metadata.
 type GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput) ElementType() reflect.Type {

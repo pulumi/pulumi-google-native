@@ -28,6 +28,7 @@ type LookupBareMetalNodePoolArgs struct {
 	BareMetalNodePoolId string  `pulumi:"bareMetalNodePoolId"`
 	Location            string  `pulumi:"location"`
 	Project             *string `pulumi:"project"`
+	View                *string `pulumi:"view"`
 }
 
 type LookupBareMetalNodePoolResult struct {
@@ -55,6 +56,8 @@ type LookupBareMetalNodePoolResult struct {
 	Uid string `pulumi:"uid"`
 	// The time at which this bare metal node pool was last updated.
 	UpdateTime string `pulumi:"updateTime"`
+	// The worker node pool upgrade policy.
+	UpgradePolicy BareMetalNodePoolUpgradePolicyResponse `pulumi:"upgradePolicy"`
 }
 
 func LookupBareMetalNodePoolOutput(ctx *pulumi.Context, args LookupBareMetalNodePoolOutputArgs, opts ...pulumi.InvokeOption) LookupBareMetalNodePoolResultOutput {
@@ -75,6 +78,7 @@ type LookupBareMetalNodePoolOutputArgs struct {
 	BareMetalNodePoolId pulumi.StringInput    `pulumi:"bareMetalNodePoolId"`
 	Location            pulumi.StringInput    `pulumi:"location"`
 	Project             pulumi.StringPtrInput `pulumi:"project"`
+	View                pulumi.StringPtrInput `pulumi:"view"`
 }
 
 func (LookupBareMetalNodePoolOutputArgs) ElementType() reflect.Type {
@@ -159,6 +163,11 @@ func (o LookupBareMetalNodePoolResultOutput) Uid() pulumi.StringOutput {
 // The time at which this bare metal node pool was last updated.
 func (o LookupBareMetalNodePoolResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBareMetalNodePoolResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The worker node pool upgrade policy.
+func (o LookupBareMetalNodePoolResultOutput) UpgradePolicy() BareMetalNodePoolUpgradePolicyResponseOutput {
+	return o.ApplyT(func(v LookupBareMetalNodePoolResult) BareMetalNodePoolUpgradePolicyResponse { return v.UpgradePolicy }).(BareMetalNodePoolUpgradePolicyResponseOutput)
 }
 
 func init() {

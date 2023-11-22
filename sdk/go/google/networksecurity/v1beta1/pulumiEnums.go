@@ -1135,6 +1135,1148 @@ func (in *ruleBasicProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*Rul
 	}
 }
 
+// Immutable. The single ProfileType that the SecurityProfile resource configures.
+type SecurityProfileType string
+
+const (
+	// Profile type not specified.
+	SecurityProfileTypeProfileTypeUnspecified = SecurityProfileType("PROFILE_TYPE_UNSPECIFIED")
+	// Profile type for threat prevention.
+	SecurityProfileTypeThreatPrevention = SecurityProfileType("THREAT_PREVENTION")
+)
+
+func (SecurityProfileType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileType)(nil)).Elem()
+}
+
+func (e SecurityProfileType) ToSecurityProfileTypeOutput() SecurityProfileTypeOutput {
+	return pulumi.ToOutput(e).(SecurityProfileTypeOutput)
+}
+
+func (e SecurityProfileType) ToSecurityProfileTypeOutputWithContext(ctx context.Context) SecurityProfileTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityProfileTypeOutput)
+}
+
+func (e SecurityProfileType) ToSecurityProfileTypePtrOutput() SecurityProfileTypePtrOutput {
+	return e.ToSecurityProfileTypePtrOutputWithContext(context.Background())
+}
+
+func (e SecurityProfileType) ToSecurityProfileTypePtrOutputWithContext(ctx context.Context) SecurityProfileTypePtrOutput {
+	return SecurityProfileType(e).ToSecurityProfileTypeOutputWithContext(ctx).ToSecurityProfileTypePtrOutputWithContext(ctx)
+}
+
+func (e SecurityProfileType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityProfileType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityProfileType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityProfileType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityProfileTypeOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileType)(nil)).Elem()
+}
+
+func (o SecurityProfileTypeOutput) ToSecurityProfileTypeOutput() SecurityProfileTypeOutput {
+	return o
+}
+
+func (o SecurityProfileTypeOutput) ToSecurityProfileTypeOutputWithContext(ctx context.Context) SecurityProfileTypeOutput {
+	return o
+}
+
+func (o SecurityProfileTypeOutput) ToSecurityProfileTypePtrOutput() SecurityProfileTypePtrOutput {
+	return o.ToSecurityProfileTypePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileTypeOutput) ToSecurityProfileTypePtrOutputWithContext(ctx context.Context) SecurityProfileTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityProfileType) *SecurityProfileType {
+		return &v
+	}).(SecurityProfileTypePtrOutput)
+}
+
+func (o SecurityProfileTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityProfileType] {
+	return pulumix.Output[SecurityProfileType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityProfileTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityProfileType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityProfileTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityProfileType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityProfileTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileType)(nil)).Elem()
+}
+
+func (o SecurityProfileTypePtrOutput) ToSecurityProfileTypePtrOutput() SecurityProfileTypePtrOutput {
+	return o
+}
+
+func (o SecurityProfileTypePtrOutput) ToSecurityProfileTypePtrOutputWithContext(ctx context.Context) SecurityProfileTypePtrOutput {
+	return o
+}
+
+func (o SecurityProfileTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityProfileType] {
+	return pulumix.Output[*SecurityProfileType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityProfileTypePtrOutput) Elem() SecurityProfileTypeOutput {
+	return o.ApplyT(func(v *SecurityProfileType) SecurityProfileType {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfileType
+		return ret
+	}).(SecurityProfileTypeOutput)
+}
+
+func (o SecurityProfileTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityProfileType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityProfileTypeInput is an input type that accepts SecurityProfileTypeArgs and SecurityProfileTypeOutput values.
+// You can construct a concrete instance of `SecurityProfileTypeInput` via:
+//
+//	SecurityProfileTypeArgs{...}
+type SecurityProfileTypeInput interface {
+	pulumi.Input
+
+	ToSecurityProfileTypeOutput() SecurityProfileTypeOutput
+	ToSecurityProfileTypeOutputWithContext(context.Context) SecurityProfileTypeOutput
+}
+
+var securityProfileTypePtrType = reflect.TypeOf((**SecurityProfileType)(nil)).Elem()
+
+type SecurityProfileTypePtrInput interface {
+	pulumi.Input
+
+	ToSecurityProfileTypePtrOutput() SecurityProfileTypePtrOutput
+	ToSecurityProfileTypePtrOutputWithContext(context.Context) SecurityProfileTypePtrOutput
+}
+
+type securityProfileTypePtr string
+
+func SecurityProfileTypePtr(v string) SecurityProfileTypePtrInput {
+	return (*securityProfileTypePtr)(&v)
+}
+
+func (*securityProfileTypePtr) ElementType() reflect.Type {
+	return securityProfileTypePtrType
+}
+
+func (in *securityProfileTypePtr) ToSecurityProfileTypePtrOutput() SecurityProfileTypePtrOutput {
+	return pulumi.ToOutput(in).(SecurityProfileTypePtrOutput)
+}
+
+func (in *securityProfileTypePtr) ToSecurityProfileTypePtrOutputWithContext(ctx context.Context) SecurityProfileTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityProfileTypePtrOutput)
+}
+
+func (in *securityProfileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityProfileType] {
+	return pulumix.Output[*SecurityProfileType]{
+		OutputState: in.ToSecurityProfileTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Threat action override.
+type SeverityOverrideAction string
+
+const (
+	// Threat action not specified.
+	SeverityOverrideActionThreatActionUnspecified = SeverityOverrideAction("THREAT_ACTION_UNSPECIFIED")
+	// The default action (as specified by the vendor) is taken.
+	SeverityOverrideActionDefaultAction = SeverityOverrideAction("DEFAULT_ACTION")
+	// The packet matching this rule will be allowed to transmit.
+	SeverityOverrideActionAllow = SeverityOverrideAction("ALLOW")
+	// The packet matching this rule will be allowed to transmit, but a threat_log entry will be sent to the consumer project.
+	SeverityOverrideActionAlert = SeverityOverrideAction("ALERT")
+	// The packet matching this rule will be dropped, and a threat_log entry will be sent to the consumer project.
+	SeverityOverrideActionDeny = SeverityOverrideAction("DENY")
+)
+
+func (SeverityOverrideAction) ElementType() reflect.Type {
+	return reflect.TypeOf((*SeverityOverrideAction)(nil)).Elem()
+}
+
+func (e SeverityOverrideAction) ToSeverityOverrideActionOutput() SeverityOverrideActionOutput {
+	return pulumi.ToOutput(e).(SeverityOverrideActionOutput)
+}
+
+func (e SeverityOverrideAction) ToSeverityOverrideActionOutputWithContext(ctx context.Context) SeverityOverrideActionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SeverityOverrideActionOutput)
+}
+
+func (e SeverityOverrideAction) ToSeverityOverrideActionPtrOutput() SeverityOverrideActionPtrOutput {
+	return e.ToSeverityOverrideActionPtrOutputWithContext(context.Background())
+}
+
+func (e SeverityOverrideAction) ToSeverityOverrideActionPtrOutputWithContext(ctx context.Context) SeverityOverrideActionPtrOutput {
+	return SeverityOverrideAction(e).ToSeverityOverrideActionOutputWithContext(ctx).ToSeverityOverrideActionPtrOutputWithContext(ctx)
+}
+
+func (e SeverityOverrideAction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SeverityOverrideAction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SeverityOverrideAction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SeverityOverrideAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SeverityOverrideActionOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SeverityOverrideAction)(nil)).Elem()
+}
+
+func (o SeverityOverrideActionOutput) ToSeverityOverrideActionOutput() SeverityOverrideActionOutput {
+	return o
+}
+
+func (o SeverityOverrideActionOutput) ToSeverityOverrideActionOutputWithContext(ctx context.Context) SeverityOverrideActionOutput {
+	return o
+}
+
+func (o SeverityOverrideActionOutput) ToSeverityOverrideActionPtrOutput() SeverityOverrideActionPtrOutput {
+	return o.ToSeverityOverrideActionPtrOutputWithContext(context.Background())
+}
+
+func (o SeverityOverrideActionOutput) ToSeverityOverrideActionPtrOutputWithContext(ctx context.Context) SeverityOverrideActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SeverityOverrideAction) *SeverityOverrideAction {
+		return &v
+	}).(SeverityOverrideActionPtrOutput)
+}
+
+func (o SeverityOverrideActionOutput) ToOutput(ctx context.Context) pulumix.Output[SeverityOverrideAction] {
+	return pulumix.Output[SeverityOverrideAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SeverityOverrideActionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SeverityOverrideActionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SeverityOverrideAction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SeverityOverrideActionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SeverityOverrideActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SeverityOverrideAction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SeverityOverrideActionPtrOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SeverityOverrideAction)(nil)).Elem()
+}
+
+func (o SeverityOverrideActionPtrOutput) ToSeverityOverrideActionPtrOutput() SeverityOverrideActionPtrOutput {
+	return o
+}
+
+func (o SeverityOverrideActionPtrOutput) ToSeverityOverrideActionPtrOutputWithContext(ctx context.Context) SeverityOverrideActionPtrOutput {
+	return o
+}
+
+func (o SeverityOverrideActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SeverityOverrideAction] {
+	return pulumix.Output[*SeverityOverrideAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SeverityOverrideActionPtrOutput) Elem() SeverityOverrideActionOutput {
+	return o.ApplyT(func(v *SeverityOverrideAction) SeverityOverrideAction {
+		if v != nil {
+			return *v
+		}
+		var ret SeverityOverrideAction
+		return ret
+	}).(SeverityOverrideActionOutput)
+}
+
+func (o SeverityOverrideActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SeverityOverrideActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SeverityOverrideAction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SeverityOverrideActionInput is an input type that accepts SeverityOverrideActionArgs and SeverityOverrideActionOutput values.
+// You can construct a concrete instance of `SeverityOverrideActionInput` via:
+//
+//	SeverityOverrideActionArgs{...}
+type SeverityOverrideActionInput interface {
+	pulumi.Input
+
+	ToSeverityOverrideActionOutput() SeverityOverrideActionOutput
+	ToSeverityOverrideActionOutputWithContext(context.Context) SeverityOverrideActionOutput
+}
+
+var severityOverrideActionPtrType = reflect.TypeOf((**SeverityOverrideAction)(nil)).Elem()
+
+type SeverityOverrideActionPtrInput interface {
+	pulumi.Input
+
+	ToSeverityOverrideActionPtrOutput() SeverityOverrideActionPtrOutput
+	ToSeverityOverrideActionPtrOutputWithContext(context.Context) SeverityOverrideActionPtrOutput
+}
+
+type severityOverrideActionPtr string
+
+func SeverityOverrideActionPtr(v string) SeverityOverrideActionPtrInput {
+	return (*severityOverrideActionPtr)(&v)
+}
+
+func (*severityOverrideActionPtr) ElementType() reflect.Type {
+	return severityOverrideActionPtrType
+}
+
+func (in *severityOverrideActionPtr) ToSeverityOverrideActionPtrOutput() SeverityOverrideActionPtrOutput {
+	return pulumi.ToOutput(in).(SeverityOverrideActionPtrOutput)
+}
+
+func (in *severityOverrideActionPtr) ToSeverityOverrideActionPtrOutputWithContext(ctx context.Context) SeverityOverrideActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SeverityOverrideActionPtrOutput)
+}
+
+func (in *severityOverrideActionPtr) ToOutput(ctx context.Context) pulumix.Output[*SeverityOverrideAction] {
+	return pulumix.Output[*SeverityOverrideAction]{
+		OutputState: in.ToSeverityOverrideActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Severity level to match.
+type SeverityOverrideSeverity string
+
+const (
+	// Severity level not specified.
+	SeverityOverrideSeveritySeverityUnspecified = SeverityOverrideSeverity("SEVERITY_UNSPECIFIED")
+	// Suspicious events that do not pose an immediate threat, but that are reported to call attention to deeper problems that could possibly exist.
+	SeverityOverrideSeverityInformational = SeverityOverrideSeverity("INFORMATIONAL")
+	// Warning-level threats that have very little impact on an organization's infrastructure. They usually require local or physical system access and may often result in victim privacy issues and information leakage.
+	SeverityOverrideSeverityLow = SeverityOverrideSeverity("LOW")
+	// Minor threats in which impact is minimized, that do not compromise the target or exploits that require an attacker to reside on the same local network as the victim, affect only non-standard configurations or obscure applications, or provide very limited access.
+	SeverityOverrideSeverityMedium = SeverityOverrideSeverity("MEDIUM")
+	// Threats that have the ability to become critical but have mitigating factors; for example, they may be difficult to exploit, do not result in elevated privileges, or do not have a large victim pool.
+	SeverityOverrideSeverityHigh = SeverityOverrideSeverity("HIGH")
+	// Serious threats, such as those that affect default installations of widely deployed software, result in root compromise of servers, and the exploit code is widely available to attackers. The attacker usually does not need any special authentication credentials or knowledge about the individual victims and the target does not need to be manipulated into performing any special functions.
+	SeverityOverrideSeverityCritical = SeverityOverrideSeverity("CRITICAL")
+)
+
+func (SeverityOverrideSeverity) ElementType() reflect.Type {
+	return reflect.TypeOf((*SeverityOverrideSeverity)(nil)).Elem()
+}
+
+func (e SeverityOverrideSeverity) ToSeverityOverrideSeverityOutput() SeverityOverrideSeverityOutput {
+	return pulumi.ToOutput(e).(SeverityOverrideSeverityOutput)
+}
+
+func (e SeverityOverrideSeverity) ToSeverityOverrideSeverityOutputWithContext(ctx context.Context) SeverityOverrideSeverityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SeverityOverrideSeverityOutput)
+}
+
+func (e SeverityOverrideSeverity) ToSeverityOverrideSeverityPtrOutput() SeverityOverrideSeverityPtrOutput {
+	return e.ToSeverityOverrideSeverityPtrOutputWithContext(context.Background())
+}
+
+func (e SeverityOverrideSeverity) ToSeverityOverrideSeverityPtrOutputWithContext(ctx context.Context) SeverityOverrideSeverityPtrOutput {
+	return SeverityOverrideSeverity(e).ToSeverityOverrideSeverityOutputWithContext(ctx).ToSeverityOverrideSeverityPtrOutputWithContext(ctx)
+}
+
+func (e SeverityOverrideSeverity) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SeverityOverrideSeverity) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SeverityOverrideSeverity) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SeverityOverrideSeverity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SeverityOverrideSeverityOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideSeverityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SeverityOverrideSeverity)(nil)).Elem()
+}
+
+func (o SeverityOverrideSeverityOutput) ToSeverityOverrideSeverityOutput() SeverityOverrideSeverityOutput {
+	return o
+}
+
+func (o SeverityOverrideSeverityOutput) ToSeverityOverrideSeverityOutputWithContext(ctx context.Context) SeverityOverrideSeverityOutput {
+	return o
+}
+
+func (o SeverityOverrideSeverityOutput) ToSeverityOverrideSeverityPtrOutput() SeverityOverrideSeverityPtrOutput {
+	return o.ToSeverityOverrideSeverityPtrOutputWithContext(context.Background())
+}
+
+func (o SeverityOverrideSeverityOutput) ToSeverityOverrideSeverityPtrOutputWithContext(ctx context.Context) SeverityOverrideSeverityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SeverityOverrideSeverity) *SeverityOverrideSeverity {
+		return &v
+	}).(SeverityOverrideSeverityPtrOutput)
+}
+
+func (o SeverityOverrideSeverityOutput) ToOutput(ctx context.Context) pulumix.Output[SeverityOverrideSeverity] {
+	return pulumix.Output[SeverityOverrideSeverity]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SeverityOverrideSeverityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SeverityOverrideSeverityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SeverityOverrideSeverity) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SeverityOverrideSeverityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SeverityOverrideSeverityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SeverityOverrideSeverity) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SeverityOverrideSeverityPtrOutput struct{ *pulumi.OutputState }
+
+func (SeverityOverrideSeverityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SeverityOverrideSeverity)(nil)).Elem()
+}
+
+func (o SeverityOverrideSeverityPtrOutput) ToSeverityOverrideSeverityPtrOutput() SeverityOverrideSeverityPtrOutput {
+	return o
+}
+
+func (o SeverityOverrideSeverityPtrOutput) ToSeverityOverrideSeverityPtrOutputWithContext(ctx context.Context) SeverityOverrideSeverityPtrOutput {
+	return o
+}
+
+func (o SeverityOverrideSeverityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SeverityOverrideSeverity] {
+	return pulumix.Output[*SeverityOverrideSeverity]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SeverityOverrideSeverityPtrOutput) Elem() SeverityOverrideSeverityOutput {
+	return o.ApplyT(func(v *SeverityOverrideSeverity) SeverityOverrideSeverity {
+		if v != nil {
+			return *v
+		}
+		var ret SeverityOverrideSeverity
+		return ret
+	}).(SeverityOverrideSeverityOutput)
+}
+
+func (o SeverityOverrideSeverityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SeverityOverrideSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SeverityOverrideSeverity) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SeverityOverrideSeverityInput is an input type that accepts SeverityOverrideSeverityArgs and SeverityOverrideSeverityOutput values.
+// You can construct a concrete instance of `SeverityOverrideSeverityInput` via:
+//
+//	SeverityOverrideSeverityArgs{...}
+type SeverityOverrideSeverityInput interface {
+	pulumi.Input
+
+	ToSeverityOverrideSeverityOutput() SeverityOverrideSeverityOutput
+	ToSeverityOverrideSeverityOutputWithContext(context.Context) SeverityOverrideSeverityOutput
+}
+
+var severityOverrideSeverityPtrType = reflect.TypeOf((**SeverityOverrideSeverity)(nil)).Elem()
+
+type SeverityOverrideSeverityPtrInput interface {
+	pulumi.Input
+
+	ToSeverityOverrideSeverityPtrOutput() SeverityOverrideSeverityPtrOutput
+	ToSeverityOverrideSeverityPtrOutputWithContext(context.Context) SeverityOverrideSeverityPtrOutput
+}
+
+type severityOverrideSeverityPtr string
+
+func SeverityOverrideSeverityPtr(v string) SeverityOverrideSeverityPtrInput {
+	return (*severityOverrideSeverityPtr)(&v)
+}
+
+func (*severityOverrideSeverityPtr) ElementType() reflect.Type {
+	return severityOverrideSeverityPtrType
+}
+
+func (in *severityOverrideSeverityPtr) ToSeverityOverrideSeverityPtrOutput() SeverityOverrideSeverityPtrOutput {
+	return pulumi.ToOutput(in).(SeverityOverrideSeverityPtrOutput)
+}
+
+func (in *severityOverrideSeverityPtr) ToSeverityOverrideSeverityPtrOutputWithContext(ctx context.Context) SeverityOverrideSeverityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SeverityOverrideSeverityPtrOutput)
+}
+
+func (in *severityOverrideSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*SeverityOverrideSeverity] {
+	return pulumix.Output[*SeverityOverrideSeverity]{
+		OutputState: in.ToSeverityOverrideSeverityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Threat action override. For some threat types, only a subset of actions applies.
+type ThreatOverrideAction string
+
+const (
+	// Threat action not specified.
+	ThreatOverrideActionThreatActionUnspecified = ThreatOverrideAction("THREAT_ACTION_UNSPECIFIED")
+	// The default action (as specified by the vendor) is taken.
+	ThreatOverrideActionDefaultAction = ThreatOverrideAction("DEFAULT_ACTION")
+	// The packet matching this rule will be allowed to transmit.
+	ThreatOverrideActionAllow = ThreatOverrideAction("ALLOW")
+	// The packet matching this rule will be allowed to transmit, but a threat_log entry will be sent to the consumer project.
+	ThreatOverrideActionAlert = ThreatOverrideAction("ALERT")
+	// The packet matching this rule will be dropped, and a threat_log entry will be sent to the consumer project.
+	ThreatOverrideActionDeny = ThreatOverrideAction("DENY")
+)
+
+func (ThreatOverrideAction) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatOverrideAction)(nil)).Elem()
+}
+
+func (e ThreatOverrideAction) ToThreatOverrideActionOutput() ThreatOverrideActionOutput {
+	return pulumi.ToOutput(e).(ThreatOverrideActionOutput)
+}
+
+func (e ThreatOverrideAction) ToThreatOverrideActionOutputWithContext(ctx context.Context) ThreatOverrideActionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ThreatOverrideActionOutput)
+}
+
+func (e ThreatOverrideAction) ToThreatOverrideActionPtrOutput() ThreatOverrideActionPtrOutput {
+	return e.ToThreatOverrideActionPtrOutputWithContext(context.Background())
+}
+
+func (e ThreatOverrideAction) ToThreatOverrideActionPtrOutputWithContext(ctx context.Context) ThreatOverrideActionPtrOutput {
+	return ThreatOverrideAction(e).ToThreatOverrideActionOutputWithContext(ctx).ToThreatOverrideActionPtrOutputWithContext(ctx)
+}
+
+func (e ThreatOverrideAction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ThreatOverrideAction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ThreatOverrideAction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ThreatOverrideAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ThreatOverrideActionOutput struct{ *pulumi.OutputState }
+
+func (ThreatOverrideActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatOverrideAction)(nil)).Elem()
+}
+
+func (o ThreatOverrideActionOutput) ToThreatOverrideActionOutput() ThreatOverrideActionOutput {
+	return o
+}
+
+func (o ThreatOverrideActionOutput) ToThreatOverrideActionOutputWithContext(ctx context.Context) ThreatOverrideActionOutput {
+	return o
+}
+
+func (o ThreatOverrideActionOutput) ToThreatOverrideActionPtrOutput() ThreatOverrideActionPtrOutput {
+	return o.ToThreatOverrideActionPtrOutputWithContext(context.Background())
+}
+
+func (o ThreatOverrideActionOutput) ToThreatOverrideActionPtrOutputWithContext(ctx context.Context) ThreatOverrideActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ThreatOverrideAction) *ThreatOverrideAction {
+		return &v
+	}).(ThreatOverrideActionPtrOutput)
+}
+
+func (o ThreatOverrideActionOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatOverrideAction] {
+	return pulumix.Output[ThreatOverrideAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ThreatOverrideActionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ThreatOverrideActionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ThreatOverrideAction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ThreatOverrideActionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ThreatOverrideActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ThreatOverrideAction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ThreatOverrideActionPtrOutput struct{ *pulumi.OutputState }
+
+func (ThreatOverrideActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreatOverrideAction)(nil)).Elem()
+}
+
+func (o ThreatOverrideActionPtrOutput) ToThreatOverrideActionPtrOutput() ThreatOverrideActionPtrOutput {
+	return o
+}
+
+func (o ThreatOverrideActionPtrOutput) ToThreatOverrideActionPtrOutputWithContext(ctx context.Context) ThreatOverrideActionPtrOutput {
+	return o
+}
+
+func (o ThreatOverrideActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ThreatOverrideAction] {
+	return pulumix.Output[*ThreatOverrideAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ThreatOverrideActionPtrOutput) Elem() ThreatOverrideActionOutput {
+	return o.ApplyT(func(v *ThreatOverrideAction) ThreatOverrideAction {
+		if v != nil {
+			return *v
+		}
+		var ret ThreatOverrideAction
+		return ret
+	}).(ThreatOverrideActionOutput)
+}
+
+func (o ThreatOverrideActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ThreatOverrideActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ThreatOverrideAction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ThreatOverrideActionInput is an input type that accepts ThreatOverrideActionArgs and ThreatOverrideActionOutput values.
+// You can construct a concrete instance of `ThreatOverrideActionInput` via:
+//
+//	ThreatOverrideActionArgs{...}
+type ThreatOverrideActionInput interface {
+	pulumi.Input
+
+	ToThreatOverrideActionOutput() ThreatOverrideActionOutput
+	ToThreatOverrideActionOutputWithContext(context.Context) ThreatOverrideActionOutput
+}
+
+var threatOverrideActionPtrType = reflect.TypeOf((**ThreatOverrideAction)(nil)).Elem()
+
+type ThreatOverrideActionPtrInput interface {
+	pulumi.Input
+
+	ToThreatOverrideActionPtrOutput() ThreatOverrideActionPtrOutput
+	ToThreatOverrideActionPtrOutputWithContext(context.Context) ThreatOverrideActionPtrOutput
+}
+
+type threatOverrideActionPtr string
+
+func ThreatOverrideActionPtr(v string) ThreatOverrideActionPtrInput {
+	return (*threatOverrideActionPtr)(&v)
+}
+
+func (*threatOverrideActionPtr) ElementType() reflect.Type {
+	return threatOverrideActionPtrType
+}
+
+func (in *threatOverrideActionPtr) ToThreatOverrideActionPtrOutput() ThreatOverrideActionPtrOutput {
+	return pulumi.ToOutput(in).(ThreatOverrideActionPtrOutput)
+}
+
+func (in *threatOverrideActionPtr) ToThreatOverrideActionPtrOutputWithContext(ctx context.Context) ThreatOverrideActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ThreatOverrideActionPtrOutput)
+}
+
+func (in *threatOverrideActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ThreatOverrideAction] {
+	return pulumix.Output[*ThreatOverrideAction]{
+		OutputState: in.ToThreatOverrideActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+type TlsInspectionPolicyMinTlsVersion string
+
+const (
+	// Indicates no TLS version was specified.
+	TlsInspectionPolicyMinTlsVersionTlsVersionUnspecified = TlsInspectionPolicyMinTlsVersion("TLS_VERSION_UNSPECIFIED")
+	// TLS 1.0
+	TlsInspectionPolicyMinTlsVersionTls10 = TlsInspectionPolicyMinTlsVersion("TLS_1_0")
+	// TLS 1.1
+	TlsInspectionPolicyMinTlsVersionTls11 = TlsInspectionPolicyMinTlsVersion("TLS_1_1")
+	// TLS 1.2
+	TlsInspectionPolicyMinTlsVersionTls12 = TlsInspectionPolicyMinTlsVersion("TLS_1_2")
+	// TLS 1.3
+	TlsInspectionPolicyMinTlsVersionTls13 = TlsInspectionPolicyMinTlsVersion("TLS_1_3")
+)
+
+func (TlsInspectionPolicyMinTlsVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsInspectionPolicyMinTlsVersion)(nil)).Elem()
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToTlsInspectionPolicyMinTlsVersionOutput() TlsInspectionPolicyMinTlsVersionOutput {
+	return pulumi.ToOutput(e).(TlsInspectionPolicyMinTlsVersionOutput)
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToTlsInspectionPolicyMinTlsVersionOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TlsInspectionPolicyMinTlsVersionOutput)
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToTlsInspectionPolicyMinTlsVersionPtrOutput() TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return e.ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(context.Background())
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return TlsInspectionPolicyMinTlsVersion(e).ToTlsInspectionPolicyMinTlsVersionOutputWithContext(ctx).ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx)
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TlsInspectionPolicyMinTlsVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TlsInspectionPolicyMinTlsVersionOutput struct{ *pulumi.OutputState }
+
+func (TlsInspectionPolicyMinTlsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsInspectionPolicyMinTlsVersion)(nil)).Elem()
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToTlsInspectionPolicyMinTlsVersionOutput() TlsInspectionPolicyMinTlsVersionOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToTlsInspectionPolicyMinTlsVersionOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToTlsInspectionPolicyMinTlsVersionPtrOutput() TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return o.ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TlsInspectionPolicyMinTlsVersion) *TlsInspectionPolicyMinTlsVersion {
+		return &v
+	}).(TlsInspectionPolicyMinTlsVersionPtrOutput)
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[TlsInspectionPolicyMinTlsVersion] {
+	return pulumix.Output[TlsInspectionPolicyMinTlsVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TlsInspectionPolicyMinTlsVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyMinTlsVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TlsInspectionPolicyMinTlsVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TlsInspectionPolicyMinTlsVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (TlsInspectionPolicyMinTlsVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TlsInspectionPolicyMinTlsVersion)(nil)).Elem()
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToTlsInspectionPolicyMinTlsVersionPtrOutput() TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyMinTlsVersion] {
+	return pulumix.Output[*TlsInspectionPolicyMinTlsVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) Elem() TlsInspectionPolicyMinTlsVersionOutput {
+	return o.ApplyT(func(v *TlsInspectionPolicyMinTlsVersion) TlsInspectionPolicyMinTlsVersion {
+		if v != nil {
+			return *v
+		}
+		var ret TlsInspectionPolicyMinTlsVersion
+		return ret
+	}).(TlsInspectionPolicyMinTlsVersionOutput)
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyMinTlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TlsInspectionPolicyMinTlsVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TlsInspectionPolicyMinTlsVersionInput is an input type that accepts TlsInspectionPolicyMinTlsVersionArgs and TlsInspectionPolicyMinTlsVersionOutput values.
+// You can construct a concrete instance of `TlsInspectionPolicyMinTlsVersionInput` via:
+//
+//	TlsInspectionPolicyMinTlsVersionArgs{...}
+type TlsInspectionPolicyMinTlsVersionInput interface {
+	pulumi.Input
+
+	ToTlsInspectionPolicyMinTlsVersionOutput() TlsInspectionPolicyMinTlsVersionOutput
+	ToTlsInspectionPolicyMinTlsVersionOutputWithContext(context.Context) TlsInspectionPolicyMinTlsVersionOutput
+}
+
+var tlsInspectionPolicyMinTlsVersionPtrType = reflect.TypeOf((**TlsInspectionPolicyMinTlsVersion)(nil)).Elem()
+
+type TlsInspectionPolicyMinTlsVersionPtrInput interface {
+	pulumi.Input
+
+	ToTlsInspectionPolicyMinTlsVersionPtrOutput() TlsInspectionPolicyMinTlsVersionPtrOutput
+	ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput
+}
+
+type tlsInspectionPolicyMinTlsVersionPtr string
+
+func TlsInspectionPolicyMinTlsVersionPtr(v string) TlsInspectionPolicyMinTlsVersionPtrInput {
+	return (*tlsInspectionPolicyMinTlsVersionPtr)(&v)
+}
+
+func (*tlsInspectionPolicyMinTlsVersionPtr) ElementType() reflect.Type {
+	return tlsInspectionPolicyMinTlsVersionPtrType
+}
+
+func (in *tlsInspectionPolicyMinTlsVersionPtr) ToTlsInspectionPolicyMinTlsVersionPtrOutput() TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return pulumi.ToOutput(in).(TlsInspectionPolicyMinTlsVersionPtrOutput)
+}
+
+func (in *tlsInspectionPolicyMinTlsVersionPtr) ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) TlsInspectionPolicyMinTlsVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TlsInspectionPolicyMinTlsVersionPtrOutput)
+}
+
+func (in *tlsInspectionPolicyMinTlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyMinTlsVersion] {
+	return pulumix.Output[*TlsInspectionPolicyMinTlsVersion]{
+		OutputState: in.ToTlsInspectionPolicyMinTlsVersionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
+type TlsInspectionPolicyTlsFeatureProfile string
+
+const (
+	// Indicates no profile was specified.
+	TlsInspectionPolicyTlsFeatureProfileProfileUnspecified = TlsInspectionPolicyTlsFeatureProfile("PROFILE_UNSPECIFIED")
+	// Compatible profile. Allows the broadest set of clients, even those which support only out-of-date SSL features to negotiate with the TLS inspection proxy.
+	TlsInspectionPolicyTlsFeatureProfileProfileCompatible = TlsInspectionPolicyTlsFeatureProfile("PROFILE_COMPATIBLE")
+	// Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the TLS inspection proxy.
+	TlsInspectionPolicyTlsFeatureProfileProfileModern = TlsInspectionPolicyTlsFeatureProfile("PROFILE_MODERN")
+	// Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+	TlsInspectionPolicyTlsFeatureProfileProfileRestricted = TlsInspectionPolicyTlsFeatureProfile("PROFILE_RESTRICTED")
+	// Custom profile. Allow only the set of allowed SSL features specified in the custom_features field of SslPolicy.
+	TlsInspectionPolicyTlsFeatureProfileProfileCustom = TlsInspectionPolicyTlsFeatureProfile("PROFILE_CUSTOM")
+)
+
+func (TlsInspectionPolicyTlsFeatureProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsInspectionPolicyTlsFeatureProfile)(nil)).Elem()
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToTlsInspectionPolicyTlsFeatureProfileOutput() TlsInspectionPolicyTlsFeatureProfileOutput {
+	return pulumi.ToOutput(e).(TlsInspectionPolicyTlsFeatureProfileOutput)
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToTlsInspectionPolicyTlsFeatureProfileOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TlsInspectionPolicyTlsFeatureProfileOutput)
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToTlsInspectionPolicyTlsFeatureProfilePtrOutput() TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return e.ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(context.Background())
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return TlsInspectionPolicyTlsFeatureProfile(e).ToTlsInspectionPolicyTlsFeatureProfileOutputWithContext(ctx).ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx)
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TlsInspectionPolicyTlsFeatureProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TlsInspectionPolicyTlsFeatureProfileOutput struct{ *pulumi.OutputState }
+
+func (TlsInspectionPolicyTlsFeatureProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsInspectionPolicyTlsFeatureProfile)(nil)).Elem()
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToTlsInspectionPolicyTlsFeatureProfileOutput() TlsInspectionPolicyTlsFeatureProfileOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToTlsInspectionPolicyTlsFeatureProfileOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfileOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToTlsInspectionPolicyTlsFeatureProfilePtrOutput() TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return o.ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TlsInspectionPolicyTlsFeatureProfile) *TlsInspectionPolicyTlsFeatureProfile {
+		return &v
+	}).(TlsInspectionPolicyTlsFeatureProfilePtrOutput)
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToOutput(ctx context.Context) pulumix.Output[TlsInspectionPolicyTlsFeatureProfile] {
+	return pulumix.Output[TlsInspectionPolicyTlsFeatureProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TlsInspectionPolicyTlsFeatureProfile) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfileOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TlsInspectionPolicyTlsFeatureProfile) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TlsInspectionPolicyTlsFeatureProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (TlsInspectionPolicyTlsFeatureProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TlsInspectionPolicyTlsFeatureProfile)(nil)).Elem()
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToTlsInspectionPolicyTlsFeatureProfilePtrOutput() TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return o
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile] {
+	return pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) Elem() TlsInspectionPolicyTlsFeatureProfileOutput {
+	return o.ApplyT(func(v *TlsInspectionPolicyTlsFeatureProfile) TlsInspectionPolicyTlsFeatureProfile {
+		if v != nil {
+			return *v
+		}
+		var ret TlsInspectionPolicyTlsFeatureProfile
+		return ret
+	}).(TlsInspectionPolicyTlsFeatureProfileOutput)
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TlsInspectionPolicyTlsFeatureProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TlsInspectionPolicyTlsFeatureProfile) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TlsInspectionPolicyTlsFeatureProfileInput is an input type that accepts TlsInspectionPolicyTlsFeatureProfileArgs and TlsInspectionPolicyTlsFeatureProfileOutput values.
+// You can construct a concrete instance of `TlsInspectionPolicyTlsFeatureProfileInput` via:
+//
+//	TlsInspectionPolicyTlsFeatureProfileArgs{...}
+type TlsInspectionPolicyTlsFeatureProfileInput interface {
+	pulumi.Input
+
+	ToTlsInspectionPolicyTlsFeatureProfileOutput() TlsInspectionPolicyTlsFeatureProfileOutput
+	ToTlsInspectionPolicyTlsFeatureProfileOutputWithContext(context.Context) TlsInspectionPolicyTlsFeatureProfileOutput
+}
+
+var tlsInspectionPolicyTlsFeatureProfilePtrType = reflect.TypeOf((**TlsInspectionPolicyTlsFeatureProfile)(nil)).Elem()
+
+type TlsInspectionPolicyTlsFeatureProfilePtrInput interface {
+	pulumi.Input
+
+	ToTlsInspectionPolicyTlsFeatureProfilePtrOutput() TlsInspectionPolicyTlsFeatureProfilePtrOutput
+	ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput
+}
+
+type tlsInspectionPolicyTlsFeatureProfilePtr string
+
+func TlsInspectionPolicyTlsFeatureProfilePtr(v string) TlsInspectionPolicyTlsFeatureProfilePtrInput {
+	return (*tlsInspectionPolicyTlsFeatureProfilePtr)(&v)
+}
+
+func (*tlsInspectionPolicyTlsFeatureProfilePtr) ElementType() reflect.Type {
+	return tlsInspectionPolicyTlsFeatureProfilePtrType
+}
+
+func (in *tlsInspectionPolicyTlsFeatureProfilePtr) ToTlsInspectionPolicyTlsFeatureProfilePtrOutput() TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return pulumi.ToOutput(in).(TlsInspectionPolicyTlsFeatureProfilePtrOutput)
+}
+
+func (in *tlsInspectionPolicyTlsFeatureProfilePtr) ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx context.Context) TlsInspectionPolicyTlsFeatureProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TlsInspectionPolicyTlsFeatureProfilePtrOutput)
+}
+
+func (in *tlsInspectionPolicyTlsFeatureProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile] {
+	return pulumix.Output[*TlsInspectionPolicyTlsFeatureProfile]{
+		OutputState: in.ToTlsInspectionPolicyTlsFeatureProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupTypeInput)(nil)).Elem(), AddressGroupType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupTypePtrInput)(nil)).Elem(), AddressGroupType("TYPE_UNSPECIFIED"))
@@ -1148,6 +2290,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAddressGroupTypePtrInput)(nil)).Elem(), OrganizationAddressGroupType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleBasicProfileInput)(nil)).Elem(), RuleBasicProfile("BASIC_PROFILE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleBasicProfilePtrInput)(nil)).Elem(), RuleBasicProfile("BASIC_PROFILE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileTypeInput)(nil)).Elem(), SecurityProfileType("PROFILE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileTypePtrInput)(nil)).Elem(), SecurityProfileType("PROFILE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SeverityOverrideActionInput)(nil)).Elem(), SeverityOverrideAction("THREAT_ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SeverityOverrideActionPtrInput)(nil)).Elem(), SeverityOverrideAction("THREAT_ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SeverityOverrideSeverityInput)(nil)).Elem(), SeverityOverrideSeverity("SEVERITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SeverityOverrideSeverityPtrInput)(nil)).Elem(), SeverityOverrideSeverity("SEVERITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ThreatOverrideActionInput)(nil)).Elem(), ThreatOverrideAction("THREAT_ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ThreatOverrideActionPtrInput)(nil)).Elem(), ThreatOverrideAction("THREAT_ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsInspectionPolicyMinTlsVersionInput)(nil)).Elem(), TlsInspectionPolicyMinTlsVersion("TLS_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsInspectionPolicyMinTlsVersionPtrInput)(nil)).Elem(), TlsInspectionPolicyMinTlsVersion("TLS_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsInspectionPolicyTlsFeatureProfileInput)(nil)).Elem(), TlsInspectionPolicyTlsFeatureProfile("PROFILE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsInspectionPolicyTlsFeatureProfilePtrInput)(nil)).Elem(), TlsInspectionPolicyTlsFeatureProfile("PROFILE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AddressGroupTypeOutput{})
 	pulumi.RegisterOutputType(AddressGroupTypePtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyActionOutput{})
@@ -1160,4 +2314,16 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationAddressGroupTypePtrOutput{})
 	pulumi.RegisterOutputType(RuleBasicProfileOutput{})
 	pulumi.RegisterOutputType(RuleBasicProfilePtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileTypeOutput{})
+	pulumi.RegisterOutputType(SecurityProfileTypePtrOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideActionOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideActionPtrOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideSeverityOutput{})
+	pulumi.RegisterOutputType(SeverityOverrideSeverityPtrOutput{})
+	pulumi.RegisterOutputType(ThreatOverrideActionOutput{})
+	pulumi.RegisterOutputType(ThreatOverrideActionPtrOutput{})
+	pulumi.RegisterOutputType(TlsInspectionPolicyMinTlsVersionOutput{})
+	pulumi.RegisterOutputType(TlsInspectionPolicyMinTlsVersionPtrOutput{})
+	pulumi.RegisterOutputType(TlsInspectionPolicyTlsFeatureProfileOutput{})
+	pulumi.RegisterOutputType(TlsInspectionPolicyTlsFeatureProfilePtrOutput{})
 }

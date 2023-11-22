@@ -32,6 +32,8 @@ type LookupCloneJobArgs struct {
 }
 
 type LookupCloneJobResult struct {
+	// Details of the target Persistent Disks in Compute Engine.
+	ComputeEngineDisksTargetDetails ComputeEngineDisksTargetDetailsResponse `pulumi:"computeEngineDisksTargetDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
@@ -101,6 +103,13 @@ func (o LookupCloneJobResultOutput) ToOutput(ctx context.Context) pulumix.Output
 	return pulumix.Output[LookupCloneJobResult]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Details of the target Persistent Disks in Compute Engine.
+func (o LookupCloneJobResultOutput) ComputeEngineDisksTargetDetails() ComputeEngineDisksTargetDetailsResponseOutput {
+	return o.ApplyT(func(v LookupCloneJobResult) ComputeEngineDisksTargetDetailsResponse {
+		return v.ComputeEngineDisksTargetDetails
+	}).(ComputeEngineDisksTargetDetailsResponseOutput)
 }
 
 // Details of the target VM in Compute Engine.

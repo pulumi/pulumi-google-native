@@ -20,6 +20,8 @@ type DataTaxonomy struct {
 
 	// The number of attributes in the DataTaxonomy.
 	AttributeCount pulumi.IntOutput `pulumi:"attributeCount"`
+	// The number of classes in the DataTaxonomy.
+	ClassCount pulumi.IntOutput `pulumi:"classCount"`
 	// The time when the DataTaxonomy was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. DataTaxonomy identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the Project.
@@ -173,6 +175,11 @@ func (o DataTaxonomyOutput) ToOutput(ctx context.Context) pulumix.Output[*DataTa
 // The number of attributes in the DataTaxonomy.
 func (o DataTaxonomyOutput) AttributeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DataTaxonomy) pulumi.IntOutput { return v.AttributeCount }).(pulumi.IntOutput)
+}
+
+// The number of classes in the DataTaxonomy.
+func (o DataTaxonomyOutput) ClassCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DataTaxonomy) pulumi.IntOutput { return v.ClassCount }).(pulumi.IntOutput)
 }
 
 // The time when the DataTaxonomy was created.

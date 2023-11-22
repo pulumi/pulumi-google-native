@@ -40,7 +40,8 @@ type LookupBudgetResult struct {
 	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
 	Etag string `pulumi:"etag"`
 	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-	Name string `pulumi:"name"`
+	Name           string `pulumi:"name"`
+	OwnershipScope string `pulumi:"ownershipScope"`
 	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules []GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse `pulumi:"thresholdRules"`
 }
@@ -117,6 +118,10 @@ func (o LookupBudgetResultOutput) Etag() pulumi.StringOutput {
 // Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
 func (o LookupBudgetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupBudgetResultOutput) OwnershipScope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBudgetResult) string { return v.OwnershipScope }).(pulumi.StringOutput)
 }
 
 // Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.

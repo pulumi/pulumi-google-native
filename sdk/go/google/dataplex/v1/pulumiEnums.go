@@ -1129,7 +1129,7 @@ func (in *googleCloudDataplexV1ContentSqlScriptEnginePtr) ToOutput(ctx context.C
 	}
 }
 
-// The aggregate metric to evaluate.
+// Optional. The aggregate metric to evaluate.
 type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic string
 
 const (

@@ -3064,6 +3064,36 @@ func (o InputMappingResponseArrayOutput) Index(i pulumi.IntInput) InputMappingRe
 	}).(InputMappingResponseOutput)
 }
 
+type InstancesBulkInsertOperationMetadataResponse struct {
+	// Status information per location (location name is key). Example key: zones/us-central1-a
+	PerLocationStatus map[string]string `pulumi:"perLocationStatus"`
+}
+
+type InstancesBulkInsertOperationMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (InstancesBulkInsertOperationMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancesBulkInsertOperationMetadataResponse)(nil)).Elem()
+}
+
+func (o InstancesBulkInsertOperationMetadataResponseOutput) ToInstancesBulkInsertOperationMetadataResponseOutput() InstancesBulkInsertOperationMetadataResponseOutput {
+	return o
+}
+
+func (o InstancesBulkInsertOperationMetadataResponseOutput) ToInstancesBulkInsertOperationMetadataResponseOutputWithContext(ctx context.Context) InstancesBulkInsertOperationMetadataResponseOutput {
+	return o
+}
+
+func (o InstancesBulkInsertOperationMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstancesBulkInsertOperationMetadataResponse] {
+	return pulumix.Output[InstancesBulkInsertOperationMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Status information per location (location name is key). Example key: zones/us-central1-a
+func (o InstancesBulkInsertOperationMetadataResponseOutput) PerLocationStatus() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstancesBulkInsertOperationMetadataResponse) map[string]string { return v.PerLocationStatus }).(pulumi.StringMapOutput)
+}
+
 type OperationErrorErrorsItemResponse struct {
 	// The error type identifier for this error.
 	Code string `pulumi:"code"`
@@ -3166,7 +3196,7 @@ func (o OperationErrorResponseOutput) Errors() OperationErrorErrorsItemResponseA
 	return o.ApplyT(func(v OperationErrorResponse) []OperationErrorErrorsItemResponse { return v.Errors }).(OperationErrorErrorsItemResponseArrayOutput)
 }
 
-// Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
+// Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zoneOperations` resource. For more information, read Global, Regional, and Zonal Resources.
 type OperationResponse struct {
 	// The value of `requestId` if you provided it in the request. Not present otherwise.
 	ClientOperationId string `pulumi:"clientOperationId"`
@@ -3185,7 +3215,8 @@ type OperationResponse struct {
 	// If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
 	HttpErrorStatusCode int `pulumi:"httpErrorStatusCode"`
 	// The time that this operation was requested. This value is in RFC3339 text format.
-	InsertTime string `pulumi:"insertTime"`
+	InsertTime                           string                                       `pulumi:"insertTime"`
+	InstancesBulkInsertOperationMetadata InstancesBulkInsertOperationMetadataResponse `pulumi:"instancesBulkInsertOperationMetadata"`
 	// Type of the resource. Always `compute#operation` for Operation resources.
 	Kind string `pulumi:"kind"`
 	// Name of the operation.
@@ -3200,6 +3231,8 @@ type OperationResponse struct {
 	Region string `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
+	// If the operation is for projects.setCommonInstanceMetadata, this field will contain information on all underlying zonal actions and their state.
+	SetCommonInstanceMetadataOperationMetadata SetCommonInstanceMetadataOperationMetadataResponse `pulumi:"setCommonInstanceMetadataOperationMetadata"`
 	// The time that this operation was started by the server. This value is in RFC3339 text format.
 	StartTime string `pulumi:"startTime"`
 	// The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.
@@ -3210,7 +3243,7 @@ type OperationResponse struct {
 	TargetId string `pulumi:"targetId"`
 	// The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
 	TargetLink string `pulumi:"targetLink"`
-	// User who requested the operation, for example: `user@example.com`.
+	// User who requested the operation, for example: `user@example.com` or `alice_smith_identifier (global/workforcePools/example-com-us-employees)`.
 	User string `pulumi:"user"`
 	// If warning messages are generated during processing of the operation, this field will be populated.
 	Warnings []OperationWarningsItemResponse `pulumi:"warnings"`
@@ -3218,7 +3251,7 @@ type OperationResponse struct {
 	Zone string `pulumi:"zone"`
 }
 
-// Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
+// Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zoneOperations` resource. For more information, read Global, Regional, and Zonal Resources.
 type OperationResponseOutput struct{ *pulumi.OutputState }
 
 func (OperationResponseOutput) ElementType() reflect.Type {
@@ -3281,6 +3314,12 @@ func (o OperationResponseOutput) InsertTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.InsertTime }).(pulumi.StringOutput)
 }
 
+func (o OperationResponseOutput) InstancesBulkInsertOperationMetadata() InstancesBulkInsertOperationMetadataResponseOutput {
+	return o.ApplyT(func(v OperationResponse) InstancesBulkInsertOperationMetadataResponse {
+		return v.InstancesBulkInsertOperationMetadata
+	}).(InstancesBulkInsertOperationMetadataResponseOutput)
+}
+
 // Type of the resource. Always `compute#operation` for Operation resources.
 func (o OperationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.Kind }).(pulumi.StringOutput)
@@ -3316,6 +3355,13 @@ func (o OperationResponseOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
+// If the operation is for projects.setCommonInstanceMetadata, this field will contain information on all underlying zonal actions and their state.
+func (o OperationResponseOutput) SetCommonInstanceMetadataOperationMetadata() SetCommonInstanceMetadataOperationMetadataResponseOutput {
+	return o.ApplyT(func(v OperationResponse) SetCommonInstanceMetadataOperationMetadataResponse {
+		return v.SetCommonInstanceMetadataOperationMetadata
+	}).(SetCommonInstanceMetadataOperationMetadataResponseOutput)
+}
+
 // The time that this operation was started by the server. This value is in RFC3339 text format.
 func (o OperationResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.StartTime }).(pulumi.StringOutput)
@@ -3341,7 +3387,7 @@ func (o OperationResponseOutput) TargetLink() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.TargetLink }).(pulumi.StringOutput)
 }
 
-// User who requested the operation, for example: `user@example.com`.
+// User who requested the operation, for example: `user@example.com` or `alice_smith_identifier (global/workforcePools/example-com-us-employees)`.
 func (o OperationResponseOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.User }).(pulumi.StringOutput)
 }
@@ -4252,6 +4298,45 @@ func (o ServiceAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 // The IAM service account email address like test@myproject.iam.gserviceaccount.com
 func (o ServiceAccountResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAccountResponse) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type SetCommonInstanceMetadataOperationMetadataResponse struct {
+	// The client operation id.
+	ClientOperationId string `pulumi:"clientOperationId"`
+	// Status information per location (location name is key). Example key: zones/us-central1-a
+	PerLocationOperations map[string]string `pulumi:"perLocationOperations"`
+}
+
+type SetCommonInstanceMetadataOperationMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (SetCommonInstanceMetadataOperationMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetCommonInstanceMetadataOperationMetadataResponse)(nil)).Elem()
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) ToSetCommonInstanceMetadataOperationMetadataResponseOutput() SetCommonInstanceMetadataOperationMetadataResponseOutput {
+	return o
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) ToSetCommonInstanceMetadataOperationMetadataResponseOutputWithContext(ctx context.Context) SetCommonInstanceMetadataOperationMetadataResponseOutput {
+	return o
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SetCommonInstanceMetadataOperationMetadataResponse] {
+	return pulumix.Output[SetCommonInstanceMetadataOperationMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The client operation id.
+func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) ClientOperationId() pulumi.StringOutput {
+	return o.ApplyT(func(v SetCommonInstanceMetadataOperationMetadataResponse) string { return v.ClientOperationId }).(pulumi.StringOutput)
+}
+
+// Status information per location (location name is key). Example key: zones/us-central1-a
+func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) PerLocationOperations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SetCommonInstanceMetadataOperationMetadataResponse) map[string]string {
+		return v.PerLocationOperations
+	}).(pulumi.StringMapOutput)
 }
 
 type TargetConfiguration struct {
@@ -5289,6 +5374,7 @@ func init() {
 	pulumi.RegisterOutputType(InputMappingArrayOutput{})
 	pulumi.RegisterOutputType(InputMappingResponseOutput{})
 	pulumi.RegisterOutputType(InputMappingResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstancesBulkInsertOperationMetadataResponseOutput{})
 	pulumi.RegisterOutputType(OperationErrorErrorsItemResponseOutput{})
 	pulumi.RegisterOutputType(OperationErrorErrorsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(OperationErrorResponseOutput{})
@@ -5306,6 +5392,7 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAccountOutput{})
 	pulumi.RegisterOutputType(ServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAccountResponseOutput{})
+	pulumi.RegisterOutputType(SetCommonInstanceMetadataOperationMetadataResponseOutput{})
 	pulumi.RegisterOutputType(TargetConfigurationOutput{})
 	pulumi.RegisterOutputType(TargetConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TargetConfigurationResponseOutput{})

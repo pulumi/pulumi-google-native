@@ -34,21 +34,29 @@ type LookupSpokeResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// An optional description of the spoke.
 	Description string `pulumi:"description"`
+	// Optional. The name of the group that this spoke is associated with.
+	Group string `pulumi:"group"`
 	// Immutable. The name of the hub that this spoke is attached to.
 	Hub string `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels map[string]string `pulumi:"labels"`
 	// VLAN attachments that are associated with the spoke.
 	LinkedInterconnectAttachments LinkedInterconnectAttachmentsResponse `pulumi:"linkedInterconnectAttachments"`
 	// Router appliance instances that are associated with the spoke.
 	LinkedRouterApplianceInstances LinkedRouterApplianceInstancesResponse `pulumi:"linkedRouterApplianceInstances"`
+	// Optional. VPC network that is associated with the spoke.
+	LinkedVpcNetwork LinkedVpcNetworkResponse `pulumi:"linkedVpcNetwork"`
 	// VPN tunnels that are associated with the spoke.
 	LinkedVpnTunnels LinkedVpnTunnelsResponse `pulumi:"linkedVpnTunnels"`
 	// Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
 	Name string `pulumi:"name"`
+	// The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
+	Reasons []StateReasonResponse `pulumi:"reasons"`
+	// The type of resource associated with the spoke.
+	SpokeType string `pulumi:"spokeType"`
 	// The current lifecycle state of this spoke.
 	State string `pulumi:"state"`
-	// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+	// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
 	UniqueId string `pulumi:"uniqueId"`
 	// The time the spoke was last updated.
 	UpdateTime string `pulumi:"updateTime"`
@@ -107,12 +115,17 @@ func (o LookupSpokeResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpokeResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. The name of the group that this spoke is associated with.
+func (o LookupSpokeResultOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpokeResult) string { return v.Group }).(pulumi.StringOutput)
+}
+
 // Immutable. The name of the hub that this spoke is attached to.
 func (o LookupSpokeResultOutput) Hub() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpokeResult) string { return v.Hub }).(pulumi.StringOutput)
 }
 
-// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 func (o LookupSpokeResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSpokeResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -131,6 +144,11 @@ func (o LookupSpokeResultOutput) LinkedRouterApplianceInstances() LinkedRouterAp
 	}).(LinkedRouterApplianceInstancesResponseOutput)
 }
 
+// Optional. VPC network that is associated with the spoke.
+func (o LookupSpokeResultOutput) LinkedVpcNetwork() LinkedVpcNetworkResponseOutput {
+	return o.ApplyT(func(v LookupSpokeResult) LinkedVpcNetworkResponse { return v.LinkedVpcNetwork }).(LinkedVpcNetworkResponseOutput)
+}
+
 // VPN tunnels that are associated with the spoke.
 func (o LookupSpokeResultOutput) LinkedVpnTunnels() LinkedVpnTunnelsResponseOutput {
 	return o.ApplyT(func(v LookupSpokeResult) LinkedVpnTunnelsResponse { return v.LinkedVpnTunnels }).(LinkedVpnTunnelsResponseOutput)
@@ -141,12 +159,22 @@ func (o LookupSpokeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpokeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
+func (o LookupSpokeResultOutput) Reasons() StateReasonResponseArrayOutput {
+	return o.ApplyT(func(v LookupSpokeResult) []StateReasonResponse { return v.Reasons }).(StateReasonResponseArrayOutput)
+}
+
+// The type of resource associated with the spoke.
+func (o LookupSpokeResultOutput) SpokeType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpokeResult) string { return v.SpokeType }).(pulumi.StringOutput)
+}
+
 // The current lifecycle state of this spoke.
 func (o LookupSpokeResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpokeResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
 func (o LookupSpokeResultOutput) UniqueId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpokeResult) string { return v.UniqueId }).(pulumi.StringOutput)
 }

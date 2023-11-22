@@ -52,7 +52,7 @@ type LookupVpnTunnelResult struct {
 	PeerExternalGateway string `pulumi:"peerExternalGateway"`
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
 	PeerExternalGatewayInterface int `pulumi:"peerExternalGatewayInterface"`
-	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.
+	// URL of the peer side HA VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer Google Cloud VPN gateway.
 	PeerGcpGateway string `pulumi:"peerGcpGateway"`
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp string `pulumi:"peerIp"`
@@ -176,7 +176,7 @@ func (o LookupVpnTunnelResultOutput) PeerExternalGatewayInterface() pulumi.IntOu
 	return o.ApplyT(func(v LookupVpnTunnelResult) int { return v.PeerExternalGatewayInterface }).(pulumi.IntOutput)
 }
 
-// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.
+// URL of the peer side HA VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer Google Cloud VPN gateway.
 func (o LookupVpnTunnelResultOutput) PeerGcpGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpnTunnelResult) string { return v.PeerGcpGateway }).(pulumi.StringOutput)
 }

@@ -24,7 +24,9 @@ type WorkloadIdentityPool struct {
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	Location    pulumi.StringOutput `pulumi:"location"`
+	// Time after which the workload identity pool will be permanently purged and cannot be recovered.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	Location   pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the pool.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -171,6 +173,11 @@ func (o WorkloadIdentityPoolOutput) Disabled() pulumi.BoolOutput {
 // A display name for the pool. Cannot exceed 32 characters.
 func (o WorkloadIdentityPoolOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Time after which the workload identity pool will be permanently purged and cannot be recovered.
+func (o WorkloadIdentityPoolOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 func (o WorkloadIdentityPoolOutput) Location() pulumi.StringOutput {

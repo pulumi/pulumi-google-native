@@ -32,13 +32,13 @@ type LookupRolloutArgs struct {
 }
 
 type LookupRolloutResult struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Approval state of the `Rollout`.
 	ApprovalState string `pulumi:"approvalState"`
 	// Time at which the `Rollout` was approved.
 	ApproveTime string `pulumi:"approveTime"`
-	// Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+	// Name of the `ControllerRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
 	ControllerRollout string `pulumi:"controllerRollout"`
 	// Time at which the `Rollout` was created.
 	CreateTime string `pulumi:"createTime"`
@@ -58,14 +58,18 @@ type LookupRolloutResult struct {
 	Etag string `pulumi:"etag"`
 	// Additional information about the rollout failure, if available.
 	FailureReason string `pulumi:"failureReason"`
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
 	// Metadata contains information about the rollout.
 	Metadata MetadataResponse `pulumi:"metadata"`
-	// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+	// Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
 	Name string `pulumi:"name"`
 	// The phases that represent the workflows of this `Rollout`.
 	Phases []PhaseResponse `pulumi:"phases"`
+	// Name of the `Rollout` that is rolled back by this `Rollout`. Empty if this `Rollout` wasn't created as a rollback.
+	RollbackOfRollout string `pulumi:"rollbackOfRollout"`
+	// Names of `Rollouts` that rolled back this `Rollout`.
+	RolledBackByRollouts []string `pulumi:"rolledBackByRollouts"`
 	// Current state of the `Rollout`.
 	State string `pulumi:"state"`
 	// The ID of Target to which this `Rollout` is deploying.
@@ -119,7 +123,7 @@ func (o LookupRolloutResultOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 func (o LookupRolloutResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRolloutResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -134,7 +138,7 @@ func (o LookupRolloutResultOutput) ApproveTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.ApproveTime }).(pulumi.StringOutput)
 }
 
-// Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+// Name of the `ControllerRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
 func (o LookupRolloutResultOutput) ControllerRollout() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.ControllerRollout }).(pulumi.StringOutput)
 }
@@ -184,7 +188,7 @@ func (o LookupRolloutResultOutput) FailureReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.FailureReason }).(pulumi.StringOutput)
 }
 
-// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o LookupRolloutResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRolloutResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -194,7 +198,7 @@ func (o LookupRolloutResultOutput) Metadata() MetadataResponseOutput {
 	return o.ApplyT(func(v LookupRolloutResult) MetadataResponse { return v.Metadata }).(MetadataResponseOutput)
 }
 
-// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+// Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
 func (o LookupRolloutResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -202,6 +206,16 @@ func (o LookupRolloutResultOutput) Name() pulumi.StringOutput {
 // The phases that represent the workflows of this `Rollout`.
 func (o LookupRolloutResultOutput) Phases() PhaseResponseArrayOutput {
 	return o.ApplyT(func(v LookupRolloutResult) []PhaseResponse { return v.Phases }).(PhaseResponseArrayOutput)
+}
+
+// Name of the `Rollout` that is rolled back by this `Rollout`. Empty if this `Rollout` wasn't created as a rollback.
+func (o LookupRolloutResultOutput) RollbackOfRollout() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRolloutResult) string { return v.RollbackOfRollout }).(pulumi.StringOutput)
+}
+
+// Names of `Rollouts` that rolled back this `Rollout`.
+func (o LookupRolloutResultOutput) RolledBackByRollouts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRolloutResult) []string { return v.RolledBackByRollouts }).(pulumi.StringArrayOutput)
 }
 
 // Current state of the `Rollout`.

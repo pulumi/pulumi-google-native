@@ -30,37 +30,39 @@ type LookupWorkstationClusterArgs struct {
 }
 
 type LookupWorkstationClusterResult struct {
-	// Client-specified annotations.
+	// Optional. Client-specified annotations.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Status conditions describing the current resource state.
+	// Status conditions describing the workstation cluster's current state.
 	Conditions []StatusResponse `pulumi:"conditions"`
-	// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+	// The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
 	ControlPlaneIp string `pulumi:"controlPlaneIp"`
-	// Time when this resource was created.
+	// Time when this workstation cluster was created.
 	CreateTime string `pulumi:"createTime"`
-	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+	// Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
 	Degraded bool `pulumi:"degraded"`
-	// Time when this resource was soft-deleted.
+	// Time when this workstation cluster was soft-deleted.
 	DeleteTime string `pulumi:"deleteTime"`
-	// Human-readable name for this resource.
+	// Optional. Human-readable name for this workstation cluster.
 	DisplayName string `pulumi:"displayName"`
-	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+	// Optional. Configuration options for a custom domain.
+	DomainConfig DomainConfigResponse `pulumi:"domainConfig"`
+	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
-	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
-	// Full name of this resource.
+	// Identifier. Full name of this workstation cluster.
 	Name string `pulumi:"name"`
-	// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+	// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
 	Network string `pulumi:"network"`
-	// Configuration for private cluster.
+	// Optional. Configuration for private workstation cluster.
 	PrivateClusterConfig PrivateClusterConfigResponse `pulumi:"privateClusterConfig"`
-	// Indicates whether this resource is currently being updated to match its intended state.
+	// Indicates whether this workstation cluster is currently being updated to match its intended state.
 	Reconciling bool `pulumi:"reconciling"`
-	// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+	// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
 	Subnetwork string `pulumi:"subnetwork"`
-	// A system-assigned unique identified for this resource.
+	// A system-assigned unique identifier for this workstation cluster.
 	Uid string `pulumi:"uid"`
-	// Time when this resource was most recently updated.
+	// Time when this workstation cluster was most recently updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -107,82 +109,87 @@ func (o LookupWorkstationClusterResultOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// Client-specified annotations.
+// Optional. Client-specified annotations.
 func (o LookupWorkstationClusterResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Status conditions describing the current resource state.
+// Status conditions describing the workstation cluster's current state.
 func (o LookupWorkstationClusterResultOutput) Conditions() StatusResponseArrayOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) []StatusResponse { return v.Conditions }).(StatusResponseArrayOutput)
 }
 
-// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+// The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
 func (o LookupWorkstationClusterResultOutput) ControlPlaneIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.ControlPlaneIp }).(pulumi.StringOutput)
 }
 
-// Time when this resource was created.
+// Time when this workstation cluster was created.
 func (o LookupWorkstationClusterResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
+// Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
 func (o LookupWorkstationClusterResultOutput) Degraded() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) bool { return v.Degraded }).(pulumi.BoolOutput)
 }
 
-// Time when this resource was soft-deleted.
+// Time when this workstation cluster was soft-deleted.
 func (o LookupWorkstationClusterResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// Human-readable name for this resource.
+// Optional. Human-readable name for this workstation cluster.
 func (o LookupWorkstationClusterResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+// Optional. Configuration options for a custom domain.
+func (o LookupWorkstationClusterResultOutput) DomainConfig() DomainConfigResponseOutput {
+	return o.ApplyT(func(v LookupWorkstationClusterResult) DomainConfigResponse { return v.DomainConfig }).(DomainConfigResponseOutput)
+}
+
+// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 func (o LookupWorkstationClusterResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
 func (o LookupWorkstationClusterResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Full name of this resource.
+// Identifier. Full name of this workstation cluster.
 func (o LookupWorkstationClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
+// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
 func (o LookupWorkstationClusterResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// Configuration for private cluster.
+// Optional. Configuration for private workstation cluster.
 func (o LookupWorkstationClusterResultOutput) PrivateClusterConfig() PrivateClusterConfigResponseOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) PrivateClusterConfigResponse { return v.PrivateClusterConfig }).(PrivateClusterConfigResponseOutput)
 }
 
-// Indicates whether this resource is currently being updated to match its intended state.
+// Indicates whether this workstation cluster is currently being updated to match its intended state.
 func (o LookupWorkstationClusterResultOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) bool { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
+// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
 func (o LookupWorkstationClusterResultOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
-// A system-assigned unique identified for this resource.
+// A system-assigned unique identifier for this workstation cluster.
 func (o LookupWorkstationClusterResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
-// Time when this resource was most recently updated.
+// Time when this workstation cluster was most recently updated.
 func (o LookupWorkstationClusterResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

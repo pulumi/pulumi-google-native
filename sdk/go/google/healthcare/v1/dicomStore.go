@@ -28,6 +28,8 @@ type DicomStore struct {
 	// Notification destination for new DICOM instances. Supplied by the client.
 	NotificationConfig NotificationConfigResponseOutput `pulumi:"notificationConfig"`
 	Project            pulumi.StringOutput              `pulumi:"project"`
+	// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+	StreamConfigs GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput `pulumi:"streamConfigs"`
 }
 
 // NewDicomStore registers a new resource with the given unique name, arguments, and options.
@@ -90,6 +92,8 @@ type dicomStoreArgs struct {
 	// Notification destination for new DICOM instances. Supplied by the client.
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
 	Project            *string             `pulumi:"project"`
+	// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+	StreamConfigs []GoogleCloudHealthcareV1DicomStreamConfig `pulumi:"streamConfigs"`
 }
 
 // The set of arguments for constructing a DicomStore resource.
@@ -105,6 +109,8 @@ type DicomStoreArgs struct {
 	// Notification destination for new DICOM instances. Supplied by the client.
 	NotificationConfig NotificationConfigPtrInput
 	Project            pulumi.StringPtrInput
+	// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+	StreamConfigs GoogleCloudHealthcareV1DicomStreamConfigArrayInput
 }
 
 func (DicomStoreArgs) ElementType() reflect.Type {
@@ -186,6 +192,13 @@ func (o DicomStoreOutput) NotificationConfig() NotificationConfigResponseOutput 
 
 func (o DicomStoreOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DicomStore) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+func (o DicomStoreOutput) StreamConfigs() GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput {
+	return o.ApplyT(func(v *DicomStore) GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput {
+		return v.StreamConfigs
+	}).(GoogleCloudHealthcareV1DicomStreamConfigResponseArrayOutput)
 }
 
 func init() {

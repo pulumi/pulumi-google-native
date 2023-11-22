@@ -20,10 +20,14 @@ type Source struct {
 
 	// AWS type source details.
 	Aws AwsSourceDetailsResponseOutput `pulumi:"aws"`
+	// Azure type source details.
+	Azure AzureSourceDetailsResponseOutput `pulumi:"azure"`
 	// The create time timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// User-provided description of the source.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Immutable. The encryption details of the source data stored by the service.
+	Encryption EncryptionResponseOutput `pulumi:"encryption"`
 	// Provides details on the state of the Source in case of an error.
 	Error StatusResponseOutput `pulumi:"error"`
 	// The labels of the source.
@@ -93,8 +97,12 @@ func (SourceState) ElementType() reflect.Type {
 type sourceArgs struct {
 	// AWS type source details.
 	Aws *AwsSourceDetails `pulumi:"aws"`
+	// Azure type source details.
+	Azure *AzureSourceDetails `pulumi:"azure"`
 	// User-provided description of the source.
 	Description *string `pulumi:"description"`
+	// Optional. Immutable. The encryption details of the source data stored by the service.
+	Encryption *Encryption `pulumi:"encryption"`
 	// The labels of the source.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -111,8 +119,12 @@ type sourceArgs struct {
 type SourceArgs struct {
 	// AWS type source details.
 	Aws AwsSourceDetailsPtrInput
+	// Azure type source details.
+	Azure AzureSourceDetailsPtrInput
 	// User-provided description of the source.
 	Description pulumi.StringPtrInput
+	// Optional. Immutable. The encryption details of the source data stored by the service.
+	Encryption EncryptionPtrInput
 	// The labels of the source.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -179,6 +191,11 @@ func (o SourceOutput) Aws() AwsSourceDetailsResponseOutput {
 	return o.ApplyT(func(v *Source) AwsSourceDetailsResponseOutput { return v.Aws }).(AwsSourceDetailsResponseOutput)
 }
 
+// Azure type source details.
+func (o SourceOutput) Azure() AzureSourceDetailsResponseOutput {
+	return o.ApplyT(func(v *Source) AzureSourceDetailsResponseOutput { return v.Azure }).(AzureSourceDetailsResponseOutput)
+}
+
 // The create time timestamp.
 func (o SourceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -187,6 +204,11 @@ func (o SourceOutput) CreateTime() pulumi.StringOutput {
 // User-provided description of the source.
 func (o SourceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Immutable. The encryption details of the source data stored by the service.
+func (o SourceOutput) Encryption() EncryptionResponseOutput {
+	return o.ApplyT(func(v *Source) EncryptionResponseOutput { return v.Encryption }).(EncryptionResponseOutput)
 }
 
 // Provides details on the state of the Source in case of an error.

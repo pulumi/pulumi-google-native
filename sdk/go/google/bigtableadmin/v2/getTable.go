@@ -31,6 +31,8 @@ type LookupTableArgs struct {
 }
 
 type LookupTableResult struct {
+	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+	ChangeStreamConfig ChangeStreamConfigResponse `pulumi:"changeStreamConfig"`
 	// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
 	ClusterStates map[string]string `pulumi:"clusterStates"`
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
@@ -89,6 +91,11 @@ func (o LookupTableResultOutput) ToOutput(ctx context.Context) pulumix.Output[Lo
 	return pulumix.Output[LookupTableResult]{
 		OutputState: o.OutputState,
 	}
+}
+
+// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+func (o LookupTableResultOutput) ChangeStreamConfig() ChangeStreamConfigResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) ChangeStreamConfigResponse { return v.ChangeStreamConfig }).(ChangeStreamConfigResponseOutput)
 }
 
 // Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`

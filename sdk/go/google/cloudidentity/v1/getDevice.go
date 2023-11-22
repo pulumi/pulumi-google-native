@@ -55,6 +55,8 @@ type LookupDeviceResult struct {
 	EnabledUsbDebugging bool `pulumi:"enabledUsbDebugging"`
 	// Device encryption state.
 	EncryptionState string `pulumi:"encryptionState"`
+	// Host name of the device.
+	Hostname string `pulumi:"hostname"`
 	// IMEI number of device if GSM device; empty otherwise.
 	Imei string `pulumi:"imei"`
 	// Kernel version of the device.
@@ -196,6 +198,11 @@ func (o LookupDeviceResultOutput) EnabledUsbDebugging() pulumi.BoolOutput {
 // Device encryption state.
 func (o LookupDeviceResultOutput) EncryptionState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.EncryptionState }).(pulumi.StringOutput)
+}
+
+// Host name of the device.
+func (o LookupDeviceResultOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // IMEI number of device if GSM device; empty otherwise.

@@ -32,6 +32,8 @@ type LookupTableArgs struct {
 }
 
 type LookupTableResult struct {
+	// [Optional] Specifies the configuration of a BigLake managed table.
+	BiglakeConfiguration BigLakeConfigurationResponse `pulumi:"biglakeConfiguration"`
 	// Clone definition.
 	CloneDefinition CloneDefinitionResponse `pulumi:"cloneDefinition"`
 	// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
@@ -96,6 +98,8 @@ type LookupTableResult struct {
 	RangePartitioning RangePartitioningResponse `pulumi:"rangePartitioning"`
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
 	RequirePartitionFilter bool `pulumi:"requirePartitionFilter"`
+	// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// [Optional] Describes the schema of this table.
 	Schema TableSchemaResponse `pulumi:"schema"`
 	// A URL that can be used to access this resource again.
@@ -159,6 +163,11 @@ func (o LookupTableResultOutput) ToOutput(ctx context.Context) pulumix.Output[Lo
 	return pulumix.Output[LookupTableResult]{
 		OutputState: o.OutputState,
 	}
+}
+
+// [Optional] Specifies the configuration of a BigLake managed table.
+func (o LookupTableResultOutput) BiglakeConfiguration() BigLakeConfigurationResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) BigLakeConfigurationResponse { return v.BiglakeConfiguration }).(BigLakeConfigurationResponseOutput)
 }
 
 // Clone definition.
@@ -319,6 +328,11 @@ func (o LookupTableResultOutput) RangePartitioning() RangePartitioningResponseOu
 // [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
 func (o LookupTableResultOutput) RequirePartitionFilter() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTableResult) bool { return v.RequirePartitionFilter }).(pulumi.BoolOutput)
+}
+
+// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
+func (o LookupTableResultOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTableResult) map[string]string { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
 
 // [Optional] Describes the schema of this table.

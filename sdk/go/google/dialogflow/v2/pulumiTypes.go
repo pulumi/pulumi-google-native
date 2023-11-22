@@ -218,6 +218,8 @@ func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput) Tra
 type GoogleCloudDialogflowV2AutomatedAgentConfig struct {
 	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
 	Agent string `pulumi:"agent"`
+	// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+	SessionTtl *string `pulumi:"sessionTtl"`
 }
 
 // GoogleCloudDialogflowV2AutomatedAgentConfigInput is an input type that accepts GoogleCloudDialogflowV2AutomatedAgentConfigArgs and GoogleCloudDialogflowV2AutomatedAgentConfigOutput values.
@@ -235,6 +237,8 @@ type GoogleCloudDialogflowV2AutomatedAgentConfigInput interface {
 type GoogleCloudDialogflowV2AutomatedAgentConfigArgs struct {
 	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
 	Agent pulumi.StringInput `pulumi:"agent"`
+	// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+	SessionTtl pulumi.StringPtrInput `pulumi:"sessionTtl"`
 }
 
 func (GoogleCloudDialogflowV2AutomatedAgentConfigArgs) ElementType() reflect.Type {
@@ -338,6 +342,11 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigOutput) Agent() pulumi.String
 	return o.ApplyT(func(v GoogleCloudDialogflowV2AutomatedAgentConfig) string { return v.Agent }).(pulumi.StringOutput)
 }
 
+// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+func (o GoogleCloudDialogflowV2AutomatedAgentConfigOutput) SessionTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2AutomatedAgentConfig) *string { return v.SessionTtl }).(pulumi.StringPtrOutput)
+}
+
 type GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput) ElementType() reflect.Type {
@@ -378,10 +387,22 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput) Agent() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+func (o GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput) SessionTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2AutomatedAgentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTtl
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the Automated Agent to connect to a conversation.
 type GoogleCloudDialogflowV2AutomatedAgentConfigResponse struct {
 	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
 	Agent string `pulumi:"agent"`
+	// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+	SessionTtl string `pulumi:"sessionTtl"`
 }
 
 // Defines the Automated Agent to connect to a conversation.
@@ -410,13 +431,18 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput) Agent() pulum
 	return o.ApplyT(func(v GoogleCloudDialogflowV2AutomatedAgentConfigResponse) string { return v.Agent }).(pulumi.StringOutput)
 }
 
+// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput) SessionTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2AutomatedAgentConfigResponse) string { return v.SessionTtl }).(pulumi.StringOutput)
+}
+
 // Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
 type GoogleCloudDialogflowV2Context struct {
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount *int `pulumi:"lifespanCount"`
-	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 	Name string `pulumi:"name"`
-	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
 	Parameters map[string]string `pulumi:"parameters"`
 }
 
@@ -435,9 +461,9 @@ type GoogleCloudDialogflowV2ContextInput interface {
 type GoogleCloudDialogflowV2ContextArgs struct {
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount pulumi.IntPtrInput `pulumi:"lifespanCount"`
-	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 	Name pulumi.StringInput `pulumi:"name"`
-	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 }
 
@@ -516,12 +542,12 @@ func (o GoogleCloudDialogflowV2ContextOutput) LifespanCount() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v GoogleCloudDialogflowV2Context) *int { return v.LifespanCount }).(pulumi.IntPtrOutput)
 }
 
-// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 func (o GoogleCloudDialogflowV2ContextOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2Context) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
 func (o GoogleCloudDialogflowV2ContextOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2Context) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
@@ -556,9 +582,9 @@ func (o GoogleCloudDialogflowV2ContextArrayOutput) Index(i pulumi.IntInput) Goog
 type GoogleCloudDialogflowV2ContextResponse struct {
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount int `pulumi:"lifespanCount"`
-	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 	Name string `pulumi:"name"`
-	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
 	Parameters map[string]string `pulumi:"parameters"`
 }
 
@@ -588,12 +614,12 @@ func (o GoogleCloudDialogflowV2ContextResponseOutput) LifespanCount() pulumi.Int
 	return o.ApplyT(func(v GoogleCloudDialogflowV2ContextResponse) int { return v.LifespanCount }).(pulumi.IntOutput)
 }
 
-// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 func (o GoogleCloudDialogflowV2ContextResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2ContextResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
 func (o GoogleCloudDialogflowV2ContextResponseOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2ContextResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
@@ -2429,7 +2455,7 @@ func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) Name() pulumi.StringOu
 
 // Google Cloud Storage location for the inputs.
 type GoogleCloudDialogflowV2GcsSourcesResponse struct {
-	// Google Cloud Storage URIs for the inputs. A URI is of the form: gs://bucket/object-prefix-or-name Whether a prefix or name is used depends on the use case.
+	// Google Cloud Storage URIs for the inputs. A URI is of the form: `gs://bucket/object-prefix-or-name` Whether a prefix or name is used depends on the use case.
 	Uris []string `pulumi:"uris"`
 }
 
@@ -2454,7 +2480,7 @@ func (o GoogleCloudDialogflowV2GcsSourcesResponseOutput) ToOutput(ctx context.Co
 	}
 }
 
-// Google Cloud Storage URIs for the inputs. A URI is of the form: gs://bucket/object-prefix-or-name Whether a prefix or name is used depends on the use case.
+// Google Cloud Storage URIs for the inputs. A URI is of the form: `gs://bucket/object-prefix-or-name` Whether a prefix or name is used depends on the use case.
 func (o GoogleCloudDialogflowV2GcsSourcesResponseOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2GcsSourcesResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
 }
@@ -3645,7 +3671,9 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig str
 	ConversationModelConfig *GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig `pulumi:"conversationModelConfig"`
 	// Configs for processing conversation.
 	ConversationProcessConfig *GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig `pulumi:"conversationProcessConfig"`
-	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+	// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
+	DisableAgentQueryLogging *bool `pulumi:"disableAgentQueryLogging"`
+	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
 	EnableEventBasedSuggestion *bool `pulumi:"enableEventBasedSuggestion"`
 	// Configs of query.
 	QueryConfig *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig `pulumi:"queryConfig"`
@@ -3672,7 +3700,9 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArgs
 	ConversationModelConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrInput `pulumi:"conversationModelConfig"`
 	// Configs for processing conversation.
 	ConversationProcessConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigPtrInput `pulumi:"conversationProcessConfig"`
-	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+	// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
+	DisableAgentQueryLogging pulumi.BoolPtrInput `pulumi:"disableAgentQueryLogging"`
+	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
 	EnableEventBasedSuggestion pulumi.BoolPtrInput `pulumi:"enableEventBasedSuggestion"`
 	// Configs of query.
 	QueryConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtrInput `pulumi:"queryConfig"`
@@ -3766,7 +3796,14 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigO
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigPtrOutput)
 }
 
-// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigOutput) DisableAgentQueryLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig) *bool {
+		return v.DisableAgentQueryLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigOutput) EnableEventBasedSuggestion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig) *bool {
 		return v.EnableEventBasedSuggestion
@@ -3826,7 +3863,9 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResp
 	ConversationModelConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse `pulumi:"conversationModelConfig"`
 	// Configs for processing conversation.
 	ConversationProcessConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse `pulumi:"conversationProcessConfig"`
-	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+	// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
+	DisableAgentQueryLogging bool `pulumi:"disableAgentQueryLogging"`
+	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
 	EnableEventBasedSuggestion bool `pulumi:"enableEventBasedSuggestion"`
 	// Configs of query.
 	QueryConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse `pulumi:"queryConfig"`
@@ -3871,7 +3910,14 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigR
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponseOutput)
 }
 
-// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput) DisableAgentQueryLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse) bool {
+		return v.DisableAgentQueryLogging
+	}).(pulumi.BoolOutput)
+}
+
+// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput) EnableEventBasedSuggestion() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse) bool {
 		return v.EnableEventBasedSuggestion
@@ -3927,7 +3973,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigR
 
 // Config for suggestion query.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig struct {
-	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
+	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
 	ConfidenceThreshold *float64 `pulumi:"confidenceThreshold"`
 	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
 	ContextFilterSettings *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings `pulumi:"contextFilterSettings"`
@@ -3954,7 +4000,7 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigInput 
 
 // Config for suggestion query.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs struct {
-	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
+	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
 	ConfidenceThreshold pulumi.Float64PtrInput `pulumi:"confidenceThreshold"`
 	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
 	ContextFilterSettings GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput `pulumi:"contextFilterSettings"`
@@ -4064,7 +4110,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigOut
 	}
 }
 
-// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
+// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig) *float64 {
 		return v.ConfidenceThreshold
@@ -4136,7 +4182,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtr
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigOutput)
 }
 
-// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
+// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig) *float64 {
 		if v == nil {
@@ -4460,6 +4506,8 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigCon
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource struct {
 	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
 	Agent string `pulumi:"agent"`
+	// Optional. The Dialogflow assist configuration for human agent.
+	HumanAgentSideConfig *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig `pulumi:"humanAgentSideConfig"`
 }
 
 // GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput values.
@@ -4477,6 +4525,8 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialog
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs struct {
 	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
 	Agent pulumi.StringInput `pulumi:"agent"`
+	// Optional. The Dialogflow assist configuration for human agent.
+	HumanAgentSideConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput `pulumi:"humanAgentSideConfig"`
 }
 
 func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs) ElementType() reflect.Type {
@@ -4582,6 +4632,13 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDia
 	}).(pulumi.StringOutput)
 }
 
+// Optional. The Dialogflow assist configuration for human agent.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput) HumanAgentSideConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		return v.HumanAgentSideConfig
+	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput) ElementType() reflect.Type {
@@ -4622,10 +4679,222 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDia
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The Dialogflow assist configuration for human agent.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput) HumanAgentSideConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HumanAgentSideConfig
+	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+// The configuration used for human agent side Dialogflow assist suggestion.
+type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig struct {
+	// Optional. The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: `projects//locations//agent`.
+	Agent *string `pulumi:"agent"`
+}
+
+// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput` via:
+//
+//	GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{...}
+type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput
+	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput
+}
+
+// The configuration used for human agent side Dialogflow assist suggestion.
+type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs struct {
+	// Optional. The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: `projects//locations//agent`.
+	Agent pulumi.StringPtrInput `pulumi:"agent"`
+}
+
+func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig] {
+	return pulumix.Output[GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig]{
+		OutputState: i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput).ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs, GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtr and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput` via:
+//
+//	        GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput
+	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput
+}
+
+type googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs
+
+func GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtr(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput {
+	return (*googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+func (i *googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig] {
+	return pulumix.Output[*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig]{
+		OutputState: i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The configuration used for human agent side Dialogflow assist suggestion.
+type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig] {
+	return pulumix.Output[GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: `projects//locations//agent`.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig) *string {
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig] {
+	return pulumix.Output[*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig
+		return ret
+	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput)
+}
+
+// Optional. The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: `projects//locations//agent`.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration used for human agent side Dialogflow assist suggestion.
+type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse struct {
+	// Optional. The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: `projects//locations//agent`.
+	Agent string `pulumi:"agent"`
+}
+
+// The configuration used for human agent side Dialogflow assist suggestion.
+type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse] {
+	return pulumix.Output[GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: `projects//locations//agent`.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput) Agent() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse) string {
+		return v.Agent
+	}).(pulumi.StringOutput)
+}
+
 // Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse struct {
 	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
 	Agent string `pulumi:"agent"`
+	// Optional. The Dialogflow assist configuration for human agent.
+	HumanAgentSideConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse `pulumi:"humanAgentSideConfig"`
 }
 
 // Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
@@ -4654,6 +4923,13 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDia
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse) string {
 		return v.Agent
 	}).(pulumi.StringOutput)
+}
+
+// Optional. The Dialogflow assist configuration for human agent.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput) HumanAgentSideConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse {
+		return v.HumanAgentSideConfig
+	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput)
 }
 
 // Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
@@ -5058,7 +5334,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKno
 
 // Config for suggestion query.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse struct {
-	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
+	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
 	ConfidenceThreshold float64 `pulumi:"confidenceThreshold"`
 	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
 	ContextFilterSettings GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse `pulumi:"contextFilterSettings"`
@@ -5093,7 +5369,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigRes
 	}
 }
 
-// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
+// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput) ConfidenceThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse) float64 {
 		return v.ConfidenceThreshold
@@ -14135,6 +14411,8 @@ type GoogleCloudDialogflowV2SpeechToTextConfig struct {
 	Model *string `pulumi:"model"`
 	// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 	SpeechModelVariant *GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant `pulumi:"speechModelVariant"`
+	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	UseTimeoutBasedEndpointing *bool `pulumi:"useTimeoutBasedEndpointing"`
 }
 
 // GoogleCloudDialogflowV2SpeechToTextConfigInput is an input type that accepts GoogleCloudDialogflowV2SpeechToTextConfigArgs and GoogleCloudDialogflowV2SpeechToTextConfigOutput values.
@@ -14154,6 +14432,8 @@ type GoogleCloudDialogflowV2SpeechToTextConfigArgs struct {
 	Model pulumi.StringPtrInput `pulumi:"model"`
 	// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 	SpeechModelVariant GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrInput `pulumi:"speechModelVariant"`
+	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	UseTimeoutBasedEndpointing pulumi.BoolPtrInput `pulumi:"useTimeoutBasedEndpointing"`
 }
 
 func (GoogleCloudDialogflowV2SpeechToTextConfigArgs) ElementType() reflect.Type {
@@ -14264,6 +14544,11 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigOutput) SpeechModelVariant() Go
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput)
 }
 
+// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+func (o GoogleCloudDialogflowV2SpeechToTextConfigOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SpeechToTextConfig) *bool { return v.UseTimeoutBasedEndpointing }).(pulumi.BoolPtrOutput)
+}
+
 type GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) ElementType() reflect.Type {
@@ -14314,12 +14599,24 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) SpeechModelVariant()
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput)
 }
 
+// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+func (o GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2SpeechToTextConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTimeoutBasedEndpointing
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2SpeechToTextConfigResponse struct {
 	// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
 	Model string `pulumi:"model"`
 	// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 	SpeechModelVariant string `pulumi:"speechModelVariant"`
+	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	UseTimeoutBasedEndpointing bool `pulumi:"useTimeoutBasedEndpointing"`
 }
 
 // Configures speech transcription for ConversationProfile.
@@ -14351,6 +14648,11 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) Model() pulumi.
 // The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) SpeechModelVariant() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2SpeechToTextConfigResponse) string { return v.SpeechModelVariant }).(pulumi.StringOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) UseTimeoutBasedEndpointing() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SpeechToTextConfigResponse) bool { return v.UseTimeoutBasedEndpointing }).(pulumi.BoolOutput)
 }
 
 // The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
@@ -15444,6 +15746,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{})
@@ -15596,6 +15900,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput{})

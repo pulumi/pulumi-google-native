@@ -26,8 +26,12 @@ type Environment struct {
 	// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The current state of the environment.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Optional. Storage configuration for this environment.
+	StorageConfig StorageConfigResponseOutput `pulumi:"storageConfig"`
 	// The time at which this environment was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
@@ -89,6 +93,8 @@ type environmentArgs struct {
 	Project *string `pulumi:"project"`
 	// The current state of the environment.
 	State *EnvironmentStateEnum `pulumi:"state"`
+	// Optional. Storage configuration for this environment.
+	StorageConfig *StorageConfig `pulumi:"storageConfig"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -103,6 +109,8 @@ type EnvironmentArgs struct {
 	Project pulumi.StringPtrInput
 	// The current state of the environment.
 	State EnvironmentStateEnumPtrInput
+	// Optional. Storage configuration for this environment.
+	StorageConfig StorageConfigPtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
@@ -182,9 +190,19 @@ func (o EnvironmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Reserved for future use.
+func (o EnvironmentOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Environment) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
 // The current state of the environment.
 func (o EnvironmentOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional. Storage configuration for this environment.
+func (o EnvironmentOutput) StorageConfig() StorageConfigResponseOutput {
+	return o.ApplyT(func(v *Environment) StorageConfigResponseOutput { return v.StorageConfig }).(StorageConfigResponseOutput)
 }
 
 // The time at which this environment was last modified.

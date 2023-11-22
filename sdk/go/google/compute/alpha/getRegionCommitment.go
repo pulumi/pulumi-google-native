@@ -40,6 +40,8 @@ type LookupRegionCommitmentResult struct {
 	Description string `pulumi:"description"`
 	// Commitment end time in RFC3339 text format.
 	EndTimestamp string `pulumi:"endTimestamp"`
+	// Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation
+	ExistingReservations []string `pulumi:"existingReservations"`
 	// Type of the resource. Always compute#commitment for commitments.
 	Kind string `pulumi:"kind"`
 	// The license specification required as part of a license commitment.
@@ -52,8 +54,10 @@ type LookupRegionCommitmentResult struct {
 	Plan string `pulumi:"plan"`
 	// URL of the region where this commitment may be used.
 	Region string `pulumi:"region"`
-	// List of reservations in this commitment.
+	// List of create-on-create reseravtions for this commitment.
 	Reservations []ReservationResponse `pulumi:"reservations"`
+	// Status information for Commitment resource.
+	ResourceStatus CommitmentResourceStatusResponse `pulumi:"resourceStatus"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources []ResourceCommitmentResponse `pulumi:"resources"`
 	// Server-defined URL for the resource.
@@ -140,6 +144,11 @@ func (o LookupRegionCommitmentResultOutput) EndTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.EndTimestamp }).(pulumi.StringOutput)
 }
 
+// Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation
+func (o LookupRegionCommitmentResultOutput) ExistingReservations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRegionCommitmentResult) []string { return v.ExistingReservations }).(pulumi.StringArrayOutput)
+}
+
 // Type of the resource. Always compute#commitment for commitments.
 func (o LookupRegionCommitmentResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.Kind }).(pulumi.StringOutput)
@@ -170,9 +179,14 @@ func (o LookupRegionCommitmentResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// List of reservations in this commitment.
+// List of create-on-create reseravtions for this commitment.
 func (o LookupRegionCommitmentResultOutput) Reservations() ReservationResponseArrayOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) []ReservationResponse { return v.Reservations }).(ReservationResponseArrayOutput)
+}
+
+// Status information for Commitment resource.
+func (o LookupRegionCommitmentResultOutput) ResourceStatus() CommitmentResourceStatusResponseOutput {
+	return o.ApplyT(func(v LookupRegionCommitmentResult) CommitmentResourceStatusResponse { return v.ResourceStatus }).(CommitmentResourceStatusResponseOutput)
 }
 
 // A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.

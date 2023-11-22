@@ -6001,8 +6001,8 @@ func (o SubjectAltNamesResponseOutput) Uris() pulumi.StringArrayOutput {
 
 // These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
 type SubjectConfig struct {
-	// Contains distinguished name fields such as the common name, location and organization.
-	Subject Subject `pulumi:"subject"`
+	// Optional. Contains distinguished name fields such as the common name, location and organization.
+	Subject *Subject `pulumi:"subject"`
 	// Optional. The subject alternative name fields.
 	SubjectAltName *SubjectAltNames `pulumi:"subjectAltName"`
 }
@@ -6020,8 +6020,8 @@ type SubjectConfigInput interface {
 
 // These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
 type SubjectConfigArgs struct {
-	// Contains distinguished name fields such as the common name, location and organization.
-	Subject SubjectInput `pulumi:"subject"`
+	// Optional. Contains distinguished name fields such as the common name, location and organization.
+	Subject SubjectPtrInput `pulumi:"subject"`
 	// Optional. The subject alternative name fields.
 	SubjectAltName SubjectAltNamesPtrInput `pulumi:"subjectAltName"`
 }
@@ -6122,9 +6122,9 @@ func (o SubjectConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Subjec
 	}
 }
 
-// Contains distinguished name fields such as the common name, location and organization.
-func (o SubjectConfigOutput) Subject() SubjectOutput {
-	return o.ApplyT(func(v SubjectConfig) Subject { return v.Subject }).(SubjectOutput)
+// Optional. Contains distinguished name fields such as the common name, location and organization.
+func (o SubjectConfigOutput) Subject() SubjectPtrOutput {
+	return o.ApplyT(func(v SubjectConfig) *Subject { return v.Subject }).(SubjectPtrOutput)
 }
 
 // Optional. The subject alternative name fields.
@@ -6162,13 +6162,13 @@ func (o SubjectConfigPtrOutput) Elem() SubjectConfigOutput {
 	}).(SubjectConfigOutput)
 }
 
-// Contains distinguished name fields such as the common name, location and organization.
+// Optional. Contains distinguished name fields such as the common name, location and organization.
 func (o SubjectConfigPtrOutput) Subject() SubjectPtrOutput {
 	return o.ApplyT(func(v *SubjectConfig) *Subject {
 		if v == nil {
 			return nil
 		}
-		return &v.Subject
+		return v.Subject
 	}).(SubjectPtrOutput)
 }
 
@@ -6184,7 +6184,7 @@ func (o SubjectConfigPtrOutput) SubjectAltName() SubjectAltNamesPtrOutput {
 
 // These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
 type SubjectConfigResponse struct {
-	// Contains distinguished name fields such as the common name, location and organization.
+	// Optional. Contains distinguished name fields such as the common name, location and organization.
 	Subject SubjectResponse `pulumi:"subject"`
 	// Optional. The subject alternative name fields.
 	SubjectAltName SubjectAltNamesResponse `pulumi:"subjectAltName"`
@@ -6211,7 +6211,7 @@ func (o SubjectConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// Contains distinguished name fields such as the common name, location and organization.
+// Optional. Contains distinguished name fields such as the common name, location and organization.
 func (o SubjectConfigResponseOutput) Subject() SubjectResponseOutput {
 	return o.ApplyT(func(v SubjectConfigResponse) SubjectResponse { return v.Subject }).(SubjectResponseOutput)
 }

@@ -48,6 +48,8 @@ type LookupSecuritySettingResult struct {
 	RedactionScope string `pulumi:"redactionScope"`
 	// Strategy that defines how we do redaction.
 	RedactionStrategy string `pulumi:"redactionStrategy"`
+	// Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+	RetentionStrategy string `pulumi:"retentionStrategy"`
 	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
 	RetentionWindowDays int `pulumi:"retentionWindowDays"`
 }
@@ -142,6 +144,11 @@ func (o LookupSecuritySettingResultOutput) RedactionScope() pulumi.StringOutput 
 // Strategy that defines how we do redaction.
 func (o LookupSecuritySettingResultOutput) RedactionStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.RedactionStrategy }).(pulumi.StringOutput)
+}
+
+// Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
+func (o LookupSecuritySettingResultOutput) RetentionStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.RetentionStrategy }).(pulumi.StringOutput)
 }
 
 // Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.

@@ -34,7 +34,7 @@ type Service struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowResponseOutput `pulumi:"maintenanceWindow"`
-	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationResponseOutput `pulumi:"metadataIntegration"`
 	// The metadata management activities of the metastore service.
 	MetadataManagementActivity MetadataManagementActivityResponseOutput `pulumi:"metadataManagementActivity"`
@@ -129,7 +129,7 @@ type serviceArgs struct {
 	Location *string           `pulumi:"location"`
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
-	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration *MetadataIntegration `pulumi:"metadataIntegration"`
 	// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
 	Name *string `pulumi:"name"`
@@ -167,7 +167,7 @@ type ServiceArgs struct {
 	Location pulumi.StringPtrInput
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowPtrInput
-	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationPtrInput
 	// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
 	Name pulumi.StringPtrInput
@@ -285,7 +285,7 @@ func (o ServiceOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
 	return o.ApplyT(func(v *Service) MaintenanceWindowResponseOutput { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
 }
 
-// The setting that defines how metastore metadata should be integrated with external services and systems.
+// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
 func (o ServiceOutput) MetadataIntegration() MetadataIntegrationResponseOutput {
 	return o.ApplyT(func(v *Service) MetadataIntegrationResponseOutput { return v.MetadataIntegration }).(MetadataIntegrationResponseOutput)
 }

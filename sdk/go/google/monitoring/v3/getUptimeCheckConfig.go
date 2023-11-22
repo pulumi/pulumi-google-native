@@ -43,7 +43,7 @@ type LookupUptimeCheckConfigResult struct {
 	IsInternal bool `pulumi:"isInternal"`
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service cloud_run_revision
 	MonitoredResource MonitoredResourceResponse `pulumi:"monitoredResource"`
-	// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+	// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
 	Name string `pulumi:"name"`
 	// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
 	Period string `pulumi:"period"`
@@ -51,6 +51,8 @@ type LookupUptimeCheckConfigResult struct {
 	ResourceGroup ResourceGroupResponse `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
 	SelectedRegions []string `pulumi:"selectedRegions"`
+	// Specifies a Synthetic Monitor to invoke.
+	SyntheticMonitor SyntheticMonitorTargetResponse `pulumi:"syntheticMonitor"`
 	// Contains information needed to make a TCP check.
 	TcpCheck TcpCheckResponse `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
@@ -136,7 +138,7 @@ func (o LookupUptimeCheckConfigResultOutput) MonitoredResource() MonitoredResour
 	return o.ApplyT(func(v LookupUptimeCheckConfigResult) MonitoredResourceResponse { return v.MonitoredResource }).(MonitoredResourceResponseOutput)
 }
 
-// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
 func (o LookupUptimeCheckConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUptimeCheckConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -154,6 +156,11 @@ func (o LookupUptimeCheckConfigResultOutput) ResourceGroup() ResourceGroupRespon
 // The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
 func (o LookupUptimeCheckConfigResultOutput) SelectedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupUptimeCheckConfigResult) []string { return v.SelectedRegions }).(pulumi.StringArrayOutput)
+}
+
+// Specifies a Synthetic Monitor to invoke.
+func (o LookupUptimeCheckConfigResultOutput) SyntheticMonitor() SyntheticMonitorTargetResponseOutput {
+	return o.ApplyT(func(v LookupUptimeCheckConfigResult) SyntheticMonitorTargetResponse { return v.SyntheticMonitor }).(SyntheticMonitorTargetResponseOutput)
 }
 
 // Contains information needed to make a TCP check.

@@ -11,6 +11,192 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+type BudgetOwnershipScope string
+
+const (
+	// Unspecified ownership scope, same as ALL_USERS.
+	BudgetOwnershipScopeOwnershipScopeUnspecified = BudgetOwnershipScope("OWNERSHIP_SCOPE_UNSPECIFIED")
+	// Both billing account-level users and project-level users have full access to the budget, if the users have the required IAM permissions.
+	BudgetOwnershipScopeAllUsers = BudgetOwnershipScope("ALL_USERS")
+	// Only billing account-level users have full access to the budget. Project-level users have read-only access, even if they have the required IAM permissions.
+	BudgetOwnershipScopeBillingAccount = BudgetOwnershipScope("BILLING_ACCOUNT")
+)
+
+func (BudgetOwnershipScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetOwnershipScope)(nil)).Elem()
+}
+
+func (e BudgetOwnershipScope) ToBudgetOwnershipScopeOutput() BudgetOwnershipScopeOutput {
+	return pulumi.ToOutput(e).(BudgetOwnershipScopeOutput)
+}
+
+func (e BudgetOwnershipScope) ToBudgetOwnershipScopeOutputWithContext(ctx context.Context) BudgetOwnershipScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BudgetOwnershipScopeOutput)
+}
+
+func (e BudgetOwnershipScope) ToBudgetOwnershipScopePtrOutput() BudgetOwnershipScopePtrOutput {
+	return e.ToBudgetOwnershipScopePtrOutputWithContext(context.Background())
+}
+
+func (e BudgetOwnershipScope) ToBudgetOwnershipScopePtrOutputWithContext(ctx context.Context) BudgetOwnershipScopePtrOutput {
+	return BudgetOwnershipScope(e).ToBudgetOwnershipScopeOutputWithContext(ctx).ToBudgetOwnershipScopePtrOutputWithContext(ctx)
+}
+
+func (e BudgetOwnershipScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BudgetOwnershipScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BudgetOwnershipScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BudgetOwnershipScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BudgetOwnershipScopeOutput struct{ *pulumi.OutputState }
+
+func (BudgetOwnershipScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetOwnershipScope)(nil)).Elem()
+}
+
+func (o BudgetOwnershipScopeOutput) ToBudgetOwnershipScopeOutput() BudgetOwnershipScopeOutput {
+	return o
+}
+
+func (o BudgetOwnershipScopeOutput) ToBudgetOwnershipScopeOutputWithContext(ctx context.Context) BudgetOwnershipScopeOutput {
+	return o
+}
+
+func (o BudgetOwnershipScopeOutput) ToBudgetOwnershipScopePtrOutput() BudgetOwnershipScopePtrOutput {
+	return o.ToBudgetOwnershipScopePtrOutputWithContext(context.Background())
+}
+
+func (o BudgetOwnershipScopeOutput) ToBudgetOwnershipScopePtrOutputWithContext(ctx context.Context) BudgetOwnershipScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetOwnershipScope) *BudgetOwnershipScope {
+		return &v
+	}).(BudgetOwnershipScopePtrOutput)
+}
+
+func (o BudgetOwnershipScopeOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetOwnershipScope] {
+	return pulumix.Output[BudgetOwnershipScope]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BudgetOwnershipScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BudgetOwnershipScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BudgetOwnershipScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BudgetOwnershipScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BudgetOwnershipScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BudgetOwnershipScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BudgetOwnershipScopePtrOutput struct{ *pulumi.OutputState }
+
+func (BudgetOwnershipScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetOwnershipScope)(nil)).Elem()
+}
+
+func (o BudgetOwnershipScopePtrOutput) ToBudgetOwnershipScopePtrOutput() BudgetOwnershipScopePtrOutput {
+	return o
+}
+
+func (o BudgetOwnershipScopePtrOutput) ToBudgetOwnershipScopePtrOutputWithContext(ctx context.Context) BudgetOwnershipScopePtrOutput {
+	return o
+}
+
+func (o BudgetOwnershipScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetOwnershipScope] {
+	return pulumix.Output[*BudgetOwnershipScope]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BudgetOwnershipScopePtrOutput) Elem() BudgetOwnershipScopeOutput {
+	return o.ApplyT(func(v *BudgetOwnershipScope) BudgetOwnershipScope {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetOwnershipScope
+		return ret
+	}).(BudgetOwnershipScopeOutput)
+}
+
+func (o BudgetOwnershipScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BudgetOwnershipScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BudgetOwnershipScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BudgetOwnershipScopeInput is an input type that accepts BudgetOwnershipScopeArgs and BudgetOwnershipScopeOutput values.
+// You can construct a concrete instance of `BudgetOwnershipScopeInput` via:
+//
+//	BudgetOwnershipScopeArgs{...}
+type BudgetOwnershipScopeInput interface {
+	pulumi.Input
+
+	ToBudgetOwnershipScopeOutput() BudgetOwnershipScopeOutput
+	ToBudgetOwnershipScopeOutputWithContext(context.Context) BudgetOwnershipScopeOutput
+}
+
+var budgetOwnershipScopePtrType = reflect.TypeOf((**BudgetOwnershipScope)(nil)).Elem()
+
+type BudgetOwnershipScopePtrInput interface {
+	pulumi.Input
+
+	ToBudgetOwnershipScopePtrOutput() BudgetOwnershipScopePtrOutput
+	ToBudgetOwnershipScopePtrOutputWithContext(context.Context) BudgetOwnershipScopePtrOutput
+}
+
+type budgetOwnershipScopePtr string
+
+func BudgetOwnershipScopePtr(v string) BudgetOwnershipScopePtrInput {
+	return (*budgetOwnershipScopePtr)(&v)
+}
+
+func (*budgetOwnershipScopePtr) ElementType() reflect.Type {
+	return budgetOwnershipScopePtrType
+}
+
+func (in *budgetOwnershipScopePtr) ToBudgetOwnershipScopePtrOutput() BudgetOwnershipScopePtrOutput {
+	return pulumi.ToOutput(in).(BudgetOwnershipScopePtrOutput)
+}
+
+func (in *budgetOwnershipScopePtr) ToBudgetOwnershipScopePtrOutputWithContext(ctx context.Context) BudgetOwnershipScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BudgetOwnershipScopePtrOutput)
+}
+
+func (in *budgetOwnershipScopePtr) ToOutput(ctx context.Context) pulumix.Output[*BudgetOwnershipScope] {
+	return pulumix.Output[*BudgetOwnershipScope]{
+		OutputState: in.ToBudgetOwnershipScopePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget tracks usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it tracks usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
 type GoogleCloudBillingBudgetsV1FilterCalendarPeriod string
 
@@ -576,12 +762,16 @@ func (in *googleCloudBillingBudgetsV1ThresholdRuleSpendBasisPtr) ToOutput(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetOwnershipScopeInput)(nil)).Elem(), BudgetOwnershipScope("OWNERSHIP_SCOPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetOwnershipScopePtrInput)(nil)).Elem(), BudgetOwnershipScope("OWNERSHIP_SCOPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1FilterCalendarPeriodInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1FilterCalendarPeriod("CALENDAR_PERIOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1FilterCalendarPeriodPtrInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1FilterCalendarPeriod("CALENDAR_PERIOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment("CREDIT_TYPES_TREATMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentPtrInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment("CREDIT_TYPES_TREATMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis("BASIS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisPtrInput)(nil)).Elem(), GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis("BASIS_UNSPECIFIED"))
+	pulumi.RegisterOutputType(BudgetOwnershipScopeOutput{})
+	pulumi.RegisterOutputType(BudgetOwnershipScopePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1FilterCalendarPeriodOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1FilterCalendarPeriodPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentOutput{})

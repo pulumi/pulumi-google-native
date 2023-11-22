@@ -19,7 +19,9 @@ type QueuedResource struct {
 
 	// The BestEffort tier.
 	BestEffort BestEffortResponseOutput `pulumi:"bestEffort"`
-	// The Guaranteed tier
+	// The time when the QueuedResource was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The Guaranteed tier.
 	Guaranteed GuaranteedResponseOutput `pulumi:"guaranteed"`
 	Location   pulumi.StringOutput      `pulumi:"location"`
 	// Immutable. The name of the QueuedResource.
@@ -33,6 +35,8 @@ type QueuedResource struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
 	ReservationName pulumi.StringOutput `pulumi:"reservationName"`
+	// Optional. The Spot tier.
+	Spot SpotResponseOutput `pulumi:"spot"`
 	// State of the QueuedResource request.
 	State QueuedResourceStateResponseOutput `pulumi:"state"`
 	// Defines a TPU resource.
@@ -86,7 +90,7 @@ func (QueuedResourceState) ElementType() reflect.Type {
 type queuedResourceArgs struct {
 	// The BestEffort tier.
 	BestEffort *BestEffort `pulumi:"bestEffort"`
-	// The Guaranteed tier
+	// The Guaranteed tier.
 	Guaranteed *Guaranteed `pulumi:"guaranteed"`
 	Location   *string     `pulumi:"location"`
 	Project    *string     `pulumi:"project"`
@@ -98,6 +102,8 @@ type queuedResourceArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
 	ReservationName *string `pulumi:"reservationName"`
+	// Optional. The Spot tier.
+	Spot *Spot `pulumi:"spot"`
 	// Defines a TPU resource.
 	Tpu *Tpu `pulumi:"tpu"`
 }
@@ -106,7 +112,7 @@ type queuedResourceArgs struct {
 type QueuedResourceArgs struct {
 	// The BestEffort tier.
 	BestEffort BestEffortPtrInput
-	// The Guaranteed tier
+	// The Guaranteed tier.
 	Guaranteed GuaranteedPtrInput
 	Location   pulumi.StringPtrInput
 	Project    pulumi.StringPtrInput
@@ -118,6 +124,8 @@ type QueuedResourceArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
 	ReservationName pulumi.StringPtrInput
+	// Optional. The Spot tier.
+	Spot SpotPtrInput
 	// Defines a TPU resource.
 	Tpu TpuPtrInput
 }
@@ -176,7 +184,12 @@ func (o QueuedResourceOutput) BestEffort() BestEffortResponseOutput {
 	return o.ApplyT(func(v *QueuedResource) BestEffortResponseOutput { return v.BestEffort }).(BestEffortResponseOutput)
 }
 
-// The Guaranteed tier
+// The time when the QueuedResource was created.
+func (o QueuedResourceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueuedResource) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The Guaranteed tier.
 func (o QueuedResourceOutput) Guaranteed() GuaranteedResponseOutput {
 	return o.ApplyT(func(v *QueuedResource) GuaranteedResponseOutput { return v.Guaranteed }).(GuaranteedResponseOutput)
 }
@@ -212,6 +225,11 @@ func (o QueuedResourceOutput) RequestId() pulumi.StringPtrOutput {
 // Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
 func (o QueuedResourceOutput) ReservationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueuedResource) pulumi.StringOutput { return v.ReservationName }).(pulumi.StringOutput)
+}
+
+// Optional. The Spot tier.
+func (o QueuedResourceOutput) Spot() SpotResponseOutput {
+	return o.ApplyT(func(v *QueuedResource) SpotResponseOutput { return v.Spot }).(SpotResponseOutput)
 }
 
 // State of the QueuedResource request.

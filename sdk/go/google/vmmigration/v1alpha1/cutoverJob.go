@@ -20,6 +20,8 @@ import (
 type CutoverJob struct {
 	pulumi.CustomResourceState
 
+	// Details of the target Persistent Disks in Compute Engine.
+	ComputeEngineDisksTargetDetails ComputeEngineDisksTargetDetailsResponseOutput `pulumi:"computeEngineDisksTargetDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponseOutput `pulumi:"computeEngineTargetDetails"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
@@ -186,6 +188,13 @@ func (o CutoverJobOutput) ToOutput(ctx context.Context) pulumix.Output[*CutoverJ
 	return pulumix.Output[*CutoverJob]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Details of the target Persistent Disks in Compute Engine.
+func (o CutoverJobOutput) ComputeEngineDisksTargetDetails() ComputeEngineDisksTargetDetailsResponseOutput {
+	return o.ApplyT(func(v *CutoverJob) ComputeEngineDisksTargetDetailsResponseOutput {
+		return v.ComputeEngineDisksTargetDetails
+	}).(ComputeEngineDisksTargetDetailsResponseOutput)
 }
 
 // Details of the target VM in Compute Engine.

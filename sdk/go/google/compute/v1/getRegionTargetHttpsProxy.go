@@ -40,6 +40,8 @@ type LookupRegionTargetHttpsProxyResult struct {
 	Description string `pulumi:"description"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
 	Fingerprint string `pulumi:"fingerprint"`
+	// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
+	HttpKeepAliveTimeoutSec int `pulumi:"httpKeepAliveTimeoutSec"`
 	// Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -128,6 +130,11 @@ func (o LookupRegionTargetHttpsProxyResultOutput) Description() pulumi.StringOut
 // Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
 func (o LookupRegionTargetHttpsProxyResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
+func (o LookupRegionTargetHttpsProxyResultOutput) HttpKeepAliveTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) int { return v.HttpKeepAliveTimeoutSec }).(pulumi.IntOutput)
 }
 
 // Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.

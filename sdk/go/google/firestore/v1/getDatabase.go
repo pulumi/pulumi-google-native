@@ -37,20 +37,26 @@ type LookupDatabaseResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// State of delete protection for the database.
 	DeleteProtectionState string `pulumi:"deleteProtectionState"`
+	// The earliest timestamp at which older versions of the data can be read from the database. See [version_retention_period] above; this field is populated with `now - version_retention_period`. This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+	EarliestVersionTime string `pulumi:"earliestVersionTime"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
 	// The key_prefix for this database. This key_prefix is used, in combination with the project id ("~") to construct the application id that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes. This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
 	KeyPrefix string `pulumi:"keyPrefix"`
-	// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+	// The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
 	Location string `pulumi:"location"`
 	// The resource name of the Database. Format: `projects/{project}/databases/{database}`
 	Name string `pulumi:"name"`
+	// Whether to enable the PITR feature on this database.
+	PointInTimeRecoveryEnablement string `pulumi:"pointInTimeRecoveryEnablement"`
 	// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 	Type string `pulumi:"type"`
 	// The system-generated UUID4 for this Database.
 	Uid string `pulumi:"uid"`
 	// The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
 	UpdateTime string `pulumi:"updateTime"`
+	// The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+	VersionRetentionPeriod string `pulumi:"versionRetentionPeriod"`
 }
 
 func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseResultOutput {
@@ -115,6 +121,11 @@ func (o LookupDatabaseResultOutput) DeleteProtectionState() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.DeleteProtectionState }).(pulumi.StringOutput)
 }
 
+// The earliest timestamp at which older versions of the data can be read from the database. See [version_retention_period] above; this field is populated with `now - version_retention_period`. This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+func (o LookupDatabaseResultOutput) EarliestVersionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.EarliestVersionTime }).(pulumi.StringOutput)
+}
+
 // This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o LookupDatabaseResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -125,7 +136,7 @@ func (o LookupDatabaseResultOutput) KeyPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.KeyPrefix }).(pulumi.StringOutput)
 }
 
-// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+// The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
 func (o LookupDatabaseResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -133,6 +144,11 @@ func (o LookupDatabaseResultOutput) Location() pulumi.StringOutput {
 // The resource name of the Database. Format: `projects/{project}/databases/{database}`
 func (o LookupDatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether to enable the PITR feature on this database.
+func (o LookupDatabaseResultOutput) PointInTimeRecoveryEnablement() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.PointInTimeRecoveryEnablement }).(pulumi.StringOutput)
 }
 
 // The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
@@ -148,6 +164,11 @@ func (o LookupDatabaseResultOutput) Uid() pulumi.StringOutput {
 // The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
 func (o LookupDatabaseResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+func (o LookupDatabaseResultOutput) VersionRetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.VersionRetentionPeriod }).(pulumi.StringOutput)
 }
 
 func init() {

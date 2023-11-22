@@ -44,6 +44,8 @@ type BucketObject struct {
 	EventBasedHold pulumi.BoolOutput `pulumi:"eventBasedHold"`
 	// The content generation of this object. Used for object versioning.
 	Generation pulumi.StringOutput `pulumi:"generation"`
+	// This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+	HardDeleteTime pulumi.StringOutput `pulumi:"hardDeleteTime"`
 	// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
 	IfGenerationMatch pulumi.StringPtrOutput `pulumi:"ifGenerationMatch"`
 	// Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
@@ -64,7 +66,7 @@ type BucketObject struct {
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
 	Metageneration pulumi.StringOutput `pulumi:"metageneration"`
-	// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
+	// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The owner of the object. This will always be the uploader of the object.
 	Owner BucketObjectOwnerResponseOutput `pulumi:"owner"`
@@ -72,19 +74,23 @@ type BucketObject struct {
 	PredefinedAcl pulumi.StringPtrOutput `pulumi:"predefinedAcl"`
 	// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
 	Projection pulumi.StringPtrOutput `pulumi:"projection"`
+	// A collection of object level retention parameters.
+	Retention BucketObjectRetentionResponseOutput `pulumi:"retention"`
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime pulumi.StringOutput `pulumi:"retentionExpirationTime"`
 	// The link to this object.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Content-Length of the data in bytes.
 	Size pulumi.StringOutput `pulumi:"size"`
+	// The time at which the object became soft-deleted in RFC 3339 format.
+	SoftDeleteTime pulumi.StringOutput `pulumi:"softDeleteTime"`
 	// Storage class of the object.
 	StorageClass pulumi.StringOutput `pulumi:"storageClass"`
 	// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold does not impact retention expiration time of an object.
 	TemporaryHold pulumi.BoolOutput `pulumi:"temporaryHold"`
 	// The creation time of the object in RFC 3339 format.
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
-	// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+	// The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
 	TimeDeleted pulumi.StringOutput `pulumi:"timeDeleted"`
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated pulumi.StringOutput `pulumi:"timeStorageClassUpdated"`
@@ -169,6 +175,8 @@ type bucketObjectArgs struct {
 	EventBasedHold *bool `pulumi:"eventBasedHold"`
 	// The content generation of this object. Used for object versioning.
 	Generation *string `pulumi:"generation"`
+	// This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+	HardDeleteTime *string `pulumi:"hardDeleteTime"`
 	// The ID of the object, including the bucket name, object name, and generation number.
 	Id *string `pulumi:"id"`
 	// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
@@ -199,20 +207,24 @@ type bucketObjectArgs struct {
 	PredefinedAcl *string `pulumi:"predefinedAcl"`
 	// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
 	Projection *string `pulumi:"projection"`
+	// A collection of object level retention parameters.
+	Retention *BucketObjectRetention `pulumi:"retention"`
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime *string `pulumi:"retentionExpirationTime"`
 	// The link to this object.
 	SelfLink *string `pulumi:"selfLink"`
 	// Content-Length of the data in bytes.
-	Size   *string               `pulumi:"size"`
-	Source pulumi.AssetOrArchive `pulumi:"source"`
+	Size *string `pulumi:"size"`
+	// The time at which the object became soft-deleted in RFC 3339 format.
+	SoftDeleteTime *string               `pulumi:"softDeleteTime"`
+	Source         pulumi.AssetOrArchive `pulumi:"source"`
 	// Storage class of the object.
 	StorageClass *string `pulumi:"storageClass"`
 	// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold does not impact retention expiration time of an object.
 	TemporaryHold *bool `pulumi:"temporaryHold"`
 	// The creation time of the object in RFC 3339 format.
 	TimeCreated *string `pulumi:"timeCreated"`
-	// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+	// The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
 	TimeDeleted *string `pulumi:"timeDeleted"`
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated *string `pulumi:"timeStorageClassUpdated"`
@@ -252,6 +264,8 @@ type BucketObjectArgs struct {
 	EventBasedHold pulumi.BoolPtrInput
 	// The content generation of this object. Used for object versioning.
 	Generation pulumi.StringPtrInput
+	// This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+	HardDeleteTime pulumi.StringPtrInput
 	// The ID of the object, including the bucket name, object name, and generation number.
 	Id pulumi.StringPtrInput
 	// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
@@ -282,20 +296,24 @@ type BucketObjectArgs struct {
 	PredefinedAcl pulumi.StringPtrInput
 	// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
 	Projection pulumi.StringPtrInput
+	// A collection of object level retention parameters.
+	Retention BucketObjectRetentionPtrInput
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime pulumi.StringPtrInput
 	// The link to this object.
 	SelfLink pulumi.StringPtrInput
 	// Content-Length of the data in bytes.
-	Size   pulumi.StringPtrInput
-	Source pulumi.AssetOrArchiveInput
+	Size pulumi.StringPtrInput
+	// The time at which the object became soft-deleted in RFC 3339 format.
+	SoftDeleteTime pulumi.StringPtrInput
+	Source         pulumi.AssetOrArchiveInput
 	// Storage class of the object.
 	StorageClass pulumi.StringPtrInput
 	// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold does not impact retention expiration time of an object.
 	TemporaryHold pulumi.BoolPtrInput
 	// The creation time of the object in RFC 3339 format.
 	TimeCreated pulumi.StringPtrInput
-	// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+	// The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
 	TimeDeleted pulumi.StringPtrInput
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated pulumi.StringPtrInput
@@ -423,6 +441,11 @@ func (o BucketObjectOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Generation }).(pulumi.StringOutput)
 }
 
+// This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to the soft delete time plus the current soft delete retention duration of the bucket.
+func (o BucketObjectOutput) HardDeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.HardDeleteTime }).(pulumi.StringOutput)
+}
+
 // Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
 func (o BucketObjectOutput) IfGenerationMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.IfGenerationMatch }).(pulumi.StringPtrOutput)
@@ -473,7 +496,7 @@ func (o BucketObjectOutput) Metageneration() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Metageneration }).(pulumi.StringOutput)
 }
 
-// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
+// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
 func (o BucketObjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -493,6 +516,11 @@ func (o BucketObjectOutput) Projection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Projection }).(pulumi.StringPtrOutput)
 }
 
+// A collection of object level retention parameters.
+func (o BucketObjectOutput) Retention() BucketObjectRetentionResponseOutput {
+	return o.ApplyT(func(v *BucketObject) BucketObjectRetentionResponseOutput { return v.Retention }).(BucketObjectRetentionResponseOutput)
+}
+
 // A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 func (o BucketObjectOutput) RetentionExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.RetentionExpirationTime }).(pulumi.StringOutput)
@@ -506,6 +534,11 @@ func (o BucketObjectOutput) SelfLink() pulumi.StringOutput {
 // Content-Length of the data in bytes.
 func (o BucketObjectOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
+}
+
+// The time at which the object became soft-deleted in RFC 3339 format.
+func (o BucketObjectOutput) SoftDeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.SoftDeleteTime }).(pulumi.StringOutput)
 }
 
 // Storage class of the object.
@@ -523,7 +556,7 @@ func (o BucketObjectOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
-// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+// The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
 func (o BucketObjectOutput) TimeDeleted() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.TimeDeleted }).(pulumi.StringOutput)
 }

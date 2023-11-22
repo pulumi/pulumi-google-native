@@ -58,6 +58,8 @@ type LookupMigrationJobResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name string `pulumi:"name"`
+	// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+	PerformanceConfig PerformanceConfigResponse `pulumi:"performanceConfig"`
 	// The current migration job phase.
 	Phase string `pulumi:"phase"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
@@ -189,6 +191,11 @@ func (o LookupMigrationJobResultOutput) Labels() pulumi.StringMapOutput {
 // The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 func (o LookupMigrationJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationJobResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+func (o LookupMigrationJobResultOutput) PerformanceConfig() PerformanceConfigResponseOutput {
+	return o.ApplyT(func(v LookupMigrationJobResult) PerformanceConfigResponse { return v.PerformanceConfig }).(PerformanceConfigResponseOutput)
 }
 
 // The current migration job phase.

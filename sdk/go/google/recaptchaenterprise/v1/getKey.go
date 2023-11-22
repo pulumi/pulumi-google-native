@@ -37,13 +37,13 @@ type LookupKeyResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse `pulumi:"iosSettings"`
-	// See Creating and managing labels.
+	// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name for the Key in the format "projects/{project}/keys/{key}".
+	// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
 	Name string `pulumi:"name"`
-	// Options for user acceptance testing.
+	// Optional. Options for user acceptance testing.
 	TestingOptions GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse `pulumi:"testingOptions"`
-	// Settings for WAF
+	// Optional. Settings for WAF
 	WafSettings GoogleCloudRecaptchaenterpriseV1WafSettingsResponse `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
 	WebSettings GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse `pulumi:"webSettings"`
@@ -113,24 +113,24 @@ func (o LookupKeyResultOutput) IosSettings() GoogleCloudRecaptchaenterpriseV1IOS
 	return o.ApplyT(func(v LookupKeyResult) GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse { return v.IosSettings }).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput)
 }
 
-// See Creating and managing labels.
+// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
 func (o LookupKeyResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupKeyResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The resource name for the Key in the format "projects/{project}/keys/{key}".
+// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
 func (o LookupKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Options for user acceptance testing.
+// Optional. Options for user acceptance testing.
 func (o LookupKeyResultOutput) TestingOptions() GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput {
 	return o.ApplyT(func(v LookupKeyResult) GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse {
 		return v.TestingOptions
 	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput)
 }
 
-// Settings for WAF
+// Optional. Settings for WAF
 func (o LookupKeyResultOutput) WafSettings() GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput {
 	return o.ApplyT(func(v LookupKeyResult) GoogleCloudRecaptchaenterpriseV1WafSettingsResponse { return v.WafSettings }).(GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput)
 }

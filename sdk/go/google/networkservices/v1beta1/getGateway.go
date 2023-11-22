@@ -30,7 +30,7 @@ type LookupGatewayArgs struct {
 }
 
 type LookupGatewayResult struct {
-	// Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+	// Optional. Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
 	Addresses []string `pulumi:"addresses"`
 	// Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls []string `pulumi:"certificateUrls"`
@@ -46,7 +46,7 @@ type LookupGatewayResult struct {
 	Name string `pulumi:"name"`
 	// Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	Network string `pulumi:"network"`
-	// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+	// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
 	Ports []int `pulumi:"ports"`
 	// Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
 	Scope string `pulumi:"scope"`
@@ -105,7 +105,7 @@ func (o LookupGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+// Optional. Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
 func (o LookupGatewayResultOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGatewayResult) []string { return v.Addresses }).(pulumi.StringArrayOutput)
 }
@@ -145,7 +145,7 @@ func (o LookupGatewayResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
+// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
 func (o LookupGatewayResultOutput) Ports() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v LookupGatewayResult) []int { return v.Ports }).(pulumi.IntArrayOutput)
 }

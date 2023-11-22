@@ -27,7 +27,7 @@ type Router struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
 	EncryptedInterconnectRouter pulumi.BoolOutput `pulumi:"encryptedInterconnectRouter"`
-	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+	// Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
 	Interfaces RouterInterfaceResponseArrayOutput `pulumi:"interfaces"`
 	// Type of resource. Always compute#router for routers.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -105,7 +105,7 @@ type routerArgs struct {
 	Description *string `pulumi:"description"`
 	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
-	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+	// Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
 	Interfaces []RouterInterface `pulumi:"interfaces"`
 	// Keys used for MD5 authentication.
 	Md5AuthenticationKeys []RouterMd5AuthenticationKey `pulumi:"md5AuthenticationKeys"`
@@ -131,7 +131,7 @@ type RouterArgs struct {
 	Description pulumi.StringPtrInput
 	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
-	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+	// Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
 	Interfaces RouterInterfaceArrayInput
 	// Keys used for MD5 authentication.
 	Md5AuthenticationKeys RouterMd5AuthenticationKeyArrayInput
@@ -221,7 +221,7 @@ func (o RouterOutput) EncryptedInterconnectRouter() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Router) pulumi.BoolOutput { return v.EncryptedInterconnectRouter }).(pulumi.BoolOutput)
 }
 
-// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+// Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
 func (o RouterOutput) Interfaces() RouterInterfaceResponseArrayOutput {
 	return o.ApplyT(func(v *Router) RouterInterfaceResponseArrayOutput { return v.Interfaces }).(RouterInterfaceResponseArrayOutput)
 }

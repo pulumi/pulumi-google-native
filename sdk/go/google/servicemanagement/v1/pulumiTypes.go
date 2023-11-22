@@ -3738,6 +3738,8 @@ func (o ContextRuleResponseArrayOutput) Index(i pulumi.IntInput) ContextRuleResp
 type Control struct {
 	// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 	Environment *string `pulumi:"environment"`
+	// Defines policies applying to the API methods of the service.
+	MethodPolicies []MethodPolicy `pulumi:"methodPolicies"`
 }
 
 // ControlInput is an input type that accepts ControlArgs and ControlOutput values.
@@ -3755,6 +3757,8 @@ type ControlInput interface {
 type ControlArgs struct {
 	// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 	Environment pulumi.StringPtrInput `pulumi:"environment"`
+	// Defines policies applying to the API methods of the service.
+	MethodPolicies MethodPolicyArrayInput `pulumi:"methodPolicies"`
 }
 
 func (ControlArgs) ElementType() reflect.Type {
@@ -3858,6 +3862,11 @@ func (o ControlOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Control) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
+// Defines policies applying to the API methods of the service.
+func (o ControlOutput) MethodPolicies() MethodPolicyArrayOutput {
+	return o.ApplyT(func(v Control) []MethodPolicy { return v.MethodPolicies }).(MethodPolicyArrayOutput)
+}
+
 type ControlPtrOutput struct{ *pulumi.OutputState }
 
 func (ControlPtrOutput) ElementType() reflect.Type {
@@ -3898,10 +3907,22 @@ func (o ControlPtrOutput) Environment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Defines policies applying to the API methods of the service.
+func (o ControlPtrOutput) MethodPolicies() MethodPolicyArrayOutput {
+	return o.ApplyT(func(v *Control) []MethodPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.MethodPolicies
+	}).(MethodPolicyArrayOutput)
+}
+
 // Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
 type ControlResponse struct {
 	// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 	Environment string `pulumi:"environment"`
+	// Defines policies applying to the API methods of the service.
+	MethodPolicies []MethodPolicyResponse `pulumi:"methodPolicies"`
 }
 
 // Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
@@ -3928,6 +3949,11 @@ func (o ControlResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Cont
 // The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 func (o ControlResponseOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v ControlResponse) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+// Defines policies applying to the API methods of the service.
+func (o ControlResponseOutput) MethodPolicies() MethodPolicyResponseArrayOutput {
+	return o.ApplyT(func(v ControlResponse) []MethodPolicyResponse { return v.MethodPolicies }).(MethodPolicyResponseArrayOutput)
 }
 
 // Settings for C++ client libraries.
@@ -4938,7 +4964,7 @@ func (o DeleteServiceStrategyResponseOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
+// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
 type Documentation struct {
 	// The URL to the root of documentation.
 	DocumentationRootUrl *string `pulumi:"documentationRootUrl"`
@@ -4948,6 +4974,8 @@ type Documentation struct {
 	Pages []Page `pulumi:"pages"`
 	// A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
 	Rules []DocumentationRule `pulumi:"rules"`
+	// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
+	SectionOverrides []Page `pulumi:"sectionOverrides"`
 	// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
 	ServiceRootUrl *string `pulumi:"serviceRootUrl"`
 	// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
@@ -4965,7 +4993,7 @@ type DocumentationInput interface {
 	ToDocumentationOutputWithContext(context.Context) DocumentationOutput
 }
 
-// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
+// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
 type DocumentationArgs struct {
 	// The URL to the root of documentation.
 	DocumentationRootUrl pulumi.StringPtrInput `pulumi:"documentationRootUrl"`
@@ -4975,6 +5003,8 @@ type DocumentationArgs struct {
 	Pages PageArrayInput `pulumi:"pages"`
 	// A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
 	Rules DocumentationRuleArrayInput `pulumi:"rules"`
+	// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
+	SectionOverrides PageArrayInput `pulumi:"sectionOverrides"`
 	// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
 	ServiceRootUrl pulumi.StringPtrInput `pulumi:"serviceRootUrl"`
 	// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
@@ -5046,7 +5076,7 @@ func (i *documentationPtrType) ToOutput(ctx context.Context) pulumix.Output[*Doc
 	}
 }
 
-// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
+// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
 type DocumentationOutput struct{ *pulumi.OutputState }
 
 func (DocumentationOutput) ElementType() reflect.Type {
@@ -5095,6 +5125,11 @@ func (o DocumentationOutput) Pages() PageArrayOutput {
 // A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
 func (o DocumentationOutput) Rules() DocumentationRuleArrayOutput {
 	return o.ApplyT(func(v Documentation) []DocumentationRule { return v.Rules }).(DocumentationRuleArrayOutput)
+}
+
+// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
+func (o DocumentationOutput) SectionOverrides() PageArrayOutput {
+	return o.ApplyT(func(v Documentation) []Page { return v.SectionOverrides }).(PageArrayOutput)
 }
 
 // Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
@@ -5177,6 +5212,16 @@ func (o DocumentationPtrOutput) Rules() DocumentationRuleArrayOutput {
 	}).(DocumentationRuleArrayOutput)
 }
 
+// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
+func (o DocumentationPtrOutput) SectionOverrides() PageArrayOutput {
+	return o.ApplyT(func(v *Documentation) []Page {
+		if v == nil {
+			return nil
+		}
+		return v.SectionOverrides
+	}).(PageArrayOutput)
+}
+
 // Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
 func (o DocumentationPtrOutput) ServiceRootUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Documentation) *string {
@@ -5197,7 +5242,7 @@ func (o DocumentationPtrOutput) Summary() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
+// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
 type DocumentationResponse struct {
 	// The URL to the root of documentation.
 	DocumentationRootUrl string `pulumi:"documentationRootUrl"`
@@ -5207,13 +5252,15 @@ type DocumentationResponse struct {
 	Pages []PageResponse `pulumi:"pages"`
 	// A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
 	Rules []DocumentationRuleResponse `pulumi:"rules"`
+	// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
+	SectionOverrides []PageResponse `pulumi:"sectionOverrides"`
 	// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
 	ServiceRootUrl string `pulumi:"serviceRootUrl"`
 	// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
 	Summary string `pulumi:"summary"`
 }
 
-// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
+// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
 type DocumentationResponseOutput struct{ *pulumi.OutputState }
 
 func (DocumentationResponseOutput) ElementType() reflect.Type {
@@ -5252,6 +5299,11 @@ func (o DocumentationResponseOutput) Pages() PageResponseArrayOutput {
 // A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
 func (o DocumentationResponseOutput) Rules() DocumentationRuleResponseArrayOutput {
 	return o.ApplyT(func(v DocumentationResponse) []DocumentationRuleResponse { return v.Rules }).(DocumentationRuleResponseArrayOutput)
+}
+
+// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
+func (o DocumentationResponseOutput) SectionOverrides() PageResponseArrayOutput {
+	return o.ApplyT(func(v DocumentationResponse) []PageResponse { return v.SectionOverrides }).(PageResponseArrayOutput)
 }
 
 // Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
@@ -7013,6 +7065,220 @@ func (o FieldArrayOutput) Index(i pulumi.IntInput) FieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Field {
 		return vs[0].([]Field)[vs[1].(int)]
 	}).(FieldOutput)
+}
+
+// Google API Policy Annotation This message defines a simple API policy annotation that can be used to annotate API request and response message fields with applicable policies. One field may have multiple applicable policies that must all be satisfied before a request can be processed. This policy annotation is used to generate the overall policy that will be used for automatic runtime policy enforcement and documentation generation.
+type FieldPolicy struct {
+	// Specifies the required permission(s) for the resource referred to by the field. It requires the field contains a valid resource reference, and the request must pass the permission checks to proceed. For example, "resourcemanager.projects.get".
+	ResourcePermission *string `pulumi:"resourcePermission"`
+	// Specifies the resource type for the resource referred to by the field.
+	ResourceType *string `pulumi:"resourceType"`
+	// Selects one or more request or response message fields to apply this `FieldPolicy`. When a `FieldPolicy` is used in proto annotation, the selector must be left as empty. The service config generator will automatically fill the correct value. When a `FieldPolicy` is used in service config, the selector must be a comma-separated string with valid request or response field paths, such as "foo.bar" or "foo.bar,foo.baz".
+	Selector *string `pulumi:"selector"`
+}
+
+// FieldPolicyInput is an input type that accepts FieldPolicyArgs and FieldPolicyOutput values.
+// You can construct a concrete instance of `FieldPolicyInput` via:
+//
+//	FieldPolicyArgs{...}
+type FieldPolicyInput interface {
+	pulumi.Input
+
+	ToFieldPolicyOutput() FieldPolicyOutput
+	ToFieldPolicyOutputWithContext(context.Context) FieldPolicyOutput
+}
+
+// Google API Policy Annotation This message defines a simple API policy annotation that can be used to annotate API request and response message fields with applicable policies. One field may have multiple applicable policies that must all be satisfied before a request can be processed. This policy annotation is used to generate the overall policy that will be used for automatic runtime policy enforcement and documentation generation.
+type FieldPolicyArgs struct {
+	// Specifies the required permission(s) for the resource referred to by the field. It requires the field contains a valid resource reference, and the request must pass the permission checks to proceed. For example, "resourcemanager.projects.get".
+	ResourcePermission pulumi.StringPtrInput `pulumi:"resourcePermission"`
+	// Specifies the resource type for the resource referred to by the field.
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+	// Selects one or more request or response message fields to apply this `FieldPolicy`. When a `FieldPolicy` is used in proto annotation, the selector must be left as empty. The service config generator will automatically fill the correct value. When a `FieldPolicy` is used in service config, the selector must be a comma-separated string with valid request or response field paths, such as "foo.bar" or "foo.bar,foo.baz".
+	Selector pulumi.StringPtrInput `pulumi:"selector"`
+}
+
+func (FieldPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldPolicy)(nil)).Elem()
+}
+
+func (i FieldPolicyArgs) ToFieldPolicyOutput() FieldPolicyOutput {
+	return i.ToFieldPolicyOutputWithContext(context.Background())
+}
+
+func (i FieldPolicyArgs) ToFieldPolicyOutputWithContext(ctx context.Context) FieldPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldPolicyOutput)
+}
+
+func (i FieldPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[FieldPolicy] {
+	return pulumix.Output[FieldPolicy]{
+		OutputState: i.ToFieldPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+// FieldPolicyArrayInput is an input type that accepts FieldPolicyArray and FieldPolicyArrayOutput values.
+// You can construct a concrete instance of `FieldPolicyArrayInput` via:
+//
+//	FieldPolicyArray{ FieldPolicyArgs{...} }
+type FieldPolicyArrayInput interface {
+	pulumi.Input
+
+	ToFieldPolicyArrayOutput() FieldPolicyArrayOutput
+	ToFieldPolicyArrayOutputWithContext(context.Context) FieldPolicyArrayOutput
+}
+
+type FieldPolicyArray []FieldPolicyInput
+
+func (FieldPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldPolicy)(nil)).Elem()
+}
+
+func (i FieldPolicyArray) ToFieldPolicyArrayOutput() FieldPolicyArrayOutput {
+	return i.ToFieldPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i FieldPolicyArray) ToFieldPolicyArrayOutputWithContext(ctx context.Context) FieldPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldPolicyArrayOutput)
+}
+
+func (i FieldPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]FieldPolicy] {
+	return pulumix.Output[[]FieldPolicy]{
+		OutputState: i.ToFieldPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Google API Policy Annotation This message defines a simple API policy annotation that can be used to annotate API request and response message fields with applicable policies. One field may have multiple applicable policies that must all be satisfied before a request can be processed. This policy annotation is used to generate the overall policy that will be used for automatic runtime policy enforcement and documentation generation.
+type FieldPolicyOutput struct{ *pulumi.OutputState }
+
+func (FieldPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldPolicy)(nil)).Elem()
+}
+
+func (o FieldPolicyOutput) ToFieldPolicyOutput() FieldPolicyOutput {
+	return o
+}
+
+func (o FieldPolicyOutput) ToFieldPolicyOutputWithContext(ctx context.Context) FieldPolicyOutput {
+	return o
+}
+
+func (o FieldPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[FieldPolicy] {
+	return pulumix.Output[FieldPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the required permission(s) for the resource referred to by the field. It requires the field contains a valid resource reference, and the request must pass the permission checks to proceed. For example, "resourcemanager.projects.get".
+func (o FieldPolicyOutput) ResourcePermission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldPolicy) *string { return v.ResourcePermission }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the resource type for the resource referred to by the field.
+func (o FieldPolicyOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldPolicy) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+// Selects one or more request or response message fields to apply this `FieldPolicy`. When a `FieldPolicy` is used in proto annotation, the selector must be left as empty. The service config generator will automatically fill the correct value. When a `FieldPolicy` is used in service config, the selector must be a comma-separated string with valid request or response field paths, such as "foo.bar" or "foo.bar,foo.baz".
+func (o FieldPolicyOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldPolicy) *string { return v.Selector }).(pulumi.StringPtrOutput)
+}
+
+type FieldPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldPolicy)(nil)).Elem()
+}
+
+func (o FieldPolicyArrayOutput) ToFieldPolicyArrayOutput() FieldPolicyArrayOutput {
+	return o
+}
+
+func (o FieldPolicyArrayOutput) ToFieldPolicyArrayOutputWithContext(ctx context.Context) FieldPolicyArrayOutput {
+	return o
+}
+
+func (o FieldPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FieldPolicy] {
+	return pulumix.Output[[]FieldPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o FieldPolicyArrayOutput) Index(i pulumi.IntInput) FieldPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldPolicy {
+		return vs[0].([]FieldPolicy)[vs[1].(int)]
+	}).(FieldPolicyOutput)
+}
+
+// Google API Policy Annotation This message defines a simple API policy annotation that can be used to annotate API request and response message fields with applicable policies. One field may have multiple applicable policies that must all be satisfied before a request can be processed. This policy annotation is used to generate the overall policy that will be used for automatic runtime policy enforcement and documentation generation.
+type FieldPolicyResponse struct {
+	// Specifies the required permission(s) for the resource referred to by the field. It requires the field contains a valid resource reference, and the request must pass the permission checks to proceed. For example, "resourcemanager.projects.get".
+	ResourcePermission string `pulumi:"resourcePermission"`
+	// Specifies the resource type for the resource referred to by the field.
+	ResourceType string `pulumi:"resourceType"`
+	// Selects one or more request or response message fields to apply this `FieldPolicy`. When a `FieldPolicy` is used in proto annotation, the selector must be left as empty. The service config generator will automatically fill the correct value. When a `FieldPolicy` is used in service config, the selector must be a comma-separated string with valid request or response field paths, such as "foo.bar" or "foo.bar,foo.baz".
+	Selector string `pulumi:"selector"`
+}
+
+// Google API Policy Annotation This message defines a simple API policy annotation that can be used to annotate API request and response message fields with applicable policies. One field may have multiple applicable policies that must all be satisfied before a request can be processed. This policy annotation is used to generate the overall policy that will be used for automatic runtime policy enforcement and documentation generation.
+type FieldPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (FieldPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldPolicyResponse)(nil)).Elem()
+}
+
+func (o FieldPolicyResponseOutput) ToFieldPolicyResponseOutput() FieldPolicyResponseOutput {
+	return o
+}
+
+func (o FieldPolicyResponseOutput) ToFieldPolicyResponseOutputWithContext(ctx context.Context) FieldPolicyResponseOutput {
+	return o
+}
+
+func (o FieldPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FieldPolicyResponse] {
+	return pulumix.Output[FieldPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the required permission(s) for the resource referred to by the field. It requires the field contains a valid resource reference, and the request must pass the permission checks to proceed. For example, "resourcemanager.projects.get".
+func (o FieldPolicyResponseOutput) ResourcePermission() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldPolicyResponse) string { return v.ResourcePermission }).(pulumi.StringOutput)
+}
+
+// Specifies the resource type for the resource referred to by the field.
+func (o FieldPolicyResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldPolicyResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Selects one or more request or response message fields to apply this `FieldPolicy`. When a `FieldPolicy` is used in proto annotation, the selector must be left as empty. The service config generator will automatically fill the correct value. When a `FieldPolicy` is used in service config, the selector must be a comma-separated string with valid request or response field paths, such as "foo.bar" or "foo.bar,foo.baz".
+func (o FieldPolicyResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldPolicyResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type FieldPolicyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldPolicyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldPolicyResponse)(nil)).Elem()
+}
+
+func (o FieldPolicyResponseArrayOutput) ToFieldPolicyResponseArrayOutput() FieldPolicyResponseArrayOutput {
+	return o
+}
+
+func (o FieldPolicyResponseArrayOutput) ToFieldPolicyResponseArrayOutputWithContext(ctx context.Context) FieldPolicyResponseArrayOutput {
+	return o
+}
+
+func (o FieldPolicyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FieldPolicyResponse] {
+	return pulumix.Output[[]FieldPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o FieldPolicyResponseArrayOutput) Index(i pulumi.IntInput) FieldPolicyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldPolicyResponse {
+		return vs[0].([]FieldPolicyResponse)[vs[1].(int)]
+	}).(FieldPolicyResponseOutput)
 }
 
 // A single field of a message type.
@@ -9672,6 +9938,204 @@ func (o MethodArrayOutput) Index(i pulumi.IntInput) MethodOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Method {
 		return vs[0].([]Method)[vs[1].(int)]
 	}).(MethodOutput)
+}
+
+// Defines policies applying to an RPC method.
+type MethodPolicy struct {
+	// Policies that are applicable to the request message.
+	RequestPolicies []FieldPolicy `pulumi:"requestPolicies"`
+	// Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
+	Selector *string `pulumi:"selector"`
+}
+
+// MethodPolicyInput is an input type that accepts MethodPolicyArgs and MethodPolicyOutput values.
+// You can construct a concrete instance of `MethodPolicyInput` via:
+//
+//	MethodPolicyArgs{...}
+type MethodPolicyInput interface {
+	pulumi.Input
+
+	ToMethodPolicyOutput() MethodPolicyOutput
+	ToMethodPolicyOutputWithContext(context.Context) MethodPolicyOutput
+}
+
+// Defines policies applying to an RPC method.
+type MethodPolicyArgs struct {
+	// Policies that are applicable to the request message.
+	RequestPolicies FieldPolicyArrayInput `pulumi:"requestPolicies"`
+	// Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
+	Selector pulumi.StringPtrInput `pulumi:"selector"`
+}
+
+func (MethodPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodPolicy)(nil)).Elem()
+}
+
+func (i MethodPolicyArgs) ToMethodPolicyOutput() MethodPolicyOutput {
+	return i.ToMethodPolicyOutputWithContext(context.Background())
+}
+
+func (i MethodPolicyArgs) ToMethodPolicyOutputWithContext(ctx context.Context) MethodPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodPolicyOutput)
+}
+
+func (i MethodPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[MethodPolicy] {
+	return pulumix.Output[MethodPolicy]{
+		OutputState: i.ToMethodPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+// MethodPolicyArrayInput is an input type that accepts MethodPolicyArray and MethodPolicyArrayOutput values.
+// You can construct a concrete instance of `MethodPolicyArrayInput` via:
+//
+//	MethodPolicyArray{ MethodPolicyArgs{...} }
+type MethodPolicyArrayInput interface {
+	pulumi.Input
+
+	ToMethodPolicyArrayOutput() MethodPolicyArrayOutput
+	ToMethodPolicyArrayOutputWithContext(context.Context) MethodPolicyArrayOutput
+}
+
+type MethodPolicyArray []MethodPolicyInput
+
+func (MethodPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MethodPolicy)(nil)).Elem()
+}
+
+func (i MethodPolicyArray) ToMethodPolicyArrayOutput() MethodPolicyArrayOutput {
+	return i.ToMethodPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i MethodPolicyArray) ToMethodPolicyArrayOutputWithContext(ctx context.Context) MethodPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodPolicyArrayOutput)
+}
+
+func (i MethodPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]MethodPolicy] {
+	return pulumix.Output[[]MethodPolicy]{
+		OutputState: i.ToMethodPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Defines policies applying to an RPC method.
+type MethodPolicyOutput struct{ *pulumi.OutputState }
+
+func (MethodPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodPolicy)(nil)).Elem()
+}
+
+func (o MethodPolicyOutput) ToMethodPolicyOutput() MethodPolicyOutput {
+	return o
+}
+
+func (o MethodPolicyOutput) ToMethodPolicyOutputWithContext(ctx context.Context) MethodPolicyOutput {
+	return o
+}
+
+func (o MethodPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[MethodPolicy] {
+	return pulumix.Output[MethodPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Policies that are applicable to the request message.
+func (o MethodPolicyOutput) RequestPolicies() FieldPolicyArrayOutput {
+	return o.ApplyT(func(v MethodPolicy) []FieldPolicy { return v.RequestPolicies }).(FieldPolicyArrayOutput)
+}
+
+// Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
+func (o MethodPolicyOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MethodPolicy) *string { return v.Selector }).(pulumi.StringPtrOutput)
+}
+
+type MethodPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (MethodPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MethodPolicy)(nil)).Elem()
+}
+
+func (o MethodPolicyArrayOutput) ToMethodPolicyArrayOutput() MethodPolicyArrayOutput {
+	return o
+}
+
+func (o MethodPolicyArrayOutput) ToMethodPolicyArrayOutputWithContext(ctx context.Context) MethodPolicyArrayOutput {
+	return o
+}
+
+func (o MethodPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MethodPolicy] {
+	return pulumix.Output[[]MethodPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MethodPolicyArrayOutput) Index(i pulumi.IntInput) MethodPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MethodPolicy {
+		return vs[0].([]MethodPolicy)[vs[1].(int)]
+	}).(MethodPolicyOutput)
+}
+
+// Defines policies applying to an RPC method.
+type MethodPolicyResponse struct {
+	// Policies that are applicable to the request message.
+	RequestPolicies []FieldPolicyResponse `pulumi:"requestPolicies"`
+	// Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
+	Selector string `pulumi:"selector"`
+}
+
+// Defines policies applying to an RPC method.
+type MethodPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (MethodPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodPolicyResponse)(nil)).Elem()
+}
+
+func (o MethodPolicyResponseOutput) ToMethodPolicyResponseOutput() MethodPolicyResponseOutput {
+	return o
+}
+
+func (o MethodPolicyResponseOutput) ToMethodPolicyResponseOutputWithContext(ctx context.Context) MethodPolicyResponseOutput {
+	return o
+}
+
+func (o MethodPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MethodPolicyResponse] {
+	return pulumix.Output[MethodPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Policies that are applicable to the request message.
+func (o MethodPolicyResponseOutput) RequestPolicies() FieldPolicyResponseArrayOutput {
+	return o.ApplyT(func(v MethodPolicyResponse) []FieldPolicyResponse { return v.RequestPolicies }).(FieldPolicyResponseArrayOutput)
+}
+
+// Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
+func (o MethodPolicyResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v MethodPolicyResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type MethodPolicyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MethodPolicyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MethodPolicyResponse)(nil)).Elem()
+}
+
+func (o MethodPolicyResponseArrayOutput) ToMethodPolicyResponseArrayOutput() MethodPolicyResponseArrayOutput {
+	return o
+}
+
+func (o MethodPolicyResponseArrayOutput) ToMethodPolicyResponseArrayOutputWithContext(ctx context.Context) MethodPolicyResponseArrayOutput {
+	return o
+}
+
+func (o MethodPolicyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MethodPolicyResponse] {
+	return pulumix.Output[[]MethodPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MethodPolicyResponseArrayOutput) Index(i pulumi.IntInput) MethodPolicyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MethodPolicyResponse {
+		return vs[0].([]MethodPolicyResponse)[vs[1].(int)]
+	}).(MethodPolicyResponseOutput)
 }
 
 // Method represents a method of an API interface.
@@ -15855,6 +16319,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldInput)(nil)).Elem(), FieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldArrayInput)(nil)).Elem(), FieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldPolicyInput)(nil)).Elem(), FieldPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldPolicyArrayInput)(nil)).Elem(), FieldPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoSettingsInput)(nil)).Elem(), GoSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoSettingsPtrInput)(nil)).Elem(), GoSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpInput)(nil)).Elem(), HttpArgs{})
@@ -15877,6 +16343,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LongRunningPtrInput)(nil)).Elem(), LongRunningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MethodInput)(nil)).Elem(), MethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MethodArrayInput)(nil)).Elem(), MethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MethodPolicyInput)(nil)).Elem(), MethodPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MethodPolicyArrayInput)(nil)).Elem(), MethodPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MethodSettingsInput)(nil)).Elem(), MethodSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MethodSettingsArrayInput)(nil)).Elem(), MethodSettingsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorInput)(nil)).Elem(), MetricDescriptorArgs{})
@@ -16034,6 +16502,10 @@ func init() {
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(FieldOutput{})
 	pulumi.RegisterOutputType(FieldArrayOutput{})
+	pulumi.RegisterOutputType(FieldPolicyOutput{})
+	pulumi.RegisterOutputType(FieldPolicyArrayOutput{})
+	pulumi.RegisterOutputType(FieldPolicyResponseOutput{})
+	pulumi.RegisterOutputType(FieldPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(FieldResponseOutput{})
 	pulumi.RegisterOutputType(FieldResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoSettingsOutput{})
@@ -16073,6 +16545,10 @@ func init() {
 	pulumi.RegisterOutputType(LongRunningResponseOutput{})
 	pulumi.RegisterOutputType(MethodOutput{})
 	pulumi.RegisterOutputType(MethodArrayOutput{})
+	pulumi.RegisterOutputType(MethodPolicyOutput{})
+	pulumi.RegisterOutputType(MethodPolicyArrayOutput{})
+	pulumi.RegisterOutputType(MethodPolicyResponseOutput{})
+	pulumi.RegisterOutputType(MethodPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(MethodResponseOutput{})
 	pulumi.RegisterOutputType(MethodResponseArrayOutput{})
 	pulumi.RegisterOutputType(MethodSettingsOutput{})

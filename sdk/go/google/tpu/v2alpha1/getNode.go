@@ -36,6 +36,10 @@ type LookupNodeResult struct {
 	AcceleratorType string `pulumi:"acceleratorType"`
 	// The API version that created this Node.
 	ApiVersion string `pulumi:"apiVersion"`
+	// Optional. Whether Autocheckpoint is enabled.
+	AutocheckpointEnabled bool `pulumi:"autocheckpointEnabled"`
+	// Optional. Boot disk configuration.
+	BootDiskConfig BootDiskConfigResponse `pulumi:"bootDiskConfig"`
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock string `pulumi:"cidrBlock"`
 	// The time when the node was created.
@@ -134,6 +138,16 @@ func (o LookupNodeResultOutput) AcceleratorType() pulumi.StringOutput {
 // The API version that created this Node.
 func (o LookupNodeResultOutput) ApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// Optional. Whether Autocheckpoint is enabled.
+func (o LookupNodeResultOutput) AutocheckpointEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupNodeResult) bool { return v.AutocheckpointEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional. Boot disk configuration.
+func (o LookupNodeResultOutput) BootDiskConfig() BootDiskConfigResponseOutput {
+	return o.ApplyT(func(v LookupNodeResult) BootDiskConfigResponse { return v.BootDiskConfig }).(BootDiskConfigResponseOutput)
 }
 
 // The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.

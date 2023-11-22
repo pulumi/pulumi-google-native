@@ -67,6 +67,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionWorkflowTemplateIamMember{}
 	case "google-native:dataproc/v1:RegionWorkflowTemplateIamPolicy":
 		r = &RegionWorkflowTemplateIamPolicy{}
+	case "google-native:dataproc/v1:Session":
+		r = &Session{}
+	case "google-native:dataproc/v1:SessionTemplate":
+		r = &SessionTemplate{}
 	case "google-native:dataproc/v1:WorkflowTemplate":
 		r = &WorkflowTemplate{}
 	case "google-native:dataproc/v1:WorkflowTemplateIamBinding":

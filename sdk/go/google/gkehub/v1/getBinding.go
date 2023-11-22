@@ -35,11 +35,11 @@ type LookupBindingResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// When the membership binding was deleted.
 	DeleteTime string `pulumi:"deleteTime"`
-	// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
-	Fleet bool `pulumi:"fleet"`
+	// Optional. Labels for this MembershipBinding.
+	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
 	Name string `pulumi:"name"`
-	// A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+	// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
 	Scope string `pulumi:"scope"`
 	// State of the membership binding resource.
 	State MembershipBindingLifecycleStateResponse `pulumi:"state"`
@@ -103,9 +103,9 @@ func (o LookupBindingResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBindingResult) string { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.
-func (o LookupBindingResultOutput) Fleet() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupBindingResult) bool { return v.Fleet }).(pulumi.BoolOutput)
+// Optional. Labels for this MembershipBinding.
+func (o LookupBindingResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBindingResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
@@ -113,7 +113,7 @@ func (o LookupBindingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBindingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A Workspace resource name in the format `projects/*/locations/*/scopes/*`.
+// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
 func (o LookupBindingResultOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBindingResult) string { return v.Scope }).(pulumi.StringOutput)
 }

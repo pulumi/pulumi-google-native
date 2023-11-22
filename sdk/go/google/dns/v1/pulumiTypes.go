@@ -4584,7 +4584,7 @@ func (o RRSetRoutingPolicyPtrOutput) Wrr() RRSetRoutingPolicyWrrPolicyPtrOutput 
 
 // Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicy struct {
-	// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+	// Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy.
 	EnableFencing *bool `pulumi:"enableFencing"`
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items []RRSetRoutingPolicyGeoPolicyGeoPolicyItem `pulumi:"items"`
@@ -4604,7 +4604,7 @@ type RRSetRoutingPolicyGeoPolicyInput interface {
 
 // Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicyArgs struct {
-	// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+	// Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy.
 	EnableFencing pulumi.BoolPtrInput `pulumi:"enableFencing"`
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput `pulumi:"items"`
@@ -4707,7 +4707,7 @@ func (o RRSetRoutingPolicyGeoPolicyOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+// Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy.
 func (o RRSetRoutingPolicyGeoPolicyOutput) EnableFencing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicy) *bool { return v.EnableFencing }).(pulumi.BoolPtrOutput)
 }
@@ -4751,7 +4751,7 @@ func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Elem() RRSetRoutingPolicyGeoPolicy
 	}).(RRSetRoutingPolicyGeoPolicyOutput)
 }
 
-// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+// Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy.
 func (o RRSetRoutingPolicyGeoPolicyPtrOutput) EnableFencing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RRSetRoutingPolicyGeoPolicy) *bool {
 		if v == nil {
@@ -4788,7 +4788,7 @@ type RRSetRoutingPolicyGeoPolicyGeoPolicyItem struct {
 	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
 	Location *string  `pulumi:"location"`
 	Rrdatas  []string `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+	// DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
 	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
 }
 
@@ -4811,7 +4811,7 @@ type RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs struct {
 	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
 	Location pulumi.StringPtrInput   `pulumi:"location"`
 	Rrdatas  pulumi.StringArrayInput `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+	// DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
 	SignatureRrdatas pulumi.StringArrayInput `pulumi:"signatureRrdatas"`
 }
 
@@ -4905,7 +4905,7 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) Rrdatas() pulumi.StringA
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItem) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
 
-// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+// DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
 func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) SignatureRrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItem) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
 }
@@ -4944,7 +4944,7 @@ type RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse struct {
 	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
 	Location string   `pulumi:"location"`
 	Rrdatas  []string `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+	// DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
 	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
 }
 
@@ -4989,7 +4989,7 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput) Rrdatas() pulumi
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
 
-// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+// DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
 func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput) SignatureRrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
 }
@@ -5022,7 +5022,7 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput) Index(i pul
 
 // Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicyResponse struct {
-	// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+	// Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy.
 	EnableFencing bool `pulumi:"enableFencing"`
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items []RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse `pulumi:"items"`
@@ -5050,7 +5050,7 @@ func (o RRSetRoutingPolicyGeoPolicyResponseOutput) ToOutput(ctx context.Context)
 	}
 }
 
-// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+// Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy.
 func (o RRSetRoutingPolicyGeoPolicyResponseOutput) EnableFencing() pulumi.BoolOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyResponse) bool { return v.EnableFencing }).(pulumi.BoolOutput)
 }
@@ -5260,20 +5260,22 @@ func (o RRSetRoutingPolicyHealthCheckTargetsResponseOutput) InternalLoadBalancer
 	}).(RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput)
 }
 
+// The configuration for an individual load balancer to health check.
 type RRSetRoutingPolicyLoadBalancerTarget struct {
-	// The frontend IP address of the Load Balancer to health check.
-	IpAddress  *string                                         `pulumi:"ipAddress"`
+	// The frontend IP address of the load balancer to health check.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The protocol of the load balancer to health check.
 	IpProtocol *RRSetRoutingPolicyLoadBalancerTargetIpProtocol `pulumi:"ipProtocol"`
 	Kind       *string                                         `pulumi:"kind"`
-	// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+	// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer.
 	LoadBalancerType *RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType `pulumi:"loadBalancerType"`
-	// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	// The fully qualified URL of the network that the load balancer is attached to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
 	NetworkUrl *string `pulumi:"networkUrl"`
-	// The configured port of the Load Balancer.
+	// The configured port of the load balancer.
 	Port *string `pulumi:"port"`
-	// The project ID in which the ILB exists.
+	// The project ID in which the load balancer is located.
 	Project *string `pulumi:"project"`
-	// The region in which the ILB exists.
+	// The region in which the load balancer is located.
 	Region *string `pulumi:"region"`
 }
 
@@ -5288,20 +5290,22 @@ type RRSetRoutingPolicyLoadBalancerTargetInput interface {
 	ToRRSetRoutingPolicyLoadBalancerTargetOutputWithContext(context.Context) RRSetRoutingPolicyLoadBalancerTargetOutput
 }
 
+// The configuration for an individual load balancer to health check.
 type RRSetRoutingPolicyLoadBalancerTargetArgs struct {
-	// The frontend IP address of the Load Balancer to health check.
-	IpAddress  pulumi.StringPtrInput                                  `pulumi:"ipAddress"`
+	// The frontend IP address of the load balancer to health check.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// The protocol of the load balancer to health check.
 	IpProtocol RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrInput `pulumi:"ipProtocol"`
 	Kind       pulumi.StringPtrInput                                  `pulumi:"kind"`
-	// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+	// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer.
 	LoadBalancerType RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrInput `pulumi:"loadBalancerType"`
-	// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	// The fully qualified URL of the network that the load balancer is attached to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
 	NetworkUrl pulumi.StringPtrInput `pulumi:"networkUrl"`
-	// The configured port of the Load Balancer.
+	// The configured port of the load balancer.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The project ID in which the ILB exists.
+	// The project ID in which the load balancer is located.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// The region in which the ILB exists.
+	// The region in which the load balancer is located.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -5354,6 +5358,7 @@ func (i RRSetRoutingPolicyLoadBalancerTargetArray) ToOutput(ctx context.Context)
 	}
 }
 
+// The configuration for an individual load balancer to health check.
 type RRSetRoutingPolicyLoadBalancerTargetOutput struct{ *pulumi.OutputState }
 
 func (RRSetRoutingPolicyLoadBalancerTargetOutput) ElementType() reflect.Type {
@@ -5374,11 +5379,12 @@ func (o RRSetRoutingPolicyLoadBalancerTargetOutput) ToOutput(ctx context.Context
 	}
 }
 
-// The frontend IP address of the Load Balancer to health check.
+// The frontend IP address of the load balancer to health check.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// The protocol of the load balancer to health check.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) IpProtocol() RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *RRSetRoutingPolicyLoadBalancerTargetIpProtocol {
 		return v.IpProtocol
@@ -5389,29 +5395,29 @@ func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Kind() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) LoadBalancerType() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType {
 		return v.LoadBalancerType
 	}).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput)
 }
 
-// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+// The fully qualified URL of the network that the load balancer is attached to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) NetworkUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.NetworkUrl }).(pulumi.StringPtrOutput)
 }
 
-// The configured port of the Load Balancer.
+// The configured port of the load balancer.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The project ID in which the ILB exists.
+// The project ID in which the load balancer is located.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-// The region in which the ILB exists.
+// The region in which the load balancer is located.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -5442,23 +5448,26 @@ func (o RRSetRoutingPolicyLoadBalancerTargetArrayOutput) Index(i pulumi.IntInput
 	}).(RRSetRoutingPolicyLoadBalancerTargetOutput)
 }
 
+// The configuration for an individual load balancer to health check.
 type RRSetRoutingPolicyLoadBalancerTargetResponse struct {
-	// The frontend IP address of the Load Balancer to health check.
-	IpAddress  string `pulumi:"ipAddress"`
+	// The frontend IP address of the load balancer to health check.
+	IpAddress string `pulumi:"ipAddress"`
+	// The protocol of the load balancer to health check.
 	IpProtocol string `pulumi:"ipProtocol"`
 	Kind       string `pulumi:"kind"`
-	// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+	// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer.
 	LoadBalancerType string `pulumi:"loadBalancerType"`
-	// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	// The fully qualified URL of the network that the load balancer is attached to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
 	NetworkUrl string `pulumi:"networkUrl"`
-	// The configured port of the Load Balancer.
+	// The configured port of the load balancer.
 	Port string `pulumi:"port"`
-	// The project ID in which the ILB exists.
+	// The project ID in which the load balancer is located.
 	Project string `pulumi:"project"`
-	// The region in which the ILB exists.
+	// The region in which the load balancer is located.
 	Region string `pulumi:"region"`
 }
 
+// The configuration for an individual load balancer to health check.
 type RRSetRoutingPolicyLoadBalancerTargetResponseOutput struct{ *pulumi.OutputState }
 
 func (RRSetRoutingPolicyLoadBalancerTargetResponseOutput) ElementType() reflect.Type {
@@ -5479,11 +5488,12 @@ func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) ToOutput(ctx context
 	}
 }
 
-// The frontend IP address of the Load Balancer to health check.
+// The frontend IP address of the load balancer to health check.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// The protocol of the load balancer to health check.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
@@ -5492,27 +5502,27 @@ func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Kind() pulumi.String
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) LoadBalancerType() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.LoadBalancerType }).(pulumi.StringOutput)
 }
 
-// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+// The fully qualified URL of the network that the load balancer is attached to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) NetworkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.NetworkUrl }).(pulumi.StringOutput)
 }
 
-// The configured port of the Load Balancer.
+// The configured port of the load balancer.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Port }).(pulumi.StringOutput)
 }
 
-// The project ID in which the ILB exists.
+// The project ID in which the load balancer is located.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The region in which the ILB exists.
+// The region in which the load balancer is located.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -5546,9 +5556,10 @@ func (o RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput) Index(i pulumi.
 // Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
 type RRSetRoutingPolicyPrimaryBackupPolicy struct {
 	// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
-	BackupGeoTargets *RRSetRoutingPolicyGeoPolicy          `pulumi:"backupGeoTargets"`
-	Kind             *string                               `pulumi:"kind"`
-	PrimaryTargets   *RRSetRoutingPolicyHealthCheckTargets `pulumi:"primaryTargets"`
+	BackupGeoTargets *RRSetRoutingPolicyGeoPolicy `pulumi:"backupGeoTargets"`
+	Kind             *string                      `pulumi:"kind"`
+	// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
+	PrimaryTargets *RRSetRoutingPolicyHealthCheckTargets `pulumi:"primaryTargets"`
 	// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
 	TrickleTraffic *float64 `pulumi:"trickleTraffic"`
 }
@@ -5567,9 +5578,10 @@ type RRSetRoutingPolicyPrimaryBackupPolicyInput interface {
 // Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
 type RRSetRoutingPolicyPrimaryBackupPolicyArgs struct {
 	// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
-	BackupGeoTargets RRSetRoutingPolicyGeoPolicyPtrInput          `pulumi:"backupGeoTargets"`
-	Kind             pulumi.StringPtrInput                        `pulumi:"kind"`
-	PrimaryTargets   RRSetRoutingPolicyHealthCheckTargetsPtrInput `pulumi:"primaryTargets"`
+	BackupGeoTargets RRSetRoutingPolicyGeoPolicyPtrInput `pulumi:"backupGeoTargets"`
+	Kind             pulumi.StringPtrInput               `pulumi:"kind"`
+	// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
+	PrimaryTargets RRSetRoutingPolicyHealthCheckTargetsPtrInput `pulumi:"primaryTargets"`
 	// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
 	TrickleTraffic pulumi.Float64PtrInput `pulumi:"trickleTraffic"`
 }
@@ -5679,6 +5691,7 @@ func (o RRSetRoutingPolicyPrimaryBackupPolicyOutput) Kind() pulumi.StringPtrOutp
 	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicy) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
 func (o RRSetRoutingPolicyPrimaryBackupPolicyOutput) PrimaryTargets() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicy) *RRSetRoutingPolicyHealthCheckTargets {
 		return v.PrimaryTargets
@@ -5739,6 +5752,7 @@ func (o RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) Kind() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
 func (o RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) PrimaryTargets() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
 	return o.ApplyT(func(v *RRSetRoutingPolicyPrimaryBackupPolicy) *RRSetRoutingPolicyHealthCheckTargets {
 		if v == nil {
@@ -5761,9 +5775,10 @@ func (o RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) TrickleTraffic() pulumi.
 // Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
 type RRSetRoutingPolicyPrimaryBackupPolicyResponse struct {
 	// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
-	BackupGeoTargets RRSetRoutingPolicyGeoPolicyResponse          `pulumi:"backupGeoTargets"`
-	Kind             string                                       `pulumi:"kind"`
-	PrimaryTargets   RRSetRoutingPolicyHealthCheckTargetsResponse `pulumi:"primaryTargets"`
+	BackupGeoTargets RRSetRoutingPolicyGeoPolicyResponse `pulumi:"backupGeoTargets"`
+	Kind             string                              `pulumi:"kind"`
+	// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
+	PrimaryTargets RRSetRoutingPolicyHealthCheckTargetsResponse `pulumi:"primaryTargets"`
 	// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
 	TrickleTraffic float64 `pulumi:"trickleTraffic"`
 }
@@ -5800,6 +5815,7 @@ func (o RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput) Kind() pulumi.Strin
 	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicyResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
 func (o RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput) PrimaryTargets() RRSetRoutingPolicyHealthCheckTargetsResponseOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicyResponse) RRSetRoutingPolicyHealthCheckTargetsResponse {
 		return v.PrimaryTargets
@@ -6072,13 +6088,13 @@ func (o RRSetRoutingPolicyWrrPolicyResponseOutput) Kind() pulumi.StringOutput {
 
 // A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItem struct {
-	// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+	// Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
 	HealthCheckedTargets *RRSetRoutingPolicyHealthCheckTargets `pulumi:"healthCheckedTargets"`
 	Kind                 *string                               `pulumi:"kind"`
 	Rrdatas              []string                              `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
 	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
-	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+	// The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
 	Weight *float64 `pulumi:"weight"`
 }
 
@@ -6095,13 +6111,13 @@ type RRSetRoutingPolicyWrrPolicyWrrPolicyItemInput interface {
 
 // A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs struct {
-	// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+	// Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
 	HealthCheckedTargets RRSetRoutingPolicyHealthCheckTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	Kind                 pulumi.StringPtrInput                        `pulumi:"kind"`
 	Rrdatas              pulumi.StringArrayInput                      `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
 	SignatureRrdatas pulumi.StringArrayInput `pulumi:"signatureRrdatas"`
-	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+	// The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
 	Weight pulumi.Float64PtrInput `pulumi:"weight"`
 }
 
@@ -6175,7 +6191,7 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) ToOutput(ctx context.Con
 	}
 }
 
-// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+// Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) HealthCheckedTargets() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) *RRSetRoutingPolicyHealthCheckTargets {
 		return v.HealthCheckedTargets
@@ -6190,12 +6206,12 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) Rrdatas() pulumi.StringA
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
 
-// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) SignatureRrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
 }
 
-// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+// The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) Weight() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) *float64 { return v.Weight }).(pulumi.Float64PtrOutput)
 }
@@ -6228,13 +6244,13 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput) Index(i pulumi.IntI
 
 // A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse struct {
-	// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+	// Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
 	HealthCheckedTargets RRSetRoutingPolicyHealthCheckTargetsResponse `pulumi:"healthCheckedTargets"`
 	Kind                 string                                       `pulumi:"kind"`
 	Rrdatas              []string                                     `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
 	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
-	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+	// The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
 	Weight float64 `pulumi:"weight"`
 }
 
@@ -6259,7 +6275,7 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) ToOutput(ctx con
 	}
 }
 
-// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+// Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) HealthCheckedTargets() RRSetRoutingPolicyHealthCheckTargetsResponseOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse) RRSetRoutingPolicyHealthCheckTargetsResponse {
 		return v.HealthCheckedTargets
@@ -6274,12 +6290,12 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) Rrdatas() pulumi
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
 
-// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
+// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) SignatureRrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
 }
 
-// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+// The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) Weight() pulumi.Float64Output {
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse) float64 { return v.Weight }).(pulumi.Float64Output)
 }
@@ -6315,7 +6331,7 @@ type ResourceRecordSetType struct {
 	Kind *string `pulumi:"kind"`
 	// For example, www.example.com.
 	Name *string `pulumi:"name"`
-	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+	// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
 	RoutingPolicy *RRSetRoutingPolicy `pulumi:"routingPolicy"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas []string `pulumi:"rrdatas"`
@@ -6343,7 +6359,7 @@ type ResourceRecordSetTypeArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// For example, www.example.com.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+	// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
 	RoutingPolicy RRSetRoutingPolicyPtrInput `pulumi:"routingPolicy"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
@@ -6434,7 +6450,7 @@ func (o ResourceRecordSetTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRecordSetType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
 func (o ResourceRecordSetTypeOutput) RoutingPolicy() RRSetRoutingPolicyPtrOutput {
 	return o.ApplyT(func(v ResourceRecordSetType) *RRSetRoutingPolicy { return v.RoutingPolicy }).(RRSetRoutingPolicyPtrOutput)
 }
@@ -6490,7 +6506,7 @@ type ResourceRecordSetResponse struct {
 	Kind string `pulumi:"kind"`
 	// For example, www.example.com.
 	Name string `pulumi:"name"`
-	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+	// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
 	RoutingPolicy RRSetRoutingPolicyResponse `pulumi:"routingPolicy"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas []string `pulumi:"rrdatas"`
@@ -6532,7 +6548,7 @@ func (o ResourceRecordSetResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceRecordSetResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
 func (o ResourceRecordSetResponseOutput) RoutingPolicy() RRSetRoutingPolicyResponseOutput {
 	return o.ApplyT(func(v ResourceRecordSetResponse) RRSetRoutingPolicyResponse { return v.RoutingPolicy }).(RRSetRoutingPolicyResponseOutput)
 }

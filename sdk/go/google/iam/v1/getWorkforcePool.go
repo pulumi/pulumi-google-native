@@ -29,12 +29,16 @@ type LookupWorkforcePoolArgs struct {
 }
 
 type LookupWorkforcePoolResult struct {
+	// Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+	AccessRestrictions AccessRestrictionsResponse `pulumi:"accessRestrictions"`
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description string `pulumi:"description"`
 	// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
 	Disabled bool `pulumi:"disabled"`
 	// A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
 	DisplayName string `pulumi:"displayName"`
+	// Time after which the workforce pool will be permanently purged and cannot be recovered.
+	ExpireTime string `pulumi:"expireTime"`
 	// The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`
 	Name string `pulumi:"name"`
 	// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
@@ -87,6 +91,11 @@ func (o LookupWorkforcePoolResultOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
+// Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+func (o LookupWorkforcePoolResultOutput) AccessRestrictions() AccessRestrictionsResponseOutput {
+	return o.ApplyT(func(v LookupWorkforcePoolResult) AccessRestrictionsResponse { return v.AccessRestrictions }).(AccessRestrictionsResponseOutput)
+}
+
 // A user-specified description of the pool. Cannot exceed 256 characters.
 func (o LookupWorkforcePoolResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkforcePoolResult) string { return v.Description }).(pulumi.StringOutput)
@@ -100,6 +109,11 @@ func (o LookupWorkforcePoolResultOutput) Disabled() pulumi.BoolOutput {
 // A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
 func (o LookupWorkforcePoolResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkforcePoolResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Time after which the workforce pool will be permanently purged and cannot be recovered.
+func (o LookupWorkforcePoolResultOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkforcePoolResult) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`

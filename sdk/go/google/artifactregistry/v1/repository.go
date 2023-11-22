@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
@@ -16,13 +17,17 @@ import (
 type Repository struct {
 	pulumi.CustomResourceState
 
+	// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+	CleanupPolicies pulumi.StringMapOutput `pulumi:"cleanupPolicies"`
+	// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	CleanupPolicyDryRun pulumi.BoolOutput `pulumi:"cleanupPolicyDryRun"`
 	// The time when the repository was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	DockerConfig DockerRepositoryConfigResponseOutput `pulumi:"dockerConfig"`
-	// The format of packages that are stored in the repository.
+	// Optional. The format of packages that are stored in the repository.
 	Format pulumi.StringOutput `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
@@ -31,15 +36,15 @@ type Repository struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig MavenRepositoryConfigResponseOutput `pulumi:"mavenConfig"`
-	// The mode of the repository.
+	// Optional. The mode of the repository.
 	Mode pulumi.StringOutput `pulumi:"mode"`
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+	// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Configuration specific for a Remote Repository.
 	RemoteRepositoryConfig RemoteRepositoryConfigResponseOutput `pulumi:"remoteRepositoryConfig"`
-	// The repository id to use for this repository.
-	RepositoryId pulumi.StringPtrOutput `pulumi:"repositoryId"`
+	// Required. The repository id to use for this repository.
+	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
 	// If set, the repository satisfies physical zone separation.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
@@ -54,12 +59,16 @@ type Repository struct {
 func NewRepository(ctx *pulumi.Context,
 	name string, args *RepositoryArgs, opts ...pulumi.ResourceOption) (*Repository, error) {
 	if args == nil {
-		args = &RepositoryArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.RepositoryId == nil {
+		return nil, errors.New("invalid value for required argument 'RepositoryId'")
+	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"location",
 		"project",
+		"repositoryId",
 	})
 	opts = append(opts, replaceOnChanges)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -95,11 +104,15 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
+	// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+	CleanupPolicies map[string]string `pulumi:"cleanupPolicies"`
+	// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	CleanupPolicyDryRun *bool `pulumi:"cleanupPolicyDryRun"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	DockerConfig *DockerRepositoryConfig `pulumi:"dockerConfig"`
-	// The format of packages that are stored in the repository.
+	// Optional. The format of packages that are stored in the repository.
 	Format *RepositoryFormat `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -108,26 +121,30 @@ type repositoryArgs struct {
 	Location *string           `pulumi:"location"`
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig *MavenRepositoryConfig `pulumi:"mavenConfig"`
-	// The mode of the repository.
+	// Optional. The mode of the repository.
 	Mode *RepositoryMode `pulumi:"mode"`
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+	// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Configuration specific for a Remote Repository.
 	RemoteRepositoryConfig *RemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
-	// The repository id to use for this repository.
-	RepositoryId *string `pulumi:"repositoryId"`
+	// Required. The repository id to use for this repository.
+	RepositoryId string `pulumi:"repositoryId"`
 	// Configuration specific for a Virtual Repository.
 	VirtualRepositoryConfig *VirtualRepositoryConfig `pulumi:"virtualRepositoryConfig"`
 }
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
+	// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+	CleanupPolicies pulumi.StringMapInput
+	// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	CleanupPolicyDryRun pulumi.BoolPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	DockerConfig DockerRepositoryConfigPtrInput
-	// The format of packages that are stored in the repository.
+	// Optional. The format of packages that are stored in the repository.
 	Format RepositoryFormatPtrInput
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName pulumi.StringPtrInput
@@ -136,15 +153,15 @@ type RepositoryArgs struct {
 	Location pulumi.StringPtrInput
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig MavenRepositoryConfigPtrInput
-	// The mode of the repository.
+	// Optional. The mode of the repository.
 	Mode RepositoryModePtrInput
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+	// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Configuration specific for a Remote Repository.
 	RemoteRepositoryConfig RemoteRepositoryConfigPtrInput
-	// The repository id to use for this repository.
-	RepositoryId pulumi.StringPtrInput
+	// Required. The repository id to use for this repository.
+	RepositoryId pulumi.StringInput
 	// Configuration specific for a Virtual Repository.
 	VirtualRepositoryConfig VirtualRepositoryConfigPtrInput
 }
@@ -198,6 +215,16 @@ func (o RepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[*Reposito
 	}
 }
 
+// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+func (o RepositoryOutput) CleanupPolicies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.CleanupPolicies }).(pulumi.StringMapOutput)
+}
+
+// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+func (o RepositoryOutput) CleanupPolicyDryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Repository) pulumi.BoolOutput { return v.CleanupPolicyDryRun }).(pulumi.BoolOutput)
+}
+
 // The time when the repository was created.
 func (o RepositoryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -213,7 +240,7 @@ func (o RepositoryOutput) DockerConfig() DockerRepositoryConfigResponseOutput {
 	return o.ApplyT(func(v *Repository) DockerRepositoryConfigResponseOutput { return v.DockerConfig }).(DockerRepositoryConfigResponseOutput)
 }
 
-// The format of packages that are stored in the repository.
+// Optional. The format of packages that are stored in the repository.
 func (o RepositoryOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
 }
@@ -237,12 +264,12 @@ func (o RepositoryOutput) MavenConfig() MavenRepositoryConfigResponseOutput {
 	return o.ApplyT(func(v *Repository) MavenRepositoryConfigResponseOutput { return v.MavenConfig }).(MavenRepositoryConfigResponseOutput)
 }
 
-// The mode of the repository.
+// Optional. The mode of the repository.
 func (o RepositoryOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -256,9 +283,9 @@ func (o RepositoryOutput) RemoteRepositoryConfig() RemoteRepositoryConfigRespons
 	return o.ApplyT(func(v *Repository) RemoteRepositoryConfigResponseOutput { return v.RemoteRepositoryConfig }).(RemoteRepositoryConfigResponseOutput)
 }
 
-// The repository id to use for this repository.
-func (o RepositoryOutput) RepositoryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.RepositoryId }).(pulumi.StringPtrOutput)
+// Required. The repository id to use for this repository.
+func (o RepositoryOutput) RepositoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
 }
 
 // If set, the repository satisfies physical zone separation.

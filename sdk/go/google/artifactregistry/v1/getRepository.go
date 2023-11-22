@@ -30,13 +30,17 @@ type LookupRepositoryArgs struct {
 }
 
 type LookupRepositoryResult struct {
+	// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+	CleanupPolicies map[string]string `pulumi:"cleanupPolicies"`
+	// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	CleanupPolicyDryRun bool `pulumi:"cleanupPolicyDryRun"`
 	// The time when the repository was created.
 	CreateTime string `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description string `pulumi:"description"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	DockerConfig DockerRepositoryConfigResponse `pulumi:"dockerConfig"`
-	// The format of packages that are stored in the repository.
+	// Optional. The format of packages that are stored in the repository.
 	Format string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -44,9 +48,9 @@ type LookupRepositoryResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig MavenRepositoryConfigResponse `pulumi:"mavenConfig"`
-	// The mode of the repository.
+	// Optional. The mode of the repository.
 	Mode string `pulumi:"mode"`
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+	// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 	Name string `pulumi:"name"`
 	// Configuration specific for a Remote Repository.
 	RemoteRepositoryConfig RemoteRepositoryConfigResponse `pulumi:"remoteRepositoryConfig"`
@@ -103,6 +107,16 @@ func (o LookupRepositoryResultOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
+// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+func (o LookupRepositoryResultOutput) CleanupPolicies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.CleanupPolicies }).(pulumi.StringMapOutput)
+}
+
+// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+func (o LookupRepositoryResultOutput) CleanupPolicyDryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) bool { return v.CleanupPolicyDryRun }).(pulumi.BoolOutput)
+}
+
 // The time when the repository was created.
 func (o LookupRepositoryResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -118,7 +132,7 @@ func (o LookupRepositoryResultOutput) DockerConfig() DockerRepositoryConfigRespo
 	return o.ApplyT(func(v LookupRepositoryResult) DockerRepositoryConfigResponse { return v.DockerConfig }).(DockerRepositoryConfigResponseOutput)
 }
 
-// The format of packages that are stored in the repository.
+// Optional. The format of packages that are stored in the repository.
 func (o LookupRepositoryResultOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Format }).(pulumi.StringOutput)
 }
@@ -138,12 +152,12 @@ func (o LookupRepositoryResultOutput) MavenConfig() MavenRepositoryConfigRespons
 	return o.ApplyT(func(v LookupRepositoryResult) MavenRepositoryConfigResponse { return v.MavenConfig }).(MavenRepositoryConfigResponseOutput)
 }
 
-// The mode of the repository.
+// Optional. The mode of the repository.
 func (o LookupRepositoryResultOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 func (o LookupRepositoryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Name }).(pulumi.StringOutput)
 }

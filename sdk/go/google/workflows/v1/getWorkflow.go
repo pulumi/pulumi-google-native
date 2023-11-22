@@ -33,19 +33,19 @@ type LookupWorkflowArgs struct {
 type LookupWorkflowResult struct {
 	// Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
 	CallLogLevel string `pulumi:"callLogLevel"`
-	// The timestamp for when the workflow was created.
+	// The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision.
 	CreateTime string `pulumi:"createTime"`
 	// Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
 	CryptoKeyName string `pulumi:"cryptoKeyName"`
-	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+	// Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
 	Description string `pulumi:"description"`
-	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
 	Name string `pulumi:"name"`
 	// The timestamp for the latest revision of the workflow's creation.
 	RevisionCreateTime string `pulumi:"revisionCreateTime"`
-	// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+	// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters.
 	RevisionId string `pulumi:"revisionId"`
 	// The service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -55,8 +55,10 @@ type LookupWorkflowResult struct {
 	State string `pulumi:"state"`
 	// Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
 	StateError StateErrorResponse `pulumi:"stateError"`
-	// The timestamp for when the workflow was last updated.
+	// The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
 	UpdateTime string `pulumi:"updateTime"`
+	// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	UserEnvVars map[string]string `pulumi:"userEnvVars"`
 }
 
 func LookupWorkflowOutput(ctx *pulumi.Context, args LookupWorkflowOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowResultOutput {
@@ -108,7 +110,7 @@ func (o LookupWorkflowResultOutput) CallLogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.CallLogLevel }).(pulumi.StringOutput)
 }
 
-// The timestamp for when the workflow was created.
+// The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision.
 func (o LookupWorkflowResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -118,17 +120,17 @@ func (o LookupWorkflowResultOutput) CryptoKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.CryptoKeyName }).(pulumi.StringOutput)
 }
 
-// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+// Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.
 func (o LookupWorkflowResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
+// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.
 func (o LookupWorkflowResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.
 func (o LookupWorkflowResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -138,7 +140,7 @@ func (o LookupWorkflowResultOutput) RevisionCreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.RevisionCreateTime }).(pulumi.StringOutput)
 }
 
-// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters.
 func (o LookupWorkflowResultOutput) RevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.RevisionId }).(pulumi.StringOutput)
 }
@@ -163,9 +165,14 @@ func (o LookupWorkflowResultOutput) StateError() StateErrorResponseOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) StateErrorResponse { return v.StateError }).(StateErrorResponseOutput)
 }
 
-// The timestamp for when the workflow was last updated.
+// The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
 func (o LookupWorkflowResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+func (o LookupWorkflowResultOutput) UserEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) map[string]string { return v.UserEnvVars }).(pulumi.StringMapOutput)
 }
 
 func init() {

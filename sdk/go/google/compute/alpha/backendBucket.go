@@ -24,7 +24,7 @@ type BackendBucket struct {
 	CompressionMode pulumi.StringOutput `pulumi:"compressionMode"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// Headers that the HTTP/S load balancer should add to proxied responses.
+	// Headers that the Application Load Balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -95,7 +95,7 @@ type backendBucketArgs struct {
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
 	CompressionMode *BackendBucketCompressionMode `pulumi:"compressionMode"`
-	// Headers that the HTTP/S load balancer should add to proxied responses.
+	// Headers that the Application Load Balancer should add to proxied responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description *string `pulumi:"description"`
@@ -118,7 +118,7 @@ type BackendBucketArgs struct {
 	CdnPolicy BackendBucketCdnPolicyPtrInput
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
 	CompressionMode BackendBucketCompressionModePtrInput
-	// Headers that the HTTP/S load balancer should add to proxied responses.
+	// Headers that the Application Load Balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringPtrInput
@@ -202,7 +202,7 @@ func (o BackendBucketOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendBucket) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// Headers that the HTTP/S load balancer should add to proxied responses.
+// Headers that the Application Load Balancer should add to proxied responses.
 func (o BackendBucketOutput) CustomResponseHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackendBucket) pulumi.StringArrayOutput { return v.CustomResponseHeaders }).(pulumi.StringArrayOutput)
 }

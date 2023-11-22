@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
+// Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
 type GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge string
 
 const (
@@ -576,7 +576,7 @@ func (in *googleCloudRecaptchaenterpriseV1WafSettingsWafServicePtr) ToOutput(ctx
 	}
 }
 
-// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
+// Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference string
 
 const (

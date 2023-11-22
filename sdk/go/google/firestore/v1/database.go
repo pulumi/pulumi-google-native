@@ -23,25 +23,31 @@ type Database struct {
 	ConcurrencyMode pulumi.StringOutput `pulumi:"concurrencyMode"`
 	// The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
+	// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
 	DatabaseId pulumi.StringOutput `pulumi:"databaseId"`
 	// State of delete protection for the database.
 	DeleteProtectionState pulumi.StringOutput `pulumi:"deleteProtectionState"`
+	// The earliest timestamp at which older versions of the data can be read from the database. See [version_retention_period] above; this field is populated with `now - version_retention_period`. This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+	EarliestVersionTime pulumi.StringOutput `pulumi:"earliestVersionTime"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The key_prefix for this database. This key_prefix is used, in combination with the project id ("~") to construct the application id that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes. This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
 	KeyPrefix pulumi.StringOutput `pulumi:"keyPrefix"`
-	// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+	// The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the Database. Format: `projects/{project}/databases/{database}`
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether to enable the PITR feature on this database.
+	PointInTimeRecoveryEnablement pulumi.StringOutput `pulumi:"pointInTimeRecoveryEnablement"`
+	Project                       pulumi.StringOutput `pulumi:"project"`
 	// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The system-generated UUID4 for this Database.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+	VersionRetentionPeriod pulumi.StringOutput `pulumi:"versionRetentionPeriod"`
 }
 
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
@@ -96,17 +102,19 @@ type databaseArgs struct {
 	AppEngineIntegrationMode *DatabaseAppEngineIntegrationMode `pulumi:"appEngineIntegrationMode"`
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode *DatabaseConcurrencyMode `pulumi:"concurrencyMode"`
-	// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
+	// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
 	DatabaseId string `pulumi:"databaseId"`
 	// State of delete protection for the database.
 	DeleteProtectionState *DatabaseDeleteProtectionState `pulumi:"deleteProtectionState"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
-	// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+	// The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
 	Location *string `pulumi:"location"`
 	// The resource name of the Database. Format: `projects/{project}/databases/{database}`
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Name *string `pulumi:"name"`
+	// Whether to enable the PITR feature on this database.
+	PointInTimeRecoveryEnablement *DatabasePointInTimeRecoveryEnablement `pulumi:"pointInTimeRecoveryEnablement"`
+	Project                       *string                                `pulumi:"project"`
 	// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 	Type *DatabaseType `pulumi:"type"`
 }
@@ -117,17 +125,19 @@ type DatabaseArgs struct {
 	AppEngineIntegrationMode DatabaseAppEngineIntegrationModePtrInput
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode DatabaseConcurrencyModePtrInput
-	// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
+	// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
 	DatabaseId pulumi.StringInput
 	// State of delete protection for the database.
 	DeleteProtectionState DatabaseDeleteProtectionStatePtrInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
-	// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+	// The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
 	Location pulumi.StringPtrInput
 	// The resource name of the Database. Format: `projects/{project}/databases/{database}`
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Whether to enable the PITR feature on this database.
+	PointInTimeRecoveryEnablement DatabasePointInTimeRecoveryEnablementPtrInput
+	Project                       pulumi.StringPtrInput
 	// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 	Type DatabaseTypePtrInput
 }
@@ -196,7 +206,7 @@ func (o DatabaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
+// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
 func (o DatabaseOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DatabaseId }).(pulumi.StringOutput)
 }
@@ -204,6 +214,11 @@ func (o DatabaseOutput) DatabaseId() pulumi.StringOutput {
 // State of delete protection for the database.
 func (o DatabaseOutput) DeleteProtectionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DeleteProtectionState }).(pulumi.StringOutput)
+}
+
+// The earliest timestamp at which older versions of the data can be read from the database. See [version_retention_period] above; this field is populated with `now - version_retention_period`. This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+func (o DatabaseOutput) EarliestVersionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.EarliestVersionTime }).(pulumi.StringOutput)
 }
 
 // This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -216,7 +231,7 @@ func (o DatabaseOutput) KeyPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.KeyPrefix }).(pulumi.StringOutput)
 }
 
-// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
+// The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
 func (o DatabaseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -224,6 +239,11 @@ func (o DatabaseOutput) Location() pulumi.StringOutput {
 // The resource name of the Database. Format: `projects/{project}/databases/{database}`
 func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether to enable the PITR feature on this database.
+func (o DatabaseOutput) PointInTimeRecoveryEnablement() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.PointInTimeRecoveryEnablement }).(pulumi.StringOutput)
 }
 
 func (o DatabaseOutput) Project() pulumi.StringOutput {
@@ -243,6 +263,11 @@ func (o DatabaseOutput) Uid() pulumi.StringOutput {
 // The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
 func (o DatabaseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+func (o DatabaseOutput) VersionRetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.VersionRetentionPeriod }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -630,6 +630,10 @@ func (o BucketAccessControlResponseArrayOutput) Index(i pulumi.IntInput) BucketA
 type BucketAutoclass struct {
 	// Whether or not Autoclass is enabled on this bucket
 	Enabled *bool `pulumi:"enabled"`
+	// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
+	TerminalStorageClass *string `pulumi:"terminalStorageClass"`
+	// A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
+	TerminalStorageClassUpdateTime *string `pulumi:"terminalStorageClassUpdateTime"`
 	// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
 	ToggleTime *string `pulumi:"toggleTime"`
 }
@@ -649,6 +653,10 @@ type BucketAutoclassInput interface {
 type BucketAutoclassArgs struct {
 	// Whether or not Autoclass is enabled on this bucket
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
+	TerminalStorageClass pulumi.StringPtrInput `pulumi:"terminalStorageClass"`
+	// A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
+	TerminalStorageClassUpdateTime pulumi.StringPtrInput `pulumi:"terminalStorageClassUpdateTime"`
 	// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
 	ToggleTime pulumi.StringPtrInput `pulumi:"toggleTime"`
 }
@@ -754,6 +762,16 @@ func (o BucketAutoclassOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketAutoclass) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
+func (o BucketAutoclassOutput) TerminalStorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketAutoclass) *string { return v.TerminalStorageClass }).(pulumi.StringPtrOutput)
+}
+
+// A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
+func (o BucketAutoclassOutput) TerminalStorageClassUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketAutoclass) *string { return v.TerminalStorageClassUpdateTime }).(pulumi.StringPtrOutput)
+}
+
 // A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
 func (o BucketAutoclassOutput) ToggleTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketAutoclass) *string { return v.ToggleTime }).(pulumi.StringPtrOutput)
@@ -799,6 +817,26 @@ func (o BucketAutoclassPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
+func (o BucketAutoclassPtrOutput) TerminalStorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketAutoclass) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TerminalStorageClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
+func (o BucketAutoclassPtrOutput) TerminalStorageClassUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketAutoclass) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TerminalStorageClassUpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
 func (o BucketAutoclassPtrOutput) ToggleTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketAutoclass) *string {
@@ -813,6 +851,10 @@ func (o BucketAutoclassPtrOutput) ToggleTime() pulumi.StringPtrOutput {
 type BucketAutoclassResponse struct {
 	// Whether or not Autoclass is enabled on this bucket
 	Enabled bool `pulumi:"enabled"`
+	// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
+	TerminalStorageClass string `pulumi:"terminalStorageClass"`
+	// A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
+	TerminalStorageClassUpdateTime string `pulumi:"terminalStorageClassUpdateTime"`
 	// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
 	ToggleTime string `pulumi:"toggleTime"`
 }
@@ -841,6 +883,16 @@ func (o BucketAutoclassResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 // Whether or not Autoclass is enabled on this bucket
 func (o BucketAutoclassResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketAutoclassResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
+func (o BucketAutoclassResponseOutput) TerminalStorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAutoclassResponse) string { return v.TerminalStorageClass }).(pulumi.StringOutput)
+}
+
+// A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
+func (o BucketAutoclassResponseOutput) TerminalStorageClassUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAutoclassResponse) string { return v.TerminalStorageClassUpdateTime }).(pulumi.StringOutput)
 }
 
 // A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
@@ -4422,6 +4474,228 @@ func (o BucketObjectOwnerResponseOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketObjectOwnerResponse) string { return v.EntityId }).(pulumi.StringOutput)
 }
 
+// A collection of object level retention parameters.
+type BucketObjectRetention struct {
+	// The bucket's object retention mode, can only be Unlocked or Locked.
+	Mode *string `pulumi:"mode"`
+	// A time in RFC 3339 format until which object retention protects this object.
+	RetainUntilTime *string `pulumi:"retainUntilTime"`
+}
+
+// BucketObjectRetentionInput is an input type that accepts BucketObjectRetentionArgs and BucketObjectRetentionOutput values.
+// You can construct a concrete instance of `BucketObjectRetentionInput` via:
+//
+//	BucketObjectRetentionArgs{...}
+type BucketObjectRetentionInput interface {
+	pulumi.Input
+
+	ToBucketObjectRetentionOutput() BucketObjectRetentionOutput
+	ToBucketObjectRetentionOutputWithContext(context.Context) BucketObjectRetentionOutput
+}
+
+// A collection of object level retention parameters.
+type BucketObjectRetentionArgs struct {
+	// The bucket's object retention mode, can only be Unlocked or Locked.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// A time in RFC 3339 format until which object retention protects this object.
+	RetainUntilTime pulumi.StringPtrInput `pulumi:"retainUntilTime"`
+}
+
+func (BucketObjectRetentionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectRetention)(nil)).Elem()
+}
+
+func (i BucketObjectRetentionArgs) ToBucketObjectRetentionOutput() BucketObjectRetentionOutput {
+	return i.ToBucketObjectRetentionOutputWithContext(context.Background())
+}
+
+func (i BucketObjectRetentionArgs) ToBucketObjectRetentionOutputWithContext(ctx context.Context) BucketObjectRetentionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectRetentionOutput)
+}
+
+func (i BucketObjectRetentionArgs) ToOutput(ctx context.Context) pulumix.Output[BucketObjectRetention] {
+	return pulumix.Output[BucketObjectRetention]{
+		OutputState: i.ToBucketObjectRetentionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BucketObjectRetentionArgs) ToBucketObjectRetentionPtrOutput() BucketObjectRetentionPtrOutput {
+	return i.ToBucketObjectRetentionPtrOutputWithContext(context.Background())
+}
+
+func (i BucketObjectRetentionArgs) ToBucketObjectRetentionPtrOutputWithContext(ctx context.Context) BucketObjectRetentionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectRetentionOutput).ToBucketObjectRetentionPtrOutputWithContext(ctx)
+}
+
+// BucketObjectRetentionPtrInput is an input type that accepts BucketObjectRetentionArgs, BucketObjectRetentionPtr and BucketObjectRetentionPtrOutput values.
+// You can construct a concrete instance of `BucketObjectRetentionPtrInput` via:
+//
+//	        BucketObjectRetentionArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketObjectRetentionPtrInput interface {
+	pulumi.Input
+
+	ToBucketObjectRetentionPtrOutput() BucketObjectRetentionPtrOutput
+	ToBucketObjectRetentionPtrOutputWithContext(context.Context) BucketObjectRetentionPtrOutput
+}
+
+type bucketObjectRetentionPtrType BucketObjectRetentionArgs
+
+func BucketObjectRetentionPtr(v *BucketObjectRetentionArgs) BucketObjectRetentionPtrInput {
+	return (*bucketObjectRetentionPtrType)(v)
+}
+
+func (*bucketObjectRetentionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectRetention)(nil)).Elem()
+}
+
+func (i *bucketObjectRetentionPtrType) ToBucketObjectRetentionPtrOutput() BucketObjectRetentionPtrOutput {
+	return i.ToBucketObjectRetentionPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketObjectRetentionPtrType) ToBucketObjectRetentionPtrOutputWithContext(ctx context.Context) BucketObjectRetentionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectRetentionPtrOutput)
+}
+
+func (i *bucketObjectRetentionPtrType) ToOutput(ctx context.Context) pulumix.Output[*BucketObjectRetention] {
+	return pulumix.Output[*BucketObjectRetention]{
+		OutputState: i.ToBucketObjectRetentionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A collection of object level retention parameters.
+type BucketObjectRetentionOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectRetentionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectRetention)(nil)).Elem()
+}
+
+func (o BucketObjectRetentionOutput) ToBucketObjectRetentionOutput() BucketObjectRetentionOutput {
+	return o
+}
+
+func (o BucketObjectRetentionOutput) ToBucketObjectRetentionOutputWithContext(ctx context.Context) BucketObjectRetentionOutput {
+	return o
+}
+
+func (o BucketObjectRetentionOutput) ToBucketObjectRetentionPtrOutput() BucketObjectRetentionPtrOutput {
+	return o.ToBucketObjectRetentionPtrOutputWithContext(context.Background())
+}
+
+func (o BucketObjectRetentionOutput) ToBucketObjectRetentionPtrOutputWithContext(ctx context.Context) BucketObjectRetentionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectRetention) *BucketObjectRetention {
+		return &v
+	}).(BucketObjectRetentionPtrOutput)
+}
+
+func (o BucketObjectRetentionOutput) ToOutput(ctx context.Context) pulumix.Output[BucketObjectRetention] {
+	return pulumix.Output[BucketObjectRetention]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The bucket's object retention mode, can only be Unlocked or Locked.
+func (o BucketObjectRetentionOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketObjectRetention) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// A time in RFC 3339 format until which object retention protects this object.
+func (o BucketObjectRetentionOutput) RetainUntilTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketObjectRetention) *string { return v.RetainUntilTime }).(pulumi.StringPtrOutput)
+}
+
+type BucketObjectRetentionPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectRetentionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectRetention)(nil)).Elem()
+}
+
+func (o BucketObjectRetentionPtrOutput) ToBucketObjectRetentionPtrOutput() BucketObjectRetentionPtrOutput {
+	return o
+}
+
+func (o BucketObjectRetentionPtrOutput) ToBucketObjectRetentionPtrOutputWithContext(ctx context.Context) BucketObjectRetentionPtrOutput {
+	return o
+}
+
+func (o BucketObjectRetentionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketObjectRetention] {
+	return pulumix.Output[*BucketObjectRetention]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BucketObjectRetentionPtrOutput) Elem() BucketObjectRetentionOutput {
+	return o.ApplyT(func(v *BucketObjectRetention) BucketObjectRetention {
+		if v != nil {
+			return *v
+		}
+		var ret BucketObjectRetention
+		return ret
+	}).(BucketObjectRetentionOutput)
+}
+
+// The bucket's object retention mode, can only be Unlocked or Locked.
+func (o BucketObjectRetentionPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectRetention) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// A time in RFC 3339 format until which object retention protects this object.
+func (o BucketObjectRetentionPtrOutput) RetainUntilTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectRetention) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetainUntilTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// A collection of object level retention parameters.
+type BucketObjectRetentionResponse struct {
+	// The bucket's object retention mode, can only be Unlocked or Locked.
+	Mode string `pulumi:"mode"`
+	// A time in RFC 3339 format until which object retention protects this object.
+	RetainUntilTime string `pulumi:"retainUntilTime"`
+}
+
+// A collection of object level retention parameters.
+type BucketObjectRetentionResponseOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectRetentionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectRetentionResponse)(nil)).Elem()
+}
+
+func (o BucketObjectRetentionResponseOutput) ToBucketObjectRetentionResponseOutput() BucketObjectRetentionResponseOutput {
+	return o
+}
+
+func (o BucketObjectRetentionResponseOutput) ToBucketObjectRetentionResponseOutputWithContext(ctx context.Context) BucketObjectRetentionResponseOutput {
+	return o
+}
+
+func (o BucketObjectRetentionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BucketObjectRetentionResponse] {
+	return pulumix.Output[BucketObjectRetentionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The bucket's object retention mode, can only be Unlocked or Locked.
+func (o BucketObjectRetentionResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketObjectRetentionResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// A time in RFC 3339 format until which object retention protects this object.
+func (o BucketObjectRetentionResponseOutput) RetainUntilTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketObjectRetentionResponse) string { return v.RetainUntilTime }).(pulumi.StringOutput)
+}
+
 // The owner of the bucket. This is always the project team's owner group.
 type BucketOwner struct {
 	// The entity, in the form project-owner-projectId.
@@ -4890,6 +5164,228 @@ func (o BucketRetentionPolicyResponseOutput) IsLocked() pulumi.BoolOutput {
 // The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
 func (o BucketRetentionPolicyResponseOutput) RetentionPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketRetentionPolicyResponse) string { return v.RetentionPeriod }).(pulumi.StringOutput)
+}
+
+// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+type BucketSoftDeletePolicy struct {
+	// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+	EffectiveTime *string `pulumi:"effectiveTime"`
+	// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted.
+	RetentionDurationSeconds *string `pulumi:"retentionDurationSeconds"`
+}
+
+// BucketSoftDeletePolicyInput is an input type that accepts BucketSoftDeletePolicyArgs and BucketSoftDeletePolicyOutput values.
+// You can construct a concrete instance of `BucketSoftDeletePolicyInput` via:
+//
+//	BucketSoftDeletePolicyArgs{...}
+type BucketSoftDeletePolicyInput interface {
+	pulumi.Input
+
+	ToBucketSoftDeletePolicyOutput() BucketSoftDeletePolicyOutput
+	ToBucketSoftDeletePolicyOutputWithContext(context.Context) BucketSoftDeletePolicyOutput
+}
+
+// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+type BucketSoftDeletePolicyArgs struct {
+	// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+	EffectiveTime pulumi.StringPtrInput `pulumi:"effectiveTime"`
+	// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted.
+	RetentionDurationSeconds pulumi.StringPtrInput `pulumi:"retentionDurationSeconds"`
+}
+
+func (BucketSoftDeletePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (i BucketSoftDeletePolicyArgs) ToBucketSoftDeletePolicyOutput() BucketSoftDeletePolicyOutput {
+	return i.ToBucketSoftDeletePolicyOutputWithContext(context.Background())
+}
+
+func (i BucketSoftDeletePolicyArgs) ToBucketSoftDeletePolicyOutputWithContext(ctx context.Context) BucketSoftDeletePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketSoftDeletePolicyOutput)
+}
+
+func (i BucketSoftDeletePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[BucketSoftDeletePolicy] {
+	return pulumix.Output[BucketSoftDeletePolicy]{
+		OutputState: i.ToBucketSoftDeletePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BucketSoftDeletePolicyArgs) ToBucketSoftDeletePolicyPtrOutput() BucketSoftDeletePolicyPtrOutput {
+	return i.ToBucketSoftDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BucketSoftDeletePolicyArgs) ToBucketSoftDeletePolicyPtrOutputWithContext(ctx context.Context) BucketSoftDeletePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketSoftDeletePolicyOutput).ToBucketSoftDeletePolicyPtrOutputWithContext(ctx)
+}
+
+// BucketSoftDeletePolicyPtrInput is an input type that accepts BucketSoftDeletePolicyArgs, BucketSoftDeletePolicyPtr and BucketSoftDeletePolicyPtrOutput values.
+// You can construct a concrete instance of `BucketSoftDeletePolicyPtrInput` via:
+//
+//	        BucketSoftDeletePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketSoftDeletePolicyPtrInput interface {
+	pulumi.Input
+
+	ToBucketSoftDeletePolicyPtrOutput() BucketSoftDeletePolicyPtrOutput
+	ToBucketSoftDeletePolicyPtrOutputWithContext(context.Context) BucketSoftDeletePolicyPtrOutput
+}
+
+type bucketSoftDeletePolicyPtrType BucketSoftDeletePolicyArgs
+
+func BucketSoftDeletePolicyPtr(v *BucketSoftDeletePolicyArgs) BucketSoftDeletePolicyPtrInput {
+	return (*bucketSoftDeletePolicyPtrType)(v)
+}
+
+func (*bucketSoftDeletePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (i *bucketSoftDeletePolicyPtrType) ToBucketSoftDeletePolicyPtrOutput() BucketSoftDeletePolicyPtrOutput {
+	return i.ToBucketSoftDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketSoftDeletePolicyPtrType) ToBucketSoftDeletePolicyPtrOutputWithContext(ctx context.Context) BucketSoftDeletePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketSoftDeletePolicyPtrOutput)
+}
+
+func (i *bucketSoftDeletePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BucketSoftDeletePolicy] {
+	return pulumix.Output[*BucketSoftDeletePolicy]{
+		OutputState: i.ToBucketSoftDeletePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+type BucketSoftDeletePolicyOutput struct{ *pulumi.OutputState }
+
+func (BucketSoftDeletePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (o BucketSoftDeletePolicyOutput) ToBucketSoftDeletePolicyOutput() BucketSoftDeletePolicyOutput {
+	return o
+}
+
+func (o BucketSoftDeletePolicyOutput) ToBucketSoftDeletePolicyOutputWithContext(ctx context.Context) BucketSoftDeletePolicyOutput {
+	return o
+}
+
+func (o BucketSoftDeletePolicyOutput) ToBucketSoftDeletePolicyPtrOutput() BucketSoftDeletePolicyPtrOutput {
+	return o.ToBucketSoftDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BucketSoftDeletePolicyOutput) ToBucketSoftDeletePolicyPtrOutputWithContext(ctx context.Context) BucketSoftDeletePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketSoftDeletePolicy) *BucketSoftDeletePolicy {
+		return &v
+	}).(BucketSoftDeletePolicyPtrOutput)
+}
+
+func (o BucketSoftDeletePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BucketSoftDeletePolicy] {
+	return pulumix.Output[BucketSoftDeletePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+func (o BucketSoftDeletePolicyOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketSoftDeletePolicy) *string { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
+// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted.
+func (o BucketSoftDeletePolicyOutput) RetentionDurationSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketSoftDeletePolicy) *string { return v.RetentionDurationSeconds }).(pulumi.StringPtrOutput)
+}
+
+type BucketSoftDeletePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketSoftDeletePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (o BucketSoftDeletePolicyPtrOutput) ToBucketSoftDeletePolicyPtrOutput() BucketSoftDeletePolicyPtrOutput {
+	return o
+}
+
+func (o BucketSoftDeletePolicyPtrOutput) ToBucketSoftDeletePolicyPtrOutputWithContext(ctx context.Context) BucketSoftDeletePolicyPtrOutput {
+	return o
+}
+
+func (o BucketSoftDeletePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketSoftDeletePolicy] {
+	return pulumix.Output[*BucketSoftDeletePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BucketSoftDeletePolicyPtrOutput) Elem() BucketSoftDeletePolicyOutput {
+	return o.ApplyT(func(v *BucketSoftDeletePolicy) BucketSoftDeletePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BucketSoftDeletePolicy
+		return ret
+	}).(BucketSoftDeletePolicyOutput)
+}
+
+// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+func (o BucketSoftDeletePolicyPtrOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketSoftDeletePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted.
+func (o BucketSoftDeletePolicyPtrOutput) RetentionDurationSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketSoftDeletePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDurationSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+type BucketSoftDeletePolicyResponse struct {
+	// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+	EffectiveTime string `pulumi:"effectiveTime"`
+	// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted.
+	RetentionDurationSeconds string `pulumi:"retentionDurationSeconds"`
+}
+
+// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+type BucketSoftDeletePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (BucketSoftDeletePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketSoftDeletePolicyResponse)(nil)).Elem()
+}
+
+func (o BucketSoftDeletePolicyResponseOutput) ToBucketSoftDeletePolicyResponseOutput() BucketSoftDeletePolicyResponseOutput {
+	return o
+}
+
+func (o BucketSoftDeletePolicyResponseOutput) ToBucketSoftDeletePolicyResponseOutputWithContext(ctx context.Context) BucketSoftDeletePolicyResponseOutput {
+	return o
+}
+
+func (o BucketSoftDeletePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BucketSoftDeletePolicyResponse] {
+	return pulumix.Output[BucketSoftDeletePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+func (o BucketSoftDeletePolicyResponseOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketSoftDeletePolicyResponse) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted.
+func (o BucketSoftDeletePolicyResponseOutput) RetentionDurationSeconds() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketSoftDeletePolicyResponse) string { return v.RetentionDurationSeconds }).(pulumi.StringOutput)
 }
 
 // The bucket's versioning configuration.
@@ -5804,6 +6300,310 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ManagedFolderIamPolicyBindingsItem struct {
+	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+	Condition *Expr `pulumi:"condition"`
+	// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+	// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+	// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+	// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+	// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+	// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+	// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+	// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+	// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+	Members []string `pulumi:"members"`
+	// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+	// The new IAM roles are:
+	// - roles/storage.admin — Full control of Google Cloud Storage resources.
+	// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+	// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+	// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+	// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+	// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+	// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+	// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+	// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+	Role *string `pulumi:"role"`
+}
+
+// ManagedFolderIamPolicyBindingsItemInput is an input type that accepts ManagedFolderIamPolicyBindingsItemArgs and ManagedFolderIamPolicyBindingsItemOutput values.
+// You can construct a concrete instance of `ManagedFolderIamPolicyBindingsItemInput` via:
+//
+//	ManagedFolderIamPolicyBindingsItemArgs{...}
+type ManagedFolderIamPolicyBindingsItemInput interface {
+	pulumi.Input
+
+	ToManagedFolderIamPolicyBindingsItemOutput() ManagedFolderIamPolicyBindingsItemOutput
+	ToManagedFolderIamPolicyBindingsItemOutputWithContext(context.Context) ManagedFolderIamPolicyBindingsItemOutput
+}
+
+type ManagedFolderIamPolicyBindingsItemArgs struct {
+	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+	Condition ExprPtrInput `pulumi:"condition"`
+	// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+	// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+	// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+	// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+	// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+	// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+	// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+	// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+	// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+	// The new IAM roles are:
+	// - roles/storage.admin — Full control of Google Cloud Storage resources.
+	// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+	// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+	// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+	// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+	// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+	// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+	// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+	// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (ManagedFolderIamPolicyBindingsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderIamPolicyBindingsItem)(nil)).Elem()
+}
+
+func (i ManagedFolderIamPolicyBindingsItemArgs) ToManagedFolderIamPolicyBindingsItemOutput() ManagedFolderIamPolicyBindingsItemOutput {
+	return i.ToManagedFolderIamPolicyBindingsItemOutputWithContext(context.Background())
+}
+
+func (i ManagedFolderIamPolicyBindingsItemArgs) ToManagedFolderIamPolicyBindingsItemOutputWithContext(ctx context.Context) ManagedFolderIamPolicyBindingsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderIamPolicyBindingsItemOutput)
+}
+
+func (i ManagedFolderIamPolicyBindingsItemArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedFolderIamPolicyBindingsItem] {
+	return pulumix.Output[ManagedFolderIamPolicyBindingsItem]{
+		OutputState: i.ToManagedFolderIamPolicyBindingsItemOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ManagedFolderIamPolicyBindingsItemArrayInput is an input type that accepts ManagedFolderIamPolicyBindingsItemArray and ManagedFolderIamPolicyBindingsItemArrayOutput values.
+// You can construct a concrete instance of `ManagedFolderIamPolicyBindingsItemArrayInput` via:
+//
+//	ManagedFolderIamPolicyBindingsItemArray{ ManagedFolderIamPolicyBindingsItemArgs{...} }
+type ManagedFolderIamPolicyBindingsItemArrayInput interface {
+	pulumi.Input
+
+	ToManagedFolderIamPolicyBindingsItemArrayOutput() ManagedFolderIamPolicyBindingsItemArrayOutput
+	ToManagedFolderIamPolicyBindingsItemArrayOutputWithContext(context.Context) ManagedFolderIamPolicyBindingsItemArrayOutput
+}
+
+type ManagedFolderIamPolicyBindingsItemArray []ManagedFolderIamPolicyBindingsItemInput
+
+func (ManagedFolderIamPolicyBindingsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedFolderIamPolicyBindingsItem)(nil)).Elem()
+}
+
+func (i ManagedFolderIamPolicyBindingsItemArray) ToManagedFolderIamPolicyBindingsItemArrayOutput() ManagedFolderIamPolicyBindingsItemArrayOutput {
+	return i.ToManagedFolderIamPolicyBindingsItemArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedFolderIamPolicyBindingsItemArray) ToManagedFolderIamPolicyBindingsItemArrayOutputWithContext(ctx context.Context) ManagedFolderIamPolicyBindingsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderIamPolicyBindingsItemArrayOutput)
+}
+
+func (i ManagedFolderIamPolicyBindingsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagedFolderIamPolicyBindingsItem] {
+	return pulumix.Output[[]ManagedFolderIamPolicyBindingsItem]{
+		OutputState: i.ToManagedFolderIamPolicyBindingsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ManagedFolderIamPolicyBindingsItemOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderIamPolicyBindingsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderIamPolicyBindingsItem)(nil)).Elem()
+}
+
+func (o ManagedFolderIamPolicyBindingsItemOutput) ToManagedFolderIamPolicyBindingsItemOutput() ManagedFolderIamPolicyBindingsItemOutput {
+	return o
+}
+
+func (o ManagedFolderIamPolicyBindingsItemOutput) ToManagedFolderIamPolicyBindingsItemOutputWithContext(ctx context.Context) ManagedFolderIamPolicyBindingsItemOutput {
+	return o
+}
+
+func (o ManagedFolderIamPolicyBindingsItemOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedFolderIamPolicyBindingsItem] {
+	return pulumix.Output[ManagedFolderIamPolicyBindingsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+func (o ManagedFolderIamPolicyBindingsItemOutput) Condition() ExprPtrOutput {
+	return o.ApplyT(func(v ManagedFolderIamPolicyBindingsItem) *Expr { return v.Condition }).(ExprPtrOutput)
+}
+
+// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+func (o ManagedFolderIamPolicyBindingsItemOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedFolderIamPolicyBindingsItem) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+// The new IAM roles are:
+// - roles/storage.admin — Full control of Google Cloud Storage resources.
+// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+func (o ManagedFolderIamPolicyBindingsItemOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedFolderIamPolicyBindingsItem) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type ManagedFolderIamPolicyBindingsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderIamPolicyBindingsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedFolderIamPolicyBindingsItem)(nil)).Elem()
+}
+
+func (o ManagedFolderIamPolicyBindingsItemArrayOutput) ToManagedFolderIamPolicyBindingsItemArrayOutput() ManagedFolderIamPolicyBindingsItemArrayOutput {
+	return o
+}
+
+func (o ManagedFolderIamPolicyBindingsItemArrayOutput) ToManagedFolderIamPolicyBindingsItemArrayOutputWithContext(ctx context.Context) ManagedFolderIamPolicyBindingsItemArrayOutput {
+	return o
+}
+
+func (o ManagedFolderIamPolicyBindingsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedFolderIamPolicyBindingsItem] {
+	return pulumix.Output[[]ManagedFolderIamPolicyBindingsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ManagedFolderIamPolicyBindingsItemArrayOutput) Index(i pulumi.IntInput) ManagedFolderIamPolicyBindingsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedFolderIamPolicyBindingsItem {
+		return vs[0].([]ManagedFolderIamPolicyBindingsItem)[vs[1].(int)]
+	}).(ManagedFolderIamPolicyBindingsItemOutput)
+}
+
+type ManagedFolderIamPolicyBindingsItemResponse struct {
+	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+	Condition ExprResponse `pulumi:"condition"`
+	// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+	// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+	// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+	// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+	// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+	// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+	// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+	// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+	// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+	Members []string `pulumi:"members"`
+	// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+	// The new IAM roles are:
+	// - roles/storage.admin — Full control of Google Cloud Storage resources.
+	// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+	// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+	// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+	// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+	// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+	// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+	// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+	// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+	Role string `pulumi:"role"`
+}
+
+type ManagedFolderIamPolicyBindingsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderIamPolicyBindingsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderIamPolicyBindingsItemResponse)(nil)).Elem()
+}
+
+func (o ManagedFolderIamPolicyBindingsItemResponseOutput) ToManagedFolderIamPolicyBindingsItemResponseOutput() ManagedFolderIamPolicyBindingsItemResponseOutput {
+	return o
+}
+
+func (o ManagedFolderIamPolicyBindingsItemResponseOutput) ToManagedFolderIamPolicyBindingsItemResponseOutputWithContext(ctx context.Context) ManagedFolderIamPolicyBindingsItemResponseOutput {
+	return o
+}
+
+func (o ManagedFolderIamPolicyBindingsItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedFolderIamPolicyBindingsItemResponse] {
+	return pulumix.Output[ManagedFolderIamPolicyBindingsItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+func (o ManagedFolderIamPolicyBindingsItemResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v ManagedFolderIamPolicyBindingsItemResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
+// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
+// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
+// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
+// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
+// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
+// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
+// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+func (o ManagedFolderIamPolicyBindingsItemResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedFolderIamPolicyBindingsItemResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+// The new IAM roles are:
+// - roles/storage.admin — Full control of Google Cloud Storage resources.
+// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
+// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
+// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
+// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
+// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
+// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
+// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
+// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+func (o ManagedFolderIamPolicyBindingsItemResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedFolderIamPolicyBindingsItemResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type ManagedFolderIamPolicyBindingsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderIamPolicyBindingsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedFolderIamPolicyBindingsItemResponse)(nil)).Elem()
+}
+
+func (o ManagedFolderIamPolicyBindingsItemResponseArrayOutput) ToManagedFolderIamPolicyBindingsItemResponseArrayOutput() ManagedFolderIamPolicyBindingsItemResponseArrayOutput {
+	return o
+}
+
+func (o ManagedFolderIamPolicyBindingsItemResponseArrayOutput) ToManagedFolderIamPolicyBindingsItemResponseArrayOutputWithContext(ctx context.Context) ManagedFolderIamPolicyBindingsItemResponseArrayOutput {
+	return o
+}
+
+func (o ManagedFolderIamPolicyBindingsItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedFolderIamPolicyBindingsItemResponse] {
+	return pulumix.Output[[]ManagedFolderIamPolicyBindingsItemResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ManagedFolderIamPolicyBindingsItemResponseArrayOutput) Index(i pulumi.IntInput) ManagedFolderIamPolicyBindingsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedFolderIamPolicyBindingsItemResponse {
+		return vs[0].([]ManagedFolderIamPolicyBindingsItemResponse)[vs[1].(int)]
+	}).(ManagedFolderIamPolicyBindingsItemResponseOutput)
 }
 
 // An access-control entry.
@@ -6791,10 +7591,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectCustomerEncryptionPtrInput)(nil)).Elem(), BucketObjectCustomerEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectOwnerInput)(nil)).Elem(), BucketObjectOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectOwnerPtrInput)(nil)).Elem(), BucketObjectOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectRetentionInput)(nil)).Elem(), BucketObjectRetentionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectRetentionPtrInput)(nil)).Elem(), BucketObjectRetentionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketOwnerInput)(nil)).Elem(), BucketOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketOwnerPtrInput)(nil)).Elem(), BucketOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRetentionPolicyInput)(nil)).Elem(), BucketRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRetentionPolicyPtrInput)(nil)).Elem(), BucketRetentionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketSoftDeletePolicyInput)(nil)).Elem(), BucketSoftDeletePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketSoftDeletePolicyPtrInput)(nil)).Elem(), BucketSoftDeletePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningInput)(nil)).Elem(), BucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningPtrInput)(nil)).Elem(), BucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteInput)(nil)).Elem(), BucketWebsiteArgs{})
@@ -6803,6 +7607,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamPtrInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamPolicyBindingsItemInput)(nil)).Elem(), ManagedFolderIamPolicyBindingsItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamPolicyBindingsItemArrayInput)(nil)).Elem(), ManagedFolderIamPolicyBindingsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlTypeInput)(nil)).Elem(), ObjectAccessControlTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlTypeArrayInput)(nil)).Elem(), ObjectAccessControlTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamInput)(nil)).Elem(), ObjectAccessControlProjectTeamArgs{})
@@ -6867,12 +7673,18 @@ func init() {
 	pulumi.RegisterOutputType(BucketObjectOwnerOutput{})
 	pulumi.RegisterOutputType(BucketObjectOwnerPtrOutput{})
 	pulumi.RegisterOutputType(BucketObjectOwnerResponseOutput{})
+	pulumi.RegisterOutputType(BucketObjectRetentionOutput{})
+	pulumi.RegisterOutputType(BucketObjectRetentionPtrOutput{})
+	pulumi.RegisterOutputType(BucketObjectRetentionResponseOutput{})
 	pulumi.RegisterOutputType(BucketOwnerOutput{})
 	pulumi.RegisterOutputType(BucketOwnerPtrOutput{})
 	pulumi.RegisterOutputType(BucketOwnerResponseOutput{})
 	pulumi.RegisterOutputType(BucketRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(BucketRetentionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BucketRetentionPolicyResponseOutput{})
+	pulumi.RegisterOutputType(BucketSoftDeletePolicyOutput{})
+	pulumi.RegisterOutputType(BucketSoftDeletePolicyPtrOutput{})
+	pulumi.RegisterOutputType(BucketSoftDeletePolicyResponseOutput{})
 	pulumi.RegisterOutputType(BucketVersioningOutput{})
 	pulumi.RegisterOutputType(BucketVersioningPtrOutput{})
 	pulumi.RegisterOutputType(BucketVersioningResponseOutput{})
@@ -6885,6 +7697,10 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(ManagedFolderIamPolicyBindingsItemOutput{})
+	pulumi.RegisterOutputType(ManagedFolderIamPolicyBindingsItemArrayOutput{})
+	pulumi.RegisterOutputType(ManagedFolderIamPolicyBindingsItemResponseOutput{})
+	pulumi.RegisterOutputType(ManagedFolderIamPolicyBindingsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlTypeOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlTypeArrayOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamOutput{})

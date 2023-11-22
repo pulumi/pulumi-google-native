@@ -11,6 +11,193 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Specifies which upgrade policy to use.
+type BareMetalClusterUpgradePolicyPolicy string
+
+const (
+	// No upgrade policy selected.
+	BareMetalClusterUpgradePolicyPolicyNodePoolPolicyUnspecified = BareMetalClusterUpgradePolicyPolicy("NODE_POOL_POLICY_UNSPECIFIED")
+	// Upgrade worker node pools sequentially.
+	BareMetalClusterUpgradePolicyPolicySerial = BareMetalClusterUpgradePolicyPolicy("SERIAL")
+	// Upgrade all worker node pools in parallel.
+	BareMetalClusterUpgradePolicyPolicyConcurrent = BareMetalClusterUpgradePolicyPolicy("CONCURRENT")
+)
+
+func (BareMetalClusterUpgradePolicyPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalClusterUpgradePolicyPolicy)(nil)).Elem()
+}
+
+func (e BareMetalClusterUpgradePolicyPolicy) ToBareMetalClusterUpgradePolicyPolicyOutput() BareMetalClusterUpgradePolicyPolicyOutput {
+	return pulumi.ToOutput(e).(BareMetalClusterUpgradePolicyPolicyOutput)
+}
+
+func (e BareMetalClusterUpgradePolicyPolicy) ToBareMetalClusterUpgradePolicyPolicyOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BareMetalClusterUpgradePolicyPolicyOutput)
+}
+
+func (e BareMetalClusterUpgradePolicyPolicy) ToBareMetalClusterUpgradePolicyPolicyPtrOutput() BareMetalClusterUpgradePolicyPolicyPtrOutput {
+	return e.ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e BareMetalClusterUpgradePolicyPolicy) ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPolicyPtrOutput {
+	return BareMetalClusterUpgradePolicyPolicy(e).ToBareMetalClusterUpgradePolicyPolicyOutputWithContext(ctx).ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(ctx)
+}
+
+func (e BareMetalClusterUpgradePolicyPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BareMetalClusterUpgradePolicyPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BareMetalClusterUpgradePolicyPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BareMetalClusterUpgradePolicyPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BareMetalClusterUpgradePolicyPolicyOutput struct{ *pulumi.OutputState }
+
+func (BareMetalClusterUpgradePolicyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalClusterUpgradePolicyPolicy)(nil)).Elem()
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyOutput) ToBareMetalClusterUpgradePolicyPolicyOutput() BareMetalClusterUpgradePolicyPolicyOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyOutput) ToBareMetalClusterUpgradePolicyPolicyOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPolicyOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyOutput) ToBareMetalClusterUpgradePolicyPolicyPtrOutput() BareMetalClusterUpgradePolicyPolicyPtrOutput {
+	return o.ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyOutput) ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterUpgradePolicyPolicy) *BareMetalClusterUpgradePolicyPolicy {
+		return &v
+	}).(BareMetalClusterUpgradePolicyPolicyPtrOutput)
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicyPolicy] {
+	return pulumix.Output[BareMetalClusterUpgradePolicyPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BareMetalClusterUpgradePolicyPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BareMetalClusterUpgradePolicyPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BareMetalClusterUpgradePolicyPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalClusterUpgradePolicyPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalClusterUpgradePolicyPolicy)(nil)).Elem()
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) ToBareMetalClusterUpgradePolicyPolicyPtrOutput() BareMetalClusterUpgradePolicyPolicyPtrOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPolicyPtrOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicyPolicy] {
+	return pulumix.Output[*BareMetalClusterUpgradePolicyPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) Elem() BareMetalClusterUpgradePolicyPolicyOutput {
+	return o.ApplyT(func(v *BareMetalClusterUpgradePolicyPolicy) BareMetalClusterUpgradePolicyPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalClusterUpgradePolicyPolicy
+		return ret
+	}).(BareMetalClusterUpgradePolicyPolicyOutput)
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalClusterUpgradePolicyPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BareMetalClusterUpgradePolicyPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BareMetalClusterUpgradePolicyPolicyInput is an input type that accepts BareMetalClusterUpgradePolicyPolicyArgs and BareMetalClusterUpgradePolicyPolicyOutput values.
+// You can construct a concrete instance of `BareMetalClusterUpgradePolicyPolicyInput` via:
+//
+//	BareMetalClusterUpgradePolicyPolicyArgs{...}
+type BareMetalClusterUpgradePolicyPolicyInput interface {
+	pulumi.Input
+
+	ToBareMetalClusterUpgradePolicyPolicyOutput() BareMetalClusterUpgradePolicyPolicyOutput
+	ToBareMetalClusterUpgradePolicyPolicyOutputWithContext(context.Context) BareMetalClusterUpgradePolicyPolicyOutput
+}
+
+var bareMetalClusterUpgradePolicyPolicyPtrType = reflect.TypeOf((**BareMetalClusterUpgradePolicyPolicy)(nil)).Elem()
+
+type BareMetalClusterUpgradePolicyPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalClusterUpgradePolicyPolicyPtrOutput() BareMetalClusterUpgradePolicyPolicyPtrOutput
+	ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(context.Context) BareMetalClusterUpgradePolicyPolicyPtrOutput
+}
+
+type bareMetalClusterUpgradePolicyPolicyPtr string
+
+func BareMetalClusterUpgradePolicyPolicyPtr(v string) BareMetalClusterUpgradePolicyPolicyPtrInput {
+	return (*bareMetalClusterUpgradePolicyPolicyPtr)(&v)
+}
+
+func (*bareMetalClusterUpgradePolicyPolicyPtr) ElementType() reflect.Type {
+	return bareMetalClusterUpgradePolicyPolicyPtrType
+}
+
+func (in *bareMetalClusterUpgradePolicyPolicyPtr) ToBareMetalClusterUpgradePolicyPolicyPtrOutput() BareMetalClusterUpgradePolicyPolicyPtrOutput {
+	return pulumi.ToOutput(in).(BareMetalClusterUpgradePolicyPolicyPtrOutput)
+}
+
+func (in *bareMetalClusterUpgradePolicyPolicyPtr) ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BareMetalClusterUpgradePolicyPolicyPtrOutput)
+}
+
+func (in *bareMetalClusterUpgradePolicyPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicyPolicy] {
+	return pulumix.Output[*BareMetalClusterUpgradePolicyPolicy]{
+		OutputState: in.ToBareMetalClusterUpgradePolicyPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the nodes operating system (default: LINUX).
 type BareMetalNodePoolConfigOperatingSystem string
 
@@ -381,6 +568,193 @@ func (in *bareMetalWorkloadNodeConfigContainerRuntimePtr) ToOutput(ctx context.C
 	}
 }
 
+// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+type BinaryAuthorizationEvaluationMode string
+
+const (
+	// Default value
+	BinaryAuthorizationEvaluationModeEvaluationModeUnspecified = BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED")
+	// Disable BinaryAuthorization
+	BinaryAuthorizationEvaluationModeDisabled = BinaryAuthorizationEvaluationMode("DISABLED")
+	// Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy.
+	BinaryAuthorizationEvaluationModeProjectSingletonPolicyEnforce = BinaryAuthorizationEvaluationMode("PROJECT_SINGLETON_POLICY_ENFORCE")
+)
+
+func (BinaryAuthorizationEvaluationMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*BinaryAuthorizationEvaluationMode)(nil)).Elem()
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToBinaryAuthorizationEvaluationModeOutput() BinaryAuthorizationEvaluationModeOutput {
+	return pulumi.ToOutput(e).(BinaryAuthorizationEvaluationModeOutput)
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToBinaryAuthorizationEvaluationModeOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BinaryAuthorizationEvaluationModeOutput)
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToBinaryAuthorizationEvaluationModePtrOutput() BinaryAuthorizationEvaluationModePtrOutput {
+	return e.ToBinaryAuthorizationEvaluationModePtrOutputWithContext(context.Background())
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModePtrOutput {
+	return BinaryAuthorizationEvaluationMode(e).ToBinaryAuthorizationEvaluationModeOutputWithContext(ctx).ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx)
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BinaryAuthorizationEvaluationModeOutput struct{ *pulumi.OutputState }
+
+func (BinaryAuthorizationEvaluationModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BinaryAuthorizationEvaluationMode)(nil)).Elem()
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToBinaryAuthorizationEvaluationModeOutput() BinaryAuthorizationEvaluationModeOutput {
+	return o
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToBinaryAuthorizationEvaluationModeOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModeOutput {
+	return o
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToBinaryAuthorizationEvaluationModePtrOutput() BinaryAuthorizationEvaluationModePtrOutput {
+	return o.ToBinaryAuthorizationEvaluationModePtrOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BinaryAuthorizationEvaluationMode) *BinaryAuthorizationEvaluationMode {
+		return &v
+	}).(BinaryAuthorizationEvaluationModePtrOutput)
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToOutput(ctx context.Context) pulumix.Output[BinaryAuthorizationEvaluationMode] {
+	return pulumix.Output[BinaryAuthorizationEvaluationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BinaryAuthorizationEvaluationMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BinaryAuthorizationEvaluationMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BinaryAuthorizationEvaluationModePtrOutput struct{ *pulumi.OutputState }
+
+func (BinaryAuthorizationEvaluationModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BinaryAuthorizationEvaluationMode)(nil)).Elem()
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) ToBinaryAuthorizationEvaluationModePtrOutput() BinaryAuthorizationEvaluationModePtrOutput {
+	return o
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModePtrOutput {
+	return o
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorizationEvaluationMode] {
+	return pulumix.Output[*BinaryAuthorizationEvaluationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) Elem() BinaryAuthorizationEvaluationModeOutput {
+	return o.ApplyT(func(v *BinaryAuthorizationEvaluationMode) BinaryAuthorizationEvaluationMode {
+		if v != nil {
+			return *v
+		}
+		var ret BinaryAuthorizationEvaluationMode
+		return ret
+	}).(BinaryAuthorizationEvaluationModeOutput)
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BinaryAuthorizationEvaluationMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BinaryAuthorizationEvaluationModeInput is an input type that accepts BinaryAuthorizationEvaluationModeArgs and BinaryAuthorizationEvaluationModeOutput values.
+// You can construct a concrete instance of `BinaryAuthorizationEvaluationModeInput` via:
+//
+//	BinaryAuthorizationEvaluationModeArgs{...}
+type BinaryAuthorizationEvaluationModeInput interface {
+	pulumi.Input
+
+	ToBinaryAuthorizationEvaluationModeOutput() BinaryAuthorizationEvaluationModeOutput
+	ToBinaryAuthorizationEvaluationModeOutputWithContext(context.Context) BinaryAuthorizationEvaluationModeOutput
+}
+
+var binaryAuthorizationEvaluationModePtrType = reflect.TypeOf((**BinaryAuthorizationEvaluationMode)(nil)).Elem()
+
+type BinaryAuthorizationEvaluationModePtrInput interface {
+	pulumi.Input
+
+	ToBinaryAuthorizationEvaluationModePtrOutput() BinaryAuthorizationEvaluationModePtrOutput
+	ToBinaryAuthorizationEvaluationModePtrOutputWithContext(context.Context) BinaryAuthorizationEvaluationModePtrOutput
+}
+
+type binaryAuthorizationEvaluationModePtr string
+
+func BinaryAuthorizationEvaluationModePtr(v string) BinaryAuthorizationEvaluationModePtrInput {
+	return (*binaryAuthorizationEvaluationModePtr)(&v)
+}
+
+func (*binaryAuthorizationEvaluationModePtr) ElementType() reflect.Type {
+	return binaryAuthorizationEvaluationModePtrType
+}
+
+func (in *binaryAuthorizationEvaluationModePtr) ToBinaryAuthorizationEvaluationModePtrOutput() BinaryAuthorizationEvaluationModePtrOutput {
+	return pulumi.ToOutput(in).(BinaryAuthorizationEvaluationModePtrOutput)
+}
+
+func (in *binaryAuthorizationEvaluationModePtr) ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BinaryAuthorizationEvaluationModePtrOutput)
+}
+
+func (in *binaryAuthorizationEvaluationModePtr) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorizationEvaluationMode] {
+	return pulumix.Output[*BinaryAuthorizationEvaluationMode]{
+		OutputState: in.ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The taint effect.
 type NodeTaintEffect string
 
@@ -571,16 +945,24 @@ func (in *nodeTaintEffectPtr) ToOutput(ctx context.Context) pulumix.Output[*Node
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterUpgradePolicyPolicyInput)(nil)).Elem(), BareMetalClusterUpgradePolicyPolicy("NODE_POOL_POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterUpgradePolicyPolicyPtrInput)(nil)).Elem(), BareMetalClusterUpgradePolicyPolicy("NODE_POOL_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalNodePoolConfigOperatingSystemInput)(nil)).Elem(), BareMetalNodePoolConfigOperatingSystem("OPERATING_SYSTEM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalNodePoolConfigOperatingSystemPtrInput)(nil)).Elem(), BareMetalNodePoolConfigOperatingSystem("OPERATING_SYSTEM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalWorkloadNodeConfigContainerRuntimeInput)(nil)).Elem(), BareMetalWorkloadNodeConfigContainerRuntime("CONTAINER_RUNTIME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalWorkloadNodeConfigContainerRuntimePtrInput)(nil)).Elem(), BareMetalWorkloadNodeConfigContainerRuntime("CONTAINER_RUNTIME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationEvaluationModeInput)(nil)).Elem(), BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationEvaluationModePtrInput)(nil)).Elem(), BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectPtrInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
+	pulumi.RegisterOutputType(BareMetalClusterUpgradePolicyPolicyOutput{})
+	pulumi.RegisterOutputType(BareMetalClusterUpgradePolicyPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalNodePoolConfigOperatingSystemOutput{})
 	pulumi.RegisterOutputType(BareMetalNodePoolConfigOperatingSystemPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalWorkloadNodeConfigContainerRuntimeOutput{})
 	pulumi.RegisterOutputType(BareMetalWorkloadNodeConfigContainerRuntimePtrOutput{})
+	pulumi.RegisterOutputType(BinaryAuthorizationEvaluationModeOutput{})
+	pulumi.RegisterOutputType(BinaryAuthorizationEvaluationModePtrOutput{})
 	pulumi.RegisterOutputType(NodeTaintEffectOutput{})
 	pulumi.RegisterOutputType(NodeTaintEffectPtrOutput{})
 }

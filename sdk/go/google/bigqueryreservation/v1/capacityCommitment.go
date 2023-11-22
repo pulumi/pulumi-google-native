@@ -29,7 +29,9 @@ type CapacityCommitment struct {
 	EnforceSingleAdminProjectPerOrg pulumi.BoolPtrOutput `pulumi:"enforceSingleAdminProjectPerOrg"`
 	// For FAILED commitment plan, provides the reason of failure.
 	FailureStatus StatusResponseOutput `pulumi:"failureStatus"`
-	Location      pulumi.StringOutput  `pulumi:"location"`
+	// If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment.
+	IsFlatRate pulumi.BoolOutput   `pulumi:"isFlatRate"`
+	Location   pulumi.StringOutput `pulumi:"location"`
 	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
 	MultiRegionAuxiliary pulumi.BoolOutput `pulumi:"multiRegionAuxiliary"`
 	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
@@ -205,6 +207,11 @@ func (o CapacityCommitmentOutput) EnforceSingleAdminProjectPerOrg() pulumi.BoolP
 // For FAILED commitment plan, provides the reason of failure.
 func (o CapacityCommitmentOutput) FailureStatus() StatusResponseOutput {
 	return o.ApplyT(func(v *CapacityCommitment) StatusResponseOutput { return v.FailureStatus }).(StatusResponseOutput)
+}
+
+// If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment.
+func (o CapacityCommitmentOutput) IsFlatRate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.BoolOutput { return v.IsFlatRate }).(pulumi.BoolOutput)
 }
 
 func (o CapacityCommitmentOutput) Location() pulumi.StringOutput {

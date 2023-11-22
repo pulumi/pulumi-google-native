@@ -38,8 +38,12 @@ type LookupAppProfileResult struct {
 	MultiClusterRoutingUseAny MultiClusterRoutingUseAnyResponse `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
 	Name string `pulumi:"name"`
+	// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+	Priority string `pulumi:"priority"`
 	// Use a single-cluster routing policy.
 	SingleClusterRouting SingleClusterRoutingResponse `pulumi:"singleClusterRouting"`
+	// The standard options used for isolating this app profile's traffic from other use cases.
+	StandardIsolation StandardIsolationResponse `pulumi:"standardIsolation"`
 }
 
 func LookupAppProfileOutput(ctx *pulumi.Context, args LookupAppProfileOutputArgs, opts ...pulumi.InvokeOption) LookupAppProfileResultOutput {
@@ -105,9 +109,19 @@ func (o LookupAppProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+func (o LookupAppProfileResultOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppProfileResult) string { return v.Priority }).(pulumi.StringOutput)
+}
+
 // Use a single-cluster routing policy.
 func (o LookupAppProfileResultOutput) SingleClusterRouting() SingleClusterRoutingResponseOutput {
 	return o.ApplyT(func(v LookupAppProfileResult) SingleClusterRoutingResponse { return v.SingleClusterRouting }).(SingleClusterRoutingResponseOutput)
+}
+
+// The standard options used for isolating this app profile's traffic from other use cases.
+func (o LookupAppProfileResultOutput) StandardIsolation() StandardIsolationResponseOutput {
+	return o.ApplyT(func(v LookupAppProfileResult) StandardIsolationResponse { return v.StandardIsolation }).(StandardIsolationResponseOutput)
 }
 
 func init() {

@@ -15,6 +15,7 @@ import (
 type ArgumentArgumentKind string
 
 const (
+	// Default value.
 	ArgumentArgumentKindArgumentKindUnspecified = ArgumentArgumentKind("ARGUMENT_KIND_UNSPECIFIED")
 	// The argument is a variable with fully specified type, which can be a struct or an array, but not a table.
 	ArgumentArgumentKindFixedType = ArgumentArgumentKind("FIXED_TYPE")
@@ -201,6 +202,7 @@ func (in *argumentArgumentKindPtr) ToOutput(ctx context.Context) pulumix.Output[
 type ArgumentMode string
 
 const (
+	// Default value.
 	ArgumentModeModeUnspecified = ArgumentMode("MODE_UNSPECIFIED")
 	// The argument is input-only.
 	ArgumentModeIn = ArgumentMode("IN")
@@ -817,6 +819,191 @@ func (o DatasetAccessEntryTargetTypesItemArrayOutput) Index(i pulumi.IntInput) D
 	}).(DatasetAccessEntryTargetTypesItemOutput)
 }
 
+// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+type RoutineDataGovernanceType string
+
+const (
+	// The data governance type is unspecified.
+	RoutineDataGovernanceTypeDataGovernanceTypeUnspecified = RoutineDataGovernanceType("DATA_GOVERNANCE_TYPE_UNSPECIFIED")
+	// The data governance type is data masking.
+	RoutineDataGovernanceTypeDataMasking = RoutineDataGovernanceType("DATA_MASKING")
+)
+
+func (RoutineDataGovernanceType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineDataGovernanceType)(nil)).Elem()
+}
+
+func (e RoutineDataGovernanceType) ToRoutineDataGovernanceTypeOutput() RoutineDataGovernanceTypeOutput {
+	return pulumi.ToOutput(e).(RoutineDataGovernanceTypeOutput)
+}
+
+func (e RoutineDataGovernanceType) ToRoutineDataGovernanceTypeOutputWithContext(ctx context.Context) RoutineDataGovernanceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RoutineDataGovernanceTypeOutput)
+}
+
+func (e RoutineDataGovernanceType) ToRoutineDataGovernanceTypePtrOutput() RoutineDataGovernanceTypePtrOutput {
+	return e.ToRoutineDataGovernanceTypePtrOutputWithContext(context.Background())
+}
+
+func (e RoutineDataGovernanceType) ToRoutineDataGovernanceTypePtrOutputWithContext(ctx context.Context) RoutineDataGovernanceTypePtrOutput {
+	return RoutineDataGovernanceType(e).ToRoutineDataGovernanceTypeOutputWithContext(ctx).ToRoutineDataGovernanceTypePtrOutputWithContext(ctx)
+}
+
+func (e RoutineDataGovernanceType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RoutineDataGovernanceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RoutineDataGovernanceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RoutineDataGovernanceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RoutineDataGovernanceTypeOutput struct{ *pulumi.OutputState }
+
+func (RoutineDataGovernanceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineDataGovernanceType)(nil)).Elem()
+}
+
+func (o RoutineDataGovernanceTypeOutput) ToRoutineDataGovernanceTypeOutput() RoutineDataGovernanceTypeOutput {
+	return o
+}
+
+func (o RoutineDataGovernanceTypeOutput) ToRoutineDataGovernanceTypeOutputWithContext(ctx context.Context) RoutineDataGovernanceTypeOutput {
+	return o
+}
+
+func (o RoutineDataGovernanceTypeOutput) ToRoutineDataGovernanceTypePtrOutput() RoutineDataGovernanceTypePtrOutput {
+	return o.ToRoutineDataGovernanceTypePtrOutputWithContext(context.Background())
+}
+
+func (o RoutineDataGovernanceTypeOutput) ToRoutineDataGovernanceTypePtrOutputWithContext(ctx context.Context) RoutineDataGovernanceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutineDataGovernanceType) *RoutineDataGovernanceType {
+		return &v
+	}).(RoutineDataGovernanceTypePtrOutput)
+}
+
+func (o RoutineDataGovernanceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RoutineDataGovernanceType] {
+	return pulumix.Output[RoutineDataGovernanceType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RoutineDataGovernanceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RoutineDataGovernanceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoutineDataGovernanceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RoutineDataGovernanceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoutineDataGovernanceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoutineDataGovernanceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RoutineDataGovernanceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RoutineDataGovernanceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutineDataGovernanceType)(nil)).Elem()
+}
+
+func (o RoutineDataGovernanceTypePtrOutput) ToRoutineDataGovernanceTypePtrOutput() RoutineDataGovernanceTypePtrOutput {
+	return o
+}
+
+func (o RoutineDataGovernanceTypePtrOutput) ToRoutineDataGovernanceTypePtrOutputWithContext(ctx context.Context) RoutineDataGovernanceTypePtrOutput {
+	return o
+}
+
+func (o RoutineDataGovernanceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutineDataGovernanceType] {
+	return pulumix.Output[*RoutineDataGovernanceType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RoutineDataGovernanceTypePtrOutput) Elem() RoutineDataGovernanceTypeOutput {
+	return o.ApplyT(func(v *RoutineDataGovernanceType) RoutineDataGovernanceType {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineDataGovernanceType
+		return ret
+	}).(RoutineDataGovernanceTypeOutput)
+}
+
+func (o RoutineDataGovernanceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoutineDataGovernanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RoutineDataGovernanceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RoutineDataGovernanceTypeInput is an input type that accepts RoutineDataGovernanceTypeArgs and RoutineDataGovernanceTypeOutput values.
+// You can construct a concrete instance of `RoutineDataGovernanceTypeInput` via:
+//
+//	RoutineDataGovernanceTypeArgs{...}
+type RoutineDataGovernanceTypeInput interface {
+	pulumi.Input
+
+	ToRoutineDataGovernanceTypeOutput() RoutineDataGovernanceTypeOutput
+	ToRoutineDataGovernanceTypeOutputWithContext(context.Context) RoutineDataGovernanceTypeOutput
+}
+
+var routineDataGovernanceTypePtrType = reflect.TypeOf((**RoutineDataGovernanceType)(nil)).Elem()
+
+type RoutineDataGovernanceTypePtrInput interface {
+	pulumi.Input
+
+	ToRoutineDataGovernanceTypePtrOutput() RoutineDataGovernanceTypePtrOutput
+	ToRoutineDataGovernanceTypePtrOutputWithContext(context.Context) RoutineDataGovernanceTypePtrOutput
+}
+
+type routineDataGovernanceTypePtr string
+
+func RoutineDataGovernanceTypePtr(v string) RoutineDataGovernanceTypePtrInput {
+	return (*routineDataGovernanceTypePtr)(&v)
+}
+
+func (*routineDataGovernanceTypePtr) ElementType() reflect.Type {
+	return routineDataGovernanceTypePtrType
+}
+
+func (in *routineDataGovernanceTypePtr) ToRoutineDataGovernanceTypePtrOutput() RoutineDataGovernanceTypePtrOutput {
+	return pulumi.ToOutput(in).(RoutineDataGovernanceTypePtrOutput)
+}
+
+func (in *routineDataGovernanceTypePtr) ToRoutineDataGovernanceTypePtrOutputWithContext(ctx context.Context) RoutineDataGovernanceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RoutineDataGovernanceTypePtrOutput)
+}
+
+func (in *routineDataGovernanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutineDataGovernanceType] {
+	return pulumix.Output[*RoutineDataGovernanceType]{
+		OutputState: in.ToRoutineDataGovernanceTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Optional. The determinism level of the JavaScript UDF, if defined.
 type RoutineDeterminismLevel string
 
@@ -1008,6 +1195,7 @@ func (in *routineDeterminismLevelPtr) ToOutput(ctx context.Context) pulumix.Outp
 type RoutineLanguage string
 
 const (
+	// Default value.
 	RoutineLanguageLanguageUnspecified = RoutineLanguage("LANGUAGE_UNSPECIFIED")
 	// SQL language.
 	RoutineLanguageSql = RoutineLanguage("SQL")
@@ -1200,6 +1388,7 @@ func (in *routineLanguagePtr) ToOutput(ctx context.Context) pulumix.Output[*Rout
 type RoutineRoutineType string
 
 const (
+	// Default value.
 	RoutineRoutineTypeRoutineTypeUnspecified = RoutineRoutineType("ROUTINE_TYPE_UNSPECIFIED")
 	// Non-built-in persistent scalar function.
 	RoutineRoutineTypeScalarFunction = RoutineRoutineType("SCALAR_FUNCTION")
@@ -1386,6 +1575,193 @@ func (in *routineRoutineTypePtr) ToOutput(ctx context.Context) pulumix.Output[*R
 	}
 }
 
+// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+type RoutineSecurityMode string
+
+const (
+	// The security mode of the routine is unspecified.
+	RoutineSecurityModeSecurityModeUnspecified = RoutineSecurityMode("SECURITY_MODE_UNSPECIFIED")
+	// The routine is to be executed with the privileges of the user who defines it.
+	RoutineSecurityModeDefiner = RoutineSecurityMode("DEFINER")
+	// The routine is to be executed with the privileges of the user who invokes it.
+	RoutineSecurityModeInvoker = RoutineSecurityMode("INVOKER")
+)
+
+func (RoutineSecurityMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineSecurityMode)(nil)).Elem()
+}
+
+func (e RoutineSecurityMode) ToRoutineSecurityModeOutput() RoutineSecurityModeOutput {
+	return pulumi.ToOutput(e).(RoutineSecurityModeOutput)
+}
+
+func (e RoutineSecurityMode) ToRoutineSecurityModeOutputWithContext(ctx context.Context) RoutineSecurityModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RoutineSecurityModeOutput)
+}
+
+func (e RoutineSecurityMode) ToRoutineSecurityModePtrOutput() RoutineSecurityModePtrOutput {
+	return e.ToRoutineSecurityModePtrOutputWithContext(context.Background())
+}
+
+func (e RoutineSecurityMode) ToRoutineSecurityModePtrOutputWithContext(ctx context.Context) RoutineSecurityModePtrOutput {
+	return RoutineSecurityMode(e).ToRoutineSecurityModeOutputWithContext(ctx).ToRoutineSecurityModePtrOutputWithContext(ctx)
+}
+
+func (e RoutineSecurityMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RoutineSecurityMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RoutineSecurityMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RoutineSecurityMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RoutineSecurityModeOutput struct{ *pulumi.OutputState }
+
+func (RoutineSecurityModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineSecurityMode)(nil)).Elem()
+}
+
+func (o RoutineSecurityModeOutput) ToRoutineSecurityModeOutput() RoutineSecurityModeOutput {
+	return o
+}
+
+func (o RoutineSecurityModeOutput) ToRoutineSecurityModeOutputWithContext(ctx context.Context) RoutineSecurityModeOutput {
+	return o
+}
+
+func (o RoutineSecurityModeOutput) ToRoutineSecurityModePtrOutput() RoutineSecurityModePtrOutput {
+	return o.ToRoutineSecurityModePtrOutputWithContext(context.Background())
+}
+
+func (o RoutineSecurityModeOutput) ToRoutineSecurityModePtrOutputWithContext(ctx context.Context) RoutineSecurityModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutineSecurityMode) *RoutineSecurityMode {
+		return &v
+	}).(RoutineSecurityModePtrOutput)
+}
+
+func (o RoutineSecurityModeOutput) ToOutput(ctx context.Context) pulumix.Output[RoutineSecurityMode] {
+	return pulumix.Output[RoutineSecurityMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RoutineSecurityModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RoutineSecurityModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoutineSecurityMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RoutineSecurityModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoutineSecurityModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoutineSecurityMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RoutineSecurityModePtrOutput struct{ *pulumi.OutputState }
+
+func (RoutineSecurityModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutineSecurityMode)(nil)).Elem()
+}
+
+func (o RoutineSecurityModePtrOutput) ToRoutineSecurityModePtrOutput() RoutineSecurityModePtrOutput {
+	return o
+}
+
+func (o RoutineSecurityModePtrOutput) ToRoutineSecurityModePtrOutputWithContext(ctx context.Context) RoutineSecurityModePtrOutput {
+	return o
+}
+
+func (o RoutineSecurityModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutineSecurityMode] {
+	return pulumix.Output[*RoutineSecurityMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RoutineSecurityModePtrOutput) Elem() RoutineSecurityModeOutput {
+	return o.ApplyT(func(v *RoutineSecurityMode) RoutineSecurityMode {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineSecurityMode
+		return ret
+	}).(RoutineSecurityModeOutput)
+}
+
+func (o RoutineSecurityModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoutineSecurityModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RoutineSecurityMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RoutineSecurityModeInput is an input type that accepts RoutineSecurityModeArgs and RoutineSecurityModeOutput values.
+// You can construct a concrete instance of `RoutineSecurityModeInput` via:
+//
+//	RoutineSecurityModeArgs{...}
+type RoutineSecurityModeInput interface {
+	pulumi.Input
+
+	ToRoutineSecurityModeOutput() RoutineSecurityModeOutput
+	ToRoutineSecurityModeOutputWithContext(context.Context) RoutineSecurityModeOutput
+}
+
+var routineSecurityModePtrType = reflect.TypeOf((**RoutineSecurityMode)(nil)).Elem()
+
+type RoutineSecurityModePtrInput interface {
+	pulumi.Input
+
+	ToRoutineSecurityModePtrOutput() RoutineSecurityModePtrOutput
+	ToRoutineSecurityModePtrOutputWithContext(context.Context) RoutineSecurityModePtrOutput
+}
+
+type routineSecurityModePtr string
+
+func RoutineSecurityModePtr(v string) RoutineSecurityModePtrInput {
+	return (*routineSecurityModePtr)(&v)
+}
+
+func (*routineSecurityModePtr) ElementType() reflect.Type {
+	return routineSecurityModePtrType
+}
+
+func (in *routineSecurityModePtr) ToRoutineSecurityModePtrOutput() RoutineSecurityModePtrOutput {
+	return pulumi.ToOutput(in).(RoutineSecurityModePtrOutput)
+}
+
+func (in *routineSecurityModePtr) ToRoutineSecurityModePtrOutputWithContext(ctx context.Context) RoutineSecurityModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RoutineSecurityModePtrOutput)
+}
+
+func (in *routineSecurityModePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutineSecurityMode] {
+	return pulumix.Output[*RoutineSecurityMode]{
+		OutputState: in.ToRoutineSecurityModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
 type StandardSqlDataTypeTypeKind string
 
@@ -1424,6 +1800,8 @@ const (
 	StandardSqlDataTypeTypeKindArray = StandardSqlDataTypeTypeKind("ARRAY")
 	// Encoded as a list with fields of type Type.struct_type[i]. List is used because a JSON object cannot have duplicate field names.
 	StandardSqlDataTypeTypeKindStruct = StandardSqlDataTypeTypeKind("STRUCT")
+	// Encoded as a pair with types matching range_element_type. Pairs must begin with "[", end with ")", and be separated by ", ".
+	StandardSqlDataTypeTypeKindRange = StandardSqlDataTypeTypeKind("RANGE")
 )
 
 func (StandardSqlDataTypeTypeKind) ElementType() reflect.Type {
@@ -1611,12 +1989,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItem("TARGET_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemPtrInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItem("TARGET_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemArrayInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDataGovernanceTypeInput)(nil)).Elem(), RoutineDataGovernanceType("DATA_GOVERNANCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDataGovernanceTypePtrInput)(nil)).Elem(), RoutineDataGovernanceType("DATA_GOVERNANCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDeterminismLevelInput)(nil)).Elem(), RoutineDeterminismLevel("DETERMINISM_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDeterminismLevelPtrInput)(nil)).Elem(), RoutineDeterminismLevel("DETERMINISM_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineLanguageInput)(nil)).Elem(), RoutineLanguage("LANGUAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineLanguagePtrInput)(nil)).Elem(), RoutineLanguage("LANGUAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRoutineTypeInput)(nil)).Elem(), RoutineRoutineType("ROUTINE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRoutineTypePtrInput)(nil)).Elem(), RoutineRoutineType("ROUTINE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSecurityModeInput)(nil)).Elem(), RoutineSecurityMode("SECURITY_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSecurityModePtrInput)(nil)).Elem(), RoutineSecurityMode("SECURITY_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeTypeKindInput)(nil)).Elem(), StandardSqlDataTypeTypeKind("TYPE_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeTypeKindPtrInput)(nil)).Elem(), StandardSqlDataTypeTypeKind("TYPE_KIND_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ArgumentArgumentKindOutput{})
@@ -1628,12 +2010,16 @@ func init() {
 	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(RoutineDataGovernanceTypeOutput{})
+	pulumi.RegisterOutputType(RoutineDataGovernanceTypePtrOutput{})
 	pulumi.RegisterOutputType(RoutineDeterminismLevelOutput{})
 	pulumi.RegisterOutputType(RoutineDeterminismLevelPtrOutput{})
 	pulumi.RegisterOutputType(RoutineLanguageOutput{})
 	pulumi.RegisterOutputType(RoutineLanguagePtrOutput{})
 	pulumi.RegisterOutputType(RoutineRoutineTypeOutput{})
 	pulumi.RegisterOutputType(RoutineRoutineTypePtrOutput{})
+	pulumi.RegisterOutputType(RoutineSecurityModeOutput{})
+	pulumi.RegisterOutputType(RoutineSecurityModePtrOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeTypeKindOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeTypeKindPtrOutput{})
 }

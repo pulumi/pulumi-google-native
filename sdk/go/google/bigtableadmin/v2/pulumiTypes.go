@@ -1128,6 +1128,202 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// Change stream configuration.
+type ChangeStreamConfig struct {
+	// How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
+	RetentionPeriod *string `pulumi:"retentionPeriod"`
+}
+
+// ChangeStreamConfigInput is an input type that accepts ChangeStreamConfigArgs and ChangeStreamConfigOutput values.
+// You can construct a concrete instance of `ChangeStreamConfigInput` via:
+//
+//	ChangeStreamConfigArgs{...}
+type ChangeStreamConfigInput interface {
+	pulumi.Input
+
+	ToChangeStreamConfigOutput() ChangeStreamConfigOutput
+	ToChangeStreamConfigOutputWithContext(context.Context) ChangeStreamConfigOutput
+}
+
+// Change stream configuration.
+type ChangeStreamConfigArgs struct {
+	// How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
+	RetentionPeriod pulumi.StringPtrInput `pulumi:"retentionPeriod"`
+}
+
+func (ChangeStreamConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeStreamConfig)(nil)).Elem()
+}
+
+func (i ChangeStreamConfigArgs) ToChangeStreamConfigOutput() ChangeStreamConfigOutput {
+	return i.ToChangeStreamConfigOutputWithContext(context.Background())
+}
+
+func (i ChangeStreamConfigArgs) ToChangeStreamConfigOutputWithContext(ctx context.Context) ChangeStreamConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamConfigOutput)
+}
+
+func (i ChangeStreamConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ChangeStreamConfig] {
+	return pulumix.Output[ChangeStreamConfig]{
+		OutputState: i.ToChangeStreamConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ChangeStreamConfigArgs) ToChangeStreamConfigPtrOutput() ChangeStreamConfigPtrOutput {
+	return i.ToChangeStreamConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ChangeStreamConfigArgs) ToChangeStreamConfigPtrOutputWithContext(ctx context.Context) ChangeStreamConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamConfigOutput).ToChangeStreamConfigPtrOutputWithContext(ctx)
+}
+
+// ChangeStreamConfigPtrInput is an input type that accepts ChangeStreamConfigArgs, ChangeStreamConfigPtr and ChangeStreamConfigPtrOutput values.
+// You can construct a concrete instance of `ChangeStreamConfigPtrInput` via:
+//
+//	        ChangeStreamConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ChangeStreamConfigPtrInput interface {
+	pulumi.Input
+
+	ToChangeStreamConfigPtrOutput() ChangeStreamConfigPtrOutput
+	ToChangeStreamConfigPtrOutputWithContext(context.Context) ChangeStreamConfigPtrOutput
+}
+
+type changeStreamConfigPtrType ChangeStreamConfigArgs
+
+func ChangeStreamConfigPtr(v *ChangeStreamConfigArgs) ChangeStreamConfigPtrInput {
+	return (*changeStreamConfigPtrType)(v)
+}
+
+func (*changeStreamConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeStreamConfig)(nil)).Elem()
+}
+
+func (i *changeStreamConfigPtrType) ToChangeStreamConfigPtrOutput() ChangeStreamConfigPtrOutput {
+	return i.ToChangeStreamConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *changeStreamConfigPtrType) ToChangeStreamConfigPtrOutputWithContext(ctx context.Context) ChangeStreamConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamConfigPtrOutput)
+}
+
+func (i *changeStreamConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ChangeStreamConfig] {
+	return pulumix.Output[*ChangeStreamConfig]{
+		OutputState: i.ToChangeStreamConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Change stream configuration.
+type ChangeStreamConfigOutput struct{ *pulumi.OutputState }
+
+func (ChangeStreamConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeStreamConfig)(nil)).Elem()
+}
+
+func (o ChangeStreamConfigOutput) ToChangeStreamConfigOutput() ChangeStreamConfigOutput {
+	return o
+}
+
+func (o ChangeStreamConfigOutput) ToChangeStreamConfigOutputWithContext(ctx context.Context) ChangeStreamConfigOutput {
+	return o
+}
+
+func (o ChangeStreamConfigOutput) ToChangeStreamConfigPtrOutput() ChangeStreamConfigPtrOutput {
+	return o.ToChangeStreamConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ChangeStreamConfigOutput) ToChangeStreamConfigPtrOutputWithContext(ctx context.Context) ChangeStreamConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChangeStreamConfig) *ChangeStreamConfig {
+		return &v
+	}).(ChangeStreamConfigPtrOutput)
+}
+
+func (o ChangeStreamConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ChangeStreamConfig] {
+	return pulumix.Output[ChangeStreamConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
+func (o ChangeStreamConfigOutput) RetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChangeStreamConfig) *string { return v.RetentionPeriod }).(pulumi.StringPtrOutput)
+}
+
+type ChangeStreamConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ChangeStreamConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeStreamConfig)(nil)).Elem()
+}
+
+func (o ChangeStreamConfigPtrOutput) ToChangeStreamConfigPtrOutput() ChangeStreamConfigPtrOutput {
+	return o
+}
+
+func (o ChangeStreamConfigPtrOutput) ToChangeStreamConfigPtrOutputWithContext(ctx context.Context) ChangeStreamConfigPtrOutput {
+	return o
+}
+
+func (o ChangeStreamConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ChangeStreamConfig] {
+	return pulumix.Output[*ChangeStreamConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ChangeStreamConfigPtrOutput) Elem() ChangeStreamConfigOutput {
+	return o.ApplyT(func(v *ChangeStreamConfig) ChangeStreamConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ChangeStreamConfig
+		return ret
+	}).(ChangeStreamConfigOutput)
+}
+
+// How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
+func (o ChangeStreamConfigPtrOutput) RetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeStreamConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Change stream configuration.
+type ChangeStreamConfigResponse struct {
+	// How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
+	RetentionPeriod string `pulumi:"retentionPeriod"`
+}
+
+// Change stream configuration.
+type ChangeStreamConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ChangeStreamConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeStreamConfigResponse)(nil)).Elem()
+}
+
+func (o ChangeStreamConfigResponseOutput) ToChangeStreamConfigResponseOutput() ChangeStreamConfigResponseOutput {
+	return o
+}
+
+func (o ChangeStreamConfigResponseOutput) ToChangeStreamConfigResponseOutputWithContext(ctx context.Context) ChangeStreamConfigResponseOutput {
+	return o
+}
+
+func (o ChangeStreamConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ChangeStreamConfigResponse] {
+	return pulumix.Output[ChangeStreamConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
+func (o ChangeStreamConfigResponseOutput) RetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v ChangeStreamConfigResponse) string { return v.RetentionPeriod }).(pulumi.StringOutput)
+}
+
 // Autoscaling config for a cluster.
 type ClusterAutoscalingConfig struct {
 	// Autoscaling limits for this cluster.
@@ -2643,6 +2839,202 @@ func (o SplitArrayOutput) Index(i pulumi.IntInput) SplitOutput {
 	}).(SplitOutput)
 }
 
+// Standard options for isolating this app profile's traffic from other use cases.
+type StandardIsolation struct {
+	// The priority of requests sent using this app profile.
+	Priority *StandardIsolationPriority `pulumi:"priority"`
+}
+
+// StandardIsolationInput is an input type that accepts StandardIsolationArgs and StandardIsolationOutput values.
+// You can construct a concrete instance of `StandardIsolationInput` via:
+//
+//	StandardIsolationArgs{...}
+type StandardIsolationInput interface {
+	pulumi.Input
+
+	ToStandardIsolationOutput() StandardIsolationOutput
+	ToStandardIsolationOutputWithContext(context.Context) StandardIsolationOutput
+}
+
+// Standard options for isolating this app profile's traffic from other use cases.
+type StandardIsolationArgs struct {
+	// The priority of requests sent using this app profile.
+	Priority StandardIsolationPriorityPtrInput `pulumi:"priority"`
+}
+
+func (StandardIsolationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardIsolation)(nil)).Elem()
+}
+
+func (i StandardIsolationArgs) ToStandardIsolationOutput() StandardIsolationOutput {
+	return i.ToStandardIsolationOutputWithContext(context.Background())
+}
+
+func (i StandardIsolationArgs) ToStandardIsolationOutputWithContext(ctx context.Context) StandardIsolationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardIsolationOutput)
+}
+
+func (i StandardIsolationArgs) ToOutput(ctx context.Context) pulumix.Output[StandardIsolation] {
+	return pulumix.Output[StandardIsolation]{
+		OutputState: i.ToStandardIsolationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i StandardIsolationArgs) ToStandardIsolationPtrOutput() StandardIsolationPtrOutput {
+	return i.ToStandardIsolationPtrOutputWithContext(context.Background())
+}
+
+func (i StandardIsolationArgs) ToStandardIsolationPtrOutputWithContext(ctx context.Context) StandardIsolationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardIsolationOutput).ToStandardIsolationPtrOutputWithContext(ctx)
+}
+
+// StandardIsolationPtrInput is an input type that accepts StandardIsolationArgs, StandardIsolationPtr and StandardIsolationPtrOutput values.
+// You can construct a concrete instance of `StandardIsolationPtrInput` via:
+//
+//	        StandardIsolationArgs{...}
+//
+//	or:
+//
+//	        nil
+type StandardIsolationPtrInput interface {
+	pulumi.Input
+
+	ToStandardIsolationPtrOutput() StandardIsolationPtrOutput
+	ToStandardIsolationPtrOutputWithContext(context.Context) StandardIsolationPtrOutput
+}
+
+type standardIsolationPtrType StandardIsolationArgs
+
+func StandardIsolationPtr(v *StandardIsolationArgs) StandardIsolationPtrInput {
+	return (*standardIsolationPtrType)(v)
+}
+
+func (*standardIsolationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardIsolation)(nil)).Elem()
+}
+
+func (i *standardIsolationPtrType) ToStandardIsolationPtrOutput() StandardIsolationPtrOutput {
+	return i.ToStandardIsolationPtrOutputWithContext(context.Background())
+}
+
+func (i *standardIsolationPtrType) ToStandardIsolationPtrOutputWithContext(ctx context.Context) StandardIsolationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardIsolationPtrOutput)
+}
+
+func (i *standardIsolationPtrType) ToOutput(ctx context.Context) pulumix.Output[*StandardIsolation] {
+	return pulumix.Output[*StandardIsolation]{
+		OutputState: i.ToStandardIsolationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Standard options for isolating this app profile's traffic from other use cases.
+type StandardIsolationOutput struct{ *pulumi.OutputState }
+
+func (StandardIsolationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardIsolation)(nil)).Elem()
+}
+
+func (o StandardIsolationOutput) ToStandardIsolationOutput() StandardIsolationOutput {
+	return o
+}
+
+func (o StandardIsolationOutput) ToStandardIsolationOutputWithContext(ctx context.Context) StandardIsolationOutput {
+	return o
+}
+
+func (o StandardIsolationOutput) ToStandardIsolationPtrOutput() StandardIsolationPtrOutput {
+	return o.ToStandardIsolationPtrOutputWithContext(context.Background())
+}
+
+func (o StandardIsolationOutput) ToStandardIsolationPtrOutputWithContext(ctx context.Context) StandardIsolationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardIsolation) *StandardIsolation {
+		return &v
+	}).(StandardIsolationPtrOutput)
+}
+
+func (o StandardIsolationOutput) ToOutput(ctx context.Context) pulumix.Output[StandardIsolation] {
+	return pulumix.Output[StandardIsolation]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The priority of requests sent using this app profile.
+func (o StandardIsolationOutput) Priority() StandardIsolationPriorityPtrOutput {
+	return o.ApplyT(func(v StandardIsolation) *StandardIsolationPriority { return v.Priority }).(StandardIsolationPriorityPtrOutput)
+}
+
+type StandardIsolationPtrOutput struct{ *pulumi.OutputState }
+
+func (StandardIsolationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardIsolation)(nil)).Elem()
+}
+
+func (o StandardIsolationPtrOutput) ToStandardIsolationPtrOutput() StandardIsolationPtrOutput {
+	return o
+}
+
+func (o StandardIsolationPtrOutput) ToStandardIsolationPtrOutputWithContext(ctx context.Context) StandardIsolationPtrOutput {
+	return o
+}
+
+func (o StandardIsolationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardIsolation] {
+	return pulumix.Output[*StandardIsolation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StandardIsolationPtrOutput) Elem() StandardIsolationOutput {
+	return o.ApplyT(func(v *StandardIsolation) StandardIsolation {
+		if v != nil {
+			return *v
+		}
+		var ret StandardIsolation
+		return ret
+	}).(StandardIsolationOutput)
+}
+
+// The priority of requests sent using this app profile.
+func (o StandardIsolationPtrOutput) Priority() StandardIsolationPriorityPtrOutput {
+	return o.ApplyT(func(v *StandardIsolation) *StandardIsolationPriority {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(StandardIsolationPriorityPtrOutput)
+}
+
+// Standard options for isolating this app profile's traffic from other use cases.
+type StandardIsolationResponse struct {
+	// The priority of requests sent using this app profile.
+	Priority string `pulumi:"priority"`
+}
+
+// Standard options for isolating this app profile's traffic from other use cases.
+type StandardIsolationResponseOutput struct{ *pulumi.OutputState }
+
+func (StandardIsolationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardIsolationResponse)(nil)).Elem()
+}
+
+func (o StandardIsolationResponseOutput) ToStandardIsolationResponseOutput() StandardIsolationResponseOutput {
+	return o
+}
+
+func (o StandardIsolationResponseOutput) ToStandardIsolationResponseOutputWithContext(ctx context.Context) StandardIsolationResponseOutput {
+	return o
+}
+
+func (o StandardIsolationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StandardIsolationResponse] {
+	return pulumix.Output[StandardIsolationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The priority of requests sent using this app profile.
+func (o StandardIsolationResponseOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v StandardIsolationResponse) string { return v.Priority }).(pulumi.StringOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -2687,227 +3079,6 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-// Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
-type TableStats struct {
-	// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
-	AverageCellsPerColumn *float64 `pulumi:"averageCellsPerColumn"`
-	// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
-	AverageColumnsPerRow *float64 `pulumi:"averageColumnsPerRow"`
-	// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
-	LogicalDataBytes *string `pulumi:"logicalDataBytes"`
-	// How many rows are in the table.
-	RowCount *string `pulumi:"rowCount"`
-}
-
-// TableStatsInput is an input type that accepts TableStatsArgs and TableStatsOutput values.
-// You can construct a concrete instance of `TableStatsInput` via:
-//
-//	TableStatsArgs{...}
-type TableStatsInput interface {
-	pulumi.Input
-
-	ToTableStatsOutput() TableStatsOutput
-	ToTableStatsOutputWithContext(context.Context) TableStatsOutput
-}
-
-// Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
-type TableStatsArgs struct {
-	// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
-	AverageCellsPerColumn pulumi.Float64PtrInput `pulumi:"averageCellsPerColumn"`
-	// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
-	AverageColumnsPerRow pulumi.Float64PtrInput `pulumi:"averageColumnsPerRow"`
-	// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
-	LogicalDataBytes pulumi.StringPtrInput `pulumi:"logicalDataBytes"`
-	// How many rows are in the table.
-	RowCount pulumi.StringPtrInput `pulumi:"rowCount"`
-}
-
-func (TableStatsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableStats)(nil)).Elem()
-}
-
-func (i TableStatsArgs) ToTableStatsOutput() TableStatsOutput {
-	return i.ToTableStatsOutputWithContext(context.Background())
-}
-
-func (i TableStatsArgs) ToTableStatsOutputWithContext(ctx context.Context) TableStatsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableStatsOutput)
-}
-
-func (i TableStatsArgs) ToOutput(ctx context.Context) pulumix.Output[TableStats] {
-	return pulumix.Output[TableStats]{
-		OutputState: i.ToTableStatsOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i TableStatsArgs) ToTableStatsPtrOutput() TableStatsPtrOutput {
-	return i.ToTableStatsPtrOutputWithContext(context.Background())
-}
-
-func (i TableStatsArgs) ToTableStatsPtrOutputWithContext(ctx context.Context) TableStatsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableStatsOutput).ToTableStatsPtrOutputWithContext(ctx)
-}
-
-// TableStatsPtrInput is an input type that accepts TableStatsArgs, TableStatsPtr and TableStatsPtrOutput values.
-// You can construct a concrete instance of `TableStatsPtrInput` via:
-//
-//	        TableStatsArgs{...}
-//
-//	or:
-//
-//	        nil
-type TableStatsPtrInput interface {
-	pulumi.Input
-
-	ToTableStatsPtrOutput() TableStatsPtrOutput
-	ToTableStatsPtrOutputWithContext(context.Context) TableStatsPtrOutput
-}
-
-type tableStatsPtrType TableStatsArgs
-
-func TableStatsPtr(v *TableStatsArgs) TableStatsPtrInput {
-	return (*tableStatsPtrType)(v)
-}
-
-func (*tableStatsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableStats)(nil)).Elem()
-}
-
-func (i *tableStatsPtrType) ToTableStatsPtrOutput() TableStatsPtrOutput {
-	return i.ToTableStatsPtrOutputWithContext(context.Background())
-}
-
-func (i *tableStatsPtrType) ToTableStatsPtrOutputWithContext(ctx context.Context) TableStatsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableStatsPtrOutput)
-}
-
-func (i *tableStatsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TableStats] {
-	return pulumix.Output[*TableStats]{
-		OutputState: i.ToTableStatsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-// Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
-type TableStatsOutput struct{ *pulumi.OutputState }
-
-func (TableStatsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableStats)(nil)).Elem()
-}
-
-func (o TableStatsOutput) ToTableStatsOutput() TableStatsOutput {
-	return o
-}
-
-func (o TableStatsOutput) ToTableStatsOutputWithContext(ctx context.Context) TableStatsOutput {
-	return o
-}
-
-func (o TableStatsOutput) ToTableStatsPtrOutput() TableStatsPtrOutput {
-	return o.ToTableStatsPtrOutputWithContext(context.Background())
-}
-
-func (o TableStatsOutput) ToTableStatsPtrOutputWithContext(ctx context.Context) TableStatsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableStats) *TableStats {
-		return &v
-	}).(TableStatsPtrOutput)
-}
-
-func (o TableStatsOutput) ToOutput(ctx context.Context) pulumix.Output[TableStats] {
-	return pulumix.Output[TableStats]{
-		OutputState: o.OutputState,
-	}
-}
-
-// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
-func (o TableStatsOutput) AverageCellsPerColumn() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TableStats) *float64 { return v.AverageCellsPerColumn }).(pulumi.Float64PtrOutput)
-}
-
-// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
-func (o TableStatsOutput) AverageColumnsPerRow() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TableStats) *float64 { return v.AverageColumnsPerRow }).(pulumi.Float64PtrOutput)
-}
-
-// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
-func (o TableStatsOutput) LogicalDataBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableStats) *string { return v.LogicalDataBytes }).(pulumi.StringPtrOutput)
-}
-
-// How many rows are in the table.
-func (o TableStatsOutput) RowCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableStats) *string { return v.RowCount }).(pulumi.StringPtrOutput)
-}
-
-type TableStatsPtrOutput struct{ *pulumi.OutputState }
-
-func (TableStatsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableStats)(nil)).Elem()
-}
-
-func (o TableStatsPtrOutput) ToTableStatsPtrOutput() TableStatsPtrOutput {
-	return o
-}
-
-func (o TableStatsPtrOutput) ToTableStatsPtrOutputWithContext(ctx context.Context) TableStatsPtrOutput {
-	return o
-}
-
-func (o TableStatsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableStats] {
-	return pulumix.Output[*TableStats]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o TableStatsPtrOutput) Elem() TableStatsOutput {
-	return o.ApplyT(func(v *TableStats) TableStats {
-		if v != nil {
-			return *v
-		}
-		var ret TableStats
-		return ret
-	}).(TableStatsOutput)
-}
-
-// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
-func (o TableStatsPtrOutput) AverageCellsPerColumn() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *TableStats) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.AverageCellsPerColumn
-	}).(pulumi.Float64PtrOutput)
-}
-
-// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
-func (o TableStatsPtrOutput) AverageColumnsPerRow() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *TableStats) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.AverageColumnsPerRow
-	}).(pulumi.Float64PtrOutput)
-}
-
-// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
-func (o TableStatsPtrOutput) LogicalDataBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableStats) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogicalDataBytes
-	}).(pulumi.StringPtrOutput)
-}
-
-// How many rows are in the table.
-func (o TableStatsPtrOutput) RowCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableStats) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RowCount
-	}).(pulumi.StringPtrOutput)
 }
 
 // Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
@@ -2974,6 +3145,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingTargetsPtrInput)(nil)).Elem(), AutoscalingTargetsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStreamConfigInput)(nil)).Elem(), ChangeStreamConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStreamConfigPtrInput)(nil)).Elem(), ChangeStreamConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigInput)(nil)).Elem(), ClusterAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigPtrInput)(nil)).Elem(), ClusterAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigInput)(nil)).Elem(), ClusterConfigArgs{})
@@ -2988,8 +3161,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleClusterRoutingPtrInput)(nil)).Elem(), SingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SplitInput)(nil)).Elem(), SplitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SplitArrayInput)(nil)).Elem(), SplitArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableStatsInput)(nil)).Elem(), TableStatsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableStatsPtrInput)(nil)).Elem(), TableStatsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardIsolationInput)(nil)).Elem(), StandardIsolationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardIsolationPtrInput)(nil)).Elem(), StandardIsolationArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -3009,6 +3182,9 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(ChangeStreamConfigOutput{})
+	pulumi.RegisterOutputType(ChangeStreamConfigPtrOutput{})
+	pulumi.RegisterOutputType(ChangeStreamConfigResponseOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingConfigResponseOutput{})
@@ -3031,8 +3207,9 @@ func init() {
 	pulumi.RegisterOutputType(SingleClusterRoutingResponseOutput{})
 	pulumi.RegisterOutputType(SplitOutput{})
 	pulumi.RegisterOutputType(SplitArrayOutput{})
+	pulumi.RegisterOutputType(StandardIsolationOutput{})
+	pulumi.RegisterOutputType(StandardIsolationPtrOutput{})
+	pulumi.RegisterOutputType(StandardIsolationResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(TableStatsOutput{})
-	pulumi.RegisterOutputType(TableStatsPtrOutput{})
 	pulumi.RegisterOutputType(TableStatsResponseOutput{})
 }

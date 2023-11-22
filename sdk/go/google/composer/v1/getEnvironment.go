@@ -38,8 +38,12 @@ type LookupEnvironmentResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
 	Name string `pulumi:"name"`
+	// Reserved for future use.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The current state of the environment.
 	State string `pulumi:"state"`
+	// Optional. Storage configuration for this environment.
+	StorageConfig StorageConfigResponse `pulumi:"storageConfig"`
 	// The time at which this environment was last modified.
 	UpdateTime string `pulumi:"updateTime"`
 	// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
@@ -109,9 +113,19 @@ func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Reserved for future use.
+func (o LookupEnvironmentResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
 // The current state of the environment.
 func (o LookupEnvironmentResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional. Storage configuration for this environment.
+func (o LookupEnvironmentResultOutput) StorageConfig() StorageConfigResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) StorageConfigResponse { return v.StorageConfig }).(StorageConfigResponseOutput)
 }
 
 // The time at which this environment was last modified.

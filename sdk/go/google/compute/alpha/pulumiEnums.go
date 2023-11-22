@@ -573,7 +573,7 @@ func (in *addressAddressTypePtr) ToOutput(ctx context.Context) pulumix.Output[*A
 	}
 }
 
-// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+// The IP version that will be used by this address. Valid options are IPV4 or IPV6.
 type AddressIpVersion string
 
 const (
@@ -1522,10 +1522,9 @@ func (in *advancedMachineFeaturesPerformanceMonitoringUnitPtr) ToOutput(ctx cont
 type AllocationAggregateReservationVmFamily string
 
 const (
-	AllocationAggregateReservationVmFamilyVmFamilyCloudTpuPodSliceCt4p = AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P")
-	AllocationAggregateReservationVmFamilyVmFamilyComputeOptimizedC3   = AllocationAggregateReservationVmFamily("VM_FAMILY_COMPUTE_OPTIMIZED_C3")
-	AllocationAggregateReservationVmFamilyVmFamilyGeneralPurposeT2d    = AllocationAggregateReservationVmFamily("VM_FAMILY_GENERAL_PURPOSE_T2D")
-	AllocationAggregateReservationVmFamilyVmFamilyMemoryOptimizedM3    = AllocationAggregateReservationVmFamily("VM_FAMILY_MEMORY_OPTIMIZED_M3")
+	AllocationAggregateReservationVmFamilyVmFamilyCloudTpuLiteDeviceCt5l    = AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L")
+	AllocationAggregateReservationVmFamilyVmFamilyCloudTpuLitePodSliceCt5lp = AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP")
+	AllocationAggregateReservationVmFamilyVmFamilyCloudTpuPodSliceCt4p      = AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P")
 )
 
 func (AllocationAggregateReservationVmFamily) ElementType() reflect.Type {
@@ -1700,6 +1699,192 @@ func (in *allocationAggregateReservationVmFamilyPtr) ToAllocationAggregateReserv
 func (in *allocationAggregateReservationVmFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*AllocationAggregateReservationVmFamily] {
 	return pulumix.Output[*AllocationAggregateReservationVmFamily]{
 		OutputState: in.ToAllocationAggregateReservationVmFamilyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The workload type of the instances that will target this reservation.
+type AllocationAggregateReservationWorkloadType string
+
+const (
+	// Reserved resources will be optimized for BATCH workloads, such as ML training.
+	AllocationAggregateReservationWorkloadTypeBatch = AllocationAggregateReservationWorkloadType("BATCH")
+	// Reserved resources will be optimized for SERVING workloads, such as ML inference.
+	AllocationAggregateReservationWorkloadTypeServing     = AllocationAggregateReservationWorkloadType("SERVING")
+	AllocationAggregateReservationWorkloadTypeUnspecified = AllocationAggregateReservationWorkloadType("UNSPECIFIED")
+)
+
+func (AllocationAggregateReservationWorkloadType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationAggregateReservationWorkloadType)(nil)).Elem()
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToAllocationAggregateReservationWorkloadTypeOutput() AllocationAggregateReservationWorkloadTypeOutput {
+	return pulumi.ToOutput(e).(AllocationAggregateReservationWorkloadTypeOutput)
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToAllocationAggregateReservationWorkloadTypeOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AllocationAggregateReservationWorkloadTypeOutput)
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToAllocationAggregateReservationWorkloadTypePtrOutput() AllocationAggregateReservationWorkloadTypePtrOutput {
+	return e.ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(context.Background())
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypePtrOutput {
+	return AllocationAggregateReservationWorkloadType(e).ToAllocationAggregateReservationWorkloadTypeOutputWithContext(ctx).ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx)
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AllocationAggregateReservationWorkloadType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AllocationAggregateReservationWorkloadTypeOutput struct{ *pulumi.OutputState }
+
+func (AllocationAggregateReservationWorkloadTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationAggregateReservationWorkloadType)(nil)).Elem()
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToAllocationAggregateReservationWorkloadTypeOutput() AllocationAggregateReservationWorkloadTypeOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToAllocationAggregateReservationWorkloadTypeOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypeOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToAllocationAggregateReservationWorkloadTypePtrOutput() AllocationAggregateReservationWorkloadTypePtrOutput {
+	return o.ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllocationAggregateReservationWorkloadType) *AllocationAggregateReservationWorkloadType {
+		return &v
+	}).(AllocationAggregateReservationWorkloadTypePtrOutput)
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AllocationAggregateReservationWorkloadType] {
+	return pulumix.Output[AllocationAggregateReservationWorkloadType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllocationAggregateReservationWorkloadType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationWorkloadTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllocationAggregateReservationWorkloadType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AllocationAggregateReservationWorkloadTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AllocationAggregateReservationWorkloadTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AllocationAggregateReservationWorkloadType)(nil)).Elem()
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) ToAllocationAggregateReservationWorkloadTypePtrOutput() AllocationAggregateReservationWorkloadTypePtrOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypePtrOutput {
+	return o
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AllocationAggregateReservationWorkloadType] {
+	return pulumix.Output[*AllocationAggregateReservationWorkloadType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) Elem() AllocationAggregateReservationWorkloadTypeOutput {
+	return o.ApplyT(func(v *AllocationAggregateReservationWorkloadType) AllocationAggregateReservationWorkloadType {
+		if v != nil {
+			return *v
+		}
+		var ret AllocationAggregateReservationWorkloadType
+		return ret
+	}).(AllocationAggregateReservationWorkloadTypeOutput)
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllocationAggregateReservationWorkloadTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AllocationAggregateReservationWorkloadType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AllocationAggregateReservationWorkloadTypeInput is an input type that accepts AllocationAggregateReservationWorkloadTypeArgs and AllocationAggregateReservationWorkloadTypeOutput values.
+// You can construct a concrete instance of `AllocationAggregateReservationWorkloadTypeInput` via:
+//
+//	AllocationAggregateReservationWorkloadTypeArgs{...}
+type AllocationAggregateReservationWorkloadTypeInput interface {
+	pulumi.Input
+
+	ToAllocationAggregateReservationWorkloadTypeOutput() AllocationAggregateReservationWorkloadTypeOutput
+	ToAllocationAggregateReservationWorkloadTypeOutputWithContext(context.Context) AllocationAggregateReservationWorkloadTypeOutput
+}
+
+var allocationAggregateReservationWorkloadTypePtrType = reflect.TypeOf((**AllocationAggregateReservationWorkloadType)(nil)).Elem()
+
+type AllocationAggregateReservationWorkloadTypePtrInput interface {
+	pulumi.Input
+
+	ToAllocationAggregateReservationWorkloadTypePtrOutput() AllocationAggregateReservationWorkloadTypePtrOutput
+	ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(context.Context) AllocationAggregateReservationWorkloadTypePtrOutput
+}
+
+type allocationAggregateReservationWorkloadTypePtr string
+
+func AllocationAggregateReservationWorkloadTypePtr(v string) AllocationAggregateReservationWorkloadTypePtrInput {
+	return (*allocationAggregateReservationWorkloadTypePtr)(&v)
+}
+
+func (*allocationAggregateReservationWorkloadTypePtr) ElementType() reflect.Type {
+	return allocationAggregateReservationWorkloadTypePtrType
+}
+
+func (in *allocationAggregateReservationWorkloadTypePtr) ToAllocationAggregateReservationWorkloadTypePtrOutput() AllocationAggregateReservationWorkloadTypePtrOutput {
+	return pulumi.ToOutput(in).(AllocationAggregateReservationWorkloadTypePtrOutput)
+}
+
+func (in *allocationAggregateReservationWorkloadTypePtr) ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx context.Context) AllocationAggregateReservationWorkloadTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AllocationAggregateReservationWorkloadTypePtrOutput)
+}
+
+func (in *allocationAggregateReservationWorkloadTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AllocationAggregateReservationWorkloadType] {
+	return pulumix.Output[*AllocationAggregateReservationWorkloadType]{
+		OutputState: in.ToAllocationAggregateReservationWorkloadTypePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -4310,7 +4495,7 @@ func (in *autoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtr) ToOu
 	}
 }
 
-// Defines operating mode for this policy.
+// Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
 type AutoscalingPolicyMode string
 
 const (
@@ -5059,6 +5244,193 @@ func (in *backendBucketCompressionModePtr) ToOutput(ctx context.Context) pulumix
 	}
 }
 
+// This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default
+type BackendPreference string
+
+const (
+	// No preference.
+	BackendPreferenceDefault = BackendPreference("DEFAULT")
+	// If preference is unspecified, we set it to the DEFAULT value
+	BackendPreferencePreferenceUnspecified = BackendPreference("PREFERENCE_UNSPECIFIED")
+	// Traffic will be sent to this backend first.
+	BackendPreferencePreferred = BackendPreference("PREFERRED")
+)
+
+func (BackendPreference) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendPreference)(nil)).Elem()
+}
+
+func (e BackendPreference) ToBackendPreferenceOutput() BackendPreferenceOutput {
+	return pulumi.ToOutput(e).(BackendPreferenceOutput)
+}
+
+func (e BackendPreference) ToBackendPreferenceOutputWithContext(ctx context.Context) BackendPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackendPreferenceOutput)
+}
+
+func (e BackendPreference) ToBackendPreferencePtrOutput() BackendPreferencePtrOutput {
+	return e.ToBackendPreferencePtrOutputWithContext(context.Background())
+}
+
+func (e BackendPreference) ToBackendPreferencePtrOutputWithContext(ctx context.Context) BackendPreferencePtrOutput {
+	return BackendPreference(e).ToBackendPreferenceOutputWithContext(ctx).ToBackendPreferencePtrOutputWithContext(ctx)
+}
+
+func (e BackendPreference) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendPreference) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendPreference) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackendPreference) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackendPreferenceOutput struct{ *pulumi.OutputState }
+
+func (BackendPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendPreference)(nil)).Elem()
+}
+
+func (o BackendPreferenceOutput) ToBackendPreferenceOutput() BackendPreferenceOutput {
+	return o
+}
+
+func (o BackendPreferenceOutput) ToBackendPreferenceOutputWithContext(ctx context.Context) BackendPreferenceOutput {
+	return o
+}
+
+func (o BackendPreferenceOutput) ToBackendPreferencePtrOutput() BackendPreferencePtrOutput {
+	return o.ToBackendPreferencePtrOutputWithContext(context.Background())
+}
+
+func (o BackendPreferenceOutput) ToBackendPreferencePtrOutputWithContext(ctx context.Context) BackendPreferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendPreference) *BackendPreference {
+		return &v
+	}).(BackendPreferencePtrOutput)
+}
+
+func (o BackendPreferenceOutput) ToOutput(ctx context.Context) pulumix.Output[BackendPreference] {
+	return pulumix.Output[BackendPreference]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BackendPreferenceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackendPreferenceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendPreference) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackendPreferenceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendPreferenceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendPreference) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackendPreferencePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendPreferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendPreference)(nil)).Elem()
+}
+
+func (o BackendPreferencePtrOutput) ToBackendPreferencePtrOutput() BackendPreferencePtrOutput {
+	return o
+}
+
+func (o BackendPreferencePtrOutput) ToBackendPreferencePtrOutputWithContext(ctx context.Context) BackendPreferencePtrOutput {
+	return o
+}
+
+func (o BackendPreferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendPreference] {
+	return pulumix.Output[*BackendPreference]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BackendPreferencePtrOutput) Elem() BackendPreferenceOutput {
+	return o.ApplyT(func(v *BackendPreference) BackendPreference {
+		if v != nil {
+			return *v
+		}
+		var ret BackendPreference
+		return ret
+	}).(BackendPreferenceOutput)
+}
+
+func (o BackendPreferencePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendPreferencePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackendPreference) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackendPreferenceInput is an input type that accepts BackendPreferenceArgs and BackendPreferenceOutput values.
+// You can construct a concrete instance of `BackendPreferenceInput` via:
+//
+//	BackendPreferenceArgs{...}
+type BackendPreferenceInput interface {
+	pulumi.Input
+
+	ToBackendPreferenceOutput() BackendPreferenceOutput
+	ToBackendPreferenceOutputWithContext(context.Context) BackendPreferenceOutput
+}
+
+var backendPreferencePtrType = reflect.TypeOf((**BackendPreference)(nil)).Elem()
+
+type BackendPreferencePtrInput interface {
+	pulumi.Input
+
+	ToBackendPreferencePtrOutput() BackendPreferencePtrOutput
+	ToBackendPreferencePtrOutputWithContext(context.Context) BackendPreferencePtrOutput
+}
+
+type backendPreferencePtr string
+
+func BackendPreferencePtr(v string) BackendPreferencePtrInput {
+	return (*backendPreferencePtr)(&v)
+}
+
+func (*backendPreferencePtr) ElementType() reflect.Type {
+	return backendPreferencePtrType
+}
+
+func (in *backendPreferencePtr) ToBackendPreferencePtrOutput() BackendPreferencePtrOutput {
+	return pulumi.ToOutput(in).(BackendPreferencePtrOutput)
+}
+
+func (in *backendPreferencePtr) ToBackendPreferencePtrOutputWithContext(ctx context.Context) BackendPreferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackendPreferencePtrOutput)
+}
+
+func (in *backendPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendPreference] {
+	return pulumix.Output[*BackendPreference]{
+		OutputState: in.ToBackendPreferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 type BackendServiceCdnPolicyCacheMode string
 
@@ -5800,7 +6172,7 @@ func (in *backendServiceConnectionTrackingPolicyTrackingModePtr) ToOutput(ctx co
 	}
 }
 
-// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
+// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
 type BackendServiceIpAddressSelectionPolicy string
 
 const (
@@ -6181,7 +6553,7 @@ func (in *backendServiceLoadBalancingSchemePtr) ToOutput(ctx context.Context) pu
 	}
 }
 
-// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 type BackendServiceLocalityLbPolicy string
 
 const (
@@ -9040,6 +9412,193 @@ func (in *deprecationStatusStatePtr) ToDeprecationStatusStatePtrOutputWithContex
 func (in *deprecationStatusStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DeprecationStatusState] {
 	return pulumix.Output[*DeprecationStatusState]{
 		OutputState: in.ToDeprecationStatusStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+type DiskAccessMode string
+
+const (
+	// The AccessMode means the disk can be attached to multiple instances in RO mode.
+	DiskAccessModeReadOnlyMany = DiskAccessMode("READ_ONLY_MANY")
+	// The AccessMode means the disk can be attached to multiple instances in RW mode.
+	DiskAccessModeReadWriteMany = DiskAccessMode("READ_WRITE_MANY")
+	// The default AccessMode, means the disk can be attached to single instance in RW mode.
+	DiskAccessModeReadWriteSingle = DiskAccessMode("READ_WRITE_SINGLE")
+)
+
+func (DiskAccessMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAccessMode)(nil)).Elem()
+}
+
+func (e DiskAccessMode) ToDiskAccessModeOutput() DiskAccessModeOutput {
+	return pulumi.ToOutput(e).(DiskAccessModeOutput)
+}
+
+func (e DiskAccessMode) ToDiskAccessModeOutputWithContext(ctx context.Context) DiskAccessModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DiskAccessModeOutput)
+}
+
+func (e DiskAccessMode) ToDiskAccessModePtrOutput() DiskAccessModePtrOutput {
+	return e.ToDiskAccessModePtrOutputWithContext(context.Background())
+}
+
+func (e DiskAccessMode) ToDiskAccessModePtrOutputWithContext(ctx context.Context) DiskAccessModePtrOutput {
+	return DiskAccessMode(e).ToDiskAccessModeOutputWithContext(ctx).ToDiskAccessModePtrOutputWithContext(ctx)
+}
+
+func (e DiskAccessMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiskAccessMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiskAccessMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DiskAccessMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DiskAccessModeOutput struct{ *pulumi.OutputState }
+
+func (DiskAccessModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAccessMode)(nil)).Elem()
+}
+
+func (o DiskAccessModeOutput) ToDiskAccessModeOutput() DiskAccessModeOutput {
+	return o
+}
+
+func (o DiskAccessModeOutput) ToDiskAccessModeOutputWithContext(ctx context.Context) DiskAccessModeOutput {
+	return o
+}
+
+func (o DiskAccessModeOutput) ToDiskAccessModePtrOutput() DiskAccessModePtrOutput {
+	return o.ToDiskAccessModePtrOutputWithContext(context.Background())
+}
+
+func (o DiskAccessModeOutput) ToDiskAccessModePtrOutputWithContext(ctx context.Context) DiskAccessModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskAccessMode) *DiskAccessMode {
+		return &v
+	}).(DiskAccessModePtrOutput)
+}
+
+func (o DiskAccessModeOutput) ToOutput(ctx context.Context) pulumix.Output[DiskAccessMode] {
+	return pulumix.Output[DiskAccessMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DiskAccessModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DiskAccessModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskAccessMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DiskAccessModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskAccessModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskAccessMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiskAccessModePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskAccessModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskAccessMode)(nil)).Elem()
+}
+
+func (o DiskAccessModePtrOutput) ToDiskAccessModePtrOutput() DiskAccessModePtrOutput {
+	return o
+}
+
+func (o DiskAccessModePtrOutput) ToDiskAccessModePtrOutputWithContext(ctx context.Context) DiskAccessModePtrOutput {
+	return o
+}
+
+func (o DiskAccessModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskAccessMode] {
+	return pulumix.Output[*DiskAccessMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DiskAccessModePtrOutput) Elem() DiskAccessModeOutput {
+	return o.ApplyT(func(v *DiskAccessMode) DiskAccessMode {
+		if v != nil {
+			return *v
+		}
+		var ret DiskAccessMode
+		return ret
+	}).(DiskAccessModeOutput)
+}
+
+func (o DiskAccessModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskAccessModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiskAccessMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DiskAccessModeInput is an input type that accepts DiskAccessModeArgs and DiskAccessModeOutput values.
+// You can construct a concrete instance of `DiskAccessModeInput` via:
+//
+//	DiskAccessModeArgs{...}
+type DiskAccessModeInput interface {
+	pulumi.Input
+
+	ToDiskAccessModeOutput() DiskAccessModeOutput
+	ToDiskAccessModeOutputWithContext(context.Context) DiskAccessModeOutput
+}
+
+var diskAccessModePtrType = reflect.TypeOf((**DiskAccessMode)(nil)).Elem()
+
+type DiskAccessModePtrInput interface {
+	pulumi.Input
+
+	ToDiskAccessModePtrOutput() DiskAccessModePtrOutput
+	ToDiskAccessModePtrOutputWithContext(context.Context) DiskAccessModePtrOutput
+}
+
+type diskAccessModePtr string
+
+func DiskAccessModePtr(v string) DiskAccessModePtrInput {
+	return (*diskAccessModePtr)(&v)
+}
+
+func (*diskAccessModePtr) ElementType() reflect.Type {
+	return diskAccessModePtrType
+}
+
+func (in *diskAccessModePtr) ToDiskAccessModePtrOutput() DiskAccessModePtrOutput {
+	return pulumi.ToOutput(in).(DiskAccessModePtrOutput)
+}
+
+func (in *diskAccessModePtr) ToDiskAccessModePtrOutputWithContext(ctx context.Context) DiskAccessModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DiskAccessModePtrOutput)
+}
+
+func (in *diskAccessModePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskAccessMode] {
+	return pulumix.Output[*DiskAccessMode]{
+		OutputState: in.ToDiskAccessModePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -12591,7 +13150,7 @@ func (in *globalAddressAddressTypePtr) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
+// The IP version that will be used by this address. Valid options are IPV4 or IPV6.
 type GlobalAddressIpVersion string
 
 const (
@@ -14290,6 +14849,191 @@ func (in *globalForwardingRulePscConnectionStatusPtr) ToOutput(ctx context.Conte
 	}
 }
 
+// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+type GlobalNetworkEndpointGroupClientPortMappingMode string
+
+const (
+	// For each endpoint there is exactly one client port.
+	GlobalNetworkEndpointGroupClientPortMappingModeClientPortPerEndpoint = GlobalNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT")
+	// NEG should not be used for mapping client port to destination.
+	GlobalNetworkEndpointGroupClientPortMappingModePortMappingDisabled = GlobalNetworkEndpointGroupClientPortMappingMode("PORT_MAPPING_DISABLED")
+)
+
+func (GlobalNetworkEndpointGroupClientPortMappingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToGlobalNetworkEndpointGroupClientPortMappingModeOutput() GlobalNetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutput(e).(GlobalNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToGlobalNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GlobalNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutput() GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return e.ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return GlobalNetworkEndpointGroupClientPortMappingMode(e).ToGlobalNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx).ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx)
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GlobalNetworkEndpointGroupClientPortMappingModeOutput struct{ *pulumi.OutputState }
+
+func (GlobalNetworkEndpointGroupClientPortMappingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToGlobalNetworkEndpointGroupClientPortMappingModeOutput() GlobalNetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToGlobalNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutput() GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalNetworkEndpointGroupClientPortMappingMode) *GlobalNetworkEndpointGroupClientPortMappingMode {
+		return &v
+	}).(GlobalNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalNetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[GlobalNetworkEndpointGroupClientPortMappingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GlobalNetworkEndpointGroupClientPortMappingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GlobalNetworkEndpointGroupClientPortMappingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GlobalNetworkEndpointGroupClientPortMappingModePtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutput() GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[*GlobalNetworkEndpointGroupClientPortMappingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) Elem() GlobalNetworkEndpointGroupClientPortMappingModeOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroupClientPortMappingMode) GlobalNetworkEndpointGroupClientPortMappingMode {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalNetworkEndpointGroupClientPortMappingMode
+		return ret
+	}).(GlobalNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GlobalNetworkEndpointGroupClientPortMappingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GlobalNetworkEndpointGroupClientPortMappingModeInput is an input type that accepts GlobalNetworkEndpointGroupClientPortMappingModeArgs and GlobalNetworkEndpointGroupClientPortMappingModeOutput values.
+// You can construct a concrete instance of `GlobalNetworkEndpointGroupClientPortMappingModeInput` via:
+//
+//	GlobalNetworkEndpointGroupClientPortMappingModeArgs{...}
+type GlobalNetworkEndpointGroupClientPortMappingModeInput interface {
+	pulumi.Input
+
+	ToGlobalNetworkEndpointGroupClientPortMappingModeOutput() GlobalNetworkEndpointGroupClientPortMappingModeOutput
+	ToGlobalNetworkEndpointGroupClientPortMappingModeOutputWithContext(context.Context) GlobalNetworkEndpointGroupClientPortMappingModeOutput
+}
+
+var globalNetworkEndpointGroupClientPortMappingModePtrType = reflect.TypeOf((**GlobalNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+
+type GlobalNetworkEndpointGroupClientPortMappingModePtrInput interface {
+	pulumi.Input
+
+	ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutput() GlobalNetworkEndpointGroupClientPortMappingModePtrOutput
+	ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Context) GlobalNetworkEndpointGroupClientPortMappingModePtrOutput
+}
+
+type globalNetworkEndpointGroupClientPortMappingModePtr string
+
+func GlobalNetworkEndpointGroupClientPortMappingModePtr(v string) GlobalNetworkEndpointGroupClientPortMappingModePtrInput {
+	return (*globalNetworkEndpointGroupClientPortMappingModePtr)(&v)
+}
+
+func (*globalNetworkEndpointGroupClientPortMappingModePtr) ElementType() reflect.Type {
+	return globalNetworkEndpointGroupClientPortMappingModePtrType
+}
+
+func (in *globalNetworkEndpointGroupClientPortMappingModePtr) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutput() GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutput(in).(GlobalNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *globalNetworkEndpointGroupClientPortMappingModePtr) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GlobalNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *globalNetworkEndpointGroupClientPortMappingModePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[*GlobalNetworkEndpointGroupClientPortMappingMode]{
+		OutputState: in.ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type GlobalNetworkEndpointGroupNetworkEndpointType string
 
@@ -14298,8 +15042,6 @@ const (
 	GlobalNetworkEndpointGroupNetworkEndpointTypeGceVmIp = GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP")
 	// The network endpoint is represented by IP address and port pair.
 	GlobalNetworkEndpointGroupNetworkEndpointTypeGceVmIpPort = GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT")
-	// The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
-	GlobalNetworkEndpointGroupNetworkEndpointTypeGceVmPrimaryIp = GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_PRIMARY_IP")
 	// The network endpoint is represented by fully qualified domain name and port.
 	GlobalNetworkEndpointGroupNetworkEndpointTypeInternetFqdnPort = GlobalNetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT")
 	// The network endpoint is represented by an internet IP address and port.
@@ -14670,17 +15412,204 @@ func (in *globalNetworkEndpointGroupTypePtr) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
+// The public delegated prefix mode for IPv6 only.
+type GlobalPublicDelegatedPrefixMode string
+
+const (
+	// The public delegated prefix is used for further sub-delegation only. Such prefixes cannot set allocatablePrefixLength.
+	GlobalPublicDelegatedPrefixModeDelegation = GlobalPublicDelegatedPrefixMode("DELEGATION")
+	// The public delegated prefix is used for creating forwarding rules only. Such prefixes cannot set publicDelegatedSubPrefixes.
+	GlobalPublicDelegatedPrefixModeExternalIpv6ForwardingRuleCreation = GlobalPublicDelegatedPrefixMode("EXTERNAL_IPV6_FORWARDING_RULE_CREATION")
+)
+
+func (GlobalPublicDelegatedPrefixMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalPublicDelegatedPrefixMode)(nil)).Elem()
+}
+
+func (e GlobalPublicDelegatedPrefixMode) ToGlobalPublicDelegatedPrefixModeOutput() GlobalPublicDelegatedPrefixModeOutput {
+	return pulumi.ToOutput(e).(GlobalPublicDelegatedPrefixModeOutput)
+}
+
+func (e GlobalPublicDelegatedPrefixMode) ToGlobalPublicDelegatedPrefixModeOutputWithContext(ctx context.Context) GlobalPublicDelegatedPrefixModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GlobalPublicDelegatedPrefixModeOutput)
+}
+
+func (e GlobalPublicDelegatedPrefixMode) ToGlobalPublicDelegatedPrefixModePtrOutput() GlobalPublicDelegatedPrefixModePtrOutput {
+	return e.ToGlobalPublicDelegatedPrefixModePtrOutputWithContext(context.Background())
+}
+
+func (e GlobalPublicDelegatedPrefixMode) ToGlobalPublicDelegatedPrefixModePtrOutputWithContext(ctx context.Context) GlobalPublicDelegatedPrefixModePtrOutput {
+	return GlobalPublicDelegatedPrefixMode(e).ToGlobalPublicDelegatedPrefixModeOutputWithContext(ctx).ToGlobalPublicDelegatedPrefixModePtrOutputWithContext(ctx)
+}
+
+func (e GlobalPublicDelegatedPrefixMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GlobalPublicDelegatedPrefixMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GlobalPublicDelegatedPrefixMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GlobalPublicDelegatedPrefixMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GlobalPublicDelegatedPrefixModeOutput struct{ *pulumi.OutputState }
+
+func (GlobalPublicDelegatedPrefixModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalPublicDelegatedPrefixMode)(nil)).Elem()
+}
+
+func (o GlobalPublicDelegatedPrefixModeOutput) ToGlobalPublicDelegatedPrefixModeOutput() GlobalPublicDelegatedPrefixModeOutput {
+	return o
+}
+
+func (o GlobalPublicDelegatedPrefixModeOutput) ToGlobalPublicDelegatedPrefixModeOutputWithContext(ctx context.Context) GlobalPublicDelegatedPrefixModeOutput {
+	return o
+}
+
+func (o GlobalPublicDelegatedPrefixModeOutput) ToGlobalPublicDelegatedPrefixModePtrOutput() GlobalPublicDelegatedPrefixModePtrOutput {
+	return o.ToGlobalPublicDelegatedPrefixModePtrOutputWithContext(context.Background())
+}
+
+func (o GlobalPublicDelegatedPrefixModeOutput) ToGlobalPublicDelegatedPrefixModePtrOutputWithContext(ctx context.Context) GlobalPublicDelegatedPrefixModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalPublicDelegatedPrefixMode) *GlobalPublicDelegatedPrefixMode {
+		return &v
+	}).(GlobalPublicDelegatedPrefixModePtrOutput)
+}
+
+func (o GlobalPublicDelegatedPrefixModeOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalPublicDelegatedPrefixMode] {
+	return pulumix.Output[GlobalPublicDelegatedPrefixMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GlobalPublicDelegatedPrefixModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GlobalPublicDelegatedPrefixModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GlobalPublicDelegatedPrefixMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GlobalPublicDelegatedPrefixModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalPublicDelegatedPrefixModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GlobalPublicDelegatedPrefixMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GlobalPublicDelegatedPrefixModePtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalPublicDelegatedPrefixModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalPublicDelegatedPrefixMode)(nil)).Elem()
+}
+
+func (o GlobalPublicDelegatedPrefixModePtrOutput) ToGlobalPublicDelegatedPrefixModePtrOutput() GlobalPublicDelegatedPrefixModePtrOutput {
+	return o
+}
+
+func (o GlobalPublicDelegatedPrefixModePtrOutput) ToGlobalPublicDelegatedPrefixModePtrOutputWithContext(ctx context.Context) GlobalPublicDelegatedPrefixModePtrOutput {
+	return o
+}
+
+func (o GlobalPublicDelegatedPrefixModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalPublicDelegatedPrefixMode] {
+	return pulumix.Output[*GlobalPublicDelegatedPrefixMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GlobalPublicDelegatedPrefixModePtrOutput) Elem() GlobalPublicDelegatedPrefixModeOutput {
+	return o.ApplyT(func(v *GlobalPublicDelegatedPrefixMode) GlobalPublicDelegatedPrefixMode {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalPublicDelegatedPrefixMode
+		return ret
+	}).(GlobalPublicDelegatedPrefixModeOutput)
+}
+
+func (o GlobalPublicDelegatedPrefixModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalPublicDelegatedPrefixModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GlobalPublicDelegatedPrefixMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GlobalPublicDelegatedPrefixModeInput is an input type that accepts GlobalPublicDelegatedPrefixModeArgs and GlobalPublicDelegatedPrefixModeOutput values.
+// You can construct a concrete instance of `GlobalPublicDelegatedPrefixModeInput` via:
+//
+//	GlobalPublicDelegatedPrefixModeArgs{...}
+type GlobalPublicDelegatedPrefixModeInput interface {
+	pulumi.Input
+
+	ToGlobalPublicDelegatedPrefixModeOutput() GlobalPublicDelegatedPrefixModeOutput
+	ToGlobalPublicDelegatedPrefixModeOutputWithContext(context.Context) GlobalPublicDelegatedPrefixModeOutput
+}
+
+var globalPublicDelegatedPrefixModePtrType = reflect.TypeOf((**GlobalPublicDelegatedPrefixMode)(nil)).Elem()
+
+type GlobalPublicDelegatedPrefixModePtrInput interface {
+	pulumi.Input
+
+	ToGlobalPublicDelegatedPrefixModePtrOutput() GlobalPublicDelegatedPrefixModePtrOutput
+	ToGlobalPublicDelegatedPrefixModePtrOutputWithContext(context.Context) GlobalPublicDelegatedPrefixModePtrOutput
+}
+
+type globalPublicDelegatedPrefixModePtr string
+
+func GlobalPublicDelegatedPrefixModePtr(v string) GlobalPublicDelegatedPrefixModePtrInput {
+	return (*globalPublicDelegatedPrefixModePtr)(&v)
+}
+
+func (*globalPublicDelegatedPrefixModePtr) ElementType() reflect.Type {
+	return globalPublicDelegatedPrefixModePtrType
+}
+
+func (in *globalPublicDelegatedPrefixModePtr) ToGlobalPublicDelegatedPrefixModePtrOutput() GlobalPublicDelegatedPrefixModePtrOutput {
+	return pulumi.ToOutput(in).(GlobalPublicDelegatedPrefixModePtrOutput)
+}
+
+func (in *globalPublicDelegatedPrefixModePtr) ToGlobalPublicDelegatedPrefixModePtrOutputWithContext(ctx context.Context) GlobalPublicDelegatedPrefixModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GlobalPublicDelegatedPrefixModePtrOutput)
+}
+
+func (in *globalPublicDelegatedPrefixModePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalPublicDelegatedPrefixMode] {
+	return pulumix.Output[*GlobalPublicDelegatedPrefixMode]{
+		OutputState: in.ToGlobalPublicDelegatedPrefixModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 type GuestOsFeatureType string
 
 const (
 	GuestOsFeatureTypeBareMetalLinuxCompatible = GuestOsFeatureType("BARE_METAL_LINUX_COMPATIBLE")
 	GuestOsFeatureTypeFeatureTypeUnspecified   = GuestOsFeatureType("FEATURE_TYPE_UNSPECIFIED")
 	GuestOsFeatureTypeGvnic                    = GuestOsFeatureType("GVNIC")
+	GuestOsFeatureTypeIdpf                     = GuestOsFeatureType("IDPF")
 	GuestOsFeatureTypeMultiIpSubnet            = GuestOsFeatureType("MULTI_IP_SUBNET")
 	GuestOsFeatureTypeSecureBoot               = GuestOsFeatureType("SECURE_BOOT")
 	GuestOsFeatureTypeSevCapable               = GuestOsFeatureType("SEV_CAPABLE")
 	GuestOsFeatureTypeSevLiveMigratable        = GuestOsFeatureType("SEV_LIVE_MIGRATABLE")
+	GuestOsFeatureTypeSevLiveMigratableV2      = GuestOsFeatureType("SEV_LIVE_MIGRATABLE_V2")
 	GuestOsFeatureTypeSevSnpCapable            = GuestOsFeatureType("SEV_SNP_CAPABLE")
 	GuestOsFeatureTypeTdxCapable               = GuestOsFeatureType("TDX_CAPABLE")
 	GuestOsFeatureTypeUefiCompatible           = GuestOsFeatureType("UEFI_COMPATIBLE")
@@ -17833,13 +18762,15 @@ func (in *instanceGroupManagerFailoverActionPtr) ToOutput(ctx context.Context) p
 	}
 }
 
-// Defines behaviour for all instance or failures
+// The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
 type InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure string
 
 const (
-	// If any of the MIG's VMs is not running, or is failing, no repair action will be taken.
+	// MIG deletes a failed or an unhealthy VM. Deleting the VM decreases the target size of the MIG.
+	InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureDelete = InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("DELETE")
+	// MIG does not repair a failed or an unhealthy VM.
 	InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureDoNothing = InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("DO_NOTHING")
-	// *[Default]* If any of the MIG's VMs is not running - for example, a VM cannot be created during a scale out or a VM fails – then the group will retry until it creates that VM successfully. For more information about how a MIG manages its VMs, see What is a managed instance."
+	// (Default) MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG.
 	InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureRepair = InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("REPAIR")
 )
 
@@ -18386,14 +19317,199 @@ func (in *instanceGroupManagerListManagedInstancesResultsPtr) ToOutput(ctx conte
 	}
 }
 
+// Defines behaviour of using instances from standby pool to resize MIG.
+type InstanceGroupManagerStandbyPolicyMode string
+
+const (
+	// MIG does not automatically stop/start or suspend/resume VMs.
+	InstanceGroupManagerStandbyPolicyModeManual = InstanceGroupManagerStandbyPolicyMode("MANUAL")
+	// MIG automatically resumes and starts VMs when it scales out, and replenishes the standby pool afterwards.
+	InstanceGroupManagerStandbyPolicyModeScaleOutPool = InstanceGroupManagerStandbyPolicyMode("SCALE_OUT_POOL")
+)
+
+func (InstanceGroupManagerStandbyPolicyMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStandbyPolicyMode)(nil)).Elem()
+}
+
+func (e InstanceGroupManagerStandbyPolicyMode) ToInstanceGroupManagerStandbyPolicyModeOutput() InstanceGroupManagerStandbyPolicyModeOutput {
+	return pulumi.ToOutput(e).(InstanceGroupManagerStandbyPolicyModeOutput)
+}
+
+func (e InstanceGroupManagerStandbyPolicyMode) ToInstanceGroupManagerStandbyPolicyModeOutputWithContext(ctx context.Context) InstanceGroupManagerStandbyPolicyModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceGroupManagerStandbyPolicyModeOutput)
+}
+
+func (e InstanceGroupManagerStandbyPolicyMode) ToInstanceGroupManagerStandbyPolicyModePtrOutput() InstanceGroupManagerStandbyPolicyModePtrOutput {
+	return e.ToInstanceGroupManagerStandbyPolicyModePtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupManagerStandbyPolicyMode) ToInstanceGroupManagerStandbyPolicyModePtrOutputWithContext(ctx context.Context) InstanceGroupManagerStandbyPolicyModePtrOutput {
+	return InstanceGroupManagerStandbyPolicyMode(e).ToInstanceGroupManagerStandbyPolicyModeOutputWithContext(ctx).ToInstanceGroupManagerStandbyPolicyModePtrOutputWithContext(ctx)
+}
+
+func (e InstanceGroupManagerStandbyPolicyMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceGroupManagerStandbyPolicyMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceGroupManagerStandbyPolicyMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupManagerStandbyPolicyMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceGroupManagerStandbyPolicyModeOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStandbyPolicyModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStandbyPolicyMode)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStandbyPolicyModeOutput) ToInstanceGroupManagerStandbyPolicyModeOutput() InstanceGroupManagerStandbyPolicyModeOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStandbyPolicyModeOutput) ToInstanceGroupManagerStandbyPolicyModeOutputWithContext(ctx context.Context) InstanceGroupManagerStandbyPolicyModeOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStandbyPolicyModeOutput) ToInstanceGroupManagerStandbyPolicyModePtrOutput() InstanceGroupManagerStandbyPolicyModePtrOutput {
+	return o.ToInstanceGroupManagerStandbyPolicyModePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerStandbyPolicyModeOutput) ToInstanceGroupManagerStandbyPolicyModePtrOutputWithContext(ctx context.Context) InstanceGroupManagerStandbyPolicyModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManagerStandbyPolicyMode) *InstanceGroupManagerStandbyPolicyMode {
+		return &v
+	}).(InstanceGroupManagerStandbyPolicyModePtrOutput)
+}
+
+func (o InstanceGroupManagerStandbyPolicyModeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceGroupManagerStandbyPolicyMode] {
+	return pulumix.Output[InstanceGroupManagerStandbyPolicyMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InstanceGroupManagerStandbyPolicyModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerStandbyPolicyModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerStandbyPolicyMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceGroupManagerStandbyPolicyModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerStandbyPolicyModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerStandbyPolicyMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceGroupManagerStandbyPolicyModePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStandbyPolicyModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupManagerStandbyPolicyMode)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStandbyPolicyModePtrOutput) ToInstanceGroupManagerStandbyPolicyModePtrOutput() InstanceGroupManagerStandbyPolicyModePtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStandbyPolicyModePtrOutput) ToInstanceGroupManagerStandbyPolicyModePtrOutputWithContext(ctx context.Context) InstanceGroupManagerStandbyPolicyModePtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStandbyPolicyModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerStandbyPolicyMode] {
+	return pulumix.Output[*InstanceGroupManagerStandbyPolicyMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InstanceGroupManagerStandbyPolicyModePtrOutput) Elem() InstanceGroupManagerStandbyPolicyModeOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerStandbyPolicyMode) InstanceGroupManagerStandbyPolicyMode {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerStandbyPolicyMode
+		return ret
+	}).(InstanceGroupManagerStandbyPolicyModeOutput)
+}
+
+func (o InstanceGroupManagerStandbyPolicyModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerStandbyPolicyModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceGroupManagerStandbyPolicyMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceGroupManagerStandbyPolicyModeInput is an input type that accepts InstanceGroupManagerStandbyPolicyModeArgs and InstanceGroupManagerStandbyPolicyModeOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStandbyPolicyModeInput` via:
+//
+//	InstanceGroupManagerStandbyPolicyModeArgs{...}
+type InstanceGroupManagerStandbyPolicyModeInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStandbyPolicyModeOutput() InstanceGroupManagerStandbyPolicyModeOutput
+	ToInstanceGroupManagerStandbyPolicyModeOutputWithContext(context.Context) InstanceGroupManagerStandbyPolicyModeOutput
+}
+
+var instanceGroupManagerStandbyPolicyModePtrType = reflect.TypeOf((**InstanceGroupManagerStandbyPolicyMode)(nil)).Elem()
+
+type InstanceGroupManagerStandbyPolicyModePtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStandbyPolicyModePtrOutput() InstanceGroupManagerStandbyPolicyModePtrOutput
+	ToInstanceGroupManagerStandbyPolicyModePtrOutputWithContext(context.Context) InstanceGroupManagerStandbyPolicyModePtrOutput
+}
+
+type instanceGroupManagerStandbyPolicyModePtr string
+
+func InstanceGroupManagerStandbyPolicyModePtr(v string) InstanceGroupManagerStandbyPolicyModePtrInput {
+	return (*instanceGroupManagerStandbyPolicyModePtr)(&v)
+}
+
+func (*instanceGroupManagerStandbyPolicyModePtr) ElementType() reflect.Type {
+	return instanceGroupManagerStandbyPolicyModePtrType
+}
+
+func (in *instanceGroupManagerStandbyPolicyModePtr) ToInstanceGroupManagerStandbyPolicyModePtrOutput() InstanceGroupManagerStandbyPolicyModePtrOutput {
+	return pulumi.ToOutput(in).(InstanceGroupManagerStandbyPolicyModePtrOutput)
+}
+
+func (in *instanceGroupManagerStandbyPolicyModePtr) ToInstanceGroupManagerStandbyPolicyModePtrOutputWithContext(ctx context.Context) InstanceGroupManagerStandbyPolicyModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerStandbyPolicyModePtrOutput)
+}
+
+func (in *instanceGroupManagerStandbyPolicyModePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManagerStandbyPolicyMode] {
+	return pulumix.Output[*InstanceGroupManagerStandbyPolicyMode]{
+		OutputState: in.ToInstanceGroupManagerStandbyPolicyModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The unit of measure for the target size.
 type InstanceGroupManagerTargetSizeUnit string
 
 const (
+	// [Default] TargetSize is the target number of instances.
+	InstanceGroupManagerTargetSizeUnitInstance = InstanceGroupManagerTargetSizeUnit("INSTANCE")
 	// TargetSize is the target count of vCPUs of VMs.
 	InstanceGroupManagerTargetSizeUnitVcpu = InstanceGroupManagerTargetSizeUnit("VCPU")
-	// [Default] TargetSize is the target number of VMs.
-	InstanceGroupManagerTargetSizeUnitVm = InstanceGroupManagerTargetSizeUnit("VM")
 )
 
 func (InstanceGroupManagerTargetSizeUnit) ElementType() reflect.Type {
@@ -18762,11 +19878,11 @@ type InstanceGroupManagerUpdatePolicyMinimalAction string
 const (
 	// Do not perform any action.
 	InstanceGroupManagerUpdatePolicyMinimalActionNone = InstanceGroupManagerUpdatePolicyMinimalAction("NONE")
-	// Updates applied in runtime, instances will not be disrupted.
+	// Do not stop the instance.
 	InstanceGroupManagerUpdatePolicyMinimalActionRefresh = InstanceGroupManagerUpdatePolicyMinimalAction("REFRESH")
-	// Old instances will be deleted. New instances will be created from the target template.
+	// (Default.) Replace the instance according to the replacement method option.
 	InstanceGroupManagerUpdatePolicyMinimalActionReplace = InstanceGroupManagerUpdatePolicyMinimalAction("REPLACE")
-	// Every instance will be restarted.
+	// Stop the instance and start it again.
 	InstanceGroupManagerUpdatePolicyMinimalActionRestart = InstanceGroupManagerUpdatePolicyMinimalAction("RESTART")
 )
 
@@ -18945,17 +20061,17 @@ func (in *instanceGroupManagerUpdatePolicyMinimalActionPtr) ToOutput(ctx context
 	}
 }
 
-// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 type InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction string
 
 const (
 	// Do not perform any action.
 	InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionNone = InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("NONE")
-	// Updates applied in runtime, instances will not be disrupted.
+	// Do not stop the instance.
 	InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionRefresh = InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("REFRESH")
-	// Old instances will be deleted. New instances will be created from the target template.
+	// (Default.) Replace the instance according to the replacement method option.
 	InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionReplace = InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("REPLACE")
-	// Every instance will be restarted.
+	// Stop the instance and start it again.
 	InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionRestart = InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction("RESTART")
 )
 
@@ -19319,13 +20435,13 @@ func (in *instanceGroupManagerUpdatePolicyReplacementMethodPtr) ToOutput(ctx con
 	}
 }
 
-// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+// The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
 type InstanceGroupManagerUpdatePolicyType string
 
 const (
-	// No action is being proactively performed in order to bring this IGM to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+	// MIG will apply new configurations to existing VMs only when you selectively target specific or all VMs to be updated.
 	InstanceGroupManagerUpdatePolicyTypeOpportunistic = InstanceGroupManagerUpdatePolicyType("OPPORTUNISTIC")
-	// This IGM will actively converge to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).
+	// MIG will automatically apply new configurations to all or a subset of existing VMs and also to new VMs that are added to the group.
 	InstanceGroupManagerUpdatePolicyTypeProactive = InstanceGroupManagerUpdatePolicyType("PROACTIVE")
 )
 
@@ -23298,6 +24414,191 @@ func (in *networkAttachmentConnectionPreferencePtr) ToOutput(ctx context.Context
 	}
 }
 
+// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+type NetworkEndpointGroupClientPortMappingMode string
+
+const (
+	// For each endpoint there is exactly one client port.
+	NetworkEndpointGroupClientPortMappingModeClientPortPerEndpoint = NetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT")
+	// NEG should not be used for mapping client port to destination.
+	NetworkEndpointGroupClientPortMappingModePortMappingDisabled = NetworkEndpointGroupClientPortMappingMode("PORT_MAPPING_DISABLED")
+)
+
+func (NetworkEndpointGroupClientPortMappingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToNetworkEndpointGroupClientPortMappingModeOutput() NetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutput(e).(NetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToNetworkEndpointGroupClientPortMappingModePtrOutput() NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return e.ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return NetworkEndpointGroupClientPortMappingMode(e).ToNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx).ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx)
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkEndpointGroupClientPortMappingModeOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupClientPortMappingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToNetworkEndpointGroupClientPortMappingModeOutput() NetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToNetworkEndpointGroupClientPortMappingModePtrOutput() NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkEndpointGroupClientPortMappingMode) *NetworkEndpointGroupClientPortMappingMode {
+		return &v
+	}).(NetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[NetworkEndpointGroupClientPortMappingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkEndpointGroupClientPortMappingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkEndpointGroupClientPortMappingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkEndpointGroupClientPortMappingModePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupClientPortMappingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) ToNetworkEndpointGroupClientPortMappingModePtrOutput() NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[*NetworkEndpointGroupClientPortMappingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) Elem() NetworkEndpointGroupClientPortMappingModeOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupClientPortMappingMode) NetworkEndpointGroupClientPortMappingMode {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkEndpointGroupClientPortMappingMode
+		return ret
+	}).(NetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkEndpointGroupClientPortMappingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkEndpointGroupClientPortMappingModeInput is an input type that accepts NetworkEndpointGroupClientPortMappingModeArgs and NetworkEndpointGroupClientPortMappingModeOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupClientPortMappingModeInput` via:
+//
+//	NetworkEndpointGroupClientPortMappingModeArgs{...}
+type NetworkEndpointGroupClientPortMappingModeInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupClientPortMappingModeOutput() NetworkEndpointGroupClientPortMappingModeOutput
+	ToNetworkEndpointGroupClientPortMappingModeOutputWithContext(context.Context) NetworkEndpointGroupClientPortMappingModeOutput
+}
+
+var networkEndpointGroupClientPortMappingModePtrType = reflect.TypeOf((**NetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+
+type NetworkEndpointGroupClientPortMappingModePtrInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupClientPortMappingModePtrOutput() NetworkEndpointGroupClientPortMappingModePtrOutput
+	ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Context) NetworkEndpointGroupClientPortMappingModePtrOutput
+}
+
+type networkEndpointGroupClientPortMappingModePtr string
+
+func NetworkEndpointGroupClientPortMappingModePtr(v string) NetworkEndpointGroupClientPortMappingModePtrInput {
+	return (*networkEndpointGroupClientPortMappingModePtr)(&v)
+}
+
+func (*networkEndpointGroupClientPortMappingModePtr) ElementType() reflect.Type {
+	return networkEndpointGroupClientPortMappingModePtrType
+}
+
+func (in *networkEndpointGroupClientPortMappingModePtr) ToNetworkEndpointGroupClientPortMappingModePtrOutput() NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutput(in).(NetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *networkEndpointGroupClientPortMappingModePtr) ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *networkEndpointGroupClientPortMappingModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[*NetworkEndpointGroupClientPortMappingMode]{
+		OutputState: in.ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type NetworkEndpointGroupNetworkEndpointType string
 
@@ -23306,8 +24607,6 @@ const (
 	NetworkEndpointGroupNetworkEndpointTypeGceVmIp = NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP")
 	// The network endpoint is represented by IP address and port pair.
 	NetworkEndpointGroupNetworkEndpointTypeGceVmIpPort = NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT")
-	// The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
-	NetworkEndpointGroupNetworkEndpointTypeGceVmPrimaryIp = NetworkEndpointGroupNetworkEndpointType("GCE_VM_PRIMARY_IP")
 	// The network endpoint is represented by fully qualified domain name and port.
 	NetworkEndpointGroupNetworkEndpointTypeInternetFqdnPort = NetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT")
 	// The network endpoint is represented by an internet IP address and port.
@@ -24058,6 +25357,8 @@ const (
 	NetworkInterfaceStackTypeIpv4Ipv6 = NetworkInterfaceStackType("IPV4_IPV6")
 	// The network interface will be assigned IPv4 address.
 	NetworkInterfaceStackTypeIpv4Only = NetworkInterfaceStackType("IPV4_ONLY")
+	// The network interface will only be assigned IPv6 addresses.
+	NetworkInterfaceStackTypeIpv6Only = NetworkInterfaceStackType("IPV6_ONLY")
 )
 
 func (NetworkInterfaceStackType) ElementType() reflect.Type {
@@ -24964,6 +26265,372 @@ func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToNetworkPerforma
 func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPerformanceConfigTotalEgressBandwidthTier] {
 	return pulumix.Output[*NetworkPerformanceConfigTotalEgressBandwidthTier]{
 		OutputState: in.ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+type NetworkRoutingConfigBgpBestPathSelectionMode string
+
+const (
+	NetworkRoutingConfigBgpBestPathSelectionModeLegacy   = NetworkRoutingConfigBgpBestPathSelectionMode("LEGACY")
+	NetworkRoutingConfigBgpBestPathSelectionModeStandard = NetworkRoutingConfigBgpBestPathSelectionMode("STANDARD")
+)
+
+func (NetworkRoutingConfigBgpBestPathSelectionMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRoutingConfigBgpBestPathSelectionMode)(nil)).Elem()
+}
+
+func (e NetworkRoutingConfigBgpBestPathSelectionMode) ToNetworkRoutingConfigBgpBestPathSelectionModeOutput() NetworkRoutingConfigBgpBestPathSelectionModeOutput {
+	return pulumi.ToOutput(e).(NetworkRoutingConfigBgpBestPathSelectionModeOutput)
+}
+
+func (e NetworkRoutingConfigBgpBestPathSelectionMode) ToNetworkRoutingConfigBgpBestPathSelectionModeOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpBestPathSelectionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkRoutingConfigBgpBestPathSelectionModeOutput)
+}
+
+func (e NetworkRoutingConfigBgpBestPathSelectionMode) ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutput() NetworkRoutingConfigBgpBestPathSelectionModePtrOutput {
+	return e.ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutputWithContext(context.Background())
+}
+
+func (e NetworkRoutingConfigBgpBestPathSelectionMode) ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpBestPathSelectionModePtrOutput {
+	return NetworkRoutingConfigBgpBestPathSelectionMode(e).ToNetworkRoutingConfigBgpBestPathSelectionModeOutputWithContext(ctx).ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutputWithContext(ctx)
+}
+
+func (e NetworkRoutingConfigBgpBestPathSelectionMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkRoutingConfigBgpBestPathSelectionMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkRoutingConfigBgpBestPathSelectionMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkRoutingConfigBgpBestPathSelectionMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkRoutingConfigBgpBestPathSelectionModeOutput struct{ *pulumi.OutputState }
+
+func (NetworkRoutingConfigBgpBestPathSelectionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRoutingConfigBgpBestPathSelectionMode)(nil)).Elem()
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModeOutput) ToNetworkRoutingConfigBgpBestPathSelectionModeOutput() NetworkRoutingConfigBgpBestPathSelectionModeOutput {
+	return o
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModeOutput) ToNetworkRoutingConfigBgpBestPathSelectionModeOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpBestPathSelectionModeOutput {
+	return o
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModeOutput) ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutput() NetworkRoutingConfigBgpBestPathSelectionModePtrOutput {
+	return o.ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModeOutput) ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpBestPathSelectionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkRoutingConfigBgpBestPathSelectionMode) *NetworkRoutingConfigBgpBestPathSelectionMode {
+		return &v
+	}).(NetworkRoutingConfigBgpBestPathSelectionModePtrOutput)
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRoutingConfigBgpBestPathSelectionMode] {
+	return pulumix.Output[NetworkRoutingConfigBgpBestPathSelectionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkRoutingConfigBgpBestPathSelectionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkRoutingConfigBgpBestPathSelectionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkRoutingConfigBgpBestPathSelectionModePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkRoutingConfigBgpBestPathSelectionModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkRoutingConfigBgpBestPathSelectionMode)(nil)).Elem()
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModePtrOutput) ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutput() NetworkRoutingConfigBgpBestPathSelectionModePtrOutput {
+	return o
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModePtrOutput) ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpBestPathSelectionModePtrOutput {
+	return o
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRoutingConfigBgpBestPathSelectionMode] {
+	return pulumix.Output[*NetworkRoutingConfigBgpBestPathSelectionMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModePtrOutput) Elem() NetworkRoutingConfigBgpBestPathSelectionModeOutput {
+	return o.ApplyT(func(v *NetworkRoutingConfigBgpBestPathSelectionMode) NetworkRoutingConfigBgpBestPathSelectionMode {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkRoutingConfigBgpBestPathSelectionMode
+		return ret
+	}).(NetworkRoutingConfigBgpBestPathSelectionModeOutput)
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkRoutingConfigBgpBestPathSelectionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkRoutingConfigBgpBestPathSelectionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkRoutingConfigBgpBestPathSelectionModeInput is an input type that accepts NetworkRoutingConfigBgpBestPathSelectionModeArgs and NetworkRoutingConfigBgpBestPathSelectionModeOutput values.
+// You can construct a concrete instance of `NetworkRoutingConfigBgpBestPathSelectionModeInput` via:
+//
+//	NetworkRoutingConfigBgpBestPathSelectionModeArgs{...}
+type NetworkRoutingConfigBgpBestPathSelectionModeInput interface {
+	pulumi.Input
+
+	ToNetworkRoutingConfigBgpBestPathSelectionModeOutput() NetworkRoutingConfigBgpBestPathSelectionModeOutput
+	ToNetworkRoutingConfigBgpBestPathSelectionModeOutputWithContext(context.Context) NetworkRoutingConfigBgpBestPathSelectionModeOutput
+}
+
+var networkRoutingConfigBgpBestPathSelectionModePtrType = reflect.TypeOf((**NetworkRoutingConfigBgpBestPathSelectionMode)(nil)).Elem()
+
+type NetworkRoutingConfigBgpBestPathSelectionModePtrInput interface {
+	pulumi.Input
+
+	ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutput() NetworkRoutingConfigBgpBestPathSelectionModePtrOutput
+	ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutputWithContext(context.Context) NetworkRoutingConfigBgpBestPathSelectionModePtrOutput
+}
+
+type networkRoutingConfigBgpBestPathSelectionModePtr string
+
+func NetworkRoutingConfigBgpBestPathSelectionModePtr(v string) NetworkRoutingConfigBgpBestPathSelectionModePtrInput {
+	return (*networkRoutingConfigBgpBestPathSelectionModePtr)(&v)
+}
+
+func (*networkRoutingConfigBgpBestPathSelectionModePtr) ElementType() reflect.Type {
+	return networkRoutingConfigBgpBestPathSelectionModePtrType
+}
+
+func (in *networkRoutingConfigBgpBestPathSelectionModePtr) ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutput() NetworkRoutingConfigBgpBestPathSelectionModePtrOutput {
+	return pulumi.ToOutput(in).(NetworkRoutingConfigBgpBestPathSelectionModePtrOutput)
+}
+
+func (in *networkRoutingConfigBgpBestPathSelectionModePtr) ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpBestPathSelectionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkRoutingConfigBgpBestPathSelectionModePtrOutput)
+}
+
+func (in *networkRoutingConfigBgpBestPathSelectionModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRoutingConfigBgpBestPathSelectionMode] {
+	return pulumix.Output[*NetworkRoutingConfigBgpBestPathSelectionMode]{
+		OutputState: in.ToNetworkRoutingConfigBgpBestPathSelectionModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
+type NetworkRoutingConfigBgpInterRegionCost string
+
+const (
+	NetworkRoutingConfigBgpInterRegionCostAddCostToMed = NetworkRoutingConfigBgpInterRegionCost("ADD_COST_TO_MED")
+	NetworkRoutingConfigBgpInterRegionCostDefault      = NetworkRoutingConfigBgpInterRegionCost("DEFAULT")
+)
+
+func (NetworkRoutingConfigBgpInterRegionCost) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRoutingConfigBgpInterRegionCost)(nil)).Elem()
+}
+
+func (e NetworkRoutingConfigBgpInterRegionCost) ToNetworkRoutingConfigBgpInterRegionCostOutput() NetworkRoutingConfigBgpInterRegionCostOutput {
+	return pulumi.ToOutput(e).(NetworkRoutingConfigBgpInterRegionCostOutput)
+}
+
+func (e NetworkRoutingConfigBgpInterRegionCost) ToNetworkRoutingConfigBgpInterRegionCostOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpInterRegionCostOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkRoutingConfigBgpInterRegionCostOutput)
+}
+
+func (e NetworkRoutingConfigBgpInterRegionCost) ToNetworkRoutingConfigBgpInterRegionCostPtrOutput() NetworkRoutingConfigBgpInterRegionCostPtrOutput {
+	return e.ToNetworkRoutingConfigBgpInterRegionCostPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkRoutingConfigBgpInterRegionCost) ToNetworkRoutingConfigBgpInterRegionCostPtrOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpInterRegionCostPtrOutput {
+	return NetworkRoutingConfigBgpInterRegionCost(e).ToNetworkRoutingConfigBgpInterRegionCostOutputWithContext(ctx).ToNetworkRoutingConfigBgpInterRegionCostPtrOutputWithContext(ctx)
+}
+
+func (e NetworkRoutingConfigBgpInterRegionCost) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkRoutingConfigBgpInterRegionCost) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkRoutingConfigBgpInterRegionCost) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkRoutingConfigBgpInterRegionCost) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkRoutingConfigBgpInterRegionCostOutput struct{ *pulumi.OutputState }
+
+func (NetworkRoutingConfigBgpInterRegionCostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRoutingConfigBgpInterRegionCost)(nil)).Elem()
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostOutput) ToNetworkRoutingConfigBgpInterRegionCostOutput() NetworkRoutingConfigBgpInterRegionCostOutput {
+	return o
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostOutput) ToNetworkRoutingConfigBgpInterRegionCostOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpInterRegionCostOutput {
+	return o
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostOutput) ToNetworkRoutingConfigBgpInterRegionCostPtrOutput() NetworkRoutingConfigBgpInterRegionCostPtrOutput {
+	return o.ToNetworkRoutingConfigBgpInterRegionCostPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostOutput) ToNetworkRoutingConfigBgpInterRegionCostPtrOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpInterRegionCostPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkRoutingConfigBgpInterRegionCost) *NetworkRoutingConfigBgpInterRegionCost {
+		return &v
+	}).(NetworkRoutingConfigBgpInterRegionCostPtrOutput)
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRoutingConfigBgpInterRegionCost] {
+	return pulumix.Output[NetworkRoutingConfigBgpInterRegionCost]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkRoutingConfigBgpInterRegionCost) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkRoutingConfigBgpInterRegionCost) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkRoutingConfigBgpInterRegionCostPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkRoutingConfigBgpInterRegionCostPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkRoutingConfigBgpInterRegionCost)(nil)).Elem()
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostPtrOutput) ToNetworkRoutingConfigBgpInterRegionCostPtrOutput() NetworkRoutingConfigBgpInterRegionCostPtrOutput {
+	return o
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostPtrOutput) ToNetworkRoutingConfigBgpInterRegionCostPtrOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpInterRegionCostPtrOutput {
+	return o
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRoutingConfigBgpInterRegionCost] {
+	return pulumix.Output[*NetworkRoutingConfigBgpInterRegionCost]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostPtrOutput) Elem() NetworkRoutingConfigBgpInterRegionCostOutput {
+	return o.ApplyT(func(v *NetworkRoutingConfigBgpInterRegionCost) NetworkRoutingConfigBgpInterRegionCost {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkRoutingConfigBgpInterRegionCost
+		return ret
+	}).(NetworkRoutingConfigBgpInterRegionCostOutput)
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkRoutingConfigBgpInterRegionCostPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkRoutingConfigBgpInterRegionCost) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkRoutingConfigBgpInterRegionCostInput is an input type that accepts NetworkRoutingConfigBgpInterRegionCostArgs and NetworkRoutingConfigBgpInterRegionCostOutput values.
+// You can construct a concrete instance of `NetworkRoutingConfigBgpInterRegionCostInput` via:
+//
+//	NetworkRoutingConfigBgpInterRegionCostArgs{...}
+type NetworkRoutingConfigBgpInterRegionCostInput interface {
+	pulumi.Input
+
+	ToNetworkRoutingConfigBgpInterRegionCostOutput() NetworkRoutingConfigBgpInterRegionCostOutput
+	ToNetworkRoutingConfigBgpInterRegionCostOutputWithContext(context.Context) NetworkRoutingConfigBgpInterRegionCostOutput
+}
+
+var networkRoutingConfigBgpInterRegionCostPtrType = reflect.TypeOf((**NetworkRoutingConfigBgpInterRegionCost)(nil)).Elem()
+
+type NetworkRoutingConfigBgpInterRegionCostPtrInput interface {
+	pulumi.Input
+
+	ToNetworkRoutingConfigBgpInterRegionCostPtrOutput() NetworkRoutingConfigBgpInterRegionCostPtrOutput
+	ToNetworkRoutingConfigBgpInterRegionCostPtrOutputWithContext(context.Context) NetworkRoutingConfigBgpInterRegionCostPtrOutput
+}
+
+type networkRoutingConfigBgpInterRegionCostPtr string
+
+func NetworkRoutingConfigBgpInterRegionCostPtr(v string) NetworkRoutingConfigBgpInterRegionCostPtrInput {
+	return (*networkRoutingConfigBgpInterRegionCostPtr)(&v)
+}
+
+func (*networkRoutingConfigBgpInterRegionCostPtr) ElementType() reflect.Type {
+	return networkRoutingConfigBgpInterRegionCostPtrType
+}
+
+func (in *networkRoutingConfigBgpInterRegionCostPtr) ToNetworkRoutingConfigBgpInterRegionCostPtrOutput() NetworkRoutingConfigBgpInterRegionCostPtrOutput {
+	return pulumi.ToOutput(in).(NetworkRoutingConfigBgpInterRegionCostPtrOutput)
+}
+
+func (in *networkRoutingConfigBgpInterRegionCostPtr) ToNetworkRoutingConfigBgpInterRegionCostPtrOutputWithContext(ctx context.Context) NetworkRoutingConfigBgpInterRegionCostPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkRoutingConfigBgpInterRegionCostPtrOutput)
+}
+
+func (in *networkRoutingConfigBgpInterRegionCostPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRoutingConfigBgpInterRegionCost] {
+	return pulumix.Output[*NetworkRoutingConfigBgpInterRegionCost]{
+		OutputState: in.ToNetworkRoutingConfigBgpInterRegionCostPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -26848,6 +28515,376 @@ func (in *publicAdvertisedPrefixStatusPtr) ToOutput(ctx context.Context) pulumix
 	}
 }
 
+// The public delegated prefix mode for IPv6 only.
+type PublicDelegatedPrefixMode string
+
+const (
+	// The public delegated prefix is used for further sub-delegation only. Such prefixes cannot set allocatablePrefixLength.
+	PublicDelegatedPrefixModeDelegation = PublicDelegatedPrefixMode("DELEGATION")
+	// The public delegated prefix is used for creating forwarding rules only. Such prefixes cannot set publicDelegatedSubPrefixes.
+	PublicDelegatedPrefixModeExternalIpv6ForwardingRuleCreation = PublicDelegatedPrefixMode("EXTERNAL_IPV6_FORWARDING_RULE_CREATION")
+)
+
+func (PublicDelegatedPrefixMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicDelegatedPrefixMode)(nil)).Elem()
+}
+
+func (e PublicDelegatedPrefixMode) ToPublicDelegatedPrefixModeOutput() PublicDelegatedPrefixModeOutput {
+	return pulumi.ToOutput(e).(PublicDelegatedPrefixModeOutput)
+}
+
+func (e PublicDelegatedPrefixMode) ToPublicDelegatedPrefixModeOutputWithContext(ctx context.Context) PublicDelegatedPrefixModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicDelegatedPrefixModeOutput)
+}
+
+func (e PublicDelegatedPrefixMode) ToPublicDelegatedPrefixModePtrOutput() PublicDelegatedPrefixModePtrOutput {
+	return e.ToPublicDelegatedPrefixModePtrOutputWithContext(context.Background())
+}
+
+func (e PublicDelegatedPrefixMode) ToPublicDelegatedPrefixModePtrOutputWithContext(ctx context.Context) PublicDelegatedPrefixModePtrOutput {
+	return PublicDelegatedPrefixMode(e).ToPublicDelegatedPrefixModeOutputWithContext(ctx).ToPublicDelegatedPrefixModePtrOutputWithContext(ctx)
+}
+
+func (e PublicDelegatedPrefixMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicDelegatedPrefixMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicDelegatedPrefixMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublicDelegatedPrefixMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublicDelegatedPrefixModeOutput struct{ *pulumi.OutputState }
+
+func (PublicDelegatedPrefixModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicDelegatedPrefixMode)(nil)).Elem()
+}
+
+func (o PublicDelegatedPrefixModeOutput) ToPublicDelegatedPrefixModeOutput() PublicDelegatedPrefixModeOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixModeOutput) ToPublicDelegatedPrefixModeOutputWithContext(ctx context.Context) PublicDelegatedPrefixModeOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixModeOutput) ToPublicDelegatedPrefixModePtrOutput() PublicDelegatedPrefixModePtrOutput {
+	return o.ToPublicDelegatedPrefixModePtrOutputWithContext(context.Background())
+}
+
+func (o PublicDelegatedPrefixModeOutput) ToPublicDelegatedPrefixModePtrOutputWithContext(ctx context.Context) PublicDelegatedPrefixModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicDelegatedPrefixMode) *PublicDelegatedPrefixMode {
+		return &v
+	}).(PublicDelegatedPrefixModePtrOutput)
+}
+
+func (o PublicDelegatedPrefixModeOutput) ToOutput(ctx context.Context) pulumix.Output[PublicDelegatedPrefixMode] {
+	return pulumix.Output[PublicDelegatedPrefixMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PublicDelegatedPrefixModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicDelegatedPrefixModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicDelegatedPrefixMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicDelegatedPrefixModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicDelegatedPrefixModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicDelegatedPrefixMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicDelegatedPrefixModePtrOutput struct{ *pulumi.OutputState }
+
+func (PublicDelegatedPrefixModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicDelegatedPrefixMode)(nil)).Elem()
+}
+
+func (o PublicDelegatedPrefixModePtrOutput) ToPublicDelegatedPrefixModePtrOutput() PublicDelegatedPrefixModePtrOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixModePtrOutput) ToPublicDelegatedPrefixModePtrOutputWithContext(ctx context.Context) PublicDelegatedPrefixModePtrOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicDelegatedPrefixMode] {
+	return pulumix.Output[*PublicDelegatedPrefixMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PublicDelegatedPrefixModePtrOutput) Elem() PublicDelegatedPrefixModeOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefixMode) PublicDelegatedPrefixMode {
+		if v != nil {
+			return *v
+		}
+		var ret PublicDelegatedPrefixMode
+		return ret
+	}).(PublicDelegatedPrefixModeOutput)
+}
+
+func (o PublicDelegatedPrefixModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicDelegatedPrefixModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicDelegatedPrefixMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublicDelegatedPrefixModeInput is an input type that accepts PublicDelegatedPrefixModeArgs and PublicDelegatedPrefixModeOutput values.
+// You can construct a concrete instance of `PublicDelegatedPrefixModeInput` via:
+//
+//	PublicDelegatedPrefixModeArgs{...}
+type PublicDelegatedPrefixModeInput interface {
+	pulumi.Input
+
+	ToPublicDelegatedPrefixModeOutput() PublicDelegatedPrefixModeOutput
+	ToPublicDelegatedPrefixModeOutputWithContext(context.Context) PublicDelegatedPrefixModeOutput
+}
+
+var publicDelegatedPrefixModePtrType = reflect.TypeOf((**PublicDelegatedPrefixMode)(nil)).Elem()
+
+type PublicDelegatedPrefixModePtrInput interface {
+	pulumi.Input
+
+	ToPublicDelegatedPrefixModePtrOutput() PublicDelegatedPrefixModePtrOutput
+	ToPublicDelegatedPrefixModePtrOutputWithContext(context.Context) PublicDelegatedPrefixModePtrOutput
+}
+
+type publicDelegatedPrefixModePtr string
+
+func PublicDelegatedPrefixModePtr(v string) PublicDelegatedPrefixModePtrInput {
+	return (*publicDelegatedPrefixModePtr)(&v)
+}
+
+func (*publicDelegatedPrefixModePtr) ElementType() reflect.Type {
+	return publicDelegatedPrefixModePtrType
+}
+
+func (in *publicDelegatedPrefixModePtr) ToPublicDelegatedPrefixModePtrOutput() PublicDelegatedPrefixModePtrOutput {
+	return pulumi.ToOutput(in).(PublicDelegatedPrefixModePtrOutput)
+}
+
+func (in *publicDelegatedPrefixModePtr) ToPublicDelegatedPrefixModePtrOutputWithContext(ctx context.Context) PublicDelegatedPrefixModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicDelegatedPrefixModePtrOutput)
+}
+
+func (in *publicDelegatedPrefixModePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicDelegatedPrefixMode] {
+	return pulumix.Output[*PublicDelegatedPrefixMode]{
+		OutputState: in.ToPublicDelegatedPrefixModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The PublicDelegatedSubPrefix mode for IPv6 only.
+type PublicDelegatedPrefixPublicDelegatedSubPrefixMode string
+
+const (
+	// The public delegated prefix is used for further sub-delegation only. Such prefixes cannot set allocatablePrefixLength.
+	PublicDelegatedPrefixPublicDelegatedSubPrefixModeDelegation = PublicDelegatedPrefixPublicDelegatedSubPrefixMode("DELEGATION")
+	// The public delegated prefix is used for creating forwarding rules only. Such prefixes cannot set publicDelegatedSubPrefixes.
+	PublicDelegatedPrefixPublicDelegatedSubPrefixModeExternalIpv6ForwardingRuleCreation = PublicDelegatedPrefixPublicDelegatedSubPrefixMode("EXTERNAL_IPV6_FORWARDING_RULE_CREATION")
+)
+
+func (PublicDelegatedPrefixPublicDelegatedSubPrefixMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixMode)(nil)).Elem()
+}
+
+func (e PublicDelegatedPrefixPublicDelegatedSubPrefixMode) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput {
+	return pulumi.ToOutput(e).(PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput)
+}
+
+func (e PublicDelegatedPrefixPublicDelegatedSubPrefixMode) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModeOutputWithContext(ctx context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput)
+}
+
+func (e PublicDelegatedPrefixPublicDelegatedSubPrefixMode) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput {
+	return e.ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutputWithContext(context.Background())
+}
+
+func (e PublicDelegatedPrefixPublicDelegatedSubPrefixMode) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutputWithContext(ctx context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput {
+	return PublicDelegatedPrefixPublicDelegatedSubPrefixMode(e).ToPublicDelegatedPrefixPublicDelegatedSubPrefixModeOutputWithContext(ctx).ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutputWithContext(ctx)
+}
+
+func (e PublicDelegatedPrefixPublicDelegatedSubPrefixMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicDelegatedPrefixPublicDelegatedSubPrefixMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicDelegatedPrefixPublicDelegatedSubPrefixMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublicDelegatedPrefixPublicDelegatedSubPrefixMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput struct{ *pulumi.OutputState }
+
+func (PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixMode)(nil)).Elem()
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModeOutputWithContext(ctx context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput {
+	return o.ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutputWithContext(context.Background())
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutputWithContext(ctx context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicDelegatedPrefixPublicDelegatedSubPrefixMode) *PublicDelegatedPrefixPublicDelegatedSubPrefixMode {
+		return &v
+	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput)
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput) ToOutput(ctx context.Context) pulumix.Output[PublicDelegatedPrefixPublicDelegatedSubPrefixMode] {
+	return pulumix.Output[PublicDelegatedPrefixPublicDelegatedSubPrefixMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicDelegatedPrefixPublicDelegatedSubPrefixMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicDelegatedPrefixPublicDelegatedSubPrefixMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput struct{ *pulumi.OutputState }
+
+func (PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicDelegatedPrefixPublicDelegatedSubPrefixMode)(nil)).Elem()
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutputWithContext(ctx context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicDelegatedPrefixPublicDelegatedSubPrefixMode] {
+	return pulumix.Output[*PublicDelegatedPrefixPublicDelegatedSubPrefixMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput) Elem() PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefixPublicDelegatedSubPrefixMode) PublicDelegatedPrefixPublicDelegatedSubPrefixMode {
+		if v != nil {
+			return *v
+		}
+		var ret PublicDelegatedPrefixPublicDelegatedSubPrefixMode
+		return ret
+	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput)
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicDelegatedPrefixPublicDelegatedSubPrefixMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublicDelegatedPrefixPublicDelegatedSubPrefixModeInput is an input type that accepts PublicDelegatedPrefixPublicDelegatedSubPrefixModeArgs and PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput values.
+// You can construct a concrete instance of `PublicDelegatedPrefixPublicDelegatedSubPrefixModeInput` via:
+//
+//	PublicDelegatedPrefixPublicDelegatedSubPrefixModeArgs{...}
+type PublicDelegatedPrefixPublicDelegatedSubPrefixModeInput interface {
+	pulumi.Input
+
+	ToPublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput
+	ToPublicDelegatedPrefixPublicDelegatedSubPrefixModeOutputWithContext(context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput
+}
+
+var publicDelegatedPrefixPublicDelegatedSubPrefixModePtrType = reflect.TypeOf((**PublicDelegatedPrefixPublicDelegatedSubPrefixMode)(nil)).Elem()
+
+type PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrInput interface {
+	pulumi.Input
+
+	ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput
+	ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutputWithContext(context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput
+}
+
+type publicDelegatedPrefixPublicDelegatedSubPrefixModePtr string
+
+func PublicDelegatedPrefixPublicDelegatedSubPrefixModePtr(v string) PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrInput {
+	return (*publicDelegatedPrefixPublicDelegatedSubPrefixModePtr)(&v)
+}
+
+func (*publicDelegatedPrefixPublicDelegatedSubPrefixModePtr) ElementType() reflect.Type {
+	return publicDelegatedPrefixPublicDelegatedSubPrefixModePtrType
+}
+
+func (in *publicDelegatedPrefixPublicDelegatedSubPrefixModePtr) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput {
+	return pulumi.ToOutput(in).(PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput)
+}
+
+func (in *publicDelegatedPrefixPublicDelegatedSubPrefixModePtr) ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutputWithContext(ctx context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput)
+}
+
+func (in *publicDelegatedPrefixPublicDelegatedSubPrefixModePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicDelegatedPrefixPublicDelegatedSubPrefixMode] {
+	return pulumix.Output[*PublicDelegatedPrefixPublicDelegatedSubPrefixMode]{
+		OutputState: in.ToPublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
 type RegionBackendServiceCompressionMode string
 
@@ -27033,7 +29070,7 @@ func (in *regionBackendServiceCompressionModePtr) ToOutput(ctx context.Context) 
 	}
 }
 
-// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
+// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
 type RegionBackendServiceIpAddressSelectionPolicy string
 
 const (
@@ -27414,7 +29451,7 @@ func (in *regionBackendServiceLoadBalancingSchemePtr) ToOutput(ctx context.Conte
 	}
 }
 
-// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 type RegionBackendServiceLocalityLbPolicy string
 
 const (
@@ -28561,20 +30598,22 @@ func (in *regionCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[
 type RegionCommitmentType string
 
 const (
-	RegionCommitmentTypeAcceleratorOptimized = RegionCommitmentType("ACCELERATOR_OPTIMIZED")
-	RegionCommitmentTypeComputeOptimized     = RegionCommitmentType("COMPUTE_OPTIMIZED")
-	RegionCommitmentTypeComputeOptimizedC2d  = RegionCommitmentType("COMPUTE_OPTIMIZED_C2D")
-	RegionCommitmentTypeComputeOptimizedC3   = RegionCommitmentType("COMPUTE_OPTIMIZED_C3")
-	RegionCommitmentTypeComputeOptimizedC3d  = RegionCommitmentType("COMPUTE_OPTIMIZED_C3D")
-	RegionCommitmentTypeGeneralPurpose       = RegionCommitmentType("GENERAL_PURPOSE")
-	RegionCommitmentTypeGeneralPurposeE2     = RegionCommitmentType("GENERAL_PURPOSE_E2")
-	RegionCommitmentTypeGeneralPurposeN2     = RegionCommitmentType("GENERAL_PURPOSE_N2")
-	RegionCommitmentTypeGeneralPurposeN2d    = RegionCommitmentType("GENERAL_PURPOSE_N2D")
-	RegionCommitmentTypeGeneralPurposeT2d    = RegionCommitmentType("GENERAL_PURPOSE_T2D")
-	RegionCommitmentTypeGraphicsOptimized    = RegionCommitmentType("GRAPHICS_OPTIMIZED")
-	RegionCommitmentTypeMemoryOptimized      = RegionCommitmentType("MEMORY_OPTIMIZED")
-	RegionCommitmentTypeMemoryOptimizedM3    = RegionCommitmentType("MEMORY_OPTIMIZED_M3")
-	RegionCommitmentTypeTypeUnspecified      = RegionCommitmentType("TYPE_UNSPECIFIED")
+	RegionCommitmentTypeAcceleratorOptimized   = RegionCommitmentType("ACCELERATOR_OPTIMIZED")
+	RegionCommitmentTypeAcceleratorOptimizedA3 = RegionCommitmentType("ACCELERATOR_OPTIMIZED_A3")
+	RegionCommitmentTypeComputeOptimized       = RegionCommitmentType("COMPUTE_OPTIMIZED")
+	RegionCommitmentTypeComputeOptimizedC2d    = RegionCommitmentType("COMPUTE_OPTIMIZED_C2D")
+	RegionCommitmentTypeComputeOptimizedC3     = RegionCommitmentType("COMPUTE_OPTIMIZED_C3")
+	RegionCommitmentTypeComputeOptimizedC3d    = RegionCommitmentType("COMPUTE_OPTIMIZED_C3D")
+	RegionCommitmentTypeComputeOptimizedH3     = RegionCommitmentType("COMPUTE_OPTIMIZED_H3")
+	RegionCommitmentTypeGeneralPurpose         = RegionCommitmentType("GENERAL_PURPOSE")
+	RegionCommitmentTypeGeneralPurposeE2       = RegionCommitmentType("GENERAL_PURPOSE_E2")
+	RegionCommitmentTypeGeneralPurposeN2       = RegionCommitmentType("GENERAL_PURPOSE_N2")
+	RegionCommitmentTypeGeneralPurposeN2d      = RegionCommitmentType("GENERAL_PURPOSE_N2D")
+	RegionCommitmentTypeGeneralPurposeT2d      = RegionCommitmentType("GENERAL_PURPOSE_T2D")
+	RegionCommitmentTypeGraphicsOptimized      = RegionCommitmentType("GRAPHICS_OPTIMIZED")
+	RegionCommitmentTypeMemoryOptimized        = RegionCommitmentType("MEMORY_OPTIMIZED")
+	RegionCommitmentTypeMemoryOptimizedM3      = RegionCommitmentType("MEMORY_OPTIMIZED_M3")
+	RegionCommitmentTypeTypeUnspecified        = RegionCommitmentType("TYPE_UNSPECIFIED")
 )
 
 func (RegionCommitmentType) ElementType() reflect.Type {
@@ -28749,6 +30788,193 @@ func (in *regionCommitmentTypePtr) ToRegionCommitmentTypePtrOutputWithContext(ct
 func (in *regionCommitmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionCommitmentType] {
 	return pulumix.Output[*RegionCommitmentType]{
 		OutputState: in.ToRegionCommitmentTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode. - READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be attached to multiple instances in RO mode. The AccessMode is only valid for Hyperdisk disk types.
+type RegionDiskAccessMode string
+
+const (
+	// The AccessMode means the disk can be attached to multiple instances in RO mode.
+	RegionDiskAccessModeReadOnlyMany = RegionDiskAccessMode("READ_ONLY_MANY")
+	// The AccessMode means the disk can be attached to multiple instances in RW mode.
+	RegionDiskAccessModeReadWriteMany = RegionDiskAccessMode("READ_WRITE_MANY")
+	// The default AccessMode, means the disk can be attached to single instance in RW mode.
+	RegionDiskAccessModeReadWriteSingle = RegionDiskAccessMode("READ_WRITE_SINGLE")
+)
+
+func (RegionDiskAccessMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskAccessMode)(nil)).Elem()
+}
+
+func (e RegionDiskAccessMode) ToRegionDiskAccessModeOutput() RegionDiskAccessModeOutput {
+	return pulumi.ToOutput(e).(RegionDiskAccessModeOutput)
+}
+
+func (e RegionDiskAccessMode) ToRegionDiskAccessModeOutputWithContext(ctx context.Context) RegionDiskAccessModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionDiskAccessModeOutput)
+}
+
+func (e RegionDiskAccessMode) ToRegionDiskAccessModePtrOutput() RegionDiskAccessModePtrOutput {
+	return e.ToRegionDiskAccessModePtrOutputWithContext(context.Background())
+}
+
+func (e RegionDiskAccessMode) ToRegionDiskAccessModePtrOutputWithContext(ctx context.Context) RegionDiskAccessModePtrOutput {
+	return RegionDiskAccessMode(e).ToRegionDiskAccessModeOutputWithContext(ctx).ToRegionDiskAccessModePtrOutputWithContext(ctx)
+}
+
+func (e RegionDiskAccessMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionDiskAccessMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionDiskAccessMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionDiskAccessMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionDiskAccessModeOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskAccessModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskAccessMode)(nil)).Elem()
+}
+
+func (o RegionDiskAccessModeOutput) ToRegionDiskAccessModeOutput() RegionDiskAccessModeOutput {
+	return o
+}
+
+func (o RegionDiskAccessModeOutput) ToRegionDiskAccessModeOutputWithContext(ctx context.Context) RegionDiskAccessModeOutput {
+	return o
+}
+
+func (o RegionDiskAccessModeOutput) ToRegionDiskAccessModePtrOutput() RegionDiskAccessModePtrOutput {
+	return o.ToRegionDiskAccessModePtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskAccessModeOutput) ToRegionDiskAccessModePtrOutputWithContext(ctx context.Context) RegionDiskAccessModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDiskAccessMode) *RegionDiskAccessMode {
+		return &v
+	}).(RegionDiskAccessModePtrOutput)
+}
+
+func (o RegionDiskAccessModeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionDiskAccessMode] {
+	return pulumix.Output[RegionDiskAccessMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RegionDiskAccessModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionDiskAccessModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionDiskAccessMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionDiskAccessModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskAccessModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionDiskAccessMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionDiskAccessModePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskAccessModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskAccessMode)(nil)).Elem()
+}
+
+func (o RegionDiskAccessModePtrOutput) ToRegionDiskAccessModePtrOutput() RegionDiskAccessModePtrOutput {
+	return o
+}
+
+func (o RegionDiskAccessModePtrOutput) ToRegionDiskAccessModePtrOutputWithContext(ctx context.Context) RegionDiskAccessModePtrOutput {
+	return o
+}
+
+func (o RegionDiskAccessModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskAccessMode] {
+	return pulumix.Output[*RegionDiskAccessMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RegionDiskAccessModePtrOutput) Elem() RegionDiskAccessModeOutput {
+	return o.ApplyT(func(v *RegionDiskAccessMode) RegionDiskAccessMode {
+		if v != nil {
+			return *v
+		}
+		var ret RegionDiskAccessMode
+		return ret
+	}).(RegionDiskAccessModeOutput)
+}
+
+func (o RegionDiskAccessModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskAccessModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionDiskAccessMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionDiskAccessModeInput is an input type that accepts RegionDiskAccessModeArgs and RegionDiskAccessModeOutput values.
+// You can construct a concrete instance of `RegionDiskAccessModeInput` via:
+//
+//	RegionDiskAccessModeArgs{...}
+type RegionDiskAccessModeInput interface {
+	pulumi.Input
+
+	ToRegionDiskAccessModeOutput() RegionDiskAccessModeOutput
+	ToRegionDiskAccessModeOutputWithContext(context.Context) RegionDiskAccessModeOutput
+}
+
+var regionDiskAccessModePtrType = reflect.TypeOf((**RegionDiskAccessMode)(nil)).Elem()
+
+type RegionDiskAccessModePtrInput interface {
+	pulumi.Input
+
+	ToRegionDiskAccessModePtrOutput() RegionDiskAccessModePtrOutput
+	ToRegionDiskAccessModePtrOutputWithContext(context.Context) RegionDiskAccessModePtrOutput
+}
+
+type regionDiskAccessModePtr string
+
+func RegionDiskAccessModePtr(v string) RegionDiskAccessModePtrInput {
+	return (*regionDiskAccessModePtr)(&v)
+}
+
+func (*regionDiskAccessModePtr) ElementType() reflect.Type {
+	return regionDiskAccessModePtrType
+}
+
+func (in *regionDiskAccessModePtr) ToRegionDiskAccessModePtrOutput() RegionDiskAccessModePtrOutput {
+	return pulumi.ToOutput(in).(RegionDiskAccessModePtrOutput)
+}
+
+func (in *regionDiskAccessModePtr) ToRegionDiskAccessModePtrOutputWithContext(ctx context.Context) RegionDiskAccessModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskAccessModePtrOutput)
+}
+
+func (in *regionDiskAccessModePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionDiskAccessMode] {
+	return pulumix.Output[*RegionDiskAccessMode]{
+		OutputState: in.ToRegionDiskAccessModePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -30237,10 +32463,10 @@ func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToOutput(ctx
 type RegionInstanceGroupManagerTargetSizeUnit string
 
 const (
+	// [Default] TargetSize is the target number of instances.
+	RegionInstanceGroupManagerTargetSizeUnitInstance = RegionInstanceGroupManagerTargetSizeUnit("INSTANCE")
 	// TargetSize is the target count of vCPUs of VMs.
 	RegionInstanceGroupManagerTargetSizeUnitVcpu = RegionInstanceGroupManagerTargetSizeUnit("VCPU")
-	// [Default] TargetSize is the target number of VMs.
-	RegionInstanceGroupManagerTargetSizeUnitVm = RegionInstanceGroupManagerTargetSizeUnit("VM")
 )
 
 func (RegionInstanceGroupManagerTargetSizeUnit) ElementType() reflect.Type {
@@ -30418,6 +32644,191 @@ func (in *regionInstanceGroupManagerTargetSizeUnitPtr) ToOutput(ctx context.Cont
 	}
 }
 
+// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+type RegionNetworkEndpointGroupClientPortMappingMode string
+
+const (
+	// For each endpoint there is exactly one client port.
+	RegionNetworkEndpointGroupClientPortMappingModeClientPortPerEndpoint = RegionNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT")
+	// NEG should not be used for mapping client port to destination.
+	RegionNetworkEndpointGroupClientPortMappingModePortMappingDisabled = RegionNetworkEndpointGroupClientPortMappingMode("PORT_MAPPING_DISABLED")
+)
+
+func (RegionNetworkEndpointGroupClientPortMappingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToRegionNetworkEndpointGroupClientPortMappingModeOutput() RegionNetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutput(e).(RegionNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToRegionNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutput() RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return e.ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return RegionNetworkEndpointGroupClientPortMappingMode(e).ToRegionNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx).ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx)
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionNetworkEndpointGroupClientPortMappingModeOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupClientPortMappingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToRegionNetworkEndpointGroupClientPortMappingModeOutput() RegionNetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToRegionNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutput() RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionNetworkEndpointGroupClientPortMappingMode) *RegionNetworkEndpointGroupClientPortMappingMode {
+		return &v
+	}).(RegionNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionNetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[RegionNetworkEndpointGroupClientPortMappingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionNetworkEndpointGroupClientPortMappingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionNetworkEndpointGroupClientPortMappingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkEndpointGroupClientPortMappingModePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutput() RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[*RegionNetworkEndpointGroupClientPortMappingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) Elem() RegionNetworkEndpointGroupClientPortMappingModeOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupClientPortMappingMode) RegionNetworkEndpointGroupClientPortMappingMode {
+		if v != nil {
+			return *v
+		}
+		var ret RegionNetworkEndpointGroupClientPortMappingMode
+		return ret
+	}).(RegionNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionNetworkEndpointGroupClientPortMappingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionNetworkEndpointGroupClientPortMappingModeInput is an input type that accepts RegionNetworkEndpointGroupClientPortMappingModeArgs and RegionNetworkEndpointGroupClientPortMappingModeOutput values.
+// You can construct a concrete instance of `RegionNetworkEndpointGroupClientPortMappingModeInput` via:
+//
+//	RegionNetworkEndpointGroupClientPortMappingModeArgs{...}
+type RegionNetworkEndpointGroupClientPortMappingModeInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupClientPortMappingModeOutput() RegionNetworkEndpointGroupClientPortMappingModeOutput
+	ToRegionNetworkEndpointGroupClientPortMappingModeOutputWithContext(context.Context) RegionNetworkEndpointGroupClientPortMappingModeOutput
+}
+
+var regionNetworkEndpointGroupClientPortMappingModePtrType = reflect.TypeOf((**RegionNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+
+type RegionNetworkEndpointGroupClientPortMappingModePtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupClientPortMappingModePtrOutput() RegionNetworkEndpointGroupClientPortMappingModePtrOutput
+	ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Context) RegionNetworkEndpointGroupClientPortMappingModePtrOutput
+}
+
+type regionNetworkEndpointGroupClientPortMappingModePtr string
+
+func RegionNetworkEndpointGroupClientPortMappingModePtr(v string) RegionNetworkEndpointGroupClientPortMappingModePtrInput {
+	return (*regionNetworkEndpointGroupClientPortMappingModePtr)(&v)
+}
+
+func (*regionNetworkEndpointGroupClientPortMappingModePtr) ElementType() reflect.Type {
+	return regionNetworkEndpointGroupClientPortMappingModePtrType
+}
+
+func (in *regionNetworkEndpointGroupClientPortMappingModePtr) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutput() RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutput(in).(RegionNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *regionNetworkEndpointGroupClientPortMappingModePtr) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *regionNetworkEndpointGroupClientPortMappingModePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[*RegionNetworkEndpointGroupClientPortMappingMode]{
+		OutputState: in.ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type RegionNetworkEndpointGroupNetworkEndpointType string
 
@@ -30426,8 +32837,6 @@ const (
 	RegionNetworkEndpointGroupNetworkEndpointTypeGceVmIp = RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP")
 	// The network endpoint is represented by IP address and port pair.
 	RegionNetworkEndpointGroupNetworkEndpointTypeGceVmIpPort = RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP_PORT")
-	// The network endpoint is the primary IP address on any network interface of a VM in Compute Engine.
-	RegionNetworkEndpointGroupNetworkEndpointTypeGceVmPrimaryIp = RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_PRIMARY_IP")
 	// The network endpoint is represented by fully qualified domain name and port.
 	RegionNetworkEndpointGroupNetworkEndpointTypeInternetFqdnPort = RegionNetworkEndpointGroupNetworkEndpointType("INTERNET_FQDN_PORT")
 	// The network endpoint is represented by an internet IP address and port.
@@ -31166,6 +33575,189 @@ func (in *regionSecurityPolicyTypePtr) ToRegionSecurityPolicyTypePtrOutputWithCo
 func (in *regionSecurityPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionSecurityPolicyType] {
 	return pulumix.Output[*RegionSecurityPolicyType]{
 		OutputState: in.ToRegionSecurityPolicyTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Indicates the type of the snapshot.
+type RegionSnapshotSnapshotType string
+
+const (
+	RegionSnapshotSnapshotTypeArchive  = RegionSnapshotSnapshotType("ARCHIVE")
+	RegionSnapshotSnapshotTypeStandard = RegionSnapshotSnapshotType("STANDARD")
+)
+
+func (RegionSnapshotSnapshotType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSnapshotSnapshotType)(nil)).Elem()
+}
+
+func (e RegionSnapshotSnapshotType) ToRegionSnapshotSnapshotTypeOutput() RegionSnapshotSnapshotTypeOutput {
+	return pulumi.ToOutput(e).(RegionSnapshotSnapshotTypeOutput)
+}
+
+func (e RegionSnapshotSnapshotType) ToRegionSnapshotSnapshotTypeOutputWithContext(ctx context.Context) RegionSnapshotSnapshotTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionSnapshotSnapshotTypeOutput)
+}
+
+func (e RegionSnapshotSnapshotType) ToRegionSnapshotSnapshotTypePtrOutput() RegionSnapshotSnapshotTypePtrOutput {
+	return e.ToRegionSnapshotSnapshotTypePtrOutputWithContext(context.Background())
+}
+
+func (e RegionSnapshotSnapshotType) ToRegionSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) RegionSnapshotSnapshotTypePtrOutput {
+	return RegionSnapshotSnapshotType(e).ToRegionSnapshotSnapshotTypeOutputWithContext(ctx).ToRegionSnapshotSnapshotTypePtrOutputWithContext(ctx)
+}
+
+func (e RegionSnapshotSnapshotType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionSnapshotSnapshotType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionSnapshotSnapshotType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionSnapshotSnapshotType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionSnapshotSnapshotTypeOutput struct{ *pulumi.OutputState }
+
+func (RegionSnapshotSnapshotTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSnapshotSnapshotType)(nil)).Elem()
+}
+
+func (o RegionSnapshotSnapshotTypeOutput) ToRegionSnapshotSnapshotTypeOutput() RegionSnapshotSnapshotTypeOutput {
+	return o
+}
+
+func (o RegionSnapshotSnapshotTypeOutput) ToRegionSnapshotSnapshotTypeOutputWithContext(ctx context.Context) RegionSnapshotSnapshotTypeOutput {
+	return o
+}
+
+func (o RegionSnapshotSnapshotTypeOutput) ToRegionSnapshotSnapshotTypePtrOutput() RegionSnapshotSnapshotTypePtrOutput {
+	return o.ToRegionSnapshotSnapshotTypePtrOutputWithContext(context.Background())
+}
+
+func (o RegionSnapshotSnapshotTypeOutput) ToRegionSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) RegionSnapshotSnapshotTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionSnapshotSnapshotType) *RegionSnapshotSnapshotType {
+		return &v
+	}).(RegionSnapshotSnapshotTypePtrOutput)
+}
+
+func (o RegionSnapshotSnapshotTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RegionSnapshotSnapshotType] {
+	return pulumix.Output[RegionSnapshotSnapshotType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RegionSnapshotSnapshotTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionSnapshotSnapshotTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionSnapshotSnapshotType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionSnapshotSnapshotTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionSnapshotSnapshotTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionSnapshotSnapshotType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionSnapshotSnapshotTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionSnapshotSnapshotTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionSnapshotSnapshotType)(nil)).Elem()
+}
+
+func (o RegionSnapshotSnapshotTypePtrOutput) ToRegionSnapshotSnapshotTypePtrOutput() RegionSnapshotSnapshotTypePtrOutput {
+	return o
+}
+
+func (o RegionSnapshotSnapshotTypePtrOutput) ToRegionSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) RegionSnapshotSnapshotTypePtrOutput {
+	return o
+}
+
+func (o RegionSnapshotSnapshotTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSnapshotSnapshotType] {
+	return pulumix.Output[*RegionSnapshotSnapshotType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RegionSnapshotSnapshotTypePtrOutput) Elem() RegionSnapshotSnapshotTypeOutput {
+	return o.ApplyT(func(v *RegionSnapshotSnapshotType) RegionSnapshotSnapshotType {
+		if v != nil {
+			return *v
+		}
+		var ret RegionSnapshotSnapshotType
+		return ret
+	}).(RegionSnapshotSnapshotTypeOutput)
+}
+
+func (o RegionSnapshotSnapshotTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionSnapshotSnapshotTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionSnapshotSnapshotType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionSnapshotSnapshotTypeInput is an input type that accepts RegionSnapshotSnapshotTypeArgs and RegionSnapshotSnapshotTypeOutput values.
+// You can construct a concrete instance of `RegionSnapshotSnapshotTypeInput` via:
+//
+//	RegionSnapshotSnapshotTypeArgs{...}
+type RegionSnapshotSnapshotTypeInput interface {
+	pulumi.Input
+
+	ToRegionSnapshotSnapshotTypeOutput() RegionSnapshotSnapshotTypeOutput
+	ToRegionSnapshotSnapshotTypeOutputWithContext(context.Context) RegionSnapshotSnapshotTypeOutput
+}
+
+var regionSnapshotSnapshotTypePtrType = reflect.TypeOf((**RegionSnapshotSnapshotType)(nil)).Elem()
+
+type RegionSnapshotSnapshotTypePtrInput interface {
+	pulumi.Input
+
+	ToRegionSnapshotSnapshotTypePtrOutput() RegionSnapshotSnapshotTypePtrOutput
+	ToRegionSnapshotSnapshotTypePtrOutputWithContext(context.Context) RegionSnapshotSnapshotTypePtrOutput
+}
+
+type regionSnapshotSnapshotTypePtr string
+
+func RegionSnapshotSnapshotTypePtr(v string) RegionSnapshotSnapshotTypePtrInput {
+	return (*regionSnapshotSnapshotTypePtr)(&v)
+}
+
+func (*regionSnapshotSnapshotTypePtr) ElementType() reflect.Type {
+	return regionSnapshotSnapshotTypePtrType
+}
+
+func (in *regionSnapshotSnapshotTypePtr) ToRegionSnapshotSnapshotTypePtrOutput() RegionSnapshotSnapshotTypePtrOutput {
+	return pulumi.ToOutput(in).(RegionSnapshotSnapshotTypePtrOutput)
+}
+
+func (in *regionSnapshotSnapshotTypePtr) ToRegionSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) RegionSnapshotSnapshotTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionSnapshotSnapshotTypePtrOutput)
+}
+
+func (in *regionSnapshotSnapshotTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionSnapshotSnapshotType] {
+	return pulumix.Output[*RegionSnapshotSnapshotType]{
+		OutputState: in.ToRegionSnapshotSnapshotTypePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -32113,7 +34705,9 @@ const (
 	ReservationAffinityConsumeReservationTypeSpecificReservation = ReservationAffinityConsumeReservationType("SPECIFIC_RESERVATION")
 	// Prefer to consume from a specific reservation, but still consume any reservation available if the specified reservation is not available or exhausted. Must specify key value fields for specifying the reservations.
 	ReservationAffinityConsumeReservationTypeSpecificThenAnyReservation = ReservationAffinityConsumeReservationType("SPECIFIC_THEN_ANY_RESERVATION")
-	ReservationAffinityConsumeReservationTypeUnspecified                = ReservationAffinityConsumeReservationType("UNSPECIFIED")
+	// Prefer to consume from a specific reservation, but still consume from the on-demand pool if the specified reservation is exhausted. Must specify key value fields for specifying the reservations.
+	ReservationAffinityConsumeReservationTypeSpecificThenNoReservation = ReservationAffinityConsumeReservationType("SPECIFIC_THEN_NO_RESERVATION")
+	ReservationAffinityConsumeReservationTypeUnspecified               = ReservationAffinityConsumeReservationType("UNSPECIFIED")
 )
 
 func (ReservationAffinityConsumeReservationType) ElementType() reflect.Type {
@@ -35544,7 +38138,190 @@ func (in *routerBgpPeerEnablePtr) ToOutput(ctx context.Context) pulumix.Output[*
 	}
 }
 
-// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+// IP version of this interface.
+type RouterInterfaceIpVersion string
+
+const (
+	RouterInterfaceIpVersionIpv4 = RouterInterfaceIpVersion("IPV4")
+	RouterInterfaceIpVersionIpv6 = RouterInterfaceIpVersion("IPV6")
+)
+
+func (RouterInterfaceIpVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterInterfaceIpVersion)(nil)).Elem()
+}
+
+func (e RouterInterfaceIpVersion) ToRouterInterfaceIpVersionOutput() RouterInterfaceIpVersionOutput {
+	return pulumi.ToOutput(e).(RouterInterfaceIpVersionOutput)
+}
+
+func (e RouterInterfaceIpVersion) ToRouterInterfaceIpVersionOutputWithContext(ctx context.Context) RouterInterfaceIpVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RouterInterfaceIpVersionOutput)
+}
+
+func (e RouterInterfaceIpVersion) ToRouterInterfaceIpVersionPtrOutput() RouterInterfaceIpVersionPtrOutput {
+	return e.ToRouterInterfaceIpVersionPtrOutputWithContext(context.Background())
+}
+
+func (e RouterInterfaceIpVersion) ToRouterInterfaceIpVersionPtrOutputWithContext(ctx context.Context) RouterInterfaceIpVersionPtrOutput {
+	return RouterInterfaceIpVersion(e).ToRouterInterfaceIpVersionOutputWithContext(ctx).ToRouterInterfaceIpVersionPtrOutputWithContext(ctx)
+}
+
+func (e RouterInterfaceIpVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterInterfaceIpVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterInterfaceIpVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RouterInterfaceIpVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RouterInterfaceIpVersionOutput struct{ *pulumi.OutputState }
+
+func (RouterInterfaceIpVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterInterfaceIpVersion)(nil)).Elem()
+}
+
+func (o RouterInterfaceIpVersionOutput) ToRouterInterfaceIpVersionOutput() RouterInterfaceIpVersionOutput {
+	return o
+}
+
+func (o RouterInterfaceIpVersionOutput) ToRouterInterfaceIpVersionOutputWithContext(ctx context.Context) RouterInterfaceIpVersionOutput {
+	return o
+}
+
+func (o RouterInterfaceIpVersionOutput) ToRouterInterfaceIpVersionPtrOutput() RouterInterfaceIpVersionPtrOutput {
+	return o.ToRouterInterfaceIpVersionPtrOutputWithContext(context.Background())
+}
+
+func (o RouterInterfaceIpVersionOutput) ToRouterInterfaceIpVersionPtrOutputWithContext(ctx context.Context) RouterInterfaceIpVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterInterfaceIpVersion) *RouterInterfaceIpVersion {
+		return &v
+	}).(RouterInterfaceIpVersionPtrOutput)
+}
+
+func (o RouterInterfaceIpVersionOutput) ToOutput(ctx context.Context) pulumix.Output[RouterInterfaceIpVersion] {
+	return pulumix.Output[RouterInterfaceIpVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RouterInterfaceIpVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RouterInterfaceIpVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RouterInterfaceIpVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RouterInterfaceIpVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RouterInterfaceIpVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RouterInterfaceIpVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouterInterfaceIpVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterInterfaceIpVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterInterfaceIpVersion)(nil)).Elem()
+}
+
+func (o RouterInterfaceIpVersionPtrOutput) ToRouterInterfaceIpVersionPtrOutput() RouterInterfaceIpVersionPtrOutput {
+	return o
+}
+
+func (o RouterInterfaceIpVersionPtrOutput) ToRouterInterfaceIpVersionPtrOutputWithContext(ctx context.Context) RouterInterfaceIpVersionPtrOutput {
+	return o
+}
+
+func (o RouterInterfaceIpVersionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterInterfaceIpVersion] {
+	return pulumix.Output[*RouterInterfaceIpVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RouterInterfaceIpVersionPtrOutput) Elem() RouterInterfaceIpVersionOutput {
+	return o.ApplyT(func(v *RouterInterfaceIpVersion) RouterInterfaceIpVersion {
+		if v != nil {
+			return *v
+		}
+		var ret RouterInterfaceIpVersion
+		return ret
+	}).(RouterInterfaceIpVersionOutput)
+}
+
+func (o RouterInterfaceIpVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RouterInterfaceIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RouterInterfaceIpVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RouterInterfaceIpVersionInput is an input type that accepts RouterInterfaceIpVersionArgs and RouterInterfaceIpVersionOutput values.
+// You can construct a concrete instance of `RouterInterfaceIpVersionInput` via:
+//
+//	RouterInterfaceIpVersionArgs{...}
+type RouterInterfaceIpVersionInput interface {
+	pulumi.Input
+
+	ToRouterInterfaceIpVersionOutput() RouterInterfaceIpVersionOutput
+	ToRouterInterfaceIpVersionOutputWithContext(context.Context) RouterInterfaceIpVersionOutput
+}
+
+var routerInterfaceIpVersionPtrType = reflect.TypeOf((**RouterInterfaceIpVersion)(nil)).Elem()
+
+type RouterInterfaceIpVersionPtrInput interface {
+	pulumi.Input
+
+	ToRouterInterfaceIpVersionPtrOutput() RouterInterfaceIpVersionPtrOutput
+	ToRouterInterfaceIpVersionPtrOutputWithContext(context.Context) RouterInterfaceIpVersionPtrOutput
+}
+
+type routerInterfaceIpVersionPtr string
+
+func RouterInterfaceIpVersionPtr(v string) RouterInterfaceIpVersionPtrInput {
+	return (*routerInterfaceIpVersionPtr)(&v)
+}
+
+func (*routerInterfaceIpVersionPtr) ElementType() reflect.Type {
+	return routerInterfaceIpVersionPtrType
+}
+
+func (in *routerInterfaceIpVersionPtr) ToRouterInterfaceIpVersionPtrOutput() RouterInterfaceIpVersionPtrOutput {
+	return pulumi.ToOutput(in).(RouterInterfaceIpVersionPtrOutput)
+}
+
+func (in *routerInterfaceIpVersionPtr) ToRouterInterfaceIpVersionPtrOutputWithContext(ctx context.Context) RouterInterfaceIpVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RouterInterfaceIpVersionPtrOutput)
+}
+
+func (in *routerInterfaceIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*RouterInterfaceIpVersion] {
+	return pulumix.Output[*RouterInterfaceIpVersion]{
+		OutputState: in.ToRouterInterfaceIpVersionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
 type RouterNatAutoNetworkTier string
 
 const (
@@ -35738,7 +38515,7 @@ func (in *routerNatAutoNetworkTierPtr) ToOutput(ctx context.Context) pulumix.Out
 type RouterNatEndpointTypesItem string
 
 const (
-	// This is used for Regional Internal/External HTTP(S) and TCP Proxy load balancer endpoints.
+	// This is used for regional Application Load Balancers (internal and external) and regional proxy Network Load Balancers (internal and external) endpoints.
 	RouterNatEndpointTypesItemEndpointTypeManagedProxyLb = RouterNatEndpointTypesItem("ENDPOINT_TYPE_MANAGED_PROXY_LB")
 	// This is used for Secure Web Gateway endpoints.
 	RouterNatEndpointTypesItemEndpointTypeSwg = RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG")
@@ -38644,8 +41421,9 @@ func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisib
 type SecurityPolicyAdvancedOptionsConfigJsonParsing string
 
 const (
-	SecurityPolicyAdvancedOptionsConfigJsonParsingDisabled = SecurityPolicyAdvancedOptionsConfigJsonParsing("DISABLED")
-	SecurityPolicyAdvancedOptionsConfigJsonParsingStandard = SecurityPolicyAdvancedOptionsConfigJsonParsing("STANDARD")
+	SecurityPolicyAdvancedOptionsConfigJsonParsingDisabled            = SecurityPolicyAdvancedOptionsConfigJsonParsing("DISABLED")
+	SecurityPolicyAdvancedOptionsConfigJsonParsingStandard            = SecurityPolicyAdvancedOptionsConfigJsonParsing("STANDARD")
+	SecurityPolicyAdvancedOptionsConfigJsonParsingStandardWithGraphql = SecurityPolicyAdvancedOptionsConfigJsonParsing("STANDARD_WITH_GRAPHQL")
 )
 
 func (SecurityPolicyAdvancedOptionsConfigJsonParsing) ElementType() reflect.Type {
@@ -41235,6 +44013,376 @@ func (in *serviceAttachmentConnectionPreferencePtr) ToOutput(ctx context.Context
 	}
 }
 
+// Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
+type ServiceAttachmentTunnelingConfigEncapsulationProfile string
+
+const (
+	// Use GENEVE encapsulation protocol and include the SECURITY_V1 set of GENEVE headers.
+	ServiceAttachmentTunnelingConfigEncapsulationProfileGeneveSecurityV1                = ServiceAttachmentTunnelingConfigEncapsulationProfile("GENEVE_SECURITY_V1")
+	ServiceAttachmentTunnelingConfigEncapsulationProfileUnspecifiedEncapsulationProfile = ServiceAttachmentTunnelingConfigEncapsulationProfile("UNSPECIFIED_ENCAPSULATION_PROFILE")
+)
+
+func (ServiceAttachmentTunnelingConfigEncapsulationProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentTunnelingConfigEncapsulationProfile)(nil)).Elem()
+}
+
+func (e ServiceAttachmentTunnelingConfigEncapsulationProfile) ToServiceAttachmentTunnelingConfigEncapsulationProfileOutput() ServiceAttachmentTunnelingConfigEncapsulationProfileOutput {
+	return pulumi.ToOutput(e).(ServiceAttachmentTunnelingConfigEncapsulationProfileOutput)
+}
+
+func (e ServiceAttachmentTunnelingConfigEncapsulationProfile) ToServiceAttachmentTunnelingConfigEncapsulationProfileOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigEncapsulationProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceAttachmentTunnelingConfigEncapsulationProfileOutput)
+}
+
+func (e ServiceAttachmentTunnelingConfigEncapsulationProfile) ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput() ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput {
+	return e.ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutputWithContext(context.Background())
+}
+
+func (e ServiceAttachmentTunnelingConfigEncapsulationProfile) ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput {
+	return ServiceAttachmentTunnelingConfigEncapsulationProfile(e).ToServiceAttachmentTunnelingConfigEncapsulationProfileOutputWithContext(ctx).ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutputWithContext(ctx)
+}
+
+func (e ServiceAttachmentTunnelingConfigEncapsulationProfile) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceAttachmentTunnelingConfigEncapsulationProfile) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceAttachmentTunnelingConfigEncapsulationProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceAttachmentTunnelingConfigEncapsulationProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServiceAttachmentTunnelingConfigEncapsulationProfileOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentTunnelingConfigEncapsulationProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentTunnelingConfigEncapsulationProfile)(nil)).Elem()
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfileOutput) ToServiceAttachmentTunnelingConfigEncapsulationProfileOutput() ServiceAttachmentTunnelingConfigEncapsulationProfileOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfileOutput) ToServiceAttachmentTunnelingConfigEncapsulationProfileOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigEncapsulationProfileOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfileOutput) ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput() ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput {
+	return o.ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfileOutput) ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceAttachmentTunnelingConfigEncapsulationProfile) *ServiceAttachmentTunnelingConfigEncapsulationProfile {
+		return &v
+	}).(ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput)
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAttachmentTunnelingConfigEncapsulationProfile] {
+	return pulumix.Output[ServiceAttachmentTunnelingConfigEncapsulationProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfileOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfileOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceAttachmentTunnelingConfigEncapsulationProfile) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfileOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfileOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceAttachmentTunnelingConfigEncapsulationProfile) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceAttachmentTunnelingConfigEncapsulationProfile)(nil)).Elem()
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput) ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput() ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput) ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachmentTunnelingConfigEncapsulationProfile] {
+	return pulumix.Output[*ServiceAttachmentTunnelingConfigEncapsulationProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput) Elem() ServiceAttachmentTunnelingConfigEncapsulationProfileOutput {
+	return o.ApplyT(func(v *ServiceAttachmentTunnelingConfigEncapsulationProfile) ServiceAttachmentTunnelingConfigEncapsulationProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceAttachmentTunnelingConfigEncapsulationProfile
+		return ret
+	}).(ServiceAttachmentTunnelingConfigEncapsulationProfileOutput)
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceAttachmentTunnelingConfigEncapsulationProfile) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceAttachmentTunnelingConfigEncapsulationProfileInput is an input type that accepts ServiceAttachmentTunnelingConfigEncapsulationProfileArgs and ServiceAttachmentTunnelingConfigEncapsulationProfileOutput values.
+// You can construct a concrete instance of `ServiceAttachmentTunnelingConfigEncapsulationProfileInput` via:
+//
+//	ServiceAttachmentTunnelingConfigEncapsulationProfileArgs{...}
+type ServiceAttachmentTunnelingConfigEncapsulationProfileInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentTunnelingConfigEncapsulationProfileOutput() ServiceAttachmentTunnelingConfigEncapsulationProfileOutput
+	ToServiceAttachmentTunnelingConfigEncapsulationProfileOutputWithContext(context.Context) ServiceAttachmentTunnelingConfigEncapsulationProfileOutput
+}
+
+var serviceAttachmentTunnelingConfigEncapsulationProfilePtrType = reflect.TypeOf((**ServiceAttachmentTunnelingConfigEncapsulationProfile)(nil)).Elem()
+
+type ServiceAttachmentTunnelingConfigEncapsulationProfilePtrInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput() ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput
+	ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutputWithContext(context.Context) ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput
+}
+
+type serviceAttachmentTunnelingConfigEncapsulationProfilePtr string
+
+func ServiceAttachmentTunnelingConfigEncapsulationProfilePtr(v string) ServiceAttachmentTunnelingConfigEncapsulationProfilePtrInput {
+	return (*serviceAttachmentTunnelingConfigEncapsulationProfilePtr)(&v)
+}
+
+func (*serviceAttachmentTunnelingConfigEncapsulationProfilePtr) ElementType() reflect.Type {
+	return serviceAttachmentTunnelingConfigEncapsulationProfilePtrType
+}
+
+func (in *serviceAttachmentTunnelingConfigEncapsulationProfilePtr) ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput() ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput {
+	return pulumi.ToOutput(in).(ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput)
+}
+
+func (in *serviceAttachmentTunnelingConfigEncapsulationProfilePtr) ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput)
+}
+
+func (in *serviceAttachmentTunnelingConfigEncapsulationProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachmentTunnelingConfigEncapsulationProfile] {
+	return pulumix.Output[*ServiceAttachmentTunnelingConfigEncapsulationProfile]{
+		OutputState: in.ToServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
+type ServiceAttachmentTunnelingConfigRoutingMode string
+
+const (
+	// Traffic sent to this service attachment will be reinjected into the consumer network.
+	ServiceAttachmentTunnelingConfigRoutingModePacketInjection = ServiceAttachmentTunnelingConfigRoutingMode("PACKET_INJECTION")
+	// Response traffic, after de-encapsulation, will be returned to the client.
+	ServiceAttachmentTunnelingConfigRoutingModeStandardRouting        = ServiceAttachmentTunnelingConfigRoutingMode("STANDARD_ROUTING")
+	ServiceAttachmentTunnelingConfigRoutingModeUnspecifiedRoutingMode = ServiceAttachmentTunnelingConfigRoutingMode("UNSPECIFIED_ROUTING_MODE")
+)
+
+func (ServiceAttachmentTunnelingConfigRoutingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentTunnelingConfigRoutingMode)(nil)).Elem()
+}
+
+func (e ServiceAttachmentTunnelingConfigRoutingMode) ToServiceAttachmentTunnelingConfigRoutingModeOutput() ServiceAttachmentTunnelingConfigRoutingModeOutput {
+	return pulumi.ToOutput(e).(ServiceAttachmentTunnelingConfigRoutingModeOutput)
+}
+
+func (e ServiceAttachmentTunnelingConfigRoutingMode) ToServiceAttachmentTunnelingConfigRoutingModeOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigRoutingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceAttachmentTunnelingConfigRoutingModeOutput)
+}
+
+func (e ServiceAttachmentTunnelingConfigRoutingMode) ToServiceAttachmentTunnelingConfigRoutingModePtrOutput() ServiceAttachmentTunnelingConfigRoutingModePtrOutput {
+	return e.ToServiceAttachmentTunnelingConfigRoutingModePtrOutputWithContext(context.Background())
+}
+
+func (e ServiceAttachmentTunnelingConfigRoutingMode) ToServiceAttachmentTunnelingConfigRoutingModePtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigRoutingModePtrOutput {
+	return ServiceAttachmentTunnelingConfigRoutingMode(e).ToServiceAttachmentTunnelingConfigRoutingModeOutputWithContext(ctx).ToServiceAttachmentTunnelingConfigRoutingModePtrOutputWithContext(ctx)
+}
+
+func (e ServiceAttachmentTunnelingConfigRoutingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceAttachmentTunnelingConfigRoutingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceAttachmentTunnelingConfigRoutingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceAttachmentTunnelingConfigRoutingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServiceAttachmentTunnelingConfigRoutingModeOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentTunnelingConfigRoutingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentTunnelingConfigRoutingMode)(nil)).Elem()
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModeOutput) ToServiceAttachmentTunnelingConfigRoutingModeOutput() ServiceAttachmentTunnelingConfigRoutingModeOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModeOutput) ToServiceAttachmentTunnelingConfigRoutingModeOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigRoutingModeOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModeOutput) ToServiceAttachmentTunnelingConfigRoutingModePtrOutput() ServiceAttachmentTunnelingConfigRoutingModePtrOutput {
+	return o.ToServiceAttachmentTunnelingConfigRoutingModePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModeOutput) ToServiceAttachmentTunnelingConfigRoutingModePtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigRoutingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceAttachmentTunnelingConfigRoutingMode) *ServiceAttachmentTunnelingConfigRoutingMode {
+		return &v
+	}).(ServiceAttachmentTunnelingConfigRoutingModePtrOutput)
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAttachmentTunnelingConfigRoutingMode] {
+	return pulumix.Output[ServiceAttachmentTunnelingConfigRoutingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceAttachmentTunnelingConfigRoutingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceAttachmentTunnelingConfigRoutingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceAttachmentTunnelingConfigRoutingModePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentTunnelingConfigRoutingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceAttachmentTunnelingConfigRoutingMode)(nil)).Elem()
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModePtrOutput) ToServiceAttachmentTunnelingConfigRoutingModePtrOutput() ServiceAttachmentTunnelingConfigRoutingModePtrOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModePtrOutput) ToServiceAttachmentTunnelingConfigRoutingModePtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigRoutingModePtrOutput {
+	return o
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachmentTunnelingConfigRoutingMode] {
+	return pulumix.Output[*ServiceAttachmentTunnelingConfigRoutingMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModePtrOutput) Elem() ServiceAttachmentTunnelingConfigRoutingModeOutput {
+	return o.ApplyT(func(v *ServiceAttachmentTunnelingConfigRoutingMode) ServiceAttachmentTunnelingConfigRoutingMode {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceAttachmentTunnelingConfigRoutingMode
+		return ret
+	}).(ServiceAttachmentTunnelingConfigRoutingModeOutput)
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceAttachmentTunnelingConfigRoutingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceAttachmentTunnelingConfigRoutingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceAttachmentTunnelingConfigRoutingModeInput is an input type that accepts ServiceAttachmentTunnelingConfigRoutingModeArgs and ServiceAttachmentTunnelingConfigRoutingModeOutput values.
+// You can construct a concrete instance of `ServiceAttachmentTunnelingConfigRoutingModeInput` via:
+//
+//	ServiceAttachmentTunnelingConfigRoutingModeArgs{...}
+type ServiceAttachmentTunnelingConfigRoutingModeInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentTunnelingConfigRoutingModeOutput() ServiceAttachmentTunnelingConfigRoutingModeOutput
+	ToServiceAttachmentTunnelingConfigRoutingModeOutputWithContext(context.Context) ServiceAttachmentTunnelingConfigRoutingModeOutput
+}
+
+var serviceAttachmentTunnelingConfigRoutingModePtrType = reflect.TypeOf((**ServiceAttachmentTunnelingConfigRoutingMode)(nil)).Elem()
+
+type ServiceAttachmentTunnelingConfigRoutingModePtrInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentTunnelingConfigRoutingModePtrOutput() ServiceAttachmentTunnelingConfigRoutingModePtrOutput
+	ToServiceAttachmentTunnelingConfigRoutingModePtrOutputWithContext(context.Context) ServiceAttachmentTunnelingConfigRoutingModePtrOutput
+}
+
+type serviceAttachmentTunnelingConfigRoutingModePtr string
+
+func ServiceAttachmentTunnelingConfigRoutingModePtr(v string) ServiceAttachmentTunnelingConfigRoutingModePtrInput {
+	return (*serviceAttachmentTunnelingConfigRoutingModePtr)(&v)
+}
+
+func (*serviceAttachmentTunnelingConfigRoutingModePtr) ElementType() reflect.Type {
+	return serviceAttachmentTunnelingConfigRoutingModePtrType
+}
+
+func (in *serviceAttachmentTunnelingConfigRoutingModePtr) ToServiceAttachmentTunnelingConfigRoutingModePtrOutput() ServiceAttachmentTunnelingConfigRoutingModePtrOutput {
+	return pulumi.ToOutput(in).(ServiceAttachmentTunnelingConfigRoutingModePtrOutput)
+}
+
+func (in *serviceAttachmentTunnelingConfigRoutingModePtr) ToServiceAttachmentTunnelingConfigRoutingModePtrOutputWithContext(ctx context.Context) ServiceAttachmentTunnelingConfigRoutingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceAttachmentTunnelingConfigRoutingModePtrOutput)
+}
+
+func (in *serviceAttachmentTunnelingConfigRoutingModePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachmentTunnelingConfigRoutingMode] {
+	return pulumix.Output[*ServiceAttachmentTunnelingConfigRoutingMode]{
+		OutputState: in.ToServiceAttachmentTunnelingConfigRoutingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Type of sharing for this shared-reservation
 type ShareSettingsShareType string
 
@@ -42171,137 +45319,140 @@ func (in *sslPolicyProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*Ssl
 	}
 }
 
-// Type of the storage pool
-type StoragePoolType string
+// Provisioning type of the byte capacity of the pool.
+type StoragePoolCapacityProvisioningType string
 
 const (
-	StoragePoolTypeSsd         = StoragePoolType("SSD")
-	StoragePoolTypeUnspecified = StoragePoolType("UNSPECIFIED")
+	// Advanced provisioning "thinly" allocates the related resource.
+	StoragePoolCapacityProvisioningTypeAdvanced = StoragePoolCapacityProvisioningType("ADVANCED")
+	// Standard provisioning allocates the related resource for the pool disks' exclusive use.
+	StoragePoolCapacityProvisioningTypeStandard    = StoragePoolCapacityProvisioningType("STANDARD")
+	StoragePoolCapacityProvisioningTypeUnspecified = StoragePoolCapacityProvisioningType("UNSPECIFIED")
 )
 
-func (StoragePoolType) ElementType() reflect.Type {
-	return reflect.TypeOf((*StoragePoolType)(nil)).Elem()
+func (StoragePoolCapacityProvisioningType) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolCapacityProvisioningType)(nil)).Elem()
 }
 
-func (e StoragePoolType) ToStoragePoolTypeOutput() StoragePoolTypeOutput {
-	return pulumi.ToOutput(e).(StoragePoolTypeOutput)
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypeOutput() StoragePoolCapacityProvisioningTypeOutput {
+	return pulumi.ToOutput(e).(StoragePoolCapacityProvisioningTypeOutput)
 }
 
-func (e StoragePoolType) ToStoragePoolTypeOutputWithContext(ctx context.Context) StoragePoolTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(StoragePoolTypeOutput)
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StoragePoolCapacityProvisioningTypeOutput)
 }
 
-func (e StoragePoolType) ToStoragePoolTypePtrOutput() StoragePoolTypePtrOutput {
-	return e.ToStoragePoolTypePtrOutputWithContext(context.Background())
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return e.ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(context.Background())
 }
 
-func (e StoragePoolType) ToStoragePoolTypePtrOutputWithContext(ctx context.Context) StoragePoolTypePtrOutput {
-	return StoragePoolType(e).ToStoragePoolTypeOutputWithContext(ctx).ToStoragePoolTypePtrOutputWithContext(ctx)
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return StoragePoolCapacityProvisioningType(e).ToStoragePoolCapacityProvisioningTypeOutputWithContext(ctx).ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx)
 }
 
-func (e StoragePoolType) ToStringOutput() pulumi.StringOutput {
+func (e StoragePoolCapacityProvisioningType) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e StoragePoolType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e StoragePoolCapacityProvisioningType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e StoragePoolType) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e StoragePoolCapacityProvisioningType) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e StoragePoolType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e StoragePoolCapacityProvisioningType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type StoragePoolTypeOutput struct{ *pulumi.OutputState }
+type StoragePoolCapacityProvisioningTypeOutput struct{ *pulumi.OutputState }
 
-func (StoragePoolTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StoragePoolType)(nil)).Elem()
+func (StoragePoolCapacityProvisioningTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolCapacityProvisioningType)(nil)).Elem()
 }
 
-func (o StoragePoolTypeOutput) ToStoragePoolTypeOutput() StoragePoolTypeOutput {
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypeOutput() StoragePoolCapacityProvisioningTypeOutput {
 	return o
 }
 
-func (o StoragePoolTypeOutput) ToStoragePoolTypeOutputWithContext(ctx context.Context) StoragePoolTypeOutput {
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypeOutput {
 	return o
 }
 
-func (o StoragePoolTypeOutput) ToStoragePoolTypePtrOutput() StoragePoolTypePtrOutput {
-	return o.ToStoragePoolTypePtrOutputWithContext(context.Background())
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return o.ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(context.Background())
 }
 
-func (o StoragePoolTypeOutput) ToStoragePoolTypePtrOutputWithContext(ctx context.Context) StoragePoolTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoragePoolType) *StoragePoolType {
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoragePoolCapacityProvisioningType) *StoragePoolCapacityProvisioningType {
 		return &v
-	}).(StoragePoolTypePtrOutput)
+	}).(StoragePoolCapacityProvisioningTypePtrOutput)
 }
 
-func (o StoragePoolTypeOutput) ToOutput(ctx context.Context) pulumix.Output[StoragePoolType] {
-	return pulumix.Output[StoragePoolType]{
+func (o StoragePoolCapacityProvisioningTypeOutput) ToOutput(ctx context.Context) pulumix.Output[StoragePoolCapacityProvisioningType] {
+	return pulumix.Output[StoragePoolCapacityProvisioningType]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o StoragePoolTypeOutput) ToStringOutput() pulumi.StringOutput {
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o StoragePoolTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolType) string {
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolCapacityProvisioningType) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o StoragePoolTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o StoragePoolTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolType) *string {
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolCapacityProvisioningType) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type StoragePoolTypePtrOutput struct{ *pulumi.OutputState }
+type StoragePoolCapacityProvisioningTypePtrOutput struct{ *pulumi.OutputState }
 
-func (StoragePoolTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StoragePoolType)(nil)).Elem()
+func (StoragePoolCapacityProvisioningTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoragePoolCapacityProvisioningType)(nil)).Elem()
 }
 
-func (o StoragePoolTypePtrOutput) ToStoragePoolTypePtrOutput() StoragePoolTypePtrOutput {
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
 	return o
 }
 
-func (o StoragePoolTypePtrOutput) ToStoragePoolTypePtrOutputWithContext(ctx context.Context) StoragePoolTypePtrOutput {
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
 	return o
 }
 
-func (o StoragePoolTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolType] {
-	return pulumix.Output[*StoragePoolType]{
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolCapacityProvisioningType] {
+	return pulumix.Output[*StoragePoolCapacityProvisioningType]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o StoragePoolTypePtrOutput) Elem() StoragePoolTypeOutput {
-	return o.ApplyT(func(v *StoragePoolType) StoragePoolType {
+func (o StoragePoolCapacityProvisioningTypePtrOutput) Elem() StoragePoolCapacityProvisioningTypeOutput {
+	return o.ApplyT(func(v *StoragePoolCapacityProvisioningType) StoragePoolCapacityProvisioningType {
 		if v != nil {
 			return *v
 		}
-		var ret StoragePoolType
+		var ret StoragePoolCapacityProvisioningType
 		return ret
-	}).(StoragePoolTypeOutput)
+	}).(StoragePoolCapacityProvisioningTypeOutput)
 }
 
-func (o StoragePoolTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o StoragePoolTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StoragePoolType) *string {
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StoragePoolCapacityProvisioningType) *string {
 		if e == nil {
 			return nil
 		}
@@ -42310,47 +45461,233 @@ func (o StoragePoolTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// StoragePoolTypeInput is an input type that accepts StoragePoolTypeArgs and StoragePoolTypeOutput values.
-// You can construct a concrete instance of `StoragePoolTypeInput` via:
+// StoragePoolCapacityProvisioningTypeInput is an input type that accepts StoragePoolCapacityProvisioningTypeArgs and StoragePoolCapacityProvisioningTypeOutput values.
+// You can construct a concrete instance of `StoragePoolCapacityProvisioningTypeInput` via:
 //
-//	StoragePoolTypeArgs{...}
-type StoragePoolTypeInput interface {
+//	StoragePoolCapacityProvisioningTypeArgs{...}
+type StoragePoolCapacityProvisioningTypeInput interface {
 	pulumi.Input
 
-	ToStoragePoolTypeOutput() StoragePoolTypeOutput
-	ToStoragePoolTypeOutputWithContext(context.Context) StoragePoolTypeOutput
+	ToStoragePoolCapacityProvisioningTypeOutput() StoragePoolCapacityProvisioningTypeOutput
+	ToStoragePoolCapacityProvisioningTypeOutputWithContext(context.Context) StoragePoolCapacityProvisioningTypeOutput
 }
 
-var storagePoolTypePtrType = reflect.TypeOf((**StoragePoolType)(nil)).Elem()
+var storagePoolCapacityProvisioningTypePtrType = reflect.TypeOf((**StoragePoolCapacityProvisioningType)(nil)).Elem()
 
-type StoragePoolTypePtrInput interface {
+type StoragePoolCapacityProvisioningTypePtrInput interface {
 	pulumi.Input
 
-	ToStoragePoolTypePtrOutput() StoragePoolTypePtrOutput
-	ToStoragePoolTypePtrOutputWithContext(context.Context) StoragePoolTypePtrOutput
+	ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput
+	ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(context.Context) StoragePoolCapacityProvisioningTypePtrOutput
 }
 
-type storagePoolTypePtr string
+type storagePoolCapacityProvisioningTypePtr string
 
-func StoragePoolTypePtr(v string) StoragePoolTypePtrInput {
-	return (*storagePoolTypePtr)(&v)
+func StoragePoolCapacityProvisioningTypePtr(v string) StoragePoolCapacityProvisioningTypePtrInput {
+	return (*storagePoolCapacityProvisioningTypePtr)(&v)
 }
 
-func (*storagePoolTypePtr) ElementType() reflect.Type {
-	return storagePoolTypePtrType
+func (*storagePoolCapacityProvisioningTypePtr) ElementType() reflect.Type {
+	return storagePoolCapacityProvisioningTypePtrType
 }
 
-func (in *storagePoolTypePtr) ToStoragePoolTypePtrOutput() StoragePoolTypePtrOutput {
-	return pulumi.ToOutput(in).(StoragePoolTypePtrOutput)
+func (in *storagePoolCapacityProvisioningTypePtr) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return pulumi.ToOutput(in).(StoragePoolCapacityProvisioningTypePtrOutput)
 }
 
-func (in *storagePoolTypePtr) ToStoragePoolTypePtrOutputWithContext(ctx context.Context) StoragePoolTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(StoragePoolTypePtrOutput)
+func (in *storagePoolCapacityProvisioningTypePtr) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StoragePoolCapacityProvisioningTypePtrOutput)
 }
 
-func (in *storagePoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolType] {
-	return pulumix.Output[*StoragePoolType]{
-		OutputState: in.ToStoragePoolTypePtrOutputWithContext(ctx).OutputState,
+func (in *storagePoolCapacityProvisioningTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolCapacityProvisioningType] {
+	return pulumix.Output[*StoragePoolCapacityProvisioningType]{
+		OutputState: in.ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+type StoragePoolPerformanceProvisioningType string
+
+const (
+	// Advanced provisioning "thinly" allocates the related resource.
+	StoragePoolPerformanceProvisioningTypeAdvanced = StoragePoolPerformanceProvisioningType("ADVANCED")
+	// Standard provisioning allocates the related resource for the pool disks' exclusive use.
+	StoragePoolPerformanceProvisioningTypeStandard    = StoragePoolPerformanceProvisioningType("STANDARD")
+	StoragePoolPerformanceProvisioningTypeUnspecified = StoragePoolPerformanceProvisioningType("UNSPECIFIED")
+)
+
+func (StoragePoolPerformanceProvisioningType) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolPerformanceProvisioningType)(nil)).Elem()
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypeOutput() StoragePoolPerformanceProvisioningTypeOutput {
+	return pulumi.ToOutput(e).(StoragePoolPerformanceProvisioningTypeOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StoragePoolPerformanceProvisioningTypeOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return e.ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(context.Background())
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return StoragePoolPerformanceProvisioningType(e).ToStoragePoolPerformanceProvisioningTypeOutputWithContext(ctx).ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StoragePoolPerformanceProvisioningTypeOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolPerformanceProvisioningTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolPerformanceProvisioningType)(nil)).Elem()
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypeOutput() StoragePoolPerformanceProvisioningTypeOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypeOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o.ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoragePoolPerformanceProvisioningType) *StoragePoolPerformanceProvisioningType {
+		return &v
+	}).(StoragePoolPerformanceProvisioningTypePtrOutput)
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToOutput(ctx context.Context) pulumix.Output[StoragePoolPerformanceProvisioningType] {
+	return pulumix.Output[StoragePoolPerformanceProvisioningType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolPerformanceProvisioningType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolPerformanceProvisioningType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StoragePoolPerformanceProvisioningTypePtrOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolPerformanceProvisioningTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoragePoolPerformanceProvisioningType)(nil)).Elem()
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolPerformanceProvisioningType] {
+	return pulumix.Output[*StoragePoolPerformanceProvisioningType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) Elem() StoragePoolPerformanceProvisioningTypeOutput {
+	return o.ApplyT(func(v *StoragePoolPerformanceProvisioningType) StoragePoolPerformanceProvisioningType {
+		if v != nil {
+			return *v
+		}
+		var ret StoragePoolPerformanceProvisioningType
+		return ret
+	}).(StoragePoolPerformanceProvisioningTypeOutput)
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StoragePoolPerformanceProvisioningType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StoragePoolPerformanceProvisioningTypeInput is an input type that accepts StoragePoolPerformanceProvisioningTypeArgs and StoragePoolPerformanceProvisioningTypeOutput values.
+// You can construct a concrete instance of `StoragePoolPerformanceProvisioningTypeInput` via:
+//
+//	StoragePoolPerformanceProvisioningTypeArgs{...}
+type StoragePoolPerformanceProvisioningTypeInput interface {
+	pulumi.Input
+
+	ToStoragePoolPerformanceProvisioningTypeOutput() StoragePoolPerformanceProvisioningTypeOutput
+	ToStoragePoolPerformanceProvisioningTypeOutputWithContext(context.Context) StoragePoolPerformanceProvisioningTypeOutput
+}
+
+var storagePoolPerformanceProvisioningTypePtrType = reflect.TypeOf((**StoragePoolPerformanceProvisioningType)(nil)).Elem()
+
+type StoragePoolPerformanceProvisioningTypePtrInput interface {
+	pulumi.Input
+
+	ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput
+	ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(context.Context) StoragePoolPerformanceProvisioningTypePtrOutput
+}
+
+type storagePoolPerformanceProvisioningTypePtr string
+
+func StoragePoolPerformanceProvisioningTypePtr(v string) StoragePoolPerformanceProvisioningTypePtrInput {
+	return (*storagePoolPerformanceProvisioningTypePtr)(&v)
+}
+
+func (*storagePoolPerformanceProvisioningTypePtr) ElementType() reflect.Type {
+	return storagePoolPerformanceProvisioningTypePtrType
+}
+
+func (in *storagePoolPerformanceProvisioningTypePtr) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return pulumi.ToOutput(in).(StoragePoolPerformanceProvisioningTypePtrOutput)
+}
+
+func (in *storagePoolPerformanceProvisioningTypePtr) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StoragePoolPerformanceProvisioningTypePtrOutput)
+}
+
+func (in *storagePoolPerformanceProvisioningTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolPerformanceProvisioningType] {
+	return pulumix.Output[*StoragePoolPerformanceProvisioningType]{
+		OutputState: in.ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -43475,7 +46812,7 @@ const (
 	SubnetworkPurposeAggregate = SubnetworkPurpose("AGGREGATE")
 	// Subnetworks created for Cloud Extension Machines.
 	SubnetworkPurposeCloudExtension = SubnetworkPurpose("CLOUD_EXTENSION")
-	// Subnet reserved for Global Internal HTTP(S) Load Balancing.
+	// Subnet reserved for Global Envoy-based Load Balancing.
 	SubnetworkPurposeGlobalManagedProxy = SubnetworkPurpose("GLOBAL_MANAGED_PROXY")
 	// Subnet reserved for Internal HTTP(S) Load Balancing.
 	SubnetworkPurposeInternalHttpsLoadBalancer = SubnetworkPurpose("INTERNAL_HTTPS_LOAD_BALANCER")
@@ -43487,7 +46824,7 @@ const (
 	SubnetworkPurposePrivateRfc1918 = SubnetworkPurpose("PRIVATE_RFC_1918")
 	// Subnetworks created for Private Service Connect in the producer network.
 	SubnetworkPurposePrivateServiceConnect = SubnetworkPurpose("PRIVATE_SERVICE_CONNECT")
-	// Subnetwork used for Regional Internal/External HTTP(S) Load Balancing.
+	// Subnetwork used for Regional Envoy-based Load Balancing.
 	SubnetworkPurposeRegionalManagedProxy = SubnetworkPurpose("REGIONAL_MANAGED_PROXY")
 )
 
@@ -43859,6 +47196,8 @@ const (
 	SubnetworkStackTypeIpv4Ipv6 = SubnetworkStackType("IPV4_IPV6")
 	// New VMs in this subnet will only be assigned IPv4 addresses.
 	SubnetworkStackTypeIpv4Only = SubnetworkStackType("IPV4_ONLY")
+	// New VMs in this subnet will only be assigned IPv6 addresses.
+	SubnetworkStackTypeIpv6Only = SubnetworkStackType("IPV6_ONLY")
 )
 
 func (SubnetworkStackType) ElementType() reflect.Type {
@@ -46284,8 +49623,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressPurposePtrInput)(nil)).Elem(), AddressPurpose("DNS_RESOLVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesPerformanceMonitoringUnitInput)(nil)).Elem(), AdvancedMachineFeaturesPerformanceMonitoringUnit("ARCHITECTURAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesPerformanceMonitoringUnitPtrInput)(nil)).Elem(), AdvancedMachineFeaturesPerformanceMonitoringUnit("ARCHITECTURAL"))
-	pulumi.RegisterInputType(reflect.TypeOf((*AllocationAggregateReservationVmFamilyInput)(nil)).Elem(), AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P"))
-	pulumi.RegisterInputType(reflect.TypeOf((*AllocationAggregateReservationVmFamilyPtrInput)(nil)).Elem(), AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationAggregateReservationVmFamilyInput)(nil)).Elem(), AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationAggregateReservationVmFamilyPtrInput)(nil)).Elem(), AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationAggregateReservationWorkloadTypeInput)(nil)).Elem(), AllocationAggregateReservationWorkloadType("BATCH"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AllocationAggregateReservationWorkloadTypePtrInput)(nil)).Elem(), AllocationAggregateReservationWorkloadType("BATCH"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceInput)(nil)).Elem(), AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface("NVDIMM"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrInput)(nil)).Elem(), AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface("NVDIMM"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalInput)(nil)).Elem(), AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval("AS_NEEDED"))
@@ -46322,6 +49663,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyCacheModePtrInput)(nil)).Elem(), BackendBucketCdnPolicyCacheMode("CACHE_ALL_STATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCompressionModeInput)(nil)).Elem(), BackendBucketCompressionMode("AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCompressionModePtrInput)(nil)).Elem(), BackendBucketCompressionMode("AUTOMATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendPreferenceInput)(nil)).Elem(), BackendPreference("DEFAULT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendPreferencePtrInput)(nil)).Elem(), BackendPreference("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyCacheModeInput)(nil)).Elem(), BackendServiceCdnPolicyCacheMode("CACHE_ALL_STATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyCacheModePtrInput)(nil)).Elem(), BackendServiceCdnPolicyCacheMode("CACHE_ALL_STATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCompressionModeInput)(nil)).Elem(), BackendServiceCompressionMode("AUTOMATIC"))
@@ -46364,6 +49707,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialInstanceConfigConfidentialInstanceTypePtrInput)(nil)).Elem(), ConfidentialInstanceConfigConfidentialInstanceType("CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusStateInput)(nil)).Elem(), DeprecationStatusState("ACTIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusStatePtrInput)(nil)).Elem(), DeprecationStatusState("ACTIVE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskAccessModeInput)(nil)).Elem(), DiskAccessMode("READ_ONLY_MANY"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskAccessModePtrInput)(nil)).Elem(), DiskAccessMode("READ_ONLY_MANY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskArchitectureInput)(nil)).Elem(), DiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskArchitecturePtrInput)(nil)).Elem(), DiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInstantiateFromInput)(nil)).Elem(), DiskInstantiationConfigInstantiateFrom("ATTACH_READ_ONLY"))
@@ -46420,10 +49765,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleNetworkTierPtrInput)(nil)).Elem(), GlobalForwardingRuleNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRulePscConnectionStatusInput)(nil)).Elem(), GlobalForwardingRulePscConnectionStatus("ACCEPTED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRulePscConnectionStatusPtrInput)(nil)).Elem(), GlobalForwardingRulePscConnectionStatus("ACCEPTED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupClientPortMappingModeInput)(nil)).Elem(), GlobalNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupClientPortMappingModePtrInput)(nil)).Elem(), GlobalNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupTypeInput)(nil)).Elem(), GlobalNetworkEndpointGroupType("LOAD_BALANCING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupTypePtrInput)(nil)).Elem(), GlobalNetworkEndpointGroupType("LOAD_BALANCING"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalPublicDelegatedPrefixModeInput)(nil)).Elem(), GlobalPublicDelegatedPrefixMode("DELEGATION"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalPublicDelegatedPrefixModePtrInput)(nil)).Elem(), GlobalPublicDelegatedPrefixMode("DELEGATION"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsFeatureTypeInput)(nil)).Elem(), GuestOsFeatureType("BARE_METAL_LINUX_COMPATIBLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsFeatureTypePtrInput)(nil)).Elem(), GuestOsFeatureType("BARE_METAL_LINUX_COMPATIBLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTP2HealthCheckPortSpecificationInput)(nil)).Elem(), HTTP2HealthCheckPortSpecification("USE_FIXED_PORT"))
@@ -46458,14 +49807,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck("OFF"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerFailoverActionInput)(nil)).Elem(), InstanceGroupManagerFailoverAction("NO_FAILOVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerFailoverActionPtrInput)(nil)).Elem(), InstanceGroupManagerFailoverAction("NO_FAILOVER"))
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("DO_NOTHING"))
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("DO_NOTHING"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("DELETE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("DELETE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResultsInput)(nil)).Elem(), InstanceGroupManagerListManagedInstancesResults("PAGELESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResultsPtrInput)(nil)).Elem(), InstanceGroupManagerListManagedInstancesResults("PAGELESS"))
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerTargetSizeUnitInput)(nil)).Elem(), InstanceGroupManagerTargetSizeUnit("VCPU"))
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerTargetSizeUnitPtrInput)(nil)).Elem(), InstanceGroupManagerTargetSizeUnit("VCPU"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStandbyPolicyModeInput)(nil)).Elem(), InstanceGroupManagerStandbyPolicyMode("MANUAL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStandbyPolicyModePtrInput)(nil)).Elem(), InstanceGroupManagerStandbyPolicyMode("MANUAL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerTargetSizeUnitInput)(nil)).Elem(), InstanceGroupManagerTargetSizeUnit("INSTANCE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerTargetSizeUnitPtrInput)(nil)).Elem(), InstanceGroupManagerTargetSizeUnit("INSTANCE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyInstanceRedistributionType("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyInstanceRedistributionType("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyMinimalActionInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyMinimalAction("NONE"))
@@ -46517,6 +49868,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MutualTlsModePtrInput)(nil)).Elem(), MutualTlsMode("INVALID"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAttachmentConnectionPreferenceInput)(nil)).Elem(), NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAttachmentConnectionPreferencePtrInput)(nil)).Elem(), NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupClientPortMappingModeInput)(nil)).Elem(), NetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupClientPortMappingModePtrInput)(nil)).Elem(), NetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupTypeInput)(nil)).Elem(), NetworkEndpointGroupType("LOAD_BALANCING"))
@@ -46535,6 +49888,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrInput)(nil)).Elem(), NetworkPerformanceConfigExternalIpEgressBandwidthTier("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTierInput)(nil)).Elem(), NetworkPerformanceConfigTotalEgressBandwidthTier("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTierPtrInput)(nil)).Elem(), NetworkPerformanceConfigTotalEgressBandwidthTier("DEFAULT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigBgpBestPathSelectionModeInput)(nil)).Elem(), NetworkRoutingConfigBgpBestPathSelectionMode("LEGACY"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigBgpBestPathSelectionModePtrInput)(nil)).Elem(), NetworkRoutingConfigBgpBestPathSelectionMode("LEGACY"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigBgpInterRegionCostInput)(nil)).Elem(), NetworkRoutingConfigBgpInterRegionCost("ADD_COST_TO_MED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigBgpInterRegionCostPtrInput)(nil)).Elem(), NetworkRoutingConfigBgpInterRegionCost("ADD_COST_TO_MED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigRoutingModeInput)(nil)).Elem(), NetworkRoutingConfigRoutingMode("GLOBAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigRoutingModePtrInput)(nil)).Elem(), NetworkRoutingConfigRoutingMode("GLOBAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAutoscalingPolicyModeInput)(nil)).Elem(), NodeGroupAutoscalingPolicyMode("MODE_UNSPECIFIED"))
@@ -46555,6 +49912,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixPdpScopePtrInput)(nil)).Elem(), PublicAdvertisedPrefixPdpScope("GLOBAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixStatusInput)(nil)).Elem(), PublicAdvertisedPrefixStatus("ANNOUNCED_TO_INTERNET"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixStatusPtrInput)(nil)).Elem(), PublicAdvertisedPrefixStatus("ANNOUNCED_TO_INTERNET"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixModeInput)(nil)).Elem(), PublicDelegatedPrefixMode("DELEGATION"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixModePtrInput)(nil)).Elem(), PublicDelegatedPrefixMode("DELEGATION"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixModeInput)(nil)).Elem(), PublicDelegatedPrefixPublicDelegatedSubPrefixMode("DELEGATION"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrInput)(nil)).Elem(), PublicDelegatedPrefixPublicDelegatedSubPrefixMode("DELEGATION"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceCompressionModeInput)(nil)).Elem(), RegionBackendServiceCompressionMode("AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceCompressionModePtrInput)(nil)).Elem(), RegionBackendServiceCompressionMode("AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceIpAddressSelectionPolicyInput)(nil)).Elem(), RegionBackendServiceIpAddressSelectionPolicy("IPV4_ONLY"))
@@ -46575,6 +49936,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentPlanPtrInput)(nil)).Elem(), RegionCommitmentPlan("INVALID"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentTypeInput)(nil)).Elem(), RegionCommitmentType("ACCELERATOR_OPTIMIZED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentTypePtrInput)(nil)).Elem(), RegionCommitmentType("ACCELERATOR_OPTIMIZED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskAccessModeInput)(nil)).Elem(), RegionDiskAccessMode("READ_ONLY_MANY"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskAccessModePtrInput)(nil)).Elem(), RegionDiskAccessMode("READ_ONLY_MANY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskArchitectureInput)(nil)).Elem(), RegionDiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskArchitecturePtrInput)(nil)).Elem(), RegionDiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskInterfaceInput)(nil)).Elem(), RegionDiskInterface("NVME"))
@@ -46591,8 +49954,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerFailoverActionPtrInput)(nil)).Elem(), RegionInstanceGroupManagerFailoverAction("NO_FAILOVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerListManagedInstancesResultsInput)(nil)).Elem(), RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerListManagedInstancesResultsPtrInput)(nil)).Elem(), RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS"))
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerTargetSizeUnitInput)(nil)).Elem(), RegionInstanceGroupManagerTargetSizeUnit("VCPU"))
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerTargetSizeUnitPtrInput)(nil)).Elem(), RegionInstanceGroupManagerTargetSizeUnit("VCPU"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerTargetSizeUnitInput)(nil)).Elem(), RegionInstanceGroupManagerTargetSizeUnit("INSTANCE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerTargetSizeUnitPtrInput)(nil)).Elem(), RegionInstanceGroupManagerTargetSizeUnit("INSTANCE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupClientPortMappingModeInput)(nil)).Elem(), RegionNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupClientPortMappingModePtrInput)(nil)).Elem(), RegionNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupTypeInput)(nil)).Elem(), RegionNetworkEndpointGroupType("LOAD_BALANCING"))
@@ -46601,6 +49966,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkFirewallPolicyVpcNetworkScopePtrInput)(nil)).Elem(), RegionNetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypeInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypePtrInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSnapshotSnapshotTypeInput)(nil)).Elem(), RegionSnapshotSnapshotType("ARCHIVE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSnapshotSnapshotTypePtrInput)(nil)).Elem(), RegionSnapshotSnapshotType("ARCHIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslCertificateTypeInput)(nil)).Elem(), RegionSslCertificateType("MANAGED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslCertificateTypePtrInput)(nil)).Elem(), RegionSslCertificateType("MANAGED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslPolicyMinTlsVersionInput)(nil)).Elem(), RegionSslPolicyMinTlsVersion("TLS_1_0"))
@@ -46649,6 +50016,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdSessionInitializationModePtrInput)(nil)).Elem(), RouterBgpPeerBfdSessionInitializationMode("ACTIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerEnableInput)(nil)).Elem(), RouterBgpPeerEnable("FALSE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerEnablePtrInput)(nil)).Elem(), RouterBgpPeerEnable("FALSE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceIpVersionInput)(nil)).Elem(), RouterInterfaceIpVersion("IPV4"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceIpVersionPtrInput)(nil)).Elem(), RouterInterfaceIpVersion("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatAutoNetworkTierInput)(nil)).Elem(), RouterNatAutoNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatAutoNetworkTierPtrInput)(nil)).Elem(), RouterNatAutoNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_MANAGED_PROXY_LB"))
@@ -46711,6 +50080,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsSettingsTlsModePtrInput)(nil)).Elem(), ServerTlsSettingsTlsMode("INVALID"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConnectionPreferenceInput)(nil)).Elem(), ServiceAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConnectionPreferencePtrInput)(nil)).Elem(), ServiceAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentTunnelingConfigEncapsulationProfileInput)(nil)).Elem(), ServiceAttachmentTunnelingConfigEncapsulationProfile("GENEVE_SECURITY_V1"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentTunnelingConfigEncapsulationProfilePtrInput)(nil)).Elem(), ServiceAttachmentTunnelingConfigEncapsulationProfile("GENEVE_SECURITY_V1"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentTunnelingConfigRoutingModeInput)(nil)).Elem(), ServiceAttachmentTunnelingConfigRoutingMode("PACKET_INJECTION"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentTunnelingConfigRoutingModePtrInput)(nil)).Elem(), ServiceAttachmentTunnelingConfigRoutingMode("PACKET_INJECTION"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsShareTypeInput)(nil)).Elem(), ShareSettingsShareType("DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsShareTypePtrInput)(nil)).Elem(), ShareSettingsShareType("DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSnapshotTypeInput)(nil)).Elem(), SnapshotSnapshotType("ARCHIVE"))
@@ -46721,8 +50094,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyMinTlsVersionPtrInput)(nil)).Elem(), SslPolicyMinTlsVersion("TLS_1_0"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyProfileInput)(nil)).Elem(), SslPolicyProfile("COMPATIBLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyProfilePtrInput)(nil)).Elem(), SslPolicyProfile("COMPATIBLE"))
-	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolTypeInput)(nil)).Elem(), StoragePoolType("SSD"))
-	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolTypePtrInput)(nil)).Elem(), StoragePoolType("SSD"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolCapacityProvisioningTypeInput)(nil)).Elem(), StoragePoolCapacityProvisioningType("ADVANCED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolCapacityProvisioningTypePtrInput)(nil)).Elem(), StoragePoolCapacityProvisioningType("ADVANCED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolPerformanceProvisioningTypeInput)(nil)).Elem(), StoragePoolPerformanceProvisioningType("ADVANCED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolPerformanceProvisioningTypePtrInput)(nil)).Elem(), StoragePoolPerformanceProvisioningType("ADVANCED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkAggregationIntervalInput)(nil)).Elem(), SubnetworkAggregationInterval("INTERVAL_10_MIN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkAggregationIntervalPtrInput)(nil)).Elem(), SubnetworkAggregationInterval("INTERVAL_10_MIN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIpv6AccessTypeInput)(nil)).Elem(), SubnetworkIpv6AccessType("EXTERNAL"))
@@ -46783,6 +50158,8 @@ func init() {
 	pulumi.RegisterOutputType(AdvancedMachineFeaturesPerformanceMonitoringUnitPtrOutput{})
 	pulumi.RegisterOutputType(AllocationAggregateReservationVmFamilyOutput{})
 	pulumi.RegisterOutputType(AllocationAggregateReservationVmFamilyPtrOutput{})
+	pulumi.RegisterOutputType(AllocationAggregateReservationWorkloadTypeOutput{})
+	pulumi.RegisterOutputType(AllocationAggregateReservationWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalOutput{})
@@ -46819,6 +50196,8 @@ func init() {
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyCacheModePtrOutput{})
 	pulumi.RegisterOutputType(BackendBucketCompressionModeOutput{})
 	pulumi.RegisterOutputType(BackendBucketCompressionModePtrOutput{})
+	pulumi.RegisterOutputType(BackendPreferenceOutput{})
+	pulumi.RegisterOutputType(BackendPreferencePtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyCacheModeOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyCacheModePtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceCompressionModeOutput{})
@@ -46861,6 +50240,8 @@ func init() {
 	pulumi.RegisterOutputType(ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusStateOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusStatePtrOutput{})
+	pulumi.RegisterOutputType(DiskAccessModeOutput{})
+	pulumi.RegisterOutputType(DiskAccessModePtrOutput{})
 	pulumi.RegisterOutputType(DiskArchitectureOutput{})
 	pulumi.RegisterOutputType(DiskArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigInstantiateFromOutput{})
@@ -46917,10 +50298,14 @@ func init() {
 	pulumi.RegisterOutputType(GlobalForwardingRuleNetworkTierPtrOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRulePscConnectionStatusOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRulePscConnectionStatusPtrOutput{})
+	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupClientPortMappingModeOutput{})
+	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupClientPortMappingModePtrOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupTypeOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupTypePtrOutput{})
+	pulumi.RegisterOutputType(GlobalPublicDelegatedPrefixModeOutput{})
+	pulumi.RegisterOutputType(GlobalPublicDelegatedPrefixModePtrOutput{})
 	pulumi.RegisterOutputType(GuestOsFeatureTypeOutput{})
 	pulumi.RegisterOutputType(GuestOsFeatureTypePtrOutput{})
 	pulumi.RegisterOutputType(HTTP2HealthCheckPortSpecificationOutput{})
@@ -46961,6 +50346,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerListManagedInstancesResultsOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerListManagedInstancesResultsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStandbyPolicyModeOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStandbyPolicyModePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerTargetSizeUnitOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerTargetSizeUnitPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput{})
@@ -47014,6 +50401,8 @@ func init() {
 	pulumi.RegisterOutputType(MutualTlsModePtrOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentConnectionPreferenceOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentConnectionPreferencePtrOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupClientPortMappingModeOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupClientPortMappingModePtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupTypeOutput{})
@@ -47032,6 +50421,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPerformanceConfigTotalEgressBandwidthTierOutput{})
 	pulumi.RegisterOutputType(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput{})
+	pulumi.RegisterOutputType(NetworkRoutingConfigBgpBestPathSelectionModeOutput{})
+	pulumi.RegisterOutputType(NetworkRoutingConfigBgpBestPathSelectionModePtrOutput{})
+	pulumi.RegisterOutputType(NetworkRoutingConfigBgpInterRegionCostOutput{})
+	pulumi.RegisterOutputType(NetworkRoutingConfigBgpInterRegionCostPtrOutput{})
 	pulumi.RegisterOutputType(NetworkRoutingConfigRoutingModeOutput{})
 	pulumi.RegisterOutputType(NetworkRoutingConfigRoutingModePtrOutput{})
 	pulumi.RegisterOutputType(NodeGroupAutoscalingPolicyModeOutput{})
@@ -47052,6 +50445,10 @@ func init() {
 	pulumi.RegisterOutputType(PublicAdvertisedPrefixPdpScopePtrOutput{})
 	pulumi.RegisterOutputType(PublicAdvertisedPrefixStatusOutput{})
 	pulumi.RegisterOutputType(PublicAdvertisedPrefixStatusPtrOutput{})
+	pulumi.RegisterOutputType(PublicDelegatedPrefixModeOutput{})
+	pulumi.RegisterOutputType(PublicDelegatedPrefixModePtrOutput{})
+	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixModeOutput{})
+	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceCompressionModeOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceCompressionModePtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceIpAddressSelectionPolicyOutput{})
@@ -47072,6 +50469,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionCommitmentPlanPtrOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentTypeOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentTypePtrOutput{})
+	pulumi.RegisterOutputType(RegionDiskAccessModeOutput{})
+	pulumi.RegisterOutputType(RegionDiskAccessModePtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskArchitectureOutput{})
 	pulumi.RegisterOutputType(RegionDiskArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskInterfaceOutput{})
@@ -47090,6 +50489,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerTargetSizeUnitOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerTargetSizeUnitPtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupClientPortMappingModeOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupClientPortMappingModePtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupTypeOutput{})
@@ -47098,6 +50499,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyTypeOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(RegionSnapshotSnapshotTypeOutput{})
+	pulumi.RegisterOutputType(RegionSnapshotSnapshotTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionSslCertificateTypeOutput{})
 	pulumi.RegisterOutputType(RegionSslCertificateTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionSslPolicyMinTlsVersionOutput{})
@@ -47146,6 +50549,8 @@ func init() {
 	pulumi.RegisterOutputType(RouterBgpPeerBfdSessionInitializationModePtrOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerEnableOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerEnablePtrOutput{})
+	pulumi.RegisterOutputType(RouterInterfaceIpVersionOutput{})
+	pulumi.RegisterOutputType(RouterInterfaceIpVersionPtrOutput{})
 	pulumi.RegisterOutputType(RouterNatAutoNetworkTierOutput{})
 	pulumi.RegisterOutputType(RouterNatAutoNetworkTierPtrOutput{})
 	pulumi.RegisterOutputType(RouterNatEndpointTypesItemOutput{})
@@ -47208,6 +50613,10 @@ func init() {
 	pulumi.RegisterOutputType(ServerTlsSettingsTlsModePtrOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConnectionPreferenceOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConnectionPreferencePtrOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentTunnelingConfigEncapsulationProfileOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentTunnelingConfigEncapsulationProfilePtrOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentTunnelingConfigRoutingModeOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentTunnelingConfigRoutingModePtrOutput{})
 	pulumi.RegisterOutputType(ShareSettingsShareTypeOutput{})
 	pulumi.RegisterOutputType(ShareSettingsShareTypePtrOutput{})
 	pulumi.RegisterOutputType(SnapshotSnapshotTypeOutput{})
@@ -47218,8 +50627,10 @@ func init() {
 	pulumi.RegisterOutputType(SslPolicyMinTlsVersionPtrOutput{})
 	pulumi.RegisterOutputType(SslPolicyProfileOutput{})
 	pulumi.RegisterOutputType(SslPolicyProfilePtrOutput{})
-	pulumi.RegisterOutputType(StoragePoolTypeOutput{})
-	pulumi.RegisterOutputType(StoragePoolTypePtrOutput{})
+	pulumi.RegisterOutputType(StoragePoolCapacityProvisioningTypeOutput{})
+	pulumi.RegisterOutputType(StoragePoolCapacityProvisioningTypePtrOutput{})
+	pulumi.RegisterOutputType(StoragePoolPerformanceProvisioningTypeOutput{})
+	pulumi.RegisterOutputType(StoragePoolPerformanceProvisioningTypePtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkAggregationIntervalOutput{})
 	pulumi.RegisterOutputType(SubnetworkAggregationIntervalPtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkIpv6AccessTypeOutput{})

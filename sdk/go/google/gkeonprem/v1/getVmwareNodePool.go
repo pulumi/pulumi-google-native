@@ -26,6 +26,7 @@ func LookupVmwareNodePool(ctx *pulumi.Context, args *LookupVmwareNodePoolArgs, o
 type LookupVmwareNodePoolArgs struct {
 	Location         string  `pulumi:"location"`
 	Project          *string `pulumi:"project"`
+	View             *string `pulumi:"view"`
 	VmwareClusterId  string  `pulumi:"vmwareClusterId"`
 	VmwareNodePoolId string  `pulumi:"vmwareNodePoolId"`
 }
@@ -77,6 +78,7 @@ func LookupVmwareNodePoolOutput(ctx *pulumi.Context, args LookupVmwareNodePoolOu
 type LookupVmwareNodePoolOutputArgs struct {
 	Location         pulumi.StringInput    `pulumi:"location"`
 	Project          pulumi.StringPtrInput `pulumi:"project"`
+	View             pulumi.StringPtrInput `pulumi:"view"`
 	VmwareClusterId  pulumi.StringInput    `pulumi:"vmwareClusterId"`
 	VmwareNodePoolId pulumi.StringInput    `pulumi:"vmwareNodePoolId"`
 }

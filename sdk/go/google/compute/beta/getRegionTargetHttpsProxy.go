@@ -50,6 +50,8 @@ type LookupRegionTargetHttpsProxyResult struct {
 	Fingerprint string `pulumi:"fingerprint"`
 	// URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/ locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list. httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
 	HttpFilters []string `pulumi:"httpFilters"`
+	// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
+	HttpKeepAliveTimeoutSec int `pulumi:"httpKeepAliveTimeoutSec"`
 	// Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -157,6 +159,11 @@ func (o LookupRegionTargetHttpsProxyResultOutput) Fingerprint() pulumi.StringOut
 // URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/ locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list. httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
 func (o LookupRegionTargetHttpsProxyResultOutput) HttpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) []string { return v.HttpFilters }).(pulumi.StringArrayOutput)
+}
+
+// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For global external Application Load Balancers, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For classic Application Load Balancers, this option is not supported.
+func (o LookupRegionTargetHttpsProxyResultOutput) HttpKeepAliveTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) int { return v.HttpKeepAliveTimeoutSec }).(pulumi.IntOutput)
 }
 
 // Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.

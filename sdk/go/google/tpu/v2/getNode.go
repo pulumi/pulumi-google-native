@@ -32,7 +32,7 @@ type LookupNodeArgs struct {
 type LookupNodeResult struct {
 	// The AccleratorConfig for the TPU Node.
 	AcceleratorConfig AcceleratorConfigResponse `pulumi:"acceleratorConfig"`
-	// The type of hardware accelerators associated with this node.
+	// Optional. The type of hardware accelerators associated with this node.
 	AcceleratorType string `pulumi:"acceleratorType"`
 	// The API version that created this Node.
 	ApiVersion string `pulumi:"apiVersion"`
@@ -52,12 +52,16 @@ type LookupNodeResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
 	Metadata map[string]string `pulumi:"metadata"`
+	// Whether the Node belongs to a Multislice group.
+	MultisliceNode bool `pulumi:"multisliceNode"`
 	// Immutable. The name of the TPU.
 	Name string `pulumi:"name"`
 	// Network configurations for the TPU node.
 	NetworkConfig NetworkConfigResponse `pulumi:"networkConfig"`
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
 	NetworkEndpoints []NetworkEndpointResponse `pulumi:"networkEndpoints"`
+	// The qualified name of the QueuedResource that requested this Node.
+	QueuedResource string `pulumi:"queuedResource"`
 	// The runtime version running in the Node.
 	RuntimeVersion string `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
@@ -122,7 +126,7 @@ func (o LookupNodeResultOutput) AcceleratorConfig() AcceleratorConfigResponseOut
 	return o.ApplyT(func(v LookupNodeResult) AcceleratorConfigResponse { return v.AcceleratorConfig }).(AcceleratorConfigResponseOutput)
 }
 
-// The type of hardware accelerators associated with this node.
+// Optional. The type of hardware accelerators associated with this node.
 func (o LookupNodeResultOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.AcceleratorType }).(pulumi.StringOutput)
 }
@@ -172,6 +176,11 @@ func (o LookupNodeResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNodeResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Whether the Node belongs to a Multislice group.
+func (o LookupNodeResultOutput) MultisliceNode() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupNodeResult) bool { return v.MultisliceNode }).(pulumi.BoolOutput)
+}
+
 // Immutable. The name of the TPU.
 func (o LookupNodeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.Name }).(pulumi.StringOutput)
@@ -185,6 +194,11 @@ func (o LookupNodeResultOutput) NetworkConfig() NetworkConfigResponseOutput {
 // The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
 func (o LookupNodeResultOutput) NetworkEndpoints() NetworkEndpointResponseArrayOutput {
 	return o.ApplyT(func(v LookupNodeResult) []NetworkEndpointResponse { return v.NetworkEndpoints }).(NetworkEndpointResponseArrayOutput)
+}
+
+// The qualified name of the QueuedResource that requested this Node.
+func (o LookupNodeResultOutput) QueuedResource() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeResult) string { return v.QueuedResource }).(pulumi.StringOutput)
 }
 
 // The runtime version running in the Node.

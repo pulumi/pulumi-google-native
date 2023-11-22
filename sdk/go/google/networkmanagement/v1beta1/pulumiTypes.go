@@ -1611,7 +1611,7 @@ type Endpoint struct {
 	CloudRunRevision *CloudRunRevisionEndpoint `pulumi:"cloudRunRevision"`
 	// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
 	CloudSqlInstance *string `pulumi:"cloudSqlInstance"`
-	// Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+	// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
 	ForwardingRule *string `pulumi:"forwardingRule"`
 	// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
 	GkeMasterCluster *string `pulumi:"gkeMasterCluster"`
@@ -1650,7 +1650,7 @@ type EndpointArgs struct {
 	CloudRunRevision CloudRunRevisionEndpointPtrInput `pulumi:"cloudRunRevision"`
 	// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
 	CloudSqlInstance pulumi.StringPtrInput `pulumi:"cloudSqlInstance"`
-	// Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+	// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
 	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
 	// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
 	GkeMasterCluster pulumi.StringPtrInput `pulumi:"gkeMasterCluster"`
@@ -1727,7 +1727,7 @@ func (o EndpointOutput) CloudSqlInstance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoint) *string { return v.CloudSqlInstance }).(pulumi.StringPtrOutput)
 }
 
-// Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
 func (o EndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoint) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
 }
@@ -1858,7 +1858,7 @@ type EndpointResponse struct {
 	CloudRunRevision CloudRunRevisionEndpointResponse `pulumi:"cloudRunRevision"`
 	// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
 	CloudSqlInstance string `pulumi:"cloudSqlInstance"`
-	// Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+	// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
 	ForwardingRule string `pulumi:"forwardingRule"`
 	// Specifies the type of the target of the forwarding rule.
 	ForwardingRuleTarget string `pulumi:"forwardingRuleTarget"`
@@ -1923,7 +1923,7 @@ func (o EndpointResponseOutput) CloudSqlInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointResponse) string { return v.CloudSqlInstance }).(pulumi.StringOutput)
 }
 
-// Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
 func (o EndpointResponseOutput) ForwardingRule() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointResponse) string { return v.ForwardingRule }).(pulumi.StringOutput)
 }
@@ -2513,6 +2513,45 @@ func (o GKEMasterInfoResponseOutput) InternalIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GKEMasterInfoResponse) string { return v.InternalIp }).(pulumi.StringOutput)
 }
 
+// For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be a publicly routable address, some Google Services use special routes within Google production infrastructure to reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths
+type GoogleServiceInfoResponse struct {
+	// Recognized type of a Google Service.
+	GoogleServiceType string `pulumi:"googleServiceType"`
+	// Source IP address.
+	SourceIp string `pulumi:"sourceIp"`
+}
+
+// For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be a publicly routable address, some Google Services use special routes within Google production infrastructure to reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths
+type GoogleServiceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleServiceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleServiceInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleServiceInfoResponseOutput) ToGoogleServiceInfoResponseOutput() GoogleServiceInfoResponseOutput {
+	return o
+}
+
+func (o GoogleServiceInfoResponseOutput) ToGoogleServiceInfoResponseOutputWithContext(ctx context.Context) GoogleServiceInfoResponseOutput {
+	return o
+}
+
+func (o GoogleServiceInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleServiceInfoResponse] {
+	return pulumix.Output[GoogleServiceInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Recognized type of a Google Service.
+func (o GoogleServiceInfoResponseOutput) GoogleServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleServiceInfoResponse) string { return v.GoogleServiceType }).(pulumi.StringOutput)
+}
+
+// Source IP address.
+func (o GoogleServiceInfoResponseOutput) SourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleServiceInfoResponse) string { return v.SourceIp }).(pulumi.StringOutput)
+}
+
 // For display only. Metadata associated with a Compute Engine instance.
 type InstanceInfoResponse struct {
 	// Name of a Compute Engine instance.
@@ -2785,7 +2824,9 @@ type LoadBalancerInfoResponse struct {
 	BackendUri string `pulumi:"backendUri"`
 	// Information for the loadbalancer backends.
 	Backends []LoadBalancerBackendResponse `pulumi:"backends"`
-	// URI of the health check for the load balancer.
+	// URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
+	//
+	// Deprecated: URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
 	HealthCheckUri string `pulumi:"healthCheckUri"`
 	// Type of the load balancer.
 	LoadBalancerType string `pulumi:"loadBalancerType"`
@@ -2827,7 +2868,9 @@ func (o LoadBalancerInfoResponseOutput) Backends() LoadBalancerBackendResponseAr
 	return o.ApplyT(func(v LoadBalancerInfoResponse) []LoadBalancerBackendResponse { return v.Backends }).(LoadBalancerBackendResponseArrayOutput)
 }
 
-// URI of the health check for the load balancer.
+// URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
+//
+// Deprecated: URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
 func (o LoadBalancerInfoResponseOutput) HealthCheckUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerInfoResponse) string { return v.HealthCheckUri }).(pulumi.StringOutput)
 }
@@ -3030,11 +3073,15 @@ type RouteInfoResponse struct {
 	DestIpRange string `pulumi:"destIpRange"`
 	// Destination port ranges of the route. Policy based routes only.
 	DestPortRanges []string `pulumi:"destPortRanges"`
-	// Name of a Compute Engine route.
+	// Name of a route.
 	DisplayName string `pulumi:"displayName"`
 	// Instance tags of the route.
 	InstanceTags []string `pulumi:"instanceTags"`
-	// URI of a Compute Engine network.
+	// URI of a NCC Hub. NCC_HUB routes only.
+	NccHubUri string `pulumi:"nccHubUri"`
+	// URI of a NCC Spoke. NCC_HUB routes only.
+	NccSpokeUri string `pulumi:"nccSpokeUri"`
+	// URI of a Compute Engine network. NETWORK routes only.
 	NetworkUri string `pulumi:"networkUri"`
 	// Next hop of the route.
 	NextHop string `pulumi:"nextHop"`
@@ -3044,13 +3091,15 @@ type RouteInfoResponse struct {
 	Priority int `pulumi:"priority"`
 	// Protocols of the route. Policy based routes only.
 	Protocols []string `pulumi:"protocols"`
+	// Indicates where route is applicable.
+	RouteScope string `pulumi:"routeScope"`
 	// Type of route.
 	RouteType string `pulumi:"routeType"`
 	// Source IP address range of the route. Policy based routes only.
 	SrcIpRange string `pulumi:"srcIpRange"`
 	// Source port ranges of the route. Policy based routes only.
 	SrcPortRanges []string `pulumi:"srcPortRanges"`
-	// URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.
+	// URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from Google Cloud VPC to on-premises network also does not have an URI.
 	Uri string `pulumi:"uri"`
 }
 
@@ -3085,7 +3134,7 @@ func (o RouteInfoResponseOutput) DestPortRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouteInfoResponse) []string { return v.DestPortRanges }).(pulumi.StringArrayOutput)
 }
 
-// Name of a Compute Engine route.
+// Name of a route.
 func (o RouteInfoResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteInfoResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -3095,7 +3144,17 @@ func (o RouteInfoResponseOutput) InstanceTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouteInfoResponse) []string { return v.InstanceTags }).(pulumi.StringArrayOutput)
 }
 
-// URI of a Compute Engine network.
+// URI of a NCC Hub. NCC_HUB routes only.
+func (o RouteInfoResponseOutput) NccHubUri() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteInfoResponse) string { return v.NccHubUri }).(pulumi.StringOutput)
+}
+
+// URI of a NCC Spoke. NCC_HUB routes only.
+func (o RouteInfoResponseOutput) NccSpokeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteInfoResponse) string { return v.NccSpokeUri }).(pulumi.StringOutput)
+}
+
+// URI of a Compute Engine network. NETWORK routes only.
 func (o RouteInfoResponseOutput) NetworkUri() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteInfoResponse) string { return v.NetworkUri }).(pulumi.StringOutput)
 }
@@ -3120,6 +3179,11 @@ func (o RouteInfoResponseOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouteInfoResponse) []string { return v.Protocols }).(pulumi.StringArrayOutput)
 }
 
+// Indicates where route is applicable.
+func (o RouteInfoResponseOutput) RouteScope() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteInfoResponse) string { return v.RouteScope }).(pulumi.StringOutput)
+}
+
 // Type of route.
 func (o RouteInfoResponseOutput) RouteType() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteInfoResponse) string { return v.RouteType }).(pulumi.StringOutput)
@@ -3135,7 +3199,7 @@ func (o RouteInfoResponseOutput) SrcPortRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouteInfoResponse) []string { return v.SrcPortRanges }).(pulumi.StringArrayOutput)
 }
 
-// URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.
+// URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from Google Cloud VPC to on-premises network also does not have an URI.
 func (o RouteInfoResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteInfoResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -3216,6 +3280,8 @@ type StepResponse struct {
 	ForwardingRule ForwardingRuleInfoResponse `pulumi:"forwardingRule"`
 	// Display information of a Google Kubernetes Engine cluster master.
 	GkeMaster GKEMasterInfoResponse `pulumi:"gkeMaster"`
+	// Display information of a Google service
+	GoogleService GoogleServiceInfoResponse `pulumi:"googleService"`
 	// Display information of a Compute Engine instance.
 	Instance InstanceInfoResponse `pulumi:"instance"`
 	// Display information of the load balancers.
@@ -3325,6 +3391,11 @@ func (o StepResponseOutput) ForwardingRule() ForwardingRuleInfoResponseOutput {
 // Display information of a Google Kubernetes Engine cluster master.
 func (o StepResponseOutput) GkeMaster() GKEMasterInfoResponseOutput {
 	return o.ApplyT(func(v StepResponse) GKEMasterInfoResponse { return v.GkeMaster }).(GKEMasterInfoResponseOutput)
+}
+
+// Display information of a Google service
+func (o StepResponseOutput) GoogleService() GoogleServiceInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) GoogleServiceInfoResponse { return v.GoogleService }).(GoogleServiceInfoResponseOutput)
 }
 
 // Display information of a Compute Engine instance.
@@ -3719,6 +3790,7 @@ func init() {
 	pulumi.RegisterOutputType(ForwardInfoResponseOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleInfoResponseOutput{})
 	pulumi.RegisterOutputType(GKEMasterInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleServiceInfoResponseOutput{})
 	pulumi.RegisterOutputType(InstanceInfoResponseOutput{})
 	pulumi.RegisterOutputType(LatencyDistributionResponseOutput{})
 	pulumi.RegisterOutputType(LatencyPercentileResponseOutput{})

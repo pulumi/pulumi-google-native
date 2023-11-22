@@ -200,6 +200,436 @@ func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Optional. Mode of operation for binauthz policy evaluation.
+type BinaryAuthorizationConfigEvaluationMode string
+
+const (
+	// Default value
+	BinaryAuthorizationConfigEvaluationModeEvaluationModeUnspecified = BinaryAuthorizationConfigEvaluationMode("EVALUATION_MODE_UNSPECIFIED")
+	// Disable BinaryAuthorization
+	BinaryAuthorizationConfigEvaluationModeDisabled = BinaryAuthorizationConfigEvaluationMode("DISABLED")
+	// Use Binary Authorization with the policies specified in policy_bindings.
+	BinaryAuthorizationConfigEvaluationModePolicyBindings = BinaryAuthorizationConfigEvaluationMode("POLICY_BINDINGS")
+)
+
+func (BinaryAuthorizationConfigEvaluationMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*BinaryAuthorizationConfigEvaluationMode)(nil)).Elem()
+}
+
+func (e BinaryAuthorizationConfigEvaluationMode) ToBinaryAuthorizationConfigEvaluationModeOutput() BinaryAuthorizationConfigEvaluationModeOutput {
+	return pulumi.ToOutput(e).(BinaryAuthorizationConfigEvaluationModeOutput)
+}
+
+func (e BinaryAuthorizationConfigEvaluationMode) ToBinaryAuthorizationConfigEvaluationModeOutputWithContext(ctx context.Context) BinaryAuthorizationConfigEvaluationModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BinaryAuthorizationConfigEvaluationModeOutput)
+}
+
+func (e BinaryAuthorizationConfigEvaluationMode) ToBinaryAuthorizationConfigEvaluationModePtrOutput() BinaryAuthorizationConfigEvaluationModePtrOutput {
+	return e.ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(context.Background())
+}
+
+func (e BinaryAuthorizationConfigEvaluationMode) ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationConfigEvaluationModePtrOutput {
+	return BinaryAuthorizationConfigEvaluationMode(e).ToBinaryAuthorizationConfigEvaluationModeOutputWithContext(ctx).ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(ctx)
+}
+
+func (e BinaryAuthorizationConfigEvaluationMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BinaryAuthorizationConfigEvaluationMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BinaryAuthorizationConfigEvaluationMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BinaryAuthorizationConfigEvaluationMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BinaryAuthorizationConfigEvaluationModeOutput struct{ *pulumi.OutputState }
+
+func (BinaryAuthorizationConfigEvaluationModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BinaryAuthorizationConfigEvaluationMode)(nil)).Elem()
+}
+
+func (o BinaryAuthorizationConfigEvaluationModeOutput) ToBinaryAuthorizationConfigEvaluationModeOutput() BinaryAuthorizationConfigEvaluationModeOutput {
+	return o
+}
+
+func (o BinaryAuthorizationConfigEvaluationModeOutput) ToBinaryAuthorizationConfigEvaluationModeOutputWithContext(ctx context.Context) BinaryAuthorizationConfigEvaluationModeOutput {
+	return o
+}
+
+func (o BinaryAuthorizationConfigEvaluationModeOutput) ToBinaryAuthorizationConfigEvaluationModePtrOutput() BinaryAuthorizationConfigEvaluationModePtrOutput {
+	return o.ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationConfigEvaluationModeOutput) ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationConfigEvaluationModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BinaryAuthorizationConfigEvaluationMode) *BinaryAuthorizationConfigEvaluationMode {
+		return &v
+	}).(BinaryAuthorizationConfigEvaluationModePtrOutput)
+}
+
+func (o BinaryAuthorizationConfigEvaluationModeOutput) ToOutput(ctx context.Context) pulumix.Output[BinaryAuthorizationConfigEvaluationMode] {
+	return pulumix.Output[BinaryAuthorizationConfigEvaluationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BinaryAuthorizationConfigEvaluationModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationConfigEvaluationModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BinaryAuthorizationConfigEvaluationMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BinaryAuthorizationConfigEvaluationModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationConfigEvaluationModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BinaryAuthorizationConfigEvaluationMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BinaryAuthorizationConfigEvaluationModePtrOutput struct{ *pulumi.OutputState }
+
+func (BinaryAuthorizationConfigEvaluationModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BinaryAuthorizationConfigEvaluationMode)(nil)).Elem()
+}
+
+func (o BinaryAuthorizationConfigEvaluationModePtrOutput) ToBinaryAuthorizationConfigEvaluationModePtrOutput() BinaryAuthorizationConfigEvaluationModePtrOutput {
+	return o
+}
+
+func (o BinaryAuthorizationConfigEvaluationModePtrOutput) ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationConfigEvaluationModePtrOutput {
+	return o
+}
+
+func (o BinaryAuthorizationConfigEvaluationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorizationConfigEvaluationMode] {
+	return pulumix.Output[*BinaryAuthorizationConfigEvaluationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BinaryAuthorizationConfigEvaluationModePtrOutput) Elem() BinaryAuthorizationConfigEvaluationModeOutput {
+	return o.ApplyT(func(v *BinaryAuthorizationConfigEvaluationMode) BinaryAuthorizationConfigEvaluationMode {
+		if v != nil {
+			return *v
+		}
+		var ret BinaryAuthorizationConfigEvaluationMode
+		return ret
+	}).(BinaryAuthorizationConfigEvaluationModeOutput)
+}
+
+func (o BinaryAuthorizationConfigEvaluationModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationConfigEvaluationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BinaryAuthorizationConfigEvaluationMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BinaryAuthorizationConfigEvaluationModeInput is an input type that accepts BinaryAuthorizationConfigEvaluationModeArgs and BinaryAuthorizationConfigEvaluationModeOutput values.
+// You can construct a concrete instance of `BinaryAuthorizationConfigEvaluationModeInput` via:
+//
+//	BinaryAuthorizationConfigEvaluationModeArgs{...}
+type BinaryAuthorizationConfigEvaluationModeInput interface {
+	pulumi.Input
+
+	ToBinaryAuthorizationConfigEvaluationModeOutput() BinaryAuthorizationConfigEvaluationModeOutput
+	ToBinaryAuthorizationConfigEvaluationModeOutputWithContext(context.Context) BinaryAuthorizationConfigEvaluationModeOutput
+}
+
+var binaryAuthorizationConfigEvaluationModePtrType = reflect.TypeOf((**BinaryAuthorizationConfigEvaluationMode)(nil)).Elem()
+
+type BinaryAuthorizationConfigEvaluationModePtrInput interface {
+	pulumi.Input
+
+	ToBinaryAuthorizationConfigEvaluationModePtrOutput() BinaryAuthorizationConfigEvaluationModePtrOutput
+	ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(context.Context) BinaryAuthorizationConfigEvaluationModePtrOutput
+}
+
+type binaryAuthorizationConfigEvaluationModePtr string
+
+func BinaryAuthorizationConfigEvaluationModePtr(v string) BinaryAuthorizationConfigEvaluationModePtrInput {
+	return (*binaryAuthorizationConfigEvaluationModePtr)(&v)
+}
+
+func (*binaryAuthorizationConfigEvaluationModePtr) ElementType() reflect.Type {
+	return binaryAuthorizationConfigEvaluationModePtrType
+}
+
+func (in *binaryAuthorizationConfigEvaluationModePtr) ToBinaryAuthorizationConfigEvaluationModePtrOutput() BinaryAuthorizationConfigEvaluationModePtrOutput {
+	return pulumi.ToOutput(in).(BinaryAuthorizationConfigEvaluationModePtrOutput)
+}
+
+func (in *binaryAuthorizationConfigEvaluationModePtr) ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationConfigEvaluationModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BinaryAuthorizationConfigEvaluationModePtrOutput)
+}
+
+func (in *binaryAuthorizationConfigEvaluationModePtr) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorizationConfigEvaluationMode] {
+	return pulumix.Output[*BinaryAuthorizationConfigEvaluationMode]{
+		OutputState: in.ToBinaryAuthorizationConfigEvaluationModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigManagementPolicyControllerMonitoringBackendsItem string
+
+const (
+	// Backend cannot be determined
+	ConfigManagementPolicyControllerMonitoringBackendsItemMonitoringBackendUnspecified = ConfigManagementPolicyControllerMonitoringBackendsItem("MONITORING_BACKEND_UNSPECIFIED")
+	// Prometheus backend for monitoring
+	ConfigManagementPolicyControllerMonitoringBackendsItemPrometheus = ConfigManagementPolicyControllerMonitoringBackendsItem("PROMETHEUS")
+	// Stackdriver/Cloud Monitoring backend for monitoring
+	ConfigManagementPolicyControllerMonitoringBackendsItemCloudMonitoring = ConfigManagementPolicyControllerMonitoringBackendsItem("CLOUD_MONITORING")
+)
+
+func (ConfigManagementPolicyControllerMonitoringBackendsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementPolicyControllerMonitoringBackendsItem)(nil)).Elem()
+}
+
+func (e ConfigManagementPolicyControllerMonitoringBackendsItem) ToConfigManagementPolicyControllerMonitoringBackendsItemOutput() ConfigManagementPolicyControllerMonitoringBackendsItemOutput {
+	return pulumi.ToOutput(e).(ConfigManagementPolicyControllerMonitoringBackendsItemOutput)
+}
+
+func (e ConfigManagementPolicyControllerMonitoringBackendsItem) ToConfigManagementPolicyControllerMonitoringBackendsItemOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConfigManagementPolicyControllerMonitoringBackendsItemOutput)
+}
+
+func (e ConfigManagementPolicyControllerMonitoringBackendsItem) ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput() ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput {
+	return e.ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(context.Background())
+}
+
+func (e ConfigManagementPolicyControllerMonitoringBackendsItem) ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput {
+	return ConfigManagementPolicyControllerMonitoringBackendsItem(e).ToConfigManagementPolicyControllerMonitoringBackendsItemOutputWithContext(ctx).ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(ctx)
+}
+
+func (e ConfigManagementPolicyControllerMonitoringBackendsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConfigManagementPolicyControllerMonitoringBackendsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConfigManagementPolicyControllerMonitoringBackendsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConfigManagementPolicyControllerMonitoringBackendsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConfigManagementPolicyControllerMonitoringBackendsItemOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementPolicyControllerMonitoringBackendsItem)(nil)).Elem()
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToConfigManagementPolicyControllerMonitoringBackendsItemOutput() ConfigManagementPolicyControllerMonitoringBackendsItemOutput {
+	return o
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToConfigManagementPolicyControllerMonitoringBackendsItemOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemOutput {
+	return o
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput() ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput {
+	return o.ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigManagementPolicyControllerMonitoringBackendsItem) *ConfigManagementPolicyControllerMonitoringBackendsItem {
+		return &v
+	}).(ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput)
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigManagementPolicyControllerMonitoringBackendsItem] {
+	return pulumix.Output[ConfigManagementPolicyControllerMonitoringBackendsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfigManagementPolicyControllerMonitoringBackendsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfigManagementPolicyControllerMonitoringBackendsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigManagementPolicyControllerMonitoringBackendsItem)(nil)).Elem()
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput() ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput {
+	return o
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput {
+	return o
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigManagementPolicyControllerMonitoringBackendsItem] {
+	return pulumix.Output[*ConfigManagementPolicyControllerMonitoringBackendsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) Elem() ConfigManagementPolicyControllerMonitoringBackendsItemOutput {
+	return o.ApplyT(func(v *ConfigManagementPolicyControllerMonitoringBackendsItem) ConfigManagementPolicyControllerMonitoringBackendsItem {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigManagementPolicyControllerMonitoringBackendsItem
+		return ret
+	}).(ConfigManagementPolicyControllerMonitoringBackendsItemOutput)
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConfigManagementPolicyControllerMonitoringBackendsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConfigManagementPolicyControllerMonitoringBackendsItemInput is an input type that accepts ConfigManagementPolicyControllerMonitoringBackendsItemArgs and ConfigManagementPolicyControllerMonitoringBackendsItemOutput values.
+// You can construct a concrete instance of `ConfigManagementPolicyControllerMonitoringBackendsItemInput` via:
+//
+//	ConfigManagementPolicyControllerMonitoringBackendsItemArgs{...}
+type ConfigManagementPolicyControllerMonitoringBackendsItemInput interface {
+	pulumi.Input
+
+	ToConfigManagementPolicyControllerMonitoringBackendsItemOutput() ConfigManagementPolicyControllerMonitoringBackendsItemOutput
+	ToConfigManagementPolicyControllerMonitoringBackendsItemOutputWithContext(context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemOutput
+}
+
+var configManagementPolicyControllerMonitoringBackendsItemPtrType = reflect.TypeOf((**ConfigManagementPolicyControllerMonitoringBackendsItem)(nil)).Elem()
+
+type ConfigManagementPolicyControllerMonitoringBackendsItemPtrInput interface {
+	pulumi.Input
+
+	ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput() ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput
+	ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput
+}
+
+type configManagementPolicyControllerMonitoringBackendsItemPtr string
+
+func ConfigManagementPolicyControllerMonitoringBackendsItemPtr(v string) ConfigManagementPolicyControllerMonitoringBackendsItemPtrInput {
+	return (*configManagementPolicyControllerMonitoringBackendsItemPtr)(&v)
+}
+
+func (*configManagementPolicyControllerMonitoringBackendsItemPtr) ElementType() reflect.Type {
+	return configManagementPolicyControllerMonitoringBackendsItemPtrType
+}
+
+func (in *configManagementPolicyControllerMonitoringBackendsItemPtr) ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput() ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput {
+	return pulumi.ToOutput(in).(ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput)
+}
+
+func (in *configManagementPolicyControllerMonitoringBackendsItemPtr) ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput)
+}
+
+func (in *configManagementPolicyControllerMonitoringBackendsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigManagementPolicyControllerMonitoringBackendsItem] {
+	return pulumix.Output[*ConfigManagementPolicyControllerMonitoringBackendsItem]{
+		OutputState: in.ToConfigManagementPolicyControllerMonitoringBackendsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigManagementPolicyControllerMonitoringBackendsItemArrayInput is an input type that accepts ConfigManagementPolicyControllerMonitoringBackendsItemArray and ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput values.
+// You can construct a concrete instance of `ConfigManagementPolicyControllerMonitoringBackendsItemArrayInput` via:
+//
+//	ConfigManagementPolicyControllerMonitoringBackendsItemArray{ ConfigManagementPolicyControllerMonitoringBackendsItemArgs{...} }
+type ConfigManagementPolicyControllerMonitoringBackendsItemArrayInput interface {
+	pulumi.Input
+
+	ToConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput() ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput
+	ToConfigManagementPolicyControllerMonitoringBackendsItemArrayOutputWithContext(context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput
+}
+
+type ConfigManagementPolicyControllerMonitoringBackendsItemArray []ConfigManagementPolicyControllerMonitoringBackendsItem
+
+func (ConfigManagementPolicyControllerMonitoringBackendsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigManagementPolicyControllerMonitoringBackendsItem)(nil)).Elem()
+}
+
+func (i ConfigManagementPolicyControllerMonitoringBackendsItemArray) ToConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput() ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput {
+	return i.ToConfigManagementPolicyControllerMonitoringBackendsItemArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigManagementPolicyControllerMonitoringBackendsItemArray) ToConfigManagementPolicyControllerMonitoringBackendsItemArrayOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput)
+}
+
+func (i ConfigManagementPolicyControllerMonitoringBackendsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigManagementPolicyControllerMonitoringBackendsItem] {
+	return pulumix.Output[[]ConfigManagementPolicyControllerMonitoringBackendsItem]{
+		OutputState: i.ToConfigManagementPolicyControllerMonitoringBackendsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigManagementPolicyControllerMonitoringBackendsItem)(nil)).Elem()
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput) ToConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput() ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput {
+	return o
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput) ToConfigManagementPolicyControllerMonitoringBackendsItemArrayOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput {
+	return o
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigManagementPolicyControllerMonitoringBackendsItem] {
+	return pulumix.Output[[]ConfigManagementPolicyControllerMonitoringBackendsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput) Index(i pulumi.IntInput) ConfigManagementPolicyControllerMonitoringBackendsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigManagementPolicyControllerMonitoringBackendsItem {
+		return vs[0].([]ConfigManagementPolicyControllerMonitoringBackendsItem)[vs[1].(int)]
+	}).(ConfigManagementPolicyControllerMonitoringBackendsItemOutput)
+}
+
 // Immutable. Specifies CA configuration.
 type FeatureSpecProvisionGoogleCa string
 
@@ -210,6 +640,10 @@ const (
 	FeatureSpecProvisionGoogleCaDisabled = FeatureSpecProvisionGoogleCa("DISABLED")
 	// Use default Google managed CA.
 	FeatureSpecProvisionGoogleCaEnabled = FeatureSpecProvisionGoogleCa("ENABLED")
+	// Workload certificate feature is enabled, and the entire certificate provisioning process is managed by Google with managed CAS which is more secure than the default CA.
+	FeatureSpecProvisionGoogleCaEnabledWithManagedCa = FeatureSpecProvisionGoogleCa("ENABLED_WITH_MANAGED_CA")
+	// Workload certificate feature is enabled, and the entire certificate provisioning process is using the default CA which is free.
+	FeatureSpecProvisionGoogleCaEnabledWithDefaultCa = FeatureSpecProvisionGoogleCa("ENABLED_WITH_DEFAULT_CA")
 )
 
 func (FeatureSpecProvisionGoogleCa) ElementType() reflect.Type {
@@ -948,6 +1382,193 @@ func (in *multiClusterIngressFeatureSpecBillingPtr) ToOutput(ctx context.Context
 	}
 }
 
+// actuation_mode controls the behavior of the controller
+type NamespaceActuationFeatureSpecActuationMode string
+
+const (
+	// ACTUATION_MODE_UNSPECIFIED is similar to CREATE_AND_DELETE_IF_CREATED in the default controller behavior.
+	NamespaceActuationFeatureSpecActuationModeActuationModeUnspecified = NamespaceActuationFeatureSpecActuationMode("ACTUATION_MODE_UNSPECIFIED")
+	// ACTUATION_MODE_CREATE_AND_DELETE_IF_CREATED has the controller create cluster namespaces for each fleet namespace and it deletes only the ones it created, which are identified by a label.
+	NamespaceActuationFeatureSpecActuationModeActuationModeCreateAndDeleteIfCreated = NamespaceActuationFeatureSpecActuationMode("ACTUATION_MODE_CREATE_AND_DELETE_IF_CREATED")
+	// ACTUATION_MODE_ADD_AND_REMOVE_FLEET_LABELS has the controller only apply labels to cluster namespaces to signal fleet namespace enablement. It doesn't create or delete cluster namespaces.
+	NamespaceActuationFeatureSpecActuationModeActuationModeAddAndRemoveFleetLabels = NamespaceActuationFeatureSpecActuationMode("ACTUATION_MODE_ADD_AND_REMOVE_FLEET_LABELS")
+)
+
+func (NamespaceActuationFeatureSpecActuationMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceActuationFeatureSpecActuationMode)(nil)).Elem()
+}
+
+func (e NamespaceActuationFeatureSpecActuationMode) ToNamespaceActuationFeatureSpecActuationModeOutput() NamespaceActuationFeatureSpecActuationModeOutput {
+	return pulumi.ToOutput(e).(NamespaceActuationFeatureSpecActuationModeOutput)
+}
+
+func (e NamespaceActuationFeatureSpecActuationMode) ToNamespaceActuationFeatureSpecActuationModeOutputWithContext(ctx context.Context) NamespaceActuationFeatureSpecActuationModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NamespaceActuationFeatureSpecActuationModeOutput)
+}
+
+func (e NamespaceActuationFeatureSpecActuationMode) ToNamespaceActuationFeatureSpecActuationModePtrOutput() NamespaceActuationFeatureSpecActuationModePtrOutput {
+	return e.ToNamespaceActuationFeatureSpecActuationModePtrOutputWithContext(context.Background())
+}
+
+func (e NamespaceActuationFeatureSpecActuationMode) ToNamespaceActuationFeatureSpecActuationModePtrOutputWithContext(ctx context.Context) NamespaceActuationFeatureSpecActuationModePtrOutput {
+	return NamespaceActuationFeatureSpecActuationMode(e).ToNamespaceActuationFeatureSpecActuationModeOutputWithContext(ctx).ToNamespaceActuationFeatureSpecActuationModePtrOutputWithContext(ctx)
+}
+
+func (e NamespaceActuationFeatureSpecActuationMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NamespaceActuationFeatureSpecActuationMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NamespaceActuationFeatureSpecActuationMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NamespaceActuationFeatureSpecActuationMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NamespaceActuationFeatureSpecActuationModeOutput struct{ *pulumi.OutputState }
+
+func (NamespaceActuationFeatureSpecActuationModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceActuationFeatureSpecActuationMode)(nil)).Elem()
+}
+
+func (o NamespaceActuationFeatureSpecActuationModeOutput) ToNamespaceActuationFeatureSpecActuationModeOutput() NamespaceActuationFeatureSpecActuationModeOutput {
+	return o
+}
+
+func (o NamespaceActuationFeatureSpecActuationModeOutput) ToNamespaceActuationFeatureSpecActuationModeOutputWithContext(ctx context.Context) NamespaceActuationFeatureSpecActuationModeOutput {
+	return o
+}
+
+func (o NamespaceActuationFeatureSpecActuationModeOutput) ToNamespaceActuationFeatureSpecActuationModePtrOutput() NamespaceActuationFeatureSpecActuationModePtrOutput {
+	return o.ToNamespaceActuationFeatureSpecActuationModePtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceActuationFeatureSpecActuationModeOutput) ToNamespaceActuationFeatureSpecActuationModePtrOutputWithContext(ctx context.Context) NamespaceActuationFeatureSpecActuationModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceActuationFeatureSpecActuationMode) *NamespaceActuationFeatureSpecActuationMode {
+		return &v
+	}).(NamespaceActuationFeatureSpecActuationModePtrOutput)
+}
+
+func (o NamespaceActuationFeatureSpecActuationModeOutput) ToOutput(ctx context.Context) pulumix.Output[NamespaceActuationFeatureSpecActuationMode] {
+	return pulumix.Output[NamespaceActuationFeatureSpecActuationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NamespaceActuationFeatureSpecActuationModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NamespaceActuationFeatureSpecActuationModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NamespaceActuationFeatureSpecActuationMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NamespaceActuationFeatureSpecActuationModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceActuationFeatureSpecActuationModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NamespaceActuationFeatureSpecActuationMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NamespaceActuationFeatureSpecActuationModePtrOutput struct{ *pulumi.OutputState }
+
+func (NamespaceActuationFeatureSpecActuationModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceActuationFeatureSpecActuationMode)(nil)).Elem()
+}
+
+func (o NamespaceActuationFeatureSpecActuationModePtrOutput) ToNamespaceActuationFeatureSpecActuationModePtrOutput() NamespaceActuationFeatureSpecActuationModePtrOutput {
+	return o
+}
+
+func (o NamespaceActuationFeatureSpecActuationModePtrOutput) ToNamespaceActuationFeatureSpecActuationModePtrOutputWithContext(ctx context.Context) NamespaceActuationFeatureSpecActuationModePtrOutput {
+	return o
+}
+
+func (o NamespaceActuationFeatureSpecActuationModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceActuationFeatureSpecActuationMode] {
+	return pulumix.Output[*NamespaceActuationFeatureSpecActuationMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NamespaceActuationFeatureSpecActuationModePtrOutput) Elem() NamespaceActuationFeatureSpecActuationModeOutput {
+	return o.ApplyT(func(v *NamespaceActuationFeatureSpecActuationMode) NamespaceActuationFeatureSpecActuationMode {
+		if v != nil {
+			return *v
+		}
+		var ret NamespaceActuationFeatureSpecActuationMode
+		return ret
+	}).(NamespaceActuationFeatureSpecActuationModeOutput)
+}
+
+func (o NamespaceActuationFeatureSpecActuationModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceActuationFeatureSpecActuationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NamespaceActuationFeatureSpecActuationMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NamespaceActuationFeatureSpecActuationModeInput is an input type that accepts NamespaceActuationFeatureSpecActuationModeArgs and NamespaceActuationFeatureSpecActuationModeOutput values.
+// You can construct a concrete instance of `NamespaceActuationFeatureSpecActuationModeInput` via:
+//
+//	NamespaceActuationFeatureSpecActuationModeArgs{...}
+type NamespaceActuationFeatureSpecActuationModeInput interface {
+	pulumi.Input
+
+	ToNamespaceActuationFeatureSpecActuationModeOutput() NamespaceActuationFeatureSpecActuationModeOutput
+	ToNamespaceActuationFeatureSpecActuationModeOutputWithContext(context.Context) NamespaceActuationFeatureSpecActuationModeOutput
+}
+
+var namespaceActuationFeatureSpecActuationModePtrType = reflect.TypeOf((**NamespaceActuationFeatureSpecActuationMode)(nil)).Elem()
+
+type NamespaceActuationFeatureSpecActuationModePtrInput interface {
+	pulumi.Input
+
+	ToNamespaceActuationFeatureSpecActuationModePtrOutput() NamespaceActuationFeatureSpecActuationModePtrOutput
+	ToNamespaceActuationFeatureSpecActuationModePtrOutputWithContext(context.Context) NamespaceActuationFeatureSpecActuationModePtrOutput
+}
+
+type namespaceActuationFeatureSpecActuationModePtr string
+
+func NamespaceActuationFeatureSpecActuationModePtr(v string) NamespaceActuationFeatureSpecActuationModePtrInput {
+	return (*namespaceActuationFeatureSpecActuationModePtr)(&v)
+}
+
+func (*namespaceActuationFeatureSpecActuationModePtr) ElementType() reflect.Type {
+	return namespaceActuationFeatureSpecActuationModePtrType
+}
+
+func (in *namespaceActuationFeatureSpecActuationModePtr) ToNamespaceActuationFeatureSpecActuationModePtrOutput() NamespaceActuationFeatureSpecActuationModePtrOutput {
+	return pulumi.ToOutput(in).(NamespaceActuationFeatureSpecActuationModePtrOutput)
+}
+
+func (in *namespaceActuationFeatureSpecActuationModePtr) ToNamespaceActuationFeatureSpecActuationModePtrOutputWithContext(ctx context.Context) NamespaceActuationFeatureSpecActuationModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NamespaceActuationFeatureSpecActuationModePtrOutput)
+}
+
+func (in *namespaceActuationFeatureSpecActuationModePtr) ToOutput(ctx context.Context) pulumix.Output[*NamespaceActuationFeatureSpecActuationMode] {
+	return pulumix.Output[*NamespaceActuationFeatureSpecActuationMode]{
+		OutputState: in.ToNamespaceActuationFeatureSpecActuationModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Immutable. The on prem cluster's type.
 type OnPremClusterClusterType string
 
@@ -1139,6 +1760,627 @@ func (in *onPremClusterClusterTypePtr) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
+type PolicyControllerHubConfigInstallSpec string
+
+const (
+	// Spec is unknown.
+	PolicyControllerHubConfigInstallSpecInstallSpecUnspecified = PolicyControllerHubConfigInstallSpec("INSTALL_SPEC_UNSPECIFIED")
+	// Request to uninstall Policy Controller.
+	PolicyControllerHubConfigInstallSpecInstallSpecNotInstalled = PolicyControllerHubConfigInstallSpec("INSTALL_SPEC_NOT_INSTALLED")
+	// Request to install and enable Policy Controller.
+	PolicyControllerHubConfigInstallSpecInstallSpecEnabled = PolicyControllerHubConfigInstallSpec("INSTALL_SPEC_ENABLED")
+	// Request to suspend Policy Controller i.e. its webhooks. If Policy Controller is not installed, it will be installed but suspended.
+	PolicyControllerHubConfigInstallSpecInstallSpecSuspended = PolicyControllerHubConfigInstallSpec("INSTALL_SPEC_SUSPENDED")
+	// Request to stop all reconciliation actions by PoCo Hub controller. This is a breakglass mechanism to stop PoCo Hub from affecting cluster resources.
+	PolicyControllerHubConfigInstallSpecInstallSpecDetached = PolicyControllerHubConfigInstallSpec("INSTALL_SPEC_DETACHED")
+)
+
+func (PolicyControllerHubConfigInstallSpec) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerHubConfigInstallSpec)(nil)).Elem()
+}
+
+func (e PolicyControllerHubConfigInstallSpec) ToPolicyControllerHubConfigInstallSpecOutput() PolicyControllerHubConfigInstallSpecOutput {
+	return pulumi.ToOutput(e).(PolicyControllerHubConfigInstallSpecOutput)
+}
+
+func (e PolicyControllerHubConfigInstallSpec) ToPolicyControllerHubConfigInstallSpecOutputWithContext(ctx context.Context) PolicyControllerHubConfigInstallSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PolicyControllerHubConfigInstallSpecOutput)
+}
+
+func (e PolicyControllerHubConfigInstallSpec) ToPolicyControllerHubConfigInstallSpecPtrOutput() PolicyControllerHubConfigInstallSpecPtrOutput {
+	return e.ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(context.Background())
+}
+
+func (e PolicyControllerHubConfigInstallSpec) ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(ctx context.Context) PolicyControllerHubConfigInstallSpecPtrOutput {
+	return PolicyControllerHubConfigInstallSpec(e).ToPolicyControllerHubConfigInstallSpecOutputWithContext(ctx).ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(ctx)
+}
+
+func (e PolicyControllerHubConfigInstallSpec) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PolicyControllerHubConfigInstallSpec) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PolicyControllerHubConfigInstallSpec) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PolicyControllerHubConfigInstallSpec) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PolicyControllerHubConfigInstallSpecOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerHubConfigInstallSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerHubConfigInstallSpec)(nil)).Elem()
+}
+
+func (o PolicyControllerHubConfigInstallSpecOutput) ToPolicyControllerHubConfigInstallSpecOutput() PolicyControllerHubConfigInstallSpecOutput {
+	return o
+}
+
+func (o PolicyControllerHubConfigInstallSpecOutput) ToPolicyControllerHubConfigInstallSpecOutputWithContext(ctx context.Context) PolicyControllerHubConfigInstallSpecOutput {
+	return o
+}
+
+func (o PolicyControllerHubConfigInstallSpecOutput) ToPolicyControllerHubConfigInstallSpecPtrOutput() PolicyControllerHubConfigInstallSpecPtrOutput {
+	return o.ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerHubConfigInstallSpecOutput) ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(ctx context.Context) PolicyControllerHubConfigInstallSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyControllerHubConfigInstallSpec) *PolicyControllerHubConfigInstallSpec {
+		return &v
+	}).(PolicyControllerHubConfigInstallSpecPtrOutput)
+}
+
+func (o PolicyControllerHubConfigInstallSpecOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyControllerHubConfigInstallSpec] {
+	return pulumix.Output[PolicyControllerHubConfigInstallSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PolicyControllerHubConfigInstallSpecOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerHubConfigInstallSpecOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PolicyControllerHubConfigInstallSpec) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyControllerHubConfigInstallSpecOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerHubConfigInstallSpecOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PolicyControllerHubConfigInstallSpec) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyControllerHubConfigInstallSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerHubConfigInstallSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyControllerHubConfigInstallSpec)(nil)).Elem()
+}
+
+func (o PolicyControllerHubConfigInstallSpecPtrOutput) ToPolicyControllerHubConfigInstallSpecPtrOutput() PolicyControllerHubConfigInstallSpecPtrOutput {
+	return o
+}
+
+func (o PolicyControllerHubConfigInstallSpecPtrOutput) ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(ctx context.Context) PolicyControllerHubConfigInstallSpecPtrOutput {
+	return o
+}
+
+func (o PolicyControllerHubConfigInstallSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerHubConfigInstallSpec] {
+	return pulumix.Output[*PolicyControllerHubConfigInstallSpec]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PolicyControllerHubConfigInstallSpecPtrOutput) Elem() PolicyControllerHubConfigInstallSpecOutput {
+	return o.ApplyT(func(v *PolicyControllerHubConfigInstallSpec) PolicyControllerHubConfigInstallSpec {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyControllerHubConfigInstallSpec
+		return ret
+	}).(PolicyControllerHubConfigInstallSpecOutput)
+}
+
+func (o PolicyControllerHubConfigInstallSpecPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerHubConfigInstallSpecPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PolicyControllerHubConfigInstallSpec) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PolicyControllerHubConfigInstallSpecInput is an input type that accepts PolicyControllerHubConfigInstallSpecArgs and PolicyControllerHubConfigInstallSpecOutput values.
+// You can construct a concrete instance of `PolicyControllerHubConfigInstallSpecInput` via:
+//
+//	PolicyControllerHubConfigInstallSpecArgs{...}
+type PolicyControllerHubConfigInstallSpecInput interface {
+	pulumi.Input
+
+	ToPolicyControllerHubConfigInstallSpecOutput() PolicyControllerHubConfigInstallSpecOutput
+	ToPolicyControllerHubConfigInstallSpecOutputWithContext(context.Context) PolicyControllerHubConfigInstallSpecOutput
+}
+
+var policyControllerHubConfigInstallSpecPtrType = reflect.TypeOf((**PolicyControllerHubConfigInstallSpec)(nil)).Elem()
+
+type PolicyControllerHubConfigInstallSpecPtrInput interface {
+	pulumi.Input
+
+	ToPolicyControllerHubConfigInstallSpecPtrOutput() PolicyControllerHubConfigInstallSpecPtrOutput
+	ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(context.Context) PolicyControllerHubConfigInstallSpecPtrOutput
+}
+
+type policyControllerHubConfigInstallSpecPtr string
+
+func PolicyControllerHubConfigInstallSpecPtr(v string) PolicyControllerHubConfigInstallSpecPtrInput {
+	return (*policyControllerHubConfigInstallSpecPtr)(&v)
+}
+
+func (*policyControllerHubConfigInstallSpecPtr) ElementType() reflect.Type {
+	return policyControllerHubConfigInstallSpecPtrType
+}
+
+func (in *policyControllerHubConfigInstallSpecPtr) ToPolicyControllerHubConfigInstallSpecPtrOutput() PolicyControllerHubConfigInstallSpecPtrOutput {
+	return pulumi.ToOutput(in).(PolicyControllerHubConfigInstallSpecPtrOutput)
+}
+
+func (in *policyControllerHubConfigInstallSpecPtr) ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(ctx context.Context) PolicyControllerHubConfigInstallSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PolicyControllerHubConfigInstallSpecPtrOutput)
+}
+
+func (in *policyControllerHubConfigInstallSpecPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerHubConfigInstallSpec] {
+	return pulumix.Output[*PolicyControllerHubConfigInstallSpec]{
+		OutputState: in.ToPolicyControllerHubConfigInstallSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type PolicyControllerMonitoringConfigBackendsItem string
+
+const (
+	// Backend cannot be determined
+	PolicyControllerMonitoringConfigBackendsItemMonitoringBackendUnspecified = PolicyControllerMonitoringConfigBackendsItem("MONITORING_BACKEND_UNSPECIFIED")
+	// Prometheus backend for monitoring
+	PolicyControllerMonitoringConfigBackendsItemPrometheus = PolicyControllerMonitoringConfigBackendsItem("PROMETHEUS")
+	// Stackdriver/Cloud Monitoring backend for monitoring
+	PolicyControllerMonitoringConfigBackendsItemCloudMonitoring = PolicyControllerMonitoringConfigBackendsItem("CLOUD_MONITORING")
+)
+
+func (PolicyControllerMonitoringConfigBackendsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerMonitoringConfigBackendsItem)(nil)).Elem()
+}
+
+func (e PolicyControllerMonitoringConfigBackendsItem) ToPolicyControllerMonitoringConfigBackendsItemOutput() PolicyControllerMonitoringConfigBackendsItemOutput {
+	return pulumi.ToOutput(e).(PolicyControllerMonitoringConfigBackendsItemOutput)
+}
+
+func (e PolicyControllerMonitoringConfigBackendsItem) ToPolicyControllerMonitoringConfigBackendsItemOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PolicyControllerMonitoringConfigBackendsItemOutput)
+}
+
+func (e PolicyControllerMonitoringConfigBackendsItem) ToPolicyControllerMonitoringConfigBackendsItemPtrOutput() PolicyControllerMonitoringConfigBackendsItemPtrOutput {
+	return e.ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(context.Background())
+}
+
+func (e PolicyControllerMonitoringConfigBackendsItem) ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemPtrOutput {
+	return PolicyControllerMonitoringConfigBackendsItem(e).ToPolicyControllerMonitoringConfigBackendsItemOutputWithContext(ctx).ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(ctx)
+}
+
+func (e PolicyControllerMonitoringConfigBackendsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PolicyControllerMonitoringConfigBackendsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PolicyControllerMonitoringConfigBackendsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PolicyControllerMonitoringConfigBackendsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PolicyControllerMonitoringConfigBackendsItemOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerMonitoringConfigBackendsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerMonitoringConfigBackendsItem)(nil)).Elem()
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToPolicyControllerMonitoringConfigBackendsItemOutput() PolicyControllerMonitoringConfigBackendsItemOutput {
+	return o
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToPolicyControllerMonitoringConfigBackendsItemOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemOutput {
+	return o
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToPolicyControllerMonitoringConfigBackendsItemPtrOutput() PolicyControllerMonitoringConfigBackendsItemPtrOutput {
+	return o.ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyControllerMonitoringConfigBackendsItem) *PolicyControllerMonitoringConfigBackendsItem {
+		return &v
+	}).(PolicyControllerMonitoringConfigBackendsItemPtrOutput)
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyControllerMonitoringConfigBackendsItem] {
+	return pulumix.Output[PolicyControllerMonitoringConfigBackendsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PolicyControllerMonitoringConfigBackendsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PolicyControllerMonitoringConfigBackendsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyControllerMonitoringConfigBackendsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerMonitoringConfigBackendsItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyControllerMonitoringConfigBackendsItem)(nil)).Elem()
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) ToPolicyControllerMonitoringConfigBackendsItemPtrOutput() PolicyControllerMonitoringConfigBackendsItemPtrOutput {
+	return o
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemPtrOutput {
+	return o
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerMonitoringConfigBackendsItem] {
+	return pulumix.Output[*PolicyControllerMonitoringConfigBackendsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) Elem() PolicyControllerMonitoringConfigBackendsItemOutput {
+	return o.ApplyT(func(v *PolicyControllerMonitoringConfigBackendsItem) PolicyControllerMonitoringConfigBackendsItem {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyControllerMonitoringConfigBackendsItem
+		return ret
+	}).(PolicyControllerMonitoringConfigBackendsItemOutput)
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PolicyControllerMonitoringConfigBackendsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PolicyControllerMonitoringConfigBackendsItemInput is an input type that accepts PolicyControllerMonitoringConfigBackendsItemArgs and PolicyControllerMonitoringConfigBackendsItemOutput values.
+// You can construct a concrete instance of `PolicyControllerMonitoringConfigBackendsItemInput` via:
+//
+//	PolicyControllerMonitoringConfigBackendsItemArgs{...}
+type PolicyControllerMonitoringConfigBackendsItemInput interface {
+	pulumi.Input
+
+	ToPolicyControllerMonitoringConfigBackendsItemOutput() PolicyControllerMonitoringConfigBackendsItemOutput
+	ToPolicyControllerMonitoringConfigBackendsItemOutputWithContext(context.Context) PolicyControllerMonitoringConfigBackendsItemOutput
+}
+
+var policyControllerMonitoringConfigBackendsItemPtrType = reflect.TypeOf((**PolicyControllerMonitoringConfigBackendsItem)(nil)).Elem()
+
+type PolicyControllerMonitoringConfigBackendsItemPtrInput interface {
+	pulumi.Input
+
+	ToPolicyControllerMonitoringConfigBackendsItemPtrOutput() PolicyControllerMonitoringConfigBackendsItemPtrOutput
+	ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(context.Context) PolicyControllerMonitoringConfigBackendsItemPtrOutput
+}
+
+type policyControllerMonitoringConfigBackendsItemPtr string
+
+func PolicyControllerMonitoringConfigBackendsItemPtr(v string) PolicyControllerMonitoringConfigBackendsItemPtrInput {
+	return (*policyControllerMonitoringConfigBackendsItemPtr)(&v)
+}
+
+func (*policyControllerMonitoringConfigBackendsItemPtr) ElementType() reflect.Type {
+	return policyControllerMonitoringConfigBackendsItemPtrType
+}
+
+func (in *policyControllerMonitoringConfigBackendsItemPtr) ToPolicyControllerMonitoringConfigBackendsItemPtrOutput() PolicyControllerMonitoringConfigBackendsItemPtrOutput {
+	return pulumi.ToOutput(in).(PolicyControllerMonitoringConfigBackendsItemPtrOutput)
+}
+
+func (in *policyControllerMonitoringConfigBackendsItemPtr) ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PolicyControllerMonitoringConfigBackendsItemPtrOutput)
+}
+
+func (in *policyControllerMonitoringConfigBackendsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerMonitoringConfigBackendsItem] {
+	return pulumix.Output[*PolicyControllerMonitoringConfigBackendsItem]{
+		OutputState: in.ToPolicyControllerMonitoringConfigBackendsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// PolicyControllerMonitoringConfigBackendsItemArrayInput is an input type that accepts PolicyControllerMonitoringConfigBackendsItemArray and PolicyControllerMonitoringConfigBackendsItemArrayOutput values.
+// You can construct a concrete instance of `PolicyControllerMonitoringConfigBackendsItemArrayInput` via:
+//
+//	PolicyControllerMonitoringConfigBackendsItemArray{ PolicyControllerMonitoringConfigBackendsItemArgs{...} }
+type PolicyControllerMonitoringConfigBackendsItemArrayInput interface {
+	pulumi.Input
+
+	ToPolicyControllerMonitoringConfigBackendsItemArrayOutput() PolicyControllerMonitoringConfigBackendsItemArrayOutput
+	ToPolicyControllerMonitoringConfigBackendsItemArrayOutputWithContext(context.Context) PolicyControllerMonitoringConfigBackendsItemArrayOutput
+}
+
+type PolicyControllerMonitoringConfigBackendsItemArray []PolicyControllerMonitoringConfigBackendsItem
+
+func (PolicyControllerMonitoringConfigBackendsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyControllerMonitoringConfigBackendsItem)(nil)).Elem()
+}
+
+func (i PolicyControllerMonitoringConfigBackendsItemArray) ToPolicyControllerMonitoringConfigBackendsItemArrayOutput() PolicyControllerMonitoringConfigBackendsItemArrayOutput {
+	return i.ToPolicyControllerMonitoringConfigBackendsItemArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerMonitoringConfigBackendsItemArray) ToPolicyControllerMonitoringConfigBackendsItemArrayOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerMonitoringConfigBackendsItemArrayOutput)
+}
+
+func (i PolicyControllerMonitoringConfigBackendsItemArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyControllerMonitoringConfigBackendsItem] {
+	return pulumix.Output[[]PolicyControllerMonitoringConfigBackendsItem]{
+		OutputState: i.ToPolicyControllerMonitoringConfigBackendsItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type PolicyControllerMonitoringConfigBackendsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerMonitoringConfigBackendsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyControllerMonitoringConfigBackendsItem)(nil)).Elem()
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemArrayOutput) ToPolicyControllerMonitoringConfigBackendsItemArrayOutput() PolicyControllerMonitoringConfigBackendsItemArrayOutput {
+	return o
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemArrayOutput) ToPolicyControllerMonitoringConfigBackendsItemArrayOutputWithContext(ctx context.Context) PolicyControllerMonitoringConfigBackendsItemArrayOutput {
+	return o
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyControllerMonitoringConfigBackendsItem] {
+	return pulumix.Output[[]PolicyControllerMonitoringConfigBackendsItem]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PolicyControllerMonitoringConfigBackendsItemArrayOutput) Index(i pulumi.IntInput) PolicyControllerMonitoringConfigBackendsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyControllerMonitoringConfigBackendsItem {
+		return vs[0].([]PolicyControllerMonitoringConfigBackendsItem)[vs[1].(int)]
+	}).(PolicyControllerMonitoringConfigBackendsItemOutput)
+}
+
+// Configures the manner in which the template library is installed on the cluster.
+type PolicyControllerTemplateLibraryConfigInstallation string
+
+const (
+	// No installation strategy has been specified.
+	PolicyControllerTemplateLibraryConfigInstallationInstallationUnspecified = PolicyControllerTemplateLibraryConfigInstallation("INSTALLATION_UNSPECIFIED")
+	// Do not install the template library.
+	PolicyControllerTemplateLibraryConfigInstallationNotInstalled = PolicyControllerTemplateLibraryConfigInstallation("NOT_INSTALLED")
+	// Install the entire template library.
+	PolicyControllerTemplateLibraryConfigInstallationAll = PolicyControllerTemplateLibraryConfigInstallation("ALL")
+)
+
+func (PolicyControllerTemplateLibraryConfigInstallation) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerTemplateLibraryConfigInstallation)(nil)).Elem()
+}
+
+func (e PolicyControllerTemplateLibraryConfigInstallation) ToPolicyControllerTemplateLibraryConfigInstallationOutput() PolicyControllerTemplateLibraryConfigInstallationOutput {
+	return pulumi.ToOutput(e).(PolicyControllerTemplateLibraryConfigInstallationOutput)
+}
+
+func (e PolicyControllerTemplateLibraryConfigInstallation) ToPolicyControllerTemplateLibraryConfigInstallationOutputWithContext(ctx context.Context) PolicyControllerTemplateLibraryConfigInstallationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PolicyControllerTemplateLibraryConfigInstallationOutput)
+}
+
+func (e PolicyControllerTemplateLibraryConfigInstallation) ToPolicyControllerTemplateLibraryConfigInstallationPtrOutput() PolicyControllerTemplateLibraryConfigInstallationPtrOutput {
+	return e.ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(context.Background())
+}
+
+func (e PolicyControllerTemplateLibraryConfigInstallation) ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(ctx context.Context) PolicyControllerTemplateLibraryConfigInstallationPtrOutput {
+	return PolicyControllerTemplateLibraryConfigInstallation(e).ToPolicyControllerTemplateLibraryConfigInstallationOutputWithContext(ctx).ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(ctx)
+}
+
+func (e PolicyControllerTemplateLibraryConfigInstallation) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PolicyControllerTemplateLibraryConfigInstallation) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PolicyControllerTemplateLibraryConfigInstallation) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PolicyControllerTemplateLibraryConfigInstallation) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PolicyControllerTemplateLibraryConfigInstallationOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerTemplateLibraryConfigInstallationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerTemplateLibraryConfigInstallation)(nil)).Elem()
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToPolicyControllerTemplateLibraryConfigInstallationOutput() PolicyControllerTemplateLibraryConfigInstallationOutput {
+	return o
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToPolicyControllerTemplateLibraryConfigInstallationOutputWithContext(ctx context.Context) PolicyControllerTemplateLibraryConfigInstallationOutput {
+	return o
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToPolicyControllerTemplateLibraryConfigInstallationPtrOutput() PolicyControllerTemplateLibraryConfigInstallationPtrOutput {
+	return o.ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(ctx context.Context) PolicyControllerTemplateLibraryConfigInstallationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyControllerTemplateLibraryConfigInstallation) *PolicyControllerTemplateLibraryConfigInstallation {
+		return &v
+	}).(PolicyControllerTemplateLibraryConfigInstallationPtrOutput)
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyControllerTemplateLibraryConfigInstallation] {
+	return pulumix.Output[PolicyControllerTemplateLibraryConfigInstallation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PolicyControllerTemplateLibraryConfigInstallation) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PolicyControllerTemplateLibraryConfigInstallation) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyControllerTemplateLibraryConfigInstallationPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerTemplateLibraryConfigInstallationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyControllerTemplateLibraryConfigInstallation)(nil)).Elem()
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) ToPolicyControllerTemplateLibraryConfigInstallationPtrOutput() PolicyControllerTemplateLibraryConfigInstallationPtrOutput {
+	return o
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(ctx context.Context) PolicyControllerTemplateLibraryConfigInstallationPtrOutput {
+	return o
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerTemplateLibraryConfigInstallation] {
+	return pulumix.Output[*PolicyControllerTemplateLibraryConfigInstallation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) Elem() PolicyControllerTemplateLibraryConfigInstallationOutput {
+	return o.ApplyT(func(v *PolicyControllerTemplateLibraryConfigInstallation) PolicyControllerTemplateLibraryConfigInstallation {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyControllerTemplateLibraryConfigInstallation
+		return ret
+	}).(PolicyControllerTemplateLibraryConfigInstallationOutput)
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerTemplateLibraryConfigInstallationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PolicyControllerTemplateLibraryConfigInstallation) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PolicyControllerTemplateLibraryConfigInstallationInput is an input type that accepts PolicyControllerTemplateLibraryConfigInstallationArgs and PolicyControllerTemplateLibraryConfigInstallationOutput values.
+// You can construct a concrete instance of `PolicyControllerTemplateLibraryConfigInstallationInput` via:
+//
+//	PolicyControllerTemplateLibraryConfigInstallationArgs{...}
+type PolicyControllerTemplateLibraryConfigInstallationInput interface {
+	pulumi.Input
+
+	ToPolicyControllerTemplateLibraryConfigInstallationOutput() PolicyControllerTemplateLibraryConfigInstallationOutput
+	ToPolicyControllerTemplateLibraryConfigInstallationOutputWithContext(context.Context) PolicyControllerTemplateLibraryConfigInstallationOutput
+}
+
+var policyControllerTemplateLibraryConfigInstallationPtrType = reflect.TypeOf((**PolicyControllerTemplateLibraryConfigInstallation)(nil)).Elem()
+
+type PolicyControllerTemplateLibraryConfigInstallationPtrInput interface {
+	pulumi.Input
+
+	ToPolicyControllerTemplateLibraryConfigInstallationPtrOutput() PolicyControllerTemplateLibraryConfigInstallationPtrOutput
+	ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(context.Context) PolicyControllerTemplateLibraryConfigInstallationPtrOutput
+}
+
+type policyControllerTemplateLibraryConfigInstallationPtr string
+
+func PolicyControllerTemplateLibraryConfigInstallationPtr(v string) PolicyControllerTemplateLibraryConfigInstallationPtrInput {
+	return (*policyControllerTemplateLibraryConfigInstallationPtr)(&v)
+}
+
+func (*policyControllerTemplateLibraryConfigInstallationPtr) ElementType() reflect.Type {
+	return policyControllerTemplateLibraryConfigInstallationPtrType
+}
+
+func (in *policyControllerTemplateLibraryConfigInstallationPtr) ToPolicyControllerTemplateLibraryConfigInstallationPtrOutput() PolicyControllerTemplateLibraryConfigInstallationPtrOutput {
+	return pulumi.ToOutput(in).(PolicyControllerTemplateLibraryConfigInstallationPtrOutput)
+}
+
+func (in *policyControllerTemplateLibraryConfigInstallationPtr) ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(ctx context.Context) PolicyControllerTemplateLibraryConfigInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PolicyControllerTemplateLibraryConfigInstallationPtrOutput)
+}
+
+func (in *policyControllerTemplateLibraryConfigInstallationPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyControllerTemplateLibraryConfigInstallation] {
+	return pulumix.Output[*PolicyControllerTemplateLibraryConfigInstallation]{
+		OutputState: in.ToPolicyControllerTemplateLibraryConfigInstallationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // predefined_role is the Kubernetes default role to use
 type RolePredefinedRole string
 
@@ -1151,6 +2393,8 @@ const (
 	RolePredefinedRoleEdit = RolePredefinedRole("EDIT")
 	// VIEW can only read resources
 	RolePredefinedRoleView = RolePredefinedRole("VIEW")
+	// ANTHOS_SUPPORT gives Google Support read-only access to a number of cluster resources.
+	RolePredefinedRoleAnthosSupport = RolePredefinedRole("ANTHOS_SUPPORT")
 )
 
 func (RolePredefinedRole) ElementType() reflect.Type {
@@ -1328,9 +2572,953 @@ func (in *rolePredefinedRolePtr) ToOutput(ctx context.Context) pulumix.Output[*R
 	}
 }
 
+// Sets which mode to use for Security Posture features.
+type SecurityPostureConfigMode string
+
+const (
+	// Default value not specified.
+	SecurityPostureConfigModeModeUnspecified = SecurityPostureConfigMode("MODE_UNSPECIFIED")
+	// Disables Security Posture features on the cluster.
+	SecurityPostureConfigModeDisabled = SecurityPostureConfigMode("DISABLED")
+	// Applies Security Posture features on the cluster.
+	SecurityPostureConfigModeBasic = SecurityPostureConfigMode("BASIC")
+)
+
+func (SecurityPostureConfigMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfigMode)(nil)).Elem()
+}
+
+func (e SecurityPostureConfigMode) ToSecurityPostureConfigModeOutput() SecurityPostureConfigModeOutput {
+	return pulumi.ToOutput(e).(SecurityPostureConfigModeOutput)
+}
+
+func (e SecurityPostureConfigMode) ToSecurityPostureConfigModeOutputWithContext(ctx context.Context) SecurityPostureConfigModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPostureConfigModeOutput)
+}
+
+func (e SecurityPostureConfigMode) ToSecurityPostureConfigModePtrOutput() SecurityPostureConfigModePtrOutput {
+	return e.ToSecurityPostureConfigModePtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPostureConfigMode) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
+	return SecurityPostureConfigMode(e).ToSecurityPostureConfigModeOutputWithContext(ctx).ToSecurityPostureConfigModePtrOutputWithContext(ctx)
+}
+
+func (e SecurityPostureConfigMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPostureConfigMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPostureConfigMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPostureConfigMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPostureConfigModeOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfigMode)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigModeOutput) ToSecurityPostureConfigModeOutput() SecurityPostureConfigModeOutput {
+	return o
+}
+
+func (o SecurityPostureConfigModeOutput) ToSecurityPostureConfigModeOutputWithContext(ctx context.Context) SecurityPostureConfigModeOutput {
+	return o
+}
+
+func (o SecurityPostureConfigModeOutput) ToSecurityPostureConfigModePtrOutput() SecurityPostureConfigModePtrOutput {
+	return o.ToSecurityPostureConfigModePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigModeOutput) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPostureConfigMode) *SecurityPostureConfigMode {
+		return &v
+	}).(SecurityPostureConfigModePtrOutput)
+}
+
+func (o SecurityPostureConfigModeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPostureConfigMode] {
+	return pulumix.Output[SecurityPostureConfigMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPostureConfigModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPostureConfigMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPostureConfigModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPostureConfigMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPostureConfigModePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPostureConfigMode)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigModePtrOutput) ToSecurityPostureConfigModePtrOutput() SecurityPostureConfigModePtrOutput {
+	return o
+}
+
+func (o SecurityPostureConfigModePtrOutput) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
+	return o
+}
+
+func (o SecurityPostureConfigModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigMode] {
+	return pulumix.Output[*SecurityPostureConfigMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPostureConfigModePtrOutput) Elem() SecurityPostureConfigModeOutput {
+	return o.ApplyT(func(v *SecurityPostureConfigMode) SecurityPostureConfigMode {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPostureConfigMode
+		return ret
+	}).(SecurityPostureConfigModeOutput)
+}
+
+func (o SecurityPostureConfigModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPostureConfigMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPostureConfigModeInput is an input type that accepts SecurityPostureConfigModeArgs and SecurityPostureConfigModeOutput values.
+// You can construct a concrete instance of `SecurityPostureConfigModeInput` via:
+//
+//	SecurityPostureConfigModeArgs{...}
+type SecurityPostureConfigModeInput interface {
+	pulumi.Input
+
+	ToSecurityPostureConfigModeOutput() SecurityPostureConfigModeOutput
+	ToSecurityPostureConfigModeOutputWithContext(context.Context) SecurityPostureConfigModeOutput
+}
+
+var securityPostureConfigModePtrType = reflect.TypeOf((**SecurityPostureConfigMode)(nil)).Elem()
+
+type SecurityPostureConfigModePtrInput interface {
+	pulumi.Input
+
+	ToSecurityPostureConfigModePtrOutput() SecurityPostureConfigModePtrOutput
+	ToSecurityPostureConfigModePtrOutputWithContext(context.Context) SecurityPostureConfigModePtrOutput
+}
+
+type securityPostureConfigModePtr string
+
+func SecurityPostureConfigModePtr(v string) SecurityPostureConfigModePtrInput {
+	return (*securityPostureConfigModePtr)(&v)
+}
+
+func (*securityPostureConfigModePtr) ElementType() reflect.Type {
+	return securityPostureConfigModePtrType
+}
+
+func (in *securityPostureConfigModePtr) ToSecurityPostureConfigModePtrOutput() SecurityPostureConfigModePtrOutput {
+	return pulumi.ToOutput(in).(SecurityPostureConfigModePtrOutput)
+}
+
+func (in *securityPostureConfigModePtr) ToSecurityPostureConfigModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPostureConfigModePtrOutput)
+}
+
+func (in *securityPostureConfigModePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigMode] {
+	return pulumix.Output[*SecurityPostureConfigMode]{
+		OutputState: in.ToSecurityPostureConfigModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Sets which mode to use for vulnerability scanning.
+type SecurityPostureConfigVulnerabilityMode string
+
+const (
+	// Default value not specified.
+	SecurityPostureConfigVulnerabilityModeVulnerabilityModeUnspecified = SecurityPostureConfigVulnerabilityMode("VULNERABILITY_MODE_UNSPECIFIED")
+	// Disables vulnerability scanning on the cluster.
+	SecurityPostureConfigVulnerabilityModeVulnerabilityDisabled = SecurityPostureConfigVulnerabilityMode("VULNERABILITY_DISABLED")
+	// Applies basic vulnerability scanning on the cluster.
+	SecurityPostureConfigVulnerabilityModeVulnerabilityBasic = SecurityPostureConfigVulnerabilityMode("VULNERABILITY_BASIC")
+	// Applies the Security Posture's vulnerability on cluster Enterprise level features.
+	SecurityPostureConfigVulnerabilityModeVulnerabilityEnterprise = SecurityPostureConfigVulnerabilityMode("VULNERABILITY_ENTERPRISE")
+)
+
+func (SecurityPostureConfigVulnerabilityMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfigVulnerabilityMode)(nil)).Elem()
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToSecurityPostureConfigVulnerabilityModeOutput() SecurityPostureConfigVulnerabilityModeOutput {
+	return pulumi.ToOutput(e).(SecurityPostureConfigVulnerabilityModeOutput)
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToSecurityPostureConfigVulnerabilityModeOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPostureConfigVulnerabilityModeOutput)
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToSecurityPostureConfigVulnerabilityModePtrOutput() SecurityPostureConfigVulnerabilityModePtrOutput {
+	return e.ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModePtrOutput {
+	return SecurityPostureConfigVulnerabilityMode(e).ToSecurityPostureConfigVulnerabilityModeOutputWithContext(ctx).ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx)
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPostureConfigVulnerabilityMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPostureConfigVulnerabilityModeOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigVulnerabilityModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfigVulnerabilityMode)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToSecurityPostureConfigVulnerabilityModeOutput() SecurityPostureConfigVulnerabilityModeOutput {
+	return o
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToSecurityPostureConfigVulnerabilityModeOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModeOutput {
+	return o
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToSecurityPostureConfigVulnerabilityModePtrOutput() SecurityPostureConfigVulnerabilityModePtrOutput {
+	return o.ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPostureConfigVulnerabilityMode) *SecurityPostureConfigVulnerabilityMode {
+		return &v
+	}).(SecurityPostureConfigVulnerabilityModePtrOutput)
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPostureConfigVulnerabilityMode] {
+	return pulumix.Output[SecurityPostureConfigVulnerabilityMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPostureConfigVulnerabilityMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigVulnerabilityModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPostureConfigVulnerabilityMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPostureConfigVulnerabilityModePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigVulnerabilityModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPostureConfigVulnerabilityMode)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToSecurityPostureConfigVulnerabilityModePtrOutput() SecurityPostureConfigVulnerabilityModePtrOutput {
+	return o
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModePtrOutput {
+	return o
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigVulnerabilityMode] {
+	return pulumix.Output[*SecurityPostureConfigVulnerabilityMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) Elem() SecurityPostureConfigVulnerabilityModeOutput {
+	return o.ApplyT(func(v *SecurityPostureConfigVulnerabilityMode) SecurityPostureConfigVulnerabilityMode {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPostureConfigVulnerabilityMode
+		return ret
+	}).(SecurityPostureConfigVulnerabilityModeOutput)
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigVulnerabilityModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPostureConfigVulnerabilityMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPostureConfigVulnerabilityModeInput is an input type that accepts SecurityPostureConfigVulnerabilityModeArgs and SecurityPostureConfigVulnerabilityModeOutput values.
+// You can construct a concrete instance of `SecurityPostureConfigVulnerabilityModeInput` via:
+//
+//	SecurityPostureConfigVulnerabilityModeArgs{...}
+type SecurityPostureConfigVulnerabilityModeInput interface {
+	pulumi.Input
+
+	ToSecurityPostureConfigVulnerabilityModeOutput() SecurityPostureConfigVulnerabilityModeOutput
+	ToSecurityPostureConfigVulnerabilityModeOutputWithContext(context.Context) SecurityPostureConfigVulnerabilityModeOutput
+}
+
+var securityPostureConfigVulnerabilityModePtrType = reflect.TypeOf((**SecurityPostureConfigVulnerabilityMode)(nil)).Elem()
+
+type SecurityPostureConfigVulnerabilityModePtrInput interface {
+	pulumi.Input
+
+	ToSecurityPostureConfigVulnerabilityModePtrOutput() SecurityPostureConfigVulnerabilityModePtrOutput
+	ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(context.Context) SecurityPostureConfigVulnerabilityModePtrOutput
+}
+
+type securityPostureConfigVulnerabilityModePtr string
+
+func SecurityPostureConfigVulnerabilityModePtr(v string) SecurityPostureConfigVulnerabilityModePtrInput {
+	return (*securityPostureConfigVulnerabilityModePtr)(&v)
+}
+
+func (*securityPostureConfigVulnerabilityModePtr) ElementType() reflect.Type {
+	return securityPostureConfigVulnerabilityModePtrType
+}
+
+func (in *securityPostureConfigVulnerabilityModePtr) ToSecurityPostureConfigVulnerabilityModePtrOutput() SecurityPostureConfigVulnerabilityModePtrOutput {
+	return pulumi.ToOutput(in).(SecurityPostureConfigVulnerabilityModePtrOutput)
+}
+
+func (in *securityPostureConfigVulnerabilityModePtr) ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx context.Context) SecurityPostureConfigVulnerabilityModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPostureConfigVulnerabilityModePtrOutput)
+}
+
+func (in *securityPostureConfigVulnerabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfigVulnerabilityMode] {
+	return pulumix.Output[*SecurityPostureConfigVulnerabilityMode]{
+		OutputState: in.ToSecurityPostureConfigVulnerabilityModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Deprecated: use `management` instead Enables automatic control plane management.
+type ServiceMeshMembershipSpecControlPlane string
+
+const (
+	// Unspecified
+	ServiceMeshMembershipSpecControlPlaneControlPlaneManagementUnspecified = ServiceMeshMembershipSpecControlPlane("CONTROL_PLANE_MANAGEMENT_UNSPECIFIED")
+	// Google should provision a control plane revision and make it available in the cluster. Google will enroll this revision in a release channel and keep it up to date. The control plane revision may be a managed service, or a managed install.
+	ServiceMeshMembershipSpecControlPlaneAutomatic = ServiceMeshMembershipSpecControlPlane("AUTOMATIC")
+	// User will manually configure the control plane (e.g. via CLI, or via the ControlPlaneRevision KRM API)
+	ServiceMeshMembershipSpecControlPlaneManual = ServiceMeshMembershipSpecControlPlane("MANUAL")
+)
+
+func (ServiceMeshMembershipSpecControlPlane) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMembershipSpecControlPlane)(nil)).Elem()
+}
+
+func (e ServiceMeshMembershipSpecControlPlane) ToServiceMeshMembershipSpecControlPlaneOutput() ServiceMeshMembershipSpecControlPlaneOutput {
+	return pulumi.ToOutput(e).(ServiceMeshMembershipSpecControlPlaneOutput)
+}
+
+func (e ServiceMeshMembershipSpecControlPlane) ToServiceMeshMembershipSpecControlPlaneOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecControlPlaneOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceMeshMembershipSpecControlPlaneOutput)
+}
+
+func (e ServiceMeshMembershipSpecControlPlane) ToServiceMeshMembershipSpecControlPlanePtrOutput() ServiceMeshMembershipSpecControlPlanePtrOutput {
+	return e.ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (e ServiceMeshMembershipSpecControlPlane) ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecControlPlanePtrOutput {
+	return ServiceMeshMembershipSpecControlPlane(e).ToServiceMeshMembershipSpecControlPlaneOutputWithContext(ctx).ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(ctx)
+}
+
+func (e ServiceMeshMembershipSpecControlPlane) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceMeshMembershipSpecControlPlane) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceMeshMembershipSpecControlPlane) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceMeshMembershipSpecControlPlane) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServiceMeshMembershipSpecControlPlaneOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMembershipSpecControlPlaneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMembershipSpecControlPlane)(nil)).Elem()
+}
+
+func (o ServiceMeshMembershipSpecControlPlaneOutput) ToServiceMeshMembershipSpecControlPlaneOutput() ServiceMeshMembershipSpecControlPlaneOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecControlPlaneOutput) ToServiceMeshMembershipSpecControlPlaneOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecControlPlaneOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecControlPlaneOutput) ToServiceMeshMembershipSpecControlPlanePtrOutput() ServiceMeshMembershipSpecControlPlanePtrOutput {
+	return o.ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecControlPlaneOutput) ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecControlPlanePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMembershipSpecControlPlane) *ServiceMeshMembershipSpecControlPlane {
+		return &v
+	}).(ServiceMeshMembershipSpecControlPlanePtrOutput)
+}
+
+func (o ServiceMeshMembershipSpecControlPlaneOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMembershipSpecControlPlane] {
+	return pulumix.Output[ServiceMeshMembershipSpecControlPlane]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceMeshMembershipSpecControlPlaneOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecControlPlaneOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceMeshMembershipSpecControlPlane) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceMeshMembershipSpecControlPlaneOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecControlPlaneOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceMeshMembershipSpecControlPlane) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceMeshMembershipSpecControlPlanePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMembershipSpecControlPlanePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshMembershipSpecControlPlane)(nil)).Elem()
+}
+
+func (o ServiceMeshMembershipSpecControlPlanePtrOutput) ToServiceMeshMembershipSpecControlPlanePtrOutput() ServiceMeshMembershipSpecControlPlanePtrOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecControlPlanePtrOutput) ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecControlPlanePtrOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecControlPlanePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecControlPlane] {
+	return pulumix.Output[*ServiceMeshMembershipSpecControlPlane]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceMeshMembershipSpecControlPlanePtrOutput) Elem() ServiceMeshMembershipSpecControlPlaneOutput {
+	return o.ApplyT(func(v *ServiceMeshMembershipSpecControlPlane) ServiceMeshMembershipSpecControlPlane {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMembershipSpecControlPlane
+		return ret
+	}).(ServiceMeshMembershipSpecControlPlaneOutput)
+}
+
+func (o ServiceMeshMembershipSpecControlPlanePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecControlPlanePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceMeshMembershipSpecControlPlane) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceMeshMembershipSpecControlPlaneInput is an input type that accepts ServiceMeshMembershipSpecControlPlaneArgs and ServiceMeshMembershipSpecControlPlaneOutput values.
+// You can construct a concrete instance of `ServiceMeshMembershipSpecControlPlaneInput` via:
+//
+//	ServiceMeshMembershipSpecControlPlaneArgs{...}
+type ServiceMeshMembershipSpecControlPlaneInput interface {
+	pulumi.Input
+
+	ToServiceMeshMembershipSpecControlPlaneOutput() ServiceMeshMembershipSpecControlPlaneOutput
+	ToServiceMeshMembershipSpecControlPlaneOutputWithContext(context.Context) ServiceMeshMembershipSpecControlPlaneOutput
+}
+
+var serviceMeshMembershipSpecControlPlanePtrType = reflect.TypeOf((**ServiceMeshMembershipSpecControlPlane)(nil)).Elem()
+
+type ServiceMeshMembershipSpecControlPlanePtrInput interface {
+	pulumi.Input
+
+	ToServiceMeshMembershipSpecControlPlanePtrOutput() ServiceMeshMembershipSpecControlPlanePtrOutput
+	ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(context.Context) ServiceMeshMembershipSpecControlPlanePtrOutput
+}
+
+type serviceMeshMembershipSpecControlPlanePtr string
+
+func ServiceMeshMembershipSpecControlPlanePtr(v string) ServiceMeshMembershipSpecControlPlanePtrInput {
+	return (*serviceMeshMembershipSpecControlPlanePtr)(&v)
+}
+
+func (*serviceMeshMembershipSpecControlPlanePtr) ElementType() reflect.Type {
+	return serviceMeshMembershipSpecControlPlanePtrType
+}
+
+func (in *serviceMeshMembershipSpecControlPlanePtr) ToServiceMeshMembershipSpecControlPlanePtrOutput() ServiceMeshMembershipSpecControlPlanePtrOutput {
+	return pulumi.ToOutput(in).(ServiceMeshMembershipSpecControlPlanePtrOutput)
+}
+
+func (in *serviceMeshMembershipSpecControlPlanePtr) ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceMeshMembershipSpecControlPlanePtrOutput)
+}
+
+func (in *serviceMeshMembershipSpecControlPlanePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecControlPlane] {
+	return pulumix.Output[*ServiceMeshMembershipSpecControlPlane]{
+		OutputState: in.ToServiceMeshMembershipSpecControlPlanePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Determines which release channel to use for default injection and service mesh APIs.
+type ServiceMeshMembershipSpecDefaultChannel string
+
+const (
+	// Unspecified
+	ServiceMeshMembershipSpecDefaultChannelChannelUnspecified = ServiceMeshMembershipSpecDefaultChannel("CHANNEL_UNSPECIFIED")
+	// RAPID channel is offered on an early access basis for customers who want to test new releases.
+	ServiceMeshMembershipSpecDefaultChannelRapid = ServiceMeshMembershipSpecDefaultChannel("RAPID")
+	// REGULAR channel is intended for production users who want to take advantage of new features.
+	ServiceMeshMembershipSpecDefaultChannelRegular = ServiceMeshMembershipSpecDefaultChannel("REGULAR")
+	// STABLE channel includes versions that are known to be stable and reliable in production.
+	ServiceMeshMembershipSpecDefaultChannelStable = ServiceMeshMembershipSpecDefaultChannel("STABLE")
+)
+
+func (ServiceMeshMembershipSpecDefaultChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMembershipSpecDefaultChannel)(nil)).Elem()
+}
+
+func (e ServiceMeshMembershipSpecDefaultChannel) ToServiceMeshMembershipSpecDefaultChannelOutput() ServiceMeshMembershipSpecDefaultChannelOutput {
+	return pulumi.ToOutput(e).(ServiceMeshMembershipSpecDefaultChannelOutput)
+}
+
+func (e ServiceMeshMembershipSpecDefaultChannel) ToServiceMeshMembershipSpecDefaultChannelOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecDefaultChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceMeshMembershipSpecDefaultChannelOutput)
+}
+
+func (e ServiceMeshMembershipSpecDefaultChannel) ToServiceMeshMembershipSpecDefaultChannelPtrOutput() ServiceMeshMembershipSpecDefaultChannelPtrOutput {
+	return e.ToServiceMeshMembershipSpecDefaultChannelPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceMeshMembershipSpecDefaultChannel) ToServiceMeshMembershipSpecDefaultChannelPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecDefaultChannelPtrOutput {
+	return ServiceMeshMembershipSpecDefaultChannel(e).ToServiceMeshMembershipSpecDefaultChannelOutputWithContext(ctx).ToServiceMeshMembershipSpecDefaultChannelPtrOutputWithContext(ctx)
+}
+
+func (e ServiceMeshMembershipSpecDefaultChannel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceMeshMembershipSpecDefaultChannel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceMeshMembershipSpecDefaultChannel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceMeshMembershipSpecDefaultChannel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServiceMeshMembershipSpecDefaultChannelOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMembershipSpecDefaultChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMembershipSpecDefaultChannel)(nil)).Elem()
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToServiceMeshMembershipSpecDefaultChannelOutput() ServiceMeshMembershipSpecDefaultChannelOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToServiceMeshMembershipSpecDefaultChannelOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecDefaultChannelOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToServiceMeshMembershipSpecDefaultChannelPtrOutput() ServiceMeshMembershipSpecDefaultChannelPtrOutput {
+	return o.ToServiceMeshMembershipSpecDefaultChannelPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToServiceMeshMembershipSpecDefaultChannelPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecDefaultChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMembershipSpecDefaultChannel) *ServiceMeshMembershipSpecDefaultChannel {
+		return &v
+	}).(ServiceMeshMembershipSpecDefaultChannelPtrOutput)
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMembershipSpecDefaultChannel] {
+	return pulumix.Output[ServiceMeshMembershipSpecDefaultChannel]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceMeshMembershipSpecDefaultChannel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceMeshMembershipSpecDefaultChannel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceMeshMembershipSpecDefaultChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMembershipSpecDefaultChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshMembershipSpecDefaultChannel)(nil)).Elem()
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelPtrOutput) ToServiceMeshMembershipSpecDefaultChannelPtrOutput() ServiceMeshMembershipSpecDefaultChannelPtrOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelPtrOutput) ToServiceMeshMembershipSpecDefaultChannelPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecDefaultChannelPtrOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecDefaultChannel] {
+	return pulumix.Output[*ServiceMeshMembershipSpecDefaultChannel]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelPtrOutput) Elem() ServiceMeshMembershipSpecDefaultChannelOutput {
+	return o.ApplyT(func(v *ServiceMeshMembershipSpecDefaultChannel) ServiceMeshMembershipSpecDefaultChannel {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMembershipSpecDefaultChannel
+		return ret
+	}).(ServiceMeshMembershipSpecDefaultChannelOutput)
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecDefaultChannelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceMeshMembershipSpecDefaultChannel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceMeshMembershipSpecDefaultChannelInput is an input type that accepts ServiceMeshMembershipSpecDefaultChannelArgs and ServiceMeshMembershipSpecDefaultChannelOutput values.
+// You can construct a concrete instance of `ServiceMeshMembershipSpecDefaultChannelInput` via:
+//
+//	ServiceMeshMembershipSpecDefaultChannelArgs{...}
+type ServiceMeshMembershipSpecDefaultChannelInput interface {
+	pulumi.Input
+
+	ToServiceMeshMembershipSpecDefaultChannelOutput() ServiceMeshMembershipSpecDefaultChannelOutput
+	ToServiceMeshMembershipSpecDefaultChannelOutputWithContext(context.Context) ServiceMeshMembershipSpecDefaultChannelOutput
+}
+
+var serviceMeshMembershipSpecDefaultChannelPtrType = reflect.TypeOf((**ServiceMeshMembershipSpecDefaultChannel)(nil)).Elem()
+
+type ServiceMeshMembershipSpecDefaultChannelPtrInput interface {
+	pulumi.Input
+
+	ToServiceMeshMembershipSpecDefaultChannelPtrOutput() ServiceMeshMembershipSpecDefaultChannelPtrOutput
+	ToServiceMeshMembershipSpecDefaultChannelPtrOutputWithContext(context.Context) ServiceMeshMembershipSpecDefaultChannelPtrOutput
+}
+
+type serviceMeshMembershipSpecDefaultChannelPtr string
+
+func ServiceMeshMembershipSpecDefaultChannelPtr(v string) ServiceMeshMembershipSpecDefaultChannelPtrInput {
+	return (*serviceMeshMembershipSpecDefaultChannelPtr)(&v)
+}
+
+func (*serviceMeshMembershipSpecDefaultChannelPtr) ElementType() reflect.Type {
+	return serviceMeshMembershipSpecDefaultChannelPtrType
+}
+
+func (in *serviceMeshMembershipSpecDefaultChannelPtr) ToServiceMeshMembershipSpecDefaultChannelPtrOutput() ServiceMeshMembershipSpecDefaultChannelPtrOutput {
+	return pulumi.ToOutput(in).(ServiceMeshMembershipSpecDefaultChannelPtrOutput)
+}
+
+func (in *serviceMeshMembershipSpecDefaultChannelPtr) ToServiceMeshMembershipSpecDefaultChannelPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecDefaultChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceMeshMembershipSpecDefaultChannelPtrOutput)
+}
+
+func (in *serviceMeshMembershipSpecDefaultChannelPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecDefaultChannel] {
+	return pulumix.Output[*ServiceMeshMembershipSpecDefaultChannel]{
+		OutputState: in.ToServiceMeshMembershipSpecDefaultChannelPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Enables automatic Service Mesh management.
+type ServiceMeshMembershipSpecManagement string
+
+const (
+	// Unspecified
+	ServiceMeshMembershipSpecManagementManagementUnspecified = ServiceMeshMembershipSpecManagement("MANAGEMENT_UNSPECIFIED")
+	// Google should manage my Service Mesh for the cluster.
+	ServiceMeshMembershipSpecManagementManagementAutomatic = ServiceMeshMembershipSpecManagement("MANAGEMENT_AUTOMATIC")
+	// User will manually configure their service mesh components.
+	ServiceMeshMembershipSpecManagementManagementManual = ServiceMeshMembershipSpecManagement("MANAGEMENT_MANUAL")
+)
+
+func (ServiceMeshMembershipSpecManagement) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMembershipSpecManagement)(nil)).Elem()
+}
+
+func (e ServiceMeshMembershipSpecManagement) ToServiceMeshMembershipSpecManagementOutput() ServiceMeshMembershipSpecManagementOutput {
+	return pulumi.ToOutput(e).(ServiceMeshMembershipSpecManagementOutput)
+}
+
+func (e ServiceMeshMembershipSpecManagement) ToServiceMeshMembershipSpecManagementOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceMeshMembershipSpecManagementOutput)
+}
+
+func (e ServiceMeshMembershipSpecManagement) ToServiceMeshMembershipSpecManagementPtrOutput() ServiceMeshMembershipSpecManagementPtrOutput {
+	return e.ToServiceMeshMembershipSpecManagementPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceMeshMembershipSpecManagement) ToServiceMeshMembershipSpecManagementPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecManagementPtrOutput {
+	return ServiceMeshMembershipSpecManagement(e).ToServiceMeshMembershipSpecManagementOutputWithContext(ctx).ToServiceMeshMembershipSpecManagementPtrOutputWithContext(ctx)
+}
+
+func (e ServiceMeshMembershipSpecManagement) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceMeshMembershipSpecManagement) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceMeshMembershipSpecManagement) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceMeshMembershipSpecManagement) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServiceMeshMembershipSpecManagementOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMembershipSpecManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMembershipSpecManagement)(nil)).Elem()
+}
+
+func (o ServiceMeshMembershipSpecManagementOutput) ToServiceMeshMembershipSpecManagementOutput() ServiceMeshMembershipSpecManagementOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecManagementOutput) ToServiceMeshMembershipSpecManagementOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecManagementOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecManagementOutput) ToServiceMeshMembershipSpecManagementPtrOutput() ServiceMeshMembershipSpecManagementPtrOutput {
+	return o.ToServiceMeshMembershipSpecManagementPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecManagementOutput) ToServiceMeshMembershipSpecManagementPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMembershipSpecManagement) *ServiceMeshMembershipSpecManagement {
+		return &v
+	}).(ServiceMeshMembershipSpecManagementPtrOutput)
+}
+
+func (o ServiceMeshMembershipSpecManagementOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMembershipSpecManagement] {
+	return pulumix.Output[ServiceMeshMembershipSpecManagement]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceMeshMembershipSpecManagementOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecManagementOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceMeshMembershipSpecManagement) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceMeshMembershipSpecManagementOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecManagementOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceMeshMembershipSpecManagement) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceMeshMembershipSpecManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMembershipSpecManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshMembershipSpecManagement)(nil)).Elem()
+}
+
+func (o ServiceMeshMembershipSpecManagementPtrOutput) ToServiceMeshMembershipSpecManagementPtrOutput() ServiceMeshMembershipSpecManagementPtrOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecManagementPtrOutput) ToServiceMeshMembershipSpecManagementPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecManagementPtrOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipSpecManagementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecManagement] {
+	return pulumix.Output[*ServiceMeshMembershipSpecManagement]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceMeshMembershipSpecManagementPtrOutput) Elem() ServiceMeshMembershipSpecManagementOutput {
+	return o.ApplyT(func(v *ServiceMeshMembershipSpecManagement) ServiceMeshMembershipSpecManagement {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMembershipSpecManagement
+		return ret
+	}).(ServiceMeshMembershipSpecManagementOutput)
+}
+
+func (o ServiceMeshMembershipSpecManagementPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMembershipSpecManagementPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceMeshMembershipSpecManagement) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceMeshMembershipSpecManagementInput is an input type that accepts ServiceMeshMembershipSpecManagementArgs and ServiceMeshMembershipSpecManagementOutput values.
+// You can construct a concrete instance of `ServiceMeshMembershipSpecManagementInput` via:
+//
+//	ServiceMeshMembershipSpecManagementArgs{...}
+type ServiceMeshMembershipSpecManagementInput interface {
+	pulumi.Input
+
+	ToServiceMeshMembershipSpecManagementOutput() ServiceMeshMembershipSpecManagementOutput
+	ToServiceMeshMembershipSpecManagementOutputWithContext(context.Context) ServiceMeshMembershipSpecManagementOutput
+}
+
+var serviceMeshMembershipSpecManagementPtrType = reflect.TypeOf((**ServiceMeshMembershipSpecManagement)(nil)).Elem()
+
+type ServiceMeshMembershipSpecManagementPtrInput interface {
+	pulumi.Input
+
+	ToServiceMeshMembershipSpecManagementPtrOutput() ServiceMeshMembershipSpecManagementPtrOutput
+	ToServiceMeshMembershipSpecManagementPtrOutputWithContext(context.Context) ServiceMeshMembershipSpecManagementPtrOutput
+}
+
+type serviceMeshMembershipSpecManagementPtr string
+
+func ServiceMeshMembershipSpecManagementPtr(v string) ServiceMeshMembershipSpecManagementPtrInput {
+	return (*serviceMeshMembershipSpecManagementPtr)(&v)
+}
+
+func (*serviceMeshMembershipSpecManagementPtr) ElementType() reflect.Type {
+	return serviceMeshMembershipSpecManagementPtrType
+}
+
+func (in *serviceMeshMembershipSpecManagementPtr) ToServiceMeshMembershipSpecManagementPtrOutput() ServiceMeshMembershipSpecManagementPtrOutput {
+	return pulumi.ToOutput(in).(ServiceMeshMembershipSpecManagementPtrOutput)
+}
+
+func (in *serviceMeshMembershipSpecManagementPtr) ToServiceMeshMembershipSpecManagementPtrOutputWithContext(ctx context.Context) ServiceMeshMembershipSpecManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceMeshMembershipSpecManagementPtrOutput)
+}
+
+func (in *serviceMeshMembershipSpecManagementPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMembershipSpecManagement] {
+	return pulumix.Output[*ServiceMeshMembershipSpecManagement]{
+		OutputState: in.ToServiceMeshMembershipSpecManagementPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationConfigEvaluationModeInput)(nil)).Elem(), BinaryAuthorizationConfigEvaluationMode("EVALUATION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationConfigEvaluationModePtrInput)(nil)).Elem(), BinaryAuthorizationConfigEvaluationMode("EVALUATION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementPolicyControllerMonitoringBackendsItemInput)(nil)).Elem(), ConfigManagementPolicyControllerMonitoringBackendsItem("MONITORING_BACKEND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementPolicyControllerMonitoringBackendsItemPtrInput)(nil)).Elem(), ConfigManagementPolicyControllerMonitoringBackendsItem("MONITORING_BACKEND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementPolicyControllerMonitoringBackendsItemArrayInput)(nil)).Elem(), ConfigManagementPolicyControllerMonitoringBackendsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecProvisionGoogleCaInput)(nil)).Elem(), FeatureSpecProvisionGoogleCa("GOOGLE_CA_PROVISIONING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecProvisionGoogleCaPtrInput)(nil)).Elem(), FeatureSpecProvisionGoogleCa("GOOGLE_CA_PROVISIONING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityRoutingConfigModeInput)(nil)).Elem(), FleetObservabilityRoutingConfigMode("MODE_UNSPECIFIED"))
@@ -1339,12 +3527,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecCertificateManagementPtrInput)(nil)).Elem(), MembershipSpecCertificateManagement("CERTIFICATE_MANAGEMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecBillingInput)(nil)).Elem(), MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecBillingPtrInput)(nil)).Elem(), MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceActuationFeatureSpecActuationModeInput)(nil)).Elem(), NamespaceActuationFeatureSpecActuationMode("ACTUATION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceActuationFeatureSpecActuationModePtrInput)(nil)).Elem(), NamespaceActuationFeatureSpecActuationMode("ACTUATION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterClusterTypeInput)(nil)).Elem(), OnPremClusterClusterType("CLUSTERTYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterClusterTypePtrInput)(nil)).Elem(), OnPremClusterClusterType("CLUSTERTYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerHubConfigInstallSpecInput)(nil)).Elem(), PolicyControllerHubConfigInstallSpec("INSTALL_SPEC_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerHubConfigInstallSpecPtrInput)(nil)).Elem(), PolicyControllerHubConfigInstallSpec("INSTALL_SPEC_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerMonitoringConfigBackendsItemInput)(nil)).Elem(), PolicyControllerMonitoringConfigBackendsItem("MONITORING_BACKEND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerMonitoringConfigBackendsItemPtrInput)(nil)).Elem(), PolicyControllerMonitoringConfigBackendsItem("MONITORING_BACKEND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerMonitoringConfigBackendsItemArrayInput)(nil)).Elem(), PolicyControllerMonitoringConfigBackendsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerTemplateLibraryConfigInstallationInput)(nil)).Elem(), PolicyControllerTemplateLibraryConfigInstallation("INSTALLATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerTemplateLibraryConfigInstallationPtrInput)(nil)).Elem(), PolicyControllerTemplateLibraryConfigInstallation("INSTALLATION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePredefinedRoleInput)(nil)).Elem(), RolePredefinedRole("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePredefinedRolePtrInput)(nil)).Elem(), RolePredefinedRole("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigModeInput)(nil)).Elem(), SecurityPostureConfigMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigModePtrInput)(nil)).Elem(), SecurityPostureConfigMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigVulnerabilityModeInput)(nil)).Elem(), SecurityPostureConfigVulnerabilityMode("VULNERABILITY_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigVulnerabilityModePtrInput)(nil)).Elem(), SecurityPostureConfigVulnerabilityMode("VULNERABILITY_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMembershipSpecControlPlaneInput)(nil)).Elem(), ServiceMeshMembershipSpecControlPlane("CONTROL_PLANE_MANAGEMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMembershipSpecControlPlanePtrInput)(nil)).Elem(), ServiceMeshMembershipSpecControlPlane("CONTROL_PLANE_MANAGEMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMembershipSpecDefaultChannelInput)(nil)).Elem(), ServiceMeshMembershipSpecDefaultChannel("CHANNEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMembershipSpecDefaultChannelPtrInput)(nil)).Elem(), ServiceMeshMembershipSpecDefaultChannel("CHANNEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMembershipSpecManagementInput)(nil)).Elem(), ServiceMeshMembershipSpecManagement("MANAGEMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMembershipSpecManagementPtrInput)(nil)).Elem(), ServiceMeshMembershipSpecManagement("MANAGEMENT_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(BinaryAuthorizationConfigEvaluationModeOutput{})
+	pulumi.RegisterOutputType(BinaryAuthorizationConfigEvaluationModePtrOutput{})
+	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringBackendsItemOutput{})
+	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput{})
+	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput{})
 	pulumi.RegisterOutputType(FeatureSpecProvisionGoogleCaOutput{})
 	pulumi.RegisterOutputType(FeatureSpecProvisionGoogleCaPtrOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigModeOutput{})
@@ -1353,8 +3565,27 @@ func init() {
 	pulumi.RegisterOutputType(MembershipSpecCertificateManagementPtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecBillingOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecBillingPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceActuationFeatureSpecActuationModeOutput{})
+	pulumi.RegisterOutputType(NamespaceActuationFeatureSpecActuationModePtrOutput{})
 	pulumi.RegisterOutputType(OnPremClusterClusterTypeOutput{})
 	pulumi.RegisterOutputType(OnPremClusterClusterTypePtrOutput{})
+	pulumi.RegisterOutputType(PolicyControllerHubConfigInstallSpecOutput{})
+	pulumi.RegisterOutputType(PolicyControllerHubConfigInstallSpecPtrOutput{})
+	pulumi.RegisterOutputType(PolicyControllerMonitoringConfigBackendsItemOutput{})
+	pulumi.RegisterOutputType(PolicyControllerMonitoringConfigBackendsItemPtrOutput{})
+	pulumi.RegisterOutputType(PolicyControllerMonitoringConfigBackendsItemArrayOutput{})
+	pulumi.RegisterOutputType(PolicyControllerTemplateLibraryConfigInstallationOutput{})
+	pulumi.RegisterOutputType(PolicyControllerTemplateLibraryConfigInstallationPtrOutput{})
 	pulumi.RegisterOutputType(RolePredefinedRoleOutput{})
 	pulumi.RegisterOutputType(RolePredefinedRolePtrOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigModeOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigModePtrOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigVulnerabilityModeOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigVulnerabilityModePtrOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMembershipSpecControlPlaneOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMembershipSpecControlPlanePtrOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMembershipSpecDefaultChannelOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMembershipSpecDefaultChannelPtrOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMembershipSpecManagementOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMembershipSpecManagementPtrOutput{})
 }

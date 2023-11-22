@@ -211,6 +211,10 @@ const (
 	ExecutionConfigUsagesItemDeploy = ExecutionConfigUsagesItem("DEPLOY")
 	// Use for deployment verification.
 	ExecutionConfigUsagesItemVerify = ExecutionConfigUsagesItem("VERIFY")
+	// Use for predeploy job execution.
+	ExecutionConfigUsagesItemPredeploy = ExecutionConfigUsagesItem("PREDEPLOY")
+	// Use for postdeploy job execution.
+	ExecutionConfigUsagesItemPostdeploy = ExecutionConfigUsagesItem("POSTDEPLOY")
 )
 
 func (ExecutionConfigUsagesItem) ElementType() reflect.Type {
@@ -445,15 +449,206 @@ func (o ExecutionConfigUsagesItemArrayOutput) Index(i pulumi.IntInput) Execution
 	}).(ExecutionConfigUsagesItemOutput)
 }
 
+// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+type RetryBackoffMode string
+
+const (
+	// No WaitMode is specified.
+	RetryBackoffModeBackoffModeUnspecified = RetryBackoffMode("BACKOFF_MODE_UNSPECIFIED")
+	// Increases the wait time linearly.
+	RetryBackoffModeBackoffModeLinear = RetryBackoffMode("BACKOFF_MODE_LINEAR")
+	// Increases the wait time exponentially.
+	RetryBackoffModeBackoffModeExponential = RetryBackoffMode("BACKOFF_MODE_EXPONENTIAL")
+)
+
+func (RetryBackoffMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*RetryBackoffMode)(nil)).Elem()
+}
+
+func (e RetryBackoffMode) ToRetryBackoffModeOutput() RetryBackoffModeOutput {
+	return pulumi.ToOutput(e).(RetryBackoffModeOutput)
+}
+
+func (e RetryBackoffMode) ToRetryBackoffModeOutputWithContext(ctx context.Context) RetryBackoffModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RetryBackoffModeOutput)
+}
+
+func (e RetryBackoffMode) ToRetryBackoffModePtrOutput() RetryBackoffModePtrOutput {
+	return e.ToRetryBackoffModePtrOutputWithContext(context.Background())
+}
+
+func (e RetryBackoffMode) ToRetryBackoffModePtrOutputWithContext(ctx context.Context) RetryBackoffModePtrOutput {
+	return RetryBackoffMode(e).ToRetryBackoffModeOutputWithContext(ctx).ToRetryBackoffModePtrOutputWithContext(ctx)
+}
+
+func (e RetryBackoffMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RetryBackoffMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RetryBackoffMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RetryBackoffMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RetryBackoffModeOutput struct{ *pulumi.OutputState }
+
+func (RetryBackoffModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RetryBackoffMode)(nil)).Elem()
+}
+
+func (o RetryBackoffModeOutput) ToRetryBackoffModeOutput() RetryBackoffModeOutput {
+	return o
+}
+
+func (o RetryBackoffModeOutput) ToRetryBackoffModeOutputWithContext(ctx context.Context) RetryBackoffModeOutput {
+	return o
+}
+
+func (o RetryBackoffModeOutput) ToRetryBackoffModePtrOutput() RetryBackoffModePtrOutput {
+	return o.ToRetryBackoffModePtrOutputWithContext(context.Background())
+}
+
+func (o RetryBackoffModeOutput) ToRetryBackoffModePtrOutputWithContext(ctx context.Context) RetryBackoffModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryBackoffMode) *RetryBackoffMode {
+		return &v
+	}).(RetryBackoffModePtrOutput)
+}
+
+func (o RetryBackoffModeOutput) ToOutput(ctx context.Context) pulumix.Output[RetryBackoffMode] {
+	return pulumix.Output[RetryBackoffMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RetryBackoffModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RetryBackoffModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RetryBackoffMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RetryBackoffModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RetryBackoffModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RetryBackoffMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RetryBackoffModePtrOutput struct{ *pulumi.OutputState }
+
+func (RetryBackoffModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RetryBackoffMode)(nil)).Elem()
+}
+
+func (o RetryBackoffModePtrOutput) ToRetryBackoffModePtrOutput() RetryBackoffModePtrOutput {
+	return o
+}
+
+func (o RetryBackoffModePtrOutput) ToRetryBackoffModePtrOutputWithContext(ctx context.Context) RetryBackoffModePtrOutput {
+	return o
+}
+
+func (o RetryBackoffModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RetryBackoffMode] {
+	return pulumix.Output[*RetryBackoffMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RetryBackoffModePtrOutput) Elem() RetryBackoffModeOutput {
+	return o.ApplyT(func(v *RetryBackoffMode) RetryBackoffMode {
+		if v != nil {
+			return *v
+		}
+		var ret RetryBackoffMode
+		return ret
+	}).(RetryBackoffModeOutput)
+}
+
+func (o RetryBackoffModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RetryBackoffModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RetryBackoffMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RetryBackoffModeInput is an input type that accepts RetryBackoffModeArgs and RetryBackoffModeOutput values.
+// You can construct a concrete instance of `RetryBackoffModeInput` via:
+//
+//	RetryBackoffModeArgs{...}
+type RetryBackoffModeInput interface {
+	pulumi.Input
+
+	ToRetryBackoffModeOutput() RetryBackoffModeOutput
+	ToRetryBackoffModeOutputWithContext(context.Context) RetryBackoffModeOutput
+}
+
+var retryBackoffModePtrType = reflect.TypeOf((**RetryBackoffMode)(nil)).Elem()
+
+type RetryBackoffModePtrInput interface {
+	pulumi.Input
+
+	ToRetryBackoffModePtrOutput() RetryBackoffModePtrOutput
+	ToRetryBackoffModePtrOutputWithContext(context.Context) RetryBackoffModePtrOutput
+}
+
+type retryBackoffModePtr string
+
+func RetryBackoffModePtr(v string) RetryBackoffModePtrInput {
+	return (*retryBackoffModePtr)(&v)
+}
+
+func (*retryBackoffModePtr) ElementType() reflect.Type {
+	return retryBackoffModePtrType
+}
+
+func (in *retryBackoffModePtr) ToRetryBackoffModePtrOutput() RetryBackoffModePtrOutput {
+	return pulumi.ToOutput(in).(RetryBackoffModePtrOutput)
+}
+
+func (in *retryBackoffModePtr) ToRetryBackoffModePtrOutputWithContext(ctx context.Context) RetryBackoffModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RetryBackoffModePtrOutput)
+}
+
+func (in *retryBackoffModePtr) ToOutput(ctx context.Context) pulumix.Output[*RetryBackoffMode] {
+	return pulumix.Output[*RetryBackoffMode]{
+		OutputState: in.ToRetryBackoffModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigUsagesItemInput)(nil)).Elem(), ExecutionConfigUsagesItem("EXECUTION_ENVIRONMENT_USAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigUsagesItemPtrInput)(nil)).Elem(), ExecutionConfigUsagesItem("EXECUTION_ENVIRONMENT_USAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigUsagesItemArrayInput)(nil)).Elem(), ExecutionConfigUsagesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetryBackoffModeInput)(nil)).Elem(), RetryBackoffMode("BACKOFF_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RetryBackoffModePtrInput)(nil)).Elem(), RetryBackoffMode("BACKOFF_MODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigUsagesItemOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigUsagesItemPtrOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigUsagesItemArrayOutput{})
+	pulumi.RegisterOutputType(RetryBackoffModeOutput{})
+	pulumi.RegisterOutputType(RetryBackoffModePtrOutput{})
 }

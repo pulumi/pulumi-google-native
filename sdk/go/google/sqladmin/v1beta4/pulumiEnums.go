@@ -855,6 +855,14 @@ const (
 	InstanceDatabaseVersionSqlserver2019Express = InstanceDatabaseVersion("SQLSERVER_2019_EXPRESS")
 	// The database version is SQL Server 2019 Web.
 	InstanceDatabaseVersionSqlserver2019Web = InstanceDatabaseVersion("SQLSERVER_2019_WEB")
+	// The database version is SQL Server 2022 Standard.
+	InstanceDatabaseVersionSqlserver2022Standard = InstanceDatabaseVersion("SQLSERVER_2022_STANDARD")
+	// The database version is SQL Server 2022 Enterprise.
+	InstanceDatabaseVersionSqlserver2022Enterprise = InstanceDatabaseVersion("SQLSERVER_2022_ENTERPRISE")
+	// The database version is SQL Server 2022 Express.
+	InstanceDatabaseVersionSqlserver2022Express = InstanceDatabaseVersion("SQLSERVER_2022_EXPRESS")
+	// The database version is SQL Server 2022 Web.
+	InstanceDatabaseVersionSqlserver2022Web = InstanceDatabaseVersion("SQLSERVER_2022_WEB")
 )
 
 func (InstanceDatabaseVersion) ElementType() reflect.Type {
@@ -1218,6 +1226,192 @@ func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutputWithContext(ct
 func (in *instanceInstanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceInstanceType] {
 	return pulumix.Output[*InstanceInstanceType]{
 		OutputState: in.ToInstanceInstanceTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The SQL network architecture for the instance.
+type InstanceSqlNetworkArchitecture string
+
+const (
+	InstanceSqlNetworkArchitectureSqlNetworkArchitectureUnspecified = InstanceSqlNetworkArchitecture("SQL_NETWORK_ARCHITECTURE_UNSPECIFIED")
+	// Instance is a Tenancy Unit (TU) instance.
+	InstanceSqlNetworkArchitectureNewNetworkArchitecture = InstanceSqlNetworkArchitecture("NEW_NETWORK_ARCHITECTURE")
+	// Instance is an Umbrella instance.
+	InstanceSqlNetworkArchitectureOldNetworkArchitecture = InstanceSqlNetworkArchitecture("OLD_NETWORK_ARCHITECTURE")
+)
+
+func (InstanceSqlNetworkArchitecture) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSqlNetworkArchitecture)(nil)).Elem()
+}
+
+func (e InstanceSqlNetworkArchitecture) ToInstanceSqlNetworkArchitectureOutput() InstanceSqlNetworkArchitectureOutput {
+	return pulumi.ToOutput(e).(InstanceSqlNetworkArchitectureOutput)
+}
+
+func (e InstanceSqlNetworkArchitecture) ToInstanceSqlNetworkArchitectureOutputWithContext(ctx context.Context) InstanceSqlNetworkArchitectureOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceSqlNetworkArchitectureOutput)
+}
+
+func (e InstanceSqlNetworkArchitecture) ToInstanceSqlNetworkArchitecturePtrOutput() InstanceSqlNetworkArchitecturePtrOutput {
+	return e.ToInstanceSqlNetworkArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (e InstanceSqlNetworkArchitecture) ToInstanceSqlNetworkArchitecturePtrOutputWithContext(ctx context.Context) InstanceSqlNetworkArchitecturePtrOutput {
+	return InstanceSqlNetworkArchitecture(e).ToInstanceSqlNetworkArchitectureOutputWithContext(ctx).ToInstanceSqlNetworkArchitecturePtrOutputWithContext(ctx)
+}
+
+func (e InstanceSqlNetworkArchitecture) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceSqlNetworkArchitecture) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceSqlNetworkArchitecture) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceSqlNetworkArchitecture) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceSqlNetworkArchitectureOutput struct{ *pulumi.OutputState }
+
+func (InstanceSqlNetworkArchitectureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSqlNetworkArchitecture)(nil)).Elem()
+}
+
+func (o InstanceSqlNetworkArchitectureOutput) ToInstanceSqlNetworkArchitectureOutput() InstanceSqlNetworkArchitectureOutput {
+	return o
+}
+
+func (o InstanceSqlNetworkArchitectureOutput) ToInstanceSqlNetworkArchitectureOutputWithContext(ctx context.Context) InstanceSqlNetworkArchitectureOutput {
+	return o
+}
+
+func (o InstanceSqlNetworkArchitectureOutput) ToInstanceSqlNetworkArchitecturePtrOutput() InstanceSqlNetworkArchitecturePtrOutput {
+	return o.ToInstanceSqlNetworkArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSqlNetworkArchitectureOutput) ToInstanceSqlNetworkArchitecturePtrOutputWithContext(ctx context.Context) InstanceSqlNetworkArchitecturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceSqlNetworkArchitecture) *InstanceSqlNetworkArchitecture {
+		return &v
+	}).(InstanceSqlNetworkArchitecturePtrOutput)
+}
+
+func (o InstanceSqlNetworkArchitectureOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceSqlNetworkArchitecture] {
+	return pulumix.Output[InstanceSqlNetworkArchitecture]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InstanceSqlNetworkArchitectureOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceSqlNetworkArchitectureOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceSqlNetworkArchitecture) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceSqlNetworkArchitectureOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSqlNetworkArchitectureOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceSqlNetworkArchitecture) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceSqlNetworkArchitecturePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceSqlNetworkArchitecturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSqlNetworkArchitecture)(nil)).Elem()
+}
+
+func (o InstanceSqlNetworkArchitecturePtrOutput) ToInstanceSqlNetworkArchitecturePtrOutput() InstanceSqlNetworkArchitecturePtrOutput {
+	return o
+}
+
+func (o InstanceSqlNetworkArchitecturePtrOutput) ToInstanceSqlNetworkArchitecturePtrOutputWithContext(ctx context.Context) InstanceSqlNetworkArchitecturePtrOutput {
+	return o
+}
+
+func (o InstanceSqlNetworkArchitecturePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceSqlNetworkArchitecture] {
+	return pulumix.Output[*InstanceSqlNetworkArchitecture]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InstanceSqlNetworkArchitecturePtrOutput) Elem() InstanceSqlNetworkArchitectureOutput {
+	return o.ApplyT(func(v *InstanceSqlNetworkArchitecture) InstanceSqlNetworkArchitecture {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceSqlNetworkArchitecture
+		return ret
+	}).(InstanceSqlNetworkArchitectureOutput)
+}
+
+func (o InstanceSqlNetworkArchitecturePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSqlNetworkArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceSqlNetworkArchitecture) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceSqlNetworkArchitectureInput is an input type that accepts InstanceSqlNetworkArchitectureArgs and InstanceSqlNetworkArchitectureOutput values.
+// You can construct a concrete instance of `InstanceSqlNetworkArchitectureInput` via:
+//
+//	InstanceSqlNetworkArchitectureArgs{...}
+type InstanceSqlNetworkArchitectureInput interface {
+	pulumi.Input
+
+	ToInstanceSqlNetworkArchitectureOutput() InstanceSqlNetworkArchitectureOutput
+	ToInstanceSqlNetworkArchitectureOutputWithContext(context.Context) InstanceSqlNetworkArchitectureOutput
+}
+
+var instanceSqlNetworkArchitecturePtrType = reflect.TypeOf((**InstanceSqlNetworkArchitecture)(nil)).Elem()
+
+type InstanceSqlNetworkArchitecturePtrInput interface {
+	pulumi.Input
+
+	ToInstanceSqlNetworkArchitecturePtrOutput() InstanceSqlNetworkArchitecturePtrOutput
+	ToInstanceSqlNetworkArchitecturePtrOutputWithContext(context.Context) InstanceSqlNetworkArchitecturePtrOutput
+}
+
+type instanceSqlNetworkArchitecturePtr string
+
+func InstanceSqlNetworkArchitecturePtr(v string) InstanceSqlNetworkArchitecturePtrInput {
+	return (*instanceSqlNetworkArchitecturePtr)(&v)
+}
+
+func (*instanceSqlNetworkArchitecturePtr) ElementType() reflect.Type {
+	return instanceSqlNetworkArchitecturePtrType
+}
+
+func (in *instanceSqlNetworkArchitecturePtr) ToInstanceSqlNetworkArchitecturePtrOutput() InstanceSqlNetworkArchitecturePtrOutput {
+	return pulumi.ToOutput(in).(InstanceSqlNetworkArchitecturePtrOutput)
+}
+
+func (in *instanceSqlNetworkArchitecturePtr) ToInstanceSqlNetworkArchitecturePtrOutputWithContext(ctx context.Context) InstanceSqlNetworkArchitecturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceSqlNetworkArchitecturePtrOutput)
+}
+
+func (in *instanceSqlNetworkArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceSqlNetworkArchitecture] {
+	return pulumix.Output[*InstanceSqlNetworkArchitecture]{
+		OutputState: in.ToInstanceSqlNetworkArchitecturePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -1665,6 +1859,195 @@ func (o InstanceSuspensionReasonItemArrayOutput) Index(i pulumi.IntInput) Instan
 	}).(InstanceSuspensionReasonItemOutput)
 }
 
+// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+type IpConfigurationSslMode string
+
+const (
+	// The SSL mode is unknown.
+	IpConfigurationSslModeSslModeUnspecified = IpConfigurationSslMode("SSL_MODE_UNSPECIFIED")
+	// Allow non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. When this value is used, the legacy `require_ssl` flag must be false or cleared to avoid the conflict between values of two flags.
+	IpConfigurationSslModeAllowUnencryptedAndEncrypted = IpConfigurationSslMode("ALLOW_UNENCRYPTED_AND_ENCRYPTED")
+	// Only allow connections encrypted with SSL/TLS. When this value is used, the legacy `require_ssl` flag must be false or cleared to avoid the conflict between values of two flags.
+	IpConfigurationSslModeEncryptedOnly = IpConfigurationSslMode("ENCRYPTED_ONLY")
+	// Only allow connections encrypted with SSL/TLS and with valid client certificates. When this value is used, the legacy `require_ssl` flag must be true or cleared to avoid the conflict between values of two flags.
+	IpConfigurationSslModeTrustedClientCertificateRequired = IpConfigurationSslMode("TRUSTED_CLIENT_CERTIFICATE_REQUIRED")
+)
+
+func (IpConfigurationSslMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpConfigurationSslMode)(nil)).Elem()
+}
+
+func (e IpConfigurationSslMode) ToIpConfigurationSslModeOutput() IpConfigurationSslModeOutput {
+	return pulumi.ToOutput(e).(IpConfigurationSslModeOutput)
+}
+
+func (e IpConfigurationSslMode) ToIpConfigurationSslModeOutputWithContext(ctx context.Context) IpConfigurationSslModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IpConfigurationSslModeOutput)
+}
+
+func (e IpConfigurationSslMode) ToIpConfigurationSslModePtrOutput() IpConfigurationSslModePtrOutput {
+	return e.ToIpConfigurationSslModePtrOutputWithContext(context.Background())
+}
+
+func (e IpConfigurationSslMode) ToIpConfigurationSslModePtrOutputWithContext(ctx context.Context) IpConfigurationSslModePtrOutput {
+	return IpConfigurationSslMode(e).ToIpConfigurationSslModeOutputWithContext(ctx).ToIpConfigurationSslModePtrOutputWithContext(ctx)
+}
+
+func (e IpConfigurationSslMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IpConfigurationSslMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IpConfigurationSslMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IpConfigurationSslMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IpConfigurationSslModeOutput struct{ *pulumi.OutputState }
+
+func (IpConfigurationSslModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpConfigurationSslMode)(nil)).Elem()
+}
+
+func (o IpConfigurationSslModeOutput) ToIpConfigurationSslModeOutput() IpConfigurationSslModeOutput {
+	return o
+}
+
+func (o IpConfigurationSslModeOutput) ToIpConfigurationSslModeOutputWithContext(ctx context.Context) IpConfigurationSslModeOutput {
+	return o
+}
+
+func (o IpConfigurationSslModeOutput) ToIpConfigurationSslModePtrOutput() IpConfigurationSslModePtrOutput {
+	return o.ToIpConfigurationSslModePtrOutputWithContext(context.Background())
+}
+
+func (o IpConfigurationSslModeOutput) ToIpConfigurationSslModePtrOutputWithContext(ctx context.Context) IpConfigurationSslModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpConfigurationSslMode) *IpConfigurationSslMode {
+		return &v
+	}).(IpConfigurationSslModePtrOutput)
+}
+
+func (o IpConfigurationSslModeOutput) ToOutput(ctx context.Context) pulumix.Output[IpConfigurationSslMode] {
+	return pulumix.Output[IpConfigurationSslMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IpConfigurationSslModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IpConfigurationSslModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IpConfigurationSslMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IpConfigurationSslModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IpConfigurationSslModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IpConfigurationSslMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IpConfigurationSslModePtrOutput struct{ *pulumi.OutputState }
+
+func (IpConfigurationSslModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpConfigurationSslMode)(nil)).Elem()
+}
+
+func (o IpConfigurationSslModePtrOutput) ToIpConfigurationSslModePtrOutput() IpConfigurationSslModePtrOutput {
+	return o
+}
+
+func (o IpConfigurationSslModePtrOutput) ToIpConfigurationSslModePtrOutputWithContext(ctx context.Context) IpConfigurationSslModePtrOutput {
+	return o
+}
+
+func (o IpConfigurationSslModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IpConfigurationSslMode] {
+	return pulumix.Output[*IpConfigurationSslMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o IpConfigurationSslModePtrOutput) Elem() IpConfigurationSslModeOutput {
+	return o.ApplyT(func(v *IpConfigurationSslMode) IpConfigurationSslMode {
+		if v != nil {
+			return *v
+		}
+		var ret IpConfigurationSslMode
+		return ret
+	}).(IpConfigurationSslModeOutput)
+}
+
+func (o IpConfigurationSslModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IpConfigurationSslModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IpConfigurationSslMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IpConfigurationSslModeInput is an input type that accepts IpConfigurationSslModeArgs and IpConfigurationSslModeOutput values.
+// You can construct a concrete instance of `IpConfigurationSslModeInput` via:
+//
+//	IpConfigurationSslModeArgs{...}
+type IpConfigurationSslModeInput interface {
+	pulumi.Input
+
+	ToIpConfigurationSslModeOutput() IpConfigurationSslModeOutput
+	ToIpConfigurationSslModeOutputWithContext(context.Context) IpConfigurationSslModeOutput
+}
+
+var ipConfigurationSslModePtrType = reflect.TypeOf((**IpConfigurationSslMode)(nil)).Elem()
+
+type IpConfigurationSslModePtrInput interface {
+	pulumi.Input
+
+	ToIpConfigurationSslModePtrOutput() IpConfigurationSslModePtrOutput
+	ToIpConfigurationSslModePtrOutputWithContext(context.Context) IpConfigurationSslModePtrOutput
+}
+
+type ipConfigurationSslModePtr string
+
+func IpConfigurationSslModePtr(v string) IpConfigurationSslModePtrInput {
+	return (*ipConfigurationSslModePtr)(&v)
+}
+
+func (*ipConfigurationSslModePtr) ElementType() reflect.Type {
+	return ipConfigurationSslModePtrType
+}
+
+func (in *ipConfigurationSslModePtr) ToIpConfigurationSslModePtrOutput() IpConfigurationSslModePtrOutput {
+	return pulumi.ToOutput(in).(IpConfigurationSslModePtrOutput)
+}
+
+func (in *ipConfigurationSslModePtr) ToIpConfigurationSslModePtrOutputWithContext(ctx context.Context) IpConfigurationSslModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IpConfigurationSslModePtrOutput)
+}
+
+func (in *ipConfigurationSslModePtr) ToOutput(ctx context.Context) pulumix.Output[*IpConfigurationSslMode] {
+	return pulumix.Output[*IpConfigurationSslMode]{
+		OutputState: in.ToIpConfigurationSslModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
 type IpMappingType string
 
@@ -1866,6 +2249,8 @@ const (
 	MaintenanceWindowUpdateTrackCanary = MaintenanceWindowUpdateTrack("canary")
 	// For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable).
 	MaintenanceWindowUpdateTrackStable = MaintenanceWindowUpdateTrack("stable")
+	// For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable) to be at least 5 weeks after the notification.
+	MaintenanceWindowUpdateTrackWeek5 = MaintenanceWindowUpdateTrack("week5")
 )
 
 func (MaintenanceWindowUpdateTrack) ElementType() reflect.Type {
@@ -2980,6 +3365,193 @@ func (in *settingsDataDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
+// Optional. The edition of the instance.
+type SettingsEdition string
+
+const (
+	// The instance did not specify the edition.
+	SettingsEditionEditionUnspecified = SettingsEdition("EDITION_UNSPECIFIED")
+	// The instance is an enterprise edition.
+	SettingsEditionEnterprise = SettingsEdition("ENTERPRISE")
+	// The instance is an Enterprise Plus edition.
+	SettingsEditionEnterprisePlus = SettingsEdition("ENTERPRISE_PLUS")
+)
+
+func (SettingsEdition) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEdition)(nil)).Elem()
+}
+
+func (e SettingsEdition) ToSettingsEditionOutput() SettingsEditionOutput {
+	return pulumi.ToOutput(e).(SettingsEditionOutput)
+}
+
+func (e SettingsEdition) ToSettingsEditionOutputWithContext(ctx context.Context) SettingsEditionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SettingsEditionOutput)
+}
+
+func (e SettingsEdition) ToSettingsEditionPtrOutput() SettingsEditionPtrOutput {
+	return e.ToSettingsEditionPtrOutputWithContext(context.Background())
+}
+
+func (e SettingsEdition) ToSettingsEditionPtrOutputWithContext(ctx context.Context) SettingsEditionPtrOutput {
+	return SettingsEdition(e).ToSettingsEditionOutputWithContext(ctx).ToSettingsEditionPtrOutputWithContext(ctx)
+}
+
+func (e SettingsEdition) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SettingsEdition) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SettingsEdition) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SettingsEdition) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SettingsEditionOutput struct{ *pulumi.OutputState }
+
+func (SettingsEditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsEdition)(nil)).Elem()
+}
+
+func (o SettingsEditionOutput) ToSettingsEditionOutput() SettingsEditionOutput {
+	return o
+}
+
+func (o SettingsEditionOutput) ToSettingsEditionOutputWithContext(ctx context.Context) SettingsEditionOutput {
+	return o
+}
+
+func (o SettingsEditionOutput) ToSettingsEditionPtrOutput() SettingsEditionPtrOutput {
+	return o.ToSettingsEditionPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsEditionOutput) ToSettingsEditionPtrOutputWithContext(ctx context.Context) SettingsEditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsEdition) *SettingsEdition {
+		return &v
+	}).(SettingsEditionPtrOutput)
+}
+
+func (o SettingsEditionOutput) ToOutput(ctx context.Context) pulumix.Output[SettingsEdition] {
+	return pulumix.Output[SettingsEdition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SettingsEditionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SettingsEditionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SettingsEdition) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SettingsEditionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsEditionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SettingsEdition) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsEditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsEditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsEdition)(nil)).Elem()
+}
+
+func (o SettingsEditionPtrOutput) ToSettingsEditionPtrOutput() SettingsEditionPtrOutput {
+	return o
+}
+
+func (o SettingsEditionPtrOutput) ToSettingsEditionPtrOutputWithContext(ctx context.Context) SettingsEditionPtrOutput {
+	return o
+}
+
+func (o SettingsEditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SettingsEdition] {
+	return pulumix.Output[*SettingsEdition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SettingsEditionPtrOutput) Elem() SettingsEditionOutput {
+	return o.ApplyT(func(v *SettingsEdition) SettingsEdition {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsEdition
+		return ret
+	}).(SettingsEditionOutput)
+}
+
+func (o SettingsEditionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsEditionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SettingsEdition) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SettingsEditionInput is an input type that accepts SettingsEditionArgs and SettingsEditionOutput values.
+// You can construct a concrete instance of `SettingsEditionInput` via:
+//
+//	SettingsEditionArgs{...}
+type SettingsEditionInput interface {
+	pulumi.Input
+
+	ToSettingsEditionOutput() SettingsEditionOutput
+	ToSettingsEditionOutputWithContext(context.Context) SettingsEditionOutput
+}
+
+var settingsEditionPtrType = reflect.TypeOf((**SettingsEdition)(nil)).Elem()
+
+type SettingsEditionPtrInput interface {
+	pulumi.Input
+
+	ToSettingsEditionPtrOutput() SettingsEditionPtrOutput
+	ToSettingsEditionPtrOutputWithContext(context.Context) SettingsEditionPtrOutput
+}
+
+type settingsEditionPtr string
+
+func SettingsEditionPtr(v string) SettingsEditionPtrInput {
+	return (*settingsEditionPtr)(&v)
+}
+
+func (*settingsEditionPtr) ElementType() reflect.Type {
+	return settingsEditionPtrType
+}
+
+func (in *settingsEditionPtr) ToSettingsEditionPtrOutput() SettingsEditionPtrOutput {
+	return pulumi.ToOutput(in).(SettingsEditionPtrOutput)
+}
+
+func (in *settingsEditionPtr) ToSettingsEditionPtrOutputWithContext(ctx context.Context) SettingsEditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SettingsEditionPtrOutput)
+}
+
+func (in *settingsEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*SettingsEdition] {
+	return pulumix.Output[*SettingsEdition]{
+		OutputState: in.ToSettingsEditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 type SettingsPricingPlan string
 
@@ -3740,6 +4312,12 @@ const (
 	UserTypeCloudIamUser = UserType("CLOUD_IAM_USER")
 	// Cloud IAM service account.
 	UserTypeCloudIamServiceAccount = UserType("CLOUD_IAM_SERVICE_ACCOUNT")
+	// Cloud IAM Group non-login user.
+	UserTypeCloudIamGroup = UserType("CLOUD_IAM_GROUP")
+	// Cloud IAM Group login user.
+	UserTypeCloudIamGroupUser = UserType("CLOUD_IAM_GROUP_USER")
+	// Cloud IAM Group service account.
+	UserTypeCloudIamGroupServiceAccount = UserType("CLOUD_IAM_GROUP_SERVICE_ACCOUNT")
 )
 
 func (UserType) ElementType() reflect.Type {
@@ -3930,11 +4508,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDatabaseVersionPtrInput)(nil)).Elem(), InstanceDatabaseVersion("SQL_DATABASE_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInstanceTypeInput)(nil)).Elem(), InstanceInstanceType("SQL_INSTANCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInstanceTypePtrInput)(nil)).Elem(), InstanceInstanceType("SQL_INSTANCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSqlNetworkArchitectureInput)(nil)).Elem(), InstanceSqlNetworkArchitecture("SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSqlNetworkArchitecturePtrInput)(nil)).Elem(), InstanceSqlNetworkArchitecture("SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStateEnumInput)(nil)).Elem(), InstanceStateEnum("SQL_INSTANCE_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStateEnumPtrInput)(nil)).Elem(), InstanceStateEnum("SQL_INSTANCE_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSuspensionReasonItemInput)(nil)).Elem(), InstanceSuspensionReasonItem("SQL_SUSPENSION_REASON_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSuspensionReasonItemPtrInput)(nil)).Elem(), InstanceSuspensionReasonItem("SQL_SUSPENSION_REASON_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSuspensionReasonItemArrayInput)(nil)).Elem(), InstanceSuspensionReasonItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpConfigurationSslModeInput)(nil)).Elem(), IpConfigurationSslMode("SSL_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IpConfigurationSslModePtrInput)(nil)).Elem(), IpConfigurationSslMode("SSL_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IpMappingTypeInput)(nil)).Elem(), IpMappingType("SQL_IP_ADDRESS_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IpMappingTypePtrInput)(nil)).Elem(), IpMappingType("SQL_IP_ADDRESS_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowUpdateTrackInput)(nil)).Elem(), MaintenanceWindowUpdateTrack("SQL_UPDATE_TRACK_UNSPECIFIED"))
@@ -3949,6 +4531,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsConnectorEnforcementPtrInput)(nil)).Elem(), SettingsConnectorEnforcement("CONNECTOR_ENFORCEMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsDataDiskTypeInput)(nil)).Elem(), SettingsDataDiskType("SQL_DATA_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsDataDiskTypePtrInput)(nil)).Elem(), SettingsDataDiskType("SQL_DATA_DISK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEditionInput)(nil)).Elem(), SettingsEdition("EDITION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsEditionPtrInput)(nil)).Elem(), SettingsEdition("EDITION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsPricingPlanInput)(nil)).Elem(), SettingsPricingPlan("SQL_PRICING_PLAN_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsPricingPlanPtrInput)(nil)).Elem(), SettingsPricingPlan("SQL_PRICING_PLAN_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsReplicationTypeInput)(nil)).Elem(), SettingsReplicationType("SQL_REPLICATION_TYPE_UNSPECIFIED"))
@@ -3971,11 +4555,15 @@ func init() {
 	pulumi.RegisterOutputType(InstanceDatabaseVersionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceInstanceTypeOutput{})
 	pulumi.RegisterOutputType(InstanceInstanceTypePtrOutput{})
+	pulumi.RegisterOutputType(InstanceSqlNetworkArchitectureOutput{})
+	pulumi.RegisterOutputType(InstanceSqlNetworkArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(InstanceStateEnumOutput{})
 	pulumi.RegisterOutputType(InstanceStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSuspensionReasonItemOutput{})
 	pulumi.RegisterOutputType(InstanceSuspensionReasonItemPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSuspensionReasonItemArrayOutput{})
+	pulumi.RegisterOutputType(IpConfigurationSslModeOutput{})
+	pulumi.RegisterOutputType(IpConfigurationSslModePtrOutput{})
 	pulumi.RegisterOutputType(IpMappingTypeOutput{})
 	pulumi.RegisterOutputType(IpMappingTypePtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowUpdateTrackOutput{})
@@ -3990,6 +4578,8 @@ func init() {
 	pulumi.RegisterOutputType(SettingsConnectorEnforcementPtrOutput{})
 	pulumi.RegisterOutputType(SettingsDataDiskTypeOutput{})
 	pulumi.RegisterOutputType(SettingsDataDiskTypePtrOutput{})
+	pulumi.RegisterOutputType(SettingsEditionOutput{})
+	pulumi.RegisterOutputType(SettingsEditionPtrOutput{})
 	pulumi.RegisterOutputType(SettingsPricingPlanOutput{})
 	pulumi.RegisterOutputType(SettingsPricingPlanPtrOutput{})
 	pulumi.RegisterOutputType(SettingsReplicationTypeOutput{})

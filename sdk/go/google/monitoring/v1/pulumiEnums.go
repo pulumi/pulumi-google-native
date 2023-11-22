@@ -626,6 +626,195 @@ func (in *axisScalePtr) ToOutput(ctx context.Context) pulumix.Output[*AxisScale]
 	}
 }
 
+// Required. The sort order is applied to the values of the breakdown column.
+type BreakdownSortOrder string
+
+const (
+	// An unspecified sort order. This option is invalid when sorting is required.
+	BreakdownSortOrderSortOrderUnspecified = BreakdownSortOrder("SORT_ORDER_UNSPECIFIED")
+	// No sorting is applied.
+	BreakdownSortOrderSortOrderNone = BreakdownSortOrder("SORT_ORDER_NONE")
+	// The lowest-valued entries are selected first.
+	BreakdownSortOrderSortOrderAscending = BreakdownSortOrder("SORT_ORDER_ASCENDING")
+	// The highest-valued entries are selected first.
+	BreakdownSortOrderSortOrderDescending = BreakdownSortOrder("SORT_ORDER_DESCENDING")
+)
+
+func (BreakdownSortOrder) ElementType() reflect.Type {
+	return reflect.TypeOf((*BreakdownSortOrder)(nil)).Elem()
+}
+
+func (e BreakdownSortOrder) ToBreakdownSortOrderOutput() BreakdownSortOrderOutput {
+	return pulumi.ToOutput(e).(BreakdownSortOrderOutput)
+}
+
+func (e BreakdownSortOrder) ToBreakdownSortOrderOutputWithContext(ctx context.Context) BreakdownSortOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BreakdownSortOrderOutput)
+}
+
+func (e BreakdownSortOrder) ToBreakdownSortOrderPtrOutput() BreakdownSortOrderPtrOutput {
+	return e.ToBreakdownSortOrderPtrOutputWithContext(context.Background())
+}
+
+func (e BreakdownSortOrder) ToBreakdownSortOrderPtrOutputWithContext(ctx context.Context) BreakdownSortOrderPtrOutput {
+	return BreakdownSortOrder(e).ToBreakdownSortOrderOutputWithContext(ctx).ToBreakdownSortOrderPtrOutputWithContext(ctx)
+}
+
+func (e BreakdownSortOrder) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BreakdownSortOrder) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BreakdownSortOrder) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BreakdownSortOrder) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BreakdownSortOrderOutput struct{ *pulumi.OutputState }
+
+func (BreakdownSortOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BreakdownSortOrder)(nil)).Elem()
+}
+
+func (o BreakdownSortOrderOutput) ToBreakdownSortOrderOutput() BreakdownSortOrderOutput {
+	return o
+}
+
+func (o BreakdownSortOrderOutput) ToBreakdownSortOrderOutputWithContext(ctx context.Context) BreakdownSortOrderOutput {
+	return o
+}
+
+func (o BreakdownSortOrderOutput) ToBreakdownSortOrderPtrOutput() BreakdownSortOrderPtrOutput {
+	return o.ToBreakdownSortOrderPtrOutputWithContext(context.Background())
+}
+
+func (o BreakdownSortOrderOutput) ToBreakdownSortOrderPtrOutputWithContext(ctx context.Context) BreakdownSortOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BreakdownSortOrder) *BreakdownSortOrder {
+		return &v
+	}).(BreakdownSortOrderPtrOutput)
+}
+
+func (o BreakdownSortOrderOutput) ToOutput(ctx context.Context) pulumix.Output[BreakdownSortOrder] {
+	return pulumix.Output[BreakdownSortOrder]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BreakdownSortOrderOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BreakdownSortOrderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BreakdownSortOrder) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BreakdownSortOrderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BreakdownSortOrderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BreakdownSortOrder) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BreakdownSortOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (BreakdownSortOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BreakdownSortOrder)(nil)).Elem()
+}
+
+func (o BreakdownSortOrderPtrOutput) ToBreakdownSortOrderPtrOutput() BreakdownSortOrderPtrOutput {
+	return o
+}
+
+func (o BreakdownSortOrderPtrOutput) ToBreakdownSortOrderPtrOutputWithContext(ctx context.Context) BreakdownSortOrderPtrOutput {
+	return o
+}
+
+func (o BreakdownSortOrderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BreakdownSortOrder] {
+	return pulumix.Output[*BreakdownSortOrder]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BreakdownSortOrderPtrOutput) Elem() BreakdownSortOrderOutput {
+	return o.ApplyT(func(v *BreakdownSortOrder) BreakdownSortOrder {
+		if v != nil {
+			return *v
+		}
+		var ret BreakdownSortOrder
+		return ret
+	}).(BreakdownSortOrderOutput)
+}
+
+func (o BreakdownSortOrderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BreakdownSortOrderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BreakdownSortOrder) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BreakdownSortOrderInput is an input type that accepts BreakdownSortOrderArgs and BreakdownSortOrderOutput values.
+// You can construct a concrete instance of `BreakdownSortOrderInput` via:
+//
+//	BreakdownSortOrderArgs{...}
+type BreakdownSortOrderInput interface {
+	pulumi.Input
+
+	ToBreakdownSortOrderOutput() BreakdownSortOrderOutput
+	ToBreakdownSortOrderOutputWithContext(context.Context) BreakdownSortOrderOutput
+}
+
+var breakdownSortOrderPtrType = reflect.TypeOf((**BreakdownSortOrder)(nil)).Elem()
+
+type BreakdownSortOrderPtrInput interface {
+	pulumi.Input
+
+	ToBreakdownSortOrderPtrOutput() BreakdownSortOrderPtrOutput
+	ToBreakdownSortOrderPtrOutputWithContext(context.Context) BreakdownSortOrderPtrOutput
+}
+
+type breakdownSortOrderPtr string
+
+func BreakdownSortOrderPtr(v string) BreakdownSortOrderPtrInput {
+	return (*breakdownSortOrderPtr)(&v)
+}
+
+func (*breakdownSortOrderPtr) ElementType() reflect.Type {
+	return breakdownSortOrderPtrType
+}
+
+func (in *breakdownSortOrderPtr) ToBreakdownSortOrderPtrOutput() BreakdownSortOrderPtrOutput {
+	return pulumi.ToOutput(in).(BreakdownSortOrderPtrOutput)
+}
+
+func (in *breakdownSortOrderPtr) ToBreakdownSortOrderPtrOutputWithContext(ctx context.Context) BreakdownSortOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BreakdownSortOrderPtrOutput)
+}
+
+func (in *breakdownSortOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*BreakdownSortOrder] {
+	return pulumix.Output[*BreakdownSortOrder]{
+		OutputState: in.ToBreakdownSortOrderPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The chart mode.
 type ChartOptionsMode string
 
@@ -1386,6 +1575,195 @@ func (in *dataSetTargetAxisPtr) ToOutput(ctx context.Context) pulumix.Output[*Da
 	}
 }
 
+// The sort order applied to the sort column.
+type DimensionSortOrder string
+
+const (
+	// An unspecified sort order. This option is invalid when sorting is required.
+	DimensionSortOrderSortOrderUnspecified = DimensionSortOrder("SORT_ORDER_UNSPECIFIED")
+	// No sorting is applied.
+	DimensionSortOrderSortOrderNone = DimensionSortOrder("SORT_ORDER_NONE")
+	// The lowest-valued entries are selected first.
+	DimensionSortOrderSortOrderAscending = DimensionSortOrder("SORT_ORDER_ASCENDING")
+	// The highest-valued entries are selected first.
+	DimensionSortOrderSortOrderDescending = DimensionSortOrder("SORT_ORDER_DESCENDING")
+)
+
+func (DimensionSortOrder) ElementType() reflect.Type {
+	return reflect.TypeOf((*DimensionSortOrder)(nil)).Elem()
+}
+
+func (e DimensionSortOrder) ToDimensionSortOrderOutput() DimensionSortOrderOutput {
+	return pulumi.ToOutput(e).(DimensionSortOrderOutput)
+}
+
+func (e DimensionSortOrder) ToDimensionSortOrderOutputWithContext(ctx context.Context) DimensionSortOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DimensionSortOrderOutput)
+}
+
+func (e DimensionSortOrder) ToDimensionSortOrderPtrOutput() DimensionSortOrderPtrOutput {
+	return e.ToDimensionSortOrderPtrOutputWithContext(context.Background())
+}
+
+func (e DimensionSortOrder) ToDimensionSortOrderPtrOutputWithContext(ctx context.Context) DimensionSortOrderPtrOutput {
+	return DimensionSortOrder(e).ToDimensionSortOrderOutputWithContext(ctx).ToDimensionSortOrderPtrOutputWithContext(ctx)
+}
+
+func (e DimensionSortOrder) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DimensionSortOrder) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DimensionSortOrder) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DimensionSortOrder) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DimensionSortOrderOutput struct{ *pulumi.OutputState }
+
+func (DimensionSortOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DimensionSortOrder)(nil)).Elem()
+}
+
+func (o DimensionSortOrderOutput) ToDimensionSortOrderOutput() DimensionSortOrderOutput {
+	return o
+}
+
+func (o DimensionSortOrderOutput) ToDimensionSortOrderOutputWithContext(ctx context.Context) DimensionSortOrderOutput {
+	return o
+}
+
+func (o DimensionSortOrderOutput) ToDimensionSortOrderPtrOutput() DimensionSortOrderPtrOutput {
+	return o.ToDimensionSortOrderPtrOutputWithContext(context.Background())
+}
+
+func (o DimensionSortOrderOutput) ToDimensionSortOrderPtrOutputWithContext(ctx context.Context) DimensionSortOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DimensionSortOrder) *DimensionSortOrder {
+		return &v
+	}).(DimensionSortOrderPtrOutput)
+}
+
+func (o DimensionSortOrderOutput) ToOutput(ctx context.Context) pulumix.Output[DimensionSortOrder] {
+	return pulumix.Output[DimensionSortOrder]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DimensionSortOrderOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DimensionSortOrderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DimensionSortOrder) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DimensionSortOrderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DimensionSortOrderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DimensionSortOrder) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DimensionSortOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (DimensionSortOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DimensionSortOrder)(nil)).Elem()
+}
+
+func (o DimensionSortOrderPtrOutput) ToDimensionSortOrderPtrOutput() DimensionSortOrderPtrOutput {
+	return o
+}
+
+func (o DimensionSortOrderPtrOutput) ToDimensionSortOrderPtrOutputWithContext(ctx context.Context) DimensionSortOrderPtrOutput {
+	return o
+}
+
+func (o DimensionSortOrderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DimensionSortOrder] {
+	return pulumix.Output[*DimensionSortOrder]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DimensionSortOrderPtrOutput) Elem() DimensionSortOrderOutput {
+	return o.ApplyT(func(v *DimensionSortOrder) DimensionSortOrder {
+		if v != nil {
+			return *v
+		}
+		var ret DimensionSortOrder
+		return ret
+	}).(DimensionSortOrderOutput)
+}
+
+func (o DimensionSortOrderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DimensionSortOrderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DimensionSortOrder) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DimensionSortOrderInput is an input type that accepts DimensionSortOrderArgs and DimensionSortOrderOutput values.
+// You can construct a concrete instance of `DimensionSortOrderInput` via:
+//
+//	DimensionSortOrderArgs{...}
+type DimensionSortOrderInput interface {
+	pulumi.Input
+
+	ToDimensionSortOrderOutput() DimensionSortOrderOutput
+	ToDimensionSortOrderOutputWithContext(context.Context) DimensionSortOrderOutput
+}
+
+var dimensionSortOrderPtrType = reflect.TypeOf((**DimensionSortOrder)(nil)).Elem()
+
+type DimensionSortOrderPtrInput interface {
+	pulumi.Input
+
+	ToDimensionSortOrderPtrOutput() DimensionSortOrderPtrOutput
+	ToDimensionSortOrderPtrOutputWithContext(context.Context) DimensionSortOrderPtrOutput
+}
+
+type dimensionSortOrderPtr string
+
+func DimensionSortOrderPtr(v string) DimensionSortOrderPtrInput {
+	return (*dimensionSortOrderPtr)(&v)
+}
+
+func (*dimensionSortOrderPtr) ElementType() reflect.Type {
+	return dimensionSortOrderPtrType
+}
+
+func (in *dimensionSortOrderPtr) ToDimensionSortOrderPtrOutput() DimensionSortOrderPtrOutput {
+	return pulumi.ToOutput(in).(DimensionSortOrderPtrOutput)
+}
+
+func (in *dimensionSortOrderPtr) ToDimensionSortOrderPtrOutputWithContext(ctx context.Context) DimensionSortOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DimensionSortOrderPtrOutput)
+}
+
+func (in *dimensionSortOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*DimensionSortOrder] {
+	return pulumix.Output[*DimensionSortOrder]{
+		OutputState: in.ToDimensionSortOrderPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // How to use the ranking to select time series that pass through the filter.
 type PickTimeSeriesFilterDirection string
 
@@ -1763,6 +2141,193 @@ func (in *pickTimeSeriesFilterRankingMethodPtr) ToPickTimeSeriesFilterRankingMet
 func (in *pickTimeSeriesFilterRankingMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*PickTimeSeriesFilterRankingMethod] {
 	return pulumix.Output[*PickTimeSeriesFilterRankingMethod]{
 		OutputState: in.ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Indicates the visualization type for the PieChart.
+type PieChartChartType string
+
+const (
+	// The zero value. No type specified. Do not use.
+	PieChartChartTypePieChartTypeUnspecified = PieChartChartType("PIE_CHART_TYPE_UNSPECIFIED")
+	// A Pie type PieChart.
+	PieChartChartTypePie = PieChartChartType("PIE")
+	// Similar to PIE, but the DONUT type PieChart has a hole in the middle.
+	PieChartChartTypeDonut = PieChartChartType("DONUT")
+)
+
+func (PieChartChartType) ElementType() reflect.Type {
+	return reflect.TypeOf((*PieChartChartType)(nil)).Elem()
+}
+
+func (e PieChartChartType) ToPieChartChartTypeOutput() PieChartChartTypeOutput {
+	return pulumi.ToOutput(e).(PieChartChartTypeOutput)
+}
+
+func (e PieChartChartType) ToPieChartChartTypeOutputWithContext(ctx context.Context) PieChartChartTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PieChartChartTypeOutput)
+}
+
+func (e PieChartChartType) ToPieChartChartTypePtrOutput() PieChartChartTypePtrOutput {
+	return e.ToPieChartChartTypePtrOutputWithContext(context.Background())
+}
+
+func (e PieChartChartType) ToPieChartChartTypePtrOutputWithContext(ctx context.Context) PieChartChartTypePtrOutput {
+	return PieChartChartType(e).ToPieChartChartTypeOutputWithContext(ctx).ToPieChartChartTypePtrOutputWithContext(ctx)
+}
+
+func (e PieChartChartType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PieChartChartType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PieChartChartType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PieChartChartType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PieChartChartTypeOutput struct{ *pulumi.OutputState }
+
+func (PieChartChartTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PieChartChartType)(nil)).Elem()
+}
+
+func (o PieChartChartTypeOutput) ToPieChartChartTypeOutput() PieChartChartTypeOutput {
+	return o
+}
+
+func (o PieChartChartTypeOutput) ToPieChartChartTypeOutputWithContext(ctx context.Context) PieChartChartTypeOutput {
+	return o
+}
+
+func (o PieChartChartTypeOutput) ToPieChartChartTypePtrOutput() PieChartChartTypePtrOutput {
+	return o.ToPieChartChartTypePtrOutputWithContext(context.Background())
+}
+
+func (o PieChartChartTypeOutput) ToPieChartChartTypePtrOutputWithContext(ctx context.Context) PieChartChartTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PieChartChartType) *PieChartChartType {
+		return &v
+	}).(PieChartChartTypePtrOutput)
+}
+
+func (o PieChartChartTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PieChartChartType] {
+	return pulumix.Output[PieChartChartType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PieChartChartTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PieChartChartTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PieChartChartType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PieChartChartTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PieChartChartTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PieChartChartType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PieChartChartTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PieChartChartTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PieChartChartType)(nil)).Elem()
+}
+
+func (o PieChartChartTypePtrOutput) ToPieChartChartTypePtrOutput() PieChartChartTypePtrOutput {
+	return o
+}
+
+func (o PieChartChartTypePtrOutput) ToPieChartChartTypePtrOutputWithContext(ctx context.Context) PieChartChartTypePtrOutput {
+	return o
+}
+
+func (o PieChartChartTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PieChartChartType] {
+	return pulumix.Output[*PieChartChartType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PieChartChartTypePtrOutput) Elem() PieChartChartTypeOutput {
+	return o.ApplyT(func(v *PieChartChartType) PieChartChartType {
+		if v != nil {
+			return *v
+		}
+		var ret PieChartChartType
+		return ret
+	}).(PieChartChartTypeOutput)
+}
+
+func (o PieChartChartTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PieChartChartTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PieChartChartType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PieChartChartTypeInput is an input type that accepts PieChartChartTypeArgs and PieChartChartTypeOutput values.
+// You can construct a concrete instance of `PieChartChartTypeInput` via:
+//
+//	PieChartChartTypeArgs{...}
+type PieChartChartTypeInput interface {
+	pulumi.Input
+
+	ToPieChartChartTypeOutput() PieChartChartTypeOutput
+	ToPieChartChartTypeOutputWithContext(context.Context) PieChartChartTypeOutput
+}
+
+var pieChartChartTypePtrType = reflect.TypeOf((**PieChartChartType)(nil)).Elem()
+
+type PieChartChartTypePtrInput interface {
+	pulumi.Input
+
+	ToPieChartChartTypePtrOutput() PieChartChartTypePtrOutput
+	ToPieChartChartTypePtrOutputWithContext(context.Context) PieChartChartTypePtrOutput
+}
+
+type pieChartChartTypePtr string
+
+func PieChartChartTypePtr(v string) PieChartChartTypePtrInput {
+	return (*pieChartChartTypePtr)(&v)
+}
+
+func (*pieChartChartTypePtr) ElementType() reflect.Type {
+	return pieChartChartTypePtrType
+}
+
+func (in *pieChartChartTypePtr) ToPieChartChartTypePtrOutput() PieChartChartTypePtrOutput {
+	return pulumi.ToOutput(in).(PieChartChartTypePtrOutput)
+}
+
+func (in *pieChartChartTypePtr) ToPieChartChartTypePtrOutputWithContext(ctx context.Context) PieChartChartTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PieChartChartTypePtrOutput)
+}
+
+func (in *pieChartChartTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PieChartChartType] {
+	return pulumix.Output[*PieChartChartType]{
+		OutputState: in.ToPieChartChartTypePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -2322,6 +2887,977 @@ func (in *textFormatPtr) ToTextFormatPtrOutputWithContext(ctx context.Context) T
 func (in *textFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*TextFormat] {
 	return pulumix.Output[*TextFormat]{
 		OutputState: in.ToTextFormatPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Font sizes for both the title and content. The title will still be larger relative to the content.
+type TextStyleFontSize string
+
+const (
+	// No font size specified, will default to FS_LARGE
+	TextStyleFontSizeFontSizeUnspecified = TextStyleFontSize("FONT_SIZE_UNSPECIFIED")
+	// Extra small font size
+	TextStyleFontSizeFsExtraSmall = TextStyleFontSize("FS_EXTRA_SMALL")
+	// Small font size
+	TextStyleFontSizeFsSmall = TextStyleFontSize("FS_SMALL")
+	// Medium font size
+	TextStyleFontSizeFsMedium = TextStyleFontSize("FS_MEDIUM")
+	// Large font size
+	TextStyleFontSizeFsLarge = TextStyleFontSize("FS_LARGE")
+	// Extra large font size
+	TextStyleFontSizeFsExtraLarge = TextStyleFontSize("FS_EXTRA_LARGE")
+)
+
+func (TextStyleFontSize) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStyleFontSize)(nil)).Elem()
+}
+
+func (e TextStyleFontSize) ToTextStyleFontSizeOutput() TextStyleFontSizeOutput {
+	return pulumi.ToOutput(e).(TextStyleFontSizeOutput)
+}
+
+func (e TextStyleFontSize) ToTextStyleFontSizeOutputWithContext(ctx context.Context) TextStyleFontSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TextStyleFontSizeOutput)
+}
+
+func (e TextStyleFontSize) ToTextStyleFontSizePtrOutput() TextStyleFontSizePtrOutput {
+	return e.ToTextStyleFontSizePtrOutputWithContext(context.Background())
+}
+
+func (e TextStyleFontSize) ToTextStyleFontSizePtrOutputWithContext(ctx context.Context) TextStyleFontSizePtrOutput {
+	return TextStyleFontSize(e).ToTextStyleFontSizeOutputWithContext(ctx).ToTextStyleFontSizePtrOutputWithContext(ctx)
+}
+
+func (e TextStyleFontSize) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TextStyleFontSize) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TextStyleFontSize) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TextStyleFontSize) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TextStyleFontSizeOutput struct{ *pulumi.OutputState }
+
+func (TextStyleFontSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStyleFontSize)(nil)).Elem()
+}
+
+func (o TextStyleFontSizeOutput) ToTextStyleFontSizeOutput() TextStyleFontSizeOutput {
+	return o
+}
+
+func (o TextStyleFontSizeOutput) ToTextStyleFontSizeOutputWithContext(ctx context.Context) TextStyleFontSizeOutput {
+	return o
+}
+
+func (o TextStyleFontSizeOutput) ToTextStyleFontSizePtrOutput() TextStyleFontSizePtrOutput {
+	return o.ToTextStyleFontSizePtrOutputWithContext(context.Background())
+}
+
+func (o TextStyleFontSizeOutput) ToTextStyleFontSizePtrOutputWithContext(ctx context.Context) TextStyleFontSizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextStyleFontSize) *TextStyleFontSize {
+		return &v
+	}).(TextStyleFontSizePtrOutput)
+}
+
+func (o TextStyleFontSizeOutput) ToOutput(ctx context.Context) pulumix.Output[TextStyleFontSize] {
+	return pulumix.Output[TextStyleFontSize]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStyleFontSizeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TextStyleFontSizeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextStyleFontSize) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TextStyleFontSizeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextStyleFontSizeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextStyleFontSize) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TextStyleFontSizePtrOutput struct{ *pulumi.OutputState }
+
+func (TextStyleFontSizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextStyleFontSize)(nil)).Elem()
+}
+
+func (o TextStyleFontSizePtrOutput) ToTextStyleFontSizePtrOutput() TextStyleFontSizePtrOutput {
+	return o
+}
+
+func (o TextStyleFontSizePtrOutput) ToTextStyleFontSizePtrOutputWithContext(ctx context.Context) TextStyleFontSizePtrOutput {
+	return o
+}
+
+func (o TextStyleFontSizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStyleFontSize] {
+	return pulumix.Output[*TextStyleFontSize]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStyleFontSizePtrOutput) Elem() TextStyleFontSizeOutput {
+	return o.ApplyT(func(v *TextStyleFontSize) TextStyleFontSize {
+		if v != nil {
+			return *v
+		}
+		var ret TextStyleFontSize
+		return ret
+	}).(TextStyleFontSizeOutput)
+}
+
+func (o TextStyleFontSizePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextStyleFontSizePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TextStyleFontSize) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TextStyleFontSizeInput is an input type that accepts TextStyleFontSizeArgs and TextStyleFontSizeOutput values.
+// You can construct a concrete instance of `TextStyleFontSizeInput` via:
+//
+//	TextStyleFontSizeArgs{...}
+type TextStyleFontSizeInput interface {
+	pulumi.Input
+
+	ToTextStyleFontSizeOutput() TextStyleFontSizeOutput
+	ToTextStyleFontSizeOutputWithContext(context.Context) TextStyleFontSizeOutput
+}
+
+var textStyleFontSizePtrType = reflect.TypeOf((**TextStyleFontSize)(nil)).Elem()
+
+type TextStyleFontSizePtrInput interface {
+	pulumi.Input
+
+	ToTextStyleFontSizePtrOutput() TextStyleFontSizePtrOutput
+	ToTextStyleFontSizePtrOutputWithContext(context.Context) TextStyleFontSizePtrOutput
+}
+
+type textStyleFontSizePtr string
+
+func TextStyleFontSizePtr(v string) TextStyleFontSizePtrInput {
+	return (*textStyleFontSizePtr)(&v)
+}
+
+func (*textStyleFontSizePtr) ElementType() reflect.Type {
+	return textStyleFontSizePtrType
+}
+
+func (in *textStyleFontSizePtr) ToTextStyleFontSizePtrOutput() TextStyleFontSizePtrOutput {
+	return pulumi.ToOutput(in).(TextStyleFontSizePtrOutput)
+}
+
+func (in *textStyleFontSizePtr) ToTextStyleFontSizePtrOutputWithContext(ctx context.Context) TextStyleFontSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TextStyleFontSizePtrOutput)
+}
+
+func (in *textStyleFontSizePtr) ToOutput(ctx context.Context) pulumix.Output[*TextStyleFontSize] {
+	return pulumix.Output[*TextStyleFontSize]{
+		OutputState: in.ToTextStyleFontSizePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The horizontal alignment of both the title and content
+type TextStyleHorizontalAlignment string
+
+const (
+	// No horizontal alignment specified, will default to H_LEFT
+	TextStyleHorizontalAlignmentHorizontalAlignmentUnspecified = TextStyleHorizontalAlignment("HORIZONTAL_ALIGNMENT_UNSPECIFIED")
+	// Left-align
+	TextStyleHorizontalAlignmentHLeft = TextStyleHorizontalAlignment("H_LEFT")
+	// Center-align
+	TextStyleHorizontalAlignmentHCenter = TextStyleHorizontalAlignment("H_CENTER")
+	// Right-align
+	TextStyleHorizontalAlignmentHRight = TextStyleHorizontalAlignment("H_RIGHT")
+)
+
+func (TextStyleHorizontalAlignment) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStyleHorizontalAlignment)(nil)).Elem()
+}
+
+func (e TextStyleHorizontalAlignment) ToTextStyleHorizontalAlignmentOutput() TextStyleHorizontalAlignmentOutput {
+	return pulumi.ToOutput(e).(TextStyleHorizontalAlignmentOutput)
+}
+
+func (e TextStyleHorizontalAlignment) ToTextStyleHorizontalAlignmentOutputWithContext(ctx context.Context) TextStyleHorizontalAlignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TextStyleHorizontalAlignmentOutput)
+}
+
+func (e TextStyleHorizontalAlignment) ToTextStyleHorizontalAlignmentPtrOutput() TextStyleHorizontalAlignmentPtrOutput {
+	return e.ToTextStyleHorizontalAlignmentPtrOutputWithContext(context.Background())
+}
+
+func (e TextStyleHorizontalAlignment) ToTextStyleHorizontalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleHorizontalAlignmentPtrOutput {
+	return TextStyleHorizontalAlignment(e).ToTextStyleHorizontalAlignmentOutputWithContext(ctx).ToTextStyleHorizontalAlignmentPtrOutputWithContext(ctx)
+}
+
+func (e TextStyleHorizontalAlignment) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TextStyleHorizontalAlignment) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TextStyleHorizontalAlignment) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TextStyleHorizontalAlignment) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TextStyleHorizontalAlignmentOutput struct{ *pulumi.OutputState }
+
+func (TextStyleHorizontalAlignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStyleHorizontalAlignment)(nil)).Elem()
+}
+
+func (o TextStyleHorizontalAlignmentOutput) ToTextStyleHorizontalAlignmentOutput() TextStyleHorizontalAlignmentOutput {
+	return o
+}
+
+func (o TextStyleHorizontalAlignmentOutput) ToTextStyleHorizontalAlignmentOutputWithContext(ctx context.Context) TextStyleHorizontalAlignmentOutput {
+	return o
+}
+
+func (o TextStyleHorizontalAlignmentOutput) ToTextStyleHorizontalAlignmentPtrOutput() TextStyleHorizontalAlignmentPtrOutput {
+	return o.ToTextStyleHorizontalAlignmentPtrOutputWithContext(context.Background())
+}
+
+func (o TextStyleHorizontalAlignmentOutput) ToTextStyleHorizontalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleHorizontalAlignmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextStyleHorizontalAlignment) *TextStyleHorizontalAlignment {
+		return &v
+	}).(TextStyleHorizontalAlignmentPtrOutput)
+}
+
+func (o TextStyleHorizontalAlignmentOutput) ToOutput(ctx context.Context) pulumix.Output[TextStyleHorizontalAlignment] {
+	return pulumix.Output[TextStyleHorizontalAlignment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStyleHorizontalAlignmentOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TextStyleHorizontalAlignmentOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextStyleHorizontalAlignment) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TextStyleHorizontalAlignmentOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextStyleHorizontalAlignmentOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextStyleHorizontalAlignment) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TextStyleHorizontalAlignmentPtrOutput struct{ *pulumi.OutputState }
+
+func (TextStyleHorizontalAlignmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextStyleHorizontalAlignment)(nil)).Elem()
+}
+
+func (o TextStyleHorizontalAlignmentPtrOutput) ToTextStyleHorizontalAlignmentPtrOutput() TextStyleHorizontalAlignmentPtrOutput {
+	return o
+}
+
+func (o TextStyleHorizontalAlignmentPtrOutput) ToTextStyleHorizontalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleHorizontalAlignmentPtrOutput {
+	return o
+}
+
+func (o TextStyleHorizontalAlignmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStyleHorizontalAlignment] {
+	return pulumix.Output[*TextStyleHorizontalAlignment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStyleHorizontalAlignmentPtrOutput) Elem() TextStyleHorizontalAlignmentOutput {
+	return o.ApplyT(func(v *TextStyleHorizontalAlignment) TextStyleHorizontalAlignment {
+		if v != nil {
+			return *v
+		}
+		var ret TextStyleHorizontalAlignment
+		return ret
+	}).(TextStyleHorizontalAlignmentOutput)
+}
+
+func (o TextStyleHorizontalAlignmentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextStyleHorizontalAlignmentPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TextStyleHorizontalAlignment) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TextStyleHorizontalAlignmentInput is an input type that accepts TextStyleHorizontalAlignmentArgs and TextStyleHorizontalAlignmentOutput values.
+// You can construct a concrete instance of `TextStyleHorizontalAlignmentInput` via:
+//
+//	TextStyleHorizontalAlignmentArgs{...}
+type TextStyleHorizontalAlignmentInput interface {
+	pulumi.Input
+
+	ToTextStyleHorizontalAlignmentOutput() TextStyleHorizontalAlignmentOutput
+	ToTextStyleHorizontalAlignmentOutputWithContext(context.Context) TextStyleHorizontalAlignmentOutput
+}
+
+var textStyleHorizontalAlignmentPtrType = reflect.TypeOf((**TextStyleHorizontalAlignment)(nil)).Elem()
+
+type TextStyleHorizontalAlignmentPtrInput interface {
+	pulumi.Input
+
+	ToTextStyleHorizontalAlignmentPtrOutput() TextStyleHorizontalAlignmentPtrOutput
+	ToTextStyleHorizontalAlignmentPtrOutputWithContext(context.Context) TextStyleHorizontalAlignmentPtrOutput
+}
+
+type textStyleHorizontalAlignmentPtr string
+
+func TextStyleHorizontalAlignmentPtr(v string) TextStyleHorizontalAlignmentPtrInput {
+	return (*textStyleHorizontalAlignmentPtr)(&v)
+}
+
+func (*textStyleHorizontalAlignmentPtr) ElementType() reflect.Type {
+	return textStyleHorizontalAlignmentPtrType
+}
+
+func (in *textStyleHorizontalAlignmentPtr) ToTextStyleHorizontalAlignmentPtrOutput() TextStyleHorizontalAlignmentPtrOutput {
+	return pulumi.ToOutput(in).(TextStyleHorizontalAlignmentPtrOutput)
+}
+
+func (in *textStyleHorizontalAlignmentPtr) ToTextStyleHorizontalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleHorizontalAlignmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TextStyleHorizontalAlignmentPtrOutput)
+}
+
+func (in *textStyleHorizontalAlignmentPtr) ToOutput(ctx context.Context) pulumix.Output[*TextStyleHorizontalAlignment] {
+	return pulumix.Output[*TextStyleHorizontalAlignment]{
+		OutputState: in.ToTextStyleHorizontalAlignmentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The amount of padding around the widget
+type TextStylePadding string
+
+const (
+	// No padding size specified, will default to P_EXTRA_SMALL
+	TextStylePaddingPaddingSizeUnspecified = TextStylePadding("PADDING_SIZE_UNSPECIFIED")
+	// Extra small padding
+	TextStylePaddingPExtraSmall = TextStylePadding("P_EXTRA_SMALL")
+	// Small padding
+	TextStylePaddingPSmall = TextStylePadding("P_SMALL")
+	// Medium padding
+	TextStylePaddingPMedium = TextStylePadding("P_MEDIUM")
+	// Large padding
+	TextStylePaddingPLarge = TextStylePadding("P_LARGE")
+	// Extra large padding
+	TextStylePaddingPExtraLarge = TextStylePadding("P_EXTRA_LARGE")
+)
+
+func (TextStylePadding) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStylePadding)(nil)).Elem()
+}
+
+func (e TextStylePadding) ToTextStylePaddingOutput() TextStylePaddingOutput {
+	return pulumi.ToOutput(e).(TextStylePaddingOutput)
+}
+
+func (e TextStylePadding) ToTextStylePaddingOutputWithContext(ctx context.Context) TextStylePaddingOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TextStylePaddingOutput)
+}
+
+func (e TextStylePadding) ToTextStylePaddingPtrOutput() TextStylePaddingPtrOutput {
+	return e.ToTextStylePaddingPtrOutputWithContext(context.Background())
+}
+
+func (e TextStylePadding) ToTextStylePaddingPtrOutputWithContext(ctx context.Context) TextStylePaddingPtrOutput {
+	return TextStylePadding(e).ToTextStylePaddingOutputWithContext(ctx).ToTextStylePaddingPtrOutputWithContext(ctx)
+}
+
+func (e TextStylePadding) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TextStylePadding) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TextStylePadding) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TextStylePadding) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TextStylePaddingOutput struct{ *pulumi.OutputState }
+
+func (TextStylePaddingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStylePadding)(nil)).Elem()
+}
+
+func (o TextStylePaddingOutput) ToTextStylePaddingOutput() TextStylePaddingOutput {
+	return o
+}
+
+func (o TextStylePaddingOutput) ToTextStylePaddingOutputWithContext(ctx context.Context) TextStylePaddingOutput {
+	return o
+}
+
+func (o TextStylePaddingOutput) ToTextStylePaddingPtrOutput() TextStylePaddingPtrOutput {
+	return o.ToTextStylePaddingPtrOutputWithContext(context.Background())
+}
+
+func (o TextStylePaddingOutput) ToTextStylePaddingPtrOutputWithContext(ctx context.Context) TextStylePaddingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextStylePadding) *TextStylePadding {
+		return &v
+	}).(TextStylePaddingPtrOutput)
+}
+
+func (o TextStylePaddingOutput) ToOutput(ctx context.Context) pulumix.Output[TextStylePadding] {
+	return pulumix.Output[TextStylePadding]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStylePaddingOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TextStylePaddingOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextStylePadding) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TextStylePaddingOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextStylePaddingOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextStylePadding) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TextStylePaddingPtrOutput struct{ *pulumi.OutputState }
+
+func (TextStylePaddingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextStylePadding)(nil)).Elem()
+}
+
+func (o TextStylePaddingPtrOutput) ToTextStylePaddingPtrOutput() TextStylePaddingPtrOutput {
+	return o
+}
+
+func (o TextStylePaddingPtrOutput) ToTextStylePaddingPtrOutputWithContext(ctx context.Context) TextStylePaddingPtrOutput {
+	return o
+}
+
+func (o TextStylePaddingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStylePadding] {
+	return pulumix.Output[*TextStylePadding]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStylePaddingPtrOutput) Elem() TextStylePaddingOutput {
+	return o.ApplyT(func(v *TextStylePadding) TextStylePadding {
+		if v != nil {
+			return *v
+		}
+		var ret TextStylePadding
+		return ret
+	}).(TextStylePaddingOutput)
+}
+
+func (o TextStylePaddingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextStylePaddingPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TextStylePadding) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TextStylePaddingInput is an input type that accepts TextStylePaddingArgs and TextStylePaddingOutput values.
+// You can construct a concrete instance of `TextStylePaddingInput` via:
+//
+//	TextStylePaddingArgs{...}
+type TextStylePaddingInput interface {
+	pulumi.Input
+
+	ToTextStylePaddingOutput() TextStylePaddingOutput
+	ToTextStylePaddingOutputWithContext(context.Context) TextStylePaddingOutput
+}
+
+var textStylePaddingPtrType = reflect.TypeOf((**TextStylePadding)(nil)).Elem()
+
+type TextStylePaddingPtrInput interface {
+	pulumi.Input
+
+	ToTextStylePaddingPtrOutput() TextStylePaddingPtrOutput
+	ToTextStylePaddingPtrOutputWithContext(context.Context) TextStylePaddingPtrOutput
+}
+
+type textStylePaddingPtr string
+
+func TextStylePaddingPtr(v string) TextStylePaddingPtrInput {
+	return (*textStylePaddingPtr)(&v)
+}
+
+func (*textStylePaddingPtr) ElementType() reflect.Type {
+	return textStylePaddingPtrType
+}
+
+func (in *textStylePaddingPtr) ToTextStylePaddingPtrOutput() TextStylePaddingPtrOutput {
+	return pulumi.ToOutput(in).(TextStylePaddingPtrOutput)
+}
+
+func (in *textStylePaddingPtr) ToTextStylePaddingPtrOutputWithContext(ctx context.Context) TextStylePaddingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TextStylePaddingPtrOutput)
+}
+
+func (in *textStylePaddingPtr) ToOutput(ctx context.Context) pulumix.Output[*TextStylePadding] {
+	return pulumix.Output[*TextStylePadding]{
+		OutputState: in.ToTextStylePaddingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The pointer location for this widget (also sometimes called a "tail")
+type TextStylePointerLocation string
+
+const (
+	// No visual pointer
+	TextStylePointerLocationPointerLocationUnspecified = TextStylePointerLocation("POINTER_LOCATION_UNSPECIFIED")
+	// Placed in the middle of the top of the widget
+	TextStylePointerLocationPlTop = TextStylePointerLocation("PL_TOP")
+	// Placed in the middle of the right side of the widget
+	TextStylePointerLocationPlRight = TextStylePointerLocation("PL_RIGHT")
+	// Placed in the middle of the bottom of the widget
+	TextStylePointerLocationPlBottom = TextStylePointerLocation("PL_BOTTOM")
+	// Placed in the middle of the left side of the widget
+	TextStylePointerLocationPlLeft = TextStylePointerLocation("PL_LEFT")
+	// Placed on the left side of the top of the widget
+	TextStylePointerLocationPlTopLeft = TextStylePointerLocation("PL_TOP_LEFT")
+	// Placed on the right side of the top of the widget
+	TextStylePointerLocationPlTopRight = TextStylePointerLocation("PL_TOP_RIGHT")
+	// Placed on the top of the right side of the widget
+	TextStylePointerLocationPlRightTop = TextStylePointerLocation("PL_RIGHT_TOP")
+	// Placed on the bottom of the right side of the widget
+	TextStylePointerLocationPlRightBottom = TextStylePointerLocation("PL_RIGHT_BOTTOM")
+	// Placed on the right side of the bottom of the widget
+	TextStylePointerLocationPlBottomRight = TextStylePointerLocation("PL_BOTTOM_RIGHT")
+	// Placed on the left side of the bottom of the widget
+	TextStylePointerLocationPlBottomLeft = TextStylePointerLocation("PL_BOTTOM_LEFT")
+	// Placed on the bottom of the left side of the widget
+	TextStylePointerLocationPlLeftBottom = TextStylePointerLocation("PL_LEFT_BOTTOM")
+	// Placed on the top of the left side of the widget
+	TextStylePointerLocationPlLeftTop = TextStylePointerLocation("PL_LEFT_TOP")
+)
+
+func (TextStylePointerLocation) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStylePointerLocation)(nil)).Elem()
+}
+
+func (e TextStylePointerLocation) ToTextStylePointerLocationOutput() TextStylePointerLocationOutput {
+	return pulumi.ToOutput(e).(TextStylePointerLocationOutput)
+}
+
+func (e TextStylePointerLocation) ToTextStylePointerLocationOutputWithContext(ctx context.Context) TextStylePointerLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TextStylePointerLocationOutput)
+}
+
+func (e TextStylePointerLocation) ToTextStylePointerLocationPtrOutput() TextStylePointerLocationPtrOutput {
+	return e.ToTextStylePointerLocationPtrOutputWithContext(context.Background())
+}
+
+func (e TextStylePointerLocation) ToTextStylePointerLocationPtrOutputWithContext(ctx context.Context) TextStylePointerLocationPtrOutput {
+	return TextStylePointerLocation(e).ToTextStylePointerLocationOutputWithContext(ctx).ToTextStylePointerLocationPtrOutputWithContext(ctx)
+}
+
+func (e TextStylePointerLocation) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TextStylePointerLocation) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TextStylePointerLocation) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TextStylePointerLocation) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TextStylePointerLocationOutput struct{ *pulumi.OutputState }
+
+func (TextStylePointerLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStylePointerLocation)(nil)).Elem()
+}
+
+func (o TextStylePointerLocationOutput) ToTextStylePointerLocationOutput() TextStylePointerLocationOutput {
+	return o
+}
+
+func (o TextStylePointerLocationOutput) ToTextStylePointerLocationOutputWithContext(ctx context.Context) TextStylePointerLocationOutput {
+	return o
+}
+
+func (o TextStylePointerLocationOutput) ToTextStylePointerLocationPtrOutput() TextStylePointerLocationPtrOutput {
+	return o.ToTextStylePointerLocationPtrOutputWithContext(context.Background())
+}
+
+func (o TextStylePointerLocationOutput) ToTextStylePointerLocationPtrOutputWithContext(ctx context.Context) TextStylePointerLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextStylePointerLocation) *TextStylePointerLocation {
+		return &v
+	}).(TextStylePointerLocationPtrOutput)
+}
+
+func (o TextStylePointerLocationOutput) ToOutput(ctx context.Context) pulumix.Output[TextStylePointerLocation] {
+	return pulumix.Output[TextStylePointerLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStylePointerLocationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TextStylePointerLocationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextStylePointerLocation) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TextStylePointerLocationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextStylePointerLocationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextStylePointerLocation) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TextStylePointerLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (TextStylePointerLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextStylePointerLocation)(nil)).Elem()
+}
+
+func (o TextStylePointerLocationPtrOutput) ToTextStylePointerLocationPtrOutput() TextStylePointerLocationPtrOutput {
+	return o
+}
+
+func (o TextStylePointerLocationPtrOutput) ToTextStylePointerLocationPtrOutputWithContext(ctx context.Context) TextStylePointerLocationPtrOutput {
+	return o
+}
+
+func (o TextStylePointerLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStylePointerLocation] {
+	return pulumix.Output[*TextStylePointerLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStylePointerLocationPtrOutput) Elem() TextStylePointerLocationOutput {
+	return o.ApplyT(func(v *TextStylePointerLocation) TextStylePointerLocation {
+		if v != nil {
+			return *v
+		}
+		var ret TextStylePointerLocation
+		return ret
+	}).(TextStylePointerLocationOutput)
+}
+
+func (o TextStylePointerLocationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextStylePointerLocationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TextStylePointerLocation) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TextStylePointerLocationInput is an input type that accepts TextStylePointerLocationArgs and TextStylePointerLocationOutput values.
+// You can construct a concrete instance of `TextStylePointerLocationInput` via:
+//
+//	TextStylePointerLocationArgs{...}
+type TextStylePointerLocationInput interface {
+	pulumi.Input
+
+	ToTextStylePointerLocationOutput() TextStylePointerLocationOutput
+	ToTextStylePointerLocationOutputWithContext(context.Context) TextStylePointerLocationOutput
+}
+
+var textStylePointerLocationPtrType = reflect.TypeOf((**TextStylePointerLocation)(nil)).Elem()
+
+type TextStylePointerLocationPtrInput interface {
+	pulumi.Input
+
+	ToTextStylePointerLocationPtrOutput() TextStylePointerLocationPtrOutput
+	ToTextStylePointerLocationPtrOutputWithContext(context.Context) TextStylePointerLocationPtrOutput
+}
+
+type textStylePointerLocationPtr string
+
+func TextStylePointerLocationPtr(v string) TextStylePointerLocationPtrInput {
+	return (*textStylePointerLocationPtr)(&v)
+}
+
+func (*textStylePointerLocationPtr) ElementType() reflect.Type {
+	return textStylePointerLocationPtrType
+}
+
+func (in *textStylePointerLocationPtr) ToTextStylePointerLocationPtrOutput() TextStylePointerLocationPtrOutput {
+	return pulumi.ToOutput(in).(TextStylePointerLocationPtrOutput)
+}
+
+func (in *textStylePointerLocationPtr) ToTextStylePointerLocationPtrOutputWithContext(ctx context.Context) TextStylePointerLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TextStylePointerLocationPtrOutput)
+}
+
+func (in *textStylePointerLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*TextStylePointerLocation] {
+	return pulumix.Output[*TextStylePointerLocation]{
+		OutputState: in.ToTextStylePointerLocationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The vertical alignment of both the title and content
+type TextStyleVerticalAlignment string
+
+const (
+	// No vertical alignment specified, will default to V_TOP
+	TextStyleVerticalAlignmentVerticalAlignmentUnspecified = TextStyleVerticalAlignment("VERTICAL_ALIGNMENT_UNSPECIFIED")
+	// Top-align
+	TextStyleVerticalAlignmentVTop = TextStyleVerticalAlignment("V_TOP")
+	// Center-align
+	TextStyleVerticalAlignmentVCenter = TextStyleVerticalAlignment("V_CENTER")
+	// Bottom-align
+	TextStyleVerticalAlignmentVBottom = TextStyleVerticalAlignment("V_BOTTOM")
+)
+
+func (TextStyleVerticalAlignment) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStyleVerticalAlignment)(nil)).Elem()
+}
+
+func (e TextStyleVerticalAlignment) ToTextStyleVerticalAlignmentOutput() TextStyleVerticalAlignmentOutput {
+	return pulumi.ToOutput(e).(TextStyleVerticalAlignmentOutput)
+}
+
+func (e TextStyleVerticalAlignment) ToTextStyleVerticalAlignmentOutputWithContext(ctx context.Context) TextStyleVerticalAlignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TextStyleVerticalAlignmentOutput)
+}
+
+func (e TextStyleVerticalAlignment) ToTextStyleVerticalAlignmentPtrOutput() TextStyleVerticalAlignmentPtrOutput {
+	return e.ToTextStyleVerticalAlignmentPtrOutputWithContext(context.Background())
+}
+
+func (e TextStyleVerticalAlignment) ToTextStyleVerticalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleVerticalAlignmentPtrOutput {
+	return TextStyleVerticalAlignment(e).ToTextStyleVerticalAlignmentOutputWithContext(ctx).ToTextStyleVerticalAlignmentPtrOutputWithContext(ctx)
+}
+
+func (e TextStyleVerticalAlignment) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TextStyleVerticalAlignment) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TextStyleVerticalAlignment) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TextStyleVerticalAlignment) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TextStyleVerticalAlignmentOutput struct{ *pulumi.OutputState }
+
+func (TextStyleVerticalAlignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStyleVerticalAlignment)(nil)).Elem()
+}
+
+func (o TextStyleVerticalAlignmentOutput) ToTextStyleVerticalAlignmentOutput() TextStyleVerticalAlignmentOutput {
+	return o
+}
+
+func (o TextStyleVerticalAlignmentOutput) ToTextStyleVerticalAlignmentOutputWithContext(ctx context.Context) TextStyleVerticalAlignmentOutput {
+	return o
+}
+
+func (o TextStyleVerticalAlignmentOutput) ToTextStyleVerticalAlignmentPtrOutput() TextStyleVerticalAlignmentPtrOutput {
+	return o.ToTextStyleVerticalAlignmentPtrOutputWithContext(context.Background())
+}
+
+func (o TextStyleVerticalAlignmentOutput) ToTextStyleVerticalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleVerticalAlignmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextStyleVerticalAlignment) *TextStyleVerticalAlignment {
+		return &v
+	}).(TextStyleVerticalAlignmentPtrOutput)
+}
+
+func (o TextStyleVerticalAlignmentOutput) ToOutput(ctx context.Context) pulumix.Output[TextStyleVerticalAlignment] {
+	return pulumix.Output[TextStyleVerticalAlignment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStyleVerticalAlignmentOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TextStyleVerticalAlignmentOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextStyleVerticalAlignment) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TextStyleVerticalAlignmentOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextStyleVerticalAlignmentOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextStyleVerticalAlignment) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TextStyleVerticalAlignmentPtrOutput struct{ *pulumi.OutputState }
+
+func (TextStyleVerticalAlignmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextStyleVerticalAlignment)(nil)).Elem()
+}
+
+func (o TextStyleVerticalAlignmentPtrOutput) ToTextStyleVerticalAlignmentPtrOutput() TextStyleVerticalAlignmentPtrOutput {
+	return o
+}
+
+func (o TextStyleVerticalAlignmentPtrOutput) ToTextStyleVerticalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleVerticalAlignmentPtrOutput {
+	return o
+}
+
+func (o TextStyleVerticalAlignmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStyleVerticalAlignment] {
+	return pulumix.Output[*TextStyleVerticalAlignment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStyleVerticalAlignmentPtrOutput) Elem() TextStyleVerticalAlignmentOutput {
+	return o.ApplyT(func(v *TextStyleVerticalAlignment) TextStyleVerticalAlignment {
+		if v != nil {
+			return *v
+		}
+		var ret TextStyleVerticalAlignment
+		return ret
+	}).(TextStyleVerticalAlignmentOutput)
+}
+
+func (o TextStyleVerticalAlignmentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextStyleVerticalAlignmentPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TextStyleVerticalAlignment) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TextStyleVerticalAlignmentInput is an input type that accepts TextStyleVerticalAlignmentArgs and TextStyleVerticalAlignmentOutput values.
+// You can construct a concrete instance of `TextStyleVerticalAlignmentInput` via:
+//
+//	TextStyleVerticalAlignmentArgs{...}
+type TextStyleVerticalAlignmentInput interface {
+	pulumi.Input
+
+	ToTextStyleVerticalAlignmentOutput() TextStyleVerticalAlignmentOutput
+	ToTextStyleVerticalAlignmentOutputWithContext(context.Context) TextStyleVerticalAlignmentOutput
+}
+
+var textStyleVerticalAlignmentPtrType = reflect.TypeOf((**TextStyleVerticalAlignment)(nil)).Elem()
+
+type TextStyleVerticalAlignmentPtrInput interface {
+	pulumi.Input
+
+	ToTextStyleVerticalAlignmentPtrOutput() TextStyleVerticalAlignmentPtrOutput
+	ToTextStyleVerticalAlignmentPtrOutputWithContext(context.Context) TextStyleVerticalAlignmentPtrOutput
+}
+
+type textStyleVerticalAlignmentPtr string
+
+func TextStyleVerticalAlignmentPtr(v string) TextStyleVerticalAlignmentPtrInput {
+	return (*textStyleVerticalAlignmentPtr)(&v)
+}
+
+func (*textStyleVerticalAlignmentPtr) ElementType() reflect.Type {
+	return textStyleVerticalAlignmentPtrType
+}
+
+func (in *textStyleVerticalAlignmentPtr) ToTextStyleVerticalAlignmentPtrOutput() TextStyleVerticalAlignmentPtrOutput {
+	return pulumi.ToOutput(in).(TextStyleVerticalAlignmentPtrOutput)
+}
+
+func (in *textStyleVerticalAlignmentPtr) ToTextStyleVerticalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleVerticalAlignmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TextStyleVerticalAlignmentPtrOutput)
+}
+
+func (in *textStyleVerticalAlignmentPtr) ToOutput(ctx context.Context) pulumix.Output[*TextStyleVerticalAlignment] {
+	return pulumix.Output[*TextStyleVerticalAlignment]{
+		OutputState: in.ToTextStyleVerticalAlignmentPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -3080,6 +4616,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPerSeriesAlignerPtrInput)(nil)).Elem(), AggregationPerSeriesAligner("ALIGN_NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AxisScaleInput)(nil)).Elem(), AxisScale("SCALE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AxisScalePtrInput)(nil)).Elem(), AxisScale("SCALE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BreakdownSortOrderInput)(nil)).Elem(), BreakdownSortOrder("SORT_ORDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BreakdownSortOrderPtrInput)(nil)).Elem(), BreakdownSortOrder("SORT_ORDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsModeInput)(nil)).Elem(), ChartOptionsMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsModePtrInput)(nil)).Elem(), ChartOptionsMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardFilterFilterTypeInput)(nil)).Elem(), DashboardFilterFilterType("FILTER_TYPE_UNSPECIFIED"))
@@ -3088,16 +4626,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetPlotTypePtrInput)(nil)).Elem(), DataSetPlotType("PLOT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetTargetAxisInput)(nil)).Elem(), DataSetTargetAxis("TARGET_AXIS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetTargetAxisPtrInput)(nil)).Elem(), DataSetTargetAxis("TARGET_AXIS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DimensionSortOrderInput)(nil)).Elem(), DimensionSortOrder("SORT_ORDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DimensionSortOrderPtrInput)(nil)).Elem(), DimensionSortOrder("SORT_ORDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterDirectionInput)(nil)).Elem(), PickTimeSeriesFilterDirection("DIRECTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterDirectionPtrInput)(nil)).Elem(), PickTimeSeriesFilterDirection("DIRECTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterRankingMethodInput)(nil)).Elem(), PickTimeSeriesFilterRankingMethod("METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterRankingMethodPtrInput)(nil)).Elem(), PickTimeSeriesFilterRankingMethod("METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PieChartChartTypeInput)(nil)).Elem(), PieChartChartType("PIE_CHART_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PieChartChartTypePtrInput)(nil)).Elem(), PieChartChartType("PIE_CHART_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkChartViewSparkChartTypeInput)(nil)).Elem(), SparkChartViewSparkChartType("SPARK_CHART_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkChartViewSparkChartTypePtrInput)(nil)).Elem(), SparkChartViewSparkChartType("SPARK_CHART_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StatisticalTimeSeriesFilterRankingMethodInput)(nil)).Elem(), StatisticalTimeSeriesFilterRankingMethod("METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StatisticalTimeSeriesFilterRankingMethodPtrInput)(nil)).Elem(), StatisticalTimeSeriesFilterRankingMethod("METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TextFormatInput)(nil)).Elem(), TextFormat("FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TextFormatPtrInput)(nil)).Elem(), TextFormat("FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStyleFontSizeInput)(nil)).Elem(), TextStyleFontSize("FONT_SIZE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStyleFontSizePtrInput)(nil)).Elem(), TextStyleFontSize("FONT_SIZE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStyleHorizontalAlignmentInput)(nil)).Elem(), TextStyleHorizontalAlignment("HORIZONTAL_ALIGNMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStyleHorizontalAlignmentPtrInput)(nil)).Elem(), TextStyleHorizontalAlignment("HORIZONTAL_ALIGNMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStylePaddingInput)(nil)).Elem(), TextStylePadding("PADDING_SIZE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStylePaddingPtrInput)(nil)).Elem(), TextStylePadding("PADDING_SIZE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStylePointerLocationInput)(nil)).Elem(), TextStylePointerLocation("POINTER_LOCATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStylePointerLocationPtrInput)(nil)).Elem(), TextStylePointerLocation("POINTER_LOCATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStyleVerticalAlignmentInput)(nil)).Elem(), TextStyleVerticalAlignment("VERTICAL_ALIGNMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStyleVerticalAlignmentPtrInput)(nil)).Elem(), TextStyleVerticalAlignment("VERTICAL_ALIGNMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdColorInput)(nil)).Elem(), ThresholdColor("COLOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdColorPtrInput)(nil)).Elem(), ThresholdColor("COLOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdDirectionInput)(nil)).Elem(), ThresholdDirection("DIRECTION_UNSPECIFIED"))
@@ -3112,6 +4664,8 @@ func init() {
 	pulumi.RegisterOutputType(AggregationPerSeriesAlignerPtrOutput{})
 	pulumi.RegisterOutputType(AxisScaleOutput{})
 	pulumi.RegisterOutputType(AxisScalePtrOutput{})
+	pulumi.RegisterOutputType(BreakdownSortOrderOutput{})
+	pulumi.RegisterOutputType(BreakdownSortOrderPtrOutput{})
 	pulumi.RegisterOutputType(ChartOptionsModeOutput{})
 	pulumi.RegisterOutputType(ChartOptionsModePtrOutput{})
 	pulumi.RegisterOutputType(DashboardFilterFilterTypeOutput{})
@@ -3120,16 +4674,30 @@ func init() {
 	pulumi.RegisterOutputType(DataSetPlotTypePtrOutput{})
 	pulumi.RegisterOutputType(DataSetTargetAxisOutput{})
 	pulumi.RegisterOutputType(DataSetTargetAxisPtrOutput{})
+	pulumi.RegisterOutputType(DimensionSortOrderOutput{})
+	pulumi.RegisterOutputType(DimensionSortOrderPtrOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterDirectionOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterDirectionPtrOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterRankingMethodOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterRankingMethodPtrOutput{})
+	pulumi.RegisterOutputType(PieChartChartTypeOutput{})
+	pulumi.RegisterOutputType(PieChartChartTypePtrOutput{})
 	pulumi.RegisterOutputType(SparkChartViewSparkChartTypeOutput{})
 	pulumi.RegisterOutputType(SparkChartViewSparkChartTypePtrOutput{})
 	pulumi.RegisterOutputType(StatisticalTimeSeriesFilterRankingMethodOutput{})
 	pulumi.RegisterOutputType(StatisticalTimeSeriesFilterRankingMethodPtrOutput{})
 	pulumi.RegisterOutputType(TextFormatOutput{})
 	pulumi.RegisterOutputType(TextFormatPtrOutput{})
+	pulumi.RegisterOutputType(TextStyleFontSizeOutput{})
+	pulumi.RegisterOutputType(TextStyleFontSizePtrOutput{})
+	pulumi.RegisterOutputType(TextStyleHorizontalAlignmentOutput{})
+	pulumi.RegisterOutputType(TextStyleHorizontalAlignmentPtrOutput{})
+	pulumi.RegisterOutputType(TextStylePaddingOutput{})
+	pulumi.RegisterOutputType(TextStylePaddingPtrOutput{})
+	pulumi.RegisterOutputType(TextStylePointerLocationOutput{})
+	pulumi.RegisterOutputType(TextStylePointerLocationPtrOutput{})
+	pulumi.RegisterOutputType(TextStyleVerticalAlignmentOutput{})
+	pulumi.RegisterOutputType(TextStyleVerticalAlignmentPtrOutput{})
 	pulumi.RegisterOutputType(ThresholdColorOutput{})
 	pulumi.RegisterOutputType(ThresholdColorPtrOutput{})
 	pulumi.RegisterOutputType(ThresholdDirectionOutput{})

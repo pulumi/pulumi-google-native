@@ -51,6 +51,8 @@ type Instance struct {
 	// User defined parameters to apply to the memcached process on each node.
 	Parameters MemcacheParametersResponseOutput `pulumi:"parameters"`
 	Project    pulumi.StringOutput              `pulumi:"project"`
+	// Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+	ReservedIpRangeId pulumi.StringArrayOutput `pulumi:"reservedIpRangeId"`
 	// The state of this Memcached instance.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Returns true if there is an update waiting to be applied
@@ -140,6 +142,8 @@ type instanceArgs struct {
 	// User defined parameters to apply to the memcached process on each node.
 	Parameters *MemcacheParameters `pulumi:"parameters"`
 	Project    *string             `pulumi:"project"`
+	// Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+	ReservedIpRangeId []string `pulumi:"reservedIpRangeId"`
 	// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
 	Zones []string `pulumi:"zones"`
 }
@@ -170,6 +174,8 @@ type InstanceArgs struct {
 	// User defined parameters to apply to the memcached process on each node.
 	Parameters MemcacheParametersPtrInput
 	Project    pulumi.StringPtrInput
+	// Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+	ReservedIpRangeId pulumi.StringArrayInput
 	// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
 	Zones pulumi.StringArrayInput
 }
@@ -311,6 +317,11 @@ func (o InstanceOutput) Parameters() MemcacheParametersResponseOutput {
 
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+func (o InstanceOutput) ReservedIpRangeId() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.ReservedIpRangeId }).(pulumi.StringArrayOutput)
 }
 
 // The state of this Memcached instance.

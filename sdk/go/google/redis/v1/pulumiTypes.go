@@ -14,6 +14,78 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// Endpoints on each network, for Redis clients to connect to the cluster.
+type DiscoveryEndpointResponse struct {
+	// Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
+	Address string `pulumi:"address"`
+	// The port number of the exposed Redis endpoint.
+	Port int `pulumi:"port"`
+	// Customer configuration for where the endpoint is created and accessed from.
+	PscConfig PscConfigResponse `pulumi:"pscConfig"`
+}
+
+// Endpoints on each network, for Redis clients to connect to the cluster.
+type DiscoveryEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryEndpointResponse)(nil)).Elem()
+}
+
+func (o DiscoveryEndpointResponseOutput) ToDiscoveryEndpointResponseOutput() DiscoveryEndpointResponseOutput {
+	return o
+}
+
+func (o DiscoveryEndpointResponseOutput) ToDiscoveryEndpointResponseOutputWithContext(ctx context.Context) DiscoveryEndpointResponseOutput {
+	return o
+}
+
+func (o DiscoveryEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiscoveryEndpointResponse] {
+	return pulumix.Output[DiscoveryEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
+func (o DiscoveryEndpointResponseOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryEndpointResponse) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The port number of the exposed Redis endpoint.
+func (o DiscoveryEndpointResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v DiscoveryEndpointResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Customer configuration for where the endpoint is created and accessed from.
+func (o DiscoveryEndpointResponseOutput) PscConfig() PscConfigResponseOutput {
+	return o.ApplyT(func(v DiscoveryEndpointResponse) PscConfigResponse { return v.PscConfig }).(PscConfigResponseOutput)
+}
+
+type DiscoveryEndpointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryEndpointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiscoveryEndpointResponse)(nil)).Elem()
+}
+
+func (o DiscoveryEndpointResponseArrayOutput) ToDiscoveryEndpointResponseArrayOutput() DiscoveryEndpointResponseArrayOutput {
+	return o
+}
+
+func (o DiscoveryEndpointResponseArrayOutput) ToDiscoveryEndpointResponseArrayOutputWithContext(ctx context.Context) DiscoveryEndpointResponseArrayOutput {
+	return o
+}
+
+func (o DiscoveryEndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiscoveryEndpointResponse] {
+	return pulumix.Output[[]DiscoveryEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DiscoveryEndpointResponseArrayOutput) Index(i pulumi.IntInput) DiscoveryEndpointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiscoveryEndpointResponse {
+		return vs[0].([]DiscoveryEndpointResponse)[vs[1].(int)]
+	}).(DiscoveryEndpointResponseOutput)
+}
+
 // Maintenance policy for an instance.
 type MaintenancePolicy struct {
 	// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
@@ -616,6 +688,301 @@ func (o PersistenceConfigResponseOutput) RdbSnapshotStartTime() pulumi.StringOut
 	return o.ApplyT(func(v PersistenceConfigResponse) string { return v.RdbSnapshotStartTime }).(pulumi.StringOutput)
 }
 
+type PscConfig struct {
+	// The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+}
+
+// PscConfigInput is an input type that accepts PscConfigArgs and PscConfigOutput values.
+// You can construct a concrete instance of `PscConfigInput` via:
+//
+//	PscConfigArgs{...}
+type PscConfigInput interface {
+	pulumi.Input
+
+	ToPscConfigOutput() PscConfigOutput
+	ToPscConfigOutputWithContext(context.Context) PscConfigOutput
+}
+
+type PscConfigArgs struct {
+	// The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (PscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfig)(nil)).Elem()
+}
+
+func (i PscConfigArgs) ToPscConfigOutput() PscConfigOutput {
+	return i.ToPscConfigOutputWithContext(context.Background())
+}
+
+func (i PscConfigArgs) ToPscConfigOutputWithContext(ctx context.Context) PscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigOutput)
+}
+
+func (i PscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PscConfig] {
+	return pulumix.Output[PscConfig]{
+		OutputState: i.ToPscConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// PscConfigArrayInput is an input type that accepts PscConfigArray and PscConfigArrayOutput values.
+// You can construct a concrete instance of `PscConfigArrayInput` via:
+//
+//	PscConfigArray{ PscConfigArgs{...} }
+type PscConfigArrayInput interface {
+	pulumi.Input
+
+	ToPscConfigArrayOutput() PscConfigArrayOutput
+	ToPscConfigArrayOutputWithContext(context.Context) PscConfigArrayOutput
+}
+
+type PscConfigArray []PscConfigInput
+
+func (PscConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PscConfig)(nil)).Elem()
+}
+
+func (i PscConfigArray) ToPscConfigArrayOutput() PscConfigArrayOutput {
+	return i.ToPscConfigArrayOutputWithContext(context.Background())
+}
+
+func (i PscConfigArray) ToPscConfigArrayOutputWithContext(ctx context.Context) PscConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigArrayOutput)
+}
+
+func (i PscConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]PscConfig] {
+	return pulumix.Output[[]PscConfig]{
+		OutputState: i.ToPscConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type PscConfigOutput struct{ *pulumi.OutputState }
+
+func (PscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfig)(nil)).Elem()
+}
+
+func (o PscConfigOutput) ToPscConfigOutput() PscConfigOutput {
+	return o
+}
+
+func (o PscConfigOutput) ToPscConfigOutputWithContext(ctx context.Context) PscConfigOutput {
+	return o
+}
+
+func (o PscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfig] {
+	return pulumix.Output[PscConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
+func (o PscConfigOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConfig) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type PscConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (PscConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PscConfig)(nil)).Elem()
+}
+
+func (o PscConfigArrayOutput) ToPscConfigArrayOutput() PscConfigArrayOutput {
+	return o
+}
+
+func (o PscConfigArrayOutput) ToPscConfigArrayOutputWithContext(ctx context.Context) PscConfigArrayOutput {
+	return o
+}
+
+func (o PscConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PscConfig] {
+	return pulumix.Output[[]PscConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PscConfigArrayOutput) Index(i pulumi.IntInput) PscConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PscConfig {
+		return vs[0].([]PscConfig)[vs[1].(int)]
+	}).(PscConfigOutput)
+}
+
+type PscConfigResponse struct {
+	// The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+}
+
+type PscConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PscConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfigResponse)(nil)).Elem()
+}
+
+func (o PscConfigResponseOutput) ToPscConfigResponseOutput() PscConfigResponseOutput {
+	return o
+}
+
+func (o PscConfigResponseOutput) ToPscConfigResponseOutputWithContext(ctx context.Context) PscConfigResponseOutput {
+	return o
+}
+
+func (o PscConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PscConfigResponse] {
+	return pulumix.Output[PscConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
+func (o PscConfigResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConfigResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type PscConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PscConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PscConfigResponse)(nil)).Elem()
+}
+
+func (o PscConfigResponseArrayOutput) ToPscConfigResponseArrayOutput() PscConfigResponseArrayOutput {
+	return o
+}
+
+func (o PscConfigResponseArrayOutput) ToPscConfigResponseArrayOutputWithContext(ctx context.Context) PscConfigResponseArrayOutput {
+	return o
+}
+
+func (o PscConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PscConfigResponse] {
+	return pulumix.Output[[]PscConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PscConfigResponseArrayOutput) Index(i pulumi.IntInput) PscConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PscConfigResponse {
+		return vs[0].([]PscConfigResponse)[vs[1].(int)]
+	}).(PscConfigResponseOutput)
+}
+
+// Details of consumer resources in a PSC connection.
+type PscConnectionResponse struct {
+	// The IP allocated on the consumer network for the PSC forwarding rule.
+	Address string `pulumi:"address"`
+	// The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+	ForwardingRule string `pulumi:"forwardingRule"`
+	// The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+	// The consumer project_id where the forwarding rule is created from.
+	Project string `pulumi:"project"`
+	// The PSC connection id of the forwarding rule connected to the service attachment.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+}
+
+// Details of consumer resources in a PSC connection.
+type PscConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PscConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConnectionResponse)(nil)).Elem()
+}
+
+func (o PscConnectionResponseOutput) ToPscConnectionResponseOutput() PscConnectionResponseOutput {
+	return o
+}
+
+func (o PscConnectionResponseOutput) ToPscConnectionResponseOutputWithContext(ctx context.Context) PscConnectionResponseOutput {
+	return o
+}
+
+func (o PscConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PscConnectionResponse] {
+	return pulumix.Output[PscConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The IP allocated on the consumer network for the PSC forwarding rule.
+func (o PscConnectionResponseOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+func (o PscConnectionResponseOutput) ForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.ForwardingRule }).(pulumi.StringOutput)
+}
+
+// The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}.
+func (o PscConnectionResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The consumer project_id where the forwarding rule is created from.
+func (o PscConnectionResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the forwarding rule connected to the service attachment.
+func (o PscConnectionResponseOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+type PscConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PscConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PscConnectionResponse)(nil)).Elem()
+}
+
+func (o PscConnectionResponseArrayOutput) ToPscConnectionResponseArrayOutput() PscConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PscConnectionResponseArrayOutput) ToPscConnectionResponseArrayOutputWithContext(ctx context.Context) PscConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PscConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PscConnectionResponse] {
+	return pulumix.Output[[]PscConnectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PscConnectionResponseArrayOutput) Index(i pulumi.IntInput) PscConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PscConnectionResponse {
+		return vs[0].([]PscConnectionResponse)[vs[1].(int)]
+	}).(PscConnectionResponseOutput)
+}
+
+// Represents additional information about the state of the cluster.
+type StateInfoResponse struct {
+	// Describes ongoing update on the cluster when cluster state is UPDATING.
+	UpdateInfo UpdateInfoResponse `pulumi:"updateInfo"`
+}
+
+// Represents additional information about the state of the cluster.
+type StateInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (StateInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StateInfoResponse)(nil)).Elem()
+}
+
+func (o StateInfoResponseOutput) ToStateInfoResponseOutput() StateInfoResponseOutput {
+	return o
+}
+
+func (o StateInfoResponseOutput) ToStateInfoResponseOutputWithContext(ctx context.Context) StateInfoResponseOutput {
+	return o
+}
+
+func (o StateInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StateInfoResponse] {
+	return pulumix.Output[StateInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Describes ongoing update on the cluster when cluster state is UPDATING.
+func (o StateInfoResponseOutput) UpdateInfo() UpdateInfoResponseOutput {
+	return o.ApplyT(func(v StateInfoResponse) UpdateInfoResponse { return v.UpdateInfo }).(UpdateInfoResponseOutput)
+}
+
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type TimeOfDay struct {
 	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -849,6 +1216,45 @@ func (o TlsCertificateResponseArrayOutput) Index(i pulumi.IntInput) TlsCertifica
 	}).(TlsCertificateResponseOutput)
 }
 
+// Represents information about an updating cluster.
+type UpdateInfoResponse struct {
+	// Target number of replica nodes per shard.
+	TargetReplicaCount int `pulumi:"targetReplicaCount"`
+	// Target number of shards for redis cluster
+	TargetShardCount int `pulumi:"targetShardCount"`
+}
+
+// Represents information about an updating cluster.
+type UpdateInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (UpdateInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateInfoResponse)(nil)).Elem()
+}
+
+func (o UpdateInfoResponseOutput) ToUpdateInfoResponseOutput() UpdateInfoResponseOutput {
+	return o
+}
+
+func (o UpdateInfoResponseOutput) ToUpdateInfoResponseOutputWithContext(ctx context.Context) UpdateInfoResponseOutput {
+	return o
+}
+
+func (o UpdateInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpdateInfoResponse] {
+	return pulumix.Output[UpdateInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Target number of replica nodes per shard.
+func (o UpdateInfoResponseOutput) TargetReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v UpdateInfoResponse) int { return v.TargetReplicaCount }).(pulumi.IntOutput)
+}
+
+// Target number of shards for redis cluster
+func (o UpdateInfoResponseOutput) TargetShardCount() pulumi.IntOutput {
+	return o.ApplyT(func(v UpdateInfoResponse) int { return v.TargetShardCount }).(pulumi.IntOutput)
+}
+
 // Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
 type WeeklyMaintenanceWindow struct {
 	// The day of week that maintenance updates occur.
@@ -1059,9 +1465,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyPtrInput)(nil)).Elem(), MaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigInput)(nil)).Elem(), PersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigPtrInput)(nil)).Elem(), PersistenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigInput)(nil)).Elem(), PscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigArrayInput)(nil)).Elem(), PscConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayInput)(nil)).Elem(), TimeOfDayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowInput)(nil)).Elem(), WeeklyMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowArrayInput)(nil)).Elem(), WeeklyMaintenanceWindowArray{})
+	pulumi.RegisterOutputType(DiscoveryEndpointResponseOutput{})
+	pulumi.RegisterOutputType(DiscoveryEndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyResponseOutput{})
@@ -1071,10 +1481,18 @@ func init() {
 	pulumi.RegisterOutputType(PersistenceConfigOutput{})
 	pulumi.RegisterOutputType(PersistenceConfigPtrOutput{})
 	pulumi.RegisterOutputType(PersistenceConfigResponseOutput{})
+	pulumi.RegisterOutputType(PscConfigOutput{})
+	pulumi.RegisterOutputType(PscConfigArrayOutput{})
+	pulumi.RegisterOutputType(PscConfigResponseOutput{})
+	pulumi.RegisterOutputType(PscConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(PscConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PscConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(StateInfoResponseOutput{})
 	pulumi.RegisterOutputType(TimeOfDayOutput{})
 	pulumi.RegisterOutputType(TimeOfDayResponseOutput{})
 	pulumi.RegisterOutputType(TlsCertificateResponseOutput{})
 	pulumi.RegisterOutputType(TlsCertificateResponseArrayOutput{})
+	pulumi.RegisterOutputType(UpdateInfoResponseOutput{})
 	pulumi.RegisterOutputType(WeeklyMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(WeeklyMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(WeeklyMaintenanceWindowResponseOutput{})

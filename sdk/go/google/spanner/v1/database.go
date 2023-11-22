@@ -26,7 +26,7 @@ type Database struct {
 	DefaultLeader pulumi.StringOutput `pulumi:"defaultLeader"`
 	// Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
 	EarliestVersionTime pulumi.StringOutput `pulumi:"earliestVersionTime"`
-	// Whether drop protection is enabled for this database. Defaults to false, if not set.
+	// Whether drop protection is enabled for this database. Defaults to false, if not set. For more details, please see how to [prevent accidental database deletion](https://cloud.google.com/spanner/docs/prevent-database-deletion).
 	EnableDropProtection pulumi.BoolOutput `pulumi:"enableDropProtection"`
 	// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
 	EncryptionConfig EncryptionConfigResponseOutput `pulumi:"encryptionConfig"`
@@ -196,7 +196,7 @@ func (o DatabaseOutput) EarliestVersionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.EarliestVersionTime }).(pulumi.StringOutput)
 }
 
-// Whether drop protection is enabled for this database. Defaults to false, if not set.
+// Whether drop protection is enabled for this database. Defaults to false, if not set. For more details, please see how to [prevent accidental database deletion](https://cloud.google.com/spanner/docs/prevent-database-deletion).
 func (o DatabaseOutput) EnableDropProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolOutput { return v.EnableDropProtection }).(pulumi.BoolOutput)
 }

@@ -35,7 +35,7 @@ type LookupRouteResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description string `pulumi:"description"`
-	// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+	// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
 	DestRange string `pulumi:"destRange"`
 	// Type of this resource. Always compute#routes for Route resources.
 	Kind string `pulumi:"kind"`
@@ -45,11 +45,13 @@ type LookupRouteResult struct {
 	Network string `pulumi:"network"`
 	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
 	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The full resource name of the Network Connectivity Center hub that will handle matching packets.
+	NextHopHub string `pulumi:"nextHopHub"`
 	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
 	NextHopIlb string `pulumi:"nextHopIlb"`
 	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
 	NextHopInstance string `pulumi:"nextHopInstance"`
-	// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+	// The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
 	NextHopIp string `pulumi:"nextHopIp"`
 	// The URL of the local network if it should handle matching packets.
 	NextHopNetwork string `pulumi:"nextHopNetwork"`
@@ -128,7 +130,7 @@ func (o LookupRouteResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
 func (o LookupRouteResultOutput) DestRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.DestRange }).(pulumi.StringOutput)
 }
@@ -153,6 +155,11 @@ func (o LookupRouteResultOutput) NextHopGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.NextHopGateway }).(pulumi.StringOutput)
 }
 
+// The full resource name of the Network Connectivity Center hub that will handle matching packets.
+func (o LookupRouteResultOutput) NextHopHub() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteResult) string { return v.NextHopHub }).(pulumi.StringOutput)
+}
+
 // The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
 func (o LookupRouteResultOutput) NextHopIlb() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.NextHopIlb }).(pulumi.StringOutput)
@@ -163,7 +170,7 @@ func (o LookupRouteResultOutput) NextHopInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.NextHopInstance }).(pulumi.StringOutput)
 }
 
-// The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
+// The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
 func (o LookupRouteResultOutput) NextHopIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.NextHopIp }).(pulumi.StringOutput)
 }

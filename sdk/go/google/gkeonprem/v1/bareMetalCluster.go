@@ -27,6 +27,8 @@ type BareMetalCluster struct {
 	BareMetalClusterId pulumi.StringOutput `pulumi:"bareMetalClusterId"`
 	// The Anthos clusters on bare metal version for your user cluster.
 	BareMetalVersion pulumi.StringOutput `pulumi:"bareMetalVersion"`
+	// Binary Authorization related configurations.
+	BinaryAuthorization BinaryAuthorizationResponseOutput `pulumi:"binaryAuthorization"`
 	// Cluster operations configuration.
 	ClusterOperations BareMetalClusterOperationsConfigResponseOutput `pulumi:"clusterOperations"`
 	// Control plane configuration.
@@ -79,6 +81,8 @@ type BareMetalCluster struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the bare metal user cluster was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The cluster upgrade policy.
+	UpgradePolicy BareMetalClusterUpgradePolicyResponseOutput `pulumi:"upgradePolicy"`
 	// The result of the preflight check.
 	ValidationCheck ValidationCheckResponseOutput `pulumi:"validationCheck"`
 }
@@ -158,6 +162,8 @@ type bareMetalClusterArgs struct {
 	BareMetalClusterId string `pulumi:"bareMetalClusterId"`
 	// The Anthos clusters on bare metal version for your user cluster.
 	BareMetalVersion string `pulumi:"bareMetalVersion"`
+	// Binary Authorization related configurations.
+	BinaryAuthorization *BinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Cluster operations configuration.
 	ClusterOperations *BareMetalClusterOperationsConfig `pulumi:"clusterOperations"`
 	// Control plane configuration.
@@ -186,6 +192,8 @@ type bareMetalClusterArgs struct {
 	SecurityConfig *BareMetalSecurityConfig `pulumi:"securityConfig"`
 	// Storage configuration.
 	Storage BareMetalStorageConfig `pulumi:"storage"`
+	// The cluster upgrade policy.
+	UpgradePolicy *BareMetalClusterUpgradePolicy `pulumi:"upgradePolicy"`
 }
 
 // The set of arguments for constructing a BareMetalCluster resource.
@@ -198,6 +206,8 @@ type BareMetalClusterArgs struct {
 	BareMetalClusterId pulumi.StringInput
 	// The Anthos clusters on bare metal version for your user cluster.
 	BareMetalVersion pulumi.StringInput
+	// Binary Authorization related configurations.
+	BinaryAuthorization BinaryAuthorizationPtrInput
 	// Cluster operations configuration.
 	ClusterOperations BareMetalClusterOperationsConfigPtrInput
 	// Control plane configuration.
@@ -226,6 +236,8 @@ type BareMetalClusterArgs struct {
 	SecurityConfig BareMetalSecurityConfigPtrInput
 	// Storage configuration.
 	Storage BareMetalStorageConfigInput
+	// The cluster upgrade policy.
+	UpgradePolicy BareMetalClusterUpgradePolicyPtrInput
 }
 
 func (BareMetalClusterArgs) ElementType() reflect.Type {
@@ -300,6 +312,11 @@ func (o BareMetalClusterOutput) BareMetalClusterId() pulumi.StringOutput {
 // The Anthos clusters on bare metal version for your user cluster.
 func (o BareMetalClusterOutput) BareMetalVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringOutput { return v.BareMetalVersion }).(pulumi.StringOutput)
+}
+
+// Binary Authorization related configurations.
+func (o BareMetalClusterOutput) BinaryAuthorization() BinaryAuthorizationResponseOutput {
+	return o.ApplyT(func(v *BareMetalCluster) BinaryAuthorizationResponseOutput { return v.BinaryAuthorization }).(BinaryAuthorizationResponseOutput)
 }
 
 // Cluster operations configuration.
@@ -433,6 +450,11 @@ func (o BareMetalClusterOutput) Uid() pulumi.StringOutput {
 // The time when the bare metal user cluster was last updated.
 func (o BareMetalClusterOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The cluster upgrade policy.
+func (o BareMetalClusterOutput) UpgradePolicy() BareMetalClusterUpgradePolicyResponseOutput {
+	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterUpgradePolicyResponseOutput { return v.UpgradePolicy }).(BareMetalClusterUpgradePolicyResponseOutput)
 }
 
 // The result of the preflight check.

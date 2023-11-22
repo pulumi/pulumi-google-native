@@ -39,6 +39,254 @@ func (o AdvanceChildRolloutJobResponseOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
+// The `AdvanceRollout` automation rule will automatically advance a successful Rollout to the next phase.
+type AdvanceRolloutRule struct {
+	// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id string `pulumi:"id"`
+	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	SourcePhases []string `pulumi:"sourcePhases"`
+	// Optional. How long to wait after a rollout is finished.
+	Wait *string `pulumi:"wait"`
+}
+
+// AdvanceRolloutRuleInput is an input type that accepts AdvanceRolloutRuleArgs and AdvanceRolloutRuleOutput values.
+// You can construct a concrete instance of `AdvanceRolloutRuleInput` via:
+//
+//	AdvanceRolloutRuleArgs{...}
+type AdvanceRolloutRuleInput interface {
+	pulumi.Input
+
+	ToAdvanceRolloutRuleOutput() AdvanceRolloutRuleOutput
+	ToAdvanceRolloutRuleOutputWithContext(context.Context) AdvanceRolloutRuleOutput
+}
+
+// The `AdvanceRollout` automation rule will automatically advance a successful Rollout to the next phase.
+type AdvanceRolloutRuleArgs struct {
+	// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	SourcePhases pulumi.StringArrayInput `pulumi:"sourcePhases"`
+	// Optional. How long to wait after a rollout is finished.
+	Wait pulumi.StringPtrInput `pulumi:"wait"`
+}
+
+func (AdvanceRolloutRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvanceRolloutRule)(nil)).Elem()
+}
+
+func (i AdvanceRolloutRuleArgs) ToAdvanceRolloutRuleOutput() AdvanceRolloutRuleOutput {
+	return i.ToAdvanceRolloutRuleOutputWithContext(context.Background())
+}
+
+func (i AdvanceRolloutRuleArgs) ToAdvanceRolloutRuleOutputWithContext(ctx context.Context) AdvanceRolloutRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvanceRolloutRuleOutput)
+}
+
+func (i AdvanceRolloutRuleArgs) ToOutput(ctx context.Context) pulumix.Output[AdvanceRolloutRule] {
+	return pulumix.Output[AdvanceRolloutRule]{
+		OutputState: i.ToAdvanceRolloutRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AdvanceRolloutRuleArgs) ToAdvanceRolloutRulePtrOutput() AdvanceRolloutRulePtrOutput {
+	return i.ToAdvanceRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (i AdvanceRolloutRuleArgs) ToAdvanceRolloutRulePtrOutputWithContext(ctx context.Context) AdvanceRolloutRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvanceRolloutRuleOutput).ToAdvanceRolloutRulePtrOutputWithContext(ctx)
+}
+
+// AdvanceRolloutRulePtrInput is an input type that accepts AdvanceRolloutRuleArgs, AdvanceRolloutRulePtr and AdvanceRolloutRulePtrOutput values.
+// You can construct a concrete instance of `AdvanceRolloutRulePtrInput` via:
+//
+//	        AdvanceRolloutRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AdvanceRolloutRulePtrInput interface {
+	pulumi.Input
+
+	ToAdvanceRolloutRulePtrOutput() AdvanceRolloutRulePtrOutput
+	ToAdvanceRolloutRulePtrOutputWithContext(context.Context) AdvanceRolloutRulePtrOutput
+}
+
+type advanceRolloutRulePtrType AdvanceRolloutRuleArgs
+
+func AdvanceRolloutRulePtr(v *AdvanceRolloutRuleArgs) AdvanceRolloutRulePtrInput {
+	return (*advanceRolloutRulePtrType)(v)
+}
+
+func (*advanceRolloutRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvanceRolloutRule)(nil)).Elem()
+}
+
+func (i *advanceRolloutRulePtrType) ToAdvanceRolloutRulePtrOutput() AdvanceRolloutRulePtrOutput {
+	return i.ToAdvanceRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (i *advanceRolloutRulePtrType) ToAdvanceRolloutRulePtrOutputWithContext(ctx context.Context) AdvanceRolloutRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvanceRolloutRulePtrOutput)
+}
+
+func (i *advanceRolloutRulePtrType) ToOutput(ctx context.Context) pulumix.Output[*AdvanceRolloutRule] {
+	return pulumix.Output[*AdvanceRolloutRule]{
+		OutputState: i.ToAdvanceRolloutRulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The `AdvanceRollout` automation rule will automatically advance a successful Rollout to the next phase.
+type AdvanceRolloutRuleOutput struct{ *pulumi.OutputState }
+
+func (AdvanceRolloutRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvanceRolloutRule)(nil)).Elem()
+}
+
+func (o AdvanceRolloutRuleOutput) ToAdvanceRolloutRuleOutput() AdvanceRolloutRuleOutput {
+	return o
+}
+
+func (o AdvanceRolloutRuleOutput) ToAdvanceRolloutRuleOutputWithContext(ctx context.Context) AdvanceRolloutRuleOutput {
+	return o
+}
+
+func (o AdvanceRolloutRuleOutput) ToAdvanceRolloutRulePtrOutput() AdvanceRolloutRulePtrOutput {
+	return o.ToAdvanceRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (o AdvanceRolloutRuleOutput) ToAdvanceRolloutRulePtrOutputWithContext(ctx context.Context) AdvanceRolloutRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvanceRolloutRule) *AdvanceRolloutRule {
+		return &v
+	}).(AdvanceRolloutRulePtrOutput)
+}
+
+func (o AdvanceRolloutRuleOutput) ToOutput(ctx context.Context) pulumix.Output[AdvanceRolloutRule] {
+	return pulumix.Output[AdvanceRolloutRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o AdvanceRolloutRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AdvanceRolloutRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o AdvanceRolloutRuleOutput) SourcePhases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AdvanceRolloutRule) []string { return v.SourcePhases }).(pulumi.StringArrayOutput)
+}
+
+// Optional. How long to wait after a rollout is finished.
+func (o AdvanceRolloutRuleOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdvanceRolloutRule) *string { return v.Wait }).(pulumi.StringPtrOutput)
+}
+
+type AdvanceRolloutRulePtrOutput struct{ *pulumi.OutputState }
+
+func (AdvanceRolloutRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvanceRolloutRule)(nil)).Elem()
+}
+
+func (o AdvanceRolloutRulePtrOutput) ToAdvanceRolloutRulePtrOutput() AdvanceRolloutRulePtrOutput {
+	return o
+}
+
+func (o AdvanceRolloutRulePtrOutput) ToAdvanceRolloutRulePtrOutputWithContext(ctx context.Context) AdvanceRolloutRulePtrOutput {
+	return o
+}
+
+func (o AdvanceRolloutRulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdvanceRolloutRule] {
+	return pulumix.Output[*AdvanceRolloutRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AdvanceRolloutRulePtrOutput) Elem() AdvanceRolloutRuleOutput {
+	return o.ApplyT(func(v *AdvanceRolloutRule) AdvanceRolloutRule {
+		if v != nil {
+			return *v
+		}
+		var ret AdvanceRolloutRule
+		return ret
+	}).(AdvanceRolloutRuleOutput)
+}
+
+// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o AdvanceRolloutRulePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdvanceRolloutRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o AdvanceRolloutRulePtrOutput) SourcePhases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AdvanceRolloutRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourcePhases
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. How long to wait after a rollout is finished.
+func (o AdvanceRolloutRulePtrOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdvanceRolloutRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `AdvanceRollout` automation rule will automatically advance a successful Rollout to the next phase.
+type AdvanceRolloutRuleResponse struct {
+	// Information around the state of the Automation rule.
+	Condition AutomationRuleConditionResponse `pulumi:"condition"`
+	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	SourcePhases []string `pulumi:"sourcePhases"`
+	// Optional. How long to wait after a rollout is finished.
+	Wait string `pulumi:"wait"`
+}
+
+// The `AdvanceRollout` automation rule will automatically advance a successful Rollout to the next phase.
+type AdvanceRolloutRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (AdvanceRolloutRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvanceRolloutRuleResponse)(nil)).Elem()
+}
+
+func (o AdvanceRolloutRuleResponseOutput) ToAdvanceRolloutRuleResponseOutput() AdvanceRolloutRuleResponseOutput {
+	return o
+}
+
+func (o AdvanceRolloutRuleResponseOutput) ToAdvanceRolloutRuleResponseOutputWithContext(ctx context.Context) AdvanceRolloutRuleResponseOutput {
+	return o
+}
+
+func (o AdvanceRolloutRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdvanceRolloutRuleResponse] {
+	return pulumix.Output[AdvanceRolloutRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Information around the state of the Automation rule.
+func (o AdvanceRolloutRuleResponseOutput) Condition() AutomationRuleConditionResponseOutput {
+	return o.ApplyT(func(v AdvanceRolloutRuleResponse) AutomationRuleConditionResponse { return v.Condition }).(AutomationRuleConditionResponseOutput)
+}
+
+// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o AdvanceRolloutRuleResponseOutput) SourcePhases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AdvanceRolloutRuleResponse) []string { return v.SourcePhases }).(pulumi.StringArrayOutput)
+}
+
+// Optional. How long to wait after a rollout is finished.
+func (o AdvanceRolloutRuleResponseOutput) Wait() pulumi.StringOutput {
+	return o.ApplyT(func(v AdvanceRolloutRuleResponse) string { return v.Wait }).(pulumi.StringOutput)
+}
+
 // Information specifying an Anthos Cluster.
 type AnthosCluster struct {
 	// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
@@ -629,6 +877,399 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
 		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
 	}).(AuditLogConfigResponseOutput)
+}
+
+// AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.
+type AutomationResourceSelector struct {
+	// Contains attributes about a target.
+	Targets []TargetAttribute `pulumi:"targets"`
+}
+
+// AutomationResourceSelectorInput is an input type that accepts AutomationResourceSelectorArgs and AutomationResourceSelectorOutput values.
+// You can construct a concrete instance of `AutomationResourceSelectorInput` via:
+//
+//	AutomationResourceSelectorArgs{...}
+type AutomationResourceSelectorInput interface {
+	pulumi.Input
+
+	ToAutomationResourceSelectorOutput() AutomationResourceSelectorOutput
+	ToAutomationResourceSelectorOutputWithContext(context.Context) AutomationResourceSelectorOutput
+}
+
+// AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.
+type AutomationResourceSelectorArgs struct {
+	// Contains attributes about a target.
+	Targets TargetAttributeArrayInput `pulumi:"targets"`
+}
+
+func (AutomationResourceSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationResourceSelector)(nil)).Elem()
+}
+
+func (i AutomationResourceSelectorArgs) ToAutomationResourceSelectorOutput() AutomationResourceSelectorOutput {
+	return i.ToAutomationResourceSelectorOutputWithContext(context.Background())
+}
+
+func (i AutomationResourceSelectorArgs) ToAutomationResourceSelectorOutputWithContext(ctx context.Context) AutomationResourceSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationResourceSelectorOutput)
+}
+
+func (i AutomationResourceSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[AutomationResourceSelector] {
+	return pulumix.Output[AutomationResourceSelector]{
+		OutputState: i.ToAutomationResourceSelectorOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.
+type AutomationResourceSelectorOutput struct{ *pulumi.OutputState }
+
+func (AutomationResourceSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationResourceSelector)(nil)).Elem()
+}
+
+func (o AutomationResourceSelectorOutput) ToAutomationResourceSelectorOutput() AutomationResourceSelectorOutput {
+	return o
+}
+
+func (o AutomationResourceSelectorOutput) ToAutomationResourceSelectorOutputWithContext(ctx context.Context) AutomationResourceSelectorOutput {
+	return o
+}
+
+func (o AutomationResourceSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationResourceSelector] {
+	return pulumix.Output[AutomationResourceSelector]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Contains attributes about a target.
+func (o AutomationResourceSelectorOutput) Targets() TargetAttributeArrayOutput {
+	return o.ApplyT(func(v AutomationResourceSelector) []TargetAttribute { return v.Targets }).(TargetAttributeArrayOutput)
+}
+
+// AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.
+type AutomationResourceSelectorResponse struct {
+	// Contains attributes about a target.
+	Targets []TargetAttributeResponse `pulumi:"targets"`
+}
+
+// AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.
+type AutomationResourceSelectorResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationResourceSelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationResourceSelectorResponse)(nil)).Elem()
+}
+
+func (o AutomationResourceSelectorResponseOutput) ToAutomationResourceSelectorResponseOutput() AutomationResourceSelectorResponseOutput {
+	return o
+}
+
+func (o AutomationResourceSelectorResponseOutput) ToAutomationResourceSelectorResponseOutputWithContext(ctx context.Context) AutomationResourceSelectorResponseOutput {
+	return o
+}
+
+func (o AutomationResourceSelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationResourceSelectorResponse] {
+	return pulumix.Output[AutomationResourceSelectorResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Contains attributes about a target.
+func (o AutomationResourceSelectorResponseOutput) Targets() TargetAttributeResponseArrayOutput {
+	return o.ApplyT(func(v AutomationResourceSelectorResponse) []TargetAttributeResponse { return v.Targets }).(TargetAttributeResponseArrayOutput)
+}
+
+// AutomationRolloutMetadata contains Automation-related actions that were performed on a rollout.
+type AutomationRolloutMetadataResponse struct {
+	// The IDs of the AutomationRuns initiated by an advance rollout rule.
+	AdvanceAutomationRuns []string `pulumi:"advanceAutomationRuns"`
+	// The ID of the AutomationRun initiated by a promote release rule.
+	PromoteAutomationRun string `pulumi:"promoteAutomationRun"`
+	// The IDs of the AutomationRuns initiated by a repair rollout rule.
+	RepairAutomationRuns []string `pulumi:"repairAutomationRuns"`
+}
+
+// AutomationRolloutMetadata contains Automation-related actions that were performed on a rollout.
+type AutomationRolloutMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationRolloutMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRolloutMetadataResponse)(nil)).Elem()
+}
+
+func (o AutomationRolloutMetadataResponseOutput) ToAutomationRolloutMetadataResponseOutput() AutomationRolloutMetadataResponseOutput {
+	return o
+}
+
+func (o AutomationRolloutMetadataResponseOutput) ToAutomationRolloutMetadataResponseOutputWithContext(ctx context.Context) AutomationRolloutMetadataResponseOutput {
+	return o
+}
+
+func (o AutomationRolloutMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRolloutMetadataResponse] {
+	return pulumix.Output[AutomationRolloutMetadataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The IDs of the AutomationRuns initiated by an advance rollout rule.
+func (o AutomationRolloutMetadataResponseOutput) AdvanceAutomationRuns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AutomationRolloutMetadataResponse) []string { return v.AdvanceAutomationRuns }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the AutomationRun initiated by a promote release rule.
+func (o AutomationRolloutMetadataResponseOutput) PromoteAutomationRun() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRolloutMetadataResponse) string { return v.PromoteAutomationRun }).(pulumi.StringOutput)
+}
+
+// The IDs of the AutomationRuns initiated by a repair rollout rule.
+func (o AutomationRolloutMetadataResponseOutput) RepairAutomationRuns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AutomationRolloutMetadataResponse) []string { return v.RepairAutomationRuns }).(pulumi.StringArrayOutput)
+}
+
+// `AutomationRule` defines the automation activities.
+type AutomationRule struct {
+	// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+	AdvanceRolloutRule *AdvanceRolloutRule `pulumi:"advanceRolloutRule"`
+	// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+	PromoteReleaseRule *PromoteReleaseRule `pulumi:"promoteReleaseRule"`
+	// Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
+	RepairRolloutRule *RepairRolloutRule `pulumi:"repairRolloutRule"`
+}
+
+// AutomationRuleInput is an input type that accepts AutomationRuleArgs and AutomationRuleOutput values.
+// You can construct a concrete instance of `AutomationRuleInput` via:
+//
+//	AutomationRuleArgs{...}
+type AutomationRuleInput interface {
+	pulumi.Input
+
+	ToAutomationRuleOutput() AutomationRuleOutput
+	ToAutomationRuleOutputWithContext(context.Context) AutomationRuleOutput
+}
+
+// `AutomationRule` defines the automation activities.
+type AutomationRuleArgs struct {
+	// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+	AdvanceRolloutRule AdvanceRolloutRulePtrInput `pulumi:"advanceRolloutRule"`
+	// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+	PromoteReleaseRule PromoteReleaseRulePtrInput `pulumi:"promoteReleaseRule"`
+	// Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
+	RepairRolloutRule RepairRolloutRulePtrInput `pulumi:"repairRolloutRule"`
+}
+
+func (AutomationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRule)(nil)).Elem()
+}
+
+func (i AutomationRuleArgs) ToAutomationRuleOutput() AutomationRuleOutput {
+	return i.ToAutomationRuleOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleArgs) ToAutomationRuleOutputWithContext(ctx context.Context) AutomationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleOutput)
+}
+
+func (i AutomationRuleArgs) ToOutput(ctx context.Context) pulumix.Output[AutomationRule] {
+	return pulumix.Output[AutomationRule]{
+		OutputState: i.ToAutomationRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AutomationRuleArrayInput is an input type that accepts AutomationRuleArray and AutomationRuleArrayOutput values.
+// You can construct a concrete instance of `AutomationRuleArrayInput` via:
+//
+//	AutomationRuleArray{ AutomationRuleArgs{...} }
+type AutomationRuleArrayInput interface {
+	pulumi.Input
+
+	ToAutomationRuleArrayOutput() AutomationRuleArrayOutput
+	ToAutomationRuleArrayOutputWithContext(context.Context) AutomationRuleArrayOutput
+}
+
+type AutomationRuleArray []AutomationRuleInput
+
+func (AutomationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutomationRule)(nil)).Elem()
+}
+
+func (i AutomationRuleArray) ToAutomationRuleArrayOutput() AutomationRuleArrayOutput {
+	return i.ToAutomationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleArray) ToAutomationRuleArrayOutputWithContext(ctx context.Context) AutomationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleArrayOutput)
+}
+
+func (i AutomationRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRule] {
+	return pulumix.Output[[]AutomationRule]{
+		OutputState: i.ToAutomationRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// `AutomationRule` defines the automation activities.
+type AutomationRuleOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRule)(nil)).Elem()
+}
+
+func (o AutomationRuleOutput) ToAutomationRuleOutput() AutomationRuleOutput {
+	return o
+}
+
+func (o AutomationRuleOutput) ToAutomationRuleOutputWithContext(ctx context.Context) AutomationRuleOutput {
+	return o
+}
+
+func (o AutomationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRule] {
+	return pulumix.Output[AutomationRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+func (o AutomationRuleOutput) AdvanceRolloutRule() AdvanceRolloutRulePtrOutput {
+	return o.ApplyT(func(v AutomationRule) *AdvanceRolloutRule { return v.AdvanceRolloutRule }).(AdvanceRolloutRulePtrOutput)
+}
+
+// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+func (o AutomationRuleOutput) PromoteReleaseRule() PromoteReleaseRulePtrOutput {
+	return o.ApplyT(func(v AutomationRule) *PromoteReleaseRule { return v.PromoteReleaseRule }).(PromoteReleaseRulePtrOutput)
+}
+
+// Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
+func (o AutomationRuleOutput) RepairRolloutRule() RepairRolloutRulePtrOutput {
+	return o.ApplyT(func(v AutomationRule) *RepairRolloutRule { return v.RepairRolloutRule }).(RepairRolloutRulePtrOutput)
+}
+
+type AutomationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutomationRule)(nil)).Elem()
+}
+
+func (o AutomationRuleArrayOutput) ToAutomationRuleArrayOutput() AutomationRuleArrayOutput {
+	return o
+}
+
+func (o AutomationRuleArrayOutput) ToAutomationRuleArrayOutputWithContext(ctx context.Context) AutomationRuleArrayOutput {
+	return o
+}
+
+func (o AutomationRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRule] {
+	return pulumix.Output[[]AutomationRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AutomationRuleArrayOutput) Index(i pulumi.IntInput) AutomationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutomationRule {
+		return vs[0].([]AutomationRule)[vs[1].(int)]
+	}).(AutomationRuleOutput)
+}
+
+// `AutomationRuleCondition` contains conditions relevant to an `Automation` rule.
+type AutomationRuleConditionResponse struct {
+	// Optional. Details around targets enumerated in the rule.
+	TargetsPresentCondition TargetsPresentConditionResponse `pulumi:"targetsPresentCondition"`
+}
+
+// `AutomationRuleCondition` contains conditions relevant to an `Automation` rule.
+type AutomationRuleConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleConditionResponse)(nil)).Elem()
+}
+
+func (o AutomationRuleConditionResponseOutput) ToAutomationRuleConditionResponseOutput() AutomationRuleConditionResponseOutput {
+	return o
+}
+
+func (o AutomationRuleConditionResponseOutput) ToAutomationRuleConditionResponseOutputWithContext(ctx context.Context) AutomationRuleConditionResponseOutput {
+	return o
+}
+
+func (o AutomationRuleConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRuleConditionResponse] {
+	return pulumix.Output[AutomationRuleConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Details around targets enumerated in the rule.
+func (o AutomationRuleConditionResponseOutput) TargetsPresentCondition() TargetsPresentConditionResponseOutput {
+	return o.ApplyT(func(v AutomationRuleConditionResponse) TargetsPresentConditionResponse {
+		return v.TargetsPresentCondition
+	}).(TargetsPresentConditionResponseOutput)
+}
+
+// `AutomationRule` defines the automation activities.
+type AutomationRuleResponse struct {
+	// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+	AdvanceRolloutRule AdvanceRolloutRuleResponse `pulumi:"advanceRolloutRule"`
+	// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+	PromoteReleaseRule PromoteReleaseRuleResponse `pulumi:"promoteReleaseRule"`
+	// Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
+	RepairRolloutRule RepairRolloutRuleResponse `pulumi:"repairRolloutRule"`
+}
+
+// `AutomationRule` defines the automation activities.
+type AutomationRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleResponse)(nil)).Elem()
+}
+
+func (o AutomationRuleResponseOutput) ToAutomationRuleResponseOutput() AutomationRuleResponseOutput {
+	return o
+}
+
+func (o AutomationRuleResponseOutput) ToAutomationRuleResponseOutputWithContext(ctx context.Context) AutomationRuleResponseOutput {
+	return o
+}
+
+func (o AutomationRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomationRuleResponse] {
+	return pulumix.Output[AutomationRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+func (o AutomationRuleResponseOutput) AdvanceRolloutRule() AdvanceRolloutRuleResponseOutput {
+	return o.ApplyT(func(v AutomationRuleResponse) AdvanceRolloutRuleResponse { return v.AdvanceRolloutRule }).(AdvanceRolloutRuleResponseOutput)
+}
+
+// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+func (o AutomationRuleResponseOutput) PromoteReleaseRule() PromoteReleaseRuleResponseOutput {
+	return o.ApplyT(func(v AutomationRuleResponse) PromoteReleaseRuleResponse { return v.PromoteReleaseRule }).(PromoteReleaseRuleResponseOutput)
+}
+
+// Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
+func (o AutomationRuleResponseOutput) RepairRolloutRule() RepairRolloutRuleResponseOutput {
+	return o.ApplyT(func(v AutomationRuleResponse) RepairRolloutRuleResponse { return v.RepairRolloutRule }).(RepairRolloutRuleResponseOutput)
+}
+
+type AutomationRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutomationRuleResponse)(nil)).Elem()
+}
+
+func (o AutomationRuleResponseArrayOutput) ToAutomationRuleResponseArrayOutput() AutomationRuleResponseArrayOutput {
+	return o
+}
+
+func (o AutomationRuleResponseArrayOutput) ToAutomationRuleResponseArrayOutputWithContext(ctx context.Context) AutomationRuleResponseArrayOutput {
+	return o
+}
+
+func (o AutomationRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AutomationRuleResponse] {
+	return pulumix.Output[[]AutomationRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AutomationRuleResponseArrayOutput) Index(i pulumi.IntInput) AutomationRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutomationRuleResponse {
+		return vs[0].([]AutomationRuleResponse)[vs[1].(int)]
+	}).(AutomationRuleResponseOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -1249,6 +1890,10 @@ func (o CanaryPtrOutput) RuntimeConfig() RuntimeConfigPtrOutput {
 type CanaryDeployment struct {
 	// The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 	Percentages []int `pulumi:"percentages"`
+	// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+	Postdeploy *Postdeploy `pulumi:"postdeploy"`
+	// Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
+	Predeploy *Predeploy `pulumi:"predeploy"`
 	// Whether to run verify tests after each percentage deployment.
 	Verify *bool `pulumi:"verify"`
 }
@@ -1268,6 +1913,10 @@ type CanaryDeploymentInput interface {
 type CanaryDeploymentArgs struct {
 	// The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 	Percentages pulumi.IntArrayInput `pulumi:"percentages"`
+	// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+	Postdeploy PostdeployPtrInput `pulumi:"postdeploy"`
+	// Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
+	Predeploy PredeployPtrInput `pulumi:"predeploy"`
 	// Whether to run verify tests after each percentage deployment.
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
 }
@@ -1373,6 +2022,16 @@ func (o CanaryDeploymentOutput) Percentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CanaryDeployment) []int { return v.Percentages }).(pulumi.IntArrayOutput)
 }
 
+// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+func (o CanaryDeploymentOutput) Postdeploy() PostdeployPtrOutput {
+	return o.ApplyT(func(v CanaryDeployment) *Postdeploy { return v.Postdeploy }).(PostdeployPtrOutput)
+}
+
+// Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
+func (o CanaryDeploymentOutput) Predeploy() PredeployPtrOutput {
+	return o.ApplyT(func(v CanaryDeployment) *Predeploy { return v.Predeploy }).(PredeployPtrOutput)
+}
+
 // Whether to run verify tests after each percentage deployment.
 func (o CanaryDeploymentOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CanaryDeployment) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
@@ -1418,6 +2077,26 @@ func (o CanaryDeploymentPtrOutput) Percentages() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
+// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+func (o CanaryDeploymentPtrOutput) Postdeploy() PostdeployPtrOutput {
+	return o.ApplyT(func(v *CanaryDeployment) *Postdeploy {
+		if v == nil {
+			return nil
+		}
+		return v.Postdeploy
+	}).(PostdeployPtrOutput)
+}
+
+// Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
+func (o CanaryDeploymentPtrOutput) Predeploy() PredeployPtrOutput {
+	return o.ApplyT(func(v *CanaryDeployment) *Predeploy {
+		if v == nil {
+			return nil
+		}
+		return v.Predeploy
+	}).(PredeployPtrOutput)
+}
+
 // Whether to run verify tests after each percentage deployment.
 func (o CanaryDeploymentPtrOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CanaryDeployment) *bool {
@@ -1432,6 +2111,10 @@ func (o CanaryDeploymentPtrOutput) Verify() pulumi.BoolPtrOutput {
 type CanaryDeploymentResponse struct {
 	// The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 	Percentages []int `pulumi:"percentages"`
+	// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+	Postdeploy PostdeployResponse `pulumi:"postdeploy"`
+	// Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
+	Predeploy PredeployResponse `pulumi:"predeploy"`
 	// Whether to run verify tests after each percentage deployment.
 	Verify bool `pulumi:"verify"`
 }
@@ -1460,6 +2143,16 @@ func (o CanaryDeploymentResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 // The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 func (o CanaryDeploymentResponseOutput) Percentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CanaryDeploymentResponse) []int { return v.Percentages }).(pulumi.IntArrayOutput)
+}
+
+// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
+func (o CanaryDeploymentResponseOutput) Postdeploy() PostdeployResponseOutput {
+	return o.ApplyT(func(v CanaryDeploymentResponse) PostdeployResponse { return v.Postdeploy }).(PostdeployResponseOutput)
+}
+
+// Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
+func (o CanaryDeploymentResponseOutput) Predeploy() PredeployResponseOutput {
+	return o.ApplyT(func(v CanaryDeploymentResponse) PredeployResponse { return v.Predeploy }).(PredeployResponseOutput)
 }
 
 // Whether to run verify tests after each percentage deployment.
@@ -1946,9 +2639,11 @@ func (o CloudRunLocationResponseOutput) Location() pulumi.StringOutput {
 
 // CloudRunMetadata contains information from a Cloud Run deployment.
 type CloudRunMetadataResponse struct {
+	// The name of the Cloud Run job that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/jobs/{job_name}`.
+	Job string `pulumi:"job"`
 	// The Cloud Run Revision id associated with a `Rollout`.
 	Revision string `pulumi:"revision"`
-	// The name of the Cloud Run Service that is associated with a `Rollout`. Format is projects/{project}/locations/{location}/services/{service}.
+	// The name of the Cloud Run Service that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/services/{service}`.
 	Service string `pulumi:"service"`
 	// The Cloud Run Service urls that are associated with a `Rollout`.
 	ServiceUrls []string `pulumi:"serviceUrls"`
@@ -1975,12 +2670,17 @@ func (o CloudRunMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
+// The name of the Cloud Run job that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/jobs/{job_name}`.
+func (o CloudRunMetadataResponseOutput) Job() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunMetadataResponse) string { return v.Job }).(pulumi.StringOutput)
+}
+
 // The Cloud Run Revision id associated with a `Rollout`.
 func (o CloudRunMetadataResponseOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunMetadataResponse) string { return v.Revision }).(pulumi.StringOutput)
 }
 
-// The name of the Cloud Run Service that is associated with a `Rollout`. Format is projects/{project}/locations/{location}/services/{service}.
+// The name of the Cloud Run Service that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/services/{service}`.
 func (o CloudRunMetadataResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunMetadataResponse) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -2433,9 +3133,9 @@ func (o DefaultPoolResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v DefaultPoolResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
-// A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
+// A `DeliveryPipeline` resource in the Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
 type DeliveryPipelineResponse struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Information around the state of the Delivery Pipeline.
 	Condition PipelineConditionResponse `pulumi:"condition"`
@@ -2445,9 +3145,9 @@ type DeliveryPipelineResponse struct {
 	Description string `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+	// Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
 	Name string `pulumi:"name"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline SerialPipelineResponse `pulumi:"serialPipeline"`
@@ -2459,7 +3159,7 @@ type DeliveryPipelineResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
+// A `DeliveryPipeline` resource in the Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
 type DeliveryPipelineResponseOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineResponseOutput) ElementType() reflect.Type {
@@ -2480,7 +3180,7 @@ func (o DeliveryPipelineResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
 func (o DeliveryPipelineResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DeliveryPipelineResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -2505,12 +3205,12 @@ func (o DeliveryPipelineResponseOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryPipelineResponse) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o DeliveryPipelineResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DeliveryPipelineResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+// Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
 func (o DeliveryPipelineResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryPipelineResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2560,10 +3260,212 @@ func (o DeployJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[De
 	}
 }
 
+// DeployParameters contains deploy parameters information.
+type DeployParameters struct {
+	// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+	MatchTargetLabels map[string]string `pulumi:"matchTargetLabels"`
+	// Values are deploy parameters in key-value pairs.
+	Values map[string]string `pulumi:"values"`
+}
+
+// DeployParametersInput is an input type that accepts DeployParametersArgs and DeployParametersOutput values.
+// You can construct a concrete instance of `DeployParametersInput` via:
+//
+//	DeployParametersArgs{...}
+type DeployParametersInput interface {
+	pulumi.Input
+
+	ToDeployParametersOutput() DeployParametersOutput
+	ToDeployParametersOutputWithContext(context.Context) DeployParametersOutput
+}
+
+// DeployParameters contains deploy parameters information.
+type DeployParametersArgs struct {
+	// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+	MatchTargetLabels pulumi.StringMapInput `pulumi:"matchTargetLabels"`
+	// Values are deploy parameters in key-value pairs.
+	Values pulumi.StringMapInput `pulumi:"values"`
+}
+
+func (DeployParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployParameters)(nil)).Elem()
+}
+
+func (i DeployParametersArgs) ToDeployParametersOutput() DeployParametersOutput {
+	return i.ToDeployParametersOutputWithContext(context.Background())
+}
+
+func (i DeployParametersArgs) ToDeployParametersOutputWithContext(ctx context.Context) DeployParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployParametersOutput)
+}
+
+func (i DeployParametersArgs) ToOutput(ctx context.Context) pulumix.Output[DeployParameters] {
+	return pulumix.Output[DeployParameters]{
+		OutputState: i.ToDeployParametersOutputWithContext(ctx).OutputState,
+	}
+}
+
+// DeployParametersArrayInput is an input type that accepts DeployParametersArray and DeployParametersArrayOutput values.
+// You can construct a concrete instance of `DeployParametersArrayInput` via:
+//
+//	DeployParametersArray{ DeployParametersArgs{...} }
+type DeployParametersArrayInput interface {
+	pulumi.Input
+
+	ToDeployParametersArrayOutput() DeployParametersArrayOutput
+	ToDeployParametersArrayOutputWithContext(context.Context) DeployParametersArrayOutput
+}
+
+type DeployParametersArray []DeployParametersInput
+
+func (DeployParametersArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployParameters)(nil)).Elem()
+}
+
+func (i DeployParametersArray) ToDeployParametersArrayOutput() DeployParametersArrayOutput {
+	return i.ToDeployParametersArrayOutputWithContext(context.Background())
+}
+
+func (i DeployParametersArray) ToDeployParametersArrayOutputWithContext(ctx context.Context) DeployParametersArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployParametersArrayOutput)
+}
+
+func (i DeployParametersArray) ToOutput(ctx context.Context) pulumix.Output[[]DeployParameters] {
+	return pulumix.Output[[]DeployParameters]{
+		OutputState: i.ToDeployParametersArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// DeployParameters contains deploy parameters information.
+type DeployParametersOutput struct{ *pulumi.OutputState }
+
+func (DeployParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployParameters)(nil)).Elem()
+}
+
+func (o DeployParametersOutput) ToDeployParametersOutput() DeployParametersOutput {
+	return o
+}
+
+func (o DeployParametersOutput) ToDeployParametersOutputWithContext(ctx context.Context) DeployParametersOutput {
+	return o
+}
+
+func (o DeployParametersOutput) ToOutput(ctx context.Context) pulumix.Output[DeployParameters] {
+	return pulumix.Output[DeployParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+func (o DeployParametersOutput) MatchTargetLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeployParameters) map[string]string { return v.MatchTargetLabels }).(pulumi.StringMapOutput)
+}
+
+// Values are deploy parameters in key-value pairs.
+func (o DeployParametersOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeployParameters) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+type DeployParametersArrayOutput struct{ *pulumi.OutputState }
+
+func (DeployParametersArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployParameters)(nil)).Elem()
+}
+
+func (o DeployParametersArrayOutput) ToDeployParametersArrayOutput() DeployParametersArrayOutput {
+	return o
+}
+
+func (o DeployParametersArrayOutput) ToDeployParametersArrayOutputWithContext(ctx context.Context) DeployParametersArrayOutput {
+	return o
+}
+
+func (o DeployParametersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeployParameters] {
+	return pulumix.Output[[]DeployParameters]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DeployParametersArrayOutput) Index(i pulumi.IntInput) DeployParametersOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeployParameters {
+		return vs[0].([]DeployParameters)[vs[1].(int)]
+	}).(DeployParametersOutput)
+}
+
+// DeployParameters contains deploy parameters information.
+type DeployParametersResponse struct {
+	// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+	MatchTargetLabels map[string]string `pulumi:"matchTargetLabels"`
+	// Values are deploy parameters in key-value pairs.
+	Values map[string]string `pulumi:"values"`
+}
+
+// DeployParameters contains deploy parameters information.
+type DeployParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (DeployParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployParametersResponse)(nil)).Elem()
+}
+
+func (o DeployParametersResponseOutput) ToDeployParametersResponseOutput() DeployParametersResponseOutput {
+	return o
+}
+
+func (o DeployParametersResponseOutput) ToDeployParametersResponseOutputWithContext(ctx context.Context) DeployParametersResponseOutput {
+	return o
+}
+
+func (o DeployParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeployParametersResponse] {
+	return pulumix.Output[DeployParametersResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+func (o DeployParametersResponseOutput) MatchTargetLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeployParametersResponse) map[string]string { return v.MatchTargetLabels }).(pulumi.StringMapOutput)
+}
+
+// Values are deploy parameters in key-value pairs.
+func (o DeployParametersResponseOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeployParametersResponse) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+type DeployParametersResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeployParametersResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployParametersResponse)(nil)).Elem()
+}
+
+func (o DeployParametersResponseArrayOutput) ToDeployParametersResponseArrayOutput() DeployParametersResponseArrayOutput {
+	return o
+}
+
+func (o DeployParametersResponseArrayOutput) ToDeployParametersResponseArrayOutputWithContext(ctx context.Context) DeployParametersResponseArrayOutput {
+	return o
+}
+
+func (o DeployParametersResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeployParametersResponse] {
+	return pulumix.Output[[]DeployParametersResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DeployParametersResponseArrayOutput) Index(i pulumi.IntInput) DeployParametersResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeployParametersResponse {
+		return vs[0].([]DeployParametersResponse)[vs[1].(int)]
+	}).(DeployParametersResponseOutput)
+}
+
 // Deployment job composition.
 type DeploymentJobsResponse struct {
 	// The deploy Job. This is the deploy job in the phase.
 	DeployJob JobResponse `pulumi:"deployJob"`
+	// The postdeploy Job, which is the last job on the phase.
+	PostdeployJob JobResponse `pulumi:"postdeployJob"`
+	// The predeploy Job, which is the first job on the phase.
+	PredeployJob JobResponse `pulumi:"predeployJob"`
 	// The verify Job. Runs after a deploy if the deploy succeeds.
 	VerifyJob JobResponse `pulumi:"verifyJob"`
 }
@@ -2592,6 +3494,16 @@ func (o DeploymentJobsResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 // The deploy Job. This is the deploy job in the phase.
 func (o DeploymentJobsResponseOutput) DeployJob() JobResponseOutput {
 	return o.ApplyT(func(v DeploymentJobsResponse) JobResponse { return v.DeployJob }).(JobResponseOutput)
+}
+
+// The postdeploy Job, which is the last job on the phase.
+func (o DeploymentJobsResponseOutput) PostdeployJob() JobResponseOutput {
+	return o.ApplyT(func(v DeploymentJobsResponse) JobResponse { return v.PostdeployJob }).(JobResponseOutput)
+}
+
+// The predeploy Job, which is the first job on the phase.
+func (o DeploymentJobsResponseOutput) PredeployJob() JobResponseOutput {
+	return o.ApplyT(func(v DeploymentJobsResponse) JobResponse { return v.PredeployJob }).(JobResponseOutput)
 }
 
 // The verify Job. Runs after a deploy if the deploy succeeds.
@@ -3157,6 +4069,8 @@ type GatewayServiceMesh struct {
 	Deployment string `pulumi:"deployment"`
 	// Name of the Gateway API HTTPRoute.
 	HttpRoute string `pulumi:"httpRoute"`
+	// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+	RouteUpdateWaitTime *string `pulumi:"routeUpdateWaitTime"`
 	// Name of the Kubernetes Service.
 	Service string `pulumi:"service"`
 }
@@ -3178,6 +4092,8 @@ type GatewayServiceMeshArgs struct {
 	Deployment pulumi.StringInput `pulumi:"deployment"`
 	// Name of the Gateway API HTTPRoute.
 	HttpRoute pulumi.StringInput `pulumi:"httpRoute"`
+	// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+	RouteUpdateWaitTime pulumi.StringPtrInput `pulumi:"routeUpdateWaitTime"`
 	// Name of the Kubernetes Service.
 	Service pulumi.StringInput `pulumi:"service"`
 }
@@ -3288,6 +4204,11 @@ func (o GatewayServiceMeshOutput) HttpRoute() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayServiceMesh) string { return v.HttpRoute }).(pulumi.StringOutput)
 }
 
+// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+func (o GatewayServiceMeshOutput) RouteUpdateWaitTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayServiceMesh) *string { return v.RouteUpdateWaitTime }).(pulumi.StringPtrOutput)
+}
+
 // Name of the Kubernetes Service.
 func (o GatewayServiceMeshOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayServiceMesh) string { return v.Service }).(pulumi.StringOutput)
@@ -3343,6 +4264,16 @@ func (o GatewayServiceMeshPtrOutput) HttpRoute() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+func (o GatewayServiceMeshPtrOutput) RouteUpdateWaitTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RouteUpdateWaitTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // Name of the Kubernetes Service.
 func (o GatewayServiceMeshPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayServiceMesh) *string {
@@ -3359,6 +4290,8 @@ type GatewayServiceMeshResponse struct {
 	Deployment string `pulumi:"deployment"`
 	// Name of the Gateway API HTTPRoute.
 	HttpRoute string `pulumi:"httpRoute"`
+	// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+	RouteUpdateWaitTime string `pulumi:"routeUpdateWaitTime"`
 	// Name of the Kubernetes Service.
 	Service string `pulumi:"service"`
 }
@@ -3394,6 +4327,11 @@ func (o GatewayServiceMeshResponseOutput) HttpRoute() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayServiceMeshResponse) string { return v.HttpRoute }).(pulumi.StringOutput)
 }
 
+// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+func (o GatewayServiceMeshResponseOutput) RouteUpdateWaitTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayServiceMeshResponse) string { return v.RouteUpdateWaitTime }).(pulumi.StringOutput)
+}
+
 // Name of the Kubernetes Service.
 func (o GatewayServiceMeshResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayServiceMeshResponse) string { return v.Service }).(pulumi.StringOutput)
@@ -3401,7 +4339,7 @@ func (o GatewayServiceMeshResponseOutput) Service() pulumi.StringOutput {
 
 // Information specifying a GKE Cluster.
 type GkeCluster struct {
-	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
 	Cluster *string `pulumi:"cluster"`
 	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
 	InternalIp *bool `pulumi:"internalIp"`
@@ -3420,7 +4358,7 @@ type GkeClusterInput interface {
 
 // Information specifying a GKE Cluster.
 type GkeClusterArgs struct {
-	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
 	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
 	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
 	InternalIp pulumi.BoolPtrInput `pulumi:"internalIp"`
@@ -3522,7 +4460,7 @@ func (o GkeClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GkeCluste
 	}
 }
 
-// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
 func (o GkeClusterOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GkeCluster) *string { return v.Cluster }).(pulumi.StringPtrOutput)
 }
@@ -3562,7 +4500,7 @@ func (o GkeClusterPtrOutput) Elem() GkeClusterOutput {
 	}).(GkeClusterOutput)
 }
 
-// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
 func (o GkeClusterPtrOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GkeCluster) *string {
 		if v == nil {
@@ -3584,7 +4522,7 @@ func (o GkeClusterPtrOutput) InternalIp() pulumi.BoolPtrOutput {
 
 // Information specifying a GKE Cluster.
 type GkeClusterResponse struct {
-	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
 	Cluster string `pulumi:"cluster"`
 	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
 	InternalIp bool `pulumi:"internalIp"`
@@ -3611,7 +4549,7 @@ func (o GkeClusterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[G
 	}
 }
 
-// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
 func (o GkeClusterResponseOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeClusterResponse) string { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -3631,6 +4569,10 @@ type JobResponse struct {
 	DeployJob DeployJobResponse `pulumi:"deployJob"`
 	// The name of the `JobRun` responsible for the most recent invocation of this Job.
 	JobRun string `pulumi:"jobRun"`
+	// A postdeploy Job.
+	PostdeployJob PostdeployJobResponse `pulumi:"postdeployJob"`
+	// A predeploy Job.
+	PredeployJob PredeployJobResponse `pulumi:"predeployJob"`
 	// Additional information on why the Job was skipped, if available.
 	SkipMessage string `pulumi:"skipMessage"`
 	// The current state of the Job.
@@ -3678,6 +4620,16 @@ func (o JobResponseOutput) DeployJob() DeployJobResponseOutput {
 // The name of the `JobRun` responsible for the most recent invocation of this Job.
 func (o JobResponseOutput) JobRun() pulumi.StringOutput {
 	return o.ApplyT(func(v JobResponse) string { return v.JobRun }).(pulumi.StringOutput)
+}
+
+// A postdeploy Job.
+func (o JobResponseOutput) PostdeployJob() PostdeployJobResponseOutput {
+	return o.ApplyT(func(v JobResponse) PostdeployJobResponse { return v.PostdeployJob }).(PostdeployJobResponseOutput)
+}
+
+// A predeploy Job.
+func (o JobResponseOutput) PredeployJob() PredeployJobResponseOutput {
+	return o.ApplyT(func(v JobResponse) PredeployJobResponse { return v.PredeployJob }).(PredeployJobResponseOutput)
 }
 
 // Additional information on why the Job was skipped, if available.
@@ -3945,6 +4897,8 @@ func (o KubernetesConfigResponseOutput) ServiceNetworking() ServiceNetworkingRes
 
 // Metadata includes information associated with a `Rollout`.
 type MetadataResponse struct {
+	// AutomationRolloutMetadata contains the information about the interactions between Automation service and this rollout.
+	Automation AutomationRolloutMetadataResponse `pulumi:"automation"`
 	// The name of the Cloud Run Service that is associated with a `Rollout`.
 	CloudRun CloudRunMetadataResponse `pulumi:"cloudRun"`
 }
@@ -3968,6 +4922,11 @@ func (o MetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Met
 	return pulumix.Output[MetadataResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// AutomationRolloutMetadata contains the information about the interactions between Automation service and this rollout.
+func (o MetadataResponseOutput) Automation() AutomationRolloutMetadataResponseOutput {
+	return o.ApplyT(func(v MetadataResponse) AutomationRolloutMetadataResponse { return v.Automation }).(AutomationRolloutMetadataResponseOutput)
 }
 
 // The name of the Cloud Run Service that is associated with a `Rollout`.
@@ -4177,6 +5136,10 @@ type PhaseConfig struct {
 	Percentage int `pulumi:"percentage"`
 	// The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
 	PhaseId string `pulumi:"phaseId"`
+	// Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+	Postdeploy *Postdeploy `pulumi:"postdeploy"`
+	// Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
+	Predeploy *Predeploy `pulumi:"predeploy"`
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles []string `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
@@ -4200,6 +5163,10 @@ type PhaseConfigArgs struct {
 	Percentage pulumi.IntInput `pulumi:"percentage"`
 	// The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
 	PhaseId pulumi.StringInput `pulumi:"phaseId"`
+	// Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+	Postdeploy PostdeployPtrInput `pulumi:"postdeploy"`
+	// Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
+	Predeploy PredeployPtrInput `pulumi:"predeploy"`
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
@@ -4286,6 +5253,16 @@ func (o PhaseConfigOutput) PhaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v PhaseConfig) string { return v.PhaseId }).(pulumi.StringOutput)
 }
 
+// Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+func (o PhaseConfigOutput) Postdeploy() PostdeployPtrOutput {
+	return o.ApplyT(func(v PhaseConfig) *Postdeploy { return v.Postdeploy }).(PostdeployPtrOutput)
+}
+
+// Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
+func (o PhaseConfigOutput) Predeploy() PredeployPtrOutput {
+	return o.ApplyT(func(v PhaseConfig) *Predeploy { return v.Predeploy }).(PredeployPtrOutput)
+}
+
 // Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 func (o PhaseConfigOutput) Profiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PhaseConfig) []string { return v.Profiles }).(pulumi.StringArrayOutput)
@@ -4328,6 +5305,10 @@ type PhaseConfigResponse struct {
 	Percentage int `pulumi:"percentage"`
 	// The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
 	PhaseId string `pulumi:"phaseId"`
+	// Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+	Postdeploy PostdeployResponse `pulumi:"postdeploy"`
+	// Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
+	Predeploy PredeployResponse `pulumi:"predeploy"`
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles []string `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
@@ -4363,6 +5344,16 @@ func (o PhaseConfigResponseOutput) Percentage() pulumi.IntOutput {
 // The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
 func (o PhaseConfigResponseOutput) PhaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v PhaseConfigResponse) string { return v.PhaseId }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
+func (o PhaseConfigResponseOutput) Postdeploy() PostdeployResponseOutput {
+	return o.ApplyT(func(v PhaseConfigResponse) PostdeployResponse { return v.Postdeploy }).(PostdeployResponseOutput)
+}
+
+// Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
+func (o PhaseConfigResponseOutput) Predeploy() PredeployResponseOutput {
+	return o.ApplyT(func(v PhaseConfigResponse) PredeployResponse { return v.Predeploy }).(PredeployResponseOutput)
 }
 
 // Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
@@ -4563,6 +5554,462 @@ func (o PipelineReadyConditionResponseOutput) Status() pulumi.BoolOutput {
 // Last time the condition was updated.
 func (o PipelineReadyConditionResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v PipelineReadyConditionResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Postdeploy contains the postdeploy job configuration information.
+type Postdeploy struct {
+	// Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
+	Actions []string `pulumi:"actions"`
+}
+
+// PostdeployInput is an input type that accepts PostdeployArgs and PostdeployOutput values.
+// You can construct a concrete instance of `PostdeployInput` via:
+//
+//	PostdeployArgs{...}
+type PostdeployInput interface {
+	pulumi.Input
+
+	ToPostdeployOutput() PostdeployOutput
+	ToPostdeployOutputWithContext(context.Context) PostdeployOutput
+}
+
+// Postdeploy contains the postdeploy job configuration information.
+type PostdeployArgs struct {
+	// Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+}
+
+func (PostdeployArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Postdeploy)(nil)).Elem()
+}
+
+func (i PostdeployArgs) ToPostdeployOutput() PostdeployOutput {
+	return i.ToPostdeployOutputWithContext(context.Background())
+}
+
+func (i PostdeployArgs) ToPostdeployOutputWithContext(ctx context.Context) PostdeployOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostdeployOutput)
+}
+
+func (i PostdeployArgs) ToOutput(ctx context.Context) pulumix.Output[Postdeploy] {
+	return pulumix.Output[Postdeploy]{
+		OutputState: i.ToPostdeployOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PostdeployArgs) ToPostdeployPtrOutput() PostdeployPtrOutput {
+	return i.ToPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (i PostdeployArgs) ToPostdeployPtrOutputWithContext(ctx context.Context) PostdeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostdeployOutput).ToPostdeployPtrOutputWithContext(ctx)
+}
+
+// PostdeployPtrInput is an input type that accepts PostdeployArgs, PostdeployPtr and PostdeployPtrOutput values.
+// You can construct a concrete instance of `PostdeployPtrInput` via:
+//
+//	        PostdeployArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostdeployPtrInput interface {
+	pulumi.Input
+
+	ToPostdeployPtrOutput() PostdeployPtrOutput
+	ToPostdeployPtrOutputWithContext(context.Context) PostdeployPtrOutput
+}
+
+type postdeployPtrType PostdeployArgs
+
+func PostdeployPtr(v *PostdeployArgs) PostdeployPtrInput {
+	return (*postdeployPtrType)(v)
+}
+
+func (*postdeployPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Postdeploy)(nil)).Elem()
+}
+
+func (i *postdeployPtrType) ToPostdeployPtrOutput() PostdeployPtrOutput {
+	return i.ToPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (i *postdeployPtrType) ToPostdeployPtrOutputWithContext(ctx context.Context) PostdeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostdeployPtrOutput)
+}
+
+func (i *postdeployPtrType) ToOutput(ctx context.Context) pulumix.Output[*Postdeploy] {
+	return pulumix.Output[*Postdeploy]{
+		OutputState: i.ToPostdeployPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Postdeploy contains the postdeploy job configuration information.
+type PostdeployOutput struct{ *pulumi.OutputState }
+
+func (PostdeployOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Postdeploy)(nil)).Elem()
+}
+
+func (o PostdeployOutput) ToPostdeployOutput() PostdeployOutput {
+	return o
+}
+
+func (o PostdeployOutput) ToPostdeployOutputWithContext(ctx context.Context) PostdeployOutput {
+	return o
+}
+
+func (o PostdeployOutput) ToPostdeployPtrOutput() PostdeployPtrOutput {
+	return o.ToPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (o PostdeployOutput) ToPostdeployPtrOutputWithContext(ctx context.Context) PostdeployPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Postdeploy) *Postdeploy {
+		return &v
+	}).(PostdeployPtrOutput)
+}
+
+func (o PostdeployOutput) ToOutput(ctx context.Context) pulumix.Output[Postdeploy] {
+	return pulumix.Output[Postdeploy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
+func (o PostdeployOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Postdeploy) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+type PostdeployPtrOutput struct{ *pulumi.OutputState }
+
+func (PostdeployPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Postdeploy)(nil)).Elem()
+}
+
+func (o PostdeployPtrOutput) ToPostdeployPtrOutput() PostdeployPtrOutput {
+	return o
+}
+
+func (o PostdeployPtrOutput) ToPostdeployPtrOutputWithContext(ctx context.Context) PostdeployPtrOutput {
+	return o
+}
+
+func (o PostdeployPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Postdeploy] {
+	return pulumix.Output[*Postdeploy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PostdeployPtrOutput) Elem() PostdeployOutput {
+	return o.ApplyT(func(v *Postdeploy) Postdeploy {
+		if v != nil {
+			return *v
+		}
+		var ret Postdeploy
+		return ret
+	}).(PostdeployOutput)
+}
+
+// Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
+func (o PostdeployPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Postdeploy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+// A postdeploy Job.
+type PostdeployJobResponse struct {
+	// The custom actions that the postdeploy Job executes.
+	Actions []string `pulumi:"actions"`
+}
+
+// A postdeploy Job.
+type PostdeployJobResponseOutput struct{ *pulumi.OutputState }
+
+func (PostdeployJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostdeployJobResponse)(nil)).Elem()
+}
+
+func (o PostdeployJobResponseOutput) ToPostdeployJobResponseOutput() PostdeployJobResponseOutput {
+	return o
+}
+
+func (o PostdeployJobResponseOutput) ToPostdeployJobResponseOutputWithContext(ctx context.Context) PostdeployJobResponseOutput {
+	return o
+}
+
+func (o PostdeployJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PostdeployJobResponse] {
+	return pulumix.Output[PostdeployJobResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The custom actions that the postdeploy Job executes.
+func (o PostdeployJobResponseOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PostdeployJobResponse) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Postdeploy contains the postdeploy job configuration information.
+type PostdeployResponse struct {
+	// Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
+	Actions []string `pulumi:"actions"`
+}
+
+// Postdeploy contains the postdeploy job configuration information.
+type PostdeployResponseOutput struct{ *pulumi.OutputState }
+
+func (PostdeployResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostdeployResponse)(nil)).Elem()
+}
+
+func (o PostdeployResponseOutput) ToPostdeployResponseOutput() PostdeployResponseOutput {
+	return o
+}
+
+func (o PostdeployResponseOutput) ToPostdeployResponseOutputWithContext(ctx context.Context) PostdeployResponseOutput {
+	return o
+}
+
+func (o PostdeployResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PostdeployResponse] {
+	return pulumix.Output[PostdeployResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
+func (o PostdeployResponseOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PostdeployResponse) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Predeploy contains the predeploy job configuration information.
+type Predeploy struct {
+	// Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
+	Actions []string `pulumi:"actions"`
+}
+
+// PredeployInput is an input type that accepts PredeployArgs and PredeployOutput values.
+// You can construct a concrete instance of `PredeployInput` via:
+//
+//	PredeployArgs{...}
+type PredeployInput interface {
+	pulumi.Input
+
+	ToPredeployOutput() PredeployOutput
+	ToPredeployOutputWithContext(context.Context) PredeployOutput
+}
+
+// Predeploy contains the predeploy job configuration information.
+type PredeployArgs struct {
+	// Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+}
+
+func (PredeployArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Predeploy)(nil)).Elem()
+}
+
+func (i PredeployArgs) ToPredeployOutput() PredeployOutput {
+	return i.ToPredeployOutputWithContext(context.Background())
+}
+
+func (i PredeployArgs) ToPredeployOutputWithContext(ctx context.Context) PredeployOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PredeployOutput)
+}
+
+func (i PredeployArgs) ToOutput(ctx context.Context) pulumix.Output[Predeploy] {
+	return pulumix.Output[Predeploy]{
+		OutputState: i.ToPredeployOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PredeployArgs) ToPredeployPtrOutput() PredeployPtrOutput {
+	return i.ToPredeployPtrOutputWithContext(context.Background())
+}
+
+func (i PredeployArgs) ToPredeployPtrOutputWithContext(ctx context.Context) PredeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PredeployOutput).ToPredeployPtrOutputWithContext(ctx)
+}
+
+// PredeployPtrInput is an input type that accepts PredeployArgs, PredeployPtr and PredeployPtrOutput values.
+// You can construct a concrete instance of `PredeployPtrInput` via:
+//
+//	        PredeployArgs{...}
+//
+//	or:
+//
+//	        nil
+type PredeployPtrInput interface {
+	pulumi.Input
+
+	ToPredeployPtrOutput() PredeployPtrOutput
+	ToPredeployPtrOutputWithContext(context.Context) PredeployPtrOutput
+}
+
+type predeployPtrType PredeployArgs
+
+func PredeployPtr(v *PredeployArgs) PredeployPtrInput {
+	return (*predeployPtrType)(v)
+}
+
+func (*predeployPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Predeploy)(nil)).Elem()
+}
+
+func (i *predeployPtrType) ToPredeployPtrOutput() PredeployPtrOutput {
+	return i.ToPredeployPtrOutputWithContext(context.Background())
+}
+
+func (i *predeployPtrType) ToPredeployPtrOutputWithContext(ctx context.Context) PredeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PredeployPtrOutput)
+}
+
+func (i *predeployPtrType) ToOutput(ctx context.Context) pulumix.Output[*Predeploy] {
+	return pulumix.Output[*Predeploy]{
+		OutputState: i.ToPredeployPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Predeploy contains the predeploy job configuration information.
+type PredeployOutput struct{ *pulumi.OutputState }
+
+func (PredeployOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Predeploy)(nil)).Elem()
+}
+
+func (o PredeployOutput) ToPredeployOutput() PredeployOutput {
+	return o
+}
+
+func (o PredeployOutput) ToPredeployOutputWithContext(ctx context.Context) PredeployOutput {
+	return o
+}
+
+func (o PredeployOutput) ToPredeployPtrOutput() PredeployPtrOutput {
+	return o.ToPredeployPtrOutputWithContext(context.Background())
+}
+
+func (o PredeployOutput) ToPredeployPtrOutputWithContext(ctx context.Context) PredeployPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Predeploy) *Predeploy {
+		return &v
+	}).(PredeployPtrOutput)
+}
+
+func (o PredeployOutput) ToOutput(ctx context.Context) pulumix.Output[Predeploy] {
+	return pulumix.Output[Predeploy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
+func (o PredeployOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Predeploy) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+type PredeployPtrOutput struct{ *pulumi.OutputState }
+
+func (PredeployPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Predeploy)(nil)).Elem()
+}
+
+func (o PredeployPtrOutput) ToPredeployPtrOutput() PredeployPtrOutput {
+	return o
+}
+
+func (o PredeployPtrOutput) ToPredeployPtrOutputWithContext(ctx context.Context) PredeployPtrOutput {
+	return o
+}
+
+func (o PredeployPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Predeploy] {
+	return pulumix.Output[*Predeploy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PredeployPtrOutput) Elem() PredeployOutput {
+	return o.ApplyT(func(v *Predeploy) Predeploy {
+		if v != nil {
+			return *v
+		}
+		var ret Predeploy
+		return ret
+	}).(PredeployOutput)
+}
+
+// Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
+func (o PredeployPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Predeploy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+// A predeploy Job.
+type PredeployJobResponse struct {
+	// The custom actions that the predeploy Job executes.
+	Actions []string `pulumi:"actions"`
+}
+
+// A predeploy Job.
+type PredeployJobResponseOutput struct{ *pulumi.OutputState }
+
+func (PredeployJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PredeployJobResponse)(nil)).Elem()
+}
+
+func (o PredeployJobResponseOutput) ToPredeployJobResponseOutput() PredeployJobResponseOutput {
+	return o
+}
+
+func (o PredeployJobResponseOutput) ToPredeployJobResponseOutputWithContext(ctx context.Context) PredeployJobResponseOutput {
+	return o
+}
+
+func (o PredeployJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PredeployJobResponse] {
+	return pulumix.Output[PredeployJobResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The custom actions that the predeploy Job executes.
+func (o PredeployJobResponseOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PredeployJobResponse) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Predeploy contains the predeploy job configuration information.
+type PredeployResponse struct {
+	// Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
+	Actions []string `pulumi:"actions"`
+}
+
+// Predeploy contains the predeploy job configuration information.
+type PredeployResponseOutput struct{ *pulumi.OutputState }
+
+func (PredeployResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PredeployResponse)(nil)).Elem()
+}
+
+func (o PredeployResponseOutput) ToPredeployResponseOutput() PredeployResponseOutput {
+	return o
+}
+
+func (o PredeployResponseOutput) ToPredeployResponseOutputWithContext(ctx context.Context) PredeployResponseOutput {
+	return o
+}
+
+func (o PredeployResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PredeployResponse] {
+	return pulumix.Output[PredeployResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
+func (o PredeployResponseOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PredeployResponse) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
 // Execution using a private Cloud Build pool.
@@ -4813,6 +6260,280 @@ func (o PrivatePoolResponseOutput) WorkerPool() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivatePoolResponse) string { return v.WorkerPool }).(pulumi.StringOutput)
 }
 
+// `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
+type PromoteReleaseRule struct {
+	// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+	DestinationPhase *string `pulumi:"destinationPhase"`
+	// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+	DestinationTargetId *string `pulumi:"destinationTargetId"`
+	// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id string `pulumi:"id"`
+	// Optional. How long the release need to be paused until being promoted to the next target.
+	Wait *string `pulumi:"wait"`
+}
+
+// PromoteReleaseRuleInput is an input type that accepts PromoteReleaseRuleArgs and PromoteReleaseRuleOutput values.
+// You can construct a concrete instance of `PromoteReleaseRuleInput` via:
+//
+//	PromoteReleaseRuleArgs{...}
+type PromoteReleaseRuleInput interface {
+	pulumi.Input
+
+	ToPromoteReleaseRuleOutput() PromoteReleaseRuleOutput
+	ToPromoteReleaseRuleOutputWithContext(context.Context) PromoteReleaseRuleOutput
+}
+
+// `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
+type PromoteReleaseRuleArgs struct {
+	// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+	DestinationPhase pulumi.StringPtrInput `pulumi:"destinationPhase"`
+	// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+	DestinationTargetId pulumi.StringPtrInput `pulumi:"destinationTargetId"`
+	// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. How long the release need to be paused until being promoted to the next target.
+	Wait pulumi.StringPtrInput `pulumi:"wait"`
+}
+
+func (PromoteReleaseRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromoteReleaseRule)(nil)).Elem()
+}
+
+func (i PromoteReleaseRuleArgs) ToPromoteReleaseRuleOutput() PromoteReleaseRuleOutput {
+	return i.ToPromoteReleaseRuleOutputWithContext(context.Background())
+}
+
+func (i PromoteReleaseRuleArgs) ToPromoteReleaseRuleOutputWithContext(ctx context.Context) PromoteReleaseRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromoteReleaseRuleOutput)
+}
+
+func (i PromoteReleaseRuleArgs) ToOutput(ctx context.Context) pulumix.Output[PromoteReleaseRule] {
+	return pulumix.Output[PromoteReleaseRule]{
+		OutputState: i.ToPromoteReleaseRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PromoteReleaseRuleArgs) ToPromoteReleaseRulePtrOutput() PromoteReleaseRulePtrOutput {
+	return i.ToPromoteReleaseRulePtrOutputWithContext(context.Background())
+}
+
+func (i PromoteReleaseRuleArgs) ToPromoteReleaseRulePtrOutputWithContext(ctx context.Context) PromoteReleaseRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromoteReleaseRuleOutput).ToPromoteReleaseRulePtrOutputWithContext(ctx)
+}
+
+// PromoteReleaseRulePtrInput is an input type that accepts PromoteReleaseRuleArgs, PromoteReleaseRulePtr and PromoteReleaseRulePtrOutput values.
+// You can construct a concrete instance of `PromoteReleaseRulePtrInput` via:
+//
+//	        PromoteReleaseRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type PromoteReleaseRulePtrInput interface {
+	pulumi.Input
+
+	ToPromoteReleaseRulePtrOutput() PromoteReleaseRulePtrOutput
+	ToPromoteReleaseRulePtrOutputWithContext(context.Context) PromoteReleaseRulePtrOutput
+}
+
+type promoteReleaseRulePtrType PromoteReleaseRuleArgs
+
+func PromoteReleaseRulePtr(v *PromoteReleaseRuleArgs) PromoteReleaseRulePtrInput {
+	return (*promoteReleaseRulePtrType)(v)
+}
+
+func (*promoteReleaseRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PromoteReleaseRule)(nil)).Elem()
+}
+
+func (i *promoteReleaseRulePtrType) ToPromoteReleaseRulePtrOutput() PromoteReleaseRulePtrOutput {
+	return i.ToPromoteReleaseRulePtrOutputWithContext(context.Background())
+}
+
+func (i *promoteReleaseRulePtrType) ToPromoteReleaseRulePtrOutputWithContext(ctx context.Context) PromoteReleaseRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromoteReleaseRulePtrOutput)
+}
+
+func (i *promoteReleaseRulePtrType) ToOutput(ctx context.Context) pulumix.Output[*PromoteReleaseRule] {
+	return pulumix.Output[*PromoteReleaseRule]{
+		OutputState: i.ToPromoteReleaseRulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
+type PromoteReleaseRuleOutput struct{ *pulumi.OutputState }
+
+func (PromoteReleaseRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromoteReleaseRule)(nil)).Elem()
+}
+
+func (o PromoteReleaseRuleOutput) ToPromoteReleaseRuleOutput() PromoteReleaseRuleOutput {
+	return o
+}
+
+func (o PromoteReleaseRuleOutput) ToPromoteReleaseRuleOutputWithContext(ctx context.Context) PromoteReleaseRuleOutput {
+	return o
+}
+
+func (o PromoteReleaseRuleOutput) ToPromoteReleaseRulePtrOutput() PromoteReleaseRulePtrOutput {
+	return o.ToPromoteReleaseRulePtrOutputWithContext(context.Background())
+}
+
+func (o PromoteReleaseRuleOutput) ToPromoteReleaseRulePtrOutputWithContext(ctx context.Context) PromoteReleaseRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PromoteReleaseRule) *PromoteReleaseRule {
+		return &v
+	}).(PromoteReleaseRulePtrOutput)
+}
+
+func (o PromoteReleaseRuleOutput) ToOutput(ctx context.Context) pulumix.Output[PromoteReleaseRule] {
+	return pulumix.Output[PromoteReleaseRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+func (o PromoteReleaseRuleOutput) DestinationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromoteReleaseRule) *string { return v.DestinationPhase }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+func (o PromoteReleaseRuleOutput) DestinationTargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromoteReleaseRule) *string { return v.DestinationTargetId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o PromoteReleaseRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PromoteReleaseRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Optional. How long the release need to be paused until being promoted to the next target.
+func (o PromoteReleaseRuleOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromoteReleaseRule) *string { return v.Wait }).(pulumi.StringPtrOutput)
+}
+
+type PromoteReleaseRulePtrOutput struct{ *pulumi.OutputState }
+
+func (PromoteReleaseRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PromoteReleaseRule)(nil)).Elem()
+}
+
+func (o PromoteReleaseRulePtrOutput) ToPromoteReleaseRulePtrOutput() PromoteReleaseRulePtrOutput {
+	return o
+}
+
+func (o PromoteReleaseRulePtrOutput) ToPromoteReleaseRulePtrOutputWithContext(ctx context.Context) PromoteReleaseRulePtrOutput {
+	return o
+}
+
+func (o PromoteReleaseRulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PromoteReleaseRule] {
+	return pulumix.Output[*PromoteReleaseRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PromoteReleaseRulePtrOutput) Elem() PromoteReleaseRuleOutput {
+	return o.ApplyT(func(v *PromoteReleaseRule) PromoteReleaseRule {
+		if v != nil {
+			return *v
+		}
+		var ret PromoteReleaseRule
+		return ret
+	}).(PromoteReleaseRuleOutput)
+}
+
+// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+func (o PromoteReleaseRulePtrOutput) DestinationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationPhase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+func (o PromoteReleaseRulePtrOutput) DestinationTargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationTargetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o PromoteReleaseRulePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. How long the release need to be paused until being promoted to the next target.
+func (o PromoteReleaseRulePtrOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.StringPtrOutput)
+}
+
+// `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
+type PromoteReleaseRuleResponse struct {
+	// Information around the state of the Automation rule.
+	Condition AutomationRuleConditionResponse `pulumi:"condition"`
+	// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+	DestinationPhase string `pulumi:"destinationPhase"`
+	// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+	DestinationTargetId string `pulumi:"destinationTargetId"`
+	// Optional. How long the release need to be paused until being promoted to the next target.
+	Wait string `pulumi:"wait"`
+}
+
+// `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
+type PromoteReleaseRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (PromoteReleaseRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromoteReleaseRuleResponse)(nil)).Elem()
+}
+
+func (o PromoteReleaseRuleResponseOutput) ToPromoteReleaseRuleResponseOutput() PromoteReleaseRuleResponseOutput {
+	return o
+}
+
+func (o PromoteReleaseRuleResponseOutput) ToPromoteReleaseRuleResponseOutputWithContext(ctx context.Context) PromoteReleaseRuleResponseOutput {
+	return o
+}
+
+func (o PromoteReleaseRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PromoteReleaseRuleResponse] {
+	return pulumix.Output[PromoteReleaseRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Information around the state of the Automation rule.
+func (o PromoteReleaseRuleResponseOutput) Condition() AutomationRuleConditionResponseOutput {
+	return o.ApplyT(func(v PromoteReleaseRuleResponse) AutomationRuleConditionResponse { return v.Condition }).(AutomationRuleConditionResponseOutput)
+}
+
+// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+func (o PromoteReleaseRuleResponseOutput) DestinationPhase() pulumi.StringOutput {
+	return o.ApplyT(func(v PromoteReleaseRuleResponse) string { return v.DestinationPhase }).(pulumi.StringOutput)
+}
+
+// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+func (o PromoteReleaseRuleResponseOutput) DestinationTargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v PromoteReleaseRuleResponse) string { return v.DestinationTargetId }).(pulumi.StringOutput)
+}
+
+// Optional. How long the release need to be paused until being promoted to the next target.
+func (o PromoteReleaseRuleResponseOutput) Wait() pulumi.StringOutput {
+	return o.ApplyT(func(v PromoteReleaseRuleResponse) string { return v.Wait }).(pulumi.StringOutput)
+}
+
 // ReleaseCondition contains all conditions relevant to a Release.
 type ReleaseConditionResponse struct {
 	// Details around the Releases's overall status.
@@ -4884,6 +6605,922 @@ func (o ReleaseReadyConditionResponseOutput) ToOutput(ctx context.Context) pulum
 // True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.
 func (o ReleaseReadyConditionResponseOutput) Status() pulumi.BoolOutput {
 	return o.ApplyT(func(v ReleaseReadyConditionResponse) bool { return v.Status }).(pulumi.BoolOutput)
+}
+
+// Configuration of the repair action.
+type RepairMode struct {
+	// Optional. Retries a failed job.
+	Retry *Retry `pulumi:"retry"`
+	// Optional. Rolls back a `Rollout`.
+	Rollback *Rollback `pulumi:"rollback"`
+}
+
+// RepairModeInput is an input type that accepts RepairModeArgs and RepairModeOutput values.
+// You can construct a concrete instance of `RepairModeInput` via:
+//
+//	RepairModeArgs{...}
+type RepairModeInput interface {
+	pulumi.Input
+
+	ToRepairModeOutput() RepairModeOutput
+	ToRepairModeOutputWithContext(context.Context) RepairModeOutput
+}
+
+// Configuration of the repair action.
+type RepairModeArgs struct {
+	// Optional. Retries a failed job.
+	Retry RetryPtrInput `pulumi:"retry"`
+	// Optional. Rolls back a `Rollout`.
+	Rollback RollbackPtrInput `pulumi:"rollback"`
+}
+
+func (RepairModeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepairMode)(nil)).Elem()
+}
+
+func (i RepairModeArgs) ToRepairModeOutput() RepairModeOutput {
+	return i.ToRepairModeOutputWithContext(context.Background())
+}
+
+func (i RepairModeArgs) ToRepairModeOutputWithContext(ctx context.Context) RepairModeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepairModeOutput)
+}
+
+func (i RepairModeArgs) ToOutput(ctx context.Context) pulumix.Output[RepairMode] {
+	return pulumix.Output[RepairMode]{
+		OutputState: i.ToRepairModeOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RepairModeArrayInput is an input type that accepts RepairModeArray and RepairModeArrayOutput values.
+// You can construct a concrete instance of `RepairModeArrayInput` via:
+//
+//	RepairModeArray{ RepairModeArgs{...} }
+type RepairModeArrayInput interface {
+	pulumi.Input
+
+	ToRepairModeArrayOutput() RepairModeArrayOutput
+	ToRepairModeArrayOutputWithContext(context.Context) RepairModeArrayOutput
+}
+
+type RepairModeArray []RepairModeInput
+
+func (RepairModeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepairMode)(nil)).Elem()
+}
+
+func (i RepairModeArray) ToRepairModeArrayOutput() RepairModeArrayOutput {
+	return i.ToRepairModeArrayOutputWithContext(context.Background())
+}
+
+func (i RepairModeArray) ToRepairModeArrayOutputWithContext(ctx context.Context) RepairModeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepairModeArrayOutput)
+}
+
+func (i RepairModeArray) ToOutput(ctx context.Context) pulumix.Output[[]RepairMode] {
+	return pulumix.Output[[]RepairMode]{
+		OutputState: i.ToRepairModeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration of the repair action.
+type RepairModeOutput struct{ *pulumi.OutputState }
+
+func (RepairModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepairMode)(nil)).Elem()
+}
+
+func (o RepairModeOutput) ToRepairModeOutput() RepairModeOutput {
+	return o
+}
+
+func (o RepairModeOutput) ToRepairModeOutputWithContext(ctx context.Context) RepairModeOutput {
+	return o
+}
+
+func (o RepairModeOutput) ToOutput(ctx context.Context) pulumix.Output[RepairMode] {
+	return pulumix.Output[RepairMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Retries a failed job.
+func (o RepairModeOutput) Retry() RetryPtrOutput {
+	return o.ApplyT(func(v RepairMode) *Retry { return v.Retry }).(RetryPtrOutput)
+}
+
+// Optional. Rolls back a `Rollout`.
+func (o RepairModeOutput) Rollback() RollbackPtrOutput {
+	return o.ApplyT(func(v RepairMode) *Rollback { return v.Rollback }).(RollbackPtrOutput)
+}
+
+type RepairModeArrayOutput struct{ *pulumi.OutputState }
+
+func (RepairModeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepairMode)(nil)).Elem()
+}
+
+func (o RepairModeArrayOutput) ToRepairModeArrayOutput() RepairModeArrayOutput {
+	return o
+}
+
+func (o RepairModeArrayOutput) ToRepairModeArrayOutputWithContext(ctx context.Context) RepairModeArrayOutput {
+	return o
+}
+
+func (o RepairModeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepairMode] {
+	return pulumix.Output[[]RepairMode]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RepairModeArrayOutput) Index(i pulumi.IntInput) RepairModeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepairMode {
+		return vs[0].([]RepairMode)[vs[1].(int)]
+	}).(RepairModeOutput)
+}
+
+// Configuration of the repair action.
+type RepairModeResponse struct {
+	// Optional. Retries a failed job.
+	Retry RetryResponse `pulumi:"retry"`
+	// Optional. Rolls back a `Rollout`.
+	Rollback RollbackResponse `pulumi:"rollback"`
+}
+
+// Configuration of the repair action.
+type RepairModeResponseOutput struct{ *pulumi.OutputState }
+
+func (RepairModeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepairModeResponse)(nil)).Elem()
+}
+
+func (o RepairModeResponseOutput) ToRepairModeResponseOutput() RepairModeResponseOutput {
+	return o
+}
+
+func (o RepairModeResponseOutput) ToRepairModeResponseOutputWithContext(ctx context.Context) RepairModeResponseOutput {
+	return o
+}
+
+func (o RepairModeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RepairModeResponse] {
+	return pulumix.Output[RepairModeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Retries a failed job.
+func (o RepairModeResponseOutput) Retry() RetryResponseOutput {
+	return o.ApplyT(func(v RepairModeResponse) RetryResponse { return v.Retry }).(RetryResponseOutput)
+}
+
+// Optional. Rolls back a `Rollout`.
+func (o RepairModeResponseOutput) Rollback() RollbackResponseOutput {
+	return o.ApplyT(func(v RepairModeResponse) RollbackResponse { return v.Rollback }).(RollbackResponseOutput)
+}
+
+type RepairModeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RepairModeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepairModeResponse)(nil)).Elem()
+}
+
+func (o RepairModeResponseArrayOutput) ToRepairModeResponseArrayOutput() RepairModeResponseArrayOutput {
+	return o
+}
+
+func (o RepairModeResponseArrayOutput) ToRepairModeResponseArrayOutputWithContext(ctx context.Context) RepairModeResponseArrayOutput {
+	return o
+}
+
+func (o RepairModeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepairModeResponse] {
+	return pulumix.Output[[]RepairModeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RepairModeResponseArrayOutput) Index(i pulumi.IntInput) RepairModeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepairModeResponse {
+		return vs[0].([]RepairModeResponse)[vs[1].(int)]
+	}).(RepairModeResponseOutput)
+}
+
+// The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.
+type RepairRolloutRule struct {
+	// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id string `pulumi:"id"`
+	// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	Jobs []string `pulumi:"jobs"`
+	// Defines the types of automatic repair actions for failed jobs.
+	RepairModes []RepairMode `pulumi:"repairModes"`
+	// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	SourcePhases []string `pulumi:"sourcePhases"`
+}
+
+// RepairRolloutRuleInput is an input type that accepts RepairRolloutRuleArgs and RepairRolloutRuleOutput values.
+// You can construct a concrete instance of `RepairRolloutRuleInput` via:
+//
+//	RepairRolloutRuleArgs{...}
+type RepairRolloutRuleInput interface {
+	pulumi.Input
+
+	ToRepairRolloutRuleOutput() RepairRolloutRuleOutput
+	ToRepairRolloutRuleOutputWithContext(context.Context) RepairRolloutRuleOutput
+}
+
+// The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.
+type RepairRolloutRuleArgs struct {
+	// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	Jobs pulumi.StringArrayInput `pulumi:"jobs"`
+	// Defines the types of automatic repair actions for failed jobs.
+	RepairModes RepairModeArrayInput `pulumi:"repairModes"`
+	// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	SourcePhases pulumi.StringArrayInput `pulumi:"sourcePhases"`
+}
+
+func (RepairRolloutRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepairRolloutRule)(nil)).Elem()
+}
+
+func (i RepairRolloutRuleArgs) ToRepairRolloutRuleOutput() RepairRolloutRuleOutput {
+	return i.ToRepairRolloutRuleOutputWithContext(context.Background())
+}
+
+func (i RepairRolloutRuleArgs) ToRepairRolloutRuleOutputWithContext(ctx context.Context) RepairRolloutRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepairRolloutRuleOutput)
+}
+
+func (i RepairRolloutRuleArgs) ToOutput(ctx context.Context) pulumix.Output[RepairRolloutRule] {
+	return pulumix.Output[RepairRolloutRule]{
+		OutputState: i.ToRepairRolloutRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RepairRolloutRuleArgs) ToRepairRolloutRulePtrOutput() RepairRolloutRulePtrOutput {
+	return i.ToRepairRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (i RepairRolloutRuleArgs) ToRepairRolloutRulePtrOutputWithContext(ctx context.Context) RepairRolloutRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepairRolloutRuleOutput).ToRepairRolloutRulePtrOutputWithContext(ctx)
+}
+
+// RepairRolloutRulePtrInput is an input type that accepts RepairRolloutRuleArgs, RepairRolloutRulePtr and RepairRolloutRulePtrOutput values.
+// You can construct a concrete instance of `RepairRolloutRulePtrInput` via:
+//
+//	        RepairRolloutRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepairRolloutRulePtrInput interface {
+	pulumi.Input
+
+	ToRepairRolloutRulePtrOutput() RepairRolloutRulePtrOutput
+	ToRepairRolloutRulePtrOutputWithContext(context.Context) RepairRolloutRulePtrOutput
+}
+
+type repairRolloutRulePtrType RepairRolloutRuleArgs
+
+func RepairRolloutRulePtr(v *RepairRolloutRuleArgs) RepairRolloutRulePtrInput {
+	return (*repairRolloutRulePtrType)(v)
+}
+
+func (*repairRolloutRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepairRolloutRule)(nil)).Elem()
+}
+
+func (i *repairRolloutRulePtrType) ToRepairRolloutRulePtrOutput() RepairRolloutRulePtrOutput {
+	return i.ToRepairRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (i *repairRolloutRulePtrType) ToRepairRolloutRulePtrOutputWithContext(ctx context.Context) RepairRolloutRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepairRolloutRulePtrOutput)
+}
+
+func (i *repairRolloutRulePtrType) ToOutput(ctx context.Context) pulumix.Output[*RepairRolloutRule] {
+	return pulumix.Output[*RepairRolloutRule]{
+		OutputState: i.ToRepairRolloutRulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.
+type RepairRolloutRuleOutput struct{ *pulumi.OutputState }
+
+func (RepairRolloutRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepairRolloutRule)(nil)).Elem()
+}
+
+func (o RepairRolloutRuleOutput) ToRepairRolloutRuleOutput() RepairRolloutRuleOutput {
+	return o
+}
+
+func (o RepairRolloutRuleOutput) ToRepairRolloutRuleOutputWithContext(ctx context.Context) RepairRolloutRuleOutput {
+	return o
+}
+
+func (o RepairRolloutRuleOutput) ToRepairRolloutRulePtrOutput() RepairRolloutRulePtrOutput {
+	return o.ToRepairRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (o RepairRolloutRuleOutput) ToRepairRolloutRulePtrOutputWithContext(ctx context.Context) RepairRolloutRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepairRolloutRule) *RepairRolloutRule {
+		return &v
+	}).(RepairRolloutRulePtrOutput)
+}
+
+func (o RepairRolloutRuleOutput) ToOutput(ctx context.Context) pulumix.Output[RepairRolloutRule] {
+	return pulumix.Output[RepairRolloutRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o RepairRolloutRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v RepairRolloutRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o RepairRolloutRuleOutput) Jobs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RepairRolloutRule) []string { return v.Jobs }).(pulumi.StringArrayOutput)
+}
+
+// Defines the types of automatic repair actions for failed jobs.
+func (o RepairRolloutRuleOutput) RepairModes() RepairModeArrayOutput {
+	return o.ApplyT(func(v RepairRolloutRule) []RepairMode { return v.RepairModes }).(RepairModeArrayOutput)
+}
+
+// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o RepairRolloutRuleOutput) SourcePhases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RepairRolloutRule) []string { return v.SourcePhases }).(pulumi.StringArrayOutput)
+}
+
+type RepairRolloutRulePtrOutput struct{ *pulumi.OutputState }
+
+func (RepairRolloutRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepairRolloutRule)(nil)).Elem()
+}
+
+func (o RepairRolloutRulePtrOutput) ToRepairRolloutRulePtrOutput() RepairRolloutRulePtrOutput {
+	return o
+}
+
+func (o RepairRolloutRulePtrOutput) ToRepairRolloutRulePtrOutputWithContext(ctx context.Context) RepairRolloutRulePtrOutput {
+	return o
+}
+
+func (o RepairRolloutRulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepairRolloutRule] {
+	return pulumix.Output[*RepairRolloutRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RepairRolloutRulePtrOutput) Elem() RepairRolloutRuleOutput {
+	return o.ApplyT(func(v *RepairRolloutRule) RepairRolloutRule {
+		if v != nil {
+			return *v
+		}
+		var ret RepairRolloutRule
+		return ret
+	}).(RepairRolloutRuleOutput)
+}
+
+// ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o RepairRolloutRulePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepairRolloutRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o RepairRolloutRulePtrOutput) Jobs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RepairRolloutRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Jobs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines the types of automatic repair actions for failed jobs.
+func (o RepairRolloutRulePtrOutput) RepairModes() RepairModeArrayOutput {
+	return o.ApplyT(func(v *RepairRolloutRule) []RepairMode {
+		if v == nil {
+			return nil
+		}
+		return v.RepairModes
+	}).(RepairModeArrayOutput)
+}
+
+// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o RepairRolloutRulePtrOutput) SourcePhases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RepairRolloutRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourcePhases
+	}).(pulumi.StringArrayOutput)
+}
+
+// The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.
+type RepairRolloutRuleResponse struct {
+	// Information around the state of the 'Automation' rule.
+	Condition AutomationRuleConditionResponse `pulumi:"condition"`
+	// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	Jobs []string `pulumi:"jobs"`
+	// Defines the types of automatic repair actions for failed jobs.
+	RepairModes []RepairModeResponse `pulumi:"repairModes"`
+	// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	SourcePhases []string `pulumi:"sourcePhases"`
+}
+
+// The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.
+type RepairRolloutRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (RepairRolloutRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepairRolloutRuleResponse)(nil)).Elem()
+}
+
+func (o RepairRolloutRuleResponseOutput) ToRepairRolloutRuleResponseOutput() RepairRolloutRuleResponseOutput {
+	return o
+}
+
+func (o RepairRolloutRuleResponseOutput) ToRepairRolloutRuleResponseOutputWithContext(ctx context.Context) RepairRolloutRuleResponseOutput {
+	return o
+}
+
+func (o RepairRolloutRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RepairRolloutRuleResponse] {
+	return pulumix.Output[RepairRolloutRuleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Information around the state of the 'Automation' rule.
+func (o RepairRolloutRuleResponseOutput) Condition() AutomationRuleConditionResponseOutput {
+	return o.ApplyT(func(v RepairRolloutRuleResponse) AutomationRuleConditionResponse { return v.Condition }).(AutomationRuleConditionResponseOutput)
+}
+
+// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in `source_phase`. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o RepairRolloutRuleResponseOutput) Jobs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RepairRolloutRuleResponse) []string { return v.Jobs }).(pulumi.StringArrayOutput)
+}
+
+// Defines the types of automatic repair actions for failed jobs.
+func (o RepairRolloutRuleResponseOutput) RepairModes() RepairModeResponseArrayOutput {
+	return o.ApplyT(func(v RepairRolloutRuleResponse) []RepairModeResponse { return v.RepairModes }).(RepairModeResponseArrayOutput)
+}
+
+// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o RepairRolloutRuleResponseOutput) SourcePhases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RepairRolloutRuleResponse) []string { return v.SourcePhases }).(pulumi.StringArrayOutput)
+}
+
+// Retries the failed job.
+type Retry struct {
+	// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+	Attempts string `pulumi:"attempts"`
+	// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+	BackoffMode *RetryBackoffMode `pulumi:"backoffMode"`
+	// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+	Wait *string `pulumi:"wait"`
+}
+
+// RetryInput is an input type that accepts RetryArgs and RetryOutput values.
+// You can construct a concrete instance of `RetryInput` via:
+//
+//	RetryArgs{...}
+type RetryInput interface {
+	pulumi.Input
+
+	ToRetryOutput() RetryOutput
+	ToRetryOutputWithContext(context.Context) RetryOutput
+}
+
+// Retries the failed job.
+type RetryArgs struct {
+	// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+	Attempts pulumi.StringInput `pulumi:"attempts"`
+	// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+	BackoffMode RetryBackoffModePtrInput `pulumi:"backoffMode"`
+	// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+	Wait pulumi.StringPtrInput `pulumi:"wait"`
+}
+
+func (RetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Retry)(nil)).Elem()
+}
+
+func (i RetryArgs) ToRetryOutput() RetryOutput {
+	return i.ToRetryOutputWithContext(context.Background())
+}
+
+func (i RetryArgs) ToRetryOutputWithContext(ctx context.Context) RetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetryOutput)
+}
+
+func (i RetryArgs) ToOutput(ctx context.Context) pulumix.Output[Retry] {
+	return pulumix.Output[Retry]{
+		OutputState: i.ToRetryOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RetryArgs) ToRetryPtrOutput() RetryPtrOutput {
+	return i.ToRetryPtrOutputWithContext(context.Background())
+}
+
+func (i RetryArgs) ToRetryPtrOutputWithContext(ctx context.Context) RetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetryOutput).ToRetryPtrOutputWithContext(ctx)
+}
+
+// RetryPtrInput is an input type that accepts RetryArgs, RetryPtr and RetryPtrOutput values.
+// You can construct a concrete instance of `RetryPtrInput` via:
+//
+//	        RetryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RetryPtrInput interface {
+	pulumi.Input
+
+	ToRetryPtrOutput() RetryPtrOutput
+	ToRetryPtrOutputWithContext(context.Context) RetryPtrOutput
+}
+
+type retryPtrType RetryArgs
+
+func RetryPtr(v *RetryArgs) RetryPtrInput {
+	return (*retryPtrType)(v)
+}
+
+func (*retryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Retry)(nil)).Elem()
+}
+
+func (i *retryPtrType) ToRetryPtrOutput() RetryPtrOutput {
+	return i.ToRetryPtrOutputWithContext(context.Background())
+}
+
+func (i *retryPtrType) ToRetryPtrOutputWithContext(ctx context.Context) RetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetryPtrOutput)
+}
+
+func (i *retryPtrType) ToOutput(ctx context.Context) pulumix.Output[*Retry] {
+	return pulumix.Output[*Retry]{
+		OutputState: i.ToRetryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Retries the failed job.
+type RetryOutput struct{ *pulumi.OutputState }
+
+func (RetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Retry)(nil)).Elem()
+}
+
+func (o RetryOutput) ToRetryOutput() RetryOutput {
+	return o
+}
+
+func (o RetryOutput) ToRetryOutputWithContext(ctx context.Context) RetryOutput {
+	return o
+}
+
+func (o RetryOutput) ToRetryPtrOutput() RetryPtrOutput {
+	return o.ToRetryPtrOutputWithContext(context.Background())
+}
+
+func (o RetryOutput) ToRetryPtrOutputWithContext(ctx context.Context) RetryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Retry) *Retry {
+		return &v
+	}).(RetryPtrOutput)
+}
+
+func (o RetryOutput) ToOutput(ctx context.Context) pulumix.Output[Retry] {
+	return pulumix.Output[Retry]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+func (o RetryOutput) Attempts() pulumi.StringOutput {
+	return o.ApplyT(func(v Retry) string { return v.Attempts }).(pulumi.StringOutput)
+}
+
+// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+func (o RetryOutput) BackoffMode() RetryBackoffModePtrOutput {
+	return o.ApplyT(func(v Retry) *RetryBackoffMode { return v.BackoffMode }).(RetryBackoffModePtrOutput)
+}
+
+// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+func (o RetryOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Retry) *string { return v.Wait }).(pulumi.StringPtrOutput)
+}
+
+type RetryPtrOutput struct{ *pulumi.OutputState }
+
+func (RetryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Retry)(nil)).Elem()
+}
+
+func (o RetryPtrOutput) ToRetryPtrOutput() RetryPtrOutput {
+	return o
+}
+
+func (o RetryPtrOutput) ToRetryPtrOutputWithContext(ctx context.Context) RetryPtrOutput {
+	return o
+}
+
+func (o RetryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Retry] {
+	return pulumix.Output[*Retry]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RetryPtrOutput) Elem() RetryOutput {
+	return o.ApplyT(func(v *Retry) Retry {
+		if v != nil {
+			return *v
+		}
+		var ret Retry
+		return ret
+	}).(RetryOutput)
+}
+
+// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+func (o RetryPtrOutput) Attempts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Retry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Attempts
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+func (o RetryPtrOutput) BackoffMode() RetryBackoffModePtrOutput {
+	return o.ApplyT(func(v *Retry) *RetryBackoffMode {
+		if v == nil {
+			return nil
+		}
+		return v.BackoffMode
+	}).(RetryBackoffModePtrOutput)
+}
+
+// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+func (o RetryPtrOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Retry) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.StringPtrOutput)
+}
+
+// Retries the failed job.
+type RetryResponse struct {
+	// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+	Attempts string `pulumi:"attempts"`
+	// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+	BackoffMode string `pulumi:"backoffMode"`
+	// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+	Wait string `pulumi:"wait"`
+}
+
+// Retries the failed job.
+type RetryResponseOutput struct{ *pulumi.OutputState }
+
+func (RetryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RetryResponse)(nil)).Elem()
+}
+
+func (o RetryResponseOutput) ToRetryResponseOutput() RetryResponseOutput {
+	return o
+}
+
+func (o RetryResponseOutput) ToRetryResponseOutputWithContext(ctx context.Context) RetryResponseOutput {
+	return o
+}
+
+func (o RetryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RetryResponse] {
+	return pulumix.Output[RetryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+func (o RetryResponseOutput) Attempts() pulumi.StringOutput {
+	return o.ApplyT(func(v RetryResponse) string { return v.Attempts }).(pulumi.StringOutput)
+}
+
+// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
+func (o RetryResponseOutput) BackoffMode() pulumi.StringOutput {
+	return o.ApplyT(func(v RetryResponse) string { return v.BackoffMode }).(pulumi.StringOutput)
+}
+
+// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
+func (o RetryResponseOutput) Wait() pulumi.StringOutput {
+	return o.ApplyT(func(v RetryResponse) string { return v.Wait }).(pulumi.StringOutput)
+}
+
+// Rolls back a `Rollout`.
+type Rollback struct {
+	// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
+	DestinationPhase *string `pulumi:"destinationPhase"`
+}
+
+// RollbackInput is an input type that accepts RollbackArgs and RollbackOutput values.
+// You can construct a concrete instance of `RollbackInput` via:
+//
+//	RollbackArgs{...}
+type RollbackInput interface {
+	pulumi.Input
+
+	ToRollbackOutput() RollbackOutput
+	ToRollbackOutputWithContext(context.Context) RollbackOutput
+}
+
+// Rolls back a `Rollout`.
+type RollbackArgs struct {
+	// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
+	DestinationPhase pulumi.StringPtrInput `pulumi:"destinationPhase"`
+}
+
+func (RollbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rollback)(nil)).Elem()
+}
+
+func (i RollbackArgs) ToRollbackOutput() RollbackOutput {
+	return i.ToRollbackOutputWithContext(context.Background())
+}
+
+func (i RollbackArgs) ToRollbackOutputWithContext(ctx context.Context) RollbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RollbackOutput)
+}
+
+func (i RollbackArgs) ToOutput(ctx context.Context) pulumix.Output[Rollback] {
+	return pulumix.Output[Rollback]{
+		OutputState: i.ToRollbackOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RollbackArgs) ToRollbackPtrOutput() RollbackPtrOutput {
+	return i.ToRollbackPtrOutputWithContext(context.Background())
+}
+
+func (i RollbackArgs) ToRollbackPtrOutputWithContext(ctx context.Context) RollbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RollbackOutput).ToRollbackPtrOutputWithContext(ctx)
+}
+
+// RollbackPtrInput is an input type that accepts RollbackArgs, RollbackPtr and RollbackPtrOutput values.
+// You can construct a concrete instance of `RollbackPtrInput` via:
+//
+//	        RollbackArgs{...}
+//
+//	or:
+//
+//	        nil
+type RollbackPtrInput interface {
+	pulumi.Input
+
+	ToRollbackPtrOutput() RollbackPtrOutput
+	ToRollbackPtrOutputWithContext(context.Context) RollbackPtrOutput
+}
+
+type rollbackPtrType RollbackArgs
+
+func RollbackPtr(v *RollbackArgs) RollbackPtrInput {
+	return (*rollbackPtrType)(v)
+}
+
+func (*rollbackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Rollback)(nil)).Elem()
+}
+
+func (i *rollbackPtrType) ToRollbackPtrOutput() RollbackPtrOutput {
+	return i.ToRollbackPtrOutputWithContext(context.Background())
+}
+
+func (i *rollbackPtrType) ToRollbackPtrOutputWithContext(ctx context.Context) RollbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RollbackPtrOutput)
+}
+
+func (i *rollbackPtrType) ToOutput(ctx context.Context) pulumix.Output[*Rollback] {
+	return pulumix.Output[*Rollback]{
+		OutputState: i.ToRollbackPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Rolls back a `Rollout`.
+type RollbackOutput struct{ *pulumi.OutputState }
+
+func (RollbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rollback)(nil)).Elem()
+}
+
+func (o RollbackOutput) ToRollbackOutput() RollbackOutput {
+	return o
+}
+
+func (o RollbackOutput) ToRollbackOutputWithContext(ctx context.Context) RollbackOutput {
+	return o
+}
+
+func (o RollbackOutput) ToRollbackPtrOutput() RollbackPtrOutput {
+	return o.ToRollbackPtrOutputWithContext(context.Background())
+}
+
+func (o RollbackOutput) ToRollbackPtrOutputWithContext(ctx context.Context) RollbackPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Rollback) *Rollback {
+		return &v
+	}).(RollbackPtrOutput)
+}
+
+func (o RollbackOutput) ToOutput(ctx context.Context) pulumix.Output[Rollback] {
+	return pulumix.Output[Rollback]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
+func (o RollbackOutput) DestinationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Rollback) *string { return v.DestinationPhase }).(pulumi.StringPtrOutput)
+}
+
+type RollbackPtrOutput struct{ *pulumi.OutputState }
+
+func (RollbackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Rollback)(nil)).Elem()
+}
+
+func (o RollbackPtrOutput) ToRollbackPtrOutput() RollbackPtrOutput {
+	return o
+}
+
+func (o RollbackPtrOutput) ToRollbackPtrOutputWithContext(ctx context.Context) RollbackPtrOutput {
+	return o
+}
+
+func (o RollbackPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Rollback] {
+	return pulumix.Output[*Rollback]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RollbackPtrOutput) Elem() RollbackOutput {
+	return o.ApplyT(func(v *Rollback) Rollback {
+		if v != nil {
+			return *v
+		}
+		var ret Rollback
+		return ret
+	}).(RollbackOutput)
+}
+
+// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
+func (o RollbackPtrOutput) DestinationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rollback) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationPhase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rolls back a `Rollout`.
+type RollbackResponse struct {
+	// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
+	DestinationPhase string `pulumi:"destinationPhase"`
+}
+
+// Rolls back a `Rollout`.
+type RollbackResponseOutput struct{ *pulumi.OutputState }
+
+func (RollbackResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollbackResponse)(nil)).Elem()
+}
+
+func (o RollbackResponseOutput) ToRollbackResponseOutput() RollbackResponseOutput {
+	return o
+}
+
+func (o RollbackResponseOutput) ToRollbackResponseOutputWithContext(ctx context.Context) RollbackResponseOutput {
+	return o
+}
+
+func (o RollbackResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RollbackResponse] {
+	return pulumix.Output[RollbackResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
+func (o RollbackResponseOutput) DestinationPhase() pulumi.StringOutput {
+	return o.ApplyT(func(v RollbackResponse) string { return v.DestinationPhase }).(pulumi.StringOutput)
 }
 
 // RuntimeConfig contains the runtime specific configurations for a deployment strategy.
@@ -5308,6 +7945,8 @@ func (o SerialPipelineResponseOutput) Stages() StageResponseArrayOutput {
 type ServiceNetworking struct {
 	// Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
 	Deployment string `pulumi:"deployment"`
+	// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+	DisablePodOverprovisioning *bool `pulumi:"disablePodOverprovisioning"`
 	// Name of the Kubernetes Service.
 	Service string `pulumi:"service"`
 }
@@ -5327,6 +7966,8 @@ type ServiceNetworkingInput interface {
 type ServiceNetworkingArgs struct {
 	// Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
 	Deployment pulumi.StringInput `pulumi:"deployment"`
+	// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+	DisablePodOverprovisioning pulumi.BoolPtrInput `pulumi:"disablePodOverprovisioning"`
 	// Name of the Kubernetes Service.
 	Service pulumi.StringInput `pulumi:"service"`
 }
@@ -5432,6 +8073,11 @@ func (o ServiceNetworkingOutput) Deployment() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNetworking) string { return v.Deployment }).(pulumi.StringOutput)
 }
 
+// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+func (o ServiceNetworkingOutput) DisablePodOverprovisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceNetworking) *bool { return v.DisablePodOverprovisioning }).(pulumi.BoolPtrOutput)
+}
+
 // Name of the Kubernetes Service.
 func (o ServiceNetworkingOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNetworking) string { return v.Service }).(pulumi.StringOutput)
@@ -5477,6 +8123,16 @@ func (o ServiceNetworkingPtrOutput) Deployment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+func (o ServiceNetworkingPtrOutput) DisablePodOverprovisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceNetworking) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePodOverprovisioning
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Name of the Kubernetes Service.
 func (o ServiceNetworkingPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceNetworking) *string {
@@ -5491,6 +8147,8 @@ func (o ServiceNetworkingPtrOutput) Service() pulumi.StringPtrOutput {
 type ServiceNetworkingResponse struct {
 	// Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
 	Deployment string `pulumi:"deployment"`
+	// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+	DisablePodOverprovisioning bool `pulumi:"disablePodOverprovisioning"`
 	// Name of the Kubernetes Service.
 	Service string `pulumi:"service"`
 }
@@ -5519,6 +8177,11 @@ func (o ServiceNetworkingResponseOutput) ToOutput(ctx context.Context) pulumix.O
 // Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
 func (o ServiceNetworkingResponseOutput) Deployment() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNetworkingResponse) string { return v.Deployment }).(pulumi.StringOutput)
+}
+
+// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+func (o ServiceNetworkingResponseOutput) DisablePodOverprovisioning() pulumi.BoolOutput {
+	return o.ApplyT(func(v ServiceNetworkingResponse) bool { return v.DisablePodOverprovisioning }).(pulumi.BoolOutput)
 }
 
 // Name of the Kubernetes Service.
@@ -5581,6 +8244,8 @@ func (o SkaffoldSupportedConditionResponseOutput) SupportExpirationTime() pulumi
 
 // Stage specifies a location to which to deploy.
 type Stage struct {
+	// Optional. The deploy parameters to use for the target in this stage.
+	DeployParameters []DeployParameters `pulumi:"deployParameters"`
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles []string `pulumi:"profiles"`
 	// Optional. The strategy to use for a `Rollout` to this stage.
@@ -5602,6 +8267,8 @@ type StageInput interface {
 
 // Stage specifies a location to which to deploy.
 type StageArgs struct {
+	// Optional. The deploy parameters to use for the target in this stage.
+	DeployParameters DeployParametersArrayInput `pulumi:"deployParameters"`
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
 	// Optional. The strategy to use for a `Rollout` to this stage.
@@ -5680,6 +8347,11 @@ func (o StageOutput) ToOutput(ctx context.Context) pulumix.Output[Stage] {
 	}
 }
 
+// Optional. The deploy parameters to use for the target in this stage.
+func (o StageOutput) DeployParameters() DeployParametersArrayOutput {
+	return o.ApplyT(func(v Stage) []DeployParameters { return v.DeployParameters }).(DeployParametersArrayOutput)
+}
+
 // Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 func (o StageOutput) Profiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Stage) []string { return v.Profiles }).(pulumi.StringArrayOutput)
@@ -5723,6 +8395,8 @@ func (o StageArrayOutput) Index(i pulumi.IntInput) StageOutput {
 
 // Stage specifies a location to which to deploy.
 type StageResponse struct {
+	// Optional. The deploy parameters to use for the target in this stage.
+	DeployParameters []DeployParametersResponse `pulumi:"deployParameters"`
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles []string `pulumi:"profiles"`
 	// Optional. The strategy to use for a `Rollout` to this stage.
@@ -5750,6 +8424,11 @@ func (o StageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StageR
 	return pulumix.Output[StageResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. The deploy parameters to use for the target in this stage.
+func (o StageResponseOutput) DeployParameters() DeployParametersResponseArrayOutput {
+	return o.ApplyT(func(v StageResponse) []DeployParametersResponse { return v.DeployParameters }).(DeployParametersResponseArrayOutput)
 }
 
 // Skaffold profiles to use when rendering the manifest for this stage's `Target`.
@@ -5795,6 +8474,10 @@ func (o StageResponseArrayOutput) Index(i pulumi.IntInput) StageResponseOutput {
 
 // Standard represents the standard deployment strategy.
 type Standard struct {
+	// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+	Postdeploy *Postdeploy `pulumi:"postdeploy"`
+	// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+	Predeploy *Predeploy `pulumi:"predeploy"`
 	// Whether to verify a deployment.
 	Verify *bool `pulumi:"verify"`
 }
@@ -5812,6 +8495,10 @@ type StandardInput interface {
 
 // Standard represents the standard deployment strategy.
 type StandardArgs struct {
+	// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+	Postdeploy PostdeployPtrInput `pulumi:"postdeploy"`
+	// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+	Predeploy PredeployPtrInput `pulumi:"predeploy"`
 	// Whether to verify a deployment.
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
 }
@@ -5912,6 +8599,16 @@ func (o StandardOutput) ToOutput(ctx context.Context) pulumix.Output[Standard] {
 	}
 }
 
+// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+func (o StandardOutput) Postdeploy() PostdeployPtrOutput {
+	return o.ApplyT(func(v Standard) *Postdeploy { return v.Postdeploy }).(PostdeployPtrOutput)
+}
+
+// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+func (o StandardOutput) Predeploy() PredeployPtrOutput {
+	return o.ApplyT(func(v Standard) *Predeploy { return v.Predeploy }).(PredeployPtrOutput)
+}
+
 // Whether to verify a deployment.
 func (o StandardOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Standard) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
@@ -5947,6 +8644,26 @@ func (o StandardPtrOutput) Elem() StandardOutput {
 	}).(StandardOutput)
 }
 
+// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+func (o StandardPtrOutput) Postdeploy() PostdeployPtrOutput {
+	return o.ApplyT(func(v *Standard) *Postdeploy {
+		if v == nil {
+			return nil
+		}
+		return v.Postdeploy
+	}).(PostdeployPtrOutput)
+}
+
+// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+func (o StandardPtrOutput) Predeploy() PredeployPtrOutput {
+	return o.ApplyT(func(v *Standard) *Predeploy {
+		if v == nil {
+			return nil
+		}
+		return v.Predeploy
+	}).(PredeployPtrOutput)
+}
+
 // Whether to verify a deployment.
 func (o StandardPtrOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Standard) *bool {
@@ -5959,6 +8676,10 @@ func (o StandardPtrOutput) Verify() pulumi.BoolPtrOutput {
 
 // Standard represents the standard deployment strategy.
 type StandardResponse struct {
+	// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+	Postdeploy PostdeployResponse `pulumi:"postdeploy"`
+	// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+	Predeploy PredeployResponse `pulumi:"predeploy"`
 	// Whether to verify a deployment.
 	Verify bool `pulumi:"verify"`
 }
@@ -5982,6 +8703,16 @@ func (o StandardResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Sta
 	return pulumix.Output[StandardResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+func (o StandardResponseOutput) Postdeploy() PostdeployResponseOutput {
+	return o.ApplyT(func(v StandardResponse) PostdeployResponse { return v.Postdeploy }).(PostdeployResponseOutput)
+}
+
+// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+func (o StandardResponseOutput) Predeploy() PredeployResponseOutput {
+	return o.ApplyT(func(v StandardResponse) PredeployResponse { return v.Predeploy }).(PredeployResponseOutput)
 }
 
 // Whether to verify a deployment.
@@ -6211,31 +8942,224 @@ func (o StrategyResponseOutput) Standard() StandardResponseOutput {
 	return o.ApplyT(func(v StrategyResponse) StandardResponse { return v.Standard }).(StandardResponseOutput)
 }
 
-// A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
+// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+type TargetAttribute struct {
+	// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+	Id *string `pulumi:"id"`
+	// Target labels.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// TargetAttributeInput is an input type that accepts TargetAttributeArgs and TargetAttributeOutput values.
+// You can construct a concrete instance of `TargetAttributeInput` via:
+//
+//	TargetAttributeArgs{...}
+type TargetAttributeInput interface {
+	pulumi.Input
+
+	ToTargetAttributeOutput() TargetAttributeOutput
+	ToTargetAttributeOutputWithContext(context.Context) TargetAttributeOutput
+}
+
+// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+type TargetAttributeArgs struct {
+	// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Target labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (TargetAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAttribute)(nil)).Elem()
+}
+
+func (i TargetAttributeArgs) ToTargetAttributeOutput() TargetAttributeOutput {
+	return i.ToTargetAttributeOutputWithContext(context.Background())
+}
+
+func (i TargetAttributeArgs) ToTargetAttributeOutputWithContext(ctx context.Context) TargetAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAttributeOutput)
+}
+
+func (i TargetAttributeArgs) ToOutput(ctx context.Context) pulumix.Output[TargetAttribute] {
+	return pulumix.Output[TargetAttribute]{
+		OutputState: i.ToTargetAttributeOutputWithContext(ctx).OutputState,
+	}
+}
+
+// TargetAttributeArrayInput is an input type that accepts TargetAttributeArray and TargetAttributeArrayOutput values.
+// You can construct a concrete instance of `TargetAttributeArrayInput` via:
+//
+//	TargetAttributeArray{ TargetAttributeArgs{...} }
+type TargetAttributeArrayInput interface {
+	pulumi.Input
+
+	ToTargetAttributeArrayOutput() TargetAttributeArrayOutput
+	ToTargetAttributeArrayOutputWithContext(context.Context) TargetAttributeArrayOutput
+}
+
+type TargetAttributeArray []TargetAttributeInput
+
+func (TargetAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetAttribute)(nil)).Elem()
+}
+
+func (i TargetAttributeArray) ToTargetAttributeArrayOutput() TargetAttributeArrayOutput {
+	return i.ToTargetAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i TargetAttributeArray) ToTargetAttributeArrayOutputWithContext(ctx context.Context) TargetAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAttributeArrayOutput)
+}
+
+func (i TargetAttributeArray) ToOutput(ctx context.Context) pulumix.Output[[]TargetAttribute] {
+	return pulumix.Output[[]TargetAttribute]{
+		OutputState: i.ToTargetAttributeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+type TargetAttributeOutput struct{ *pulumi.OutputState }
+
+func (TargetAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAttribute)(nil)).Elem()
+}
+
+func (o TargetAttributeOutput) ToTargetAttributeOutput() TargetAttributeOutput {
+	return o
+}
+
+func (o TargetAttributeOutput) ToTargetAttributeOutputWithContext(ctx context.Context) TargetAttributeOutput {
+	return o
+}
+
+func (o TargetAttributeOutput) ToOutput(ctx context.Context) pulumix.Output[TargetAttribute] {
+	return pulumix.Output[TargetAttribute]{
+		OutputState: o.OutputState,
+	}
+}
+
+// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+func (o TargetAttributeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Target labels.
+func (o TargetAttributeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TargetAttribute) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type TargetAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetAttribute)(nil)).Elem()
+}
+
+func (o TargetAttributeArrayOutput) ToTargetAttributeArrayOutput() TargetAttributeArrayOutput {
+	return o
+}
+
+func (o TargetAttributeArrayOutput) ToTargetAttributeArrayOutputWithContext(ctx context.Context) TargetAttributeArrayOutput {
+	return o
+}
+
+func (o TargetAttributeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetAttribute] {
+	return pulumix.Output[[]TargetAttribute]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TargetAttributeArrayOutput) Index(i pulumi.IntInput) TargetAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetAttribute {
+		return vs[0].([]TargetAttribute)[vs[1].(int)]
+	}).(TargetAttributeOutput)
+}
+
+// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+type TargetAttributeResponse struct {
+	// Target labels.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+type TargetAttributeResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetAttributeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAttributeResponse)(nil)).Elem()
+}
+
+func (o TargetAttributeResponseOutput) ToTargetAttributeResponseOutput() TargetAttributeResponseOutput {
+	return o
+}
+
+func (o TargetAttributeResponseOutput) ToTargetAttributeResponseOutputWithContext(ctx context.Context) TargetAttributeResponseOutput {
+	return o
+}
+
+func (o TargetAttributeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetAttributeResponse] {
+	return pulumix.Output[TargetAttributeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Target labels.
+func (o TargetAttributeResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TargetAttributeResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type TargetAttributeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetAttributeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetAttributeResponse)(nil)).Elem()
+}
+
+func (o TargetAttributeResponseArrayOutput) ToTargetAttributeResponseArrayOutput() TargetAttributeResponseArrayOutput {
+	return o
+}
+
+func (o TargetAttributeResponseArrayOutput) ToTargetAttributeResponseArrayOutputWithContext(ctx context.Context) TargetAttributeResponseArrayOutput {
+	return o
+}
+
+func (o TargetAttributeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetAttributeResponse] {
+	return pulumix.Output[[]TargetAttributeResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TargetAttributeResponseArrayOutput) Index(i pulumi.IntInput) TargetAttributeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetAttributeResponse {
+		return vs[0].([]TargetAttributeResponse)[vs[1].(int)]
+	}).(TargetAttributeResponseOutput)
+}
+
+// A `Target` resource in the Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
 type TargetResponse struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Information specifying an Anthos Cluster.
+	// Optional. Information specifying an Anthos Cluster.
 	AnthosCluster AnthosClusterResponse `pulumi:"anthosCluster"`
 	// Time at which the `Target` was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. The deploy parameters to use for this target.
+	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description string `pulumi:"description"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
 	ExecutionConfigs []ExecutionConfigResponse `pulumi:"executionConfigs"`
-	// Information specifying a GKE Cluster.
+	// Optional. Information specifying a GKE Cluster.
 	Gke GkeClusterResponse `pulumi:"gke"`
-	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// Information specifying a multiTarget.
+	// Optional. Information specifying a multiTarget.
 	MultiTarget MultiTargetResponse `pulumi:"multiTarget"`
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+	// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
 	Name string `pulumi:"name"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval bool `pulumi:"requireApproval"`
-	// Information specifying a Cloud Run deployment target.
+	// Optional. Information specifying a Cloud Run deployment target.
 	Run CloudRunLocationResponse `pulumi:"run"`
 	// Resource id of the `Target`.
 	TargetId string `pulumi:"targetId"`
@@ -6245,7 +9169,7 @@ type TargetResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
+// A `Target` resource in the Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
 type TargetResponseOutput struct{ *pulumi.OutputState }
 
 func (TargetResponseOutput) ElementType() reflect.Type {
@@ -6266,12 +9190,12 @@ func (o TargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Targe
 	}
 }
 
-// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 func (o TargetResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TargetResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Information specifying an Anthos Cluster.
+// Optional. Information specifying an Anthos Cluster.
 func (o TargetResponseOutput) AnthosCluster() AnthosClusterResponseOutput {
 	return o.ApplyT(func(v TargetResponse) AnthosClusterResponse { return v.AnthosCluster }).(AnthosClusterResponseOutput)
 }
@@ -6279,6 +9203,11 @@ func (o TargetResponseOutput) AnthosCluster() AnthosClusterResponseOutput {
 // Time at which the `Target` was created.
 func (o TargetResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. The deploy parameters to use for this target.
+func (o TargetResponseOutput) DeployParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TargetResponse) map[string]string { return v.DeployParameters }).(pulumi.StringMapOutput)
 }
 
 // Optional. Description of the `Target`. Max length is 255 characters.
@@ -6296,22 +9225,22 @@ func (o TargetResponseOutput) ExecutionConfigs() ExecutionConfigResponseArrayOut
 	return o.ApplyT(func(v TargetResponse) []ExecutionConfigResponse { return v.ExecutionConfigs }).(ExecutionConfigResponseArrayOutput)
 }
 
-// Information specifying a GKE Cluster.
+// Optional. Information specifying a GKE Cluster.
 func (o TargetResponseOutput) Gke() GkeClusterResponseOutput {
 	return o.ApplyT(func(v TargetResponse) GkeClusterResponse { return v.Gke }).(GkeClusterResponseOutput)
 }
 
-// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o TargetResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TargetResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Information specifying a multiTarget.
+// Optional. Information specifying a multiTarget.
 func (o TargetResponseOutput) MultiTarget() MultiTargetResponseOutput {
 	return o.ApplyT(func(v TargetResponse) MultiTargetResponse { return v.MultiTarget }).(MultiTargetResponseOutput)
 }
 
-// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
 func (o TargetResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -6321,7 +9250,7 @@ func (o TargetResponseOutput) RequireApproval() pulumi.BoolOutput {
 	return o.ApplyT(func(v TargetResponse) bool { return v.RequireApproval }).(pulumi.BoolOutput)
 }
 
-// Information specifying a Cloud Run deployment target.
+// Optional. Information specifying a Cloud Run deployment target.
 func (o TargetResponseOutput) Run() CloudRunLocationResponseOutput {
 	return o.ApplyT(func(v TargetResponse) CloudRunLocationResponse { return v.Run }).(CloudRunLocationResponseOutput)
 }
@@ -6369,7 +9298,7 @@ func (o TargetResponseArrayOutput) Index(i pulumi.IntInput) TargetResponseOutput
 
 // TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
 type TargetsPresentConditionResponse struct {
-	// The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+	// The list of Target names that do not exist. For example, `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
 	MissingTargets []string `pulumi:"missingTargets"`
 	// True if there aren't any missing Targets.
 	Status bool `pulumi:"status"`
@@ -6398,7 +9327,7 @@ func (o TargetsPresentConditionResponseOutput) ToOutput(ctx context.Context) pul
 	}
 }
 
-// The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+// The list of Target names that do not exist. For example, `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
 func (o TargetsPresentConditionResponseOutput) MissingTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TargetsPresentConditionResponse) []string { return v.MissingTargets }).(pulumi.StringArrayOutput)
 }
@@ -6478,12 +9407,17 @@ func (o VerifyJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Ve
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvanceRolloutRuleInput)(nil)).Elem(), AdvanceRolloutRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvanceRolloutRulePtrInput)(nil)).Elem(), AdvanceRolloutRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnthosClusterInput)(nil)).Elem(), AnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnthosClusterPtrInput)(nil)).Elem(), AnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationResourceSelectorInput)(nil)).Elem(), AutomationResourceSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleInput)(nil)).Elem(), AutomationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleArrayInput)(nil)).Elem(), AutomationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildArtifactInput)(nil)).Elem(), BuildArtifactArgs{})
@@ -6500,6 +9434,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomCanaryDeploymentPtrInput)(nil)).Elem(), CustomCanaryDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolInput)(nil)).Elem(), DefaultPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolPtrInput)(nil)).Elem(), DefaultPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployParametersInput)(nil)).Elem(), DeployParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployParametersArrayInput)(nil)).Elem(), DeployParametersArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigInput)(nil)).Elem(), ExecutionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigArrayInput)(nil)).Elem(), ExecutionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
@@ -6514,8 +9450,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiTargetPtrInput)(nil)).Elem(), MultiTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PhaseConfigInput)(nil)).Elem(), PhaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PhaseConfigArrayInput)(nil)).Elem(), PhaseConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostdeployInput)(nil)).Elem(), PostdeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostdeployPtrInput)(nil)).Elem(), PostdeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PredeployInput)(nil)).Elem(), PredeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PredeployPtrInput)(nil)).Elem(), PredeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolInput)(nil)).Elem(), PrivatePoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolPtrInput)(nil)).Elem(), PrivatePoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromoteReleaseRuleInput)(nil)).Elem(), PromoteReleaseRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromoteReleaseRulePtrInput)(nil)).Elem(), PromoteReleaseRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepairModeInput)(nil)).Elem(), RepairModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepairModeArrayInput)(nil)).Elem(), RepairModeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepairRolloutRuleInput)(nil)).Elem(), RepairRolloutRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepairRolloutRulePtrInput)(nil)).Elem(), RepairRolloutRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetryInput)(nil)).Elem(), RetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetryPtrInput)(nil)).Elem(), RetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RollbackInput)(nil)).Elem(), RollbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RollbackPtrInput)(nil)).Elem(), RollbackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeConfigInput)(nil)).Elem(), RuntimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeConfigPtrInput)(nil)).Elem(), RuntimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SerialPipelineInput)(nil)).Elem(), SerialPipelineArgs{})
@@ -6528,7 +9478,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardPtrInput)(nil)).Elem(), StandardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StrategyInput)(nil)).Elem(), StrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StrategyPtrInput)(nil)).Elem(), StrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetAttributeInput)(nil)).Elem(), TargetAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetAttributeArrayInput)(nil)).Elem(), TargetAttributeArray{})
 	pulumi.RegisterOutputType(AdvanceChildRolloutJobResponseOutput{})
+	pulumi.RegisterOutputType(AdvanceRolloutRuleOutput{})
+	pulumi.RegisterOutputType(AdvanceRolloutRulePtrOutput{})
+	pulumi.RegisterOutputType(AdvanceRolloutRuleResponseOutput{})
 	pulumi.RegisterOutputType(AnthosClusterOutput{})
 	pulumi.RegisterOutputType(AnthosClusterPtrOutput{})
 	pulumi.RegisterOutputType(AnthosClusterResponseOutput{})
@@ -6540,6 +9495,14 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(AutomationResourceSelectorOutput{})
+	pulumi.RegisterOutputType(AutomationResourceSelectorResponseOutput{})
+	pulumi.RegisterOutputType(AutomationRolloutMetadataResponseOutput{})
+	pulumi.RegisterOutputType(AutomationRuleOutput{})
+	pulumi.RegisterOutputType(AutomationRuleArrayOutput{})
+	pulumi.RegisterOutputType(AutomationRuleConditionResponseOutput{})
+	pulumi.RegisterOutputType(AutomationRuleResponseOutput{})
+	pulumi.RegisterOutputType(AutomationRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -6571,6 +9534,10 @@ func init() {
 	pulumi.RegisterOutputType(DefaultPoolResponseOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineResponseOutput{})
 	pulumi.RegisterOutputType(DeployJobResponseOutput{})
+	pulumi.RegisterOutputType(DeployParametersOutput{})
+	pulumi.RegisterOutputType(DeployParametersArrayOutput{})
+	pulumi.RegisterOutputType(DeployParametersResponseOutput{})
+	pulumi.RegisterOutputType(DeployParametersResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentJobsResponseOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigArrayOutput{})
@@ -6602,11 +9569,35 @@ func init() {
 	pulumi.RegisterOutputType(PhaseResponseArrayOutput{})
 	pulumi.RegisterOutputType(PipelineConditionResponseOutput{})
 	pulumi.RegisterOutputType(PipelineReadyConditionResponseOutput{})
+	pulumi.RegisterOutputType(PostdeployOutput{})
+	pulumi.RegisterOutputType(PostdeployPtrOutput{})
+	pulumi.RegisterOutputType(PostdeployJobResponseOutput{})
+	pulumi.RegisterOutputType(PostdeployResponseOutput{})
+	pulumi.RegisterOutputType(PredeployOutput{})
+	pulumi.RegisterOutputType(PredeployPtrOutput{})
+	pulumi.RegisterOutputType(PredeployJobResponseOutput{})
+	pulumi.RegisterOutputType(PredeployResponseOutput{})
 	pulumi.RegisterOutputType(PrivatePoolOutput{})
 	pulumi.RegisterOutputType(PrivatePoolPtrOutput{})
 	pulumi.RegisterOutputType(PrivatePoolResponseOutput{})
+	pulumi.RegisterOutputType(PromoteReleaseRuleOutput{})
+	pulumi.RegisterOutputType(PromoteReleaseRulePtrOutput{})
+	pulumi.RegisterOutputType(PromoteReleaseRuleResponseOutput{})
 	pulumi.RegisterOutputType(ReleaseConditionResponseOutput{})
 	pulumi.RegisterOutputType(ReleaseReadyConditionResponseOutput{})
+	pulumi.RegisterOutputType(RepairModeOutput{})
+	pulumi.RegisterOutputType(RepairModeArrayOutput{})
+	pulumi.RegisterOutputType(RepairModeResponseOutput{})
+	pulumi.RegisterOutputType(RepairModeResponseArrayOutput{})
+	pulumi.RegisterOutputType(RepairRolloutRuleOutput{})
+	pulumi.RegisterOutputType(RepairRolloutRulePtrOutput{})
+	pulumi.RegisterOutputType(RepairRolloutRuleResponseOutput{})
+	pulumi.RegisterOutputType(RetryOutput{})
+	pulumi.RegisterOutputType(RetryPtrOutput{})
+	pulumi.RegisterOutputType(RetryResponseOutput{})
+	pulumi.RegisterOutputType(RollbackOutput{})
+	pulumi.RegisterOutputType(RollbackPtrOutput{})
+	pulumi.RegisterOutputType(RollbackResponseOutput{})
 	pulumi.RegisterOutputType(RuntimeConfigOutput{})
 	pulumi.RegisterOutputType(RuntimeConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeConfigResponseOutput{})
@@ -6627,6 +9618,10 @@ func init() {
 	pulumi.RegisterOutputType(StrategyOutput{})
 	pulumi.RegisterOutputType(StrategyPtrOutput{})
 	pulumi.RegisterOutputType(StrategyResponseOutput{})
+	pulumi.RegisterOutputType(TargetAttributeOutput{})
+	pulumi.RegisterOutputType(TargetAttributeArrayOutput{})
+	pulumi.RegisterOutputType(TargetAttributeResponseOutput{})
+	pulumi.RegisterOutputType(TargetAttributeResponseArrayOutput{})
 	pulumi.RegisterOutputType(TargetResponseOutput{})
 	pulumi.RegisterOutputType(TargetResponseArrayOutput{})
 	pulumi.RegisterOutputType(TargetsPresentConditionResponseOutput{})

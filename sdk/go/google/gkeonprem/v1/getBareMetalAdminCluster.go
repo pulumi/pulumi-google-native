@@ -35,6 +35,8 @@ type LookupBareMetalAdminClusterResult struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// The Anthos clusters on bare metal version for the bare metal admin cluster.
 	BareMetalVersion string `pulumi:"bareMetalVersion"`
+	// Binary Authorization related configurations.
+	BinaryAuthorization BinaryAuthorizationResponse `pulumi:"binaryAuthorization"`
 	// Cluster operations configuration.
 	ClusterOperations BareMetalAdminClusterOperationsConfigResponse `pulumi:"clusterOperations"`
 	// Control plane configuration.
@@ -141,6 +143,11 @@ func (o LookupBareMetalAdminClusterResultOutput) Annotations() pulumi.StringMapO
 // The Anthos clusters on bare metal version for the bare metal admin cluster.
 func (o LookupBareMetalAdminClusterResultOutput) BareMetalVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBareMetalAdminClusterResult) string { return v.BareMetalVersion }).(pulumi.StringOutput)
+}
+
+// Binary Authorization related configurations.
+func (o LookupBareMetalAdminClusterResultOutput) BinaryAuthorization() BinaryAuthorizationResponseOutput {
+	return o.ApplyT(func(v LookupBareMetalAdminClusterResult) BinaryAuthorizationResponse { return v.BinaryAuthorization }).(BinaryAuthorizationResponseOutput)
 }
 
 // Cluster operations configuration.

@@ -29,6 +29,8 @@ const (
 	AcceleratorConfigTypeNvidiaTeslaT4 = AcceleratorConfigType("NVIDIA_TESLA_T4")
 	// Accelerator type is Nvidia Tesla A100.
 	AcceleratorConfigTypeNvidiaTeslaA100 = AcceleratorConfigType("NVIDIA_TESLA_A100")
+	// Accelerator type is Nvidia Tesla L4.
+	AcceleratorConfigTypeNvidiaL4 = AcceleratorConfigType("NVIDIA_L4")
 	// Accelerator type is NVIDIA Tesla T4 Virtual Workstations.
 	AcceleratorConfigTypeNvidiaTeslaT4Vws = AcceleratorConfigType("NVIDIA_TESLA_T4_VWS")
 	// Accelerator type is NVIDIA Tesla P100 Virtual Workstations.
@@ -1750,8 +1752,10 @@ const (
 	RuntimeAcceleratorConfigTypeNvidiaTeslaP4 = RuntimeAcceleratorConfigType("NVIDIA_TESLA_P4")
 	// Accelerator type is Nvidia Tesla T4.
 	RuntimeAcceleratorConfigTypeNvidiaTeslaT4 = RuntimeAcceleratorConfigType("NVIDIA_TESLA_T4")
-	// Accelerator type is Nvidia Tesla A100.
+	// Accelerator type is Nvidia Tesla A100 - 40GB.
 	RuntimeAcceleratorConfigTypeNvidiaTeslaA100 = RuntimeAcceleratorConfigType("NVIDIA_TESLA_A100")
+	// Accelerator type is Nvidia L4.
+	RuntimeAcceleratorConfigTypeNvidiaL4 = RuntimeAcceleratorConfigType("NVIDIA_L4")
 	// (Coming soon) Accelerator type is TPU V2.
 	RuntimeAcceleratorConfigTypeTpuV2 = RuntimeAcceleratorConfigType("TPU_V2")
 	// (Coming soon) Accelerator type is TPU V3.

@@ -34,6 +34,8 @@ type LookupServiceConnectionTokenResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// A description of this resource.
 	Description string `pulumi:"description"`
+	// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag string `pulumi:"etag"`
 	// The time to which this token is valid.
 	ExpireTime string `pulumi:"expireTime"`
 	// User-defined labels.
@@ -99,6 +101,11 @@ func (o LookupServiceConnectionTokenResultOutput) CreateTime() pulumi.StringOutp
 // A description of this resource.
 func (o LookupServiceConnectionTokenResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceConnectionTokenResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o LookupServiceConnectionTokenResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceConnectionTokenResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The time to which this token is valid.

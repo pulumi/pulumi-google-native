@@ -40,7 +40,7 @@ type LookupRouterResult struct {
 	Description string `pulumi:"description"`
 	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
 	EncryptedInterconnectRouter bool `pulumi:"encryptedInterconnectRouter"`
-	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+	// Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
 	Interfaces []RouterInterfaceResponse `pulumi:"interfaces"`
 	// Type of resource. Always compute#router for routers.
 	Kind string `pulumi:"kind"`
@@ -128,7 +128,7 @@ func (o LookupRouterResultOutput) EncryptedInterconnectRouter() pulumi.BoolOutpu
 	return o.ApplyT(func(v LookupRouterResult) bool { return v.EncryptedInterconnectRouter }).(pulumi.BoolOutput)
 }
 
-// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+// Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
 func (o LookupRouterResultOutput) Interfaces() RouterInterfaceResponseArrayOutput {
 	return o.ApplyT(func(v LookupRouterResult) []RouterInterfaceResponse { return v.Interfaces }).(RouterInterfaceResponseArrayOutput)
 }

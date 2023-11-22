@@ -418,6 +418,78 @@ func (o AvailableUpdatesResponseOutput) NewDeployableAppliance() ApplianceVersio
 	return o.ApplyT(func(v AvailableUpdatesResponse) ApplianceVersionResponse { return v.NewDeployableAppliance }).(ApplianceVersionResponseOutput)
 }
 
+// The details of an AWS instance disk.
+type AwsDiskDetailsResponse struct {
+	// The ordinal number of the disk.
+	DiskNumber int `pulumi:"diskNumber"`
+	// Size in GB.
+	SizeGb string `pulumi:"sizeGb"`
+	// AWS volume ID.
+	VolumeId string `pulumi:"volumeId"`
+}
+
+// The details of an AWS instance disk.
+type AwsDiskDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (AwsDiskDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsDiskDetailsResponse)(nil)).Elem()
+}
+
+func (o AwsDiskDetailsResponseOutput) ToAwsDiskDetailsResponseOutput() AwsDiskDetailsResponseOutput {
+	return o
+}
+
+func (o AwsDiskDetailsResponseOutput) ToAwsDiskDetailsResponseOutputWithContext(ctx context.Context) AwsDiskDetailsResponseOutput {
+	return o
+}
+
+func (o AwsDiskDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AwsDiskDetailsResponse] {
+	return pulumix.Output[AwsDiskDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ordinal number of the disk.
+func (o AwsDiskDetailsResponseOutput) DiskNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsDiskDetailsResponse) int { return v.DiskNumber }).(pulumi.IntOutput)
+}
+
+// Size in GB.
+func (o AwsDiskDetailsResponseOutput) SizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsDiskDetailsResponse) string { return v.SizeGb }).(pulumi.StringOutput)
+}
+
+// AWS volume ID.
+func (o AwsDiskDetailsResponseOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsDiskDetailsResponse) string { return v.VolumeId }).(pulumi.StringOutput)
+}
+
+type AwsDiskDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsDiskDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsDiskDetailsResponse)(nil)).Elem()
+}
+
+func (o AwsDiskDetailsResponseArrayOutput) ToAwsDiskDetailsResponseArrayOutput() AwsDiskDetailsResponseArrayOutput {
+	return o
+}
+
+func (o AwsDiskDetailsResponseArrayOutput) ToAwsDiskDetailsResponseArrayOutputWithContext(ctx context.Context) AwsDiskDetailsResponseArrayOutput {
+	return o
+}
+
+func (o AwsDiskDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AwsDiskDetailsResponse] {
+	return pulumix.Output[[]AwsDiskDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AwsDiskDetailsResponseArrayOutput) Index(i pulumi.IntInput) AwsDiskDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsDiskDetailsResponse {
+		return vs[0].([]AwsDiskDetailsResponse)[vs[1].(int)]
+	}).(AwsDiskDetailsResponseOutput)
+}
+
 // AwsSourceDetails message describes a specific source details for the AWS source type.
 type AwsSourceDetails struct {
 	// AWS Credentials using access key id and secret.
@@ -743,8 +815,12 @@ func (o AwsSourceDetailsResponseOutput) State() pulumi.StringOutput {
 type AwsSourceVmDetailsResponse struct {
 	// The total size of the disks being migrated in bytes.
 	CommittedStorageBytes string `pulumi:"committedStorageBytes"`
+	// The disks attached to the source VM.
+	Disks []AwsDiskDetailsResponse `pulumi:"disks"`
 	// The firmware type of the source VM.
 	Firmware string `pulumi:"firmware"`
+	// Information about VM capabilities needed for some Compute Engine features.
+	VmCapabilitiesInfo VmCapabilitiesResponse `pulumi:"vmCapabilitiesInfo"`
 }
 
 // Represent the source AWS VM details.
@@ -773,13 +849,993 @@ func (o AwsSourceVmDetailsResponseOutput) CommittedStorageBytes() pulumi.StringO
 	return o.ApplyT(func(v AwsSourceVmDetailsResponse) string { return v.CommittedStorageBytes }).(pulumi.StringOutput)
 }
 
+// The disks attached to the source VM.
+func (o AwsSourceVmDetailsResponseOutput) Disks() AwsDiskDetailsResponseArrayOutput {
+	return o.ApplyT(func(v AwsSourceVmDetailsResponse) []AwsDiskDetailsResponse { return v.Disks }).(AwsDiskDetailsResponseArrayOutput)
+}
+
 // The firmware type of the source VM.
 func (o AwsSourceVmDetailsResponseOutput) Firmware() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsSourceVmDetailsResponse) string { return v.Firmware }).(pulumi.StringOutput)
 }
 
+// Information about VM capabilities needed for some Compute Engine features.
+func (o AwsSourceVmDetailsResponseOutput) VmCapabilitiesInfo() VmCapabilitiesResponseOutput {
+	return o.ApplyT(func(v AwsSourceVmDetailsResponse) VmCapabilitiesResponse { return v.VmCapabilitiesInfo }).(VmCapabilitiesResponseOutput)
+}
+
+// The details of an Azure VM disk.
+type AzureDiskDetailsResponse struct {
+	// Azure disk ID.
+	DiskId string `pulumi:"diskId"`
+	// The ordinal number of the disk.
+	DiskNumber int `pulumi:"diskNumber"`
+	// Size in GB.
+	SizeGb string `pulumi:"sizeGb"`
+}
+
+// The details of an Azure VM disk.
+type AzureDiskDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureDiskDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureDiskDetailsResponse)(nil)).Elem()
+}
+
+func (o AzureDiskDetailsResponseOutput) ToAzureDiskDetailsResponseOutput() AzureDiskDetailsResponseOutput {
+	return o
+}
+
+func (o AzureDiskDetailsResponseOutput) ToAzureDiskDetailsResponseOutputWithContext(ctx context.Context) AzureDiskDetailsResponseOutput {
+	return o
+}
+
+func (o AzureDiskDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDiskDetailsResponse] {
+	return pulumix.Output[AzureDiskDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Azure disk ID.
+func (o AzureDiskDetailsResponseOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureDiskDetailsResponse) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The ordinal number of the disk.
+func (o AzureDiskDetailsResponseOutput) DiskNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v AzureDiskDetailsResponse) int { return v.DiskNumber }).(pulumi.IntOutput)
+}
+
+// Size in GB.
+func (o AzureDiskDetailsResponseOutput) SizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureDiskDetailsResponse) string { return v.SizeGb }).(pulumi.StringOutput)
+}
+
+type AzureDiskDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureDiskDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureDiskDetailsResponse)(nil)).Elem()
+}
+
+func (o AzureDiskDetailsResponseArrayOutput) ToAzureDiskDetailsResponseArrayOutput() AzureDiskDetailsResponseArrayOutput {
+	return o
+}
+
+func (o AzureDiskDetailsResponseArrayOutput) ToAzureDiskDetailsResponseArrayOutputWithContext(ctx context.Context) AzureDiskDetailsResponseArrayOutput {
+	return o
+}
+
+func (o AzureDiskDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureDiskDetailsResponse] {
+	return pulumix.Output[[]AzureDiskDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AzureDiskDetailsResponseArrayOutput) Index(i pulumi.IntInput) AzureDiskDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureDiskDetailsResponse {
+		return vs[0].([]AzureDiskDetailsResponse)[vs[1].(int)]
+	}).(AzureDiskDetailsResponseOutput)
+}
+
+// AzureSourceDetails message describes a specific source details for the Azure source type.
+type AzureSourceDetails struct {
+	// Immutable. The Azure location (region) that the source VMs will be migrated from.
+	AzureLocation *string `pulumi:"azureLocation"`
+	// Azure Credentials using tenant ID, client ID and secret.
+	ClientSecretCreds *ClientSecretCredentials `pulumi:"clientSecretCreds"`
+	// User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
+	MigrationResourcesUserTags map[string]string `pulumi:"migrationResourcesUserTags"`
+	// Immutable. Azure subscription ID.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+}
+
+// AzureSourceDetailsInput is an input type that accepts AzureSourceDetailsArgs and AzureSourceDetailsOutput values.
+// You can construct a concrete instance of `AzureSourceDetailsInput` via:
+//
+//	AzureSourceDetailsArgs{...}
+type AzureSourceDetailsInput interface {
+	pulumi.Input
+
+	ToAzureSourceDetailsOutput() AzureSourceDetailsOutput
+	ToAzureSourceDetailsOutputWithContext(context.Context) AzureSourceDetailsOutput
+}
+
+// AzureSourceDetails message describes a specific source details for the Azure source type.
+type AzureSourceDetailsArgs struct {
+	// Immutable. The Azure location (region) that the source VMs will be migrated from.
+	AzureLocation pulumi.StringPtrInput `pulumi:"azureLocation"`
+	// Azure Credentials using tenant ID, client ID and secret.
+	ClientSecretCreds ClientSecretCredentialsPtrInput `pulumi:"clientSecretCreds"`
+	// User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
+	MigrationResourcesUserTags pulumi.StringMapInput `pulumi:"migrationResourcesUserTags"`
+	// Immutable. Azure subscription ID.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+}
+
+func (AzureSourceDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSourceDetails)(nil)).Elem()
+}
+
+func (i AzureSourceDetailsArgs) ToAzureSourceDetailsOutput() AzureSourceDetailsOutput {
+	return i.ToAzureSourceDetailsOutputWithContext(context.Background())
+}
+
+func (i AzureSourceDetailsArgs) ToAzureSourceDetailsOutputWithContext(ctx context.Context) AzureSourceDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureSourceDetailsOutput)
+}
+
+func (i AzureSourceDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[AzureSourceDetails] {
+	return pulumix.Output[AzureSourceDetails]{
+		OutputState: i.ToAzureSourceDetailsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AzureSourceDetailsArgs) ToAzureSourceDetailsPtrOutput() AzureSourceDetailsPtrOutput {
+	return i.ToAzureSourceDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i AzureSourceDetailsArgs) ToAzureSourceDetailsPtrOutputWithContext(ctx context.Context) AzureSourceDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureSourceDetailsOutput).ToAzureSourceDetailsPtrOutputWithContext(ctx)
+}
+
+// AzureSourceDetailsPtrInput is an input type that accepts AzureSourceDetailsArgs, AzureSourceDetailsPtr and AzureSourceDetailsPtrOutput values.
+// You can construct a concrete instance of `AzureSourceDetailsPtrInput` via:
+//
+//	        AzureSourceDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureSourceDetailsPtrInput interface {
+	pulumi.Input
+
+	ToAzureSourceDetailsPtrOutput() AzureSourceDetailsPtrOutput
+	ToAzureSourceDetailsPtrOutputWithContext(context.Context) AzureSourceDetailsPtrOutput
+}
+
+type azureSourceDetailsPtrType AzureSourceDetailsArgs
+
+func AzureSourceDetailsPtr(v *AzureSourceDetailsArgs) AzureSourceDetailsPtrInput {
+	return (*azureSourceDetailsPtrType)(v)
+}
+
+func (*azureSourceDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureSourceDetails)(nil)).Elem()
+}
+
+func (i *azureSourceDetailsPtrType) ToAzureSourceDetailsPtrOutput() AzureSourceDetailsPtrOutput {
+	return i.ToAzureSourceDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *azureSourceDetailsPtrType) ToAzureSourceDetailsPtrOutputWithContext(ctx context.Context) AzureSourceDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureSourceDetailsPtrOutput)
+}
+
+func (i *azureSourceDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureSourceDetails] {
+	return pulumix.Output[*AzureSourceDetails]{
+		OutputState: i.ToAzureSourceDetailsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AzureSourceDetails message describes a specific source details for the Azure source type.
+type AzureSourceDetailsOutput struct{ *pulumi.OutputState }
+
+func (AzureSourceDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSourceDetails)(nil)).Elem()
+}
+
+func (o AzureSourceDetailsOutput) ToAzureSourceDetailsOutput() AzureSourceDetailsOutput {
+	return o
+}
+
+func (o AzureSourceDetailsOutput) ToAzureSourceDetailsOutputWithContext(ctx context.Context) AzureSourceDetailsOutput {
+	return o
+}
+
+func (o AzureSourceDetailsOutput) ToAzureSourceDetailsPtrOutput() AzureSourceDetailsPtrOutput {
+	return o.ToAzureSourceDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o AzureSourceDetailsOutput) ToAzureSourceDetailsPtrOutputWithContext(ctx context.Context) AzureSourceDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureSourceDetails) *AzureSourceDetails {
+		return &v
+	}).(AzureSourceDetailsPtrOutput)
+}
+
+func (o AzureSourceDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[AzureSourceDetails] {
+	return pulumix.Output[AzureSourceDetails]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Immutable. The Azure location (region) that the source VMs will be migrated from.
+func (o AzureSourceDetailsOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSourceDetails) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
+}
+
+// Azure Credentials using tenant ID, client ID and secret.
+func (o AzureSourceDetailsOutput) ClientSecretCreds() ClientSecretCredentialsPtrOutput {
+	return o.ApplyT(func(v AzureSourceDetails) *ClientSecretCredentials { return v.ClientSecretCreds }).(ClientSecretCredentialsPtrOutput)
+}
+
+// User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
+func (o AzureSourceDetailsOutput) MigrationResourcesUserTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AzureSourceDetails) map[string]string { return v.MigrationResourcesUserTags }).(pulumi.StringMapOutput)
+}
+
+// Immutable. Azure subscription ID.
+func (o AzureSourceDetailsOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSourceDetails) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+type AzureSourceDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureSourceDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureSourceDetails)(nil)).Elem()
+}
+
+func (o AzureSourceDetailsPtrOutput) ToAzureSourceDetailsPtrOutput() AzureSourceDetailsPtrOutput {
+	return o
+}
+
+func (o AzureSourceDetailsPtrOutput) ToAzureSourceDetailsPtrOutputWithContext(ctx context.Context) AzureSourceDetailsPtrOutput {
+	return o
+}
+
+func (o AzureSourceDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureSourceDetails] {
+	return pulumix.Output[*AzureSourceDetails]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AzureSourceDetailsPtrOutput) Elem() AzureSourceDetailsOutput {
+	return o.ApplyT(func(v *AzureSourceDetails) AzureSourceDetails {
+		if v != nil {
+			return *v
+		}
+		var ret AzureSourceDetails
+		return ret
+	}).(AzureSourceDetailsOutput)
+}
+
+// Immutable. The Azure location (region) that the source VMs will be migrated from.
+func (o AzureSourceDetailsPtrOutput) AzureLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSourceDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Credentials using tenant ID, client ID and secret.
+func (o AzureSourceDetailsPtrOutput) ClientSecretCreds() ClientSecretCredentialsPtrOutput {
+	return o.ApplyT(func(v *AzureSourceDetails) *ClientSecretCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecretCreds
+	}).(ClientSecretCredentialsPtrOutput)
+}
+
+// User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
+func (o AzureSourceDetailsPtrOutput) MigrationResourcesUserTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AzureSourceDetails) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationResourcesUserTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Immutable. Azure subscription ID.
+func (o AzureSourceDetailsPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSourceDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureSourceDetails message describes a specific source details for the Azure source type.
+type AzureSourceDetailsResponse struct {
+	// Immutable. The Azure location (region) that the source VMs will be migrated from.
+	AzureLocation string `pulumi:"azureLocation"`
+	// Azure Credentials using tenant ID, client ID and secret.
+	ClientSecretCreds ClientSecretCredentialsResponse `pulumi:"clientSecretCreds"`
+	// Provides details on the state of the Source in case of an error.
+	Error StatusResponse `pulumi:"error"`
+	// User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
+	MigrationResourcesUserTags map[string]string `pulumi:"migrationResourcesUserTags"`
+	// The ID of the Azure resource group that contains all resources related to the migration process of this source.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// State of the source as determined by the health check.
+	State string `pulumi:"state"`
+	// Immutable. Azure subscription ID.
+	SubscriptionId string `pulumi:"subscriptionId"`
+}
+
+// AzureSourceDetails message describes a specific source details for the Azure source type.
+type AzureSourceDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureSourceDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSourceDetailsResponse)(nil)).Elem()
+}
+
+func (o AzureSourceDetailsResponseOutput) ToAzureSourceDetailsResponseOutput() AzureSourceDetailsResponseOutput {
+	return o
+}
+
+func (o AzureSourceDetailsResponseOutput) ToAzureSourceDetailsResponseOutputWithContext(ctx context.Context) AzureSourceDetailsResponseOutput {
+	return o
+}
+
+func (o AzureSourceDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureSourceDetailsResponse] {
+	return pulumix.Output[AzureSourceDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Immutable. The Azure location (region) that the source VMs will be migrated from.
+func (o AzureSourceDetailsResponseOutput) AzureLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureSourceDetailsResponse) string { return v.AzureLocation }).(pulumi.StringOutput)
+}
+
+// Azure Credentials using tenant ID, client ID and secret.
+func (o AzureSourceDetailsResponseOutput) ClientSecretCreds() ClientSecretCredentialsResponseOutput {
+	return o.ApplyT(func(v AzureSourceDetailsResponse) ClientSecretCredentialsResponse { return v.ClientSecretCreds }).(ClientSecretCredentialsResponseOutput)
+}
+
+// Provides details on the state of the Source in case of an error.
+func (o AzureSourceDetailsResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v AzureSourceDetailsResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
+}
+
+// User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
+func (o AzureSourceDetailsResponseOutput) MigrationResourcesUserTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AzureSourceDetailsResponse) map[string]string { return v.MigrationResourcesUserTags }).(pulumi.StringMapOutput)
+}
+
+// The ID of the Azure resource group that contains all resources related to the migration process of this source.
+func (o AzureSourceDetailsResponseOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureSourceDetailsResponse) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// State of the source as determined by the health check.
+func (o AzureSourceDetailsResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureSourceDetailsResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Immutable. Azure subscription ID.
+func (o AzureSourceDetailsResponseOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureSourceDetailsResponse) string { return v.SubscriptionId }).(pulumi.StringOutput)
+}
+
+// Represent the source Azure VM details.
+type AzureSourceVmDetailsResponse struct {
+	// The total size of the disks being migrated in bytes.
+	CommittedStorageBytes string `pulumi:"committedStorageBytes"`
+	// The disks attached to the source VM.
+	Disks []AzureDiskDetailsResponse `pulumi:"disks"`
+	// The firmware type of the source VM.
+	Firmware string `pulumi:"firmware"`
+	// Information about VM capabilities needed for some Compute Engine features.
+	VmCapabilitiesInfo VmCapabilitiesResponse `pulumi:"vmCapabilitiesInfo"`
+}
+
+// Represent the source Azure VM details.
+type AzureSourceVmDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureSourceVmDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSourceVmDetailsResponse)(nil)).Elem()
+}
+
+func (o AzureSourceVmDetailsResponseOutput) ToAzureSourceVmDetailsResponseOutput() AzureSourceVmDetailsResponseOutput {
+	return o
+}
+
+func (o AzureSourceVmDetailsResponseOutput) ToAzureSourceVmDetailsResponseOutputWithContext(ctx context.Context) AzureSourceVmDetailsResponseOutput {
+	return o
+}
+
+func (o AzureSourceVmDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureSourceVmDetailsResponse] {
+	return pulumix.Output[AzureSourceVmDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The total size of the disks being migrated in bytes.
+func (o AzureSourceVmDetailsResponseOutput) CommittedStorageBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureSourceVmDetailsResponse) string { return v.CommittedStorageBytes }).(pulumi.StringOutput)
+}
+
+// The disks attached to the source VM.
+func (o AzureSourceVmDetailsResponseOutput) Disks() AzureDiskDetailsResponseArrayOutput {
+	return o.ApplyT(func(v AzureSourceVmDetailsResponse) []AzureDiskDetailsResponse { return v.Disks }).(AzureDiskDetailsResponseArrayOutput)
+}
+
+// The firmware type of the source VM.
+func (o AzureSourceVmDetailsResponseOutput) Firmware() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureSourceVmDetailsResponse) string { return v.Firmware }).(pulumi.StringOutput)
+}
+
+// Information about VM capabilities needed for some Compute Engine features.
+func (o AzureSourceVmDetailsResponseOutput) VmCapabilitiesInfo() VmCapabilitiesResponseOutput {
+	return o.ApplyT(func(v AzureSourceVmDetailsResponse) VmCapabilitiesResponse { return v.VmCapabilitiesInfo }).(VmCapabilitiesResponseOutput)
+}
+
+// BootDiskDefaults hold information about the boot disk of a VM.
+type BootDiskDefaults struct {
+	// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+	DeviceName *string `pulumi:"deviceName"`
+	// Optional. The name of the disk.
+	DiskName *string `pulumi:"diskName"`
+	// Optional. The type of disk provisioning to use for the VM.
+	DiskType *BootDiskDefaultsDiskType `pulumi:"diskType"`
+	// Optional. The encryption to apply to the boot disk.
+	Encryption *Encryption `pulumi:"encryption"`
+	// The image to use when creating the disk.
+	Image *DiskImageDefaults `pulumi:"image"`
+}
+
+// BootDiskDefaultsInput is an input type that accepts BootDiskDefaultsArgs and BootDiskDefaultsOutput values.
+// You can construct a concrete instance of `BootDiskDefaultsInput` via:
+//
+//	BootDiskDefaultsArgs{...}
+type BootDiskDefaultsInput interface {
+	pulumi.Input
+
+	ToBootDiskDefaultsOutput() BootDiskDefaultsOutput
+	ToBootDiskDefaultsOutputWithContext(context.Context) BootDiskDefaultsOutput
+}
+
+// BootDiskDefaults hold information about the boot disk of a VM.
+type BootDiskDefaultsArgs struct {
+	// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
+	// Optional. The name of the disk.
+	DiskName pulumi.StringPtrInput `pulumi:"diskName"`
+	// Optional. The type of disk provisioning to use for the VM.
+	DiskType BootDiskDefaultsDiskTypePtrInput `pulumi:"diskType"`
+	// Optional. The encryption to apply to the boot disk.
+	Encryption EncryptionPtrInput `pulumi:"encryption"`
+	// The image to use when creating the disk.
+	Image DiskImageDefaultsPtrInput `pulumi:"image"`
+}
+
+func (BootDiskDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootDiskDefaults)(nil)).Elem()
+}
+
+func (i BootDiskDefaultsArgs) ToBootDiskDefaultsOutput() BootDiskDefaultsOutput {
+	return i.ToBootDiskDefaultsOutputWithContext(context.Background())
+}
+
+func (i BootDiskDefaultsArgs) ToBootDiskDefaultsOutputWithContext(ctx context.Context) BootDiskDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BootDiskDefaultsOutput)
+}
+
+func (i BootDiskDefaultsArgs) ToOutput(ctx context.Context) pulumix.Output[BootDiskDefaults] {
+	return pulumix.Output[BootDiskDefaults]{
+		OutputState: i.ToBootDiskDefaultsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BootDiskDefaultsArgs) ToBootDiskDefaultsPtrOutput() BootDiskDefaultsPtrOutput {
+	return i.ToBootDiskDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i BootDiskDefaultsArgs) ToBootDiskDefaultsPtrOutputWithContext(ctx context.Context) BootDiskDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BootDiskDefaultsOutput).ToBootDiskDefaultsPtrOutputWithContext(ctx)
+}
+
+// BootDiskDefaultsPtrInput is an input type that accepts BootDiskDefaultsArgs, BootDiskDefaultsPtr and BootDiskDefaultsPtrOutput values.
+// You can construct a concrete instance of `BootDiskDefaultsPtrInput` via:
+//
+//	        BootDiskDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BootDiskDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToBootDiskDefaultsPtrOutput() BootDiskDefaultsPtrOutput
+	ToBootDiskDefaultsPtrOutputWithContext(context.Context) BootDiskDefaultsPtrOutput
+}
+
+type bootDiskDefaultsPtrType BootDiskDefaultsArgs
+
+func BootDiskDefaultsPtr(v *BootDiskDefaultsArgs) BootDiskDefaultsPtrInput {
+	return (*bootDiskDefaultsPtrType)(v)
+}
+
+func (*bootDiskDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BootDiskDefaults)(nil)).Elem()
+}
+
+func (i *bootDiskDefaultsPtrType) ToBootDiskDefaultsPtrOutput() BootDiskDefaultsPtrOutput {
+	return i.ToBootDiskDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *bootDiskDefaultsPtrType) ToBootDiskDefaultsPtrOutputWithContext(ctx context.Context) BootDiskDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BootDiskDefaultsPtrOutput)
+}
+
+func (i *bootDiskDefaultsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BootDiskDefaults] {
+	return pulumix.Output[*BootDiskDefaults]{
+		OutputState: i.ToBootDiskDefaultsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// BootDiskDefaults hold information about the boot disk of a VM.
+type BootDiskDefaultsOutput struct{ *pulumi.OutputState }
+
+func (BootDiskDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootDiskDefaults)(nil)).Elem()
+}
+
+func (o BootDiskDefaultsOutput) ToBootDiskDefaultsOutput() BootDiskDefaultsOutput {
+	return o
+}
+
+func (o BootDiskDefaultsOutput) ToBootDiskDefaultsOutputWithContext(ctx context.Context) BootDiskDefaultsOutput {
+	return o
+}
+
+func (o BootDiskDefaultsOutput) ToBootDiskDefaultsPtrOutput() BootDiskDefaultsPtrOutput {
+	return o.ToBootDiskDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o BootDiskDefaultsOutput) ToBootDiskDefaultsPtrOutputWithContext(ctx context.Context) BootDiskDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BootDiskDefaults) *BootDiskDefaults {
+		return &v
+	}).(BootDiskDefaultsPtrOutput)
+}
+
+func (o BootDiskDefaultsOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskDefaults] {
+	return pulumix.Output[BootDiskDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+func (o BootDiskDefaultsOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BootDiskDefaults) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the disk.
+func (o BootDiskDefaultsOutput) DiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BootDiskDefaults) *string { return v.DiskName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The type of disk provisioning to use for the VM.
+func (o BootDiskDefaultsOutput) DiskType() BootDiskDefaultsDiskTypePtrOutput {
+	return o.ApplyT(func(v BootDiskDefaults) *BootDiskDefaultsDiskType { return v.DiskType }).(BootDiskDefaultsDiskTypePtrOutput)
+}
+
+// Optional. The encryption to apply to the boot disk.
+func (o BootDiskDefaultsOutput) Encryption() EncryptionPtrOutput {
+	return o.ApplyT(func(v BootDiskDefaults) *Encryption { return v.Encryption }).(EncryptionPtrOutput)
+}
+
+// The image to use when creating the disk.
+func (o BootDiskDefaultsOutput) Image() DiskImageDefaultsPtrOutput {
+	return o.ApplyT(func(v BootDiskDefaults) *DiskImageDefaults { return v.Image }).(DiskImageDefaultsPtrOutput)
+}
+
+type BootDiskDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (BootDiskDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BootDiskDefaults)(nil)).Elem()
+}
+
+func (o BootDiskDefaultsPtrOutput) ToBootDiskDefaultsPtrOutput() BootDiskDefaultsPtrOutput {
+	return o
+}
+
+func (o BootDiskDefaultsPtrOutput) ToBootDiskDefaultsPtrOutputWithContext(ctx context.Context) BootDiskDefaultsPtrOutput {
+	return o
+}
+
+func (o BootDiskDefaultsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BootDiskDefaults] {
+	return pulumix.Output[*BootDiskDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BootDiskDefaultsPtrOutput) Elem() BootDiskDefaultsOutput {
+	return o.ApplyT(func(v *BootDiskDefaults) BootDiskDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret BootDiskDefaults
+		return ret
+	}).(BootDiskDefaultsOutput)
+}
+
+// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+func (o BootDiskDefaultsPtrOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BootDiskDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the disk.
+func (o BootDiskDefaultsPtrOutput) DiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BootDiskDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The type of disk provisioning to use for the VM.
+func (o BootDiskDefaultsPtrOutput) DiskType() BootDiskDefaultsDiskTypePtrOutput {
+	return o.ApplyT(func(v *BootDiskDefaults) *BootDiskDefaultsDiskType {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(BootDiskDefaultsDiskTypePtrOutput)
+}
+
+// Optional. The encryption to apply to the boot disk.
+func (o BootDiskDefaultsPtrOutput) Encryption() EncryptionPtrOutput {
+	return o.ApplyT(func(v *BootDiskDefaults) *Encryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(EncryptionPtrOutput)
+}
+
+// The image to use when creating the disk.
+func (o BootDiskDefaultsPtrOutput) Image() DiskImageDefaultsPtrOutput {
+	return o.ApplyT(func(v *BootDiskDefaults) *DiskImageDefaults {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(DiskImageDefaultsPtrOutput)
+}
+
+// BootDiskDefaults hold information about the boot disk of a VM.
+type BootDiskDefaultsResponse struct {
+	// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+	DeviceName string `pulumi:"deviceName"`
+	// Optional. The name of the disk.
+	DiskName string `pulumi:"diskName"`
+	// Optional. The type of disk provisioning to use for the VM.
+	DiskType string `pulumi:"diskType"`
+	// Optional. The encryption to apply to the boot disk.
+	Encryption EncryptionResponse `pulumi:"encryption"`
+	// The image to use when creating the disk.
+	Image DiskImageDefaultsResponse `pulumi:"image"`
+}
+
+// BootDiskDefaults hold information about the boot disk of a VM.
+type BootDiskDefaultsResponseOutput struct{ *pulumi.OutputState }
+
+func (BootDiskDefaultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootDiskDefaultsResponse)(nil)).Elem()
+}
+
+func (o BootDiskDefaultsResponseOutput) ToBootDiskDefaultsResponseOutput() BootDiskDefaultsResponseOutput {
+	return o
+}
+
+func (o BootDiskDefaultsResponseOutput) ToBootDiskDefaultsResponseOutputWithContext(ctx context.Context) BootDiskDefaultsResponseOutput {
+	return o
+}
+
+func (o BootDiskDefaultsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiskDefaultsResponse] {
+	return pulumix.Output[BootDiskDefaultsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+func (o BootDiskDefaultsResponseOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v BootDiskDefaultsResponse) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// Optional. The name of the disk.
+func (o BootDiskDefaultsResponseOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v BootDiskDefaultsResponse) string { return v.DiskName }).(pulumi.StringOutput)
+}
+
+// Optional. The type of disk provisioning to use for the VM.
+func (o BootDiskDefaultsResponseOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v BootDiskDefaultsResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Optional. The encryption to apply to the boot disk.
+func (o BootDiskDefaultsResponseOutput) Encryption() EncryptionResponseOutput {
+	return o.ApplyT(func(v BootDiskDefaultsResponse) EncryptionResponse { return v.Encryption }).(EncryptionResponseOutput)
+}
+
+// The image to use when creating the disk.
+func (o BootDiskDefaultsResponseOutput) Image() DiskImageDefaultsResponseOutput {
+	return o.ApplyT(func(v BootDiskDefaultsResponse) DiskImageDefaultsResponse { return v.Image }).(DiskImageDefaultsResponseOutput)
+}
+
+// Message describing Azure Credentials using tenant ID, client ID and secret.
+type ClientSecretCredentials struct {
+	// Azure client ID.
+	ClientId *string `pulumi:"clientId"`
+	// Input only. Azure client secret.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Azure tenant ID.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// ClientSecretCredentialsInput is an input type that accepts ClientSecretCredentialsArgs and ClientSecretCredentialsOutput values.
+// You can construct a concrete instance of `ClientSecretCredentialsInput` via:
+//
+//	ClientSecretCredentialsArgs{...}
+type ClientSecretCredentialsInput interface {
+	pulumi.Input
+
+	ToClientSecretCredentialsOutput() ClientSecretCredentialsOutput
+	ToClientSecretCredentialsOutputWithContext(context.Context) ClientSecretCredentialsOutput
+}
+
+// Message describing Azure Credentials using tenant ID, client ID and secret.
+type ClientSecretCredentialsArgs struct {
+	// Azure client ID.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Input only. Azure client secret.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Azure tenant ID.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (ClientSecretCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientSecretCredentials)(nil)).Elem()
+}
+
+func (i ClientSecretCredentialsArgs) ToClientSecretCredentialsOutput() ClientSecretCredentialsOutput {
+	return i.ToClientSecretCredentialsOutputWithContext(context.Background())
+}
+
+func (i ClientSecretCredentialsArgs) ToClientSecretCredentialsOutputWithContext(ctx context.Context) ClientSecretCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientSecretCredentialsOutput)
+}
+
+func (i ClientSecretCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[ClientSecretCredentials] {
+	return pulumix.Output[ClientSecretCredentials]{
+		OutputState: i.ToClientSecretCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClientSecretCredentialsArgs) ToClientSecretCredentialsPtrOutput() ClientSecretCredentialsPtrOutput {
+	return i.ToClientSecretCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ClientSecretCredentialsArgs) ToClientSecretCredentialsPtrOutputWithContext(ctx context.Context) ClientSecretCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientSecretCredentialsOutput).ToClientSecretCredentialsPtrOutputWithContext(ctx)
+}
+
+// ClientSecretCredentialsPtrInput is an input type that accepts ClientSecretCredentialsArgs, ClientSecretCredentialsPtr and ClientSecretCredentialsPtrOutput values.
+// You can construct a concrete instance of `ClientSecretCredentialsPtrInput` via:
+//
+//	        ClientSecretCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientSecretCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToClientSecretCredentialsPtrOutput() ClientSecretCredentialsPtrOutput
+	ToClientSecretCredentialsPtrOutputWithContext(context.Context) ClientSecretCredentialsPtrOutput
+}
+
+type clientSecretCredentialsPtrType ClientSecretCredentialsArgs
+
+func ClientSecretCredentialsPtr(v *ClientSecretCredentialsArgs) ClientSecretCredentialsPtrInput {
+	return (*clientSecretCredentialsPtrType)(v)
+}
+
+func (*clientSecretCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientSecretCredentials)(nil)).Elem()
+}
+
+func (i *clientSecretCredentialsPtrType) ToClientSecretCredentialsPtrOutput() ClientSecretCredentialsPtrOutput {
+	return i.ToClientSecretCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *clientSecretCredentialsPtrType) ToClientSecretCredentialsPtrOutputWithContext(ctx context.Context) ClientSecretCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientSecretCredentialsPtrOutput)
+}
+
+func (i *clientSecretCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientSecretCredentials] {
+	return pulumix.Output[*ClientSecretCredentials]{
+		OutputState: i.ToClientSecretCredentialsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Message describing Azure Credentials using tenant ID, client ID and secret.
+type ClientSecretCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ClientSecretCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientSecretCredentials)(nil)).Elem()
+}
+
+func (o ClientSecretCredentialsOutput) ToClientSecretCredentialsOutput() ClientSecretCredentialsOutput {
+	return o
+}
+
+func (o ClientSecretCredentialsOutput) ToClientSecretCredentialsOutputWithContext(ctx context.Context) ClientSecretCredentialsOutput {
+	return o
+}
+
+func (o ClientSecretCredentialsOutput) ToClientSecretCredentialsPtrOutput() ClientSecretCredentialsPtrOutput {
+	return o.ToClientSecretCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ClientSecretCredentialsOutput) ToClientSecretCredentialsPtrOutputWithContext(ctx context.Context) ClientSecretCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientSecretCredentials) *ClientSecretCredentials {
+		return &v
+	}).(ClientSecretCredentialsPtrOutput)
+}
+
+func (o ClientSecretCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[ClientSecretCredentials] {
+	return pulumix.Output[ClientSecretCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Azure client ID.
+func (o ClientSecretCredentialsOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientSecretCredentials) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Input only. Azure client secret.
+func (o ClientSecretCredentialsOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientSecretCredentials) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Azure tenant ID.
+func (o ClientSecretCredentialsOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientSecretCredentials) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type ClientSecretCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientSecretCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientSecretCredentials)(nil)).Elem()
+}
+
+func (o ClientSecretCredentialsPtrOutput) ToClientSecretCredentialsPtrOutput() ClientSecretCredentialsPtrOutput {
+	return o
+}
+
+func (o ClientSecretCredentialsPtrOutput) ToClientSecretCredentialsPtrOutputWithContext(ctx context.Context) ClientSecretCredentialsPtrOutput {
+	return o
+}
+
+func (o ClientSecretCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientSecretCredentials] {
+	return pulumix.Output[*ClientSecretCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClientSecretCredentialsPtrOutput) Elem() ClientSecretCredentialsOutput {
+	return o.ApplyT(func(v *ClientSecretCredentials) ClientSecretCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ClientSecretCredentials
+		return ret
+	}).(ClientSecretCredentialsOutput)
+}
+
+// Azure client ID.
+func (o ClientSecretCredentialsPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientSecretCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. Azure client secret.
+func (o ClientSecretCredentialsPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientSecretCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure tenant ID.
+func (o ClientSecretCredentialsPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientSecretCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message describing Azure Credentials using tenant ID, client ID and secret.
+type ClientSecretCredentialsResponse struct {
+	// Azure client ID.
+	ClientId string `pulumi:"clientId"`
+	// Input only. Azure client secret.
+	ClientSecret string `pulumi:"clientSecret"`
+	// Azure tenant ID.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// Message describing Azure Credentials using tenant ID, client ID and secret.
+type ClientSecretCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (ClientSecretCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientSecretCredentialsResponse)(nil)).Elem()
+}
+
+func (o ClientSecretCredentialsResponseOutput) ToClientSecretCredentialsResponseOutput() ClientSecretCredentialsResponseOutput {
+	return o
+}
+
+func (o ClientSecretCredentialsResponseOutput) ToClientSecretCredentialsResponseOutputWithContext(ctx context.Context) ClientSecretCredentialsResponseOutput {
+	return o
+}
+
+func (o ClientSecretCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClientSecretCredentialsResponse] {
+	return pulumix.Output[ClientSecretCredentialsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Azure client ID.
+func (o ClientSecretCredentialsResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientSecretCredentialsResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Input only. Azure client secret.
+func (o ClientSecretCredentialsResponseOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientSecretCredentialsResponse) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Azure tenant ID.
+func (o ClientSecretCredentialsResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientSecretCredentialsResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
 // CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
 type CloneJobResponse struct {
+	// Details of the target Persistent Disks in Compute Engine.
+	ComputeEngineDisksTargetDetails ComputeEngineDisksTargetDetailsResponse `pulumi:"computeEngineDisksTargetDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
@@ -825,6 +1881,13 @@ func (o CloneJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Clo
 	return pulumix.Output[CloneJobResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Details of the target Persistent Disks in Compute Engine.
+func (o CloneJobResponseOutput) ComputeEngineDisksTargetDetails() ComputeEngineDisksTargetDetailsResponseOutput {
+	return o.ApplyT(func(v CloneJobResponse) ComputeEngineDisksTargetDetailsResponse {
+		return v.ComputeEngineDisksTargetDetails
+	}).(ComputeEngineDisksTargetDetailsResponseOutput)
 }
 
 // Details of the target VM in Compute Engine.
@@ -993,6 +2056,362 @@ func (o CloneStepResponseArrayOutput) Index(i pulumi.IntInput) CloneStepResponse
 	}).(CloneStepResponseOutput)
 }
 
+// ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project.
+type ComputeEngineDisksTargetDefaults struct {
+	// The details of each Persistent Disk to create.
+	Disks []PersistentDiskDefaults `pulumi:"disks"`
+	// Details of the disk only migration target.
+	DisksTargetDefaults *DisksMigrationDisksTargetDefaults `pulumi:"disksTargetDefaults"`
+	// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
+	TargetProject *string `pulumi:"targetProject"`
+	// Details of the VM migration target.
+	VmTargetDefaults *DisksMigrationVmTargetDefaults `pulumi:"vmTargetDefaults"`
+	// The zone in which to create the Persistent Disks.
+	Zone *string `pulumi:"zone"`
+}
+
+// ComputeEngineDisksTargetDefaultsInput is an input type that accepts ComputeEngineDisksTargetDefaultsArgs and ComputeEngineDisksTargetDefaultsOutput values.
+// You can construct a concrete instance of `ComputeEngineDisksTargetDefaultsInput` via:
+//
+//	ComputeEngineDisksTargetDefaultsArgs{...}
+type ComputeEngineDisksTargetDefaultsInput interface {
+	pulumi.Input
+
+	ToComputeEngineDisksTargetDefaultsOutput() ComputeEngineDisksTargetDefaultsOutput
+	ToComputeEngineDisksTargetDefaultsOutputWithContext(context.Context) ComputeEngineDisksTargetDefaultsOutput
+}
+
+// ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project.
+type ComputeEngineDisksTargetDefaultsArgs struct {
+	// The details of each Persistent Disk to create.
+	Disks PersistentDiskDefaultsArrayInput `pulumi:"disks"`
+	// Details of the disk only migration target.
+	DisksTargetDefaults DisksMigrationDisksTargetDefaultsPtrInput `pulumi:"disksTargetDefaults"`
+	// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
+	TargetProject pulumi.StringPtrInput `pulumi:"targetProject"`
+	// Details of the VM migration target.
+	VmTargetDefaults DisksMigrationVmTargetDefaultsPtrInput `pulumi:"vmTargetDefaults"`
+	// The zone in which to create the Persistent Disks.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (ComputeEngineDisksTargetDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEngineDisksTargetDefaults)(nil)).Elem()
+}
+
+func (i ComputeEngineDisksTargetDefaultsArgs) ToComputeEngineDisksTargetDefaultsOutput() ComputeEngineDisksTargetDefaultsOutput {
+	return i.ToComputeEngineDisksTargetDefaultsOutputWithContext(context.Background())
+}
+
+func (i ComputeEngineDisksTargetDefaultsArgs) ToComputeEngineDisksTargetDefaultsOutputWithContext(ctx context.Context) ComputeEngineDisksTargetDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEngineDisksTargetDefaultsOutput)
+}
+
+func (i ComputeEngineDisksTargetDefaultsArgs) ToOutput(ctx context.Context) pulumix.Output[ComputeEngineDisksTargetDefaults] {
+	return pulumix.Output[ComputeEngineDisksTargetDefaults]{
+		OutputState: i.ToComputeEngineDisksTargetDefaultsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ComputeEngineDisksTargetDefaultsArgs) ToComputeEngineDisksTargetDefaultsPtrOutput() ComputeEngineDisksTargetDefaultsPtrOutput {
+	return i.ToComputeEngineDisksTargetDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i ComputeEngineDisksTargetDefaultsArgs) ToComputeEngineDisksTargetDefaultsPtrOutputWithContext(ctx context.Context) ComputeEngineDisksTargetDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEngineDisksTargetDefaultsOutput).ToComputeEngineDisksTargetDefaultsPtrOutputWithContext(ctx)
+}
+
+// ComputeEngineDisksTargetDefaultsPtrInput is an input type that accepts ComputeEngineDisksTargetDefaultsArgs, ComputeEngineDisksTargetDefaultsPtr and ComputeEngineDisksTargetDefaultsPtrOutput values.
+// You can construct a concrete instance of `ComputeEngineDisksTargetDefaultsPtrInput` via:
+//
+//	        ComputeEngineDisksTargetDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ComputeEngineDisksTargetDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToComputeEngineDisksTargetDefaultsPtrOutput() ComputeEngineDisksTargetDefaultsPtrOutput
+	ToComputeEngineDisksTargetDefaultsPtrOutputWithContext(context.Context) ComputeEngineDisksTargetDefaultsPtrOutput
+}
+
+type computeEngineDisksTargetDefaultsPtrType ComputeEngineDisksTargetDefaultsArgs
+
+func ComputeEngineDisksTargetDefaultsPtr(v *ComputeEngineDisksTargetDefaultsArgs) ComputeEngineDisksTargetDefaultsPtrInput {
+	return (*computeEngineDisksTargetDefaultsPtrType)(v)
+}
+
+func (*computeEngineDisksTargetDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeEngineDisksTargetDefaults)(nil)).Elem()
+}
+
+func (i *computeEngineDisksTargetDefaultsPtrType) ToComputeEngineDisksTargetDefaultsPtrOutput() ComputeEngineDisksTargetDefaultsPtrOutput {
+	return i.ToComputeEngineDisksTargetDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *computeEngineDisksTargetDefaultsPtrType) ToComputeEngineDisksTargetDefaultsPtrOutputWithContext(ctx context.Context) ComputeEngineDisksTargetDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEngineDisksTargetDefaultsPtrOutput)
+}
+
+func (i *computeEngineDisksTargetDefaultsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ComputeEngineDisksTargetDefaults] {
+	return pulumix.Output[*ComputeEngineDisksTargetDefaults]{
+		OutputState: i.ToComputeEngineDisksTargetDefaultsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project.
+type ComputeEngineDisksTargetDefaultsOutput struct{ *pulumi.OutputState }
+
+func (ComputeEngineDisksTargetDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEngineDisksTargetDefaults)(nil)).Elem()
+}
+
+func (o ComputeEngineDisksTargetDefaultsOutput) ToComputeEngineDisksTargetDefaultsOutput() ComputeEngineDisksTargetDefaultsOutput {
+	return o
+}
+
+func (o ComputeEngineDisksTargetDefaultsOutput) ToComputeEngineDisksTargetDefaultsOutputWithContext(ctx context.Context) ComputeEngineDisksTargetDefaultsOutput {
+	return o
+}
+
+func (o ComputeEngineDisksTargetDefaultsOutput) ToComputeEngineDisksTargetDefaultsPtrOutput() ComputeEngineDisksTargetDefaultsPtrOutput {
+	return o.ToComputeEngineDisksTargetDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeEngineDisksTargetDefaultsOutput) ToComputeEngineDisksTargetDefaultsPtrOutputWithContext(ctx context.Context) ComputeEngineDisksTargetDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeEngineDisksTargetDefaults) *ComputeEngineDisksTargetDefaults {
+		return &v
+	}).(ComputeEngineDisksTargetDefaultsPtrOutput)
+}
+
+func (o ComputeEngineDisksTargetDefaultsOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEngineDisksTargetDefaults] {
+	return pulumix.Output[ComputeEngineDisksTargetDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The details of each Persistent Disk to create.
+func (o ComputeEngineDisksTargetDefaultsOutput) Disks() PersistentDiskDefaultsArrayOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDefaults) []PersistentDiskDefaults { return v.Disks }).(PersistentDiskDefaultsArrayOutput)
+}
+
+// Details of the disk only migration target.
+func (o ComputeEngineDisksTargetDefaultsOutput) DisksTargetDefaults() DisksMigrationDisksTargetDefaultsPtrOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDefaults) *DisksMigrationDisksTargetDefaults {
+		return v.DisksTargetDefaults
+	}).(DisksMigrationDisksTargetDefaultsPtrOutput)
+}
+
+// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
+func (o ComputeEngineDisksTargetDefaultsOutput) TargetProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDefaults) *string { return v.TargetProject }).(pulumi.StringPtrOutput)
+}
+
+// Details of the VM migration target.
+func (o ComputeEngineDisksTargetDefaultsOutput) VmTargetDefaults() DisksMigrationVmTargetDefaultsPtrOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDefaults) *DisksMigrationVmTargetDefaults { return v.VmTargetDefaults }).(DisksMigrationVmTargetDefaultsPtrOutput)
+}
+
+// The zone in which to create the Persistent Disks.
+func (o ComputeEngineDisksTargetDefaultsOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDefaults) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type ComputeEngineDisksTargetDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (ComputeEngineDisksTargetDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeEngineDisksTargetDefaults)(nil)).Elem()
+}
+
+func (o ComputeEngineDisksTargetDefaultsPtrOutput) ToComputeEngineDisksTargetDefaultsPtrOutput() ComputeEngineDisksTargetDefaultsPtrOutput {
+	return o
+}
+
+func (o ComputeEngineDisksTargetDefaultsPtrOutput) ToComputeEngineDisksTargetDefaultsPtrOutputWithContext(ctx context.Context) ComputeEngineDisksTargetDefaultsPtrOutput {
+	return o
+}
+
+func (o ComputeEngineDisksTargetDefaultsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeEngineDisksTargetDefaults] {
+	return pulumix.Output[*ComputeEngineDisksTargetDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ComputeEngineDisksTargetDefaultsPtrOutput) Elem() ComputeEngineDisksTargetDefaultsOutput {
+	return o.ApplyT(func(v *ComputeEngineDisksTargetDefaults) ComputeEngineDisksTargetDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeEngineDisksTargetDefaults
+		return ret
+	}).(ComputeEngineDisksTargetDefaultsOutput)
+}
+
+// The details of each Persistent Disk to create.
+func (o ComputeEngineDisksTargetDefaultsPtrOutput) Disks() PersistentDiskDefaultsArrayOutput {
+	return o.ApplyT(func(v *ComputeEngineDisksTargetDefaults) []PersistentDiskDefaults {
+		if v == nil {
+			return nil
+		}
+		return v.Disks
+	}).(PersistentDiskDefaultsArrayOutput)
+}
+
+// Details of the disk only migration target.
+func (o ComputeEngineDisksTargetDefaultsPtrOutput) DisksTargetDefaults() DisksMigrationDisksTargetDefaultsPtrOutput {
+	return o.ApplyT(func(v *ComputeEngineDisksTargetDefaults) *DisksMigrationDisksTargetDefaults {
+		if v == nil {
+			return nil
+		}
+		return v.DisksTargetDefaults
+	}).(DisksMigrationDisksTargetDefaultsPtrOutput)
+}
+
+// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
+func (o ComputeEngineDisksTargetDefaultsPtrOutput) TargetProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeEngineDisksTargetDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetProject
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details of the VM migration target.
+func (o ComputeEngineDisksTargetDefaultsPtrOutput) VmTargetDefaults() DisksMigrationVmTargetDefaultsPtrOutput {
+	return o.ApplyT(func(v *ComputeEngineDisksTargetDefaults) *DisksMigrationVmTargetDefaults {
+		if v == nil {
+			return nil
+		}
+		return v.VmTargetDefaults
+	}).(DisksMigrationVmTargetDefaultsPtrOutput)
+}
+
+// The zone in which to create the Persistent Disks.
+func (o ComputeEngineDisksTargetDefaultsPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeEngineDisksTargetDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
+// ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project.
+type ComputeEngineDisksTargetDefaultsResponse struct {
+	// The details of each Persistent Disk to create.
+	Disks []PersistentDiskDefaultsResponse `pulumi:"disks"`
+	// Details of the disk only migration target.
+	DisksTargetDefaults DisksMigrationDisksTargetDefaultsResponse `pulumi:"disksTargetDefaults"`
+	// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
+	TargetProject string `pulumi:"targetProject"`
+	// Details of the VM migration target.
+	VmTargetDefaults DisksMigrationVmTargetDefaultsResponse `pulumi:"vmTargetDefaults"`
+	// The zone in which to create the Persistent Disks.
+	Zone string `pulumi:"zone"`
+}
+
+// ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project.
+type ComputeEngineDisksTargetDefaultsResponseOutput struct{ *pulumi.OutputState }
+
+func (ComputeEngineDisksTargetDefaultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEngineDisksTargetDefaultsResponse)(nil)).Elem()
+}
+
+func (o ComputeEngineDisksTargetDefaultsResponseOutput) ToComputeEngineDisksTargetDefaultsResponseOutput() ComputeEngineDisksTargetDefaultsResponseOutput {
+	return o
+}
+
+func (o ComputeEngineDisksTargetDefaultsResponseOutput) ToComputeEngineDisksTargetDefaultsResponseOutputWithContext(ctx context.Context) ComputeEngineDisksTargetDefaultsResponseOutput {
+	return o
+}
+
+func (o ComputeEngineDisksTargetDefaultsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEngineDisksTargetDefaultsResponse] {
+	return pulumix.Output[ComputeEngineDisksTargetDefaultsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The details of each Persistent Disk to create.
+func (o ComputeEngineDisksTargetDefaultsResponseOutput) Disks() PersistentDiskDefaultsResponseArrayOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDefaultsResponse) []PersistentDiskDefaultsResponse { return v.Disks }).(PersistentDiskDefaultsResponseArrayOutput)
+}
+
+// Details of the disk only migration target.
+func (o ComputeEngineDisksTargetDefaultsResponseOutput) DisksTargetDefaults() DisksMigrationDisksTargetDefaultsResponseOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDefaultsResponse) DisksMigrationDisksTargetDefaultsResponse {
+		return v.DisksTargetDefaults
+	}).(DisksMigrationDisksTargetDefaultsResponseOutput)
+}
+
+// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
+func (o ComputeEngineDisksTargetDefaultsResponseOutput) TargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDefaultsResponse) string { return v.TargetProject }).(pulumi.StringOutput)
+}
+
+// Details of the VM migration target.
+func (o ComputeEngineDisksTargetDefaultsResponseOutput) VmTargetDefaults() DisksMigrationVmTargetDefaultsResponseOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDefaultsResponse) DisksMigrationVmTargetDefaultsResponse {
+		return v.VmTargetDefaults
+	}).(DisksMigrationVmTargetDefaultsResponseOutput)
+}
+
+// The zone in which to create the Persistent Disks.
+func (o ComputeEngineDisksTargetDefaultsResponseOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDefaultsResponse) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+// ComputeEngineDisksTargetDetails is a collection of created Persistent Disks details.
+type ComputeEngineDisksTargetDetailsResponse struct {
+	// The details of each created Persistent Disk.
+	Disks []PersistentDiskResponse `pulumi:"disks"`
+	// Details of the disks-only migration target.
+	DisksTargetDetails DisksMigrationDisksTargetDetailsResponse `pulumi:"disksTargetDetails"`
+	// Details for the VM the migrated data disks are attached to.
+	VmTargetDetails DisksMigrationVmTargetDetailsResponse `pulumi:"vmTargetDetails"`
+}
+
+// ComputeEngineDisksTargetDetails is a collection of created Persistent Disks details.
+type ComputeEngineDisksTargetDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (ComputeEngineDisksTargetDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEngineDisksTargetDetailsResponse)(nil)).Elem()
+}
+
+func (o ComputeEngineDisksTargetDetailsResponseOutput) ToComputeEngineDisksTargetDetailsResponseOutput() ComputeEngineDisksTargetDetailsResponseOutput {
+	return o
+}
+
+func (o ComputeEngineDisksTargetDetailsResponseOutput) ToComputeEngineDisksTargetDetailsResponseOutputWithContext(ctx context.Context) ComputeEngineDisksTargetDetailsResponseOutput {
+	return o
+}
+
+func (o ComputeEngineDisksTargetDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeEngineDisksTargetDetailsResponse] {
+	return pulumix.Output[ComputeEngineDisksTargetDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The details of each created Persistent Disk.
+func (o ComputeEngineDisksTargetDetailsResponseOutput) Disks() PersistentDiskResponseArrayOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDetailsResponse) []PersistentDiskResponse { return v.Disks }).(PersistentDiskResponseArrayOutput)
+}
+
+// Details of the disks-only migration target.
+func (o ComputeEngineDisksTargetDetailsResponseOutput) DisksTargetDetails() DisksMigrationDisksTargetDetailsResponseOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDetailsResponse) DisksMigrationDisksTargetDetailsResponse {
+		return v.DisksTargetDetails
+	}).(DisksMigrationDisksTargetDetailsResponseOutput)
+}
+
+// Details for the VM the migrated data disks are attached to.
+func (o ComputeEngineDisksTargetDetailsResponseOutput) VmTargetDetails() DisksMigrationVmTargetDetailsResponseOutput {
+	return o.ApplyT(func(v ComputeEngineDisksTargetDetailsResponse) DisksMigrationVmTargetDetailsResponse {
+		return v.VmTargetDetails
+	}).(DisksMigrationVmTargetDetailsResponseOutput)
+}
+
 // ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
 type ComputeEngineTargetDefaults struct {
 	// Additional licenses to assign to the VM.
@@ -1001,6 +2420,8 @@ type ComputeEngineTargetDefaults struct {
 	ComputeScheduling *ComputeScheduling `pulumi:"computeScheduling"`
 	// The disk type to use in the VM.
 	DiskType *ComputeEngineTargetDefaultsDiskType `pulumi:"diskType"`
+	// Optional. Immutable. The encryption to apply to the VM disks.
+	Encryption *Encryption `pulumi:"encryption"`
 	// The hostname to assign to the VM.
 	Hostname *string `pulumi:"hostname"`
 	// A map of labels to associate with the VM.
@@ -1015,9 +2436,9 @@ type ComputeEngineTargetDefaults struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// List of NICs connected to this VM.
 	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
-	// A map of network tags to associate with the VM.
+	// A list of network tags to associate with the VM.
 	NetworkTags []string `pulumi:"networkTags"`
-	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
 	SecureBoot *bool `pulumi:"secureBoot"`
 	// The service account to associate the VM with.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -1048,6 +2469,8 @@ type ComputeEngineTargetDefaultsArgs struct {
 	ComputeScheduling ComputeSchedulingPtrInput `pulumi:"computeScheduling"`
 	// The disk type to use in the VM.
 	DiskType ComputeEngineTargetDefaultsDiskTypePtrInput `pulumi:"diskType"`
+	// Optional. Immutable. The encryption to apply to the VM disks.
+	Encryption EncryptionPtrInput `pulumi:"encryption"`
 	// The hostname to assign to the VM.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// A map of labels to associate with the VM.
@@ -1062,9 +2485,9 @@ type ComputeEngineTargetDefaultsArgs struct {
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// List of NICs connected to this VM.
 	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
-	// A map of network tags to associate with the VM.
+	// A list of network tags to associate with the VM.
 	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
-	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
 	SecureBoot pulumi.BoolPtrInput `pulumi:"secureBoot"`
 	// The service account to associate the VM with.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -1187,6 +2610,11 @@ func (o ComputeEngineTargetDefaultsOutput) DiskType() ComputeEngineTargetDefault
 	return o.ApplyT(func(v ComputeEngineTargetDefaults) *ComputeEngineTargetDefaultsDiskType { return v.DiskType }).(ComputeEngineTargetDefaultsDiskTypePtrOutput)
 }
 
+// Optional. Immutable. The encryption to apply to the VM disks.
+func (o ComputeEngineTargetDefaultsOutput) Encryption() EncryptionPtrOutput {
+	return o.ApplyT(func(v ComputeEngineTargetDefaults) *Encryption { return v.Encryption }).(EncryptionPtrOutput)
+}
+
 // The hostname to assign to the VM.
 func (o ComputeEngineTargetDefaultsOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaults) *string { return v.Hostname }).(pulumi.StringPtrOutput)
@@ -1222,12 +2650,12 @@ func (o ComputeEngineTargetDefaultsOutput) NetworkInterfaces() NetworkInterfaceA
 	return o.ApplyT(func(v ComputeEngineTargetDefaults) []NetworkInterface { return v.NetworkInterfaces }).(NetworkInterfaceArrayOutput)
 }
 
-// A map of network tags to associate with the VM.
+// A list of network tags to associate with the VM.
 func (o ComputeEngineTargetDefaultsOutput) NetworkTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaults) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
 }
 
-// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
 func (o ComputeEngineTargetDefaultsOutput) SecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaults) *bool { return v.SecureBoot }).(pulumi.BoolPtrOutput)
 }
@@ -1312,6 +2740,16 @@ func (o ComputeEngineTargetDefaultsPtrOutput) DiskType() ComputeEngineTargetDefa
 	}).(ComputeEngineTargetDefaultsDiskTypePtrOutput)
 }
 
+// Optional. Immutable. The encryption to apply to the VM disks.
+func (o ComputeEngineTargetDefaultsPtrOutput) Encryption() EncryptionPtrOutput {
+	return o.ApplyT(func(v *ComputeEngineTargetDefaults) *Encryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(EncryptionPtrOutput)
+}
+
 // The hostname to assign to the VM.
 func (o ComputeEngineTargetDefaultsPtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComputeEngineTargetDefaults) *string {
@@ -1382,7 +2820,7 @@ func (o ComputeEngineTargetDefaultsPtrOutput) NetworkInterfaces() NetworkInterfa
 	}).(NetworkInterfaceArrayOutput)
 }
 
-// A map of network tags to associate with the VM.
+// A list of network tags to associate with the VM.
 func (o ComputeEngineTargetDefaultsPtrOutput) NetworkTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeEngineTargetDefaults) []string {
 		if v == nil {
@@ -1392,7 +2830,7 @@ func (o ComputeEngineTargetDefaultsPtrOutput) NetworkTags() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
 func (o ComputeEngineTargetDefaultsPtrOutput) SecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeEngineTargetDefaults) *bool {
 		if v == nil {
@@ -1448,12 +2886,14 @@ type ComputeEngineTargetDefaultsResponse struct {
 	AdditionalLicenses []string `pulumi:"additionalLicenses"`
 	// The OS license returned from the adaptation module report.
 	AppliedLicense AppliedLicenseResponse `pulumi:"appliedLicense"`
-	// The VM Boot Option, as set in the source vm.
+	// The VM Boot Option, as set in the source VM.
 	BootOption string `pulumi:"bootOption"`
 	// Compute instance scheduling information (if empty default is used).
 	ComputeScheduling ComputeSchedulingResponse `pulumi:"computeScheduling"`
 	// The disk type to use in the VM.
 	DiskType string `pulumi:"diskType"`
+	// Optional. Immutable. The encryption to apply to the VM disks.
+	Encryption EncryptionResponse `pulumi:"encryption"`
 	// The hostname to assign to the VM.
 	Hostname string `pulumi:"hostname"`
 	// A map of labels to associate with the VM.
@@ -1468,9 +2908,9 @@ type ComputeEngineTargetDefaultsResponse struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// List of NICs connected to this VM.
 	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
-	// A map of network tags to associate with the VM.
+	// A list of network tags to associate with the VM.
 	NetworkTags []string `pulumi:"networkTags"`
-	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
 	SecureBoot bool `pulumi:"secureBoot"`
 	// The service account to associate the VM with.
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -1513,7 +2953,7 @@ func (o ComputeEngineTargetDefaultsResponseOutput) AppliedLicense() AppliedLicen
 	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) AppliedLicenseResponse { return v.AppliedLicense }).(AppliedLicenseResponseOutput)
 }
 
-// The VM Boot Option, as set in the source vm.
+// The VM Boot Option, as set in the source VM.
 func (o ComputeEngineTargetDefaultsResponseOutput) BootOption() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) string { return v.BootOption }).(pulumi.StringOutput)
 }
@@ -1526,6 +2966,11 @@ func (o ComputeEngineTargetDefaultsResponseOutput) ComputeScheduling() ComputeSc
 // The disk type to use in the VM.
 func (o ComputeEngineTargetDefaultsResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Optional. Immutable. The encryption to apply to the VM disks.
+func (o ComputeEngineTargetDefaultsResponseOutput) Encryption() EncryptionResponseOutput {
+	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) EncryptionResponse { return v.Encryption }).(EncryptionResponseOutput)
 }
 
 // The hostname to assign to the VM.
@@ -1563,12 +3008,12 @@ func (o ComputeEngineTargetDefaultsResponseOutput) NetworkInterfaces() NetworkIn
 	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
 }
 
-// A map of network tags to associate with the VM.
+// A list of network tags to associate with the VM.
 func (o ComputeEngineTargetDefaultsResponseOutput) NetworkTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
 }
 
-// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
 func (o ComputeEngineTargetDefaultsResponseOutput) SecureBoot() pulumi.BoolOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) bool { return v.SecureBoot }).(pulumi.BoolOutput)
 }
@@ -1599,12 +3044,14 @@ type ComputeEngineTargetDetailsResponse struct {
 	AdditionalLicenses []string `pulumi:"additionalLicenses"`
 	// The OS license returned from the adaptation module report.
 	AppliedLicense AppliedLicenseResponse `pulumi:"appliedLicense"`
-	// The VM Boot Option, as set in the source vm.
+	// The VM Boot Option, as set in the source VM.
 	BootOption string `pulumi:"bootOption"`
 	// Compute instance scheduling information (if empty default is used).
 	ComputeScheduling ComputeSchedulingResponse `pulumi:"computeScheduling"`
 	// The disk type to use in the VM.
 	DiskType string `pulumi:"diskType"`
+	// Optional. The encryption to apply to the VM disks.
+	Encryption EncryptionResponse `pulumi:"encryption"`
 	// The hostname to assign to the VM.
 	Hostname string `pulumi:"hostname"`
 	// A map of labels to associate with the VM.
@@ -1619,11 +3066,11 @@ type ComputeEngineTargetDetailsResponse struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// List of NICs connected to this VM.
 	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
-	// A map of network tags to associate with the VM.
+	// A list of network tags to associate with the VM.
 	NetworkTags []string `pulumi:"networkTags"`
 	// The Google Cloud target project ID or project name.
 	Project string `pulumi:"project"`
-	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
 	SecureBoot bool `pulumi:"secureBoot"`
 	// The service account to associate the VM with.
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -1664,7 +3111,7 @@ func (o ComputeEngineTargetDetailsResponseOutput) AppliedLicense() AppliedLicens
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) AppliedLicenseResponse { return v.AppliedLicense }).(AppliedLicenseResponseOutput)
 }
 
-// The VM Boot Option, as set in the source vm.
+// The VM Boot Option, as set in the source VM.
 func (o ComputeEngineTargetDetailsResponseOutput) BootOption() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) string { return v.BootOption }).(pulumi.StringOutput)
 }
@@ -1677,6 +3124,11 @@ func (o ComputeEngineTargetDetailsResponseOutput) ComputeScheduling() ComputeSch
 // The disk type to use in the VM.
 func (o ComputeEngineTargetDetailsResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Optional. The encryption to apply to the VM disks.
+func (o ComputeEngineTargetDetailsResponseOutput) Encryption() EncryptionResponseOutput {
+	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) EncryptionResponse { return v.Encryption }).(EncryptionResponseOutput)
 }
 
 // The hostname to assign to the VM.
@@ -1714,7 +3166,7 @@ func (o ComputeEngineTargetDetailsResponseOutput) NetworkInterfaces() NetworkInt
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
 }
 
-// A map of network tags to associate with the VM.
+// A list of network tags to associate with the VM.
 func (o ComputeEngineTargetDetailsResponseOutput) NetworkTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
 }
@@ -1724,7 +3176,7 @@ func (o ComputeEngineTargetDetailsResponseOutput) Project() pulumi.StringOutput 
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
 func (o ComputeEngineTargetDetailsResponseOutput) SecureBoot() pulumi.BoolOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) bool { return v.SecureBoot }).(pulumi.BoolOutput)
 }
@@ -2072,6 +3524,8 @@ func (o CutoverForecastResponseOutput) EstimatedCutoverJobDuration() pulumi.Stri
 
 // CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
 type CutoverJobResponse struct {
+	// Details of the target Persistent Disks in Compute Engine.
+	ComputeEngineDisksTargetDetails ComputeEngineDisksTargetDetailsResponse `pulumi:"computeEngineDisksTargetDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
@@ -2123,6 +3577,13 @@ func (o CutoverJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[C
 	return pulumix.Output[CutoverJobResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Details of the target Persistent Disks in Compute Engine.
+func (o CutoverJobResponseOutput) ComputeEngineDisksTargetDetails() ComputeEngineDisksTargetDetailsResponseOutput {
+	return o.ApplyT(func(v CutoverJobResponse) ComputeEngineDisksTargetDetailsResponse {
+		return v.ComputeEngineDisksTargetDetails
+	}).(ComputeEngineDisksTargetDetailsResponseOutput)
 }
 
 // Details of the target VM in Compute Engine.
@@ -2404,6 +3865,1159 @@ func (o CycleStepResponseArrayOutput) Index(i pulumi.IntInput) CycleStepResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CycleStepResponse {
 		return vs[0].([]CycleStepResponse)[vs[1].(int)]
 	}).(CycleStepResponseOutput)
+}
+
+// Contains details about the image source used to create the disk.
+type DiskImageDefaults struct {
+	// The Image resource used when creating the disk.
+	SourceImage string `pulumi:"sourceImage"`
+}
+
+// DiskImageDefaultsInput is an input type that accepts DiskImageDefaultsArgs and DiskImageDefaultsOutput values.
+// You can construct a concrete instance of `DiskImageDefaultsInput` via:
+//
+//	DiskImageDefaultsArgs{...}
+type DiskImageDefaultsInput interface {
+	pulumi.Input
+
+	ToDiskImageDefaultsOutput() DiskImageDefaultsOutput
+	ToDiskImageDefaultsOutputWithContext(context.Context) DiskImageDefaultsOutput
+}
+
+// Contains details about the image source used to create the disk.
+type DiskImageDefaultsArgs struct {
+	// The Image resource used when creating the disk.
+	SourceImage pulumi.StringInput `pulumi:"sourceImage"`
+}
+
+func (DiskImageDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskImageDefaults)(nil)).Elem()
+}
+
+func (i DiskImageDefaultsArgs) ToDiskImageDefaultsOutput() DiskImageDefaultsOutput {
+	return i.ToDiskImageDefaultsOutputWithContext(context.Background())
+}
+
+func (i DiskImageDefaultsArgs) ToDiskImageDefaultsOutputWithContext(ctx context.Context) DiskImageDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskImageDefaultsOutput)
+}
+
+func (i DiskImageDefaultsArgs) ToOutput(ctx context.Context) pulumix.Output[DiskImageDefaults] {
+	return pulumix.Output[DiskImageDefaults]{
+		OutputState: i.ToDiskImageDefaultsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DiskImageDefaultsArgs) ToDiskImageDefaultsPtrOutput() DiskImageDefaultsPtrOutput {
+	return i.ToDiskImageDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i DiskImageDefaultsArgs) ToDiskImageDefaultsPtrOutputWithContext(ctx context.Context) DiskImageDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskImageDefaultsOutput).ToDiskImageDefaultsPtrOutputWithContext(ctx)
+}
+
+// DiskImageDefaultsPtrInput is an input type that accepts DiskImageDefaultsArgs, DiskImageDefaultsPtr and DiskImageDefaultsPtrOutput values.
+// You can construct a concrete instance of `DiskImageDefaultsPtrInput` via:
+//
+//	        DiskImageDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiskImageDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToDiskImageDefaultsPtrOutput() DiskImageDefaultsPtrOutput
+	ToDiskImageDefaultsPtrOutputWithContext(context.Context) DiskImageDefaultsPtrOutput
+}
+
+type diskImageDefaultsPtrType DiskImageDefaultsArgs
+
+func DiskImageDefaultsPtr(v *DiskImageDefaultsArgs) DiskImageDefaultsPtrInput {
+	return (*diskImageDefaultsPtrType)(v)
+}
+
+func (*diskImageDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskImageDefaults)(nil)).Elem()
+}
+
+func (i *diskImageDefaultsPtrType) ToDiskImageDefaultsPtrOutput() DiskImageDefaultsPtrOutput {
+	return i.ToDiskImageDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *diskImageDefaultsPtrType) ToDiskImageDefaultsPtrOutputWithContext(ctx context.Context) DiskImageDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskImageDefaultsPtrOutput)
+}
+
+func (i *diskImageDefaultsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DiskImageDefaults] {
+	return pulumix.Output[*DiskImageDefaults]{
+		OutputState: i.ToDiskImageDefaultsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Contains details about the image source used to create the disk.
+type DiskImageDefaultsOutput struct{ *pulumi.OutputState }
+
+func (DiskImageDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskImageDefaults)(nil)).Elem()
+}
+
+func (o DiskImageDefaultsOutput) ToDiskImageDefaultsOutput() DiskImageDefaultsOutput {
+	return o
+}
+
+func (o DiskImageDefaultsOutput) ToDiskImageDefaultsOutputWithContext(ctx context.Context) DiskImageDefaultsOutput {
+	return o
+}
+
+func (o DiskImageDefaultsOutput) ToDiskImageDefaultsPtrOutput() DiskImageDefaultsPtrOutput {
+	return o.ToDiskImageDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o DiskImageDefaultsOutput) ToDiskImageDefaultsPtrOutputWithContext(ctx context.Context) DiskImageDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskImageDefaults) *DiskImageDefaults {
+		return &v
+	}).(DiskImageDefaultsPtrOutput)
+}
+
+func (o DiskImageDefaultsOutput) ToOutput(ctx context.Context) pulumix.Output[DiskImageDefaults] {
+	return pulumix.Output[DiskImageDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Image resource used when creating the disk.
+func (o DiskImageDefaultsOutput) SourceImage() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskImageDefaults) string { return v.SourceImage }).(pulumi.StringOutput)
+}
+
+type DiskImageDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskImageDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskImageDefaults)(nil)).Elem()
+}
+
+func (o DiskImageDefaultsPtrOutput) ToDiskImageDefaultsPtrOutput() DiskImageDefaultsPtrOutput {
+	return o
+}
+
+func (o DiskImageDefaultsPtrOutput) ToDiskImageDefaultsPtrOutputWithContext(ctx context.Context) DiskImageDefaultsPtrOutput {
+	return o
+}
+
+func (o DiskImageDefaultsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskImageDefaults] {
+	return pulumix.Output[*DiskImageDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DiskImageDefaultsPtrOutput) Elem() DiskImageDefaultsOutput {
+	return o.ApplyT(func(v *DiskImageDefaults) DiskImageDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret DiskImageDefaults
+		return ret
+	}).(DiskImageDefaultsOutput)
+}
+
+// The Image resource used when creating the disk.
+func (o DiskImageDefaultsPtrOutput) SourceImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskImageDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains details about the image source used to create the disk.
+type DiskImageDefaultsResponse struct {
+	// The Image resource used when creating the disk.
+	SourceImage string `pulumi:"sourceImage"`
+}
+
+// Contains details about the image source used to create the disk.
+type DiskImageDefaultsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskImageDefaultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskImageDefaultsResponse)(nil)).Elem()
+}
+
+func (o DiskImageDefaultsResponseOutput) ToDiskImageDefaultsResponseOutput() DiskImageDefaultsResponseOutput {
+	return o
+}
+
+func (o DiskImageDefaultsResponseOutput) ToDiskImageDefaultsResponseOutputWithContext(ctx context.Context) DiskImageDefaultsResponseOutput {
+	return o
+}
+
+func (o DiskImageDefaultsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskImageDefaultsResponse] {
+	return pulumix.Output[DiskImageDefaultsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Image resource used when creating the disk.
+func (o DiskImageDefaultsResponseOutput) SourceImage() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskImageDefaultsResponse) string { return v.SourceImage }).(pulumi.StringOutput)
+}
+
+// Details for a disk only migration.
+type DisksMigrationDisksTargetDefaults struct {
+}
+
+// DisksMigrationDisksTargetDefaultsInput is an input type that accepts DisksMigrationDisksTargetDefaultsArgs and DisksMigrationDisksTargetDefaultsOutput values.
+// You can construct a concrete instance of `DisksMigrationDisksTargetDefaultsInput` via:
+//
+//	DisksMigrationDisksTargetDefaultsArgs{...}
+type DisksMigrationDisksTargetDefaultsInput interface {
+	pulumi.Input
+
+	ToDisksMigrationDisksTargetDefaultsOutput() DisksMigrationDisksTargetDefaultsOutput
+	ToDisksMigrationDisksTargetDefaultsOutputWithContext(context.Context) DisksMigrationDisksTargetDefaultsOutput
+}
+
+// Details for a disk only migration.
+type DisksMigrationDisksTargetDefaultsArgs struct {
+}
+
+func (DisksMigrationDisksTargetDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisksMigrationDisksTargetDefaults)(nil)).Elem()
+}
+
+func (i DisksMigrationDisksTargetDefaultsArgs) ToDisksMigrationDisksTargetDefaultsOutput() DisksMigrationDisksTargetDefaultsOutput {
+	return i.ToDisksMigrationDisksTargetDefaultsOutputWithContext(context.Background())
+}
+
+func (i DisksMigrationDisksTargetDefaultsArgs) ToDisksMigrationDisksTargetDefaultsOutputWithContext(ctx context.Context) DisksMigrationDisksTargetDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisksMigrationDisksTargetDefaultsOutput)
+}
+
+func (i DisksMigrationDisksTargetDefaultsArgs) ToOutput(ctx context.Context) pulumix.Output[DisksMigrationDisksTargetDefaults] {
+	return pulumix.Output[DisksMigrationDisksTargetDefaults]{
+		OutputState: i.ToDisksMigrationDisksTargetDefaultsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DisksMigrationDisksTargetDefaultsArgs) ToDisksMigrationDisksTargetDefaultsPtrOutput() DisksMigrationDisksTargetDefaultsPtrOutput {
+	return i.ToDisksMigrationDisksTargetDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i DisksMigrationDisksTargetDefaultsArgs) ToDisksMigrationDisksTargetDefaultsPtrOutputWithContext(ctx context.Context) DisksMigrationDisksTargetDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisksMigrationDisksTargetDefaultsOutput).ToDisksMigrationDisksTargetDefaultsPtrOutputWithContext(ctx)
+}
+
+// DisksMigrationDisksTargetDefaultsPtrInput is an input type that accepts DisksMigrationDisksTargetDefaultsArgs, DisksMigrationDisksTargetDefaultsPtr and DisksMigrationDisksTargetDefaultsPtrOutput values.
+// You can construct a concrete instance of `DisksMigrationDisksTargetDefaultsPtrInput` via:
+//
+//	        DisksMigrationDisksTargetDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisksMigrationDisksTargetDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToDisksMigrationDisksTargetDefaultsPtrOutput() DisksMigrationDisksTargetDefaultsPtrOutput
+	ToDisksMigrationDisksTargetDefaultsPtrOutputWithContext(context.Context) DisksMigrationDisksTargetDefaultsPtrOutput
+}
+
+type disksMigrationDisksTargetDefaultsPtrType DisksMigrationDisksTargetDefaultsArgs
+
+func DisksMigrationDisksTargetDefaultsPtr(v *DisksMigrationDisksTargetDefaultsArgs) DisksMigrationDisksTargetDefaultsPtrInput {
+	return (*disksMigrationDisksTargetDefaultsPtrType)(v)
+}
+
+func (*disksMigrationDisksTargetDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisksMigrationDisksTargetDefaults)(nil)).Elem()
+}
+
+func (i *disksMigrationDisksTargetDefaultsPtrType) ToDisksMigrationDisksTargetDefaultsPtrOutput() DisksMigrationDisksTargetDefaultsPtrOutput {
+	return i.ToDisksMigrationDisksTargetDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *disksMigrationDisksTargetDefaultsPtrType) ToDisksMigrationDisksTargetDefaultsPtrOutputWithContext(ctx context.Context) DisksMigrationDisksTargetDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisksMigrationDisksTargetDefaultsPtrOutput)
+}
+
+func (i *disksMigrationDisksTargetDefaultsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DisksMigrationDisksTargetDefaults] {
+	return pulumix.Output[*DisksMigrationDisksTargetDefaults]{
+		OutputState: i.ToDisksMigrationDisksTargetDefaultsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Details for a disk only migration.
+type DisksMigrationDisksTargetDefaultsOutput struct{ *pulumi.OutputState }
+
+func (DisksMigrationDisksTargetDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisksMigrationDisksTargetDefaults)(nil)).Elem()
+}
+
+func (o DisksMigrationDisksTargetDefaultsOutput) ToDisksMigrationDisksTargetDefaultsOutput() DisksMigrationDisksTargetDefaultsOutput {
+	return o
+}
+
+func (o DisksMigrationDisksTargetDefaultsOutput) ToDisksMigrationDisksTargetDefaultsOutputWithContext(ctx context.Context) DisksMigrationDisksTargetDefaultsOutput {
+	return o
+}
+
+func (o DisksMigrationDisksTargetDefaultsOutput) ToDisksMigrationDisksTargetDefaultsPtrOutput() DisksMigrationDisksTargetDefaultsPtrOutput {
+	return o.ToDisksMigrationDisksTargetDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o DisksMigrationDisksTargetDefaultsOutput) ToDisksMigrationDisksTargetDefaultsPtrOutputWithContext(ctx context.Context) DisksMigrationDisksTargetDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisksMigrationDisksTargetDefaults) *DisksMigrationDisksTargetDefaults {
+		return &v
+	}).(DisksMigrationDisksTargetDefaultsPtrOutput)
+}
+
+func (o DisksMigrationDisksTargetDefaultsOutput) ToOutput(ctx context.Context) pulumix.Output[DisksMigrationDisksTargetDefaults] {
+	return pulumix.Output[DisksMigrationDisksTargetDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+type DisksMigrationDisksTargetDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (DisksMigrationDisksTargetDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisksMigrationDisksTargetDefaults)(nil)).Elem()
+}
+
+func (o DisksMigrationDisksTargetDefaultsPtrOutput) ToDisksMigrationDisksTargetDefaultsPtrOutput() DisksMigrationDisksTargetDefaultsPtrOutput {
+	return o
+}
+
+func (o DisksMigrationDisksTargetDefaultsPtrOutput) ToDisksMigrationDisksTargetDefaultsPtrOutputWithContext(ctx context.Context) DisksMigrationDisksTargetDefaultsPtrOutput {
+	return o
+}
+
+func (o DisksMigrationDisksTargetDefaultsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DisksMigrationDisksTargetDefaults] {
+	return pulumix.Output[*DisksMigrationDisksTargetDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DisksMigrationDisksTargetDefaultsPtrOutput) Elem() DisksMigrationDisksTargetDefaultsOutput {
+	return o.ApplyT(func(v *DisksMigrationDisksTargetDefaults) DisksMigrationDisksTargetDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret DisksMigrationDisksTargetDefaults
+		return ret
+	}).(DisksMigrationDisksTargetDefaultsOutput)
+}
+
+// Details for a disk only migration.
+type DisksMigrationDisksTargetDefaultsResponse struct {
+}
+
+// Details for a disk only migration.
+type DisksMigrationDisksTargetDefaultsResponseOutput struct{ *pulumi.OutputState }
+
+func (DisksMigrationDisksTargetDefaultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisksMigrationDisksTargetDefaultsResponse)(nil)).Elem()
+}
+
+func (o DisksMigrationDisksTargetDefaultsResponseOutput) ToDisksMigrationDisksTargetDefaultsResponseOutput() DisksMigrationDisksTargetDefaultsResponseOutput {
+	return o
+}
+
+func (o DisksMigrationDisksTargetDefaultsResponseOutput) ToDisksMigrationDisksTargetDefaultsResponseOutputWithContext(ctx context.Context) DisksMigrationDisksTargetDefaultsResponseOutput {
+	return o
+}
+
+func (o DisksMigrationDisksTargetDefaultsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DisksMigrationDisksTargetDefaultsResponse] {
+	return pulumix.Output[DisksMigrationDisksTargetDefaultsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Details for a disks-only migration.
+type DisksMigrationDisksTargetDetailsResponse struct {
+}
+
+// Details for a disks-only migration.
+type DisksMigrationDisksTargetDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (DisksMigrationDisksTargetDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisksMigrationDisksTargetDetailsResponse)(nil)).Elem()
+}
+
+func (o DisksMigrationDisksTargetDetailsResponseOutput) ToDisksMigrationDisksTargetDetailsResponseOutput() DisksMigrationDisksTargetDetailsResponseOutput {
+	return o
+}
+
+func (o DisksMigrationDisksTargetDetailsResponseOutput) ToDisksMigrationDisksTargetDetailsResponseOutputWithContext(ctx context.Context) DisksMigrationDisksTargetDetailsResponseOutput {
+	return o
+}
+
+func (o DisksMigrationDisksTargetDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DisksMigrationDisksTargetDetailsResponse] {
+	return pulumix.Output[DisksMigrationDisksTargetDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Details for creation of a VM that migrated data disks will be attached to.
+type DisksMigrationVmTargetDefaults struct {
+	// Optional. Additional licenses to assign to the VM.
+	AdditionalLicenses []string `pulumi:"additionalLicenses"`
+	// Optional. Details of the boot disk of the VM.
+	BootDiskDefaults *BootDiskDefaults `pulumi:"bootDiskDefaults"`
+	// Optional. Compute instance scheduling information (if empty default is used).
+	ComputeScheduling *ComputeScheduling `pulumi:"computeScheduling"`
+	// Optional. The encryption to apply to the VM.
+	Encryption *Encryption `pulumi:"encryption"`
+	// Optional. The hostname to assign to the VM.
+	Hostname *string `pulumi:"hostname"`
+	// Optional. A map of labels to associate with the VM.
+	Labels map[string]string `pulumi:"labels"`
+	// The machine type to create the VM with.
+	MachineType string `pulumi:"machineType"`
+	// Optional. The machine type series to create the VM with. For presentation only.
+	MachineTypeSeries *string `pulumi:"machineTypeSeries"`
+	// Optional. The metadata key/value pairs to assign to the VM.
+	Metadata map[string]string `pulumi:"metadata"`
+	// Optional. NICs to attach to the VM.
+	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
+	// Optional. A list of network tags to associate with the VM.
+	NetworkTags []string `pulumi:"networkTags"`
+	// Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
+	SecureBoot *bool `pulumi:"secureBoot"`
+	// Optional. The service account to associate the VM with.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The name of the VM to create.
+	VmName string `pulumi:"vmName"`
+}
+
+// DisksMigrationVmTargetDefaultsInput is an input type that accepts DisksMigrationVmTargetDefaultsArgs and DisksMigrationVmTargetDefaultsOutput values.
+// You can construct a concrete instance of `DisksMigrationVmTargetDefaultsInput` via:
+//
+//	DisksMigrationVmTargetDefaultsArgs{...}
+type DisksMigrationVmTargetDefaultsInput interface {
+	pulumi.Input
+
+	ToDisksMigrationVmTargetDefaultsOutput() DisksMigrationVmTargetDefaultsOutput
+	ToDisksMigrationVmTargetDefaultsOutputWithContext(context.Context) DisksMigrationVmTargetDefaultsOutput
+}
+
+// Details for creation of a VM that migrated data disks will be attached to.
+type DisksMigrationVmTargetDefaultsArgs struct {
+	// Optional. Additional licenses to assign to the VM.
+	AdditionalLicenses pulumi.StringArrayInput `pulumi:"additionalLicenses"`
+	// Optional. Details of the boot disk of the VM.
+	BootDiskDefaults BootDiskDefaultsPtrInput `pulumi:"bootDiskDefaults"`
+	// Optional. Compute instance scheduling information (if empty default is used).
+	ComputeScheduling ComputeSchedulingPtrInput `pulumi:"computeScheduling"`
+	// Optional. The encryption to apply to the VM.
+	Encryption EncryptionPtrInput `pulumi:"encryption"`
+	// Optional. The hostname to assign to the VM.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Optional. A map of labels to associate with the VM.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The machine type to create the VM with.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// Optional. The machine type series to create the VM with. For presentation only.
+	MachineTypeSeries pulumi.StringPtrInput `pulumi:"machineTypeSeries"`
+	// Optional. The metadata key/value pairs to assign to the VM.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Optional. NICs to attach to the VM.
+	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// Optional. A list of network tags to associate with the VM.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
+	// Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
+	SecureBoot pulumi.BoolPtrInput `pulumi:"secureBoot"`
+	// Optional. The service account to associate the VM with.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// The name of the VM to create.
+	VmName pulumi.StringInput `pulumi:"vmName"`
+}
+
+func (DisksMigrationVmTargetDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisksMigrationVmTargetDefaults)(nil)).Elem()
+}
+
+func (i DisksMigrationVmTargetDefaultsArgs) ToDisksMigrationVmTargetDefaultsOutput() DisksMigrationVmTargetDefaultsOutput {
+	return i.ToDisksMigrationVmTargetDefaultsOutputWithContext(context.Background())
+}
+
+func (i DisksMigrationVmTargetDefaultsArgs) ToDisksMigrationVmTargetDefaultsOutputWithContext(ctx context.Context) DisksMigrationVmTargetDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisksMigrationVmTargetDefaultsOutput)
+}
+
+func (i DisksMigrationVmTargetDefaultsArgs) ToOutput(ctx context.Context) pulumix.Output[DisksMigrationVmTargetDefaults] {
+	return pulumix.Output[DisksMigrationVmTargetDefaults]{
+		OutputState: i.ToDisksMigrationVmTargetDefaultsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DisksMigrationVmTargetDefaultsArgs) ToDisksMigrationVmTargetDefaultsPtrOutput() DisksMigrationVmTargetDefaultsPtrOutput {
+	return i.ToDisksMigrationVmTargetDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i DisksMigrationVmTargetDefaultsArgs) ToDisksMigrationVmTargetDefaultsPtrOutputWithContext(ctx context.Context) DisksMigrationVmTargetDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisksMigrationVmTargetDefaultsOutput).ToDisksMigrationVmTargetDefaultsPtrOutputWithContext(ctx)
+}
+
+// DisksMigrationVmTargetDefaultsPtrInput is an input type that accepts DisksMigrationVmTargetDefaultsArgs, DisksMigrationVmTargetDefaultsPtr and DisksMigrationVmTargetDefaultsPtrOutput values.
+// You can construct a concrete instance of `DisksMigrationVmTargetDefaultsPtrInput` via:
+//
+//	        DisksMigrationVmTargetDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisksMigrationVmTargetDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToDisksMigrationVmTargetDefaultsPtrOutput() DisksMigrationVmTargetDefaultsPtrOutput
+	ToDisksMigrationVmTargetDefaultsPtrOutputWithContext(context.Context) DisksMigrationVmTargetDefaultsPtrOutput
+}
+
+type disksMigrationVmTargetDefaultsPtrType DisksMigrationVmTargetDefaultsArgs
+
+func DisksMigrationVmTargetDefaultsPtr(v *DisksMigrationVmTargetDefaultsArgs) DisksMigrationVmTargetDefaultsPtrInput {
+	return (*disksMigrationVmTargetDefaultsPtrType)(v)
+}
+
+func (*disksMigrationVmTargetDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisksMigrationVmTargetDefaults)(nil)).Elem()
+}
+
+func (i *disksMigrationVmTargetDefaultsPtrType) ToDisksMigrationVmTargetDefaultsPtrOutput() DisksMigrationVmTargetDefaultsPtrOutput {
+	return i.ToDisksMigrationVmTargetDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *disksMigrationVmTargetDefaultsPtrType) ToDisksMigrationVmTargetDefaultsPtrOutputWithContext(ctx context.Context) DisksMigrationVmTargetDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisksMigrationVmTargetDefaultsPtrOutput)
+}
+
+func (i *disksMigrationVmTargetDefaultsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DisksMigrationVmTargetDefaults] {
+	return pulumix.Output[*DisksMigrationVmTargetDefaults]{
+		OutputState: i.ToDisksMigrationVmTargetDefaultsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Details for creation of a VM that migrated data disks will be attached to.
+type DisksMigrationVmTargetDefaultsOutput struct{ *pulumi.OutputState }
+
+func (DisksMigrationVmTargetDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisksMigrationVmTargetDefaults)(nil)).Elem()
+}
+
+func (o DisksMigrationVmTargetDefaultsOutput) ToDisksMigrationVmTargetDefaultsOutput() DisksMigrationVmTargetDefaultsOutput {
+	return o
+}
+
+func (o DisksMigrationVmTargetDefaultsOutput) ToDisksMigrationVmTargetDefaultsOutputWithContext(ctx context.Context) DisksMigrationVmTargetDefaultsOutput {
+	return o
+}
+
+func (o DisksMigrationVmTargetDefaultsOutput) ToDisksMigrationVmTargetDefaultsPtrOutput() DisksMigrationVmTargetDefaultsPtrOutput {
+	return o.ToDisksMigrationVmTargetDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o DisksMigrationVmTargetDefaultsOutput) ToDisksMigrationVmTargetDefaultsPtrOutputWithContext(ctx context.Context) DisksMigrationVmTargetDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisksMigrationVmTargetDefaults) *DisksMigrationVmTargetDefaults {
+		return &v
+	}).(DisksMigrationVmTargetDefaultsPtrOutput)
+}
+
+func (o DisksMigrationVmTargetDefaultsOutput) ToOutput(ctx context.Context) pulumix.Output[DisksMigrationVmTargetDefaults] {
+	return pulumix.Output[DisksMigrationVmTargetDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Additional licenses to assign to the VM.
+func (o DisksMigrationVmTargetDefaultsOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) []string { return v.AdditionalLicenses }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Details of the boot disk of the VM.
+func (o DisksMigrationVmTargetDefaultsOutput) BootDiskDefaults() BootDiskDefaultsPtrOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) *BootDiskDefaults { return v.BootDiskDefaults }).(BootDiskDefaultsPtrOutput)
+}
+
+// Optional. Compute instance scheduling information (if empty default is used).
+func (o DisksMigrationVmTargetDefaultsOutput) ComputeScheduling() ComputeSchedulingPtrOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) *ComputeScheduling { return v.ComputeScheduling }).(ComputeSchedulingPtrOutput)
+}
+
+// Optional. The encryption to apply to the VM.
+func (o DisksMigrationVmTargetDefaultsOutput) Encryption() EncryptionPtrOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) *Encryption { return v.Encryption }).(EncryptionPtrOutput)
+}
+
+// Optional. The hostname to assign to the VM.
+func (o DisksMigrationVmTargetDefaultsOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A map of labels to associate with the VM.
+func (o DisksMigrationVmTargetDefaultsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The machine type to create the VM with.
+func (o DisksMigrationVmTargetDefaultsOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Optional. The machine type series to create the VM with. For presentation only.
+func (o DisksMigrationVmTargetDefaultsOutput) MachineTypeSeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) *string { return v.MachineTypeSeries }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The metadata key/value pairs to assign to the VM.
+func (o DisksMigrationVmTargetDefaultsOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Optional. NICs to attach to the VM.
+func (o DisksMigrationVmTargetDefaultsOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) []NetworkInterface { return v.NetworkInterfaces }).(NetworkInterfaceArrayOutput)
+}
+
+// Optional. A list of network tags to associate with the VM.
+func (o DisksMigrationVmTargetDefaultsOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
+func (o DisksMigrationVmTargetDefaultsOutput) SecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) *bool { return v.SecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The service account to associate the VM with.
+func (o DisksMigrationVmTargetDefaultsOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// The name of the VM to create.
+func (o DisksMigrationVmTargetDefaultsOutput) VmName() pulumi.StringOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaults) string { return v.VmName }).(pulumi.StringOutput)
+}
+
+type DisksMigrationVmTargetDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (DisksMigrationVmTargetDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisksMigrationVmTargetDefaults)(nil)).Elem()
+}
+
+func (o DisksMigrationVmTargetDefaultsPtrOutput) ToDisksMigrationVmTargetDefaultsPtrOutput() DisksMigrationVmTargetDefaultsPtrOutput {
+	return o
+}
+
+func (o DisksMigrationVmTargetDefaultsPtrOutput) ToDisksMigrationVmTargetDefaultsPtrOutputWithContext(ctx context.Context) DisksMigrationVmTargetDefaultsPtrOutput {
+	return o
+}
+
+func (o DisksMigrationVmTargetDefaultsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DisksMigrationVmTargetDefaults] {
+	return pulumix.Output[*DisksMigrationVmTargetDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DisksMigrationVmTargetDefaultsPtrOutput) Elem() DisksMigrationVmTargetDefaultsOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) DisksMigrationVmTargetDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret DisksMigrationVmTargetDefaults
+		return ret
+	}).(DisksMigrationVmTargetDefaultsOutput)
+}
+
+// Optional. Additional licenses to assign to the VM.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalLicenses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Details of the boot disk of the VM.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) BootDiskDefaults() BootDiskDefaultsPtrOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) *BootDiskDefaults {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskDefaults
+	}).(BootDiskDefaultsPtrOutput)
+}
+
+// Optional. Compute instance scheduling information (if empty default is used).
+func (o DisksMigrationVmTargetDefaultsPtrOutput) ComputeScheduling() ComputeSchedulingPtrOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) *ComputeScheduling {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeScheduling
+	}).(ComputeSchedulingPtrOutput)
+}
+
+// Optional. The encryption to apply to the VM.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) Encryption() EncryptionPtrOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) *Encryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(EncryptionPtrOutput)
+}
+
+// Optional. The hostname to assign to the VM.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A map of labels to associate with the VM.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The machine type to create the VM with.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The machine type series to create the VM with. For presentation only.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) MachineTypeSeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineTypeSeries
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The metadata key/value pairs to assign to the VM.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. NICs to attach to the VM.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) []NetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(NetworkInterfaceArrayOutput)
+}
+
+// Optional. A list of network tags to associate with the VM.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) SecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The service account to associate the VM with.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the VM to create.
+func (o DisksMigrationVmTargetDefaultsPtrOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DisksMigrationVmTargetDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VmName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details for creation of a VM that migrated data disks will be attached to.
+type DisksMigrationVmTargetDefaultsResponse struct {
+	// Optional. Additional licenses to assign to the VM.
+	AdditionalLicenses []string `pulumi:"additionalLicenses"`
+	// Optional. Details of the boot disk of the VM.
+	BootDiskDefaults BootDiskDefaultsResponse `pulumi:"bootDiskDefaults"`
+	// Optional. Compute instance scheduling information (if empty default is used).
+	ComputeScheduling ComputeSchedulingResponse `pulumi:"computeScheduling"`
+	// Optional. The encryption to apply to the VM.
+	Encryption EncryptionResponse `pulumi:"encryption"`
+	// Optional. The hostname to assign to the VM.
+	Hostname string `pulumi:"hostname"`
+	// Optional. A map of labels to associate with the VM.
+	Labels map[string]string `pulumi:"labels"`
+	// The machine type to create the VM with.
+	MachineType string `pulumi:"machineType"`
+	// Optional. The machine type series to create the VM with. For presentation only.
+	MachineTypeSeries string `pulumi:"machineTypeSeries"`
+	// Optional. The metadata key/value pairs to assign to the VM.
+	Metadata map[string]string `pulumi:"metadata"`
+	// Optional. NICs to attach to the VM.
+	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	// Optional. A list of network tags to associate with the VM.
+	NetworkTags []string `pulumi:"networkTags"`
+	// Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
+	SecureBoot bool `pulumi:"secureBoot"`
+	// Optional. The service account to associate the VM with.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// The name of the VM to create.
+	VmName string `pulumi:"vmName"`
+}
+
+// Details for creation of a VM that migrated data disks will be attached to.
+type DisksMigrationVmTargetDefaultsResponseOutput struct{ *pulumi.OutputState }
+
+func (DisksMigrationVmTargetDefaultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisksMigrationVmTargetDefaultsResponse)(nil)).Elem()
+}
+
+func (o DisksMigrationVmTargetDefaultsResponseOutput) ToDisksMigrationVmTargetDefaultsResponseOutput() DisksMigrationVmTargetDefaultsResponseOutput {
+	return o
+}
+
+func (o DisksMigrationVmTargetDefaultsResponseOutput) ToDisksMigrationVmTargetDefaultsResponseOutputWithContext(ctx context.Context) DisksMigrationVmTargetDefaultsResponseOutput {
+	return o
+}
+
+func (o DisksMigrationVmTargetDefaultsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DisksMigrationVmTargetDefaultsResponse] {
+	return pulumix.Output[DisksMigrationVmTargetDefaultsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Additional licenses to assign to the VM.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) AdditionalLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) []string { return v.AdditionalLicenses }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Details of the boot disk of the VM.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) BootDiskDefaults() BootDiskDefaultsResponseOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) BootDiskDefaultsResponse { return v.BootDiskDefaults }).(BootDiskDefaultsResponseOutput)
+}
+
+// Optional. Compute instance scheduling information (if empty default is used).
+func (o DisksMigrationVmTargetDefaultsResponseOutput) ComputeScheduling() ComputeSchedulingResponseOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) ComputeSchedulingResponse { return v.ComputeScheduling }).(ComputeSchedulingResponseOutput)
+}
+
+// Optional. The encryption to apply to the VM.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) Encryption() EncryptionResponseOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) EncryptionResponse { return v.Encryption }).(EncryptionResponseOutput)
+}
+
+// Optional. The hostname to assign to the VM.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Optional. A map of labels to associate with the VM.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The machine type to create the VM with.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Optional. The machine type series to create the VM with. For presentation only.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) MachineTypeSeries() pulumi.StringOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) string { return v.MachineTypeSeries }).(pulumi.StringOutput)
+}
+
+// Optional. The metadata key/value pairs to assign to the VM.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Optional. NICs to attach to the VM.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
+}
+
+// Optional. A list of network tags to associate with the VM.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) SecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) bool { return v.SecureBoot }).(pulumi.BoolOutput)
+}
+
+// Optional. The service account to associate the VM with.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// The name of the VM to create.
+func (o DisksMigrationVmTargetDefaultsResponseOutput) VmName() pulumi.StringOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDefaultsResponse) string { return v.VmName }).(pulumi.StringOutput)
+}
+
+// Details for the VM created VM as part of disks migration.
+type DisksMigrationVmTargetDetailsResponse struct {
+	// The URI of the Compute Engine VM.
+	VmUri string `pulumi:"vmUri"`
+}
+
+// Details for the VM created VM as part of disks migration.
+type DisksMigrationVmTargetDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (DisksMigrationVmTargetDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisksMigrationVmTargetDetailsResponse)(nil)).Elem()
+}
+
+func (o DisksMigrationVmTargetDetailsResponseOutput) ToDisksMigrationVmTargetDetailsResponseOutput() DisksMigrationVmTargetDetailsResponseOutput {
+	return o
+}
+
+func (o DisksMigrationVmTargetDetailsResponseOutput) ToDisksMigrationVmTargetDetailsResponseOutputWithContext(ctx context.Context) DisksMigrationVmTargetDetailsResponseOutput {
+	return o
+}
+
+func (o DisksMigrationVmTargetDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DisksMigrationVmTargetDetailsResponse] {
+	return pulumix.Output[DisksMigrationVmTargetDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The URI of the Compute Engine VM.
+func (o DisksMigrationVmTargetDetailsResponseOutput) VmUri() pulumi.StringOutput {
+	return o.ApplyT(func(v DisksMigrationVmTargetDetailsResponse) string { return v.VmUri }).(pulumi.StringOutput)
+}
+
+// Encryption message describes the details of the applied encryption.
+type Encryption struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKey string `pulumi:"kmsKey"`
+}
+
+// EncryptionInput is an input type that accepts EncryptionArgs and EncryptionOutput values.
+// You can construct a concrete instance of `EncryptionInput` via:
+//
+//	EncryptionArgs{...}
+type EncryptionInput interface {
+	pulumi.Input
+
+	ToEncryptionOutput() EncryptionOutput
+	ToEncryptionOutputWithContext(context.Context) EncryptionOutput
+}
+
+// Encryption message describes the details of the applied encryption.
+type EncryptionArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
+}
+
+func (EncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Encryption)(nil)).Elem()
+}
+
+func (i EncryptionArgs) ToEncryptionOutput() EncryptionOutput {
+	return i.ToEncryptionOutputWithContext(context.Background())
+}
+
+func (i EncryptionArgs) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput)
+}
+
+func (i EncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
+	return pulumix.Output[Encryption]{
+		OutputState: i.ToEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EncryptionArgs) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return i.ToEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionArgs) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput).ToEncryptionPtrOutputWithContext(ctx)
+}
+
+// EncryptionPtrInput is an input type that accepts EncryptionArgs, EncryptionPtr and EncryptionPtrOutput values.
+// You can construct a concrete instance of `EncryptionPtrInput` via:
+//
+//	        EncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionPtrOutput() EncryptionPtrOutput
+	ToEncryptionPtrOutputWithContext(context.Context) EncryptionPtrOutput
+}
+
+type encryptionPtrType EncryptionArgs
+
+func EncryptionPtr(v *EncryptionArgs) EncryptionPtrInput {
+	return (*encryptionPtrType)(v)
+}
+
+func (*encryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Encryption)(nil)).Elem()
+}
+
+func (i *encryptionPtrType) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return i.ToEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionPtrType) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPtrOutput)
+}
+
+func (i *encryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*Encryption] {
+	return pulumix.Output[*Encryption]{
+		OutputState: i.ToEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Encryption message describes the details of the applied encryption.
+type EncryptionOutput struct{ *pulumi.OutputState }
+
+func (EncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Encryption)(nil)).Elem()
+}
+
+func (o EncryptionOutput) ToEncryptionOutput() EncryptionOutput {
+	return o
+}
+
+func (o EncryptionOutput) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
+	return o
+}
+
+func (o EncryptionOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return o.ToEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Encryption) *Encryption {
+		return &v
+	}).(EncryptionPtrOutput)
+}
+
+func (o EncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
+	return pulumix.Output[Encryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o EncryptionOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v Encryption) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+type EncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Encryption)(nil)).Elem()
+}
+
+func (o EncryptionPtrOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return o
+}
+
+func (o EncryptionPtrOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return o
+}
+
+func (o EncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Encryption] {
+	return pulumix.Output[*Encryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EncryptionPtrOutput) Elem() EncryptionOutput {
+	return o.ApplyT(func(v *Encryption) Encryption {
+		if v != nil {
+			return *v
+		}
+		var ret Encryption
+		return ret
+	}).(EncryptionOutput)
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o EncryptionPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Encryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption message describes the details of the applied encryption.
+type EncryptionResponse struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKey string `pulumi:"kmsKey"`
+}
+
+// Encryption message describes the details of the applied encryption.
+type EncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionResponse)(nil)).Elem()
+}
+
+func (o EncryptionResponseOutput) ToEncryptionResponseOutput() EncryptionResponseOutput {
+	return o
+}
+
+func (o EncryptionResponseOutput) ToEncryptionResponseOutputWithContext(ctx context.Context) EncryptionResponseOutput {
+	return o
+}
+
+func (o EncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionResponse] {
+	return pulumix.Output[EncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o EncryptionResponseOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionResponse) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // InitializingReplicationStep contains specific step details.
@@ -2874,6 +5488,333 @@ func (o NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) NetworkInt
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkInterfaceResponse {
 		return vs[0].([]NetworkInterfaceResponse)[vs[1].(int)]
 	}).(NetworkInterfaceResponseOutput)
+}
+
+// Details for creation of a Persistent Disk.
+type PersistentDiskDefaults struct {
+	// A map of labels to associate with the Persistent Disk.
+	AdditionalLabels map[string]string `pulumi:"additionalLabels"`
+	// Optional. The name of the Persistent Disk to create.
+	DiskName *string `pulumi:"diskName"`
+	// The disk type to use.
+	DiskType *PersistentDiskDefaultsDiskType `pulumi:"diskType"`
+	// Optional. The encryption to apply to the disk.
+	Encryption *Encryption `pulumi:"encryption"`
+	// The ordinal number of the source VM disk.
+	SourceDiskNumber int `pulumi:"sourceDiskNumber"`
+	// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
+	VmAttachmentDetails *VmAttachmentDetails `pulumi:"vmAttachmentDetails"`
+}
+
+// PersistentDiskDefaultsInput is an input type that accepts PersistentDiskDefaultsArgs and PersistentDiskDefaultsOutput values.
+// You can construct a concrete instance of `PersistentDiskDefaultsInput` via:
+//
+//	PersistentDiskDefaultsArgs{...}
+type PersistentDiskDefaultsInput interface {
+	pulumi.Input
+
+	ToPersistentDiskDefaultsOutput() PersistentDiskDefaultsOutput
+	ToPersistentDiskDefaultsOutputWithContext(context.Context) PersistentDiskDefaultsOutput
+}
+
+// Details for creation of a Persistent Disk.
+type PersistentDiskDefaultsArgs struct {
+	// A map of labels to associate with the Persistent Disk.
+	AdditionalLabels pulumi.StringMapInput `pulumi:"additionalLabels"`
+	// Optional. The name of the Persistent Disk to create.
+	DiskName pulumi.StringPtrInput `pulumi:"diskName"`
+	// The disk type to use.
+	DiskType PersistentDiskDefaultsDiskTypePtrInput `pulumi:"diskType"`
+	// Optional. The encryption to apply to the disk.
+	Encryption EncryptionPtrInput `pulumi:"encryption"`
+	// The ordinal number of the source VM disk.
+	SourceDiskNumber pulumi.IntInput `pulumi:"sourceDiskNumber"`
+	// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
+	VmAttachmentDetails VmAttachmentDetailsPtrInput `pulumi:"vmAttachmentDetails"`
+}
+
+func (PersistentDiskDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistentDiskDefaults)(nil)).Elem()
+}
+
+func (i PersistentDiskDefaultsArgs) ToPersistentDiskDefaultsOutput() PersistentDiskDefaultsOutput {
+	return i.ToPersistentDiskDefaultsOutputWithContext(context.Background())
+}
+
+func (i PersistentDiskDefaultsArgs) ToPersistentDiskDefaultsOutputWithContext(ctx context.Context) PersistentDiskDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersistentDiskDefaultsOutput)
+}
+
+func (i PersistentDiskDefaultsArgs) ToOutput(ctx context.Context) pulumix.Output[PersistentDiskDefaults] {
+	return pulumix.Output[PersistentDiskDefaults]{
+		OutputState: i.ToPersistentDiskDefaultsOutputWithContext(ctx).OutputState,
+	}
+}
+
+// PersistentDiskDefaultsArrayInput is an input type that accepts PersistentDiskDefaultsArray and PersistentDiskDefaultsArrayOutput values.
+// You can construct a concrete instance of `PersistentDiskDefaultsArrayInput` via:
+//
+//	PersistentDiskDefaultsArray{ PersistentDiskDefaultsArgs{...} }
+type PersistentDiskDefaultsArrayInput interface {
+	pulumi.Input
+
+	ToPersistentDiskDefaultsArrayOutput() PersistentDiskDefaultsArrayOutput
+	ToPersistentDiskDefaultsArrayOutputWithContext(context.Context) PersistentDiskDefaultsArrayOutput
+}
+
+type PersistentDiskDefaultsArray []PersistentDiskDefaultsInput
+
+func (PersistentDiskDefaultsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PersistentDiskDefaults)(nil)).Elem()
+}
+
+func (i PersistentDiskDefaultsArray) ToPersistentDiskDefaultsArrayOutput() PersistentDiskDefaultsArrayOutput {
+	return i.ToPersistentDiskDefaultsArrayOutputWithContext(context.Background())
+}
+
+func (i PersistentDiskDefaultsArray) ToPersistentDiskDefaultsArrayOutputWithContext(ctx context.Context) PersistentDiskDefaultsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersistentDiskDefaultsArrayOutput)
+}
+
+func (i PersistentDiskDefaultsArray) ToOutput(ctx context.Context) pulumix.Output[[]PersistentDiskDefaults] {
+	return pulumix.Output[[]PersistentDiskDefaults]{
+		OutputState: i.ToPersistentDiskDefaultsArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Details for creation of a Persistent Disk.
+type PersistentDiskDefaultsOutput struct{ *pulumi.OutputState }
+
+func (PersistentDiskDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistentDiskDefaults)(nil)).Elem()
+}
+
+func (o PersistentDiskDefaultsOutput) ToPersistentDiskDefaultsOutput() PersistentDiskDefaultsOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsOutput) ToPersistentDiskDefaultsOutputWithContext(ctx context.Context) PersistentDiskDefaultsOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsOutput) ToOutput(ctx context.Context) pulumix.Output[PersistentDiskDefaults] {
+	return pulumix.Output[PersistentDiskDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A map of labels to associate with the Persistent Disk.
+func (o PersistentDiskDefaultsOutput) AdditionalLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PersistentDiskDefaults) map[string]string { return v.AdditionalLabels }).(pulumi.StringMapOutput)
+}
+
+// Optional. The name of the Persistent Disk to create.
+func (o PersistentDiskDefaultsOutput) DiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PersistentDiskDefaults) *string { return v.DiskName }).(pulumi.StringPtrOutput)
+}
+
+// The disk type to use.
+func (o PersistentDiskDefaultsOutput) DiskType() PersistentDiskDefaultsDiskTypePtrOutput {
+	return o.ApplyT(func(v PersistentDiskDefaults) *PersistentDiskDefaultsDiskType { return v.DiskType }).(PersistentDiskDefaultsDiskTypePtrOutput)
+}
+
+// Optional. The encryption to apply to the disk.
+func (o PersistentDiskDefaultsOutput) Encryption() EncryptionPtrOutput {
+	return o.ApplyT(func(v PersistentDiskDefaults) *Encryption { return v.Encryption }).(EncryptionPtrOutput)
+}
+
+// The ordinal number of the source VM disk.
+func (o PersistentDiskDefaultsOutput) SourceDiskNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v PersistentDiskDefaults) int { return v.SourceDiskNumber }).(pulumi.IntOutput)
+}
+
+// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
+func (o PersistentDiskDefaultsOutput) VmAttachmentDetails() VmAttachmentDetailsPtrOutput {
+	return o.ApplyT(func(v PersistentDiskDefaults) *VmAttachmentDetails { return v.VmAttachmentDetails }).(VmAttachmentDetailsPtrOutput)
+}
+
+type PersistentDiskDefaultsArrayOutput struct{ *pulumi.OutputState }
+
+func (PersistentDiskDefaultsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PersistentDiskDefaults)(nil)).Elem()
+}
+
+func (o PersistentDiskDefaultsArrayOutput) ToPersistentDiskDefaultsArrayOutput() PersistentDiskDefaultsArrayOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsArrayOutput) ToPersistentDiskDefaultsArrayOutputWithContext(ctx context.Context) PersistentDiskDefaultsArrayOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PersistentDiskDefaults] {
+	return pulumix.Output[[]PersistentDiskDefaults]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PersistentDiskDefaultsArrayOutput) Index(i pulumi.IntInput) PersistentDiskDefaultsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PersistentDiskDefaults {
+		return vs[0].([]PersistentDiskDefaults)[vs[1].(int)]
+	}).(PersistentDiskDefaultsOutput)
+}
+
+// Details for creation of a Persistent Disk.
+type PersistentDiskDefaultsResponse struct {
+	// A map of labels to associate with the Persistent Disk.
+	AdditionalLabels map[string]string `pulumi:"additionalLabels"`
+	// Optional. The name of the Persistent Disk to create.
+	DiskName string `pulumi:"diskName"`
+	// The disk type to use.
+	DiskType string `pulumi:"diskType"`
+	// Optional. The encryption to apply to the disk.
+	Encryption EncryptionResponse `pulumi:"encryption"`
+	// The ordinal number of the source VM disk.
+	SourceDiskNumber int `pulumi:"sourceDiskNumber"`
+	// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
+	VmAttachmentDetails VmAttachmentDetailsResponse `pulumi:"vmAttachmentDetails"`
+}
+
+// Details for creation of a Persistent Disk.
+type PersistentDiskDefaultsResponseOutput struct{ *pulumi.OutputState }
+
+func (PersistentDiskDefaultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistentDiskDefaultsResponse)(nil)).Elem()
+}
+
+func (o PersistentDiskDefaultsResponseOutput) ToPersistentDiskDefaultsResponseOutput() PersistentDiskDefaultsResponseOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsResponseOutput) ToPersistentDiskDefaultsResponseOutputWithContext(ctx context.Context) PersistentDiskDefaultsResponseOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PersistentDiskDefaultsResponse] {
+	return pulumix.Output[PersistentDiskDefaultsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A map of labels to associate with the Persistent Disk.
+func (o PersistentDiskDefaultsResponseOutput) AdditionalLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PersistentDiskDefaultsResponse) map[string]string { return v.AdditionalLabels }).(pulumi.StringMapOutput)
+}
+
+// Optional. The name of the Persistent Disk to create.
+func (o PersistentDiskDefaultsResponseOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v PersistentDiskDefaultsResponse) string { return v.DiskName }).(pulumi.StringOutput)
+}
+
+// The disk type to use.
+func (o PersistentDiskDefaultsResponseOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v PersistentDiskDefaultsResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Optional. The encryption to apply to the disk.
+func (o PersistentDiskDefaultsResponseOutput) Encryption() EncryptionResponseOutput {
+	return o.ApplyT(func(v PersistentDiskDefaultsResponse) EncryptionResponse { return v.Encryption }).(EncryptionResponseOutput)
+}
+
+// The ordinal number of the source VM disk.
+func (o PersistentDiskDefaultsResponseOutput) SourceDiskNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v PersistentDiskDefaultsResponse) int { return v.SourceDiskNumber }).(pulumi.IntOutput)
+}
+
+// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
+func (o PersistentDiskDefaultsResponseOutput) VmAttachmentDetails() VmAttachmentDetailsResponseOutput {
+	return o.ApplyT(func(v PersistentDiskDefaultsResponse) VmAttachmentDetailsResponse { return v.VmAttachmentDetails }).(VmAttachmentDetailsResponseOutput)
+}
+
+type PersistentDiskDefaultsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PersistentDiskDefaultsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PersistentDiskDefaultsResponse)(nil)).Elem()
+}
+
+func (o PersistentDiskDefaultsResponseArrayOutput) ToPersistentDiskDefaultsResponseArrayOutput() PersistentDiskDefaultsResponseArrayOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsResponseArrayOutput) ToPersistentDiskDefaultsResponseArrayOutputWithContext(ctx context.Context) PersistentDiskDefaultsResponseArrayOutput {
+	return o
+}
+
+func (o PersistentDiskDefaultsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PersistentDiskDefaultsResponse] {
+	return pulumix.Output[[]PersistentDiskDefaultsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PersistentDiskDefaultsResponseArrayOutput) Index(i pulumi.IntInput) PersistentDiskDefaultsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PersistentDiskDefaultsResponse {
+		return vs[0].([]PersistentDiskDefaultsResponse)[vs[1].(int)]
+	}).(PersistentDiskDefaultsResponseOutput)
+}
+
+// Details of a created Persistent Disk.
+type PersistentDiskResponse struct {
+	// The URI of the Persistent Disk.
+	DiskUri string `pulumi:"diskUri"`
+	// The ordinal number of the source VM disk.
+	SourceDiskNumber int `pulumi:"sourceDiskNumber"`
+}
+
+// Details of a created Persistent Disk.
+type PersistentDiskResponseOutput struct{ *pulumi.OutputState }
+
+func (PersistentDiskResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistentDiskResponse)(nil)).Elem()
+}
+
+func (o PersistentDiskResponseOutput) ToPersistentDiskResponseOutput() PersistentDiskResponseOutput {
+	return o
+}
+
+func (o PersistentDiskResponseOutput) ToPersistentDiskResponseOutputWithContext(ctx context.Context) PersistentDiskResponseOutput {
+	return o
+}
+
+func (o PersistentDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PersistentDiskResponse] {
+	return pulumix.Output[PersistentDiskResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The URI of the Persistent Disk.
+func (o PersistentDiskResponseOutput) DiskUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PersistentDiskResponse) string { return v.DiskUri }).(pulumi.StringOutput)
+}
+
+// The ordinal number of the source VM disk.
+func (o PersistentDiskResponseOutput) SourceDiskNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v PersistentDiskResponse) int { return v.SourceDiskNumber }).(pulumi.IntOutput)
+}
+
+type PersistentDiskResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PersistentDiskResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PersistentDiskResponse)(nil)).Elem()
+}
+
+func (o PersistentDiskResponseArrayOutput) ToPersistentDiskResponseArrayOutput() PersistentDiskResponseArrayOutput {
+	return o
+}
+
+func (o PersistentDiskResponseArrayOutput) ToPersistentDiskResponseArrayOutputWithContext(ctx context.Context) PersistentDiskResponseArrayOutput {
+	return o
+}
+
+func (o PersistentDiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PersistentDiskResponse] {
+	return pulumix.Output[[]PersistentDiskResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PersistentDiskResponseArrayOutput) Index(i pulumi.IntInput) PersistentDiskResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PersistentDiskResponse {
+		return vs[0].([]PersistentDiskResponse)[vs[1].(int)]
+	}).(PersistentDiskResponseOutput)
 }
 
 // PostProcessingStep contains specific step details.
@@ -3844,7 +6785,7 @@ type TargetVMDetails struct {
 	Network *string `pulumi:"network"`
 	// List of NICs connected to this VM.
 	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
-	// A map of network tags to associate with the VM.
+	// A list of network tags to associate with the VM.
 	NetworkTags []string `pulumi:"networkTags"`
 	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
 	SecureBoot *bool `pulumi:"secureBoot"`
@@ -3895,7 +6836,7 @@ type TargetVMDetailsArgs struct {
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// List of NICs connected to this VM.
 	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
-	// A map of network tags to associate with the VM.
+	// A list of network tags to associate with the VM.
 	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
 	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
 	SecureBoot pulumi.BoolPtrInput `pulumi:"secureBoot"`
@@ -4065,7 +7006,7 @@ func (o TargetVMDetailsOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v TargetVMDetails) []NetworkInterface { return v.NetworkInterfaces }).(NetworkInterfaceArrayOutput)
 }
 
-// A map of network tags to associate with the VM.
+// A list of network tags to associate with the VM.
 func (o TargetVMDetailsOutput) NetworkTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TargetVMDetails) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
 }
@@ -4245,7 +7186,7 @@ func (o TargetVMDetailsPtrOutput) NetworkInterfaces() NetworkInterfaceArrayOutpu
 	}).(NetworkInterfaceArrayOutput)
 }
 
-// A map of network tags to associate with the VM.
+// A list of network tags to associate with the VM.
 func (o TargetVMDetailsPtrOutput) NetworkTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TargetVMDetails) []string {
 		if v == nil {
@@ -4309,7 +7250,7 @@ func (o TargetVMDetailsPtrOutput) Zone() pulumi.StringPtrOutput {
 type TargetVMDetailsResponse struct {
 	// The OS license returned from the adaptation module report.
 	AppliedLicense AppliedLicenseResponse `pulumi:"appliedLicense"`
-	// The VM Boot Option, as set in the source vm.
+	// The VM Boot Option, as set in the source VM.
 	BootOption string `pulumi:"bootOption"`
 	// Compute instance scheduling information (if empty default is used).
 	ComputeScheduling ComputeSchedulingResponse `pulumi:"computeScheduling"`
@@ -4335,7 +7276,7 @@ type TargetVMDetailsResponse struct {
 	Network string `pulumi:"network"`
 	// List of NICs connected to this VM.
 	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
-	// A map of network tags to associate with the VM.
+	// A list of network tags to associate with the VM.
 	NetworkTags []string `pulumi:"networkTags"`
 	// The project in which to create the VM.
 	Project string `pulumi:"project"`
@@ -4377,7 +7318,7 @@ func (o TargetVMDetailsResponseOutput) AppliedLicense() AppliedLicenseResponseOu
 	return o.ApplyT(func(v TargetVMDetailsResponse) AppliedLicenseResponse { return v.AppliedLicense }).(AppliedLicenseResponseOutput)
 }
 
-// The VM Boot Option, as set in the source vm.
+// The VM Boot Option, as set in the source VM.
 func (o TargetVMDetailsResponseOutput) BootOption() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.BootOption }).(pulumi.StringOutput)
 }
@@ -4442,7 +7383,7 @@ func (o TargetVMDetailsResponseOutput) NetworkInterfaces() NetworkInterfaceRespo
 	return o.ApplyT(func(v TargetVMDetailsResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
 }
 
-// A map of network tags to associate with the VM.
+// A list of network tags to associate with the VM.
 func (o TargetVMDetailsResponseOutput) NetworkTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TargetVMDetailsResponse) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
 }
@@ -4535,6 +7476,241 @@ func (o UpgradeStatusResponseOutput) State() pulumi.StringOutput {
 // The version to upgrade to.
 func (o UpgradeStatusResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v UpgradeStatusResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Details for attachment of the disk to a VM.
+type VmAttachmentDetails struct {
+	// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+	DeviceName *string `pulumi:"deviceName"`
+}
+
+// VmAttachmentDetailsInput is an input type that accepts VmAttachmentDetailsArgs and VmAttachmentDetailsOutput values.
+// You can construct a concrete instance of `VmAttachmentDetailsInput` via:
+//
+//	VmAttachmentDetailsArgs{...}
+type VmAttachmentDetailsInput interface {
+	pulumi.Input
+
+	ToVmAttachmentDetailsOutput() VmAttachmentDetailsOutput
+	ToVmAttachmentDetailsOutputWithContext(context.Context) VmAttachmentDetailsOutput
+}
+
+// Details for attachment of the disk to a VM.
+type VmAttachmentDetailsArgs struct {
+	// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
+}
+
+func (VmAttachmentDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmAttachmentDetails)(nil)).Elem()
+}
+
+func (i VmAttachmentDetailsArgs) ToVmAttachmentDetailsOutput() VmAttachmentDetailsOutput {
+	return i.ToVmAttachmentDetailsOutputWithContext(context.Background())
+}
+
+func (i VmAttachmentDetailsArgs) ToVmAttachmentDetailsOutputWithContext(ctx context.Context) VmAttachmentDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmAttachmentDetailsOutput)
+}
+
+func (i VmAttachmentDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[VmAttachmentDetails] {
+	return pulumix.Output[VmAttachmentDetails]{
+		OutputState: i.ToVmAttachmentDetailsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VmAttachmentDetailsArgs) ToVmAttachmentDetailsPtrOutput() VmAttachmentDetailsPtrOutput {
+	return i.ToVmAttachmentDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i VmAttachmentDetailsArgs) ToVmAttachmentDetailsPtrOutputWithContext(ctx context.Context) VmAttachmentDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmAttachmentDetailsOutput).ToVmAttachmentDetailsPtrOutputWithContext(ctx)
+}
+
+// VmAttachmentDetailsPtrInput is an input type that accepts VmAttachmentDetailsArgs, VmAttachmentDetailsPtr and VmAttachmentDetailsPtrOutput values.
+// You can construct a concrete instance of `VmAttachmentDetailsPtrInput` via:
+//
+//	        VmAttachmentDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmAttachmentDetailsPtrInput interface {
+	pulumi.Input
+
+	ToVmAttachmentDetailsPtrOutput() VmAttachmentDetailsPtrOutput
+	ToVmAttachmentDetailsPtrOutputWithContext(context.Context) VmAttachmentDetailsPtrOutput
+}
+
+type vmAttachmentDetailsPtrType VmAttachmentDetailsArgs
+
+func VmAttachmentDetailsPtr(v *VmAttachmentDetailsArgs) VmAttachmentDetailsPtrInput {
+	return (*vmAttachmentDetailsPtrType)(v)
+}
+
+func (*vmAttachmentDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmAttachmentDetails)(nil)).Elem()
+}
+
+func (i *vmAttachmentDetailsPtrType) ToVmAttachmentDetailsPtrOutput() VmAttachmentDetailsPtrOutput {
+	return i.ToVmAttachmentDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *vmAttachmentDetailsPtrType) ToVmAttachmentDetailsPtrOutputWithContext(ctx context.Context) VmAttachmentDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmAttachmentDetailsPtrOutput)
+}
+
+func (i *vmAttachmentDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmAttachmentDetails] {
+	return pulumix.Output[*VmAttachmentDetails]{
+		OutputState: i.ToVmAttachmentDetailsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Details for attachment of the disk to a VM.
+type VmAttachmentDetailsOutput struct{ *pulumi.OutputState }
+
+func (VmAttachmentDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmAttachmentDetails)(nil)).Elem()
+}
+
+func (o VmAttachmentDetailsOutput) ToVmAttachmentDetailsOutput() VmAttachmentDetailsOutput {
+	return o
+}
+
+func (o VmAttachmentDetailsOutput) ToVmAttachmentDetailsOutputWithContext(ctx context.Context) VmAttachmentDetailsOutput {
+	return o
+}
+
+func (o VmAttachmentDetailsOutput) ToVmAttachmentDetailsPtrOutput() VmAttachmentDetailsPtrOutput {
+	return o.ToVmAttachmentDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o VmAttachmentDetailsOutput) ToVmAttachmentDetailsPtrOutputWithContext(ctx context.Context) VmAttachmentDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmAttachmentDetails) *VmAttachmentDetails {
+		return &v
+	}).(VmAttachmentDetailsPtrOutput)
+}
+
+func (o VmAttachmentDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[VmAttachmentDetails] {
+	return pulumix.Output[VmAttachmentDetails]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+func (o VmAttachmentDetailsOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmAttachmentDetails) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
+}
+
+type VmAttachmentDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (VmAttachmentDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmAttachmentDetails)(nil)).Elem()
+}
+
+func (o VmAttachmentDetailsPtrOutput) ToVmAttachmentDetailsPtrOutput() VmAttachmentDetailsPtrOutput {
+	return o
+}
+
+func (o VmAttachmentDetailsPtrOutput) ToVmAttachmentDetailsPtrOutputWithContext(ctx context.Context) VmAttachmentDetailsPtrOutput {
+	return o
+}
+
+func (o VmAttachmentDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmAttachmentDetails] {
+	return pulumix.Output[*VmAttachmentDetails]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VmAttachmentDetailsPtrOutput) Elem() VmAttachmentDetailsOutput {
+	return o.ApplyT(func(v *VmAttachmentDetails) VmAttachmentDetails {
+		if v != nil {
+			return *v
+		}
+		var ret VmAttachmentDetails
+		return ret
+	}).(VmAttachmentDetailsOutput)
+}
+
+// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+func (o VmAttachmentDetailsPtrOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmAttachmentDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details for attachment of the disk to a VM.
+type VmAttachmentDetailsResponse struct {
+	// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+	DeviceName string `pulumi:"deviceName"`
+}
+
+// Details for attachment of the disk to a VM.
+type VmAttachmentDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (VmAttachmentDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmAttachmentDetailsResponse)(nil)).Elem()
+}
+
+func (o VmAttachmentDetailsResponseOutput) ToVmAttachmentDetailsResponseOutput() VmAttachmentDetailsResponseOutput {
+	return o
+}
+
+func (o VmAttachmentDetailsResponseOutput) ToVmAttachmentDetailsResponseOutputWithContext(ctx context.Context) VmAttachmentDetailsResponseOutput {
+	return o
+}
+
+func (o VmAttachmentDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmAttachmentDetailsResponse] {
+	return pulumix.Output[VmAttachmentDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+func (o VmAttachmentDetailsResponseOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v VmAttachmentDetailsResponse) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// Migrating VM source information about the VM capabilities needed for some Compute Engine features.
+type VmCapabilitiesResponse struct {
+	// The last time OS capabilities list was updated.
+	LastOsCapabilitiesUpdateTime string `pulumi:"lastOsCapabilitiesUpdateTime"`
+	// Unordered list. List of certain VM OS capabilities needed for some Compute Engine features.
+	OsCapabilities []string `pulumi:"osCapabilities"`
+}
+
+// Migrating VM source information about the VM capabilities needed for some Compute Engine features.
+type VmCapabilitiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VmCapabilitiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmCapabilitiesResponse)(nil)).Elem()
+}
+
+func (o VmCapabilitiesResponseOutput) ToVmCapabilitiesResponseOutput() VmCapabilitiesResponseOutput {
+	return o
+}
+
+func (o VmCapabilitiesResponseOutput) ToVmCapabilitiesResponseOutputWithContext(ctx context.Context) VmCapabilitiesResponseOutput {
+	return o
+}
+
+func (o VmCapabilitiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmCapabilitiesResponse] {
+	return pulumix.Output[VmCapabilitiesResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The last time OS capabilities list was updated.
+func (o VmCapabilitiesResponseOutput) LastOsCapabilitiesUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v VmCapabilitiesResponse) string { return v.LastOsCapabilitiesUpdateTime }).(pulumi.StringOutput)
+}
+
+// Unordered list. List of certain VM OS capabilities needed for some Compute Engine features.
+func (o VmCapabilitiesResponseOutput) OsCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmCapabilitiesResponse) []string { return v.OsCapabilities }).(pulumi.StringArrayOutput)
 }
 
 // Utilization information of a single VM.
@@ -5337,6 +8513,78 @@ func (o VmUtilizationMetricsResponseOutput) NetworkThroughputMaxKbps() pulumi.St
 	return o.ApplyT(func(v VmUtilizationMetricsResponse) string { return v.NetworkThroughputMaxKbps }).(pulumi.StringOutput)
 }
 
+// The details of a Vmware VM disk.
+type VmwareDiskDetailsResponse struct {
+	// The ordinal number of the disk.
+	DiskNumber int `pulumi:"diskNumber"`
+	// The disk label.
+	Label string `pulumi:"label"`
+	// Size in GB.
+	SizeGb string `pulumi:"sizeGb"`
+}
+
+// The details of a Vmware VM disk.
+type VmwareDiskDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (VmwareDiskDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareDiskDetailsResponse)(nil)).Elem()
+}
+
+func (o VmwareDiskDetailsResponseOutput) ToVmwareDiskDetailsResponseOutput() VmwareDiskDetailsResponseOutput {
+	return o
+}
+
+func (o VmwareDiskDetailsResponseOutput) ToVmwareDiskDetailsResponseOutputWithContext(ctx context.Context) VmwareDiskDetailsResponseOutput {
+	return o
+}
+
+func (o VmwareDiskDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareDiskDetailsResponse] {
+	return pulumix.Output[VmwareDiskDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The ordinal number of the disk.
+func (o VmwareDiskDetailsResponseOutput) DiskNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v VmwareDiskDetailsResponse) int { return v.DiskNumber }).(pulumi.IntOutput)
+}
+
+// The disk label.
+func (o VmwareDiskDetailsResponseOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareDiskDetailsResponse) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Size in GB.
+func (o VmwareDiskDetailsResponseOutput) SizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareDiskDetailsResponse) string { return v.SizeGb }).(pulumi.StringOutput)
+}
+
+type VmwareDiskDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareDiskDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareDiskDetailsResponse)(nil)).Elem()
+}
+
+func (o VmwareDiskDetailsResponseArrayOutput) ToVmwareDiskDetailsResponseArrayOutput() VmwareDiskDetailsResponseArrayOutput {
+	return o
+}
+
+func (o VmwareDiskDetailsResponseArrayOutput) ToVmwareDiskDetailsResponseArrayOutputWithContext(ctx context.Context) VmwareDiskDetailsResponseArrayOutput {
+	return o
+}
+
+func (o VmwareDiskDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmwareDiskDetailsResponse] {
+	return pulumix.Output[[]VmwareDiskDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VmwareDiskDetailsResponseArrayOutput) Index(i pulumi.IntInput) VmwareDiskDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareDiskDetailsResponse {
+		return vs[0].([]VmwareDiskDetailsResponse)[vs[1].(int)]
+	}).(VmwareDiskDetailsResponseOutput)
+}
+
 // VmwareSourceDetails message describes a specific source details for the vmware source type.
 type VmwareSourceDetails struct {
 	// Input only. The credentials password. This is write only and can not be read in a GET operation.
@@ -5635,6 +8883,59 @@ func (o VmwareSourceDetailsResponseOutput) Username() pulumi.StringOutput {
 // The ip address of the vcenter this Source represents.
 func (o VmwareSourceDetailsResponseOutput) VcenterIp() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareSourceDetailsResponse) string { return v.VcenterIp }).(pulumi.StringOutput)
+}
+
+// Represent the source Vmware VM details.
+type VmwareSourceVmDetailsResponse struct {
+	// The total size of the disks being migrated in bytes.
+	CommittedStorageBytes string `pulumi:"committedStorageBytes"`
+	// The disks attached to the source VM.
+	Disks []VmwareDiskDetailsResponse `pulumi:"disks"`
+	// The firmware type of the source VM.
+	Firmware string `pulumi:"firmware"`
+	// Information about VM capabilities needed for some Compute Engine features.
+	VmCapabilitiesInfo VmCapabilitiesResponse `pulumi:"vmCapabilitiesInfo"`
+}
+
+// Represent the source Vmware VM details.
+type VmwareSourceVmDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (VmwareSourceVmDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareSourceVmDetailsResponse)(nil)).Elem()
+}
+
+func (o VmwareSourceVmDetailsResponseOutput) ToVmwareSourceVmDetailsResponseOutput() VmwareSourceVmDetailsResponseOutput {
+	return o
+}
+
+func (o VmwareSourceVmDetailsResponseOutput) ToVmwareSourceVmDetailsResponseOutputWithContext(ctx context.Context) VmwareSourceVmDetailsResponseOutput {
+	return o
+}
+
+func (o VmwareSourceVmDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareSourceVmDetailsResponse] {
+	return pulumix.Output[VmwareSourceVmDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The total size of the disks being migrated in bytes.
+func (o VmwareSourceVmDetailsResponseOutput) CommittedStorageBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareSourceVmDetailsResponse) string { return v.CommittedStorageBytes }).(pulumi.StringOutput)
+}
+
+// The disks attached to the source VM.
+func (o VmwareSourceVmDetailsResponseOutput) Disks() VmwareDiskDetailsResponseArrayOutput {
+	return o.ApplyT(func(v VmwareSourceVmDetailsResponse) []VmwareDiskDetailsResponse { return v.Disks }).(VmwareDiskDetailsResponseArrayOutput)
+}
+
+// The firmware type of the source VM.
+func (o VmwareSourceVmDetailsResponseOutput) Firmware() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareSourceVmDetailsResponse) string { return v.Firmware }).(pulumi.StringOutput)
+}
+
+// Information about VM capabilities needed for some Compute Engine features.
+func (o VmwareSourceVmDetailsResponseOutput) VmCapabilitiesInfo() VmCapabilitiesResponseOutput {
+	return o.ApplyT(func(v VmwareSourceVmDetailsResponse) VmCapabilitiesResponse { return v.VmCapabilitiesInfo }).(VmCapabilitiesResponseOutput)
 }
 
 // VmwareVmDetails describes a VM in vCenter.
@@ -6131,12 +9432,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessKeyCredentialsPtrInput)(nil)).Elem(), AccessKeyCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsSourceDetailsInput)(nil)).Elem(), AwsSourceDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsSourceDetailsPtrInput)(nil)).Elem(), AwsSourceDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureSourceDetailsInput)(nil)).Elem(), AzureSourceDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureSourceDetailsPtrInput)(nil)).Elem(), AzureSourceDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BootDiskDefaultsInput)(nil)).Elem(), BootDiskDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BootDiskDefaultsPtrInput)(nil)).Elem(), BootDiskDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientSecretCredentialsInput)(nil)).Elem(), ClientSecretCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientSecretCredentialsPtrInput)(nil)).Elem(), ClientSecretCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineDisksTargetDefaultsInput)(nil)).Elem(), ComputeEngineDisksTargetDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineDisksTargetDefaultsPtrInput)(nil)).Elem(), ComputeEngineDisksTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsInput)(nil)).Elem(), ComputeEngineTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsPtrInput)(nil)).Elem(), ComputeEngineTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingInput)(nil)).Elem(), ComputeSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingPtrInput)(nil)).Elem(), ComputeSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskImageDefaultsInput)(nil)).Elem(), DiskImageDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskImageDefaultsPtrInput)(nil)).Elem(), DiskImageDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisksMigrationDisksTargetDefaultsInput)(nil)).Elem(), DisksMigrationDisksTargetDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisksMigrationDisksTargetDefaultsPtrInput)(nil)).Elem(), DisksMigrationDisksTargetDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisksMigrationVmTargetDefaultsInput)(nil)).Elem(), DisksMigrationVmTargetDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisksMigrationVmTargetDefaultsPtrInput)(nil)).Elem(), DisksMigrationVmTargetDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionInput)(nil)).Elem(), EncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionPtrInput)(nil)).Elem(), EncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceInput)(nil)).Elem(), NetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceArrayInput)(nil)).Elem(), NetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistentDiskDefaultsInput)(nil)).Elem(), PersistentDiskDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistentDiskDefaultsArrayInput)(nil)).Elem(), PersistentDiskDefaultsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePolicyInput)(nil)).Elem(), SchedulePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePolicyPtrInput)(nil)).Elem(), SchedulePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityInput)(nil)).Elem(), SchedulingNodeAffinityArgs{})
@@ -6145,6 +9464,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TagArrayInput)(nil)).Elem(), TagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetVMDetailsInput)(nil)).Elem(), TargetVMDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetVMDetailsPtrInput)(nil)).Elem(), TargetVMDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmAttachmentDetailsInput)(nil)).Elem(), VmAttachmentDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmAttachmentDetailsPtrInput)(nil)).Elem(), VmAttachmentDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationInfoInput)(nil)).Elem(), VmUtilizationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationInfoArrayInput)(nil)).Elem(), VmUtilizationInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationMetricsInput)(nil)).Elem(), VmUtilizationMetricsArgs{})
@@ -6160,14 +9481,32 @@ func init() {
 	pulumi.RegisterOutputType(ApplianceVersionResponseOutput{})
 	pulumi.RegisterOutputType(AppliedLicenseResponseOutput{})
 	pulumi.RegisterOutputType(AvailableUpdatesResponseOutput{})
+	pulumi.RegisterOutputType(AwsDiskDetailsResponseOutput{})
+	pulumi.RegisterOutputType(AwsDiskDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(AwsSourceDetailsOutput{})
 	pulumi.RegisterOutputType(AwsSourceDetailsPtrOutput{})
 	pulumi.RegisterOutputType(AwsSourceDetailsResponseOutput{})
 	pulumi.RegisterOutputType(AwsSourceVmDetailsResponseOutput{})
+	pulumi.RegisterOutputType(AzureDiskDetailsResponseOutput{})
+	pulumi.RegisterOutputType(AzureDiskDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(AzureSourceDetailsOutput{})
+	pulumi.RegisterOutputType(AzureSourceDetailsPtrOutput{})
+	pulumi.RegisterOutputType(AzureSourceDetailsResponseOutput{})
+	pulumi.RegisterOutputType(AzureSourceVmDetailsResponseOutput{})
+	pulumi.RegisterOutputType(BootDiskDefaultsOutput{})
+	pulumi.RegisterOutputType(BootDiskDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(BootDiskDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(ClientSecretCredentialsOutput{})
+	pulumi.RegisterOutputType(ClientSecretCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ClientSecretCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseArrayOutput{})
 	pulumi.RegisterOutputType(CloneStepResponseOutput{})
 	pulumi.RegisterOutputType(CloneStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(ComputeEngineDisksTargetDefaultsOutput{})
+	pulumi.RegisterOutputType(ComputeEngineDisksTargetDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(ComputeEngineDisksTargetDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(ComputeEngineDisksTargetDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsResponseOutput{})
@@ -6182,6 +9521,20 @@ func init() {
 	pulumi.RegisterOutputType(CutoverStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(CycleStepResponseOutput{})
 	pulumi.RegisterOutputType(CycleStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiskImageDefaultsOutput{})
+	pulumi.RegisterOutputType(DiskImageDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(DiskImageDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(DisksMigrationDisksTargetDefaultsOutput{})
+	pulumi.RegisterOutputType(DisksMigrationDisksTargetDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(DisksMigrationDisksTargetDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(DisksMigrationDisksTargetDetailsResponseOutput{})
+	pulumi.RegisterOutputType(DisksMigrationVmTargetDefaultsOutput{})
+	pulumi.RegisterOutputType(DisksMigrationVmTargetDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(DisksMigrationVmTargetDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(DisksMigrationVmTargetDetailsResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionOutput{})
+	pulumi.RegisterOutputType(EncryptionPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionResponseOutput{})
 	pulumi.RegisterOutputType(InitializingReplicationStepResponseOutput{})
 	pulumi.RegisterOutputType(InstantiatingMigratedVMStepResponseOutput{})
 	pulumi.RegisterOutputType(LinkResponseOutput{})
@@ -6193,6 +9546,12 @@ func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseArrayOutput{})
+	pulumi.RegisterOutputType(PersistentDiskDefaultsOutput{})
+	pulumi.RegisterOutputType(PersistentDiskDefaultsArrayOutput{})
+	pulumi.RegisterOutputType(PersistentDiskDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(PersistentDiskDefaultsResponseArrayOutput{})
+	pulumi.RegisterOutputType(PersistentDiskResponseOutput{})
+	pulumi.RegisterOutputType(PersistentDiskResponseArrayOutput{})
 	pulumi.RegisterOutputType(PostProcessingStepResponseOutput{})
 	pulumi.RegisterOutputType(PreparingVMDisksStepResponseOutput{})
 	pulumi.RegisterOutputType(ReplicatingStepResponseOutput{})
@@ -6215,6 +9574,10 @@ func init() {
 	pulumi.RegisterOutputType(TargetVMDetailsPtrOutput{})
 	pulumi.RegisterOutputType(TargetVMDetailsResponseOutput{})
 	pulumi.RegisterOutputType(UpgradeStatusResponseOutput{})
+	pulumi.RegisterOutputType(VmAttachmentDetailsOutput{})
+	pulumi.RegisterOutputType(VmAttachmentDetailsPtrOutput{})
+	pulumi.RegisterOutputType(VmAttachmentDetailsResponseOutput{})
+	pulumi.RegisterOutputType(VmCapabilitiesResponseOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoArrayOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoResponseOutput{})
@@ -6222,9 +9585,12 @@ func init() {
 	pulumi.RegisterOutputType(VmUtilizationMetricsOutput{})
 	pulumi.RegisterOutputType(VmUtilizationMetricsPtrOutput{})
 	pulumi.RegisterOutputType(VmUtilizationMetricsResponseOutput{})
+	pulumi.RegisterOutputType(VmwareDiskDetailsResponseOutput{})
+	pulumi.RegisterOutputType(VmwareDiskDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(VmwareSourceDetailsOutput{})
 	pulumi.RegisterOutputType(VmwareSourceDetailsPtrOutput{})
 	pulumi.RegisterOutputType(VmwareSourceDetailsResponseOutput{})
+	pulumi.RegisterOutputType(VmwareSourceVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(VmwareVmDetailsOutput{})
 	pulumi.RegisterOutputType(VmwareVmDetailsPtrOutput{})
 	pulumi.RegisterOutputType(VmwareVmDetailsResponseOutput{})

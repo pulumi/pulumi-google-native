@@ -44,9 +44,11 @@ type ServiceAttachment struct {
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule pulumi.StringOutput `pulumi:"producerForwardingRule"`
 	Project                pulumi.StringOutput `pulumi:"project"`
+	// The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+	PropagatedConnectionLimit pulumi.IntOutput `pulumi:"propagatedConnectionLimit"`
 	// An 128-bit global unique ID of the PSC service attachment.
 	PscServiceAttachmentId Uint128ResponseOutput `pulumi:"pscServiceAttachmentId"`
-	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
 	ReconcileConnections pulumi.BoolOutput   `pulumi:"reconcileConnections"`
 	Region               pulumi.StringOutput `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -55,6 +57,8 @@ type ServiceAttachment struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringOutput `pulumi:"targetService"`
+	// When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. -
+	TunnelingConfig ServiceAttachmentTunnelingConfigResponseOutput `pulumi:"tunnelingConfig"`
 }
 
 // NewServiceAttachment registers a new resource with the given unique name, arguments, and options.
@@ -124,13 +128,17 @@ type serviceAttachmentArgs struct {
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule *string `pulumi:"producerForwardingRule"`
 	Project                *string `pulumi:"project"`
-	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+	// The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+	PropagatedConnectionLimit *int `pulumi:"propagatedConnectionLimit"`
+	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
 	ReconcileConnections *bool  `pulumi:"reconcileConnections"`
 	Region               string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService *string `pulumi:"targetService"`
+	// When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. -
+	TunnelingConfig *ServiceAttachmentTunnelingConfig `pulumi:"tunnelingConfig"`
 }
 
 // The set of arguments for constructing a ServiceAttachment resource.
@@ -154,13 +162,17 @@ type ServiceAttachmentArgs struct {
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule pulumi.StringPtrInput
 	Project                pulumi.StringPtrInput
-	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+	// The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+	PropagatedConnectionLimit pulumi.IntPtrInput
+	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
 	ReconcileConnections pulumi.BoolPtrInput
 	Region               pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringPtrInput
+	// When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. -
+	TunnelingConfig ServiceAttachmentTunnelingConfigPtrInput
 }
 
 func (ServiceAttachmentArgs) ElementType() reflect.Type {
@@ -285,12 +297,17 @@ func (o ServiceAttachmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+func (o ServiceAttachmentOutput) PropagatedConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.IntOutput { return v.PropagatedConnectionLimit }).(pulumi.IntOutput)
+}
+
 // An 128-bit global unique ID of the PSC service attachment.
 func (o ServiceAttachmentOutput) PscServiceAttachmentId() Uint128ResponseOutput {
 	return o.ApplyT(func(v *ServiceAttachment) Uint128ResponseOutput { return v.PscServiceAttachmentId }).(Uint128ResponseOutput)
 }
 
-// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
 func (o ServiceAttachmentOutput) ReconcileConnections() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolOutput { return v.ReconcileConnections }).(pulumi.BoolOutput)
 }
@@ -312,6 +329,11 @@ func (o ServiceAttachmentOutput) SelfLink() pulumi.StringOutput {
 // The URL of a service serving the endpoint identified by this service attachment.
 func (o ServiceAttachmentOutput) TargetService() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.TargetService }).(pulumi.StringOutput)
+}
+
+// When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. -
+func (o ServiceAttachmentOutput) TunnelingConfig() ServiceAttachmentTunnelingConfigResponseOutput {
+	return o.ApplyT(func(v *ServiceAttachment) ServiceAttachmentTunnelingConfigResponseOutput { return v.TunnelingConfig }).(ServiceAttachmentTunnelingConfigResponseOutput)
 }
 
 func init() {

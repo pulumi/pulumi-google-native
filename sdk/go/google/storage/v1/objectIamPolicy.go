@@ -29,7 +29,7 @@ type ObjectIamPolicy struct {
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
 	Kind   pulumi.StringOutput `pulumi:"kind"`
 	Object pulumi.StringOutput `pulumi:"object"`
-	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject pulumi.StringPtrOutput `pulumi:"userProject"`
@@ -98,7 +98,7 @@ type objectIamPolicyArgs struct {
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
 	Kind   *string `pulumi:"kind"`
 	Object string  `pulumi:"object"`
-	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
 	ResourceId *string `pulumi:"resourceId"`
 	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject *string `pulumi:"userProject"`
@@ -118,7 +118,7 @@ type ObjectIamPolicyArgs struct {
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
 	Kind   pulumi.StringPtrInput
 	Object pulumi.StringInput
-	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
 	ResourceId pulumi.StringPtrInput
 	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject pulumi.StringPtrInput
@@ -203,7 +203,7 @@ func (o ObjectIamPolicyOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectIamPolicy) pulumi.StringOutput { return v.Object }).(pulumi.StringOutput)
 }
 
-// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
 func (o ObjectIamPolicyOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectIamPolicy) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }

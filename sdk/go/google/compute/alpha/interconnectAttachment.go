@@ -69,11 +69,11 @@ type InterconnectAttachment struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The current status of whether or not this interconnect attachment is functional, which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
 	OperationalStatus pulumi.StringOutput `pulumi:"operationalStatus"`
-	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey pulumi.StringOutput `pulumi:"pairingKey"`
 	// Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerAsn pulumi.StringOutput `pulumi:"partnerAsn"`
-	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+	// Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata InterconnectAttachmentPartnerMetadataResponseOutput `pulumi:"partnerMetadata"`
 	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
 	PrivateInterconnectInfo InterconnectAttachmentPrivateInfoResponseOutput `pulumi:"privateInterconnectInfo"`
@@ -179,11 +179,11 @@ type interconnectAttachmentArgs struct {
 	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey *string `pulumi:"pairingKey"`
 	// Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerAsn *string `pulumi:"partnerAsn"`
-	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+	// Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata *InterconnectAttachmentPartnerMetadata `pulumi:"partnerMetadata"`
 	Project         *string                                `pulumi:"project"`
 	Region          string                                 `pulumi:"region"`
@@ -231,11 +231,11 @@ type InterconnectAttachmentArgs struct {
 	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey pulumi.StringPtrInput
 	// Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerAsn pulumi.StringPtrInput
-	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+	// Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata InterconnectAttachmentPartnerMetadataPtrInput
 	Project         pulumi.StringPtrInput
 	Region          pulumi.StringInput
@@ -431,7 +431,7 @@ func (o InterconnectAttachmentOutput) OperationalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.OperationalStatus }).(pulumi.StringOutput)
 }
 
-// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
 func (o InterconnectAttachmentOutput) PairingKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.PairingKey }).(pulumi.StringOutput)
 }
@@ -441,7 +441,7 @@ func (o InterconnectAttachmentOutput) PartnerAsn() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.PartnerAsn }).(pulumi.StringOutput)
 }
 
-// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
+// Informational metadata about Partner attachments from Partners to display to customers. Output only for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 func (o InterconnectAttachmentOutput) PartnerMetadata() InterconnectAttachmentPartnerMetadataResponseOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) InterconnectAttachmentPartnerMetadataResponseOutput {
 		return v.PartnerMetadata

@@ -29,7 +29,7 @@ type TrustConfig struct {
 	// A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*/locations/*/trustConfigs/*`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Required. A user-provided name of the TrustConfig.
+	// Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
 	TrustConfigId pulumi.StringOutput `pulumi:"trustConfigId"`
 	// Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
 	TrustStores TrustStoreResponseArrayOutput `pulumi:"trustStores"`
@@ -96,7 +96,7 @@ type trustConfigArgs struct {
 	// A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*/locations/*/trustConfigs/*`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Required. A user-provided name of the TrustConfig.
+	// Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
 	TrustConfigId string `pulumi:"trustConfigId"`
 	// Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
 	TrustStores []TrustStore `pulumi:"trustStores"`
@@ -114,7 +114,7 @@ type TrustConfigArgs struct {
 	// A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*/locations/*/trustConfigs/*`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Required. A user-provided name of the TrustConfig.
+	// Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
 	TrustConfigId pulumi.StringInput
 	// Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
 	TrustStores TrustStoreArrayInput
@@ -202,7 +202,7 @@ func (o TrustConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrustConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Required. A user-provided name of the TrustConfig.
+// Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
 func (o TrustConfigOutput) TrustConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrustConfig) pulumi.StringOutput { return v.TrustConfigId }).(pulumi.StringOutput)
 }

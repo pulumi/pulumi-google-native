@@ -2906,6 +2906,8 @@ const (
 	GoogleCloudDialogflowV2SuggestionFeatureTypeFaq = GoogleCloudDialogflowV2SuggestionFeatureType("FAQ")
 	// Run smart reply model for chat.
 	GoogleCloudDialogflowV2SuggestionFeatureTypeSmartReply = GoogleCloudDialogflowV2SuggestionFeatureType("SMART_REPLY")
+	// Run knowledge search with text input from agent or text generated query.
+	GoogleCloudDialogflowV2SuggestionFeatureTypeKnowledgeSearch = GoogleCloudDialogflowV2SuggestionFeatureType("KNOWLEDGE_SEARCH")
 )
 
 func (GoogleCloudDialogflowV2SuggestionFeatureType) ElementType() reflect.Type {

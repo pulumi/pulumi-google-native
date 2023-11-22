@@ -874,12 +874,16 @@ func (o CloudRunResponseOutput) Service() pulumi.StringOutput {
 
 // Represents a target of an invocation over HTTP.
 type Destination struct {
-	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+	// The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 	CloudFunction *string `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun *CloudRun `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke *GKE `pulumi:"gke"`
+	// An HTTP endpoint destination described by an URI.
+	HttpEndpoint *HttpEndpoint `pulumi:"httpEndpoint"`
+	// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
 	Workflow *string `pulumi:"workflow"`
 }
@@ -897,12 +901,16 @@ type DestinationInput interface {
 
 // Represents a target of an invocation over HTTP.
 type DestinationArgs struct {
-	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+	// The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 	CloudFunction pulumi.StringPtrInput `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunPtrInput `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke GKEPtrInput `pulumi:"gke"`
+	// An HTTP endpoint destination described by an URI.
+	HttpEndpoint HttpEndpointPtrInput `pulumi:"httpEndpoint"`
+	// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+	NetworkConfig NetworkConfigPtrInput `pulumi:"networkConfig"`
 	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
 	Workflow pulumi.StringPtrInput `pulumi:"workflow"`
 }
@@ -946,7 +954,7 @@ func (o DestinationOutput) ToOutput(ctx context.Context) pulumix.Output[Destinat
 	}
 }
 
-// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+// The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 func (o DestinationOutput) CloudFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Destination) *string { return v.CloudFunction }).(pulumi.StringPtrOutput)
 }
@@ -961,6 +969,16 @@ func (o DestinationOutput) Gke() GKEPtrOutput {
 	return o.ApplyT(func(v Destination) *GKE { return v.Gke }).(GKEPtrOutput)
 }
 
+// An HTTP endpoint destination described by an URI.
+func (o DestinationOutput) HttpEndpoint() HttpEndpointPtrOutput {
+	return o.ApplyT(func(v Destination) *HttpEndpoint { return v.HttpEndpoint }).(HttpEndpointPtrOutput)
+}
+
+// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+func (o DestinationOutput) NetworkConfig() NetworkConfigPtrOutput {
+	return o.ApplyT(func(v Destination) *NetworkConfig { return v.NetworkConfig }).(NetworkConfigPtrOutput)
+}
+
 // The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
 func (o DestinationOutput) Workflow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Destination) *string { return v.Workflow }).(pulumi.StringPtrOutput)
@@ -968,12 +986,16 @@ func (o DestinationOutput) Workflow() pulumi.StringPtrOutput {
 
 // Represents a target of an invocation over HTTP.
 type DestinationResponse struct {
-	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+	// The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 	CloudFunction string `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunResponse `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke GKEResponse `pulumi:"gke"`
+	// An HTTP endpoint destination described by an URI.
+	HttpEndpoint HttpEndpointResponse `pulumi:"httpEndpoint"`
+	// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+	NetworkConfig NetworkConfigResponse `pulumi:"networkConfig"`
 	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
 	Workflow string `pulumi:"workflow"`
 }
@@ -999,7 +1021,7 @@ func (o DestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+// The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 func (o DestinationResponseOutput) CloudFunction() pulumi.StringOutput {
 	return o.ApplyT(func(v DestinationResponse) string { return v.CloudFunction }).(pulumi.StringOutput)
 }
@@ -1014,6 +1036,16 @@ func (o DestinationResponseOutput) Gke() GKEResponseOutput {
 	return o.ApplyT(func(v DestinationResponse) GKEResponse { return v.Gke }).(GKEResponseOutput)
 }
 
+// An HTTP endpoint destination described by an URI.
+func (o DestinationResponseOutput) HttpEndpoint() HttpEndpointResponseOutput {
+	return o.ApplyT(func(v DestinationResponse) HttpEndpointResponse { return v.HttpEndpoint }).(HttpEndpointResponseOutput)
+}
+
+// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+func (o DestinationResponseOutput) NetworkConfig() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v DestinationResponse) NetworkConfigResponse { return v.NetworkConfig }).(NetworkConfigResponseOutput)
+}
+
 // The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
 func (o DestinationResponseOutput) Workflow() pulumi.StringOutput {
 	return o.ApplyT(func(v DestinationResponse) string { return v.Workflow }).(pulumi.StringOutput)
@@ -1023,7 +1055,7 @@ func (o DestinationResponseOutput) Workflow() pulumi.StringOutput {
 type EventFilter struct {
 	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
 	Attribute string `pulumi:"attribute"`
-	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The allowed values are `path_pattern` and `match-path-pattern`. `path_pattern` is only allowed for GCFv1 triggers.
 	Operator *string `pulumi:"operator"`
 	// The value for the attribute.
 	Value string `pulumi:"value"`
@@ -1044,7 +1076,7 @@ type EventFilterInput interface {
 type EventFilterArgs struct {
 	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
-	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The allowed values are `path_pattern` and `match-path-pattern`. `path_pattern` is only allowed for GCFv1 triggers.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The value for the attribute.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -1125,7 +1157,7 @@ func (o EventFilterOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v EventFilter) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
-// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The allowed values are `path_pattern` and `match-path-pattern`. `path_pattern` is only allowed for GCFv1 triggers.
 func (o EventFilterOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
@@ -1165,7 +1197,7 @@ func (o EventFilterArrayOutput) Index(i pulumi.IntInput) EventFilterOutput {
 type EventFilterResponse struct {
 	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
 	Attribute string `pulumi:"attribute"`
-	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The allowed values are `path_pattern` and `match-path-pattern`. `path_pattern` is only allowed for GCFv1 triggers.
 	Operator string `pulumi:"operator"`
 	// The value for the attribute.
 	Value string `pulumi:"value"`
@@ -1197,7 +1229,7 @@ func (o EventFilterResponseOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v EventFilterResponse) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
-// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The allowed values are `path_pattern` and `match-path-pattern`. `path_pattern` is only allowed for GCFv1 triggers.
 func (o EventFilterResponseOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v EventFilterResponse) string { return v.Operator }).(pulumi.StringOutput)
 }
@@ -1807,6 +1839,398 @@ func (o GKEResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GKEResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
+// Represents a HTTP endpoint destination.
+type HttpEndpoint struct {
+	// The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+	Uri string `pulumi:"uri"`
+}
+
+// HttpEndpointInput is an input type that accepts HttpEndpointArgs and HttpEndpointOutput values.
+// You can construct a concrete instance of `HttpEndpointInput` via:
+//
+//	HttpEndpointArgs{...}
+type HttpEndpointInput interface {
+	pulumi.Input
+
+	ToHttpEndpointOutput() HttpEndpointOutput
+	ToHttpEndpointOutputWithContext(context.Context) HttpEndpointOutput
+}
+
+// Represents a HTTP endpoint destination.
+type HttpEndpointArgs struct {
+	// The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (HttpEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpEndpoint)(nil)).Elem()
+}
+
+func (i HttpEndpointArgs) ToHttpEndpointOutput() HttpEndpointOutput {
+	return i.ToHttpEndpointOutputWithContext(context.Background())
+}
+
+func (i HttpEndpointArgs) ToHttpEndpointOutputWithContext(ctx context.Context) HttpEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpEndpointOutput)
+}
+
+func (i HttpEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[HttpEndpoint] {
+	return pulumix.Output[HttpEndpoint]{
+		OutputState: i.ToHttpEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i HttpEndpointArgs) ToHttpEndpointPtrOutput() HttpEndpointPtrOutput {
+	return i.ToHttpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i HttpEndpointArgs) ToHttpEndpointPtrOutputWithContext(ctx context.Context) HttpEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpEndpointOutput).ToHttpEndpointPtrOutputWithContext(ctx)
+}
+
+// HttpEndpointPtrInput is an input type that accepts HttpEndpointArgs, HttpEndpointPtr and HttpEndpointPtrOutput values.
+// You can construct a concrete instance of `HttpEndpointPtrInput` via:
+//
+//	        HttpEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpEndpointPtrInput interface {
+	pulumi.Input
+
+	ToHttpEndpointPtrOutput() HttpEndpointPtrOutput
+	ToHttpEndpointPtrOutputWithContext(context.Context) HttpEndpointPtrOutput
+}
+
+type httpEndpointPtrType HttpEndpointArgs
+
+func HttpEndpointPtr(v *HttpEndpointArgs) HttpEndpointPtrInput {
+	return (*httpEndpointPtrType)(v)
+}
+
+func (*httpEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpEndpoint)(nil)).Elem()
+}
+
+func (i *httpEndpointPtrType) ToHttpEndpointPtrOutput() HttpEndpointPtrOutput {
+	return i.ToHttpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *httpEndpointPtrType) ToHttpEndpointPtrOutputWithContext(ctx context.Context) HttpEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpEndpointPtrOutput)
+}
+
+func (i *httpEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpEndpoint] {
+	return pulumix.Output[*HttpEndpoint]{
+		OutputState: i.ToHttpEndpointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Represents a HTTP endpoint destination.
+type HttpEndpointOutput struct{ *pulumi.OutputState }
+
+func (HttpEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpEndpoint)(nil)).Elem()
+}
+
+func (o HttpEndpointOutput) ToHttpEndpointOutput() HttpEndpointOutput {
+	return o
+}
+
+func (o HttpEndpointOutput) ToHttpEndpointOutputWithContext(ctx context.Context) HttpEndpointOutput {
+	return o
+}
+
+func (o HttpEndpointOutput) ToHttpEndpointPtrOutput() HttpEndpointPtrOutput {
+	return o.ToHttpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o HttpEndpointOutput) ToHttpEndpointPtrOutputWithContext(ctx context.Context) HttpEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpEndpoint) *HttpEndpoint {
+		return &v
+	}).(HttpEndpointPtrOutput)
+}
+
+func (o HttpEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[HttpEndpoint] {
+	return pulumix.Output[HttpEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+func (o HttpEndpointOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpEndpoint) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type HttpEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpEndpoint)(nil)).Elem()
+}
+
+func (o HttpEndpointPtrOutput) ToHttpEndpointPtrOutput() HttpEndpointPtrOutput {
+	return o
+}
+
+func (o HttpEndpointPtrOutput) ToHttpEndpointPtrOutputWithContext(ctx context.Context) HttpEndpointPtrOutput {
+	return o
+}
+
+func (o HttpEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpEndpoint] {
+	return pulumix.Output[*HttpEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HttpEndpointPtrOutput) Elem() HttpEndpointOutput {
+	return o.ApplyT(func(v *HttpEndpoint) HttpEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret HttpEndpoint
+		return ret
+	}).(HttpEndpointOutput)
+}
+
+// The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+func (o HttpEndpointPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a HTTP endpoint destination.
+type HttpEndpointResponse struct {
+	// The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+	Uri string `pulumi:"uri"`
+}
+
+// Represents a HTTP endpoint destination.
+type HttpEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpEndpointResponse)(nil)).Elem()
+}
+
+func (o HttpEndpointResponseOutput) ToHttpEndpointResponseOutput() HttpEndpointResponseOutput {
+	return o
+}
+
+func (o HttpEndpointResponseOutput) ToHttpEndpointResponseOutputWithContext(ctx context.Context) HttpEndpointResponseOutput {
+	return o
+}
+
+func (o HttpEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpEndpointResponse] {
+	return pulumix.Output[HttpEndpointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+func (o HttpEndpointResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Represents a network config to be used for destination resolution and connectivity.
+type NetworkConfig struct {
+	// Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+	NetworkAttachment string `pulumi:"networkAttachment"`
+}
+
+// NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
+// You can construct a concrete instance of `NetworkConfigInput` via:
+//
+//	NetworkConfigArgs{...}
+type NetworkConfigInput interface {
+	pulumi.Input
+
+	ToNetworkConfigOutput() NetworkConfigOutput
+	ToNetworkConfigOutputWithContext(context.Context) NetworkConfigOutput
+}
+
+// Represents a network config to be used for destination resolution and connectivity.
+type NetworkConfigArgs struct {
+	// Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+}
+
+func (NetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfig)(nil)).Elem()
+}
+
+func (i NetworkConfigArgs) ToNetworkConfigOutput() NetworkConfigOutput {
+	return i.ToNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context) NetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput)
+}
+
+func (i NetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
+	return pulumix.Output[NetworkConfig]{
+		OutputState: i.ToNetworkConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i NetworkConfigArgs) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
+	return i.ToNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkConfigArgs) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigOutput).ToNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// NetworkConfigPtrInput is an input type that accepts NetworkConfigArgs, NetworkConfigPtr and NetworkConfigPtrOutput values.
+// You can construct a concrete instance of `NetworkConfigPtrInput` via:
+//
+//	        NetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworkConfigPtrOutput() NetworkConfigPtrOutput
+	ToNetworkConfigPtrOutputWithContext(context.Context) NetworkConfigPtrOutput
+}
+
+type networkConfigPtrType NetworkConfigArgs
+
+func NetworkConfigPtr(v *NetworkConfigArgs) NetworkConfigPtrInput {
+	return (*networkConfigPtrType)(v)
+}
+
+func (*networkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfig)(nil)).Elem()
+}
+
+func (i *networkConfigPtrType) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
+	return i.ToNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *networkConfigPtrType) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigPtrOutput)
+}
+
+func (i *networkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
+	return pulumix.Output[*NetworkConfig]{
+		OutputState: i.ToNetworkConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Represents a network config to be used for destination resolution and connectivity.
+type NetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfig)(nil)).Elem()
+}
+
+func (o NetworkConfigOutput) ToNetworkConfigOutput() NetworkConfigOutput {
+	return o
+}
+
+func (o NetworkConfigOutput) ToNetworkConfigOutputWithContext(ctx context.Context) NetworkConfigOutput {
+	return o
+}
+
+func (o NetworkConfigOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
+	return o.ToNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfig) *NetworkConfig {
+		return &v
+	}).(NetworkConfigPtrOutput)
+}
+
+func (o NetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfig] {
+	return pulumix.Output[NetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+func (o NetworkConfigOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfig) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+type NetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfig)(nil)).Elem()
+}
+
+func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
+	return o
+}
+
+func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
+	return o
+}
+
+func (o NetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkConfig] {
+	return pulumix.Output[*NetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
+	return o.ApplyT(func(v *NetworkConfig) NetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfig
+		return ret
+	}).(NetworkConfigOutput)
+}
+
+// Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+func (o NetworkConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a network config to be used for destination resolution and connectivity.
+type NetworkConfigResponse struct {
+	// Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+	NetworkAttachment string `pulumi:"networkAttachment"`
+}
+
+// Represents a network config to be used for destination resolution and connectivity.
+type NetworkConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigResponse)(nil)).Elem()
+}
+
+func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutput() NetworkConfigResponseOutput {
+	return o
+}
+
+func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
+	return o
+}
+
+func (o NetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkConfigResponse] {
+	return pulumix.Output[NetworkConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+func (o NetworkConfigResponseOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
 // Represents a Pub/Sub transport.
 type Pubsub struct {
 	// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
@@ -2222,6 +2646,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GKEInput)(nil)).Elem(), GKEArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GKEPtrInput)(nil)).Elem(), GKEArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpEndpointInput)(nil)).Elem(), HttpEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpEndpointPtrInput)(nil)).Elem(), HttpEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubInput)(nil)).Elem(), PubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubPtrInput)(nil)).Elem(), PubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransportInput)(nil)).Elem(), TransportArgs{})
@@ -2253,6 +2681,12 @@ func init() {
 	pulumi.RegisterOutputType(GKEOutput{})
 	pulumi.RegisterOutputType(GKEPtrOutput{})
 	pulumi.RegisterOutputType(GKEResponseOutput{})
+	pulumi.RegisterOutputType(HttpEndpointOutput{})
+	pulumi.RegisterOutputType(HttpEndpointPtrOutput{})
+	pulumi.RegisterOutputType(HttpEndpointResponseOutput{})
+	pulumi.RegisterOutputType(NetworkConfigOutput{})
+	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(PubsubOutput{})
 	pulumi.RegisterOutputType(PubsubPtrOutput{})
 	pulumi.RegisterOutputType(PubsubResponseOutput{})

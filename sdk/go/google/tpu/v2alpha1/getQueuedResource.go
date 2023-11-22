@@ -32,7 +32,9 @@ type LookupQueuedResourceArgs struct {
 type LookupQueuedResourceResult struct {
 	// The BestEffort tier.
 	BestEffort BestEffortResponse `pulumi:"bestEffort"`
-	// The Guaranteed tier
+	// The time when the QueuedResource was created.
+	CreateTime string `pulumi:"createTime"`
+	// The Guaranteed tier.
 	Guaranteed GuaranteedResponse `pulumi:"guaranteed"`
 	// Immutable. The name of the QueuedResource.
 	Name string `pulumi:"name"`
@@ -40,6 +42,8 @@ type LookupQueuedResourceResult struct {
 	QueueingPolicy QueueingPolicyResponse `pulumi:"queueingPolicy"`
 	// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
 	ReservationName string `pulumi:"reservationName"`
+	// Optional. The Spot tier.
+	Spot SpotResponse `pulumi:"spot"`
 	// State of the QueuedResource request.
 	State QueuedResourceStateResponse `pulumi:"state"`
 	// Defines a TPU resource.
@@ -94,7 +98,12 @@ func (o LookupQueuedResourceResultOutput) BestEffort() BestEffortResponseOutput 
 	return o.ApplyT(func(v LookupQueuedResourceResult) BestEffortResponse { return v.BestEffort }).(BestEffortResponseOutput)
 }
 
-// The Guaranteed tier
+// The time when the QueuedResource was created.
+func (o LookupQueuedResourceResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueuedResourceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The Guaranteed tier.
 func (o LookupQueuedResourceResultOutput) Guaranteed() GuaranteedResponseOutput {
 	return o.ApplyT(func(v LookupQueuedResourceResult) GuaranteedResponse { return v.Guaranteed }).(GuaranteedResponseOutput)
 }
@@ -112,6 +121,11 @@ func (o LookupQueuedResourceResultOutput) QueueingPolicy() QueueingPolicyRespons
 // Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
 func (o LookupQueuedResourceResultOutput) ReservationName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueuedResourceResult) string { return v.ReservationName }).(pulumi.StringOutput)
+}
+
+// Optional. The Spot tier.
+func (o LookupQueuedResourceResultOutput) Spot() SpotResponseOutput {
+	return o.ApplyT(func(v LookupQueuedResourceResult) SpotResponse { return v.Spot }).(SpotResponseOutput)
 }
 
 // State of the QueuedResource request.

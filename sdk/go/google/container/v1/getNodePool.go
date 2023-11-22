@@ -35,6 +35,8 @@ type LookupNodePoolArgs struct {
 type LookupNodePoolResult struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingResponse `pulumi:"autoscaling"`
+	// Enable best effort provisioning for nodes
+	BestEffortProvisioning BestEffortProvisioningResponse `pulumi:"bestEffortProvisioning"`
 	// Which conditions caused the current node pool state.
 	Conditions []StatusConditionResponse `pulumi:"conditions"`
 	// The node configuration of the pool.
@@ -59,6 +61,8 @@ type LookupNodePoolResult struct {
 	PlacementPolicy PlacementPolicyResponse `pulumi:"placementPolicy"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize int `pulumi:"podIpv4CidrSize"`
+	// Specifies the configuration of queued provisioning.
+	QueuedProvisioning QueuedProvisioningResponse `pulumi:"queuedProvisioning"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
@@ -126,6 +130,11 @@ func (o LookupNodePoolResultOutput) Autoscaling() NodePoolAutoscalingResponseOut
 	return o.ApplyT(func(v LookupNodePoolResult) NodePoolAutoscalingResponse { return v.Autoscaling }).(NodePoolAutoscalingResponseOutput)
 }
 
+// Enable best effort provisioning for nodes
+func (o LookupNodePoolResultOutput) BestEffortProvisioning() BestEffortProvisioningResponseOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) BestEffortProvisioningResponse { return v.BestEffortProvisioning }).(BestEffortProvisioningResponseOutput)
+}
+
 // Which conditions caused the current node pool state.
 func (o LookupNodePoolResultOutput) Conditions() StatusConditionResponseArrayOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) []StatusConditionResponse { return v.Conditions }).(StatusConditionResponseArrayOutput)
@@ -184,6 +193,11 @@ func (o LookupNodePoolResultOutput) PlacementPolicy() PlacementPolicyResponseOut
 // [Output only] The pod CIDR block size per node in this node pool.
 func (o LookupNodePoolResultOutput) PodIpv4CidrSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) int { return v.PodIpv4CidrSize }).(pulumi.IntOutput)
+}
+
+// Specifies the configuration of queued provisioning.
+func (o LookupNodePoolResultOutput) QueuedProvisioning() QueuedProvisioningResponseOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) QueuedProvisioningResponse { return v.QueuedProvisioning }).(QueuedProvisioningResponseOutput)
 }
 
 // [Output only] Server-defined URL for the resource.

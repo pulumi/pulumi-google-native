@@ -21,6 +21,8 @@ type Job struct {
 	Configuration JobConfigurationResponseOutput `pulumi:"configuration"`
 	// A hash of this resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
+	JobCreationReason pulumi.AnyOutput `pulumi:"jobCreationReason"`
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference JobReferenceResponseOutput `pulumi:"jobReference"`
 	// The type of the resource.
@@ -155,6 +157,11 @@ func (o JobOutput) Configuration() JobConfigurationResponseOutput {
 // A hash of this resource.
 func (o JobOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
+func (o JobOutput) JobCreationReason() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Job) pulumi.AnyOutput { return v.JobCreationReason }).(pulumi.AnyOutput)
 }
 
 // [Optional] Reference describing the unique-per-user name of the job.

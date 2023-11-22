@@ -184,6 +184,176 @@ func (o GoogleFirestoreAdminV1DailyRecurrenceResponseOutput) ToOutput(ctx contex
 	}
 }
 
+// An index that stores vectors in a flat data structure, and supports exhaustive search.
+type GoogleFirestoreAdminV1FlatIndex struct {
+}
+
+// GoogleFirestoreAdminV1FlatIndexInput is an input type that accepts GoogleFirestoreAdminV1FlatIndexArgs and GoogleFirestoreAdminV1FlatIndexOutput values.
+// You can construct a concrete instance of `GoogleFirestoreAdminV1FlatIndexInput` via:
+//
+//	GoogleFirestoreAdminV1FlatIndexArgs{...}
+type GoogleFirestoreAdminV1FlatIndexInput interface {
+	pulumi.Input
+
+	ToGoogleFirestoreAdminV1FlatIndexOutput() GoogleFirestoreAdminV1FlatIndexOutput
+	ToGoogleFirestoreAdminV1FlatIndexOutputWithContext(context.Context) GoogleFirestoreAdminV1FlatIndexOutput
+}
+
+// An index that stores vectors in a flat data structure, and supports exhaustive search.
+type GoogleFirestoreAdminV1FlatIndexArgs struct {
+}
+
+func (GoogleFirestoreAdminV1FlatIndexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1FlatIndex)(nil)).Elem()
+}
+
+func (i GoogleFirestoreAdminV1FlatIndexArgs) ToGoogleFirestoreAdminV1FlatIndexOutput() GoogleFirestoreAdminV1FlatIndexOutput {
+	return i.ToGoogleFirestoreAdminV1FlatIndexOutputWithContext(context.Background())
+}
+
+func (i GoogleFirestoreAdminV1FlatIndexArgs) ToGoogleFirestoreAdminV1FlatIndexOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1FlatIndexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1FlatIndexOutput)
+}
+
+func (i GoogleFirestoreAdminV1FlatIndexArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1FlatIndex] {
+	return pulumix.Output[GoogleFirestoreAdminV1FlatIndex]{
+		OutputState: i.ToGoogleFirestoreAdminV1FlatIndexOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleFirestoreAdminV1FlatIndexArgs) ToGoogleFirestoreAdminV1FlatIndexPtrOutput() GoogleFirestoreAdminV1FlatIndexPtrOutput {
+	return i.ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleFirestoreAdminV1FlatIndexArgs) ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1FlatIndexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1FlatIndexOutput).ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(ctx)
+}
+
+// GoogleFirestoreAdminV1FlatIndexPtrInput is an input type that accepts GoogleFirestoreAdminV1FlatIndexArgs, GoogleFirestoreAdminV1FlatIndexPtr and GoogleFirestoreAdminV1FlatIndexPtrOutput values.
+// You can construct a concrete instance of `GoogleFirestoreAdminV1FlatIndexPtrInput` via:
+//
+//	        GoogleFirestoreAdminV1FlatIndexArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleFirestoreAdminV1FlatIndexPtrInput interface {
+	pulumi.Input
+
+	ToGoogleFirestoreAdminV1FlatIndexPtrOutput() GoogleFirestoreAdminV1FlatIndexPtrOutput
+	ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(context.Context) GoogleFirestoreAdminV1FlatIndexPtrOutput
+}
+
+type googleFirestoreAdminV1FlatIndexPtrType GoogleFirestoreAdminV1FlatIndexArgs
+
+func GoogleFirestoreAdminV1FlatIndexPtr(v *GoogleFirestoreAdminV1FlatIndexArgs) GoogleFirestoreAdminV1FlatIndexPtrInput {
+	return (*googleFirestoreAdminV1FlatIndexPtrType)(v)
+}
+
+func (*googleFirestoreAdminV1FlatIndexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleFirestoreAdminV1FlatIndex)(nil)).Elem()
+}
+
+func (i *googleFirestoreAdminV1FlatIndexPtrType) ToGoogleFirestoreAdminV1FlatIndexPtrOutput() GoogleFirestoreAdminV1FlatIndexPtrOutput {
+	return i.ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(context.Background())
+}
+
+func (i *googleFirestoreAdminV1FlatIndexPtrType) ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1FlatIndexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1FlatIndexPtrOutput)
+}
+
+func (i *googleFirestoreAdminV1FlatIndexPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1FlatIndex] {
+	return pulumix.Output[*GoogleFirestoreAdminV1FlatIndex]{
+		OutputState: i.ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// An index that stores vectors in a flat data structure, and supports exhaustive search.
+type GoogleFirestoreAdminV1FlatIndexOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1FlatIndexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1FlatIndex)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexOutput) ToGoogleFirestoreAdminV1FlatIndexOutput() GoogleFirestoreAdminV1FlatIndexOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexOutput) ToGoogleFirestoreAdminV1FlatIndexOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1FlatIndexOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexOutput) ToGoogleFirestoreAdminV1FlatIndexPtrOutput() GoogleFirestoreAdminV1FlatIndexPtrOutput {
+	return o.ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexOutput) ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1FlatIndexPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleFirestoreAdminV1FlatIndex) *GoogleFirestoreAdminV1FlatIndex {
+		return &v
+	}).(GoogleFirestoreAdminV1FlatIndexPtrOutput)
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1FlatIndex] {
+	return pulumix.Output[GoogleFirestoreAdminV1FlatIndex]{
+		OutputState: o.OutputState,
+	}
+}
+
+type GoogleFirestoreAdminV1FlatIndexPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1FlatIndexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleFirestoreAdminV1FlatIndex)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexPtrOutput) ToGoogleFirestoreAdminV1FlatIndexPtrOutput() GoogleFirestoreAdminV1FlatIndexPtrOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexPtrOutput) ToGoogleFirestoreAdminV1FlatIndexPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1FlatIndexPtrOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1FlatIndex] {
+	return pulumix.Output[*GoogleFirestoreAdminV1FlatIndex]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexPtrOutput) Elem() GoogleFirestoreAdminV1FlatIndexOutput {
+	return o.ApplyT(func(v *GoogleFirestoreAdminV1FlatIndex) GoogleFirestoreAdminV1FlatIndex {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleFirestoreAdminV1FlatIndex
+		return ret
+	}).(GoogleFirestoreAdminV1FlatIndexOutput)
+}
+
+// An index that stores vectors in a flat data structure, and supports exhaustive search.
+type GoogleFirestoreAdminV1FlatIndexResponse struct {
+}
+
+// An index that stores vectors in a flat data structure, and supports exhaustive search.
+type GoogleFirestoreAdminV1FlatIndexResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1FlatIndexResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1FlatIndexResponse)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexResponseOutput) ToGoogleFirestoreAdminV1FlatIndexResponseOutput() GoogleFirestoreAdminV1FlatIndexResponseOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexResponseOutput) ToGoogleFirestoreAdminV1FlatIndexResponseOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1FlatIndexResponseOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1FlatIndexResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1FlatIndexResponse] {
+	return pulumix.Output[GoogleFirestoreAdminV1FlatIndexResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
 type GoogleFirestoreAdminV1IndexField struct {
 	// Indicates that this field supports operations on `array_value`s.
@@ -192,6 +362,8 @@ type GoogleFirestoreAdminV1IndexField struct {
 	FieldPath *string `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
 	Order *GoogleFirestoreAdminV1IndexFieldOrder `pulumi:"order"`
+	// Indicates that this field supports nearest neighbors and distance operations on vector.
+	VectorConfig *GoogleFirestoreAdminV1VectorConfig `pulumi:"vectorConfig"`
 }
 
 // GoogleFirestoreAdminV1IndexFieldInput is an input type that accepts GoogleFirestoreAdminV1IndexFieldArgs and GoogleFirestoreAdminV1IndexFieldOutput values.
@@ -213,6 +385,8 @@ type GoogleFirestoreAdminV1IndexFieldArgs struct {
 	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
 	Order GoogleFirestoreAdminV1IndexFieldOrderPtrInput `pulumi:"order"`
+	// Indicates that this field supports nearest neighbors and distance operations on vector.
+	VectorConfig GoogleFirestoreAdminV1VectorConfigPtrInput `pulumi:"vectorConfig"`
 }
 
 func (GoogleFirestoreAdminV1IndexFieldArgs) ElementType() reflect.Type {
@@ -302,6 +476,11 @@ func (o GoogleFirestoreAdminV1IndexFieldOutput) Order() GoogleFirestoreAdminV1In
 	return o.ApplyT(func(v GoogleFirestoreAdminV1IndexField) *GoogleFirestoreAdminV1IndexFieldOrder { return v.Order }).(GoogleFirestoreAdminV1IndexFieldOrderPtrOutput)
 }
 
+// Indicates that this field supports nearest neighbors and distance operations on vector.
+func (o GoogleFirestoreAdminV1IndexFieldOutput) VectorConfig() GoogleFirestoreAdminV1VectorConfigPtrOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1IndexField) *GoogleFirestoreAdminV1VectorConfig { return v.VectorConfig }).(GoogleFirestoreAdminV1VectorConfigPtrOutput)
+}
+
 type GoogleFirestoreAdminV1IndexFieldArrayOutput struct{ *pulumi.OutputState }
 
 func (GoogleFirestoreAdminV1IndexFieldArrayOutput) ElementType() reflect.Type {
@@ -336,6 +515,8 @@ type GoogleFirestoreAdminV1IndexFieldResponse struct {
 	FieldPath string `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
 	Order string `pulumi:"order"`
+	// Indicates that this field supports nearest neighbors and distance operations on vector.
+	VectorConfig GoogleFirestoreAdminV1VectorConfigResponse `pulumi:"vectorConfig"`
 }
 
 // A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
@@ -374,6 +555,13 @@ func (o GoogleFirestoreAdminV1IndexFieldResponseOutput) Order() pulumi.StringOut
 	return o.ApplyT(func(v GoogleFirestoreAdminV1IndexFieldResponse) string { return v.Order }).(pulumi.StringOutput)
 }
 
+// Indicates that this field supports nearest neighbors and distance operations on vector.
+func (o GoogleFirestoreAdminV1IndexFieldResponseOutput) VectorConfig() GoogleFirestoreAdminV1VectorConfigResponseOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1IndexFieldResponse) GoogleFirestoreAdminV1VectorConfigResponse {
+		return v.VectorConfig
+	}).(GoogleFirestoreAdminV1VectorConfigResponseOutput)
+}
+
 type GoogleFirestoreAdminV1IndexFieldResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (GoogleFirestoreAdminV1IndexFieldResponseArrayOutput) ElementType() reflect.Type {
@@ -398,6 +586,230 @@ func (o GoogleFirestoreAdminV1IndexFieldResponseArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleFirestoreAdminV1IndexFieldResponse {
 		return vs[0].([]GoogleFirestoreAdminV1IndexFieldResponse)[vs[1].(int)]
 	}).(GoogleFirestoreAdminV1IndexFieldResponseOutput)
+}
+
+// The index configuration to support vector search operations
+type GoogleFirestoreAdminV1VectorConfig struct {
+	// The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
+	Dimension int `pulumi:"dimension"`
+	// Indicates the vector index is a flat index.
+	Flat *GoogleFirestoreAdminV1FlatIndex `pulumi:"flat"`
+}
+
+// GoogleFirestoreAdminV1VectorConfigInput is an input type that accepts GoogleFirestoreAdminV1VectorConfigArgs and GoogleFirestoreAdminV1VectorConfigOutput values.
+// You can construct a concrete instance of `GoogleFirestoreAdminV1VectorConfigInput` via:
+//
+//	GoogleFirestoreAdminV1VectorConfigArgs{...}
+type GoogleFirestoreAdminV1VectorConfigInput interface {
+	pulumi.Input
+
+	ToGoogleFirestoreAdminV1VectorConfigOutput() GoogleFirestoreAdminV1VectorConfigOutput
+	ToGoogleFirestoreAdminV1VectorConfigOutputWithContext(context.Context) GoogleFirestoreAdminV1VectorConfigOutput
+}
+
+// The index configuration to support vector search operations
+type GoogleFirestoreAdminV1VectorConfigArgs struct {
+	// The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
+	Dimension pulumi.IntInput `pulumi:"dimension"`
+	// Indicates the vector index is a flat index.
+	Flat GoogleFirestoreAdminV1FlatIndexPtrInput `pulumi:"flat"`
+}
+
+func (GoogleFirestoreAdminV1VectorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1VectorConfig)(nil)).Elem()
+}
+
+func (i GoogleFirestoreAdminV1VectorConfigArgs) ToGoogleFirestoreAdminV1VectorConfigOutput() GoogleFirestoreAdminV1VectorConfigOutput {
+	return i.ToGoogleFirestoreAdminV1VectorConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleFirestoreAdminV1VectorConfigArgs) ToGoogleFirestoreAdminV1VectorConfigOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1VectorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1VectorConfigOutput)
+}
+
+func (i GoogleFirestoreAdminV1VectorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1VectorConfig] {
+	return pulumix.Output[GoogleFirestoreAdminV1VectorConfig]{
+		OutputState: i.ToGoogleFirestoreAdminV1VectorConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleFirestoreAdminV1VectorConfigArgs) ToGoogleFirestoreAdminV1VectorConfigPtrOutput() GoogleFirestoreAdminV1VectorConfigPtrOutput {
+	return i.ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleFirestoreAdminV1VectorConfigArgs) ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1VectorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1VectorConfigOutput).ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleFirestoreAdminV1VectorConfigPtrInput is an input type that accepts GoogleFirestoreAdminV1VectorConfigArgs, GoogleFirestoreAdminV1VectorConfigPtr and GoogleFirestoreAdminV1VectorConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleFirestoreAdminV1VectorConfigPtrInput` via:
+//
+//	        GoogleFirestoreAdminV1VectorConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleFirestoreAdminV1VectorConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleFirestoreAdminV1VectorConfigPtrOutput() GoogleFirestoreAdminV1VectorConfigPtrOutput
+	ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(context.Context) GoogleFirestoreAdminV1VectorConfigPtrOutput
+}
+
+type googleFirestoreAdminV1VectorConfigPtrType GoogleFirestoreAdminV1VectorConfigArgs
+
+func GoogleFirestoreAdminV1VectorConfigPtr(v *GoogleFirestoreAdminV1VectorConfigArgs) GoogleFirestoreAdminV1VectorConfigPtrInput {
+	return (*googleFirestoreAdminV1VectorConfigPtrType)(v)
+}
+
+func (*googleFirestoreAdminV1VectorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleFirestoreAdminV1VectorConfig)(nil)).Elem()
+}
+
+func (i *googleFirestoreAdminV1VectorConfigPtrType) ToGoogleFirestoreAdminV1VectorConfigPtrOutput() GoogleFirestoreAdminV1VectorConfigPtrOutput {
+	return i.ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleFirestoreAdminV1VectorConfigPtrType) ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1VectorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1VectorConfigPtrOutput)
+}
+
+func (i *googleFirestoreAdminV1VectorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1VectorConfig] {
+	return pulumix.Output[*GoogleFirestoreAdminV1VectorConfig]{
+		OutputState: i.ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The index configuration to support vector search operations
+type GoogleFirestoreAdminV1VectorConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1VectorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1VectorConfig)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigOutput) ToGoogleFirestoreAdminV1VectorConfigOutput() GoogleFirestoreAdminV1VectorConfigOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigOutput) ToGoogleFirestoreAdminV1VectorConfigOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1VectorConfigOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigOutput) ToGoogleFirestoreAdminV1VectorConfigPtrOutput() GoogleFirestoreAdminV1VectorConfigPtrOutput {
+	return o.ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigOutput) ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1VectorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleFirestoreAdminV1VectorConfig) *GoogleFirestoreAdminV1VectorConfig {
+		return &v
+	}).(GoogleFirestoreAdminV1VectorConfigPtrOutput)
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1VectorConfig] {
+	return pulumix.Output[GoogleFirestoreAdminV1VectorConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
+func (o GoogleFirestoreAdminV1VectorConfigOutput) Dimension() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1VectorConfig) int { return v.Dimension }).(pulumi.IntOutput)
+}
+
+// Indicates the vector index is a flat index.
+func (o GoogleFirestoreAdminV1VectorConfigOutput) Flat() GoogleFirestoreAdminV1FlatIndexPtrOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1VectorConfig) *GoogleFirestoreAdminV1FlatIndex { return v.Flat }).(GoogleFirestoreAdminV1FlatIndexPtrOutput)
+}
+
+type GoogleFirestoreAdminV1VectorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1VectorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleFirestoreAdminV1VectorConfig)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigPtrOutput) ToGoogleFirestoreAdminV1VectorConfigPtrOutput() GoogleFirestoreAdminV1VectorConfigPtrOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigPtrOutput) ToGoogleFirestoreAdminV1VectorConfigPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1VectorConfigPtrOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleFirestoreAdminV1VectorConfig] {
+	return pulumix.Output[*GoogleFirestoreAdminV1VectorConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigPtrOutput) Elem() GoogleFirestoreAdminV1VectorConfigOutput {
+	return o.ApplyT(func(v *GoogleFirestoreAdminV1VectorConfig) GoogleFirestoreAdminV1VectorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleFirestoreAdminV1VectorConfig
+		return ret
+	}).(GoogleFirestoreAdminV1VectorConfigOutput)
+}
+
+// The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
+func (o GoogleFirestoreAdminV1VectorConfigPtrOutput) Dimension() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleFirestoreAdminV1VectorConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Dimension
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates the vector index is a flat index.
+func (o GoogleFirestoreAdminV1VectorConfigPtrOutput) Flat() GoogleFirestoreAdminV1FlatIndexPtrOutput {
+	return o.ApplyT(func(v *GoogleFirestoreAdminV1VectorConfig) *GoogleFirestoreAdminV1FlatIndex {
+		if v == nil {
+			return nil
+		}
+		return v.Flat
+	}).(GoogleFirestoreAdminV1FlatIndexPtrOutput)
+}
+
+// The index configuration to support vector search operations
+type GoogleFirestoreAdminV1VectorConfigResponse struct {
+	// The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
+	Dimension int `pulumi:"dimension"`
+	// Indicates the vector index is a flat index.
+	Flat GoogleFirestoreAdminV1FlatIndexResponse `pulumi:"flat"`
+}
+
+// The index configuration to support vector search operations
+type GoogleFirestoreAdminV1VectorConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1VectorConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1VectorConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigResponseOutput) ToGoogleFirestoreAdminV1VectorConfigResponseOutput() GoogleFirestoreAdminV1VectorConfigResponseOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigResponseOutput) ToGoogleFirestoreAdminV1VectorConfigResponseOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1VectorConfigResponseOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1VectorConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleFirestoreAdminV1VectorConfigResponse] {
+	return pulumix.Output[GoogleFirestoreAdminV1VectorConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
+func (o GoogleFirestoreAdminV1VectorConfigResponseOutput) Dimension() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1VectorConfigResponse) int { return v.Dimension }).(pulumi.IntOutput)
+}
+
+// Indicates the vector index is a flat index.
+func (o GoogleFirestoreAdminV1VectorConfigResponseOutput) Flat() GoogleFirestoreAdminV1FlatIndexResponseOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1VectorConfigResponse) GoogleFirestoreAdminV1FlatIndexResponse {
+		return v.Flat
+	}).(GoogleFirestoreAdminV1FlatIndexResponseOutput)
 }
 
 // Represents a recurring schedule that runs on a specified day of the week. The time zone is UTC.
@@ -601,17 +1013,27 @@ func (o GoogleFirestoreAdminV1WeeklyRecurrenceResponseOutput) Day() pulumi.Strin
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1DailyRecurrenceInput)(nil)).Elem(), GoogleFirestoreAdminV1DailyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1DailyRecurrencePtrInput)(nil)).Elem(), GoogleFirestoreAdminV1DailyRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1FlatIndexInput)(nil)).Elem(), GoogleFirestoreAdminV1FlatIndexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1FlatIndexPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1FlatIndexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldArrayInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1VectorConfigInput)(nil)).Elem(), GoogleFirestoreAdminV1VectorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1VectorConfigPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1VectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1WeeklyRecurrenceInput)(nil)).Elem(), GoogleFirestoreAdminV1WeeklyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1WeeklyRecurrencePtrInput)(nil)).Elem(), GoogleFirestoreAdminV1WeeklyRecurrenceArgs{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1DailyRecurrenceOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1DailyRecurrencePtrOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1DailyRecurrenceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1FlatIndexOutput{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1FlatIndexPtrOutput{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1FlatIndexResponseOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldArrayOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldResponseOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1VectorConfigOutput{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1VectorConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1VectorConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1WeeklyRecurrenceOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1WeeklyRecurrencePtrOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1WeeklyRecurrenceResponseOutput{})

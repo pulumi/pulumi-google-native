@@ -20,6 +20,8 @@ type AcceleratorConfig struct {
 	AcceleratorCount *string `pulumi:"acceleratorCount"`
 	// The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
 	AcceleratorType *string `pulumi:"acceleratorType"`
+	// The configuration for auto installation of GPU driver.
+	GpuDriverInstallationConfig *GPUDriverInstallationConfig `pulumi:"gpuDriverInstallationConfig"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
 	// The configuration for GPU sharing options.
@@ -43,6 +45,8 @@ type AcceleratorConfigArgs struct {
 	AcceleratorCount pulumi.StringPtrInput `pulumi:"acceleratorCount"`
 	// The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// The configuration for auto installation of GPU driver.
+	GpuDriverInstallationConfig GPUDriverInstallationConfigPtrInput `pulumi:"gpuDriverInstallationConfig"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
 	// The configuration for GPU sharing options.
@@ -129,6 +133,11 @@ func (o AcceleratorConfigOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AcceleratorConfig) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
 }
 
+// The configuration for auto installation of GPU driver.
+func (o AcceleratorConfigOutput) GpuDriverInstallationConfig() GPUDriverInstallationConfigPtrOutput {
+	return o.ApplyT(func(v AcceleratorConfig) *GPUDriverInstallationConfig { return v.GpuDriverInstallationConfig }).(GPUDriverInstallationConfigPtrOutput)
+}
+
 // Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 func (o AcceleratorConfigOutput) GpuPartitionSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AcceleratorConfig) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
@@ -171,6 +180,8 @@ type AcceleratorConfigResponse struct {
 	AcceleratorCount string `pulumi:"acceleratorCount"`
 	// The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
 	AcceleratorType string `pulumi:"acceleratorType"`
+	// The configuration for auto installation of GPU driver.
+	GpuDriverInstallationConfig GPUDriverInstallationConfigResponse `pulumi:"gpuDriverInstallationConfig"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize string `pulumi:"gpuPartitionSize"`
 	// The configuration for GPU sharing options.
@@ -206,6 +217,13 @@ func (o AcceleratorConfigResponseOutput) AcceleratorCount() pulumi.StringOutput 
 // The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
 func (o AcceleratorConfigResponseOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+// The configuration for auto installation of GPU driver.
+func (o AcceleratorConfigResponseOutput) GpuDriverInstallationConfig() GPUDriverInstallationConfigResponseOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) GPUDriverInstallationConfigResponse {
+		return v.GpuDriverInstallationConfig
+	}).(GPUDriverInstallationConfigResponseOutput)
 }
 
 // Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
@@ -244,6 +262,418 @@ func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) Accelerat
 	}).(AcceleratorConfigResponseOutput)
 }
 
+// AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message
+type AdditionalNodeNetworkConfig struct {
+	// Name of the VPC where the additional interface belongs
+	Network *string `pulumi:"network"`
+	// Name of the subnetwork where the additional interface belongs
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// AdditionalNodeNetworkConfigInput is an input type that accepts AdditionalNodeNetworkConfigArgs and AdditionalNodeNetworkConfigOutput values.
+// You can construct a concrete instance of `AdditionalNodeNetworkConfigInput` via:
+//
+//	AdditionalNodeNetworkConfigArgs{...}
+type AdditionalNodeNetworkConfigInput interface {
+	pulumi.Input
+
+	ToAdditionalNodeNetworkConfigOutput() AdditionalNodeNetworkConfigOutput
+	ToAdditionalNodeNetworkConfigOutputWithContext(context.Context) AdditionalNodeNetworkConfigOutput
+}
+
+// AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message
+type AdditionalNodeNetworkConfigArgs struct {
+	// Name of the VPC where the additional interface belongs
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Name of the subnetwork where the additional interface belongs
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (AdditionalNodeNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i AdditionalNodeNetworkConfigArgs) ToAdditionalNodeNetworkConfigOutput() AdditionalNodeNetworkConfigOutput {
+	return i.ToAdditionalNodeNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i AdditionalNodeNetworkConfigArgs) ToAdditionalNodeNetworkConfigOutputWithContext(ctx context.Context) AdditionalNodeNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalNodeNetworkConfigOutput)
+}
+
+func (i AdditionalNodeNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AdditionalNodeNetworkConfig] {
+	return pulumix.Output[AdditionalNodeNetworkConfig]{
+		OutputState: i.ToAdditionalNodeNetworkConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AdditionalNodeNetworkConfigArrayInput is an input type that accepts AdditionalNodeNetworkConfigArray and AdditionalNodeNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `AdditionalNodeNetworkConfigArrayInput` via:
+//
+//	AdditionalNodeNetworkConfigArray{ AdditionalNodeNetworkConfigArgs{...} }
+type AdditionalNodeNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToAdditionalNodeNetworkConfigArrayOutput() AdditionalNodeNetworkConfigArrayOutput
+	ToAdditionalNodeNetworkConfigArrayOutputWithContext(context.Context) AdditionalNodeNetworkConfigArrayOutput
+}
+
+type AdditionalNodeNetworkConfigArray []AdditionalNodeNetworkConfigInput
+
+func (AdditionalNodeNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i AdditionalNodeNetworkConfigArray) ToAdditionalNodeNetworkConfigArrayOutput() AdditionalNodeNetworkConfigArrayOutput {
+	return i.ToAdditionalNodeNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AdditionalNodeNetworkConfigArray) ToAdditionalNodeNetworkConfigArrayOutputWithContext(ctx context.Context) AdditionalNodeNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalNodeNetworkConfigArrayOutput)
+}
+
+func (i AdditionalNodeNetworkConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalNodeNetworkConfig] {
+	return pulumix.Output[[]AdditionalNodeNetworkConfig]{
+		OutputState: i.ToAdditionalNodeNetworkConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message
+type AdditionalNodeNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (AdditionalNodeNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o AdditionalNodeNetworkConfigOutput) ToAdditionalNodeNetworkConfigOutput() AdditionalNodeNetworkConfigOutput {
+	return o
+}
+
+func (o AdditionalNodeNetworkConfigOutput) ToAdditionalNodeNetworkConfigOutputWithContext(ctx context.Context) AdditionalNodeNetworkConfigOutput {
+	return o
+}
+
+func (o AdditionalNodeNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalNodeNetworkConfig] {
+	return pulumix.Output[AdditionalNodeNetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the VPC where the additional interface belongs
+func (o AdditionalNodeNetworkConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdditionalNodeNetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Name of the subnetwork where the additional interface belongs
+func (o AdditionalNodeNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdditionalNodeNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type AdditionalNodeNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AdditionalNodeNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o AdditionalNodeNetworkConfigArrayOutput) ToAdditionalNodeNetworkConfigArrayOutput() AdditionalNodeNetworkConfigArrayOutput {
+	return o
+}
+
+func (o AdditionalNodeNetworkConfigArrayOutput) ToAdditionalNodeNetworkConfigArrayOutputWithContext(ctx context.Context) AdditionalNodeNetworkConfigArrayOutput {
+	return o
+}
+
+func (o AdditionalNodeNetworkConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalNodeNetworkConfig] {
+	return pulumix.Output[[]AdditionalNodeNetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AdditionalNodeNetworkConfigArrayOutput) Index(i pulumi.IntInput) AdditionalNodeNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AdditionalNodeNetworkConfig {
+		return vs[0].([]AdditionalNodeNetworkConfig)[vs[1].(int)]
+	}).(AdditionalNodeNetworkConfigOutput)
+}
+
+// AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message
+type AdditionalNodeNetworkConfigResponse struct {
+	// Name of the VPC where the additional interface belongs
+	Network string `pulumi:"network"`
+	// Name of the subnetwork where the additional interface belongs
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message
+type AdditionalNodeNetworkConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AdditionalNodeNetworkConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalNodeNetworkConfigResponse)(nil)).Elem()
+}
+
+func (o AdditionalNodeNetworkConfigResponseOutput) ToAdditionalNodeNetworkConfigResponseOutput() AdditionalNodeNetworkConfigResponseOutput {
+	return o
+}
+
+func (o AdditionalNodeNetworkConfigResponseOutput) ToAdditionalNodeNetworkConfigResponseOutputWithContext(ctx context.Context) AdditionalNodeNetworkConfigResponseOutput {
+	return o
+}
+
+func (o AdditionalNodeNetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalNodeNetworkConfigResponse] {
+	return pulumix.Output[AdditionalNodeNetworkConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the VPC where the additional interface belongs
+func (o AdditionalNodeNetworkConfigResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v AdditionalNodeNetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Name of the subnetwork where the additional interface belongs
+func (o AdditionalNodeNetworkConfigResponseOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AdditionalNodeNetworkConfigResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type AdditionalNodeNetworkConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AdditionalNodeNetworkConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AdditionalNodeNetworkConfigResponse)(nil)).Elem()
+}
+
+func (o AdditionalNodeNetworkConfigResponseArrayOutput) ToAdditionalNodeNetworkConfigResponseArrayOutput() AdditionalNodeNetworkConfigResponseArrayOutput {
+	return o
+}
+
+func (o AdditionalNodeNetworkConfigResponseArrayOutput) ToAdditionalNodeNetworkConfigResponseArrayOutputWithContext(ctx context.Context) AdditionalNodeNetworkConfigResponseArrayOutput {
+	return o
+}
+
+func (o AdditionalNodeNetworkConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalNodeNetworkConfigResponse] {
+	return pulumix.Output[[]AdditionalNodeNetworkConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AdditionalNodeNetworkConfigResponseArrayOutput) Index(i pulumi.IntInput) AdditionalNodeNetworkConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AdditionalNodeNetworkConfigResponse {
+		return vs[0].([]AdditionalNodeNetworkConfigResponse)[vs[1].(int)]
+	}).(AdditionalNodeNetworkConfigResponseOutput)
+}
+
+// AdditionalPodNetworkConfig is the configuration for additional pod networks within the NodeNetworkConfig message
+type AdditionalPodNetworkConfig struct {
+	// The maximum number of pods per node which use this pod network
+	MaxPodsPerNode *MaxPodsConstraint `pulumi:"maxPodsPerNode"`
+	// The name of the secondary range on the subnet which provides IP address for this pod range
+	SecondaryPodRange *string `pulumi:"secondaryPodRange"`
+	// Name of the subnetwork where the additional pod network belongs
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// AdditionalPodNetworkConfigInput is an input type that accepts AdditionalPodNetworkConfigArgs and AdditionalPodNetworkConfigOutput values.
+// You can construct a concrete instance of `AdditionalPodNetworkConfigInput` via:
+//
+//	AdditionalPodNetworkConfigArgs{...}
+type AdditionalPodNetworkConfigInput interface {
+	pulumi.Input
+
+	ToAdditionalPodNetworkConfigOutput() AdditionalPodNetworkConfigOutput
+	ToAdditionalPodNetworkConfigOutputWithContext(context.Context) AdditionalPodNetworkConfigOutput
+}
+
+// AdditionalPodNetworkConfig is the configuration for additional pod networks within the NodeNetworkConfig message
+type AdditionalPodNetworkConfigArgs struct {
+	// The maximum number of pods per node which use this pod network
+	MaxPodsPerNode MaxPodsConstraintPtrInput `pulumi:"maxPodsPerNode"`
+	// The name of the secondary range on the subnet which provides IP address for this pod range
+	SecondaryPodRange pulumi.StringPtrInput `pulumi:"secondaryPodRange"`
+	// Name of the subnetwork where the additional pod network belongs
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (AdditionalPodNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (i AdditionalPodNetworkConfigArgs) ToAdditionalPodNetworkConfigOutput() AdditionalPodNetworkConfigOutput {
+	return i.ToAdditionalPodNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i AdditionalPodNetworkConfigArgs) ToAdditionalPodNetworkConfigOutputWithContext(ctx context.Context) AdditionalPodNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalPodNetworkConfigOutput)
+}
+
+func (i AdditionalPodNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AdditionalPodNetworkConfig] {
+	return pulumix.Output[AdditionalPodNetworkConfig]{
+		OutputState: i.ToAdditionalPodNetworkConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AdditionalPodNetworkConfigArrayInput is an input type that accepts AdditionalPodNetworkConfigArray and AdditionalPodNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `AdditionalPodNetworkConfigArrayInput` via:
+//
+//	AdditionalPodNetworkConfigArray{ AdditionalPodNetworkConfigArgs{...} }
+type AdditionalPodNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToAdditionalPodNetworkConfigArrayOutput() AdditionalPodNetworkConfigArrayOutput
+	ToAdditionalPodNetworkConfigArrayOutputWithContext(context.Context) AdditionalPodNetworkConfigArrayOutput
+}
+
+type AdditionalPodNetworkConfigArray []AdditionalPodNetworkConfigInput
+
+func (AdditionalPodNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (i AdditionalPodNetworkConfigArray) ToAdditionalPodNetworkConfigArrayOutput() AdditionalPodNetworkConfigArrayOutput {
+	return i.ToAdditionalPodNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AdditionalPodNetworkConfigArray) ToAdditionalPodNetworkConfigArrayOutputWithContext(ctx context.Context) AdditionalPodNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdditionalPodNetworkConfigArrayOutput)
+}
+
+func (i AdditionalPodNetworkConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalPodNetworkConfig] {
+	return pulumix.Output[[]AdditionalPodNetworkConfig]{
+		OutputState: i.ToAdditionalPodNetworkConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AdditionalPodNetworkConfig is the configuration for additional pod networks within the NodeNetworkConfig message
+type AdditionalPodNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (AdditionalPodNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (o AdditionalPodNetworkConfigOutput) ToAdditionalPodNetworkConfigOutput() AdditionalPodNetworkConfigOutput {
+	return o
+}
+
+func (o AdditionalPodNetworkConfigOutput) ToAdditionalPodNetworkConfigOutputWithContext(ctx context.Context) AdditionalPodNetworkConfigOutput {
+	return o
+}
+
+func (o AdditionalPodNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalPodNetworkConfig] {
+	return pulumix.Output[AdditionalPodNetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The maximum number of pods per node which use this pod network
+func (o AdditionalPodNetworkConfigOutput) MaxPodsPerNode() MaxPodsConstraintPtrOutput {
+	return o.ApplyT(func(v AdditionalPodNetworkConfig) *MaxPodsConstraint { return v.MaxPodsPerNode }).(MaxPodsConstraintPtrOutput)
+}
+
+// The name of the secondary range on the subnet which provides IP address for this pod range
+func (o AdditionalPodNetworkConfigOutput) SecondaryPodRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdditionalPodNetworkConfig) *string { return v.SecondaryPodRange }).(pulumi.StringPtrOutput)
+}
+
+// Name of the subnetwork where the additional pod network belongs
+func (o AdditionalPodNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdditionalPodNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type AdditionalPodNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AdditionalPodNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (o AdditionalPodNetworkConfigArrayOutput) ToAdditionalPodNetworkConfigArrayOutput() AdditionalPodNetworkConfigArrayOutput {
+	return o
+}
+
+func (o AdditionalPodNetworkConfigArrayOutput) ToAdditionalPodNetworkConfigArrayOutputWithContext(ctx context.Context) AdditionalPodNetworkConfigArrayOutput {
+	return o
+}
+
+func (o AdditionalPodNetworkConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalPodNetworkConfig] {
+	return pulumix.Output[[]AdditionalPodNetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AdditionalPodNetworkConfigArrayOutput) Index(i pulumi.IntInput) AdditionalPodNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AdditionalPodNetworkConfig {
+		return vs[0].([]AdditionalPodNetworkConfig)[vs[1].(int)]
+	}).(AdditionalPodNetworkConfigOutput)
+}
+
+// AdditionalPodNetworkConfig is the configuration for additional pod networks within the NodeNetworkConfig message
+type AdditionalPodNetworkConfigResponse struct {
+	// The maximum number of pods per node which use this pod network
+	MaxPodsPerNode MaxPodsConstraintResponse `pulumi:"maxPodsPerNode"`
+	// The name of the secondary range on the subnet which provides IP address for this pod range
+	SecondaryPodRange string `pulumi:"secondaryPodRange"`
+	// Name of the subnetwork where the additional pod network belongs
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// AdditionalPodNetworkConfig is the configuration for additional pod networks within the NodeNetworkConfig message
+type AdditionalPodNetworkConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AdditionalPodNetworkConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalPodNetworkConfigResponse)(nil)).Elem()
+}
+
+func (o AdditionalPodNetworkConfigResponseOutput) ToAdditionalPodNetworkConfigResponseOutput() AdditionalPodNetworkConfigResponseOutput {
+	return o
+}
+
+func (o AdditionalPodNetworkConfigResponseOutput) ToAdditionalPodNetworkConfigResponseOutputWithContext(ctx context.Context) AdditionalPodNetworkConfigResponseOutput {
+	return o
+}
+
+func (o AdditionalPodNetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalPodNetworkConfigResponse] {
+	return pulumix.Output[AdditionalPodNetworkConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The maximum number of pods per node which use this pod network
+func (o AdditionalPodNetworkConfigResponseOutput) MaxPodsPerNode() MaxPodsConstraintResponseOutput {
+	return o.ApplyT(func(v AdditionalPodNetworkConfigResponse) MaxPodsConstraintResponse { return v.MaxPodsPerNode }).(MaxPodsConstraintResponseOutput)
+}
+
+// The name of the secondary range on the subnet which provides IP address for this pod range
+func (o AdditionalPodNetworkConfigResponseOutput) SecondaryPodRange() pulumi.StringOutput {
+	return o.ApplyT(func(v AdditionalPodNetworkConfigResponse) string { return v.SecondaryPodRange }).(pulumi.StringOutput)
+}
+
+// Name of the subnetwork where the additional pod network belongs
+func (o AdditionalPodNetworkConfigResponseOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AdditionalPodNetworkConfigResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type AdditionalPodNetworkConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AdditionalPodNetworkConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AdditionalPodNetworkConfigResponse)(nil)).Elem()
+}
+
+func (o AdditionalPodNetworkConfigResponseArrayOutput) ToAdditionalPodNetworkConfigResponseArrayOutput() AdditionalPodNetworkConfigResponseArrayOutput {
+	return o
+}
+
+func (o AdditionalPodNetworkConfigResponseArrayOutput) ToAdditionalPodNetworkConfigResponseArrayOutputWithContext(ctx context.Context) AdditionalPodNetworkConfigResponseArrayOutput {
+	return o
+}
+
+func (o AdditionalPodNetworkConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalPodNetworkConfigResponse] {
+	return pulumix.Output[[]AdditionalPodNetworkConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AdditionalPodNetworkConfigResponseArrayOutput) Index(i pulumi.IntInput) AdditionalPodNetworkConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AdditionalPodNetworkConfigResponse {
+		return vs[0].([]AdditionalPodNetworkConfigResponse)[vs[1].(int)]
+	}).(AdditionalPodNetworkConfigResponseOutput)
+}
+
 // AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 type AdditionalPodRangesConfig struct {
 	// Name for pod secondary ipv4 range which has the actual range defined ahead.
@@ -252,6 +682,8 @@ type AdditionalPodRangesConfig struct {
 
 // AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 type AdditionalPodRangesConfigResponse struct {
+	// [Output only] Information for additional pod range.
+	PodRangeInfo []RangeInfoResponse `pulumi:"podRangeInfo"`
 	// Name for pod secondary ipv4 range which has the actual range defined ahead.
 	PodRangeNames []string `pulumi:"podRangeNames"`
 }
@@ -277,6 +709,11 @@ func (o AdditionalPodRangesConfigResponseOutput) ToOutput(ctx context.Context) p
 	}
 }
 
+// [Output only] Information for additional pod range.
+func (o AdditionalPodRangesConfigResponseOutput) PodRangeInfo() RangeInfoResponseArrayOutput {
+	return o.ApplyT(func(v AdditionalPodRangesConfigResponse) []RangeInfoResponse { return v.PodRangeInfo }).(RangeInfoResponseArrayOutput)
+}
+
 // Name for pod secondary ipv4 range which has the actual range defined ahead.
 func (o AdditionalPodRangesConfigResponseOutput) PodRangeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AdditionalPodRangesConfigResponse) []string { return v.PodRangeNames }).(pulumi.StringArrayOutput)
@@ -294,6 +731,8 @@ type AddonsConfig struct {
 	GcePersistentDiskCsiDriverConfig *GcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig *GcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Cloud Storage Fuse CSI driver.
+	GcsFuseCsiDriverConfig *GcsFuseCsiDriverConfig `pulumi:"gcsFuseCsiDriverConfig"`
 	// Configuration for the Backup for GKE agent addon.
 	GkeBackupAgentConfig *GkeBackupAgentConfig `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -329,6 +768,8 @@ type AddonsConfigArgs struct {
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigPtrInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Cloud Storage Fuse CSI driver.
+	GcsFuseCsiDriverConfig GcsFuseCsiDriverConfigPtrInput `pulumi:"gcsFuseCsiDriverConfig"`
 	// Configuration for the Backup for GKE agent addon.
 	GkeBackupAgentConfig GkeBackupAgentConfigPtrInput `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -462,6 +903,11 @@ func (o AddonsConfigOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriverC
 	return o.ApplyT(func(v AddonsConfig) *GcpFilestoreCsiDriverConfig { return v.GcpFilestoreCsiDriverConfig }).(GcpFilestoreCsiDriverConfigPtrOutput)
 }
 
+// Configuration for the Cloud Storage Fuse CSI driver.
+func (o AddonsConfigOutput) GcsFuseCsiDriverConfig() GcsFuseCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfig) *GcsFuseCsiDriverConfig { return v.GcsFuseCsiDriverConfig }).(GcsFuseCsiDriverConfigPtrOutput)
+}
+
 // Configuration for the Backup for GKE agent addon.
 func (o AddonsConfigOutput) GkeBackupAgentConfig() GkeBackupAgentConfigPtrOutput {
 	return o.ApplyT(func(v AddonsConfig) *GkeBackupAgentConfig { return v.GkeBackupAgentConfig }).(GkeBackupAgentConfigPtrOutput)
@@ -567,6 +1013,16 @@ func (o AddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriv
 	}).(GcpFilestoreCsiDriverConfigPtrOutput)
 }
 
+// Configuration for the Cloud Storage Fuse CSI driver.
+func (o AddonsConfigPtrOutput) GcsFuseCsiDriverConfig() GcsFuseCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfig) *GcsFuseCsiDriverConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcsFuseCsiDriverConfig
+	}).(GcsFuseCsiDriverConfigPtrOutput)
+}
+
 // Configuration for the Backup for GKE agent addon.
 func (o AddonsConfigPtrOutput) GkeBackupAgentConfig() GkeBackupAgentConfigPtrOutput {
 	return o.ApplyT(func(v *AddonsConfig) *GkeBackupAgentConfig {
@@ -629,6 +1085,8 @@ type AddonsConfigResponse struct {
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigResponse `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigResponse `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Cloud Storage Fuse CSI driver.
+	GcsFuseCsiDriverConfig GcsFuseCsiDriverConfigResponse `pulumi:"gcsFuseCsiDriverConfig"`
 	// Configuration for the Backup for GKE agent addon.
 	GkeBackupAgentConfig GkeBackupAgentConfigResponse `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -689,6 +1147,11 @@ func (o AddonsConfigResponseOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCs
 	return o.ApplyT(func(v AddonsConfigResponse) GcpFilestoreCsiDriverConfigResponse { return v.GcpFilestoreCsiDriverConfig }).(GcpFilestoreCsiDriverConfigResponseOutput)
 }
 
+// Configuration for the Cloud Storage Fuse CSI driver.
+func (o AddonsConfigResponseOutput) GcsFuseCsiDriverConfig() GcsFuseCsiDriverConfigResponseOutput {
+	return o.ApplyT(func(v AddonsConfigResponse) GcsFuseCsiDriverConfigResponse { return v.GcsFuseCsiDriverConfig }).(GcsFuseCsiDriverConfigResponseOutput)
+}
+
 // Configuration for the Backup for GKE agent addon.
 func (o AddonsConfigResponseOutput) GkeBackupAgentConfig() GkeBackupAgentConfigResponseOutput {
 	return o.ApplyT(func(v AddonsConfigResponse) GkeBackupAgentConfigResponse { return v.GkeBackupAgentConfig }).(GkeBackupAgentConfigResponseOutput)
@@ -712,6 +1175,230 @@ func (o AddonsConfigResponseOutput) KubernetesDashboard() KubernetesDashboardRes
 // Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
 func (o AddonsConfigResponseOutput) NetworkPolicyConfig() NetworkPolicyConfigResponseOutput {
 	return o.ApplyT(func(v AddonsConfigResponse) NetworkPolicyConfigResponse { return v.NetworkPolicyConfig }).(NetworkPolicyConfigResponseOutput)
+}
+
+// AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
+type AdvancedDatapathObservabilityConfig struct {
+	// Expose flow metrics on nodes
+	EnableMetrics *bool `pulumi:"enableMetrics"`
+	// Method used to make Relay available
+	RelayMode *AdvancedDatapathObservabilityConfigRelayMode `pulumi:"relayMode"`
+}
+
+// AdvancedDatapathObservabilityConfigInput is an input type that accepts AdvancedDatapathObservabilityConfigArgs and AdvancedDatapathObservabilityConfigOutput values.
+// You can construct a concrete instance of `AdvancedDatapathObservabilityConfigInput` via:
+//
+//	AdvancedDatapathObservabilityConfigArgs{...}
+type AdvancedDatapathObservabilityConfigInput interface {
+	pulumi.Input
+
+	ToAdvancedDatapathObservabilityConfigOutput() AdvancedDatapathObservabilityConfigOutput
+	ToAdvancedDatapathObservabilityConfigOutputWithContext(context.Context) AdvancedDatapathObservabilityConfigOutput
+}
+
+// AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
+type AdvancedDatapathObservabilityConfigArgs struct {
+	// Expose flow metrics on nodes
+	EnableMetrics pulumi.BoolPtrInput `pulumi:"enableMetrics"`
+	// Method used to make Relay available
+	RelayMode AdvancedDatapathObservabilityConfigRelayModePtrInput `pulumi:"relayMode"`
+}
+
+func (AdvancedDatapathObservabilityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (i AdvancedDatapathObservabilityConfigArgs) ToAdvancedDatapathObservabilityConfigOutput() AdvancedDatapathObservabilityConfigOutput {
+	return i.ToAdvancedDatapathObservabilityConfigOutputWithContext(context.Background())
+}
+
+func (i AdvancedDatapathObservabilityConfigArgs) ToAdvancedDatapathObservabilityConfigOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedDatapathObservabilityConfigOutput)
+}
+
+func (i AdvancedDatapathObservabilityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AdvancedDatapathObservabilityConfig] {
+	return pulumix.Output[AdvancedDatapathObservabilityConfig]{
+		OutputState: i.ToAdvancedDatapathObservabilityConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AdvancedDatapathObservabilityConfigArgs) ToAdvancedDatapathObservabilityConfigPtrOutput() AdvancedDatapathObservabilityConfigPtrOutput {
+	return i.ToAdvancedDatapathObservabilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AdvancedDatapathObservabilityConfigArgs) ToAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedDatapathObservabilityConfigOutput).ToAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx)
+}
+
+// AdvancedDatapathObservabilityConfigPtrInput is an input type that accepts AdvancedDatapathObservabilityConfigArgs, AdvancedDatapathObservabilityConfigPtr and AdvancedDatapathObservabilityConfigPtrOutput values.
+// You can construct a concrete instance of `AdvancedDatapathObservabilityConfigPtrInput` via:
+//
+//	        AdvancedDatapathObservabilityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AdvancedDatapathObservabilityConfigPtrInput interface {
+	pulumi.Input
+
+	ToAdvancedDatapathObservabilityConfigPtrOutput() AdvancedDatapathObservabilityConfigPtrOutput
+	ToAdvancedDatapathObservabilityConfigPtrOutputWithContext(context.Context) AdvancedDatapathObservabilityConfigPtrOutput
+}
+
+type advancedDatapathObservabilityConfigPtrType AdvancedDatapathObservabilityConfigArgs
+
+func AdvancedDatapathObservabilityConfigPtr(v *AdvancedDatapathObservabilityConfigArgs) AdvancedDatapathObservabilityConfigPtrInput {
+	return (*advancedDatapathObservabilityConfigPtrType)(v)
+}
+
+func (*advancedDatapathObservabilityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (i *advancedDatapathObservabilityConfigPtrType) ToAdvancedDatapathObservabilityConfigPtrOutput() AdvancedDatapathObservabilityConfigPtrOutput {
+	return i.ToAdvancedDatapathObservabilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *advancedDatapathObservabilityConfigPtrType) ToAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedDatapathObservabilityConfigPtrOutput)
+}
+
+func (i *advancedDatapathObservabilityConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AdvancedDatapathObservabilityConfig] {
+	return pulumix.Output[*AdvancedDatapathObservabilityConfig]{
+		OutputState: i.ToAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
+type AdvancedDatapathObservabilityConfigOutput struct{ *pulumi.OutputState }
+
+func (AdvancedDatapathObservabilityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (o AdvancedDatapathObservabilityConfigOutput) ToAdvancedDatapathObservabilityConfigOutput() AdvancedDatapathObservabilityConfigOutput {
+	return o
+}
+
+func (o AdvancedDatapathObservabilityConfigOutput) ToAdvancedDatapathObservabilityConfigOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigOutput {
+	return o
+}
+
+func (o AdvancedDatapathObservabilityConfigOutput) ToAdvancedDatapathObservabilityConfigPtrOutput() AdvancedDatapathObservabilityConfigPtrOutput {
+	return o.ToAdvancedDatapathObservabilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AdvancedDatapathObservabilityConfigOutput) ToAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvancedDatapathObservabilityConfig) *AdvancedDatapathObservabilityConfig {
+		return &v
+	}).(AdvancedDatapathObservabilityConfigPtrOutput)
+}
+
+func (o AdvancedDatapathObservabilityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AdvancedDatapathObservabilityConfig] {
+	return pulumix.Output[AdvancedDatapathObservabilityConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Expose flow metrics on nodes
+func (o AdvancedDatapathObservabilityConfigOutput) EnableMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AdvancedDatapathObservabilityConfig) *bool { return v.EnableMetrics }).(pulumi.BoolPtrOutput)
+}
+
+// Method used to make Relay available
+func (o AdvancedDatapathObservabilityConfigOutput) RelayMode() AdvancedDatapathObservabilityConfigRelayModePtrOutput {
+	return o.ApplyT(func(v AdvancedDatapathObservabilityConfig) *AdvancedDatapathObservabilityConfigRelayMode {
+		return v.RelayMode
+	}).(AdvancedDatapathObservabilityConfigRelayModePtrOutput)
+}
+
+type AdvancedDatapathObservabilityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AdvancedDatapathObservabilityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (o AdvancedDatapathObservabilityConfigPtrOutput) ToAdvancedDatapathObservabilityConfigPtrOutput() AdvancedDatapathObservabilityConfigPtrOutput {
+	return o
+}
+
+func (o AdvancedDatapathObservabilityConfigPtrOutput) ToAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigPtrOutput {
+	return o
+}
+
+func (o AdvancedDatapathObservabilityConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdvancedDatapathObservabilityConfig] {
+	return pulumix.Output[*AdvancedDatapathObservabilityConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AdvancedDatapathObservabilityConfigPtrOutput) Elem() AdvancedDatapathObservabilityConfigOutput {
+	return o.ApplyT(func(v *AdvancedDatapathObservabilityConfig) AdvancedDatapathObservabilityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AdvancedDatapathObservabilityConfig
+		return ret
+	}).(AdvancedDatapathObservabilityConfigOutput)
+}
+
+// Expose flow metrics on nodes
+func (o AdvancedDatapathObservabilityConfigPtrOutput) EnableMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdvancedDatapathObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableMetrics
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Method used to make Relay available
+func (o AdvancedDatapathObservabilityConfigPtrOutput) RelayMode() AdvancedDatapathObservabilityConfigRelayModePtrOutput {
+	return o.ApplyT(func(v *AdvancedDatapathObservabilityConfig) *AdvancedDatapathObservabilityConfigRelayMode {
+		if v == nil {
+			return nil
+		}
+		return v.RelayMode
+	}).(AdvancedDatapathObservabilityConfigRelayModePtrOutput)
+}
+
+// AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
+type AdvancedDatapathObservabilityConfigResponse struct {
+	// Expose flow metrics on nodes
+	EnableMetrics bool `pulumi:"enableMetrics"`
+	// Method used to make Relay available
+	RelayMode string `pulumi:"relayMode"`
+}
+
+// AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
+type AdvancedDatapathObservabilityConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AdvancedDatapathObservabilityConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedDatapathObservabilityConfigResponse)(nil)).Elem()
+}
+
+func (o AdvancedDatapathObservabilityConfigResponseOutput) ToAdvancedDatapathObservabilityConfigResponseOutput() AdvancedDatapathObservabilityConfigResponseOutput {
+	return o
+}
+
+func (o AdvancedDatapathObservabilityConfigResponseOutput) ToAdvancedDatapathObservabilityConfigResponseOutputWithContext(ctx context.Context) AdvancedDatapathObservabilityConfigResponseOutput {
+	return o
+}
+
+func (o AdvancedDatapathObservabilityConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdvancedDatapathObservabilityConfigResponse] {
+	return pulumix.Output[AdvancedDatapathObservabilityConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Expose flow metrics on nodes
+func (o AdvancedDatapathObservabilityConfigResponseOutput) EnableMetrics() pulumi.BoolOutput {
+	return o.ApplyT(func(v AdvancedDatapathObservabilityConfigResponse) bool { return v.EnableMetrics }).(pulumi.BoolOutput)
+}
+
+// Method used to make Relay available
+func (o AdvancedDatapathObservabilityConfigResponseOutput) RelayMode() pulumi.StringOutput {
+	return o.ApplyT(func(v AdvancedDatapathObservabilityConfigResponse) string { return v.RelayMode }).(pulumi.StringOutput)
 }
 
 // Specifies options for controlling advanced machine features.
@@ -1320,6 +2007,8 @@ func (o AutoUpgradeOptionsResponseOutput) Description() pulumi.StringOutput {
 type Autopilot struct {
 	// Enable Autopilot
 	Enabled *bool `pulumi:"enabled"`
+	// Workload policy configuration for Autopilot.
+	WorkloadPolicyConfig *WorkloadPolicyConfig `pulumi:"workloadPolicyConfig"`
 }
 
 // AutopilotInput is an input type that accepts AutopilotArgs and AutopilotOutput values.
@@ -1337,6 +2026,8 @@ type AutopilotInput interface {
 type AutopilotArgs struct {
 	// Enable Autopilot
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Workload policy configuration for Autopilot.
+	WorkloadPolicyConfig WorkloadPolicyConfigPtrInput `pulumi:"workloadPolicyConfig"`
 }
 
 func (AutopilotArgs) ElementType() reflect.Type {
@@ -1440,6 +2131,11 @@ func (o AutopilotOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Autopilot) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Workload policy configuration for Autopilot.
+func (o AutopilotOutput) WorkloadPolicyConfig() WorkloadPolicyConfigPtrOutput {
+	return o.ApplyT(func(v Autopilot) *WorkloadPolicyConfig { return v.WorkloadPolicyConfig }).(WorkloadPolicyConfigPtrOutput)
+}
+
 type AutopilotPtrOutput struct{ *pulumi.OutputState }
 
 func (AutopilotPtrOutput) ElementType() reflect.Type {
@@ -1480,10 +2176,22 @@ func (o AutopilotPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Workload policy configuration for Autopilot.
+func (o AutopilotPtrOutput) WorkloadPolicyConfig() WorkloadPolicyConfigPtrOutput {
+	return o.ApplyT(func(v *Autopilot) *WorkloadPolicyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadPolicyConfig
+	}).(WorkloadPolicyConfigPtrOutput)
+}
+
 // Autopilot is the configuration for Autopilot settings on the cluster.
 type AutopilotResponse struct {
 	// Enable Autopilot
 	Enabled bool `pulumi:"enabled"`
+	// Workload policy configuration for Autopilot.
+	WorkloadPolicyConfig WorkloadPolicyConfigResponse `pulumi:"workloadPolicyConfig"`
 }
 
 // Autopilot is the configuration for Autopilot settings on the cluster.
@@ -1512,6 +2220,11 @@ func (o AutopilotResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v AutopilotResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Workload policy configuration for Autopilot.
+func (o AutopilotResponseOutput) WorkloadPolicyConfig() WorkloadPolicyConfigResponseOutput {
+	return o.ApplyT(func(v AutopilotResponse) WorkloadPolicyConfigResponse { return v.WorkloadPolicyConfig }).(WorkloadPolicyConfigResponseOutput)
+}
+
 // AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
 type AutoprovisioningNodePoolDefaults struct {
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
@@ -1522,6 +2235,8 @@ type AutoprovisioningNodePoolDefaults struct {
 	DiskType *string `pulumi:"diskType"`
 	// The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 	ImageType *string `pulumi:"imageType"`
+	// Enable or disable Kubelet read only port.
+	InsecureKubeletReadonlyPortEnabled *bool `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Specifies the node management options for NAP created node-pools.
 	Management *NodeManagement `pulumi:"management"`
 	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
@@ -1559,6 +2274,8 @@ type AutoprovisioningNodePoolDefaultsArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// Enable or disable Kubelet read only port.
+	InsecureKubeletReadonlyPortEnabled pulumi.BoolPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Specifies the node management options for NAP created node-pools.
 	Management NodeManagementPtrInput `pulumi:"management"`
 	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
@@ -1691,6 +2408,11 @@ func (o AutoprovisioningNodePoolDefaultsOutput) ImageType() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable Kubelet read only port.
+func (o AutoprovisioningNodePoolDefaultsOutput) InsecureKubeletReadonlyPortEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *bool { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies the node management options for NAP created node-pools.
 func (o AutoprovisioningNodePoolDefaultsOutput) Management() NodeManagementPtrOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *NodeManagement { return v.Management }).(NodeManagementPtrOutput)
@@ -1793,6 +2515,16 @@ func (o AutoprovisioningNodePoolDefaultsPtrOutput) ImageType() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable Kubelet read only port.
+func (o AutoprovisioningNodePoolDefaultsPtrOutput) InsecureKubeletReadonlyPortEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureKubeletReadonlyPortEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specifies the node management options for NAP created node-pools.
 func (o AutoprovisioningNodePoolDefaultsPtrOutput) Management() NodeManagementPtrOutput {
 	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *NodeManagement {
@@ -1865,6 +2597,8 @@ type AutoprovisioningNodePoolDefaultsResponse struct {
 	DiskType string `pulumi:"diskType"`
 	// The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 	ImageType string `pulumi:"imageType"`
+	// Enable or disable Kubelet read only port.
+	InsecureKubeletReadonlyPortEnabled bool `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Specifies the node management options for NAP created node-pools.
 	Management NodeManagementResponse `pulumi:"management"`
 	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
@@ -1922,6 +2656,11 @@ func (o AutoprovisioningNodePoolDefaultsResponseOutput) ImageType() pulumi.Strin
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.ImageType }).(pulumi.StringOutput)
 }
 
+// Enable or disable Kubelet read only port.
+func (o AutoprovisioningNodePoolDefaultsResponseOutput) InsecureKubeletReadonlyPortEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) bool { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.BoolOutput)
+}
+
 // Specifies the node management options for NAP created node-pools.
 func (o AutoprovisioningNodePoolDefaultsResponseOutput) Management() NodeManagementResponseOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) NodeManagementResponse { return v.Management }).(NodeManagementResponseOutput)
@@ -1954,6 +2693,228 @@ func (o AutoprovisioningNodePoolDefaultsResponseOutput) ShieldedInstanceConfig()
 // Specifies the upgrade settings for NAP created node pools
 func (o AutoprovisioningNodePoolDefaultsResponseOutput) UpgradeSettings() UpgradeSettingsResponseOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) UpgradeSettingsResponse { return v.UpgradeSettings }).(UpgradeSettingsResponseOutput)
+}
+
+// Best effort provisioning.
+type BestEffortProvisioning struct {
+	// When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
+	Enabled *bool `pulumi:"enabled"`
+	// Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
+	MinProvisionNodes *int `pulumi:"minProvisionNodes"`
+}
+
+// BestEffortProvisioningInput is an input type that accepts BestEffortProvisioningArgs and BestEffortProvisioningOutput values.
+// You can construct a concrete instance of `BestEffortProvisioningInput` via:
+//
+//	BestEffortProvisioningArgs{...}
+type BestEffortProvisioningInput interface {
+	pulumi.Input
+
+	ToBestEffortProvisioningOutput() BestEffortProvisioningOutput
+	ToBestEffortProvisioningOutputWithContext(context.Context) BestEffortProvisioningOutput
+}
+
+// Best effort provisioning.
+type BestEffortProvisioningArgs struct {
+	// When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
+	MinProvisionNodes pulumi.IntPtrInput `pulumi:"minProvisionNodes"`
+}
+
+func (BestEffortProvisioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BestEffortProvisioning)(nil)).Elem()
+}
+
+func (i BestEffortProvisioningArgs) ToBestEffortProvisioningOutput() BestEffortProvisioningOutput {
+	return i.ToBestEffortProvisioningOutputWithContext(context.Background())
+}
+
+func (i BestEffortProvisioningArgs) ToBestEffortProvisioningOutputWithContext(ctx context.Context) BestEffortProvisioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BestEffortProvisioningOutput)
+}
+
+func (i BestEffortProvisioningArgs) ToOutput(ctx context.Context) pulumix.Output[BestEffortProvisioning] {
+	return pulumix.Output[BestEffortProvisioning]{
+		OutputState: i.ToBestEffortProvisioningOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BestEffortProvisioningArgs) ToBestEffortProvisioningPtrOutput() BestEffortProvisioningPtrOutput {
+	return i.ToBestEffortProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i BestEffortProvisioningArgs) ToBestEffortProvisioningPtrOutputWithContext(ctx context.Context) BestEffortProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BestEffortProvisioningOutput).ToBestEffortProvisioningPtrOutputWithContext(ctx)
+}
+
+// BestEffortProvisioningPtrInput is an input type that accepts BestEffortProvisioningArgs, BestEffortProvisioningPtr and BestEffortProvisioningPtrOutput values.
+// You can construct a concrete instance of `BestEffortProvisioningPtrInput` via:
+//
+//	        BestEffortProvisioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type BestEffortProvisioningPtrInput interface {
+	pulumi.Input
+
+	ToBestEffortProvisioningPtrOutput() BestEffortProvisioningPtrOutput
+	ToBestEffortProvisioningPtrOutputWithContext(context.Context) BestEffortProvisioningPtrOutput
+}
+
+type bestEffortProvisioningPtrType BestEffortProvisioningArgs
+
+func BestEffortProvisioningPtr(v *BestEffortProvisioningArgs) BestEffortProvisioningPtrInput {
+	return (*bestEffortProvisioningPtrType)(v)
+}
+
+func (*bestEffortProvisioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BestEffortProvisioning)(nil)).Elem()
+}
+
+func (i *bestEffortProvisioningPtrType) ToBestEffortProvisioningPtrOutput() BestEffortProvisioningPtrOutput {
+	return i.ToBestEffortProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i *bestEffortProvisioningPtrType) ToBestEffortProvisioningPtrOutputWithContext(ctx context.Context) BestEffortProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BestEffortProvisioningPtrOutput)
+}
+
+func (i *bestEffortProvisioningPtrType) ToOutput(ctx context.Context) pulumix.Output[*BestEffortProvisioning] {
+	return pulumix.Output[*BestEffortProvisioning]{
+		OutputState: i.ToBestEffortProvisioningPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Best effort provisioning.
+type BestEffortProvisioningOutput struct{ *pulumi.OutputState }
+
+func (BestEffortProvisioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BestEffortProvisioning)(nil)).Elem()
+}
+
+func (o BestEffortProvisioningOutput) ToBestEffortProvisioningOutput() BestEffortProvisioningOutput {
+	return o
+}
+
+func (o BestEffortProvisioningOutput) ToBestEffortProvisioningOutputWithContext(ctx context.Context) BestEffortProvisioningOutput {
+	return o
+}
+
+func (o BestEffortProvisioningOutput) ToBestEffortProvisioningPtrOutput() BestEffortProvisioningPtrOutput {
+	return o.ToBestEffortProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (o BestEffortProvisioningOutput) ToBestEffortProvisioningPtrOutputWithContext(ctx context.Context) BestEffortProvisioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BestEffortProvisioning) *BestEffortProvisioning {
+		return &v
+	}).(BestEffortProvisioningPtrOutput)
+}
+
+func (o BestEffortProvisioningOutput) ToOutput(ctx context.Context) pulumix.Output[BestEffortProvisioning] {
+	return pulumix.Output[BestEffortProvisioning]{
+		OutputState: o.OutputState,
+	}
+}
+
+// When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
+func (o BestEffortProvisioningOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BestEffortProvisioning) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
+func (o BestEffortProvisioningOutput) MinProvisionNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BestEffortProvisioning) *int { return v.MinProvisionNodes }).(pulumi.IntPtrOutput)
+}
+
+type BestEffortProvisioningPtrOutput struct{ *pulumi.OutputState }
+
+func (BestEffortProvisioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BestEffortProvisioning)(nil)).Elem()
+}
+
+func (o BestEffortProvisioningPtrOutput) ToBestEffortProvisioningPtrOutput() BestEffortProvisioningPtrOutput {
+	return o
+}
+
+func (o BestEffortProvisioningPtrOutput) ToBestEffortProvisioningPtrOutputWithContext(ctx context.Context) BestEffortProvisioningPtrOutput {
+	return o
+}
+
+func (o BestEffortProvisioningPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BestEffortProvisioning] {
+	return pulumix.Output[*BestEffortProvisioning]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BestEffortProvisioningPtrOutput) Elem() BestEffortProvisioningOutput {
+	return o.ApplyT(func(v *BestEffortProvisioning) BestEffortProvisioning {
+		if v != nil {
+			return *v
+		}
+		var ret BestEffortProvisioning
+		return ret
+	}).(BestEffortProvisioningOutput)
+}
+
+// When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
+func (o BestEffortProvisioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BestEffortProvisioning) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
+func (o BestEffortProvisioningPtrOutput) MinProvisionNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BestEffortProvisioning) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinProvisionNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Best effort provisioning.
+type BestEffortProvisioningResponse struct {
+	// When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
+	Enabled bool `pulumi:"enabled"`
+	// Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
+	MinProvisionNodes int `pulumi:"minProvisionNodes"`
+}
+
+// Best effort provisioning.
+type BestEffortProvisioningResponseOutput struct{ *pulumi.OutputState }
+
+func (BestEffortProvisioningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BestEffortProvisioningResponse)(nil)).Elem()
+}
+
+func (o BestEffortProvisioningResponseOutput) ToBestEffortProvisioningResponseOutput() BestEffortProvisioningResponseOutput {
+	return o
+}
+
+func (o BestEffortProvisioningResponseOutput) ToBestEffortProvisioningResponseOutputWithContext(ctx context.Context) BestEffortProvisioningResponseOutput {
+	return o
+}
+
+func (o BestEffortProvisioningResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BestEffortProvisioningResponse] {
+	return pulumix.Output[BestEffortProvisioningResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
+func (o BestEffortProvisioningResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BestEffortProvisioningResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
+func (o BestEffortProvisioningResponseOutput) MinProvisionNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v BestEffortProvisioningResponse) int { return v.MinProvisionNodes }).(pulumi.IntOutput)
 }
 
 // Parameters for using BigQuery as the destination of resource usage export.
@@ -3588,6 +4549,204 @@ func (o ClusterAutoscalingResponseOutput) ResourceLimits() ResourceLimitResponse
 	return o.ApplyT(func(v ClusterAutoscalingResponse) []ResourceLimitResponse { return v.ResourceLimits }).(ResourceLimitResponseArrayOutput)
 }
 
+// Configuration of network bandwidth tiers
+type ClusterNetworkPerformanceConfig struct {
+	// Specifies the total network bandwidth tier for NodePools in the cluster.
+	TotalEgressBandwidthTier *ClusterNetworkPerformanceConfigTotalEgressBandwidthTier `pulumi:"totalEgressBandwidthTier"`
+}
+
+// ClusterNetworkPerformanceConfigInput is an input type that accepts ClusterNetworkPerformanceConfigArgs and ClusterNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `ClusterNetworkPerformanceConfigInput` via:
+//
+//	ClusterNetworkPerformanceConfigArgs{...}
+type ClusterNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToClusterNetworkPerformanceConfigOutput() ClusterNetworkPerformanceConfigOutput
+	ToClusterNetworkPerformanceConfigOutputWithContext(context.Context) ClusterNetworkPerformanceConfigOutput
+}
+
+// Configuration of network bandwidth tiers
+type ClusterNetworkPerformanceConfigArgs struct {
+	// Specifies the total network bandwidth tier for NodePools in the cluster.
+	TotalEgressBandwidthTier ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (ClusterNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i ClusterNetworkPerformanceConfigArgs) ToClusterNetworkPerformanceConfigOutput() ClusterNetworkPerformanceConfigOutput {
+	return i.ToClusterNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworkPerformanceConfigArgs) ToClusterNetworkPerformanceConfigOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworkPerformanceConfigOutput)
+}
+
+func (i ClusterNetworkPerformanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterNetworkPerformanceConfig] {
+	return pulumix.Output[ClusterNetworkPerformanceConfig]{
+		OutputState: i.ToClusterNetworkPerformanceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClusterNetworkPerformanceConfigArgs) ToClusterNetworkPerformanceConfigPtrOutput() ClusterNetworkPerformanceConfigPtrOutput {
+	return i.ToClusterNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworkPerformanceConfigArgs) ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworkPerformanceConfigOutput).ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNetworkPerformanceConfigPtrInput is an input type that accepts ClusterNetworkPerformanceConfigArgs, ClusterNetworkPerformanceConfigPtr and ClusterNetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNetworkPerformanceConfigPtrInput` via:
+//
+//	        ClusterNetworkPerformanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNetworkPerformanceConfigPtrOutput() ClusterNetworkPerformanceConfigPtrOutput
+	ToClusterNetworkPerformanceConfigPtrOutputWithContext(context.Context) ClusterNetworkPerformanceConfigPtrOutput
+}
+
+type clusterNetworkPerformanceConfigPtrType ClusterNetworkPerformanceConfigArgs
+
+func ClusterNetworkPerformanceConfigPtr(v *ClusterNetworkPerformanceConfigArgs) ClusterNetworkPerformanceConfigPtrInput {
+	return (*clusterNetworkPerformanceConfigPtrType)(v)
+}
+
+func (*clusterNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *clusterNetworkPerformanceConfigPtrType) ToClusterNetworkPerformanceConfigPtrOutput() ClusterNetworkPerformanceConfigPtrOutput {
+	return i.ToClusterNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNetworkPerformanceConfigPtrType) ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworkPerformanceConfigPtrOutput)
+}
+
+func (i *clusterNetworkPerformanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterNetworkPerformanceConfig] {
+	return pulumix.Output[*ClusterNetworkPerformanceConfig]{
+		OutputState: i.ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration of network bandwidth tiers
+type ClusterNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o ClusterNetworkPerformanceConfigOutput) ToClusterNetworkPerformanceConfigOutput() ClusterNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigOutput) ToClusterNetworkPerformanceConfigOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigOutput) ToClusterNetworkPerformanceConfigPtrOutput() ClusterNetworkPerformanceConfigPtrOutput {
+	return o.ToClusterNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworkPerformanceConfigOutput) ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNetworkPerformanceConfig) *ClusterNetworkPerformanceConfig {
+		return &v
+	}).(ClusterNetworkPerformanceConfigPtrOutput)
+}
+
+func (o ClusterNetworkPerformanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNetworkPerformanceConfig] {
+	return pulumix.Output[ClusterNetworkPerformanceConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the total network bandwidth tier for NodePools in the cluster.
+func (o ClusterNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o.ApplyT(func(v ClusterNetworkPerformanceConfig) *ClusterNetworkPerformanceConfigTotalEgressBandwidthTier {
+		return v.TotalEgressBandwidthTier
+	}).(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+type ClusterNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o ClusterNetworkPerformanceConfigPtrOutput) ToClusterNetworkPerformanceConfigPtrOutput() ClusterNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigPtrOutput) ToClusterNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterNetworkPerformanceConfig] {
+	return pulumix.Output[*ClusterNetworkPerformanceConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterNetworkPerformanceConfigPtrOutput) Elem() ClusterNetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *ClusterNetworkPerformanceConfig) ClusterNetworkPerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNetworkPerformanceConfig
+		return ret
+	}).(ClusterNetworkPerformanceConfigOutput)
+}
+
+// Specifies the total network bandwidth tier for NodePools in the cluster.
+func (o ClusterNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworkPerformanceConfig) *ClusterNetworkPerformanceConfigTotalEgressBandwidthTier {
+		if v == nil {
+			return nil
+		}
+		return v.TotalEgressBandwidthTier
+	}).(ClusterNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+// Configuration of network bandwidth tiers
+type ClusterNetworkPerformanceConfigResponse struct {
+	// Specifies the total network bandwidth tier for NodePools in the cluster.
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// Configuration of network bandwidth tiers
+type ClusterNetworkPerformanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworkPerformanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworkPerformanceConfigResponse)(nil)).Elem()
+}
+
+func (o ClusterNetworkPerformanceConfigResponseOutput) ToClusterNetworkPerformanceConfigResponseOutput() ClusterNetworkPerformanceConfigResponseOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigResponseOutput) ToClusterNetworkPerformanceConfigResponseOutputWithContext(ctx context.Context) ClusterNetworkPerformanceConfigResponseOutput {
+	return o
+}
+
+func (o ClusterNetworkPerformanceConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNetworkPerformanceConfigResponse] {
+	return pulumix.Output[ClusterNetworkPerformanceConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the total network bandwidth tier for NodePools in the cluster.
+func (o ClusterNetworkPerformanceConfigResponseOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNetworkPerformanceConfigResponse) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
 // ClusterUpdate describes an update to the cluster. Exactly one update can be applied to a cluster with each request, so at most one field can be provided.
 type ClusterUpdate struct {
 	// The additional pod ranges to be added to the cluster. These pod ranges can be used by node pools to allocate pod IPs.
@@ -3596,6 +4755,8 @@ type ClusterUpdate struct {
 	DesiredAddonsConfig *AddonsConfig `pulumi:"desiredAddonsConfig"`
 	// The desired authenticator groups config for the cluster.
 	DesiredAuthenticatorGroupsConfig *AuthenticatorGroupsConfig `pulumi:"desiredAuthenticatorGroupsConfig"`
+	// The desired workload policy configuration for the autopilot cluster.
+	DesiredAutopilotWorkloadPolicyConfig *WorkloadPolicyConfig `pulumi:"desiredAutopilotWorkloadPolicyConfig"`
 	// The desired configuration options for the Binary Authorization feature.
 	DesiredBinaryAuthorization *BinaryAuthorization `pulumi:"desiredBinaryAuthorization"`
 	// Cluster-level autoscaling configuration.
@@ -3610,6 +4771,8 @@ type ClusterUpdate struct {
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
+	// Enable/Disable FQDN Network Policy for the cluster.
+	DesiredEnableFqdnNetworkPolicy *bool `pulumi:"desiredEnableFqdnNetworkPolicy"`
 	// Enable/Disable private endpoint for the cluster's master.
 	DesiredEnablePrivateEndpoint *bool `pulumi:"desiredEnablePrivateEndpoint"`
 	// The desired fleet configuration for the cluster.
@@ -3624,6 +4787,8 @@ type ClusterUpdate struct {
 	DesiredImageType *string `pulumi:"desiredImageType"`
 	// The desired config of Intra-node visibility.
 	DesiredIntraNodeVisibilityConfig *IntraNodeVisibilityConfig `pulumi:"desiredIntraNodeVisibilityConfig"`
+	// Desired Beta APIs to be enabled for cluster.
+	DesiredK8sBetaApis *K8sBetaAPIConfig `pulumi:"desiredK8sBetaApis"`
 	// The desired L4 Internal Load Balancer Subsetting configuration.
 	DesiredL4ilbSubsettingConfig *ILBSubsettingConfig `pulumi:"desiredL4ilbSubsettingConfig"`
 	// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
@@ -3642,8 +4807,12 @@ type ClusterUpdate struct {
 	DesiredMonitoringConfig *MonitoringConfig `pulumi:"desiredMonitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	DesiredMonitoringService *string `pulumi:"desiredMonitoringService"`
+	// The desired network performance config.
+	DesiredNetworkPerformanceConfig *ClusterNetworkPerformanceConfig `pulumi:"desiredNetworkPerformanceConfig"`
 	// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
 	DesiredNodePoolAutoConfigNetworkTags *NetworkTags `pulumi:"desiredNodePoolAutoConfigNetworkTags"`
+	// The desired resource manager tags that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+	DesiredNodePoolAutoConfigResourceManagerTags *ResourceManagerTags `pulumi:"desiredNodePoolAutoConfigResourceManagerTags"`
 	// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
 	DesiredNodePoolAutoscaling *NodePoolAutoscaling `pulumi:"desiredNodePoolAutoscaling"`
 	// The node pool to be upgraded. This field is mandatory if "desired_node_version", "desired_image_family" or "desired_node_pool_autoscaling" is specified and there is more than one node pool on the cluster.
@@ -3654,6 +4823,8 @@ type ClusterUpdate struct {
 	DesiredNodeVersion *string `pulumi:"desiredNodeVersion"`
 	// The desired notification configuration.
 	DesiredNotificationConfig *NotificationConfig `pulumi:"desiredNotificationConfig"`
+	// The desired parent product config for the cluster.
+	DesiredParentProductConfig *ParentProductConfig `pulumi:"desiredParentProductConfig"`
 	// The desired private cluster configuration.
 	DesiredPrivateClusterConfig *PrivateClusterConfig `pulumi:"desiredPrivateClusterConfig"`
 	// The desired state of IPv6 connectivity to Google Services.
@@ -3662,6 +4833,8 @@ type ClusterUpdate struct {
 	DesiredReleaseChannel *ReleaseChannel `pulumi:"desiredReleaseChannel"`
 	// The desired configuration for exporting resource usage.
 	DesiredResourceUsageExportConfig *ResourceUsageExportConfig `pulumi:"desiredResourceUsageExportConfig"`
+	// Enable/Disable Security Posture API features for the cluster.
+	DesiredSecurityPostureConfig *SecurityPostureConfig `pulumi:"desiredSecurityPostureConfig"`
 	// ServiceExternalIPsConfig specifies the config for the use of Services with ExternalIPs field.
 	DesiredServiceExternalIpsConfig *ServiceExternalIPsConfig `pulumi:"desiredServiceExternalIpsConfig"`
 	// Configuration for Shielded Nodes.
@@ -3672,6 +4845,8 @@ type ClusterUpdate struct {
 	DesiredVerticalPodAutoscaling *VerticalPodAutoscaling `pulumi:"desiredVerticalPodAutoscaling"`
 	// Configuration for Workload Identity.
 	DesiredWorkloadIdentityConfig *WorkloadIdentityConfig `pulumi:"desiredWorkloadIdentityConfig"`
+	// Kubernetes open source beta apis enabled on the cluster. Only beta apis
+	EnableK8sBetaApis *K8sBetaAPIConfig `pulumi:"enableK8sBetaApis"`
 	// The current etag of the cluster. If an etag is provided and does not match the current etag of the cluster, update will be blocked and an ABORTED error will be returned.
 	Etag *string `pulumi:"etag"`
 	// The additional pod ranges that are to be removed from the cluster. The pod ranges specified here must have been specified earlier in the 'additional_pod_ranges_config' argument.
@@ -5527,9 +6702,186 @@ func (o DnsCacheConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v DnsCacheConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
+// EnterpriseConfig is the cluster enterprise configuration.
+type EnterpriseConfig struct {
+}
+
+// EnterpriseConfigInput is an input type that accepts EnterpriseConfigArgs and EnterpriseConfigOutput values.
+// You can construct a concrete instance of `EnterpriseConfigInput` via:
+//
+//	EnterpriseConfigArgs{...}
+type EnterpriseConfigInput interface {
+	pulumi.Input
+
+	ToEnterpriseConfigOutput() EnterpriseConfigOutput
+	ToEnterpriseConfigOutputWithContext(context.Context) EnterpriseConfigOutput
+}
+
+// EnterpriseConfig is the cluster enterprise configuration.
+type EnterpriseConfigArgs struct {
+}
+
+func (EnterpriseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseConfig)(nil)).Elem()
+}
+
+func (i EnterpriseConfigArgs) ToEnterpriseConfigOutput() EnterpriseConfigOutput {
+	return i.ToEnterpriseConfigOutputWithContext(context.Background())
+}
+
+func (i EnterpriseConfigArgs) ToEnterpriseConfigOutputWithContext(ctx context.Context) EnterpriseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseConfigOutput)
+}
+
+func (i EnterpriseConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseConfig] {
+	return pulumix.Output[EnterpriseConfig]{
+		OutputState: i.ToEnterpriseConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EnterpriseConfigArgs) ToEnterpriseConfigPtrOutput() EnterpriseConfigPtrOutput {
+	return i.ToEnterpriseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseConfigArgs) ToEnterpriseConfigPtrOutputWithContext(ctx context.Context) EnterpriseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseConfigOutput).ToEnterpriseConfigPtrOutputWithContext(ctx)
+}
+
+// EnterpriseConfigPtrInput is an input type that accepts EnterpriseConfigArgs, EnterpriseConfigPtr and EnterpriseConfigPtrOutput values.
+// You can construct a concrete instance of `EnterpriseConfigPtrInput` via:
+//
+//	        EnterpriseConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseConfigPtrOutput() EnterpriseConfigPtrOutput
+	ToEnterpriseConfigPtrOutputWithContext(context.Context) EnterpriseConfigPtrOutput
+}
+
+type enterpriseConfigPtrType EnterpriseConfigArgs
+
+func EnterpriseConfigPtr(v *EnterpriseConfigArgs) EnterpriseConfigPtrInput {
+	return (*enterpriseConfigPtrType)(v)
+}
+
+func (*enterpriseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseConfig)(nil)).Elem()
+}
+
+func (i *enterpriseConfigPtrType) ToEnterpriseConfigPtrOutput() EnterpriseConfigPtrOutput {
+	return i.ToEnterpriseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseConfigPtrType) ToEnterpriseConfigPtrOutputWithContext(ctx context.Context) EnterpriseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseConfigPtrOutput)
+}
+
+func (i *enterpriseConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseConfig] {
+	return pulumix.Output[*EnterpriseConfig]{
+		OutputState: i.ToEnterpriseConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EnterpriseConfig is the cluster enterprise configuration.
+type EnterpriseConfigOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseConfig)(nil)).Elem()
+}
+
+func (o EnterpriseConfigOutput) ToEnterpriseConfigOutput() EnterpriseConfigOutput {
+	return o
+}
+
+func (o EnterpriseConfigOutput) ToEnterpriseConfigOutputWithContext(ctx context.Context) EnterpriseConfigOutput {
+	return o
+}
+
+func (o EnterpriseConfigOutput) ToEnterpriseConfigPtrOutput() EnterpriseConfigPtrOutput {
+	return o.ToEnterpriseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseConfigOutput) ToEnterpriseConfigPtrOutputWithContext(ctx context.Context) EnterpriseConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseConfig) *EnterpriseConfig {
+		return &v
+	}).(EnterpriseConfigPtrOutput)
+}
+
+func (o EnterpriseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseConfig] {
+	return pulumix.Output[EnterpriseConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+type EnterpriseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseConfig)(nil)).Elem()
+}
+
+func (o EnterpriseConfigPtrOutput) ToEnterpriseConfigPtrOutput() EnterpriseConfigPtrOutput {
+	return o
+}
+
+func (o EnterpriseConfigPtrOutput) ToEnterpriseConfigPtrOutputWithContext(ctx context.Context) EnterpriseConfigPtrOutput {
+	return o
+}
+
+func (o EnterpriseConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseConfig] {
+	return pulumix.Output[*EnterpriseConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EnterpriseConfigPtrOutput) Elem() EnterpriseConfigOutput {
+	return o.ApplyT(func(v *EnterpriseConfig) EnterpriseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseConfig
+		return ret
+	}).(EnterpriseConfigOutput)
+}
+
+// EnterpriseConfig is the cluster enterprise configuration.
+type EnterpriseConfigResponse struct {
+	// [Output only] cluster_tier specifies the premium tier of the cluster.
+	ClusterTier string `pulumi:"clusterTier"`
+}
+
+// EnterpriseConfig is the cluster enterprise configuration.
+type EnterpriseConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseConfigResponse)(nil)).Elem()
+}
+
+func (o EnterpriseConfigResponseOutput) ToEnterpriseConfigResponseOutput() EnterpriseConfigResponseOutput {
+	return o
+}
+
+func (o EnterpriseConfigResponseOutput) ToEnterpriseConfigResponseOutputWithContext(ctx context.Context) EnterpriseConfigResponseOutput {
+	return o
+}
+
+func (o EnterpriseConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseConfigResponse] {
+	return pulumix.Output[EnterpriseConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Output only] cluster_tier specifies the premium tier of the cluster.
+func (o EnterpriseConfigResponseOutput) ClusterTier() pulumi.StringOutput {
+	return o.ApplyT(func(v EnterpriseConfigResponse) string { return v.ClusterTier }).(pulumi.StringOutput)
+}
+
+// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
 type EphemeralStorageLocalSsdConfig struct {
-	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 }
 
@@ -5544,9 +6896,9 @@ type EphemeralStorageLocalSsdConfigInput interface {
 	ToEphemeralStorageLocalSsdConfigOutputWithContext(context.Context) EphemeralStorageLocalSsdConfigOutput
 }
 
-// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
+// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
 type EphemeralStorageLocalSsdConfigArgs struct {
-	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 }
 
@@ -5615,7 +6967,7 @@ func (i *ephemeralStorageLocalSsdConfigPtrType) ToOutput(ctx context.Context) pu
 	}
 }
 
-// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
+// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
 type EphemeralStorageLocalSsdConfigOutput struct{ *pulumi.OutputState }
 
 func (EphemeralStorageLocalSsdConfigOutput) ElementType() reflect.Type {
@@ -5646,7 +6998,7 @@ func (o EphemeralStorageLocalSsdConfigOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 func (o EphemeralStorageLocalSsdConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EphemeralStorageLocalSsdConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
@@ -5681,7 +7033,7 @@ func (o EphemeralStorageLocalSsdConfigPtrOutput) Elem() EphemeralStorageLocalSsd
 	}).(EphemeralStorageLocalSsdConfigOutput)
 }
 
-// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 func (o EphemeralStorageLocalSsdConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EphemeralStorageLocalSsdConfig) *int {
 		if v == nil {
@@ -5691,13 +7043,13 @@ func (o EphemeralStorageLocalSsdConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
+// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
 type EphemeralStorageLocalSsdConfigResponse struct {
-	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 	LocalSsdCount int `pulumi:"localSsdCount"`
 }
 
-// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
+// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
 type EphemeralStorageLocalSsdConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (EphemeralStorageLocalSsdConfigResponseOutput) ElementType() reflect.Type {
@@ -5718,7 +7070,7 @@ func (o EphemeralStorageLocalSsdConfigResponseOutput) ToOutput(ctx context.Conte
 	}
 }
 
-// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 func (o EphemeralStorageLocalSsdConfigResponseOutput) LocalSsdCount() pulumi.IntOutput {
 	return o.ApplyT(func(v EphemeralStorageLocalSsdConfigResponse) int { return v.LocalSsdCount }).(pulumi.IntOutput)
 }
@@ -6323,6 +7675,204 @@ func (o FleetResponseOutput) PreRegistered() pulumi.BoolOutput {
 // The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
 func (o FleetResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v FleetResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
+type GPUDriverInstallationConfig struct {
+	// Mode for how the GPU driver is installed.
+	GpuDriverVersion *GPUDriverInstallationConfigGpuDriverVersion `pulumi:"gpuDriverVersion"`
+}
+
+// GPUDriverInstallationConfigInput is an input type that accepts GPUDriverInstallationConfigArgs and GPUDriverInstallationConfigOutput values.
+// You can construct a concrete instance of `GPUDriverInstallationConfigInput` via:
+//
+//	GPUDriverInstallationConfigArgs{...}
+type GPUDriverInstallationConfigInput interface {
+	pulumi.Input
+
+	ToGPUDriverInstallationConfigOutput() GPUDriverInstallationConfigOutput
+	ToGPUDriverInstallationConfigOutputWithContext(context.Context) GPUDriverInstallationConfigOutput
+}
+
+// GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
+type GPUDriverInstallationConfigArgs struct {
+	// Mode for how the GPU driver is installed.
+	GpuDriverVersion GPUDriverInstallationConfigGpuDriverVersionPtrInput `pulumi:"gpuDriverVersion"`
+}
+
+func (GPUDriverInstallationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GPUDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i GPUDriverInstallationConfigArgs) ToGPUDriverInstallationConfigOutput() GPUDriverInstallationConfigOutput {
+	return i.ToGPUDriverInstallationConfigOutputWithContext(context.Background())
+}
+
+func (i GPUDriverInstallationConfigArgs) ToGPUDriverInstallationConfigOutputWithContext(ctx context.Context) GPUDriverInstallationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GPUDriverInstallationConfigOutput)
+}
+
+func (i GPUDriverInstallationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GPUDriverInstallationConfig] {
+	return pulumix.Output[GPUDriverInstallationConfig]{
+		OutputState: i.ToGPUDriverInstallationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GPUDriverInstallationConfigArgs) ToGPUDriverInstallationConfigPtrOutput() GPUDriverInstallationConfigPtrOutput {
+	return i.ToGPUDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GPUDriverInstallationConfigArgs) ToGPUDriverInstallationConfigPtrOutputWithContext(ctx context.Context) GPUDriverInstallationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GPUDriverInstallationConfigOutput).ToGPUDriverInstallationConfigPtrOutputWithContext(ctx)
+}
+
+// GPUDriverInstallationConfigPtrInput is an input type that accepts GPUDriverInstallationConfigArgs, GPUDriverInstallationConfigPtr and GPUDriverInstallationConfigPtrOutput values.
+// You can construct a concrete instance of `GPUDriverInstallationConfigPtrInput` via:
+//
+//	        GPUDriverInstallationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GPUDriverInstallationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGPUDriverInstallationConfigPtrOutput() GPUDriverInstallationConfigPtrOutput
+	ToGPUDriverInstallationConfigPtrOutputWithContext(context.Context) GPUDriverInstallationConfigPtrOutput
+}
+
+type gpudriverInstallationConfigPtrType GPUDriverInstallationConfigArgs
+
+func GPUDriverInstallationConfigPtr(v *GPUDriverInstallationConfigArgs) GPUDriverInstallationConfigPtrInput {
+	return (*gpudriverInstallationConfigPtrType)(v)
+}
+
+func (*gpudriverInstallationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GPUDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i *gpudriverInstallationConfigPtrType) ToGPUDriverInstallationConfigPtrOutput() GPUDriverInstallationConfigPtrOutput {
+	return i.ToGPUDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gpudriverInstallationConfigPtrType) ToGPUDriverInstallationConfigPtrOutputWithContext(ctx context.Context) GPUDriverInstallationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GPUDriverInstallationConfigPtrOutput)
+}
+
+func (i *gpudriverInstallationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GPUDriverInstallationConfig] {
+	return pulumix.Output[*GPUDriverInstallationConfig]{
+		OutputState: i.ToGPUDriverInstallationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
+type GPUDriverInstallationConfigOutput struct{ *pulumi.OutputState }
+
+func (GPUDriverInstallationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GPUDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o GPUDriverInstallationConfigOutput) ToGPUDriverInstallationConfigOutput() GPUDriverInstallationConfigOutput {
+	return o
+}
+
+func (o GPUDriverInstallationConfigOutput) ToGPUDriverInstallationConfigOutputWithContext(ctx context.Context) GPUDriverInstallationConfigOutput {
+	return o
+}
+
+func (o GPUDriverInstallationConfigOutput) ToGPUDriverInstallationConfigPtrOutput() GPUDriverInstallationConfigPtrOutput {
+	return o.ToGPUDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GPUDriverInstallationConfigOutput) ToGPUDriverInstallationConfigPtrOutputWithContext(ctx context.Context) GPUDriverInstallationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GPUDriverInstallationConfig) *GPUDriverInstallationConfig {
+		return &v
+	}).(GPUDriverInstallationConfigPtrOutput)
+}
+
+func (o GPUDriverInstallationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GPUDriverInstallationConfig] {
+	return pulumix.Output[GPUDriverInstallationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Mode for how the GPU driver is installed.
+func (o GPUDriverInstallationConfigOutput) GpuDriverVersion() GPUDriverInstallationConfigGpuDriverVersionPtrOutput {
+	return o.ApplyT(func(v GPUDriverInstallationConfig) *GPUDriverInstallationConfigGpuDriverVersion {
+		return v.GpuDriverVersion
+	}).(GPUDriverInstallationConfigGpuDriverVersionPtrOutput)
+}
+
+type GPUDriverInstallationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GPUDriverInstallationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GPUDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o GPUDriverInstallationConfigPtrOutput) ToGPUDriverInstallationConfigPtrOutput() GPUDriverInstallationConfigPtrOutput {
+	return o
+}
+
+func (o GPUDriverInstallationConfigPtrOutput) ToGPUDriverInstallationConfigPtrOutputWithContext(ctx context.Context) GPUDriverInstallationConfigPtrOutput {
+	return o
+}
+
+func (o GPUDriverInstallationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GPUDriverInstallationConfig] {
+	return pulumix.Output[*GPUDriverInstallationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GPUDriverInstallationConfigPtrOutput) Elem() GPUDriverInstallationConfigOutput {
+	return o.ApplyT(func(v *GPUDriverInstallationConfig) GPUDriverInstallationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GPUDriverInstallationConfig
+		return ret
+	}).(GPUDriverInstallationConfigOutput)
+}
+
+// Mode for how the GPU driver is installed.
+func (o GPUDriverInstallationConfigPtrOutput) GpuDriverVersion() GPUDriverInstallationConfigGpuDriverVersionPtrOutput {
+	return o.ApplyT(func(v *GPUDriverInstallationConfig) *GPUDriverInstallationConfigGpuDriverVersion {
+		if v == nil {
+			return nil
+		}
+		return v.GpuDriverVersion
+	}).(GPUDriverInstallationConfigGpuDriverVersionPtrOutput)
+}
+
+// GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
+type GPUDriverInstallationConfigResponse struct {
+	// Mode for how the GPU driver is installed.
+	GpuDriverVersion string `pulumi:"gpuDriverVersion"`
+}
+
+// GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
+type GPUDriverInstallationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GPUDriverInstallationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GPUDriverInstallationConfigResponse)(nil)).Elem()
+}
+
+func (o GPUDriverInstallationConfigResponseOutput) ToGPUDriverInstallationConfigResponseOutput() GPUDriverInstallationConfigResponseOutput {
+	return o
+}
+
+func (o GPUDriverInstallationConfigResponseOutput) ToGPUDriverInstallationConfigResponseOutputWithContext(ctx context.Context) GPUDriverInstallationConfigResponseOutput {
+	return o
+}
+
+func (o GPUDriverInstallationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GPUDriverInstallationConfigResponse] {
+	return pulumix.Output[GPUDriverInstallationConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Mode for how the GPU driver is installed.
+func (o GPUDriverInstallationConfigResponseOutput) GpuDriverVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GPUDriverInstallationConfigResponse) string { return v.GpuDriverVersion }).(pulumi.StringOutput)
 }
 
 // GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
@@ -7329,6 +8879,202 @@ func (o GcpFilestoreCsiDriverConfigResponseOutput) ToOutput(ctx context.Context)
 // Whether the GCP Filestore CSI driver is enabled for this cluster.
 func (o GcpFilestoreCsiDriverConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GcpFilestoreCsiDriverConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+type GcsFuseCsiDriverConfig struct {
+	// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GcsFuseCsiDriverConfigInput is an input type that accepts GcsFuseCsiDriverConfigArgs and GcsFuseCsiDriverConfigOutput values.
+// You can construct a concrete instance of `GcsFuseCsiDriverConfigInput` via:
+//
+//	GcsFuseCsiDriverConfigArgs{...}
+type GcsFuseCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToGcsFuseCsiDriverConfigOutput() GcsFuseCsiDriverConfigOutput
+	ToGcsFuseCsiDriverConfigOutputWithContext(context.Context) GcsFuseCsiDriverConfigOutput
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+type GcsFuseCsiDriverConfigArgs struct {
+	// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GcsFuseCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GcsFuseCsiDriverConfigArgs) ToGcsFuseCsiDriverConfigOutput() GcsFuseCsiDriverConfigOutput {
+	return i.ToGcsFuseCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i GcsFuseCsiDriverConfigArgs) ToGcsFuseCsiDriverConfigOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsFuseCsiDriverConfigOutput)
+}
+
+func (i GcsFuseCsiDriverConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GcsFuseCsiDriverConfig] {
+	return pulumix.Output[GcsFuseCsiDriverConfig]{
+		OutputState: i.ToGcsFuseCsiDriverConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GcsFuseCsiDriverConfigArgs) ToGcsFuseCsiDriverConfigPtrOutput() GcsFuseCsiDriverConfigPtrOutput {
+	return i.ToGcsFuseCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GcsFuseCsiDriverConfigArgs) ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsFuseCsiDriverConfigOutput).ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx)
+}
+
+// GcsFuseCsiDriverConfigPtrInput is an input type that accepts GcsFuseCsiDriverConfigArgs, GcsFuseCsiDriverConfigPtr and GcsFuseCsiDriverConfigPtrOutput values.
+// You can construct a concrete instance of `GcsFuseCsiDriverConfigPtrInput` via:
+//
+//	        GcsFuseCsiDriverConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcsFuseCsiDriverConfigPtrInput interface {
+	pulumi.Input
+
+	ToGcsFuseCsiDriverConfigPtrOutput() GcsFuseCsiDriverConfigPtrOutput
+	ToGcsFuseCsiDriverConfigPtrOutputWithContext(context.Context) GcsFuseCsiDriverConfigPtrOutput
+}
+
+type gcsFuseCsiDriverConfigPtrType GcsFuseCsiDriverConfigArgs
+
+func GcsFuseCsiDriverConfigPtr(v *GcsFuseCsiDriverConfigArgs) GcsFuseCsiDriverConfigPtrInput {
+	return (*gcsFuseCsiDriverConfigPtrType)(v)
+}
+
+func (*gcsFuseCsiDriverConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (i *gcsFuseCsiDriverConfigPtrType) ToGcsFuseCsiDriverConfigPtrOutput() GcsFuseCsiDriverConfigPtrOutput {
+	return i.ToGcsFuseCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gcsFuseCsiDriverConfigPtrType) ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsFuseCsiDriverConfigPtrOutput)
+}
+
+func (i *gcsFuseCsiDriverConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GcsFuseCsiDriverConfig] {
+	return pulumix.Output[*GcsFuseCsiDriverConfig]{
+		OutputState: i.ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+type GcsFuseCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (GcsFuseCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GcsFuseCsiDriverConfigOutput) ToGcsFuseCsiDriverConfigOutput() GcsFuseCsiDriverConfigOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigOutput) ToGcsFuseCsiDriverConfigOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigOutput) ToGcsFuseCsiDriverConfigPtrOutput() GcsFuseCsiDriverConfigPtrOutput {
+	return o.ToGcsFuseCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GcsFuseCsiDriverConfigOutput) ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsFuseCsiDriverConfig) *GcsFuseCsiDriverConfig {
+		return &v
+	}).(GcsFuseCsiDriverConfigPtrOutput)
+}
+
+func (o GcsFuseCsiDriverConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GcsFuseCsiDriverConfig] {
+	return pulumix.Output[GcsFuseCsiDriverConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+func (o GcsFuseCsiDriverConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcsFuseCsiDriverConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GcsFuseCsiDriverConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GcsFuseCsiDriverConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GcsFuseCsiDriverConfigPtrOutput) ToGcsFuseCsiDriverConfigPtrOutput() GcsFuseCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigPtrOutput) ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GcsFuseCsiDriverConfig] {
+	return pulumix.Output[*GcsFuseCsiDriverConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GcsFuseCsiDriverConfigPtrOutput) Elem() GcsFuseCsiDriverConfigOutput {
+	return o.ApplyT(func(v *GcsFuseCsiDriverConfig) GcsFuseCsiDriverConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GcsFuseCsiDriverConfig
+		return ret
+	}).(GcsFuseCsiDriverConfigOutput)
+}
+
+// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+func (o GcsFuseCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcsFuseCsiDriverConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+type GcsFuseCsiDriverConfigResponse struct {
+	// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+type GcsFuseCsiDriverConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GcsFuseCsiDriverConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsFuseCsiDriverConfigResponse)(nil)).Elem()
+}
+
+func (o GcsFuseCsiDriverConfigResponseOutput) ToGcsFuseCsiDriverConfigResponseOutput() GcsFuseCsiDriverConfigResponseOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigResponseOutput) ToGcsFuseCsiDriverConfigResponseOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigResponseOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GcsFuseCsiDriverConfigResponse] {
+	return pulumix.Output[GcsFuseCsiDriverConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+func (o GcsFuseCsiDriverConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GcsFuseCsiDriverConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Configuration for the Backup for GKE Agent.
@@ -8412,6 +10158,8 @@ type IPAllocationPolicyResponse struct {
 	ClusterSecondaryRangeName string `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork bool `pulumi:"createSubnetwork"`
+	// [Output only] The utilization of the cluster default IPv4 range for the pod. The ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+	DefaultPodIpv4RangeUtilization float64 `pulumi:"defaultPodIpv4RangeUtilization"`
 	// The ipv6 access type (internal or external) when create_subnetwork is true
 	Ipv6AccessType string `pulumi:"ipv6AccessType"`
 	// This field is deprecated, use node_ipv4_cidr_block.
@@ -8494,6 +10242,11 @@ func (o IPAllocationPolicyResponseOutput) ClusterSecondaryRangeName() pulumi.Str
 // Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 func (o IPAllocationPolicyResponseOutput) CreateSubnetwork() pulumi.BoolOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) bool { return v.CreateSubnetwork }).(pulumi.BoolOutput)
+}
+
+// [Output only] The utilization of the cluster default IPv4 range for the pod. The ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+func (o IPAllocationPolicyResponseOutput) DefaultPodIpv4RangeUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v IPAllocationPolicyResponse) float64 { return v.DefaultPodIpv4RangeUtilization }).(pulumi.Float64Output)
 }
 
 // The ipv6 access type (internal or external) when create_subnetwork is true
@@ -8772,6 +10525,202 @@ func (o IdentityServiceConfigResponseOutput) Enabled() pulumi.BoolOutput {
 type IntraNodeVisibilityConfig struct {
 	// Enables intra node visibility for this cluster.
 	Enabled *bool `pulumi:"enabled"`
+}
+
+// K8sBetaAPIConfig , configuration for beta APIs
+type K8sBetaAPIConfig struct {
+	// Enabled k8s beta APIs.
+	EnabledApis []string `pulumi:"enabledApis"`
+}
+
+// K8sBetaAPIConfigInput is an input type that accepts K8sBetaAPIConfigArgs and K8sBetaAPIConfigOutput values.
+// You can construct a concrete instance of `K8sBetaAPIConfigInput` via:
+//
+//	K8sBetaAPIConfigArgs{...}
+type K8sBetaAPIConfigInput interface {
+	pulumi.Input
+
+	ToK8sBetaAPIConfigOutput() K8sBetaAPIConfigOutput
+	ToK8sBetaAPIConfigOutputWithContext(context.Context) K8sBetaAPIConfigOutput
+}
+
+// K8sBetaAPIConfig , configuration for beta APIs
+type K8sBetaAPIConfigArgs struct {
+	// Enabled k8s beta APIs.
+	EnabledApis pulumi.StringArrayInput `pulumi:"enabledApis"`
+}
+
+func (K8sBetaAPIConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sBetaAPIConfig)(nil)).Elem()
+}
+
+func (i K8sBetaAPIConfigArgs) ToK8sBetaAPIConfigOutput() K8sBetaAPIConfigOutput {
+	return i.ToK8sBetaAPIConfigOutputWithContext(context.Background())
+}
+
+func (i K8sBetaAPIConfigArgs) ToK8sBetaAPIConfigOutputWithContext(ctx context.Context) K8sBetaAPIConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sBetaAPIConfigOutput)
+}
+
+func (i K8sBetaAPIConfigArgs) ToOutput(ctx context.Context) pulumix.Output[K8sBetaAPIConfig] {
+	return pulumix.Output[K8sBetaAPIConfig]{
+		OutputState: i.ToK8sBetaAPIConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i K8sBetaAPIConfigArgs) ToK8sBetaAPIConfigPtrOutput() K8sBetaAPIConfigPtrOutput {
+	return i.ToK8sBetaAPIConfigPtrOutputWithContext(context.Background())
+}
+
+func (i K8sBetaAPIConfigArgs) ToK8sBetaAPIConfigPtrOutputWithContext(ctx context.Context) K8sBetaAPIConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sBetaAPIConfigOutput).ToK8sBetaAPIConfigPtrOutputWithContext(ctx)
+}
+
+// K8sBetaAPIConfigPtrInput is an input type that accepts K8sBetaAPIConfigArgs, K8sBetaAPIConfigPtr and K8sBetaAPIConfigPtrOutput values.
+// You can construct a concrete instance of `K8sBetaAPIConfigPtrInput` via:
+//
+//	        K8sBetaAPIConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type K8sBetaAPIConfigPtrInput interface {
+	pulumi.Input
+
+	ToK8sBetaAPIConfigPtrOutput() K8sBetaAPIConfigPtrOutput
+	ToK8sBetaAPIConfigPtrOutputWithContext(context.Context) K8sBetaAPIConfigPtrOutput
+}
+
+type k8sBetaAPIConfigPtrType K8sBetaAPIConfigArgs
+
+func K8sBetaAPIConfigPtr(v *K8sBetaAPIConfigArgs) K8sBetaAPIConfigPtrInput {
+	return (*k8sBetaAPIConfigPtrType)(v)
+}
+
+func (*k8sBetaAPIConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sBetaAPIConfig)(nil)).Elem()
+}
+
+func (i *k8sBetaAPIConfigPtrType) ToK8sBetaAPIConfigPtrOutput() K8sBetaAPIConfigPtrOutput {
+	return i.ToK8sBetaAPIConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *k8sBetaAPIConfigPtrType) ToK8sBetaAPIConfigPtrOutputWithContext(ctx context.Context) K8sBetaAPIConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sBetaAPIConfigPtrOutput)
+}
+
+func (i *k8sBetaAPIConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*K8sBetaAPIConfig] {
+	return pulumix.Output[*K8sBetaAPIConfig]{
+		OutputState: i.ToK8sBetaAPIConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// K8sBetaAPIConfig , configuration for beta APIs
+type K8sBetaAPIConfigOutput struct{ *pulumi.OutputState }
+
+func (K8sBetaAPIConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sBetaAPIConfig)(nil)).Elem()
+}
+
+func (o K8sBetaAPIConfigOutput) ToK8sBetaAPIConfigOutput() K8sBetaAPIConfigOutput {
+	return o
+}
+
+func (o K8sBetaAPIConfigOutput) ToK8sBetaAPIConfigOutputWithContext(ctx context.Context) K8sBetaAPIConfigOutput {
+	return o
+}
+
+func (o K8sBetaAPIConfigOutput) ToK8sBetaAPIConfigPtrOutput() K8sBetaAPIConfigPtrOutput {
+	return o.ToK8sBetaAPIConfigPtrOutputWithContext(context.Background())
+}
+
+func (o K8sBetaAPIConfigOutput) ToK8sBetaAPIConfigPtrOutputWithContext(ctx context.Context) K8sBetaAPIConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sBetaAPIConfig) *K8sBetaAPIConfig {
+		return &v
+	}).(K8sBetaAPIConfigPtrOutput)
+}
+
+func (o K8sBetaAPIConfigOutput) ToOutput(ctx context.Context) pulumix.Output[K8sBetaAPIConfig] {
+	return pulumix.Output[K8sBetaAPIConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enabled k8s beta APIs.
+func (o K8sBetaAPIConfigOutput) EnabledApis() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v K8sBetaAPIConfig) []string { return v.EnabledApis }).(pulumi.StringArrayOutput)
+}
+
+type K8sBetaAPIConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (K8sBetaAPIConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sBetaAPIConfig)(nil)).Elem()
+}
+
+func (o K8sBetaAPIConfigPtrOutput) ToK8sBetaAPIConfigPtrOutput() K8sBetaAPIConfigPtrOutput {
+	return o
+}
+
+func (o K8sBetaAPIConfigPtrOutput) ToK8sBetaAPIConfigPtrOutputWithContext(ctx context.Context) K8sBetaAPIConfigPtrOutput {
+	return o
+}
+
+func (o K8sBetaAPIConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*K8sBetaAPIConfig] {
+	return pulumix.Output[*K8sBetaAPIConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o K8sBetaAPIConfigPtrOutput) Elem() K8sBetaAPIConfigOutput {
+	return o.ApplyT(func(v *K8sBetaAPIConfig) K8sBetaAPIConfig {
+		if v != nil {
+			return *v
+		}
+		var ret K8sBetaAPIConfig
+		return ret
+	}).(K8sBetaAPIConfigOutput)
+}
+
+// Enabled k8s beta APIs.
+func (o K8sBetaAPIConfigPtrOutput) EnabledApis() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *K8sBetaAPIConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledApis
+	}).(pulumi.StringArrayOutput)
+}
+
+// K8sBetaAPIConfig , configuration for beta APIs
+type K8sBetaAPIConfigResponse struct {
+	// Enabled k8s beta APIs.
+	EnabledApis []string `pulumi:"enabledApis"`
+}
+
+// K8sBetaAPIConfig , configuration for beta APIs
+type K8sBetaAPIConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (K8sBetaAPIConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sBetaAPIConfigResponse)(nil)).Elem()
+}
+
+func (o K8sBetaAPIConfigResponseOutput) ToK8sBetaAPIConfigResponseOutput() K8sBetaAPIConfigResponseOutput {
+	return o
+}
+
+func (o K8sBetaAPIConfigResponseOutput) ToK8sBetaAPIConfigResponseOutputWithContext(ctx context.Context) K8sBetaAPIConfigResponseOutput {
+	return o
+}
+
+func (o K8sBetaAPIConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[K8sBetaAPIConfigResponse] {
+	return pulumix.Output[K8sBetaAPIConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enabled k8s beta APIs.
+func (o K8sBetaAPIConfigResponseOutput) EnabledApis() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v K8sBetaAPIConfigResponse) []string { return v.EnabledApis }).(pulumi.StringArrayOutput)
 }
 
 // Configuration for the Kubernetes Dashboard.
@@ -9388,9 +11337,9 @@ func (o LinuxNodeConfigResponseOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LinuxNodeConfigResponse) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
 }
 
-// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.
+// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
 type LocalNvmeSsdBlockConfig struct {
-	// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	// Number of local NVMe SSDs to use. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 }
 
@@ -9405,9 +11354,9 @@ type LocalNvmeSsdBlockConfigInput interface {
 	ToLocalNvmeSsdBlockConfigOutputWithContext(context.Context) LocalNvmeSsdBlockConfigOutput
 }
 
-// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.
+// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
 type LocalNvmeSsdBlockConfigArgs struct {
-	// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	// Number of local NVMe SSDs to use. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 }
 
@@ -9476,7 +11425,7 @@ func (i *localNvmeSsdBlockConfigPtrType) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.
+// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
 type LocalNvmeSsdBlockConfigOutput struct{ *pulumi.OutputState }
 
 func (LocalNvmeSsdBlockConfigOutput) ElementType() reflect.Type {
@@ -9507,7 +11456,7 @@ func (o LocalNvmeSsdBlockConfigOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+// Number of local NVMe SSDs to use. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 func (o LocalNvmeSsdBlockConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LocalNvmeSsdBlockConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
@@ -9542,7 +11491,7 @@ func (o LocalNvmeSsdBlockConfigPtrOutput) Elem() LocalNvmeSsdBlockConfigOutput {
 	}).(LocalNvmeSsdBlockConfigOutput)
 }
 
-// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+// Number of local NVMe SSDs to use. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 func (o LocalNvmeSsdBlockConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LocalNvmeSsdBlockConfig) *int {
 		if v == nil {
@@ -9552,13 +11501,13 @@ func (o LocalNvmeSsdBlockConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.
+// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
 type LocalNvmeSsdBlockConfigResponse struct {
-	// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	// Number of local NVMe SSDs to use. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 	LocalSsdCount int `pulumi:"localSsdCount"`
 }
 
-// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.
+// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
 type LocalNvmeSsdBlockConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (LocalNvmeSsdBlockConfigResponseOutput) ElementType() reflect.Type {
@@ -9579,7 +11528,7 @@ func (o LocalNvmeSsdBlockConfigResponseOutput) ToOutput(ctx context.Context) pul
 	}
 }
 
-// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+// Number of local NVMe SSDs to use. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info.
 func (o LocalNvmeSsdBlockConfigResponseOutput) LocalSsdCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LocalNvmeSsdBlockConfigResponse) int { return v.LocalSsdCount }).(pulumi.IntOutput)
 }
@@ -12143,6 +14092,8 @@ func (o MonitoringComponentConfigResponseOutput) EnableComponents() pulumi.Strin
 
 // MonitoringConfig is cluster monitoring configuration.
 type MonitoringConfig struct {
+	// Configuration of Advanced Datapath Observability features.
+	AdvancedDatapathObservabilityConfig *AdvancedDatapathObservabilityConfig `pulumi:"advancedDatapathObservabilityConfig"`
 	// Monitoring components configuration
 	ComponentConfig *MonitoringComponentConfig `pulumi:"componentConfig"`
 	// Enable Google Cloud Managed Service for Prometheus in the cluster.
@@ -12162,6 +14113,8 @@ type MonitoringConfigInput interface {
 
 // MonitoringConfig is cluster monitoring configuration.
 type MonitoringConfigArgs struct {
+	// Configuration of Advanced Datapath Observability features.
+	AdvancedDatapathObservabilityConfig AdvancedDatapathObservabilityConfigPtrInput `pulumi:"advancedDatapathObservabilityConfig"`
 	// Monitoring components configuration
 	ComponentConfig MonitoringComponentConfigPtrInput `pulumi:"componentConfig"`
 	// Enable Google Cloud Managed Service for Prometheus in the cluster.
@@ -12264,6 +14217,13 @@ func (o MonitoringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Mon
 	}
 }
 
+// Configuration of Advanced Datapath Observability features.
+func (o MonitoringConfigOutput) AdvancedDatapathObservabilityConfig() AdvancedDatapathObservabilityConfigPtrOutput {
+	return o.ApplyT(func(v MonitoringConfig) *AdvancedDatapathObservabilityConfig {
+		return v.AdvancedDatapathObservabilityConfig
+	}).(AdvancedDatapathObservabilityConfigPtrOutput)
+}
+
 // Monitoring components configuration
 func (o MonitoringConfigOutput) ComponentConfig() MonitoringComponentConfigPtrOutput {
 	return o.ApplyT(func(v MonitoringConfig) *MonitoringComponentConfig { return v.ComponentConfig }).(MonitoringComponentConfigPtrOutput)
@@ -12304,6 +14264,16 @@ func (o MonitoringConfigPtrOutput) Elem() MonitoringConfigOutput {
 	}).(MonitoringConfigOutput)
 }
 
+// Configuration of Advanced Datapath Observability features.
+func (o MonitoringConfigPtrOutput) AdvancedDatapathObservabilityConfig() AdvancedDatapathObservabilityConfigPtrOutput {
+	return o.ApplyT(func(v *MonitoringConfig) *AdvancedDatapathObservabilityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedDatapathObservabilityConfig
+	}).(AdvancedDatapathObservabilityConfigPtrOutput)
+}
+
 // Monitoring components configuration
 func (o MonitoringConfigPtrOutput) ComponentConfig() MonitoringComponentConfigPtrOutput {
 	return o.ApplyT(func(v *MonitoringConfig) *MonitoringComponentConfig {
@@ -12326,6 +14296,8 @@ func (o MonitoringConfigPtrOutput) ManagedPrometheusConfig() ManagedPrometheusCo
 
 // MonitoringConfig is cluster monitoring configuration.
 type MonitoringConfigResponse struct {
+	// Configuration of Advanced Datapath Observability features.
+	AdvancedDatapathObservabilityConfig AdvancedDatapathObservabilityConfigResponse `pulumi:"advancedDatapathObservabilityConfig"`
 	// Monitoring components configuration
 	ComponentConfig MonitoringComponentConfigResponse `pulumi:"componentConfig"`
 	// Enable Google Cloud Managed Service for Prometheus in the cluster.
@@ -12353,6 +14325,13 @@ func (o MonitoringConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
+// Configuration of Advanced Datapath Observability features.
+func (o MonitoringConfigResponseOutput) AdvancedDatapathObservabilityConfig() AdvancedDatapathObservabilityConfigResponseOutput {
+	return o.ApplyT(func(v MonitoringConfigResponse) AdvancedDatapathObservabilityConfigResponse {
+		return v.AdvancedDatapathObservabilityConfig
+	}).(AdvancedDatapathObservabilityConfigResponseOutput)
+}
+
 // Monitoring components configuration
 func (o MonitoringConfigResponseOutput) ComponentConfig() MonitoringComponentConfigResponseOutput {
 	return o.ApplyT(func(v MonitoringConfigResponse) MonitoringComponentConfigResponse { return v.ComponentConfig }).(MonitoringComponentConfigResponseOutput)
@@ -12371,12 +14350,18 @@ type NetworkConfig struct {
 	DefaultSnatStatus *DefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DnsConfig *DNSConfig `pulumi:"dnsConfig"`
+	// Whether FQDN Network Policy is enabled on this cluster.
+	EnableFqdnNetworkPolicy *bool `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility *bool `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting *bool `pulumi:"enableL4ilbSubsetting"`
+	// Whether multi-networking is enabled for this cluster.
+	EnableMultiNetworking *bool `pulumi:"enableMultiNetworking"`
 	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 	GatewayApiConfig *GatewayAPIConfig `pulumi:"gatewayApiConfig"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig *ClusterNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess *NetworkConfigPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -12402,12 +14387,18 @@ type NetworkConfigArgs struct {
 	DefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"defaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DnsConfig DNSConfigPtrInput `pulumi:"dnsConfig"`
+	// Whether FQDN Network Policy is enabled on this cluster.
+	EnableFqdnNetworkPolicy pulumi.BoolPtrInput `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility pulumi.BoolPtrInput `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting pulumi.BoolPtrInput `pulumi:"enableL4ilbSubsetting"`
+	// Whether multi-networking is enabled for this cluster.
+	EnableMultiNetworking pulumi.BoolPtrInput `pulumi:"enableMultiNetworking"`
 	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 	GatewayApiConfig GatewayAPIConfigPtrInput `pulumi:"gatewayApiConfig"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig ClusterNetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess NetworkConfigPrivateIpv6GoogleAccessPtrInput `pulumi:"privateIpv6GoogleAccess"`
 	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -12525,6 +14516,11 @@ func (o NetworkConfigOutput) DnsConfig() DNSConfigPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *DNSConfig { return v.DnsConfig }).(DNSConfigPtrOutput)
 }
 
+// Whether FQDN Network Policy is enabled on this cluster.
+func (o NetworkConfigOutput) EnableFqdnNetworkPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableFqdnNetworkPolicy }).(pulumi.BoolPtrOutput)
+}
+
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableIntraNodeVisibility }).(pulumi.BoolPtrOutput)
@@ -12535,9 +14531,19 @@ func (o NetworkConfigOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableL4ilbSubsetting }).(pulumi.BoolPtrOutput)
 }
 
+// Whether multi-networking is enabled for this cluster.
+func (o NetworkConfigOutput) EnableMultiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableMultiNetworking }).(pulumi.BoolPtrOutput)
+}
+
 // GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 func (o NetworkConfigOutput) GatewayApiConfig() GatewayAPIConfigPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *GatewayAPIConfig { return v.GatewayApiConfig }).(GatewayAPIConfigPtrOutput)
+}
+
+// Network bandwidth tier configuration.
+func (o NetworkConfigOutput) NetworkPerformanceConfig() ClusterNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *ClusterNetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(ClusterNetworkPerformanceConfigPtrOutput)
 }
 
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -12610,6 +14616,16 @@ func (o NetworkConfigPtrOutput) DnsConfig() DNSConfigPtrOutput {
 	}).(DNSConfigPtrOutput)
 }
 
+// Whether FQDN Network Policy is enabled on this cluster.
+func (o NetworkConfigPtrOutput) EnableFqdnNetworkPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFqdnNetworkPolicy
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigPtrOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *bool {
@@ -12630,6 +14646,16 @@ func (o NetworkConfigPtrOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether multi-networking is enabled for this cluster.
+func (o NetworkConfigPtrOutput) EnableMultiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableMultiNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
 // GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 func (o NetworkConfigPtrOutput) GatewayApiConfig() GatewayAPIConfigPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *GatewayAPIConfig {
@@ -12638,6 +14664,16 @@ func (o NetworkConfigPtrOutput) GatewayApiConfig() GatewayAPIConfigPtrOutput {
 		}
 		return v.GatewayApiConfig
 	}).(GatewayAPIConfigPtrOutput)
+}
+
+// Network bandwidth tier configuration.
+func (o NetworkConfigPtrOutput) NetworkPerformanceConfig() ClusterNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *ClusterNetworkPerformanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkPerformanceConfig
+	}).(ClusterNetworkPerformanceConfigPtrOutput)
 }
 
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -12668,14 +14704,20 @@ type NetworkConfigResponse struct {
 	DefaultSnatStatus DefaultSnatStatusResponse `pulumi:"defaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DnsConfig DNSConfigResponse `pulumi:"dnsConfig"`
+	// Whether FQDN Network Policy is enabled on this cluster.
+	EnableFqdnNetworkPolicy bool `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility bool `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting bool `pulumi:"enableL4ilbSubsetting"`
+	// Whether multi-networking is enabled for this cluster.
+	EnableMultiNetworking bool `pulumi:"enableMultiNetworking"`
 	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 	GatewayApiConfig GatewayAPIConfigResponse `pulumi:"gatewayApiConfig"`
 	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network string `pulumi:"network"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig ClusterNetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
 	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -12720,6 +14762,11 @@ func (o NetworkConfigResponseOutput) DnsConfig() DNSConfigResponseOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) DNSConfigResponse { return v.DnsConfig }).(DNSConfigResponseOutput)
 }
 
+// Whether FQDN Network Policy is enabled on this cluster.
+func (o NetworkConfigResponseOutput) EnableFqdnNetworkPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableFqdnNetworkPolicy }).(pulumi.BoolOutput)
+}
+
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigResponseOutput) EnableIntraNodeVisibility() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableIntraNodeVisibility }).(pulumi.BoolOutput)
@@ -12730,6 +14777,11 @@ func (o NetworkConfigResponseOutput) EnableL4ilbSubsetting() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableL4ilbSubsetting }).(pulumi.BoolOutput)
 }
 
+// Whether multi-networking is enabled for this cluster.
+func (o NetworkConfigResponseOutput) EnableMultiNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableMultiNetworking }).(pulumi.BoolOutput)
+}
+
 // GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 func (o NetworkConfigResponseOutput) GatewayApiConfig() GatewayAPIConfigResponseOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) GatewayAPIConfigResponse { return v.GatewayApiConfig }).(GatewayAPIConfigResponseOutput)
@@ -12738,6 +14790,13 @@ func (o NetworkConfigResponseOutput) GatewayApiConfig() GatewayAPIConfigResponse
 // The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Network bandwidth tier configuration.
+func (o NetworkConfigResponseOutput) NetworkPerformanceConfig() ClusterNetworkPerformanceConfigResponseOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) ClusterNetworkPerformanceConfigResponse {
+		return v.NetworkPerformanceConfig
+	}).(ClusterNetworkPerformanceConfigResponseOutput)
 }
 
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -13567,6 +15626,220 @@ func (o NetworkTagsResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkTagsResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+type NodeAffinity struct {
+	// Key for NodeAffinity.
+	Key *string `pulumi:"key"`
+	// Operator for NodeAffinity.
+	Operator *NodeAffinityOperator `pulumi:"operator"`
+	// Values for NodeAffinity.
+	Values []string `pulumi:"values"`
+}
+
+// NodeAffinityInput is an input type that accepts NodeAffinityArgs and NodeAffinityOutput values.
+// You can construct a concrete instance of `NodeAffinityInput` via:
+//
+//	NodeAffinityArgs{...}
+type NodeAffinityInput interface {
+	pulumi.Input
+
+	ToNodeAffinityOutput() NodeAffinityOutput
+	ToNodeAffinityOutputWithContext(context.Context) NodeAffinityOutput
+}
+
+// Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+type NodeAffinityArgs struct {
+	// Key for NodeAffinity.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Operator for NodeAffinity.
+	Operator NodeAffinityOperatorPtrInput `pulumi:"operator"`
+	// Values for NodeAffinity.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (NodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeAffinity)(nil)).Elem()
+}
+
+func (i NodeAffinityArgs) ToNodeAffinityOutput() NodeAffinityOutput {
+	return i.ToNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i NodeAffinityArgs) ToNodeAffinityOutputWithContext(ctx context.Context) NodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeAffinityOutput)
+}
+
+func (i NodeAffinityArgs) ToOutput(ctx context.Context) pulumix.Output[NodeAffinity] {
+	return pulumix.Output[NodeAffinity]{
+		OutputState: i.ToNodeAffinityOutputWithContext(ctx).OutputState,
+	}
+}
+
+// NodeAffinityArrayInput is an input type that accepts NodeAffinityArray and NodeAffinityArrayOutput values.
+// You can construct a concrete instance of `NodeAffinityArrayInput` via:
+//
+//	NodeAffinityArray{ NodeAffinityArgs{...} }
+type NodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToNodeAffinityArrayOutput() NodeAffinityArrayOutput
+	ToNodeAffinityArrayOutputWithContext(context.Context) NodeAffinityArrayOutput
+}
+
+type NodeAffinityArray []NodeAffinityInput
+
+func (NodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeAffinity)(nil)).Elem()
+}
+
+func (i NodeAffinityArray) ToNodeAffinityArrayOutput() NodeAffinityArrayOutput {
+	return i.ToNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i NodeAffinityArray) ToNodeAffinityArrayOutputWithContext(ctx context.Context) NodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeAffinityArrayOutput)
+}
+
+func (i NodeAffinityArray) ToOutput(ctx context.Context) pulumix.Output[[]NodeAffinity] {
+	return pulumix.Output[[]NodeAffinity]{
+		OutputState: i.ToNodeAffinityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+type NodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (NodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeAffinity)(nil)).Elem()
+}
+
+func (o NodeAffinityOutput) ToNodeAffinityOutput() NodeAffinityOutput {
+	return o
+}
+
+func (o NodeAffinityOutput) ToNodeAffinityOutputWithContext(ctx context.Context) NodeAffinityOutput {
+	return o
+}
+
+func (o NodeAffinityOutput) ToOutput(ctx context.Context) pulumix.Output[NodeAffinity] {
+	return pulumix.Output[NodeAffinity]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Key for NodeAffinity.
+func (o NodeAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Operator for NodeAffinity.
+func (o NodeAffinityOutput) Operator() NodeAffinityOperatorPtrOutput {
+	return o.ApplyT(func(v NodeAffinity) *NodeAffinityOperator { return v.Operator }).(NodeAffinityOperatorPtrOutput)
+}
+
+// Values for NodeAffinity.
+func (o NodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type NodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeAffinity)(nil)).Elem()
+}
+
+func (o NodeAffinityArrayOutput) ToNodeAffinityArrayOutput() NodeAffinityArrayOutput {
+	return o
+}
+
+func (o NodeAffinityArrayOutput) ToNodeAffinityArrayOutputWithContext(ctx context.Context) NodeAffinityArrayOutput {
+	return o
+}
+
+func (o NodeAffinityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeAffinity] {
+	return pulumix.Output[[]NodeAffinity]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NodeAffinityArrayOutput) Index(i pulumi.IntInput) NodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeAffinity {
+		return vs[0].([]NodeAffinity)[vs[1].(int)]
+	}).(NodeAffinityOutput)
+}
+
+// Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+type NodeAffinityResponse struct {
+	// Key for NodeAffinity.
+	Key string `pulumi:"key"`
+	// Operator for NodeAffinity.
+	Operator string `pulumi:"operator"`
+	// Values for NodeAffinity.
+	Values []string `pulumi:"values"`
+}
+
+// Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+type NodeAffinityResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeAffinityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeAffinityResponse)(nil)).Elem()
+}
+
+func (o NodeAffinityResponseOutput) ToNodeAffinityResponseOutput() NodeAffinityResponseOutput {
+	return o
+}
+
+func (o NodeAffinityResponseOutput) ToNodeAffinityResponseOutputWithContext(ctx context.Context) NodeAffinityResponseOutput {
+	return o
+}
+
+func (o NodeAffinityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeAffinityResponse] {
+	return pulumix.Output[NodeAffinityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Key for NodeAffinity.
+func (o NodeAffinityResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeAffinityResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Operator for NodeAffinity.
+func (o NodeAffinityResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeAffinityResponse) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Values for NodeAffinity.
+func (o NodeAffinityResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeAffinityResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type NodeAffinityResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeAffinityResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeAffinityResponse)(nil)).Elem()
+}
+
+func (o NodeAffinityResponseArrayOutput) ToNodeAffinityResponseArrayOutput() NodeAffinityResponseArrayOutput {
+	return o
+}
+
+func (o NodeAffinityResponseArrayOutput) ToNodeAffinityResponseArrayOutputWithContext(ctx context.Context) NodeAffinityResponseArrayOutput {
+	return o
+}
+
+func (o NodeAffinityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeAffinityResponse] {
+	return pulumix.Output[[]NodeAffinityResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NodeAffinityResponseArrayOutput) Index(i pulumi.IntInput) NodeAffinityResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeAffinityResponse {
+		return vs[0].([]NodeAffinityResponse)[vs[1].(int)]
+	}).(NodeAffinityResponseOutput)
+}
+
 // Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfig struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
@@ -13619,12 +15892,16 @@ type NodeConfig struct {
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
 	// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
+	// A map of resource manager tag keys and values to be attached to the nodes.
+	ResourceManagerTags *ResourceManagerTags `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig *SandboxConfig `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
 	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// Parameters for node pools to be backed by shared sole tenant node groups.
+	SoleTenantConfig *SoleTenantConfig `pulumi:"soleTenantConfig"`
 	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
 	Spot *bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
@@ -13700,12 +15977,16 @@ type NodeConfigArgs struct {
 	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
 	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
+	// A map of resource manager tag keys and values to be attached to the nodes.
+	ResourceManagerTags ResourceManagerTagsPtrInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig SandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options.
 	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// Parameters for node pools to be backed by shared sole tenant node groups.
+	SoleTenantConfig SoleTenantConfigPtrInput `pulumi:"soleTenantConfig"`
 	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
@@ -13939,6 +16220,11 @@ func (o NodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
+// A map of resource manager tag keys and values to be attached to the nodes.
+func (o NodeConfigOutput) ResourceManagerTags() ResourceManagerTagsPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *ResourceManagerTags { return v.ResourceManagerTags }).(ResourceManagerTagsPtrOutput)
+}
+
 // Sandbox configuration for this node.
 func (o NodeConfigOutput) SandboxConfig() SandboxConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *SandboxConfig { return v.SandboxConfig }).(SandboxConfigPtrOutput)
@@ -13952,6 +16238,11 @@ func (o NodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 // Shielded Instance options.
 func (o NodeConfigOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *ShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigPtrOutput)
+}
+
+// Parameters for node pools to be backed by shared sole tenant node groups.
+func (o NodeConfigOutput) SoleTenantConfig() SoleTenantConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *SoleTenantConfig { return v.SoleTenantConfig }).(SoleTenantConfigPtrOutput)
 }
 
 // Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
@@ -14259,6 +16550,16 @@ func (o NodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// A map of resource manager tag keys and values to be attached to the nodes.
+func (o NodeConfigPtrOutput) ResourceManagerTags() ResourceManagerTagsPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *ResourceManagerTags {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(ResourceManagerTagsPtrOutput)
+}
+
 // Sandbox configuration for this node.
 func (o NodeConfigPtrOutput) SandboxConfig() SandboxConfigPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *SandboxConfig {
@@ -14287,6 +16588,16 @@ func (o NodeConfigPtrOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrO
 		}
 		return v.ShieldedInstanceConfig
 	}).(ShieldedInstanceConfigPtrOutput)
+}
+
+// Parameters for node pools to be backed by shared sole tenant node groups.
+func (o NodeConfigPtrOutput) SoleTenantConfig() SoleTenantConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *SoleTenantConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SoleTenantConfig
+	}).(SoleTenantConfigPtrOutput)
 }
 
 // Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
@@ -14613,12 +16924,16 @@ type NodeConfigResponse struct {
 	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
 	// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
+	// A map of resource manager tag keys and values to be attached to the nodes.
+	ResourceManagerTags ResourceManagerTagsResponse `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig SandboxConfigResponse `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
 	ShieldedInstanceConfig ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
+	// Parameters for node pools to be backed by shared sole tenant node groups.
+	SoleTenantConfig SoleTenantConfigResponse `pulumi:"soleTenantConfig"`
 	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
 	Spot bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
@@ -14779,6 +17094,11 @@ func (o NodeConfigResponseOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodeConfigResponse) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
+// A map of resource manager tag keys and values to be attached to the nodes.
+func (o NodeConfigResponseOutput) ResourceManagerTags() ResourceManagerTagsResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) ResourceManagerTagsResponse { return v.ResourceManagerTags }).(ResourceManagerTagsResponseOutput)
+}
+
 // Sandbox configuration for this node.
 func (o NodeConfigResponseOutput) SandboxConfig() SandboxConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) SandboxConfigResponse { return v.SandboxConfig }).(SandboxConfigResponseOutput)
@@ -14792,6 +17112,11 @@ func (o NodeConfigResponseOutput) ServiceAccount() pulumi.StringOutput {
 // Shielded Instance options.
 func (o NodeConfigResponseOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
+}
+
+// Parameters for node pools to be backed by shared sole tenant node groups.
+func (o NodeConfigResponseOutput) SoleTenantConfig() SoleTenantConfigResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) SoleTenantConfigResponse { return v.SoleTenantConfig }).(SoleTenantConfigResponseOutput)
 }
 
 // Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
@@ -14827,6 +17152,8 @@ type NodeKubeletConfig struct {
 	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
+	// Enable or disable Kubelet read only port.
+	InsecureKubeletReadonlyPortEnabled *bool `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit *string `pulumi:"podPidsLimit"`
 }
@@ -14850,6 +17177,8 @@ type NodeKubeletConfigArgs struct {
 	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
+	// Enable or disable Kubelet read only port.
+	InsecureKubeletReadonlyPortEnabled pulumi.BoolPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit pulumi.StringPtrInput `pulumi:"podPidsLimit"`
 }
@@ -14965,6 +17294,11 @@ func (o NodeKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable Kubelet read only port.
+func (o NodeKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeKubeletConfig) *bool { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 func (o NodeKubeletConfigOutput) PodPidsLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeKubeletConfig) *string { return v.PodPidsLimit }).(pulumi.StringPtrOutput)
@@ -15030,6 +17364,16 @@ func (o NodeKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable Kubelet read only port.
+func (o NodeKubeletConfigPtrOutput) InsecureKubeletReadonlyPortEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeKubeletConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureKubeletReadonlyPortEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 func (o NodeKubeletConfigPtrOutput) PodPidsLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeKubeletConfig) *string {
@@ -15048,6 +17392,8 @@ type NodeKubeletConfigResponse struct {
 	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Enable or disable Kubelet read only port.
+	InsecureKubeletReadonlyPortEnabled bool `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit string `pulumi:"podPidsLimit"`
 }
@@ -15086,6 +17432,11 @@ func (o NodeKubeletConfigResponseOutput) CpuCfsQuotaPeriod() pulumi.StringOutput
 // Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 func (o NodeKubeletConfigResponseOutput) CpuManagerPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeKubeletConfigResponse) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+// Enable or disable Kubelet read only port.
+func (o NodeKubeletConfigResponseOutput) InsecureKubeletReadonlyPortEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeKubeletConfigResponse) bool { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.BoolOutput)
 }
 
 // Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -15349,6 +17700,10 @@ func (o NodeManagementResponseOutput) UpgradeOptions() AutoUpgradeOptionsRespons
 
 // Parameters for node pool-level network config.
 type NodeNetworkConfig struct {
+	// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+	AdditionalNodeNetworkConfigs []AdditionalNodeNetworkConfig `pulumi:"additionalNodeNetworkConfigs"`
+	// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+	AdditionalPodNetworkConfigs []AdditionalPodNetworkConfig `pulumi:"additionalPodNetworkConfigs"`
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange *bool `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
@@ -15376,6 +17731,10 @@ type NodeNetworkConfigInput interface {
 
 // Parameters for node pool-level network config.
 type NodeNetworkConfigArgs struct {
+	// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+	AdditionalNodeNetworkConfigs AdditionalNodeNetworkConfigArrayInput `pulumi:"additionalNodeNetworkConfigs"`
+	// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+	AdditionalPodNetworkConfigs AdditionalPodNetworkConfigArrayInput `pulumi:"additionalPodNetworkConfigs"`
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
@@ -15486,6 +17845,16 @@ func (o NodeNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[No
 	}
 }
 
+// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+func (o NodeNetworkConfigOutput) AdditionalNodeNetworkConfigs() AdditionalNodeNetworkConfigArrayOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) []AdditionalNodeNetworkConfig { return v.AdditionalNodeNetworkConfigs }).(AdditionalNodeNetworkConfigArrayOutput)
+}
+
+// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+func (o NodeNetworkConfigOutput) AdditionalPodNetworkConfigs() AdditionalPodNetworkConfigArrayOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) []AdditionalPodNetworkConfig { return v.AdditionalPodNetworkConfigs }).(AdditionalPodNetworkConfigArrayOutput)
+}
+
 // Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
@@ -15544,6 +17913,26 @@ func (o NodeNetworkConfigPtrOutput) Elem() NodeNetworkConfigOutput {
 		var ret NodeNetworkConfig
 		return ret
 	}).(NodeNetworkConfigOutput)
+}
+
+// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+func (o NodeNetworkConfigPtrOutput) AdditionalNodeNetworkConfigs() AdditionalNodeNetworkConfigArrayOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) []AdditionalNodeNetworkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalNodeNetworkConfigs
+	}).(AdditionalNodeNetworkConfigArrayOutput)
+}
+
+// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+func (o NodeNetworkConfigPtrOutput) AdditionalPodNetworkConfigs() AdditionalPodNetworkConfigArrayOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) []AdditionalPodNetworkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalPodNetworkConfigs
+	}).(AdditionalPodNetworkConfigArrayOutput)
 }
 
 // Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -15608,6 +17997,10 @@ func (o NodeNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 
 // Parameters for node pool-level network config.
 type NodeNetworkConfigResponse struct {
+	// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+	AdditionalNodeNetworkConfigs []AdditionalNodeNetworkConfigResponse `pulumi:"additionalNodeNetworkConfigs"`
+	// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+	AdditionalPodNetworkConfigs []AdditionalPodNetworkConfigResponse `pulumi:"additionalPodNetworkConfigs"`
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange bool `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
@@ -15618,6 +18011,8 @@ type NodeNetworkConfigResponse struct {
 	PodCidrOverprovisionConfig PodCIDROverprovisionConfigResponse `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock string `pulumi:"podIpv4CidrBlock"`
+	// [Output only] The utilization of the IPv4 range for the pod. The ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+	PodIpv4RangeUtilization float64 `pulumi:"podIpv4RangeUtilization"`
 	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodRange string `pulumi:"podRange"`
 }
@@ -15641,6 +18036,20 @@ func (o NodeNetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.O
 	return pulumix.Output[NodeNetworkConfigResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+func (o NodeNetworkConfigResponseOutput) AdditionalNodeNetworkConfigs() AdditionalNodeNetworkConfigResponseArrayOutput {
+	return o.ApplyT(func(v NodeNetworkConfigResponse) []AdditionalNodeNetworkConfigResponse {
+		return v.AdditionalNodeNetworkConfigs
+	}).(AdditionalNodeNetworkConfigResponseArrayOutput)
+}
+
+// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+func (o NodeNetworkConfigResponseOutput) AdditionalPodNetworkConfigs() AdditionalPodNetworkConfigResponseArrayOutput {
+	return o.ApplyT(func(v NodeNetworkConfigResponse) []AdditionalPodNetworkConfigResponse {
+		return v.AdditionalPodNetworkConfigs
+	}).(AdditionalPodNetworkConfigResponseArrayOutput)
 }
 
 // Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -15670,6 +18079,11 @@ func (o NodeNetworkConfigResponseOutput) PodIpv4CidrBlock() pulumi.StringOutput 
 	return o.ApplyT(func(v NodeNetworkConfigResponse) string { return v.PodIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
+// [Output only] The utilization of the IPv4 range for the pod. The ratio is Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+func (o NodeNetworkConfigResponseOutput) PodIpv4RangeUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v NodeNetworkConfigResponse) float64 { return v.PodIpv4RangeUtilization }).(pulumi.Float64Output)
+}
+
 // The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigResponseOutput) PodRange() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeNetworkConfigResponse) string { return v.PodRange }).(pulumi.StringOutput)
@@ -15679,6 +18093,8 @@ func (o NodeNetworkConfigResponseOutput) PodRange() pulumi.StringOutput {
 type NodePoolType struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
+	// Enable best effort provisioning for nodes
+	BestEffortProvisioning *BestEffortProvisioning `pulumi:"bestEffortProvisioning"`
 	// Which conditions caused the current node pool state.
 	Conditions []StatusCondition `pulumi:"conditions"`
 	// The node configuration of the pool.
@@ -15699,6 +18115,8 @@ type NodePoolType struct {
 	NetworkConfig *NodeNetworkConfig `pulumi:"networkConfig"`
 	// Specifies the node placement policy.
 	PlacementPolicy *PlacementPolicy `pulumi:"placementPolicy"`
+	// Specifies the configuration of queued provisioning.
+	QueuedProvisioning *QueuedProvisioning `pulumi:"queuedProvisioning"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
@@ -15720,6 +18138,8 @@ type NodePoolTypeInput interface {
 type NodePoolTypeArgs struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingPtrInput `pulumi:"autoscaling"`
+	// Enable best effort provisioning for nodes
+	BestEffortProvisioning BestEffortProvisioningPtrInput `pulumi:"bestEffortProvisioning"`
 	// Which conditions caused the current node pool state.
 	Conditions StatusConditionArrayInput `pulumi:"conditions"`
 	// The node configuration of the pool.
@@ -15740,6 +18160,8 @@ type NodePoolTypeArgs struct {
 	NetworkConfig NodeNetworkConfigPtrInput `pulumi:"networkConfig"`
 	// Specifies the node placement policy.
 	PlacementPolicy PlacementPolicyPtrInput `pulumi:"placementPolicy"`
+	// Specifies the configuration of queued provisioning.
+	QueuedProvisioning QueuedProvisioningPtrInput `pulumi:"queuedProvisioning"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
 	// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
@@ -15821,6 +18243,11 @@ func (o NodePoolTypeOutput) Autoscaling() NodePoolAutoscalingPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *NodePoolAutoscaling { return v.Autoscaling }).(NodePoolAutoscalingPtrOutput)
 }
 
+// Enable best effort provisioning for nodes
+func (o NodePoolTypeOutput) BestEffortProvisioning() BestEffortProvisioningPtrOutput {
+	return o.ApplyT(func(v NodePoolType) *BestEffortProvisioning { return v.BestEffortProvisioning }).(BestEffortProvisioningPtrOutput)
+}
+
 // Which conditions caused the current node pool state.
 func (o NodePoolTypeOutput) Conditions() StatusConditionArrayOutput {
 	return o.ApplyT(func(v NodePoolType) []StatusCondition { return v.Conditions }).(StatusConditionArrayOutput)
@@ -15871,6 +18298,11 @@ func (o NodePoolTypeOutput) PlacementPolicy() PlacementPolicyPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *PlacementPolicy { return v.PlacementPolicy }).(PlacementPolicyPtrOutput)
 }
 
+// Specifies the configuration of queued provisioning.
+func (o NodePoolTypeOutput) QueuedProvisioning() QueuedProvisioningPtrOutput {
+	return o.ApplyT(func(v NodePoolType) *QueuedProvisioning { return v.QueuedProvisioning }).(QueuedProvisioningPtrOutput)
+}
+
 // Upgrade settings control disruption and speed of the upgrade.
 func (o NodePoolTypeOutput) UpgradeSettings() UpgradeSettingsPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *UpgradeSettings { return v.UpgradeSettings }).(UpgradeSettingsPtrOutput)
@@ -15911,6 +18343,8 @@ func (o NodePoolTypeArrayOutput) Index(i pulumi.IntInput) NodePoolTypeOutput {
 type NodePoolAutoConfig struct {
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
 	NetworkTags *NetworkTags `pulumi:"networkTags"`
+	// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
+	ResourceManagerTags *ResourceManagerTags `pulumi:"resourceManagerTags"`
 }
 
 // NodePoolAutoConfigInput is an input type that accepts NodePoolAutoConfigArgs and NodePoolAutoConfigOutput values.
@@ -15928,6 +18362,8 @@ type NodePoolAutoConfigInput interface {
 type NodePoolAutoConfigArgs struct {
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
 	NetworkTags NetworkTagsPtrInput `pulumi:"networkTags"`
+	// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
+	ResourceManagerTags ResourceManagerTagsPtrInput `pulumi:"resourceManagerTags"`
 }
 
 func (NodePoolAutoConfigArgs) ElementType() reflect.Type {
@@ -16031,6 +18467,11 @@ func (o NodePoolAutoConfigOutput) NetworkTags() NetworkTagsPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoConfig) *NetworkTags { return v.NetworkTags }).(NetworkTagsPtrOutput)
 }
 
+// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
+func (o NodePoolAutoConfigOutput) ResourceManagerTags() ResourceManagerTagsPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoConfig) *ResourceManagerTags { return v.ResourceManagerTags }).(ResourceManagerTagsPtrOutput)
+}
+
 type NodePoolAutoConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NodePoolAutoConfigPtrOutput) ElementType() reflect.Type {
@@ -16071,10 +18512,22 @@ func (o NodePoolAutoConfigPtrOutput) NetworkTags() NetworkTagsPtrOutput {
 	}).(NetworkTagsPtrOutput)
 }
 
+// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
+func (o NodePoolAutoConfigPtrOutput) ResourceManagerTags() ResourceManagerTagsPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoConfig) *ResourceManagerTags {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(ResourceManagerTagsPtrOutput)
+}
+
 // Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
 type NodePoolAutoConfigResponse struct {
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
 	NetworkTags NetworkTagsResponse `pulumi:"networkTags"`
+	// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
+	ResourceManagerTags ResourceManagerTagsResponse `pulumi:"resourceManagerTags"`
 }
 
 // Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
@@ -16101,6 +18554,11 @@ func (o NodePoolAutoConfigResponseOutput) ToOutput(ctx context.Context) pulumix.
 // The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
 func (o NodePoolAutoConfigResponseOutput) NetworkTags() NetworkTagsResponseOutput {
 	return o.ApplyT(func(v NodePoolAutoConfigResponse) NetworkTagsResponse { return v.NetworkTags }).(NetworkTagsResponseOutput)
+}
+
+// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
+func (o NodePoolAutoConfigResponseOutput) ResourceManagerTags() ResourceManagerTagsResponseOutput {
+	return o.ApplyT(func(v NodePoolAutoConfigResponse) ResourceManagerTagsResponse { return v.ResourceManagerTags }).(ResourceManagerTagsResponseOutput)
 }
 
 // NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
@@ -16851,6 +19309,8 @@ func (o NodePoolLoggingConfigResponseOutput) VariantConfig() LoggingVariantConfi
 type NodePoolResponse struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingResponse `pulumi:"autoscaling"`
+	// Enable best effort provisioning for nodes
+	BestEffortProvisioning BestEffortProvisioningResponse `pulumi:"bestEffortProvisioning"`
 	// Which conditions caused the current node pool state.
 	Conditions []StatusConditionResponse `pulumi:"conditions"`
 	// The node configuration of the pool.
@@ -16875,6 +19335,8 @@ type NodePoolResponse struct {
 	PlacementPolicy PlacementPolicyResponse `pulumi:"placementPolicy"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize int `pulumi:"podIpv4CidrSize"`
+	// Specifies the configuration of queued provisioning.
+	QueuedProvisioning QueuedProvisioningResponse `pulumi:"queuedProvisioning"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
@@ -16915,6 +19377,11 @@ func (o NodePoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Nod
 // Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 func (o NodePoolResponseOutput) Autoscaling() NodePoolAutoscalingResponseOutput {
 	return o.ApplyT(func(v NodePoolResponse) NodePoolAutoscalingResponse { return v.Autoscaling }).(NodePoolAutoscalingResponseOutput)
+}
+
+// Enable best effort provisioning for nodes
+func (o NodePoolResponseOutput) BestEffortProvisioning() BestEffortProvisioningResponseOutput {
+	return o.ApplyT(func(v NodePoolResponse) BestEffortProvisioningResponse { return v.BestEffortProvisioning }).(BestEffortProvisioningResponseOutput)
 }
 
 // Which conditions caused the current node pool state.
@@ -16975,6 +19442,11 @@ func (o NodePoolResponseOutput) PlacementPolicy() PlacementPolicyResponseOutput 
 // [Output only] The pod CIDR block size per node in this node pool.
 func (o NodePoolResponseOutput) PodIpv4CidrSize() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolResponse) int { return v.PodIpv4CidrSize }).(pulumi.IntOutput)
+}
+
+// Specifies the configuration of queued provisioning.
+func (o NodePoolResponseOutput) QueuedProvisioning() QueuedProvisioningResponseOutput {
+	return o.ApplyT(func(v NodePoolResponse) QueuedProvisioningResponse { return v.QueuedProvisioning }).(QueuedProvisioningResponseOutput)
 }
 
 // [Output only] Server-defined URL for the resource.
@@ -17451,8 +19923,234 @@ func (o NotificationConfigResponseOutput) Pubsub() PubSubResponseOutput {
 	return o.ApplyT(func(v NotificationConfigResponse) PubSubResponse { return v.Pubsub }).(PubSubResponseOutput)
 }
 
+// ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
+type ParentProductConfig struct {
+	// Labels contain the configuration of the parent product.
+	Labels map[string]string `pulumi:"labels"`
+	// Name of the parent product associated with the cluster.
+	ProductName *string `pulumi:"productName"`
+}
+
+// ParentProductConfigInput is an input type that accepts ParentProductConfigArgs and ParentProductConfigOutput values.
+// You can construct a concrete instance of `ParentProductConfigInput` via:
+//
+//	ParentProductConfigArgs{...}
+type ParentProductConfigInput interface {
+	pulumi.Input
+
+	ToParentProductConfigOutput() ParentProductConfigOutput
+	ToParentProductConfigOutputWithContext(context.Context) ParentProductConfigOutput
+}
+
+// ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
+type ParentProductConfigArgs struct {
+	// Labels contain the configuration of the parent product.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Name of the parent product associated with the cluster.
+	ProductName pulumi.StringPtrInput `pulumi:"productName"`
+}
+
+func (ParentProductConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParentProductConfig)(nil)).Elem()
+}
+
+func (i ParentProductConfigArgs) ToParentProductConfigOutput() ParentProductConfigOutput {
+	return i.ToParentProductConfigOutputWithContext(context.Background())
+}
+
+func (i ParentProductConfigArgs) ToParentProductConfigOutputWithContext(ctx context.Context) ParentProductConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParentProductConfigOutput)
+}
+
+func (i ParentProductConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ParentProductConfig] {
+	return pulumix.Output[ParentProductConfig]{
+		OutputState: i.ToParentProductConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ParentProductConfigArgs) ToParentProductConfigPtrOutput() ParentProductConfigPtrOutput {
+	return i.ToParentProductConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ParentProductConfigArgs) ToParentProductConfigPtrOutputWithContext(ctx context.Context) ParentProductConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParentProductConfigOutput).ToParentProductConfigPtrOutputWithContext(ctx)
+}
+
+// ParentProductConfigPtrInput is an input type that accepts ParentProductConfigArgs, ParentProductConfigPtr and ParentProductConfigPtrOutput values.
+// You can construct a concrete instance of `ParentProductConfigPtrInput` via:
+//
+//	        ParentProductConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ParentProductConfigPtrInput interface {
+	pulumi.Input
+
+	ToParentProductConfigPtrOutput() ParentProductConfigPtrOutput
+	ToParentProductConfigPtrOutputWithContext(context.Context) ParentProductConfigPtrOutput
+}
+
+type parentProductConfigPtrType ParentProductConfigArgs
+
+func ParentProductConfigPtr(v *ParentProductConfigArgs) ParentProductConfigPtrInput {
+	return (*parentProductConfigPtrType)(v)
+}
+
+func (*parentProductConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParentProductConfig)(nil)).Elem()
+}
+
+func (i *parentProductConfigPtrType) ToParentProductConfigPtrOutput() ParentProductConfigPtrOutput {
+	return i.ToParentProductConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *parentProductConfigPtrType) ToParentProductConfigPtrOutputWithContext(ctx context.Context) ParentProductConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParentProductConfigPtrOutput)
+}
+
+func (i *parentProductConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ParentProductConfig] {
+	return pulumix.Output[*ParentProductConfig]{
+		OutputState: i.ToParentProductConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
+type ParentProductConfigOutput struct{ *pulumi.OutputState }
+
+func (ParentProductConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParentProductConfig)(nil)).Elem()
+}
+
+func (o ParentProductConfigOutput) ToParentProductConfigOutput() ParentProductConfigOutput {
+	return o
+}
+
+func (o ParentProductConfigOutput) ToParentProductConfigOutputWithContext(ctx context.Context) ParentProductConfigOutput {
+	return o
+}
+
+func (o ParentProductConfigOutput) ToParentProductConfigPtrOutput() ParentProductConfigPtrOutput {
+	return o.ToParentProductConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ParentProductConfigOutput) ToParentProductConfigPtrOutputWithContext(ctx context.Context) ParentProductConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParentProductConfig) *ParentProductConfig {
+		return &v
+	}).(ParentProductConfigPtrOutput)
+}
+
+func (o ParentProductConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ParentProductConfig] {
+	return pulumix.Output[ParentProductConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Labels contain the configuration of the parent product.
+func (o ParentProductConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ParentProductConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the parent product associated with the cluster.
+func (o ParentProductConfigOutput) ProductName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParentProductConfig) *string { return v.ProductName }).(pulumi.StringPtrOutput)
+}
+
+type ParentProductConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ParentProductConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ParentProductConfig)(nil)).Elem()
+}
+
+func (o ParentProductConfigPtrOutput) ToParentProductConfigPtrOutput() ParentProductConfigPtrOutput {
+	return o
+}
+
+func (o ParentProductConfigPtrOutput) ToParentProductConfigPtrOutputWithContext(ctx context.Context) ParentProductConfigPtrOutput {
+	return o
+}
+
+func (o ParentProductConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ParentProductConfig] {
+	return pulumix.Output[*ParentProductConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ParentProductConfigPtrOutput) Elem() ParentProductConfigOutput {
+	return o.ApplyT(func(v *ParentProductConfig) ParentProductConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ParentProductConfig
+		return ret
+	}).(ParentProductConfigOutput)
+}
+
+// Labels contain the configuration of the parent product.
+func (o ParentProductConfigPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ParentProductConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Name of the parent product associated with the cluster.
+func (o ParentProductConfigPtrOutput) ProductName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParentProductConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductName
+	}).(pulumi.StringPtrOutput)
+}
+
+// ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
+type ParentProductConfigResponse struct {
+	// Labels contain the configuration of the parent product.
+	Labels map[string]string `pulumi:"labels"`
+	// Name of the parent product associated with the cluster.
+	ProductName string `pulumi:"productName"`
+}
+
+// ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
+type ParentProductConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ParentProductConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParentProductConfigResponse)(nil)).Elem()
+}
+
+func (o ParentProductConfigResponseOutput) ToParentProductConfigResponseOutput() ParentProductConfigResponseOutput {
+	return o
+}
+
+func (o ParentProductConfigResponseOutput) ToParentProductConfigResponseOutputWithContext(ctx context.Context) ParentProductConfigResponseOutput {
+	return o
+}
+
+func (o ParentProductConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParentProductConfigResponse] {
+	return pulumix.Output[ParentProductConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Labels contain the configuration of the parent product.
+func (o ParentProductConfigResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ParentProductConfigResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the parent product associated with the cluster.
+func (o ParentProductConfigResponseOutput) ProductName() pulumi.StringOutput {
+	return o.ApplyT(func(v ParentProductConfigResponse) string { return v.ProductName }).(pulumi.StringOutput)
+}
+
 // PlacementPolicy defines the placement policy used by the node pool.
 type PlacementPolicy struct {
+	// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+	PolicyName *string `pulumi:"policyName"`
+	// Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+	TpuTopology *string `pulumi:"tpuTopology"`
 	// The type of placement.
 	Type *PlacementPolicyType `pulumi:"type"`
 }
@@ -17470,6 +20168,10 @@ type PlacementPolicyInput interface {
 
 // PlacementPolicy defines the placement policy used by the node pool.
 type PlacementPolicyArgs struct {
+	// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
+	// Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+	TpuTopology pulumi.StringPtrInput `pulumi:"tpuTopology"`
 	// The type of placement.
 	Type PlacementPolicyTypePtrInput `pulumi:"type"`
 }
@@ -17570,6 +20272,16 @@ func (o PlacementPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[Plac
 	}
 }
 
+// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+func (o PlacementPolicyOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PlacementPolicy) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+func (o PlacementPolicyOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PlacementPolicy) *string { return v.TpuTopology }).(pulumi.StringPtrOutput)
+}
+
 // The type of placement.
 func (o PlacementPolicyOutput) Type() PlacementPolicyTypePtrOutput {
 	return o.ApplyT(func(v PlacementPolicy) *PlacementPolicyType { return v.Type }).(PlacementPolicyTypePtrOutput)
@@ -17605,6 +20317,26 @@ func (o PlacementPolicyPtrOutput) Elem() PlacementPolicyOutput {
 	}).(PlacementPolicyOutput)
 }
 
+// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+func (o PlacementPolicyPtrOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+func (o PlacementPolicyPtrOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TpuTopology
+	}).(pulumi.StringPtrOutput)
+}
+
 // The type of placement.
 func (o PlacementPolicyPtrOutput) Type() PlacementPolicyTypePtrOutput {
 	return o.ApplyT(func(v *PlacementPolicy) *PlacementPolicyType {
@@ -17617,6 +20349,10 @@ func (o PlacementPolicyPtrOutput) Type() PlacementPolicyTypePtrOutput {
 
 // PlacementPolicy defines the placement policy used by the node pool.
 type PlacementPolicyResponse struct {
+	// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+	PolicyName string `pulumi:"policyName"`
+	// Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+	TpuTopology string `pulumi:"tpuTopology"`
 	// The type of placement.
 	Type string `pulumi:"type"`
 }
@@ -17640,6 +20376,16 @@ func (o PlacementPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	return pulumix.Output[PlacementPolicyResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+func (o PlacementPolicyResponseOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v PlacementPolicyResponse) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+func (o PlacementPolicyResponseOutput) TpuTopology() pulumi.StringOutput {
+	return o.ApplyT(func(v PlacementPolicyResponse) string { return v.TpuTopology }).(pulumi.StringOutput)
 }
 
 // The type of placement.
@@ -18612,6 +21358,267 @@ func (o PubSubResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubSubResponse) string { return v.Topic }).(pulumi.StringOutput)
 }
 
+// QueuedProvisioning defines the queued provisioning used by the node pool.
+type QueuedProvisioning struct {
+	// Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// QueuedProvisioningInput is an input type that accepts QueuedProvisioningArgs and QueuedProvisioningOutput values.
+// You can construct a concrete instance of `QueuedProvisioningInput` via:
+//
+//	QueuedProvisioningArgs{...}
+type QueuedProvisioningInput interface {
+	pulumi.Input
+
+	ToQueuedProvisioningOutput() QueuedProvisioningOutput
+	ToQueuedProvisioningOutputWithContext(context.Context) QueuedProvisioningOutput
+}
+
+// QueuedProvisioning defines the queued provisioning used by the node pool.
+type QueuedProvisioningArgs struct {
+	// Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (QueuedProvisioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuedProvisioning)(nil)).Elem()
+}
+
+func (i QueuedProvisioningArgs) ToQueuedProvisioningOutput() QueuedProvisioningOutput {
+	return i.ToQueuedProvisioningOutputWithContext(context.Background())
+}
+
+func (i QueuedProvisioningArgs) ToQueuedProvisioningOutputWithContext(ctx context.Context) QueuedProvisioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueuedProvisioningOutput)
+}
+
+func (i QueuedProvisioningArgs) ToOutput(ctx context.Context) pulumix.Output[QueuedProvisioning] {
+	return pulumix.Output[QueuedProvisioning]{
+		OutputState: i.ToQueuedProvisioningOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i QueuedProvisioningArgs) ToQueuedProvisioningPtrOutput() QueuedProvisioningPtrOutput {
+	return i.ToQueuedProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i QueuedProvisioningArgs) ToQueuedProvisioningPtrOutputWithContext(ctx context.Context) QueuedProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueuedProvisioningOutput).ToQueuedProvisioningPtrOutputWithContext(ctx)
+}
+
+// QueuedProvisioningPtrInput is an input type that accepts QueuedProvisioningArgs, QueuedProvisioningPtr and QueuedProvisioningPtrOutput values.
+// You can construct a concrete instance of `QueuedProvisioningPtrInput` via:
+//
+//	        QueuedProvisioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueuedProvisioningPtrInput interface {
+	pulumi.Input
+
+	ToQueuedProvisioningPtrOutput() QueuedProvisioningPtrOutput
+	ToQueuedProvisioningPtrOutputWithContext(context.Context) QueuedProvisioningPtrOutput
+}
+
+type queuedProvisioningPtrType QueuedProvisioningArgs
+
+func QueuedProvisioningPtr(v *QueuedProvisioningArgs) QueuedProvisioningPtrInput {
+	return (*queuedProvisioningPtrType)(v)
+}
+
+func (*queuedProvisioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueuedProvisioning)(nil)).Elem()
+}
+
+func (i *queuedProvisioningPtrType) ToQueuedProvisioningPtrOutput() QueuedProvisioningPtrOutput {
+	return i.ToQueuedProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i *queuedProvisioningPtrType) ToQueuedProvisioningPtrOutputWithContext(ctx context.Context) QueuedProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueuedProvisioningPtrOutput)
+}
+
+func (i *queuedProvisioningPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueuedProvisioning] {
+	return pulumix.Output[*QueuedProvisioning]{
+		OutputState: i.ToQueuedProvisioningPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// QueuedProvisioning defines the queued provisioning used by the node pool.
+type QueuedProvisioningOutput struct{ *pulumi.OutputState }
+
+func (QueuedProvisioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuedProvisioning)(nil)).Elem()
+}
+
+func (o QueuedProvisioningOutput) ToQueuedProvisioningOutput() QueuedProvisioningOutput {
+	return o
+}
+
+func (o QueuedProvisioningOutput) ToQueuedProvisioningOutputWithContext(ctx context.Context) QueuedProvisioningOutput {
+	return o
+}
+
+func (o QueuedProvisioningOutput) ToQueuedProvisioningPtrOutput() QueuedProvisioningPtrOutput {
+	return o.ToQueuedProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (o QueuedProvisioningOutput) ToQueuedProvisioningPtrOutputWithContext(ctx context.Context) QueuedProvisioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueuedProvisioning) *QueuedProvisioning {
+		return &v
+	}).(QueuedProvisioningPtrOutput)
+}
+
+func (o QueuedProvisioningOutput) ToOutput(ctx context.Context) pulumix.Output[QueuedProvisioning] {
+	return pulumix.Output[QueuedProvisioning]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
+func (o QueuedProvisioningOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QueuedProvisioning) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type QueuedProvisioningPtrOutput struct{ *pulumi.OutputState }
+
+func (QueuedProvisioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueuedProvisioning)(nil)).Elem()
+}
+
+func (o QueuedProvisioningPtrOutput) ToQueuedProvisioningPtrOutput() QueuedProvisioningPtrOutput {
+	return o
+}
+
+func (o QueuedProvisioningPtrOutput) ToQueuedProvisioningPtrOutputWithContext(ctx context.Context) QueuedProvisioningPtrOutput {
+	return o
+}
+
+func (o QueuedProvisioningPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueuedProvisioning] {
+	return pulumix.Output[*QueuedProvisioning]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o QueuedProvisioningPtrOutput) Elem() QueuedProvisioningOutput {
+	return o.ApplyT(func(v *QueuedProvisioning) QueuedProvisioning {
+		if v != nil {
+			return *v
+		}
+		var ret QueuedProvisioning
+		return ret
+	}).(QueuedProvisioningOutput)
+}
+
+// Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
+func (o QueuedProvisioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QueuedProvisioning) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// QueuedProvisioning defines the queued provisioning used by the node pool.
+type QueuedProvisioningResponse struct {
+	// Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// QueuedProvisioning defines the queued provisioning used by the node pool.
+type QueuedProvisioningResponseOutput struct{ *pulumi.OutputState }
+
+func (QueuedProvisioningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuedProvisioningResponse)(nil)).Elem()
+}
+
+func (o QueuedProvisioningResponseOutput) ToQueuedProvisioningResponseOutput() QueuedProvisioningResponseOutput {
+	return o
+}
+
+func (o QueuedProvisioningResponseOutput) ToQueuedProvisioningResponseOutputWithContext(ctx context.Context) QueuedProvisioningResponseOutput {
+	return o
+}
+
+func (o QueuedProvisioningResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueuedProvisioningResponse] {
+	return pulumix.Output[QueuedProvisioningResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
+func (o QueuedProvisioningResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v QueuedProvisioningResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// RangeInfo contains the range name and the range utilization by this cluster.
+type RangeInfoResponse struct {
+	// [Output only] Name of a range.
+	RangeName string `pulumi:"rangeName"`
+	// [Output only] The utilization of the range.
+	Utilization float64 `pulumi:"utilization"`
+}
+
+// RangeInfo contains the range name and the range utilization by this cluster.
+type RangeInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (RangeInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RangeInfoResponse)(nil)).Elem()
+}
+
+func (o RangeInfoResponseOutput) ToRangeInfoResponseOutput() RangeInfoResponseOutput {
+	return o
+}
+
+func (o RangeInfoResponseOutput) ToRangeInfoResponseOutputWithContext(ctx context.Context) RangeInfoResponseOutput {
+	return o
+}
+
+func (o RangeInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RangeInfoResponse] {
+	return pulumix.Output[RangeInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// [Output only] Name of a range.
+func (o RangeInfoResponseOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v RangeInfoResponse) string { return v.RangeName }).(pulumi.StringOutput)
+}
+
+// [Output only] The utilization of the range.
+func (o RangeInfoResponseOutput) Utilization() pulumi.Float64Output {
+	return o.ApplyT(func(v RangeInfoResponse) float64 { return v.Utilization }).(pulumi.Float64Output)
+}
+
+type RangeInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RangeInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RangeInfoResponse)(nil)).Elem()
+}
+
+func (o RangeInfoResponseArrayOutput) ToRangeInfoResponseArrayOutput() RangeInfoResponseArrayOutput {
+	return o
+}
+
+func (o RangeInfoResponseArrayOutput) ToRangeInfoResponseArrayOutputWithContext(ctx context.Context) RangeInfoResponseArrayOutput {
+	return o
+}
+
+func (o RangeInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RangeInfoResponse] {
+	return pulumix.Output[[]RangeInfoResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RangeInfoResponseArrayOutput) Index(i pulumi.IntInput) RangeInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RangeInfoResponse {
+		return vs[0].([]RangeInfoResponse)[vs[1].(int)]
+	}).(RangeInfoResponseOutput)
+}
+
 // Represents an arbitrary window of time that recurs.
 type RecurringTimeWindow struct {
 	// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this window reccurs. They go on for the span of time between the start and end time. For example, to have something repeat every weekday, you'd use: `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR` To repeat some window daily (equivalent to the DailyMaintenanceWindow): `FREQ=DAILY` For the first weekend of every month: `FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU` This specifies how frequently the window starts. Eg, if you wanted to have a 9-5 UTC-4 window every weekday, you'd use something like: ```start time = 2019-01-01T09:00:00-0400 end time = 2019-01-01T17:00:00-0400 recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR``` Windows can span multiple days. Eg, to make the window encompass every weekend from midnight Saturday till the last minute of Sunday UTC: ```start time = 2019-01-05T00:00:00Z end time = 2019-01-07T23:59:00Z recurrence = FREQ=WEEKLY;BYDAY=SA``` Note the start and end time's specific dates are largely arbitrary except to specify duration of the window and when it first starts. The FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported.
@@ -19572,6 +22579,202 @@ func (o ResourceLimitResponseArrayOutput) Index(i pulumi.IntInput) ResourceLimit
 	}).(ResourceLimitResponseOutput)
 }
 
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications in https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values.
+type ResourceManagerTags struct {
+	// TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceManagerTagsInput is an input type that accepts ResourceManagerTagsArgs and ResourceManagerTagsOutput values.
+// You can construct a concrete instance of `ResourceManagerTagsInput` via:
+//
+//	ResourceManagerTagsArgs{...}
+type ResourceManagerTagsInput interface {
+	pulumi.Input
+
+	ToResourceManagerTagsOutput() ResourceManagerTagsOutput
+	ToResourceManagerTagsOutputWithContext(context.Context) ResourceManagerTagsOutput
+}
+
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications in https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values.
+type ResourceManagerTagsArgs struct {
+	// TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceManagerTagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceManagerTags)(nil)).Elem()
+}
+
+func (i ResourceManagerTagsArgs) ToResourceManagerTagsOutput() ResourceManagerTagsOutput {
+	return i.ToResourceManagerTagsOutputWithContext(context.Background())
+}
+
+func (i ResourceManagerTagsArgs) ToResourceManagerTagsOutputWithContext(ctx context.Context) ResourceManagerTagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceManagerTagsOutput)
+}
+
+func (i ResourceManagerTagsArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceManagerTags] {
+	return pulumix.Output[ResourceManagerTags]{
+		OutputState: i.ToResourceManagerTagsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ResourceManagerTagsArgs) ToResourceManagerTagsPtrOutput() ResourceManagerTagsPtrOutput {
+	return i.ToResourceManagerTagsPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceManagerTagsArgs) ToResourceManagerTagsPtrOutputWithContext(ctx context.Context) ResourceManagerTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceManagerTagsOutput).ToResourceManagerTagsPtrOutputWithContext(ctx)
+}
+
+// ResourceManagerTagsPtrInput is an input type that accepts ResourceManagerTagsArgs, ResourceManagerTagsPtr and ResourceManagerTagsPtrOutput values.
+// You can construct a concrete instance of `ResourceManagerTagsPtrInput` via:
+//
+//	        ResourceManagerTagsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceManagerTagsPtrInput interface {
+	pulumi.Input
+
+	ToResourceManagerTagsPtrOutput() ResourceManagerTagsPtrOutput
+	ToResourceManagerTagsPtrOutputWithContext(context.Context) ResourceManagerTagsPtrOutput
+}
+
+type resourceManagerTagsPtrType ResourceManagerTagsArgs
+
+func ResourceManagerTagsPtr(v *ResourceManagerTagsArgs) ResourceManagerTagsPtrInput {
+	return (*resourceManagerTagsPtrType)(v)
+}
+
+func (*resourceManagerTagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceManagerTags)(nil)).Elem()
+}
+
+func (i *resourceManagerTagsPtrType) ToResourceManagerTagsPtrOutput() ResourceManagerTagsPtrOutput {
+	return i.ToResourceManagerTagsPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceManagerTagsPtrType) ToResourceManagerTagsPtrOutputWithContext(ctx context.Context) ResourceManagerTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceManagerTagsPtrOutput)
+}
+
+func (i *resourceManagerTagsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceManagerTags] {
+	return pulumix.Output[*ResourceManagerTags]{
+		OutputState: i.ToResourceManagerTagsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications in https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values.
+type ResourceManagerTagsOutput struct{ *pulumi.OutputState }
+
+func (ResourceManagerTagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceManagerTags)(nil)).Elem()
+}
+
+func (o ResourceManagerTagsOutput) ToResourceManagerTagsOutput() ResourceManagerTagsOutput {
+	return o
+}
+
+func (o ResourceManagerTagsOutput) ToResourceManagerTagsOutputWithContext(ctx context.Context) ResourceManagerTagsOutput {
+	return o
+}
+
+func (o ResourceManagerTagsOutput) ToResourceManagerTagsPtrOutput() ResourceManagerTagsPtrOutput {
+	return o.ToResourceManagerTagsPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceManagerTagsOutput) ToResourceManagerTagsPtrOutputWithContext(ctx context.Context) ResourceManagerTagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceManagerTags) *ResourceManagerTags {
+		return &v
+	}).(ResourceManagerTagsPtrOutput)
+}
+
+func (o ResourceManagerTagsOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceManagerTags] {
+	return pulumix.Output[ResourceManagerTags]{
+		OutputState: o.OutputState,
+	}
+}
+
+// TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`
+func (o ResourceManagerTagsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceManagerTags) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceManagerTagsPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceManagerTagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceManagerTags)(nil)).Elem()
+}
+
+func (o ResourceManagerTagsPtrOutput) ToResourceManagerTagsPtrOutput() ResourceManagerTagsPtrOutput {
+	return o
+}
+
+func (o ResourceManagerTagsPtrOutput) ToResourceManagerTagsPtrOutputWithContext(ctx context.Context) ResourceManagerTagsPtrOutput {
+	return o
+}
+
+func (o ResourceManagerTagsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceManagerTags] {
+	return pulumix.Output[*ResourceManagerTags]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ResourceManagerTagsPtrOutput) Elem() ResourceManagerTagsOutput {
+	return o.ApplyT(func(v *ResourceManagerTags) ResourceManagerTags {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceManagerTags
+		return ret
+	}).(ResourceManagerTagsOutput)
+}
+
+// TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`
+func (o ResourceManagerTagsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceManagerTags) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications in https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values.
+type ResourceManagerTagsResponse struct {
+	// TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications in https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values.
+type ResourceManagerTagsResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceManagerTagsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceManagerTagsResponse)(nil)).Elem()
+}
+
+func (o ResourceManagerTagsResponseOutput) ToResourceManagerTagsResponseOutput() ResourceManagerTagsResponseOutput {
+	return o
+}
+
+func (o ResourceManagerTagsResponseOutput) ToResourceManagerTagsResponseOutputWithContext(ctx context.Context) ResourceManagerTagsResponseOutput {
+	return o
+}
+
+func (o ResourceManagerTagsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceManagerTagsResponse] {
+	return pulumix.Output[ResourceManagerTagsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// TagKeyValue must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`
+func (o ResourceManagerTagsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceManagerTagsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
 // Configuration for exporting cluster resource usages.
 type ResourceUsageExportConfig struct {
 	// Configuration to use BigQuery as usage export destination.
@@ -20016,6 +23219,228 @@ func (o SandboxConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 // Type of the sandbox to use for the node.
 func (o SandboxConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SandboxConfigResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+type SecurityPostureConfig struct {
+	// Sets which mode to use for Security Posture features.
+	Mode *SecurityPostureConfigMode `pulumi:"mode"`
+	// Sets which mode to use for vulnerability scanning.
+	VulnerabilityMode *SecurityPostureConfigVulnerabilityMode `pulumi:"vulnerabilityMode"`
+}
+
+// SecurityPostureConfigInput is an input type that accepts SecurityPostureConfigArgs and SecurityPostureConfigOutput values.
+// You can construct a concrete instance of `SecurityPostureConfigInput` via:
+//
+//	SecurityPostureConfigArgs{...}
+type SecurityPostureConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPostureConfigOutput() SecurityPostureConfigOutput
+	ToSecurityPostureConfigOutputWithContext(context.Context) SecurityPostureConfigOutput
+}
+
+// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+type SecurityPostureConfigArgs struct {
+	// Sets which mode to use for Security Posture features.
+	Mode SecurityPostureConfigModePtrInput `pulumi:"mode"`
+	// Sets which mode to use for vulnerability scanning.
+	VulnerabilityMode SecurityPostureConfigVulnerabilityModePtrInput `pulumi:"vulnerabilityMode"`
+}
+
+func (SecurityPostureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfig)(nil)).Elem()
+}
+
+func (i SecurityPostureConfigArgs) ToSecurityPostureConfigOutput() SecurityPostureConfigOutput {
+	return i.ToSecurityPostureConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPostureConfigArgs) ToSecurityPostureConfigOutputWithContext(ctx context.Context) SecurityPostureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPostureConfigOutput)
+}
+
+func (i SecurityPostureConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPostureConfig] {
+	return pulumix.Output[SecurityPostureConfig]{
+		OutputState: i.ToSecurityPostureConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SecurityPostureConfigArgs) ToSecurityPostureConfigPtrOutput() SecurityPostureConfigPtrOutput {
+	return i.ToSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPostureConfigArgs) ToSecurityPostureConfigPtrOutputWithContext(ctx context.Context) SecurityPostureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPostureConfigOutput).ToSecurityPostureConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPostureConfigPtrInput is an input type that accepts SecurityPostureConfigArgs, SecurityPostureConfigPtr and SecurityPostureConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPostureConfigPtrInput` via:
+//
+//	        SecurityPostureConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPostureConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPostureConfigPtrOutput() SecurityPostureConfigPtrOutput
+	ToSecurityPostureConfigPtrOutputWithContext(context.Context) SecurityPostureConfigPtrOutput
+}
+
+type securityPostureConfigPtrType SecurityPostureConfigArgs
+
+func SecurityPostureConfigPtr(v *SecurityPostureConfigArgs) SecurityPostureConfigPtrInput {
+	return (*securityPostureConfigPtrType)(v)
+}
+
+func (*securityPostureConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPostureConfig)(nil)).Elem()
+}
+
+func (i *securityPostureConfigPtrType) ToSecurityPostureConfigPtrOutput() SecurityPostureConfigPtrOutput {
+	return i.ToSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPostureConfigPtrType) ToSecurityPostureConfigPtrOutputWithContext(ctx context.Context) SecurityPostureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPostureConfigPtrOutput)
+}
+
+func (i *securityPostureConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfig] {
+	return pulumix.Output[*SecurityPostureConfig]{
+		OutputState: i.ToSecurityPostureConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+type SecurityPostureConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfig)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigOutput) ToSecurityPostureConfigOutput() SecurityPostureConfigOutput {
+	return o
+}
+
+func (o SecurityPostureConfigOutput) ToSecurityPostureConfigOutputWithContext(ctx context.Context) SecurityPostureConfigOutput {
+	return o
+}
+
+func (o SecurityPostureConfigOutput) ToSecurityPostureConfigPtrOutput() SecurityPostureConfigPtrOutput {
+	return o.ToSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPostureConfigOutput) ToSecurityPostureConfigPtrOutputWithContext(ctx context.Context) SecurityPostureConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPostureConfig) *SecurityPostureConfig {
+		return &v
+	}).(SecurityPostureConfigPtrOutput)
+}
+
+func (o SecurityPostureConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPostureConfig] {
+	return pulumix.Output[SecurityPostureConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Sets which mode to use for Security Posture features.
+func (o SecurityPostureConfigOutput) Mode() SecurityPostureConfigModePtrOutput {
+	return o.ApplyT(func(v SecurityPostureConfig) *SecurityPostureConfigMode { return v.Mode }).(SecurityPostureConfigModePtrOutput)
+}
+
+// Sets which mode to use for vulnerability scanning.
+func (o SecurityPostureConfigOutput) VulnerabilityMode() SecurityPostureConfigVulnerabilityModePtrOutput {
+	return o.ApplyT(func(v SecurityPostureConfig) *SecurityPostureConfigVulnerabilityMode { return v.VulnerabilityMode }).(SecurityPostureConfigVulnerabilityModePtrOutput)
+}
+
+type SecurityPostureConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPostureConfig)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigPtrOutput) ToSecurityPostureConfigPtrOutput() SecurityPostureConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPostureConfigPtrOutput) ToSecurityPostureConfigPtrOutputWithContext(ctx context.Context) SecurityPostureConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPostureConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPostureConfig] {
+	return pulumix.Output[*SecurityPostureConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPostureConfigPtrOutput) Elem() SecurityPostureConfigOutput {
+	return o.ApplyT(func(v *SecurityPostureConfig) SecurityPostureConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPostureConfig
+		return ret
+	}).(SecurityPostureConfigOutput)
+}
+
+// Sets which mode to use for Security Posture features.
+func (o SecurityPostureConfigPtrOutput) Mode() SecurityPostureConfigModePtrOutput {
+	return o.ApplyT(func(v *SecurityPostureConfig) *SecurityPostureConfigMode {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(SecurityPostureConfigModePtrOutput)
+}
+
+// Sets which mode to use for vulnerability scanning.
+func (o SecurityPostureConfigPtrOutput) VulnerabilityMode() SecurityPostureConfigVulnerabilityModePtrOutput {
+	return o.ApplyT(func(v *SecurityPostureConfig) *SecurityPostureConfigVulnerabilityMode {
+		if v == nil {
+			return nil
+		}
+		return v.VulnerabilityMode
+	}).(SecurityPostureConfigVulnerabilityModePtrOutput)
+}
+
+// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+type SecurityPostureConfigResponse struct {
+	// Sets which mode to use for Security Posture features.
+	Mode string `pulumi:"mode"`
+	// Sets which mode to use for vulnerability scanning.
+	VulnerabilityMode string `pulumi:"vulnerabilityMode"`
+}
+
+// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+type SecurityPostureConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPostureConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPostureConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPostureConfigResponseOutput) ToSecurityPostureConfigResponseOutput() SecurityPostureConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPostureConfigResponseOutput) ToSecurityPostureConfigResponseOutputWithContext(ctx context.Context) SecurityPostureConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPostureConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPostureConfigResponse] {
+	return pulumix.Output[SecurityPostureConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Sets which mode to use for Security Posture features.
+func (o SecurityPostureConfigResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPostureConfigResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Sets which mode to use for vulnerability scanning.
+func (o SecurityPostureConfigResponseOutput) VulnerabilityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPostureConfigResponse) string { return v.VulnerabilityMode }).(pulumi.StringOutput)
 }
 
 // Config to block services with externalIPs field.
@@ -20630,6 +24055,202 @@ func (o ShieldedNodesResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 // Whether Shielded Nodes features are enabled on all nodes in this cluster.
 func (o ShieldedNodesResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ShieldedNodesResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.
+type SoleTenantConfig struct {
+	// NodeAffinities used to match to a shared sole tenant node group.
+	NodeAffinities []NodeAffinity `pulumi:"nodeAffinities"`
+}
+
+// SoleTenantConfigInput is an input type that accepts SoleTenantConfigArgs and SoleTenantConfigOutput values.
+// You can construct a concrete instance of `SoleTenantConfigInput` via:
+//
+//	SoleTenantConfigArgs{...}
+type SoleTenantConfigInput interface {
+	pulumi.Input
+
+	ToSoleTenantConfigOutput() SoleTenantConfigOutput
+	ToSoleTenantConfigOutputWithContext(context.Context) SoleTenantConfigOutput
+}
+
+// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.
+type SoleTenantConfigArgs struct {
+	// NodeAffinities used to match to a shared sole tenant node group.
+	NodeAffinities NodeAffinityArrayInput `pulumi:"nodeAffinities"`
+}
+
+func (SoleTenantConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenantConfig)(nil)).Elem()
+}
+
+func (i SoleTenantConfigArgs) ToSoleTenantConfigOutput() SoleTenantConfigOutput {
+	return i.ToSoleTenantConfigOutputWithContext(context.Background())
+}
+
+func (i SoleTenantConfigArgs) ToSoleTenantConfigOutputWithContext(ctx context.Context) SoleTenantConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoleTenantConfigOutput)
+}
+
+func (i SoleTenantConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SoleTenantConfig] {
+	return pulumix.Output[SoleTenantConfig]{
+		OutputState: i.ToSoleTenantConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SoleTenantConfigArgs) ToSoleTenantConfigPtrOutput() SoleTenantConfigPtrOutput {
+	return i.ToSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SoleTenantConfigArgs) ToSoleTenantConfigPtrOutputWithContext(ctx context.Context) SoleTenantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoleTenantConfigOutput).ToSoleTenantConfigPtrOutputWithContext(ctx)
+}
+
+// SoleTenantConfigPtrInput is an input type that accepts SoleTenantConfigArgs, SoleTenantConfigPtr and SoleTenantConfigPtrOutput values.
+// You can construct a concrete instance of `SoleTenantConfigPtrInput` via:
+//
+//	        SoleTenantConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SoleTenantConfigPtrInput interface {
+	pulumi.Input
+
+	ToSoleTenantConfigPtrOutput() SoleTenantConfigPtrOutput
+	ToSoleTenantConfigPtrOutputWithContext(context.Context) SoleTenantConfigPtrOutput
+}
+
+type soleTenantConfigPtrType SoleTenantConfigArgs
+
+func SoleTenantConfigPtr(v *SoleTenantConfigArgs) SoleTenantConfigPtrInput {
+	return (*soleTenantConfigPtrType)(v)
+}
+
+func (*soleTenantConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoleTenantConfig)(nil)).Elem()
+}
+
+func (i *soleTenantConfigPtrType) ToSoleTenantConfigPtrOutput() SoleTenantConfigPtrOutput {
+	return i.ToSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *soleTenantConfigPtrType) ToSoleTenantConfigPtrOutputWithContext(ctx context.Context) SoleTenantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoleTenantConfigPtrOutput)
+}
+
+func (i *soleTenantConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SoleTenantConfig] {
+	return pulumix.Output[*SoleTenantConfig]{
+		OutputState: i.ToSoleTenantConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.
+type SoleTenantConfigOutput struct{ *pulumi.OutputState }
+
+func (SoleTenantConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenantConfig)(nil)).Elem()
+}
+
+func (o SoleTenantConfigOutput) ToSoleTenantConfigOutput() SoleTenantConfigOutput {
+	return o
+}
+
+func (o SoleTenantConfigOutput) ToSoleTenantConfigOutputWithContext(ctx context.Context) SoleTenantConfigOutput {
+	return o
+}
+
+func (o SoleTenantConfigOutput) ToSoleTenantConfigPtrOutput() SoleTenantConfigPtrOutput {
+	return o.ToSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SoleTenantConfigOutput) ToSoleTenantConfigPtrOutputWithContext(ctx context.Context) SoleTenantConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoleTenantConfig) *SoleTenantConfig {
+		return &v
+	}).(SoleTenantConfigPtrOutput)
+}
+
+func (o SoleTenantConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SoleTenantConfig] {
+	return pulumix.Output[SoleTenantConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// NodeAffinities used to match to a shared sole tenant node group.
+func (o SoleTenantConfigOutput) NodeAffinities() NodeAffinityArrayOutput {
+	return o.ApplyT(func(v SoleTenantConfig) []NodeAffinity { return v.NodeAffinities }).(NodeAffinityArrayOutput)
+}
+
+type SoleTenantConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SoleTenantConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoleTenantConfig)(nil)).Elem()
+}
+
+func (o SoleTenantConfigPtrOutput) ToSoleTenantConfigPtrOutput() SoleTenantConfigPtrOutput {
+	return o
+}
+
+func (o SoleTenantConfigPtrOutput) ToSoleTenantConfigPtrOutputWithContext(ctx context.Context) SoleTenantConfigPtrOutput {
+	return o
+}
+
+func (o SoleTenantConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoleTenantConfig] {
+	return pulumix.Output[*SoleTenantConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SoleTenantConfigPtrOutput) Elem() SoleTenantConfigOutput {
+	return o.ApplyT(func(v *SoleTenantConfig) SoleTenantConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SoleTenantConfig
+		return ret
+	}).(SoleTenantConfigOutput)
+}
+
+// NodeAffinities used to match to a shared sole tenant node group.
+func (o SoleTenantConfigPtrOutput) NodeAffinities() NodeAffinityArrayOutput {
+	return o.ApplyT(func(v *SoleTenantConfig) []NodeAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.NodeAffinities
+	}).(NodeAffinityArrayOutput)
+}
+
+// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.
+type SoleTenantConfigResponse struct {
+	// NodeAffinities used to match to a shared sole tenant node group.
+	NodeAffinities []NodeAffinityResponse `pulumi:"nodeAffinities"`
+}
+
+// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.
+type SoleTenantConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SoleTenantConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenantConfigResponse)(nil)).Elem()
+}
+
+func (o SoleTenantConfigResponseOutput) ToSoleTenantConfigResponseOutput() SoleTenantConfigResponseOutput {
+	return o
+}
+
+func (o SoleTenantConfigResponseOutput) ToSoleTenantConfigResponseOutputWithContext(ctx context.Context) SoleTenantConfigResponseOutput {
+	return o
+}
+
+func (o SoleTenantConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SoleTenantConfigResponse] {
+	return pulumix.Output[SoleTenantConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// NodeAffinities used to match to a shared sole tenant node group.
+func (o SoleTenantConfigResponseOutput) NodeAffinities() NodeAffinityResponseArrayOutput {
+	return o.ApplyT(func(v SoleTenantConfigResponse) []NodeAffinityResponse { return v.NodeAffinities }).(NodeAffinityResponseArrayOutput)
 }
 
 // Standard rollout policy is the default policy for blue-green.
@@ -22638,11 +26259,213 @@ func (o WorkloadMetadataConfigResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkloadMetadataConfigResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+// WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.
+type WorkloadPolicyConfig struct {
+	// If true, workloads can use NET_ADMIN capability.
+	AllowNetAdmin *bool `pulumi:"allowNetAdmin"`
+}
+
+// WorkloadPolicyConfigInput is an input type that accepts WorkloadPolicyConfigArgs and WorkloadPolicyConfigOutput values.
+// You can construct a concrete instance of `WorkloadPolicyConfigInput` via:
+//
+//	WorkloadPolicyConfigArgs{...}
+type WorkloadPolicyConfigInput interface {
+	pulumi.Input
+
+	ToWorkloadPolicyConfigOutput() WorkloadPolicyConfigOutput
+	ToWorkloadPolicyConfigOutputWithContext(context.Context) WorkloadPolicyConfigOutput
+}
+
+// WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.
+type WorkloadPolicyConfigArgs struct {
+	// If true, workloads can use NET_ADMIN capability.
+	AllowNetAdmin pulumi.BoolPtrInput `pulumi:"allowNetAdmin"`
+}
+
+func (WorkloadPolicyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadPolicyConfig)(nil)).Elem()
+}
+
+func (i WorkloadPolicyConfigArgs) ToWorkloadPolicyConfigOutput() WorkloadPolicyConfigOutput {
+	return i.ToWorkloadPolicyConfigOutputWithContext(context.Background())
+}
+
+func (i WorkloadPolicyConfigArgs) ToWorkloadPolicyConfigOutputWithContext(ctx context.Context) WorkloadPolicyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadPolicyConfigOutput)
+}
+
+func (i WorkloadPolicyConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkloadPolicyConfig] {
+	return pulumix.Output[WorkloadPolicyConfig]{
+		OutputState: i.ToWorkloadPolicyConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i WorkloadPolicyConfigArgs) ToWorkloadPolicyConfigPtrOutput() WorkloadPolicyConfigPtrOutput {
+	return i.ToWorkloadPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadPolicyConfigArgs) ToWorkloadPolicyConfigPtrOutputWithContext(ctx context.Context) WorkloadPolicyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadPolicyConfigOutput).ToWorkloadPolicyConfigPtrOutputWithContext(ctx)
+}
+
+// WorkloadPolicyConfigPtrInput is an input type that accepts WorkloadPolicyConfigArgs, WorkloadPolicyConfigPtr and WorkloadPolicyConfigPtrOutput values.
+// You can construct a concrete instance of `WorkloadPolicyConfigPtrInput` via:
+//
+//	        WorkloadPolicyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkloadPolicyConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkloadPolicyConfigPtrOutput() WorkloadPolicyConfigPtrOutput
+	ToWorkloadPolicyConfigPtrOutputWithContext(context.Context) WorkloadPolicyConfigPtrOutput
+}
+
+type workloadPolicyConfigPtrType WorkloadPolicyConfigArgs
+
+func WorkloadPolicyConfigPtr(v *WorkloadPolicyConfigArgs) WorkloadPolicyConfigPtrInput {
+	return (*workloadPolicyConfigPtrType)(v)
+}
+
+func (*workloadPolicyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadPolicyConfig)(nil)).Elem()
+}
+
+func (i *workloadPolicyConfigPtrType) ToWorkloadPolicyConfigPtrOutput() WorkloadPolicyConfigPtrOutput {
+	return i.ToWorkloadPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workloadPolicyConfigPtrType) ToWorkloadPolicyConfigPtrOutputWithContext(ctx context.Context) WorkloadPolicyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadPolicyConfigPtrOutput)
+}
+
+func (i *workloadPolicyConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkloadPolicyConfig] {
+	return pulumix.Output[*WorkloadPolicyConfig]{
+		OutputState: i.ToWorkloadPolicyConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.
+type WorkloadPolicyConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkloadPolicyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadPolicyConfig)(nil)).Elem()
+}
+
+func (o WorkloadPolicyConfigOutput) ToWorkloadPolicyConfigOutput() WorkloadPolicyConfigOutput {
+	return o
+}
+
+func (o WorkloadPolicyConfigOutput) ToWorkloadPolicyConfigOutputWithContext(ctx context.Context) WorkloadPolicyConfigOutput {
+	return o
+}
+
+func (o WorkloadPolicyConfigOutput) ToWorkloadPolicyConfigPtrOutput() WorkloadPolicyConfigPtrOutput {
+	return o.ToWorkloadPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadPolicyConfigOutput) ToWorkloadPolicyConfigPtrOutputWithContext(ctx context.Context) WorkloadPolicyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadPolicyConfig) *WorkloadPolicyConfig {
+		return &v
+	}).(WorkloadPolicyConfigPtrOutput)
+}
+
+func (o WorkloadPolicyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadPolicyConfig] {
+	return pulumix.Output[WorkloadPolicyConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If true, workloads can use NET_ADMIN capability.
+func (o WorkloadPolicyConfigOutput) AllowNetAdmin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkloadPolicyConfig) *bool { return v.AllowNetAdmin }).(pulumi.BoolPtrOutput)
+}
+
+type WorkloadPolicyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadPolicyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadPolicyConfig)(nil)).Elem()
+}
+
+func (o WorkloadPolicyConfigPtrOutput) ToWorkloadPolicyConfigPtrOutput() WorkloadPolicyConfigPtrOutput {
+	return o
+}
+
+func (o WorkloadPolicyConfigPtrOutput) ToWorkloadPolicyConfigPtrOutputWithContext(ctx context.Context) WorkloadPolicyConfigPtrOutput {
+	return o
+}
+
+func (o WorkloadPolicyConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadPolicyConfig] {
+	return pulumix.Output[*WorkloadPolicyConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o WorkloadPolicyConfigPtrOutput) Elem() WorkloadPolicyConfigOutput {
+	return o.ApplyT(func(v *WorkloadPolicyConfig) WorkloadPolicyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadPolicyConfig
+		return ret
+	}).(WorkloadPolicyConfigOutput)
+}
+
+// If true, workloads can use NET_ADMIN capability.
+func (o WorkloadPolicyConfigPtrOutput) AllowNetAdmin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkloadPolicyConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowNetAdmin
+	}).(pulumi.BoolPtrOutput)
+}
+
+// WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.
+type WorkloadPolicyConfigResponse struct {
+	// If true, workloads can use NET_ADMIN capability.
+	AllowNetAdmin bool `pulumi:"allowNetAdmin"`
+}
+
+// WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.
+type WorkloadPolicyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkloadPolicyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadPolicyConfigResponse)(nil)).Elem()
+}
+
+func (o WorkloadPolicyConfigResponseOutput) ToWorkloadPolicyConfigResponseOutput() WorkloadPolicyConfigResponseOutput {
+	return o
+}
+
+func (o WorkloadPolicyConfigResponseOutput) ToWorkloadPolicyConfigResponseOutputWithContext(ctx context.Context) WorkloadPolicyConfigResponseOutput {
+	return o
+}
+
+func (o WorkloadPolicyConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadPolicyConfigResponse] {
+	return pulumix.Output[WorkloadPolicyConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If true, workloads can use NET_ADMIN capability.
+func (o WorkloadPolicyConfigResponseOutput) AllowNetAdmin() pulumi.BoolOutput {
+	return o.ApplyT(func(v WorkloadPolicyConfigResponse) bool { return v.AllowNetAdmin }).(pulumi.BoolOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigInput)(nil)).Elem(), AcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigArrayInput)(nil)).Elem(), AcceleratorConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdditionalNodeNetworkConfigInput)(nil)).Elem(), AdditionalNodeNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdditionalNodeNetworkConfigArrayInput)(nil)).Elem(), AdditionalNodeNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdditionalPodNetworkConfigInput)(nil)).Elem(), AdditionalPodNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdditionalPodNetworkConfigArrayInput)(nil)).Elem(), AdditionalPodNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigInput)(nil)).Elem(), AddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigPtrInput)(nil)).Elem(), AddonsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedDatapathObservabilityConfigInput)(nil)).Elem(), AdvancedDatapathObservabilityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedDatapathObservabilityConfigPtrInput)(nil)).Elem(), AdvancedDatapathObservabilityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesInput)(nil)).Elem(), AdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesPtrInput)(nil)).Elem(), AdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigInput)(nil)).Elem(), AuthenticatorGroupsConfigArgs{})
@@ -22653,6 +26476,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutopilotPtrInput)(nil)).Elem(), AutopilotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoprovisioningNodePoolDefaultsInput)(nil)).Elem(), AutoprovisioningNodePoolDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoprovisioningNodePoolDefaultsPtrInput)(nil)).Elem(), AutoprovisioningNodePoolDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BestEffortProvisioningInput)(nil)).Elem(), BestEffortProvisioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BestEffortProvisioningPtrInput)(nil)).Elem(), BestEffortProvisioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationInput)(nil)).Elem(), BigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationPtrInput)(nil)).Elem(), BigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationInput)(nil)).Elem(), BinaryAuthorizationArgs{})
@@ -22667,6 +26492,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigPtrInput)(nil)).Elem(), CloudRunConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingInput)(nil)).Elem(), ClusterAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingPtrInput)(nil)).Elem(), ClusterAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPerformanceConfigInput)(nil)).Elem(), ClusterNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPerformanceConfigPtrInput)(nil)).Elem(), ClusterNetworkPerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialNodesInput)(nil)).Elem(), ConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialNodesPtrInput)(nil)).Elem(), ConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigConnectorConfigInput)(nil)).Elem(), ConfigConnectorConfigArgs{})
@@ -22685,6 +26512,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSnatStatusPtrInput)(nil)).Elem(), DefaultSnatStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsCacheConfigInput)(nil)).Elem(), DnsCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsCacheConfigPtrInput)(nil)).Elem(), DnsCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseConfigInput)(nil)).Elem(), EnterpriseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseConfigPtrInput)(nil)).Elem(), EnterpriseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageLocalSsdConfigInput)(nil)).Elem(), EphemeralStorageLocalSsdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageLocalSsdConfigPtrInput)(nil)).Elem(), EphemeralStorageLocalSsdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FastSocketInput)(nil)).Elem(), FastSocketArgs{})
@@ -22693,6 +26522,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterPtrInput)(nil)).Elem(), FilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetInput)(nil)).Elem(), FleetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetPtrInput)(nil)).Elem(), FleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GPUDriverInstallationConfigInput)(nil)).Elem(), GPUDriverInstallationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GPUDriverInstallationConfigPtrInput)(nil)).Elem(), GPUDriverInstallationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigInput)(nil)).Elem(), GPUSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigPtrInput)(nil)).Elem(), GPUSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigInput)(nil)).Elem(), GatewayAPIConfigArgs{})
@@ -22703,6 +26534,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigPtrInput)(nil)).Elem(), GcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigPtrInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsFuseCsiDriverConfigInput)(nil)).Elem(), GcsFuseCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsFuseCsiDriverConfigPtrInput)(nil)).Elem(), GcsFuseCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeBackupAgentConfigInput)(nil)).Elem(), GkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeBackupAgentConfigPtrInput)(nil)).Elem(), GkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingInput)(nil)).Elem(), HorizontalPodAutoscalingArgs{})
@@ -22713,6 +26546,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyPtrInput)(nil)).Elem(), IPAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceConfigInput)(nil)).Elem(), IdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceConfigPtrInput)(nil)).Elem(), IdentityServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sBetaAPIConfigInput)(nil)).Elem(), K8sBetaAPIConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sBetaAPIConfigPtrInput)(nil)).Elem(), K8sBetaAPIConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDashboardInput)(nil)).Elem(), KubernetesDashboardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDashboardPtrInput)(nil)).Elem(), KubernetesDashboardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LegacyAbacInput)(nil)).Elem(), LegacyAbacArgs{})
@@ -22757,6 +26592,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigPtrInput)(nil)).Elem(), NetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkTagsInput)(nil)).Elem(), NetworkTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkTagsPtrInput)(nil)).Elem(), NetworkTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeAffinityInput)(nil)).Elem(), NodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeAffinityArrayInput)(nil)).Elem(), NodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsInput)(nil)).Elem(), NodeConfigDefaultsArgs{})
@@ -22781,6 +26618,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintArrayInput)(nil)).Elem(), NodeTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigInput)(nil)).Elem(), NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPtrInput)(nil)).Elem(), NotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParentProductConfigInput)(nil)).Elem(), ParentProductConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParentProductConfigPtrInput)(nil)).Elem(), ParentProductConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyInput)(nil)).Elem(), PlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyPtrInput)(nil)).Elem(), PlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodCIDROverprovisionConfigInput)(nil)).Elem(), PodCIDROverprovisionConfigArgs{})
@@ -22791,6 +26630,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterMasterGlobalAccessConfigPtrInput)(nil)).Elem(), PrivateClusterMasterGlobalAccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubSubInput)(nil)).Elem(), PubSubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubSubPtrInput)(nil)).Elem(), PubSubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueuedProvisioningInput)(nil)).Elem(), QueuedProvisioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueuedProvisioningPtrInput)(nil)).Elem(), QueuedProvisioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecurringTimeWindowInput)(nil)).Elem(), RecurringTimeWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecurringTimeWindowPtrInput)(nil)).Elem(), RecurringTimeWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelInput)(nil)).Elem(), ReleaseChannelArgs{})
@@ -22799,16 +26640,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityPtrInput)(nil)).Elem(), ReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceLimitInput)(nil)).Elem(), ResourceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceLimitArrayInput)(nil)).Elem(), ResourceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceManagerTagsInput)(nil)).Elem(), ResourceManagerTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceManagerTagsPtrInput)(nil)).Elem(), ResourceManagerTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceUsageExportConfigInput)(nil)).Elem(), ResourceUsageExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceUsageExportConfigPtrInput)(nil)).Elem(), ResourceUsageExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigInput)(nil)).Elem(), SandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigPtrInput)(nil)).Elem(), SandboxConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigInput)(nil)).Elem(), SecurityPostureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigPtrInput)(nil)).Elem(), SecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceExternalIPsConfigInput)(nil)).Elem(), ServiceExternalIPsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceExternalIPsConfigPtrInput)(nil)).Elem(), ServiceExternalIPsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedNodesInput)(nil)).Elem(), ShieldedNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedNodesPtrInput)(nil)).Elem(), ShieldedNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenantConfigInput)(nil)).Elem(), SoleTenantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenantConfigPtrInput)(nil)).Elem(), SoleTenantConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardRolloutPolicyInput)(nil)).Elem(), StandardRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardRolloutPolicyPtrInput)(nil)).Elem(), StandardRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionInput)(nil)).Elem(), StatusConditionArgs{})
@@ -22827,14 +26674,27 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityConfigPtrInput)(nil)).Elem(), WorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigInput)(nil)).Elem(), WorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigPtrInput)(nil)).Elem(), WorkloadMetadataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadPolicyConfigInput)(nil)).Elem(), WorkloadPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadPolicyConfigPtrInput)(nil)).Elem(), WorkloadPolicyConfigArgs{})
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(AdditionalNodeNetworkConfigOutput{})
+	pulumi.RegisterOutputType(AdditionalNodeNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(AdditionalNodeNetworkConfigResponseOutput{})
+	pulumi.RegisterOutputType(AdditionalNodeNetworkConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(AdditionalPodNetworkConfigOutput{})
+	pulumi.RegisterOutputType(AdditionalPodNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(AdditionalPodNetworkConfigResponseOutput{})
+	pulumi.RegisterOutputType(AdditionalPodNetworkConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AdditionalPodRangesConfigResponseOutput{})
 	pulumi.RegisterOutputType(AddonsConfigOutput{})
 	pulumi.RegisterOutputType(AddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AddonsConfigResponseOutput{})
+	pulumi.RegisterOutputType(AdvancedDatapathObservabilityConfigOutput{})
+	pulumi.RegisterOutputType(AdvancedDatapathObservabilityConfigPtrOutput{})
+	pulumi.RegisterOutputType(AdvancedDatapathObservabilityConfigResponseOutput{})
 	pulumi.RegisterOutputType(AdvancedMachineFeaturesOutput{})
 	pulumi.RegisterOutputType(AdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(AdvancedMachineFeaturesResponseOutput{})
@@ -22850,6 +26710,9 @@ func init() {
 	pulumi.RegisterOutputType(AutoprovisioningNodePoolDefaultsOutput{})
 	pulumi.RegisterOutputType(AutoprovisioningNodePoolDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(AutoprovisioningNodePoolDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(BestEffortProvisioningOutput{})
+	pulumi.RegisterOutputType(BestEffortProvisioningPtrOutput{})
+	pulumi.RegisterOutputType(BestEffortProvisioningResponseOutput{})
 	pulumi.RegisterOutputType(BigQueryDestinationOutput{})
 	pulumi.RegisterOutputType(BigQueryDestinationPtrOutput{})
 	pulumi.RegisterOutputType(BigQueryDestinationResponseOutput{})
@@ -22873,6 +26736,9 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingResponseOutput{})
+	pulumi.RegisterOutputType(ClusterNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNetworkPerformanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNetworkPerformanceConfigResponseOutput{})
 	pulumi.RegisterOutputType(ConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(ConfidentialNodesPtrOutput{})
 	pulumi.RegisterOutputType(ConfidentialNodesResponseOutput{})
@@ -22900,6 +26766,9 @@ func init() {
 	pulumi.RegisterOutputType(DnsCacheConfigOutput{})
 	pulumi.RegisterOutputType(DnsCacheConfigPtrOutput{})
 	pulumi.RegisterOutputType(DnsCacheConfigResponseOutput{})
+	pulumi.RegisterOutputType(EnterpriseConfigOutput{})
+	pulumi.RegisterOutputType(EnterpriseConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseConfigResponseOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageLocalSsdConfigOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageLocalSsdConfigPtrOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageLocalSsdConfigResponseOutput{})
@@ -22912,6 +26781,9 @@ func init() {
 	pulumi.RegisterOutputType(FleetOutput{})
 	pulumi.RegisterOutputType(FleetPtrOutput{})
 	pulumi.RegisterOutputType(FleetResponseOutput{})
+	pulumi.RegisterOutputType(GPUDriverInstallationConfigOutput{})
+	pulumi.RegisterOutputType(GPUDriverInstallationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GPUDriverInstallationConfigResponseOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigResponseOutput{})
@@ -22927,6 +26799,9 @@ func init() {
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigResponseOutput{})
+	pulumi.RegisterOutputType(GcsFuseCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(GcsFuseCsiDriverConfigPtrOutput{})
+	pulumi.RegisterOutputType(GcsFuseCsiDriverConfigResponseOutput{})
 	pulumi.RegisterOutputType(GkeBackupAgentConfigOutput{})
 	pulumi.RegisterOutputType(GkeBackupAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GkeBackupAgentConfigResponseOutput{})
@@ -22942,6 +26817,9 @@ func init() {
 	pulumi.RegisterOutputType(IdentityServiceConfigOutput{})
 	pulumi.RegisterOutputType(IdentityServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(IdentityServiceConfigResponseOutput{})
+	pulumi.RegisterOutputType(K8sBetaAPIConfigOutput{})
+	pulumi.RegisterOutputType(K8sBetaAPIConfigPtrOutput{})
+	pulumi.RegisterOutputType(K8sBetaAPIConfigResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesDashboardOutput{})
 	pulumi.RegisterOutputType(KubernetesDashboardPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesDashboardResponseOutput{})
@@ -23008,6 +26886,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworkTagsOutput{})
 	pulumi.RegisterOutputType(NetworkTagsPtrOutput{})
 	pulumi.RegisterOutputType(NetworkTagsResponseOutput{})
+	pulumi.RegisterOutputType(NodeAffinityOutput{})
+	pulumi.RegisterOutputType(NodeAffinityArrayOutput{})
+	pulumi.RegisterOutputType(NodeAffinityResponseOutput{})
+	pulumi.RegisterOutputType(NodeAffinityResponseArrayOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigDefaultsOutput{})
@@ -23046,6 +26928,9 @@ func init() {
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigResponseOutput{})
+	pulumi.RegisterOutputType(ParentProductConfigOutput{})
+	pulumi.RegisterOutputType(ParentProductConfigPtrOutput{})
+	pulumi.RegisterOutputType(ParentProductConfigResponseOutput{})
 	pulumi.RegisterOutputType(PlacementPolicyOutput{})
 	pulumi.RegisterOutputType(PlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(PlacementPolicyResponseOutput{})
@@ -23061,6 +26946,11 @@ func init() {
 	pulumi.RegisterOutputType(PubSubOutput{})
 	pulumi.RegisterOutputType(PubSubPtrOutput{})
 	pulumi.RegisterOutputType(PubSubResponseOutput{})
+	pulumi.RegisterOutputType(QueuedProvisioningOutput{})
+	pulumi.RegisterOutputType(QueuedProvisioningPtrOutput{})
+	pulumi.RegisterOutputType(QueuedProvisioningResponseOutput{})
+	pulumi.RegisterOutputType(RangeInfoResponseOutput{})
+	pulumi.RegisterOutputType(RangeInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(RecurringTimeWindowOutput{})
 	pulumi.RegisterOutputType(RecurringTimeWindowPtrOutput{})
 	pulumi.RegisterOutputType(RecurringTimeWindowResponseOutput{})
@@ -23076,12 +26966,18 @@ func init() {
 	pulumi.RegisterOutputType(ResourceLimitArrayOutput{})
 	pulumi.RegisterOutputType(ResourceLimitResponseOutput{})
 	pulumi.RegisterOutputType(ResourceLimitResponseArrayOutput{})
+	pulumi.RegisterOutputType(ResourceManagerTagsOutput{})
+	pulumi.RegisterOutputType(ResourceManagerTagsPtrOutput{})
+	pulumi.RegisterOutputType(ResourceManagerTagsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceUsageExportConfigOutput{})
 	pulumi.RegisterOutputType(ResourceUsageExportConfigPtrOutput{})
 	pulumi.RegisterOutputType(ResourceUsageExportConfigResponseOutput{})
 	pulumi.RegisterOutputType(SandboxConfigOutput{})
 	pulumi.RegisterOutputType(SandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(SandboxConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPostureConfigResponseOutput{})
 	pulumi.RegisterOutputType(ServiceExternalIPsConfigOutput{})
 	pulumi.RegisterOutputType(ServiceExternalIPsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceExternalIPsConfigResponseOutput{})
@@ -23091,6 +26987,9 @@ func init() {
 	pulumi.RegisterOutputType(ShieldedNodesOutput{})
 	pulumi.RegisterOutputType(ShieldedNodesPtrOutput{})
 	pulumi.RegisterOutputType(ShieldedNodesResponseOutput{})
+	pulumi.RegisterOutputType(SoleTenantConfigOutput{})
+	pulumi.RegisterOutputType(SoleTenantConfigPtrOutput{})
+	pulumi.RegisterOutputType(SoleTenantConfigResponseOutput{})
 	pulumi.RegisterOutputType(StandardRolloutPolicyOutput{})
 	pulumi.RegisterOutputType(StandardRolloutPolicyPtrOutput{})
 	pulumi.RegisterOutputType(StandardRolloutPolicyResponseOutput{})
@@ -23120,4 +27019,7 @@ func init() {
 	pulumi.RegisterOutputType(WorkloadMetadataConfigOutput{})
 	pulumi.RegisterOutputType(WorkloadMetadataConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadMetadataConfigResponseOutput{})
+	pulumi.RegisterOutputType(WorkloadPolicyConfigOutput{})
+	pulumi.RegisterOutputType(WorkloadPolicyConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkloadPolicyConfigResponseOutput{})
 }

@@ -45,7 +45,7 @@ type LookupSnapshotResult struct {
 	DiskSizeGb string `pulumi:"diskSizeGb"`
 	// Number of bytes downloaded to restore a snapshot to a disk.
 	DownloadBytes string `pulumi:"downloadBytes"`
-	// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+	// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush bool `pulumi:"guestFlush"`
@@ -67,6 +67,8 @@ type LookupSnapshotResult struct {
 	MaxRetentionDays int `pulumi:"maxRetentionDays"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
+	// URL of the region where the snapshot resides. Only applicable for regional snapshots.
+	Region string `pulumi:"region"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
@@ -87,6 +89,8 @@ type LookupSnapshotResult struct {
 	SourceDiskId string `pulumi:"sourceDiskId"`
 	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
 	SourceInstantSnapshot string `pulumi:"sourceInstantSnapshot"`
+	// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+	SourceInstantSnapshotEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceInstantSnapshotEncryptionKey"`
 	// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
 	SourceInstantSnapshotId string `pulumi:"sourceInstantSnapshotId"`
 	// URL of the resource policy which created this scheduled snapshot.
@@ -187,7 +191,7 @@ func (o LookupSnapshotResultOutput) DownloadBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.DownloadBytes }).(pulumi.StringOutput)
 }
 
-// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
 func (o LookupSnapshotResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -242,6 +246,11 @@ func (o LookupSnapshotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// URL of the region where the snapshot resides. Only applicable for regional snapshots.
+func (o LookupSnapshotResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
 // Reserved for future use.
 func (o LookupSnapshotResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
@@ -290,6 +299,13 @@ func (o LookupSnapshotResultOutput) SourceDiskId() pulumi.StringOutput {
 // The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
 func (o LookupSnapshotResultOutput) SourceInstantSnapshot() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceInstantSnapshot }).(pulumi.StringOutput)
+}
+
+// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+func (o LookupSnapshotResultOutput) SourceInstantSnapshotEncryptionKey() CustomerEncryptionKeyResponseOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) CustomerEncryptionKeyResponse {
+		return v.SourceInstantSnapshotEncryptionKey
+	}).(CustomerEncryptionKeyResponseOutput)
 }
 
 // The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.

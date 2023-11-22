@@ -35,8 +35,14 @@ type LookupConnectionResult struct {
 	AuthConfig AuthConfigResponse `pulumi:"authConfig"`
 	// Optional. Configuration for configuring the connection with an external system.
 	ConfigVariables []ConfigVariableResponse `pulumi:"configVariables"`
+	// Connection revision. This field is only updated when the connection is created or updated by User.
+	ConnectionRevision string `pulumi:"connectionRevision"`
 	// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
 	ConnectorVersion string `pulumi:"connectorVersion"`
+	// Infra configs supported by Connector Version.
+	ConnectorVersionInfraConfig ConnectorVersionInfraConfigResponse `pulumi:"connectorVersionInfraConfig"`
+	// Flag to mark the version indicating the launch stage.
+	ConnectorVersionLaunchStage string `pulumi:"connectorVersionLaunchStage"`
 	// Created time.
 	CreateTime string `pulumi:"createTime"`
 	// Optional. Description of the resource.
@@ -45,8 +51,16 @@ type LookupConnectionResult struct {
 	DestinationConfigs []DestinationConfigResponse `pulumi:"destinationConfigs"`
 	// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 	EnvoyImageLocation string `pulumi:"envoyImageLocation"`
+	// Optional. Eventing config of a connection
+	EventingConfig EventingConfigResponse `pulumi:"eventingConfig"`
+	// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+	EventingEnablementType string `pulumi:"eventingEnablementType"`
+	// Eventing Runtime Data.
+	EventingRuntimeData EventingRuntimeDataResponse `pulumi:"eventingRuntimeData"`
 	// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 	ImageLocation string `pulumi:"imageLocation"`
+	// Is trusted tester program enabled for the project.
+	IsTrustedTester bool `pulumi:"isTrustedTester"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
@@ -57,7 +71,7 @@ type LookupConnectionResult struct {
 	Name string `pulumi:"name"`
 	// Optional. Node configuration for the connection.
 	NodeConfig NodeConfigResponse `pulumi:"nodeConfig"`
-	// Optional. Service account needed for runtime plane to access GCP resources.
+	// Optional. Service account needed for runtime plane to access Google Cloud resources.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
 	ServiceDirectory string `pulumi:"serviceDirectory"`
@@ -127,9 +141,26 @@ func (o LookupConnectionResultOutput) ConfigVariables() ConfigVariableResponseAr
 	return o.ApplyT(func(v LookupConnectionResult) []ConfigVariableResponse { return v.ConfigVariables }).(ConfigVariableResponseArrayOutput)
 }
 
+// Connection revision. This field is only updated when the connection is created or updated by User.
+func (o LookupConnectionResultOutput) ConnectionRevision() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.ConnectionRevision }).(pulumi.StringOutput)
+}
+
 // Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
 func (o LookupConnectionResultOutput) ConnectorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.ConnectorVersion }).(pulumi.StringOutput)
+}
+
+// Infra configs supported by Connector Version.
+func (o LookupConnectionResultOutput) ConnectorVersionInfraConfig() ConnectorVersionInfraConfigResponseOutput {
+	return o.ApplyT(func(v LookupConnectionResult) ConnectorVersionInfraConfigResponse {
+		return v.ConnectorVersionInfraConfig
+	}).(ConnectorVersionInfraConfigResponseOutput)
+}
+
+// Flag to mark the version indicating the launch stage.
+func (o LookupConnectionResultOutput) ConnectorVersionLaunchStage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.ConnectorVersionLaunchStage }).(pulumi.StringOutput)
 }
 
 // Created time.
@@ -152,9 +183,29 @@ func (o LookupConnectionResultOutput) EnvoyImageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.EnvoyImageLocation }).(pulumi.StringOutput)
 }
 
+// Optional. Eventing config of a connection
+func (o LookupConnectionResultOutput) EventingConfig() EventingConfigResponseOutput {
+	return o.ApplyT(func(v LookupConnectionResult) EventingConfigResponse { return v.EventingConfig }).(EventingConfigResponseOutput)
+}
+
+// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+func (o LookupConnectionResultOutput) EventingEnablementType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.EventingEnablementType }).(pulumi.StringOutput)
+}
+
+// Eventing Runtime Data.
+func (o LookupConnectionResultOutput) EventingRuntimeData() EventingRuntimeDataResponseOutput {
+	return o.ApplyT(func(v LookupConnectionResult) EventingRuntimeDataResponse { return v.EventingRuntimeData }).(EventingRuntimeDataResponseOutput)
+}
+
 // GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 func (o LookupConnectionResultOutput) ImageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.ImageLocation }).(pulumi.StringOutput)
+}
+
+// Is trusted tester program enabled for the project.
+func (o LookupConnectionResultOutput) IsTrustedTester() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupConnectionResult) bool { return v.IsTrustedTester }).(pulumi.BoolOutput)
 }
 
 // Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -182,7 +233,7 @@ func (o LookupConnectionResultOutput) NodeConfig() NodeConfigResponseOutput {
 	return o.ApplyT(func(v LookupConnectionResult) NodeConfigResponse { return v.NodeConfig }).(NodeConfigResponseOutput)
 }
 
-// Optional. Service account needed for runtime plane to access GCP resources.
+// Optional. Service account needed for runtime plane to access Google Cloud resources.
 func (o LookupConnectionResultOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }

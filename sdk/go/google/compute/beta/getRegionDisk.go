@@ -42,6 +42,8 @@ type LookupRegionDiskResult struct {
 	Description string `pulumi:"description"`
 	// Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
 	DiskEncryptionKey CustomerEncryptionKeyResponse `pulumi:"diskEncryptionKey"`
+	// Whether this disk is using confidential compute mode.
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
 	EraseWindowsVssSignature bool `pulumi:"eraseWindowsVssSignature"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
@@ -94,7 +96,7 @@ type LookupRegionDiskResult struct {
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink string `pulumi:"selfLink"`
-	// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+	// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
 	SizeGb string `pulumi:"sizeGb"`
 	// URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
 	SourceConsistencyGroupPolicy string `pulumi:"sourceConsistencyGroupPolicy"`
@@ -209,6 +211,11 @@ func (o LookupRegionDiskResultOutput) Description() pulumi.StringOutput {
 // Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
 func (o LookupRegionDiskResultOutput) DiskEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) CustomerEncryptionKeyResponse { return v.DiskEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// Whether this disk is using confidential compute mode.
+func (o LookupRegionDiskResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
 
 // Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
@@ -338,7 +345,7 @@ func (o LookupRegionDiskResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are greater than 0.
 func (o LookupRegionDiskResultOutput) SizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SizeGb }).(pulumi.StringOutput)
 }

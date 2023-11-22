@@ -31,6 +31,8 @@ type ServiceBinding struct {
 	Service pulumi.StringOutput `pulumi:"service"`
 	// Required. Short name of the ServiceBinding resource to be created.
 	ServiceBindingId pulumi.StringOutput `pulumi:"serviceBindingId"`
+	// The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
+	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -202,6 +204,11 @@ func (o ServiceBindingOutput) Service() pulumi.StringOutput {
 // Required. Short name of the ServiceBinding resource to be created.
 func (o ServiceBindingOutput) ServiceBindingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.ServiceBindingId }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
+func (o ServiceBindingOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 // The timestamp when the resource was updated.

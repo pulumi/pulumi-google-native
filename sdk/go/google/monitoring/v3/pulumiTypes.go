@@ -1800,6 +1800,209 @@ func (o CloudEndpointsResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudEndpointsResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
+// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+type CloudFunctionV2Target struct {
+	// Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
+	Name string `pulumi:"name"`
+}
+
+// CloudFunctionV2TargetInput is an input type that accepts CloudFunctionV2TargetArgs and CloudFunctionV2TargetOutput values.
+// You can construct a concrete instance of `CloudFunctionV2TargetInput` via:
+//
+//	CloudFunctionV2TargetArgs{...}
+type CloudFunctionV2TargetInput interface {
+	pulumi.Input
+
+	ToCloudFunctionV2TargetOutput() CloudFunctionV2TargetOutput
+	ToCloudFunctionV2TargetOutputWithContext(context.Context) CloudFunctionV2TargetOutput
+}
+
+// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+type CloudFunctionV2TargetArgs struct {
+	// Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (CloudFunctionV2TargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudFunctionV2Target)(nil)).Elem()
+}
+
+func (i CloudFunctionV2TargetArgs) ToCloudFunctionV2TargetOutput() CloudFunctionV2TargetOutput {
+	return i.ToCloudFunctionV2TargetOutputWithContext(context.Background())
+}
+
+func (i CloudFunctionV2TargetArgs) ToCloudFunctionV2TargetOutputWithContext(ctx context.Context) CloudFunctionV2TargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudFunctionV2TargetOutput)
+}
+
+func (i CloudFunctionV2TargetArgs) ToOutput(ctx context.Context) pulumix.Output[CloudFunctionV2Target] {
+	return pulumix.Output[CloudFunctionV2Target]{
+		OutputState: i.ToCloudFunctionV2TargetOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CloudFunctionV2TargetArgs) ToCloudFunctionV2TargetPtrOutput() CloudFunctionV2TargetPtrOutput {
+	return i.ToCloudFunctionV2TargetPtrOutputWithContext(context.Background())
+}
+
+func (i CloudFunctionV2TargetArgs) ToCloudFunctionV2TargetPtrOutputWithContext(ctx context.Context) CloudFunctionV2TargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudFunctionV2TargetOutput).ToCloudFunctionV2TargetPtrOutputWithContext(ctx)
+}
+
+// CloudFunctionV2TargetPtrInput is an input type that accepts CloudFunctionV2TargetArgs, CloudFunctionV2TargetPtr and CloudFunctionV2TargetPtrOutput values.
+// You can construct a concrete instance of `CloudFunctionV2TargetPtrInput` via:
+//
+//	        CloudFunctionV2TargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudFunctionV2TargetPtrInput interface {
+	pulumi.Input
+
+	ToCloudFunctionV2TargetPtrOutput() CloudFunctionV2TargetPtrOutput
+	ToCloudFunctionV2TargetPtrOutputWithContext(context.Context) CloudFunctionV2TargetPtrOutput
+}
+
+type cloudFunctionV2TargetPtrType CloudFunctionV2TargetArgs
+
+func CloudFunctionV2TargetPtr(v *CloudFunctionV2TargetArgs) CloudFunctionV2TargetPtrInput {
+	return (*cloudFunctionV2TargetPtrType)(v)
+}
+
+func (*cloudFunctionV2TargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudFunctionV2Target)(nil)).Elem()
+}
+
+func (i *cloudFunctionV2TargetPtrType) ToCloudFunctionV2TargetPtrOutput() CloudFunctionV2TargetPtrOutput {
+	return i.ToCloudFunctionV2TargetPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudFunctionV2TargetPtrType) ToCloudFunctionV2TargetPtrOutputWithContext(ctx context.Context) CloudFunctionV2TargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudFunctionV2TargetPtrOutput)
+}
+
+func (i *cloudFunctionV2TargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudFunctionV2Target] {
+	return pulumix.Output[*CloudFunctionV2Target]{
+		OutputState: i.ToCloudFunctionV2TargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+type CloudFunctionV2TargetOutput struct{ *pulumi.OutputState }
+
+func (CloudFunctionV2TargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudFunctionV2Target)(nil)).Elem()
+}
+
+func (o CloudFunctionV2TargetOutput) ToCloudFunctionV2TargetOutput() CloudFunctionV2TargetOutput {
+	return o
+}
+
+func (o CloudFunctionV2TargetOutput) ToCloudFunctionV2TargetOutputWithContext(ctx context.Context) CloudFunctionV2TargetOutput {
+	return o
+}
+
+func (o CloudFunctionV2TargetOutput) ToCloudFunctionV2TargetPtrOutput() CloudFunctionV2TargetPtrOutput {
+	return o.ToCloudFunctionV2TargetPtrOutputWithContext(context.Background())
+}
+
+func (o CloudFunctionV2TargetOutput) ToCloudFunctionV2TargetPtrOutputWithContext(ctx context.Context) CloudFunctionV2TargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudFunctionV2Target) *CloudFunctionV2Target {
+		return &v
+	}).(CloudFunctionV2TargetPtrOutput)
+}
+
+func (o CloudFunctionV2TargetOutput) ToOutput(ctx context.Context) pulumix.Output[CloudFunctionV2Target] {
+	return pulumix.Output[CloudFunctionV2Target]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
+func (o CloudFunctionV2TargetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudFunctionV2Target) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type CloudFunctionV2TargetPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudFunctionV2TargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudFunctionV2Target)(nil)).Elem()
+}
+
+func (o CloudFunctionV2TargetPtrOutput) ToCloudFunctionV2TargetPtrOutput() CloudFunctionV2TargetPtrOutput {
+	return o
+}
+
+func (o CloudFunctionV2TargetPtrOutput) ToCloudFunctionV2TargetPtrOutputWithContext(ctx context.Context) CloudFunctionV2TargetPtrOutput {
+	return o
+}
+
+func (o CloudFunctionV2TargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudFunctionV2Target] {
+	return pulumix.Output[*CloudFunctionV2Target]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CloudFunctionV2TargetPtrOutput) Elem() CloudFunctionV2TargetOutput {
+	return o.ApplyT(func(v *CloudFunctionV2Target) CloudFunctionV2Target {
+		if v != nil {
+			return *v
+		}
+		var ret CloudFunctionV2Target
+		return ret
+	}).(CloudFunctionV2TargetOutput)
+}
+
+// Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
+func (o CloudFunctionV2TargetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudFunctionV2Target) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+type CloudFunctionV2TargetResponse struct {
+	// The cloud_run_revision Monitored Resource associated with the GCFv2. The Synthetic Monitor execution results (metrics, logs, and spans) are reported against this Monitored Resource. This field is output only.
+	CloudRunRevision MonitoredResourceResponse `pulumi:"cloudRunRevision"`
+	// Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
+	Name string `pulumi:"name"`
+}
+
+// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+type CloudFunctionV2TargetResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudFunctionV2TargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudFunctionV2TargetResponse)(nil)).Elem()
+}
+
+func (o CloudFunctionV2TargetResponseOutput) ToCloudFunctionV2TargetResponseOutput() CloudFunctionV2TargetResponseOutput {
+	return o
+}
+
+func (o CloudFunctionV2TargetResponseOutput) ToCloudFunctionV2TargetResponseOutputWithContext(ctx context.Context) CloudFunctionV2TargetResponseOutput {
+	return o
+}
+
+func (o CloudFunctionV2TargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudFunctionV2TargetResponse] {
+	return pulumix.Output[CloudFunctionV2TargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The cloud_run_revision Monitored Resource associated with the GCFv2. The Synthetic Monitor execution results (metrics, logs, and spans) are reported against this Monitored Resource. This field is output only.
+func (o CloudFunctionV2TargetResponseOutput) CloudRunRevision() MonitoredResourceResponseOutput {
+	return o.ApplyT(func(v CloudFunctionV2TargetResponse) MonitoredResourceResponse { return v.CloudRunRevision }).(MonitoredResourceResponseOutput)
+}
+
+// Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
+func (o CloudFunctionV2TargetResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudFunctionV2TargetResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
 // Cloud Run service. Learn more at https://cloud.google.com/run.
 type CloudRun struct {
 	// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
@@ -2304,6 +2507,8 @@ type Condition struct {
 	ConditionMatchedLog *LogMatch `pulumi:"conditionMatchedLog"`
 	// A condition that uses the Monitoring Query Language to define alerts.
 	ConditionMonitoringQueryLanguage *MonitoringQueryLanguageCondition `pulumi:"conditionMonitoringQueryLanguage"`
+	// A condition that uses the Prometheus query language to define alerts.
+	ConditionPrometheusQueryLanguage *PrometheusQueryLanguageCondition `pulumi:"conditionPrometheusQueryLanguage"`
 	// A condition that compares a time series against a threshold.
 	ConditionThreshold *MetricThreshold `pulumi:"conditionThreshold"`
 	// A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
@@ -2331,6 +2536,8 @@ type ConditionArgs struct {
 	ConditionMatchedLog LogMatchPtrInput `pulumi:"conditionMatchedLog"`
 	// A condition that uses the Monitoring Query Language to define alerts.
 	ConditionMonitoringQueryLanguage MonitoringQueryLanguageConditionPtrInput `pulumi:"conditionMonitoringQueryLanguage"`
+	// A condition that uses the Prometheus query language to define alerts.
+	ConditionPrometheusQueryLanguage PrometheusQueryLanguageConditionPtrInput `pulumi:"conditionPrometheusQueryLanguage"`
 	// A condition that compares a time series against a threshold.
 	ConditionThreshold MetricThresholdPtrInput `pulumi:"conditionThreshold"`
 	// A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
@@ -2424,6 +2631,11 @@ func (o ConditionOutput) ConditionMonitoringQueryLanguage() MonitoringQueryLangu
 	return o.ApplyT(func(v Condition) *MonitoringQueryLanguageCondition { return v.ConditionMonitoringQueryLanguage }).(MonitoringQueryLanguageConditionPtrOutput)
 }
 
+// A condition that uses the Prometheus query language to define alerts.
+func (o ConditionOutput) ConditionPrometheusQueryLanguage() PrometheusQueryLanguageConditionPtrOutput {
+	return o.ApplyT(func(v Condition) *PrometheusQueryLanguageCondition { return v.ConditionPrometheusQueryLanguage }).(PrometheusQueryLanguageConditionPtrOutput)
+}
+
 // A condition that compares a time series against a threshold.
 func (o ConditionOutput) ConditionThreshold() MetricThresholdPtrOutput {
 	return o.ApplyT(func(v Condition) *MetricThreshold { return v.ConditionThreshold }).(MetricThresholdPtrOutput)
@@ -2473,6 +2685,8 @@ type ConditionResponse struct {
 	ConditionMatchedLog LogMatchResponse `pulumi:"conditionMatchedLog"`
 	// A condition that uses the Monitoring Query Language to define alerts.
 	ConditionMonitoringQueryLanguage MonitoringQueryLanguageConditionResponse `pulumi:"conditionMonitoringQueryLanguage"`
+	// A condition that uses the Prometheus query language to define alerts.
+	ConditionPrometheusQueryLanguage PrometheusQueryLanguageConditionResponse `pulumi:"conditionPrometheusQueryLanguage"`
 	// A condition that compares a time series against a threshold.
 	ConditionThreshold MetricThresholdResponse `pulumi:"conditionThreshold"`
 	// A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
@@ -2517,6 +2731,13 @@ func (o ConditionResponseOutput) ConditionMonitoringQueryLanguage() MonitoringQu
 	return o.ApplyT(func(v ConditionResponse) MonitoringQueryLanguageConditionResponse {
 		return v.ConditionMonitoringQueryLanguage
 	}).(MonitoringQueryLanguageConditionResponseOutput)
+}
+
+// A condition that uses the Prometheus query language to define alerts.
+func (o ConditionResponseOutput) ConditionPrometheusQueryLanguage() PrometheusQueryLanguageConditionResponseOutput {
+	return o.ApplyT(func(v ConditionResponse) PrometheusQueryLanguageConditionResponse {
+		return v.ConditionPrometheusQueryLanguage
+	}).(PrometheusQueryLanguageConditionResponseOutput)
 }
 
 // A condition that compares a time series against a threshold.
@@ -3271,6 +3492,8 @@ type Documentation struct {
 	Content *string `pulumi:"content"`
 	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
 	MimeType *string `pulumi:"mimeType"`
+	// Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). If this field is missing or empty, a default subject line will be generated.
+	Subject *string `pulumi:"subject"`
 }
 
 // DocumentationInput is an input type that accepts DocumentationArgs and DocumentationOutput values.
@@ -3290,6 +3513,8 @@ type DocumentationArgs struct {
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
 	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
+	// Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). If this field is missing or empty, a default subject line will be generated.
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
 }
 
 func (DocumentationArgs) ElementType() reflect.Type {
@@ -3398,6 +3623,11 @@ func (o DocumentationOutput) MimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Documentation) *string { return v.MimeType }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). If this field is missing or empty, a default subject line will be generated.
+func (o DocumentationOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Documentation) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
 type DocumentationPtrOutput struct{ *pulumi.OutputState }
 
 func (DocumentationPtrOutput) ElementType() reflect.Type {
@@ -3448,12 +3678,24 @@ func (o DocumentationPtrOutput) MimeType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). If this field is missing or empty, a default subject line will be generated.
+func (o DocumentationPtrOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Documentation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subject
+	}).(pulumi.StringPtrOutput)
+}
+
 // A content string and a MIME type that describes the content string's format.
 type DocumentationResponse struct {
 	// The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 	Content string `pulumi:"content"`
 	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
 	MimeType string `pulumi:"mimeType"`
+	// Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). If this field is missing or empty, a default subject line will be generated.
+	Subject string `pulumi:"subject"`
 }
 
 // A content string and a MIME type that describes the content string's format.
@@ -3487,9 +3729,14 @@ func (o DocumentationResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationResponse) string { return v.MimeType }).(pulumi.StringOutput)
 }
 
+// Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). If this field is missing or empty, a default subject line will be generated.
+func (o DocumentationResponseOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationResponse) string { return v.Subject }).(pulumi.StringOutput)
+}
+
 // Options used when forecasting the time series and testing the predicted value against the threshold.
 type ForecastOptions struct {
-	// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+	// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing. The forecast horizon can range from 1 hour to 60 hours.
 	ForecastHorizon string `pulumi:"forecastHorizon"`
 }
 
@@ -3506,7 +3753,7 @@ type ForecastOptionsInput interface {
 
 // Options used when forecasting the time series and testing the predicted value against the threshold.
 type ForecastOptionsArgs struct {
-	// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+	// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing. The forecast horizon can range from 1 hour to 60 hours.
 	ForecastHorizon pulumi.StringInput `pulumi:"forecastHorizon"`
 }
 
@@ -3606,7 +3853,7 @@ func (o ForecastOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[Fore
 	}
 }
 
-// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing. The forecast horizon can range from 1 hour to 60 hours.
 func (o ForecastOptionsOutput) ForecastHorizon() pulumi.StringOutput {
 	return o.ApplyT(func(v ForecastOptions) string { return v.ForecastHorizon }).(pulumi.StringOutput)
 }
@@ -3641,7 +3888,7 @@ func (o ForecastOptionsPtrOutput) Elem() ForecastOptionsOutput {
 	}).(ForecastOptionsOutput)
 }
 
-// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing. The forecast horizon can range from 1 hour to 60 hours.
 func (o ForecastOptionsPtrOutput) ForecastHorizon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ForecastOptions) *string {
 		if v == nil {
@@ -3653,7 +3900,7 @@ func (o ForecastOptionsPtrOutput) ForecastHorizon() pulumi.StringPtrOutput {
 
 // Options used when forecasting the time series and testing the predicted value against the threshold.
 type ForecastOptionsResponse struct {
-	// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+	// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing. The forecast horizon can range from 1 hour to 60 hours.
 	ForecastHorizon string `pulumi:"forecastHorizon"`
 }
 
@@ -3678,7 +3925,7 @@ func (o ForecastOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing. The forecast horizon can range from 1 hour to 60 hours.
 func (o ForecastOptionsResponseOutput) ForecastHorizon() pulumi.StringOutput {
 	return o.ApplyT(func(v ForecastOptionsResponse) string { return v.ForecastHorizon }).(pulumi.StringOutput)
 }
@@ -9695,6 +9942,332 @@ func (o PingConfigResponseOutput) PingsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v PingConfigResponse) int { return v.PingsCount }).(pulumi.IntOutput)
 }
 
+// A condition type that allows alert policies to be defined using Prometheus Query Language (PromQL) (https://prometheus.io/docs/prometheus/latest/querying/basics/).The PrometheusQueryLanguageCondition message contains information from a Prometheus alerting rule and its associated rule group.A Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). The semantics of a Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/). The semantics of a Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because Cloud Alerting has no representation of a Prometheus rule group resource, we must embed the information of the parent rule group inside each of the conditions that refer to it. We must also update the contents of all Prometheus alerts in case the information of their rule group changes.The PrometheusQueryLanguageCondition protocol buffer combines the information of the corresponding rule group and alerting rule. The structure of the PrometheusQueryLanguageCondition protocol buffer does NOT mimic the structure of the Prometheus rule group and alerting rule YAML declarations. The PrometheusQueryLanguageCondition protocol buffer may change in the future to support future rule group and/or alerting rule features. There are no new such features at the present time (2023-06-26).
+type PrometheusQueryLanguageCondition struct {
+	// Optional. The alerting rule name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must be a valid Prometheus label name (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This field may not exceed 2048 Unicode characters in length.
+	AlertRule *string `pulumi:"alertRule"`
+	// Optional. Alerts are considered firing once their PromQL expression was evaluated to be "true" for this long. Alerts whose PromQL expression was not evaluated to be "true" for long enough are considered pending. Must be a non-negative duration or missing. This field is optional. Its default value is zero.
+	Duration *string `pulumi:"duration"`
+	// Optional. How often this rule should be evaluated. Must be a positive multiple of 30 seconds or missing. This field is optional. Its default value is 30 seconds. If this PrometheusQueryLanguageCondition was generated from a Prometheus alerting rule, then this value should be taken from the enclosing rule group.
+	EvaluationInterval *string `pulumi:"evaluationInterval"`
+	// Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be empty.
+	Labels map[string]string `pulumi:"labels"`
+	// The PromQL expression to evaluate. Every evaluation cycle this expression is evaluated at the current time, and all resultant time series become pending/firing alerts. This field must not be empty.
+	Query string `pulumi:"query"`
+	// Optional. The rule group name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must contain a valid UTF-8 string. This field may not exceed 2048 Unicode characters in length.
+	RuleGroup *string `pulumi:"ruleGroup"`
+}
+
+// PrometheusQueryLanguageConditionInput is an input type that accepts PrometheusQueryLanguageConditionArgs and PrometheusQueryLanguageConditionOutput values.
+// You can construct a concrete instance of `PrometheusQueryLanguageConditionInput` via:
+//
+//	PrometheusQueryLanguageConditionArgs{...}
+type PrometheusQueryLanguageConditionInput interface {
+	pulumi.Input
+
+	ToPrometheusQueryLanguageConditionOutput() PrometheusQueryLanguageConditionOutput
+	ToPrometheusQueryLanguageConditionOutputWithContext(context.Context) PrometheusQueryLanguageConditionOutput
+}
+
+// A condition type that allows alert policies to be defined using Prometheus Query Language (PromQL) (https://prometheus.io/docs/prometheus/latest/querying/basics/).The PrometheusQueryLanguageCondition message contains information from a Prometheus alerting rule and its associated rule group.A Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). The semantics of a Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/). The semantics of a Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because Cloud Alerting has no representation of a Prometheus rule group resource, we must embed the information of the parent rule group inside each of the conditions that refer to it. We must also update the contents of all Prometheus alerts in case the information of their rule group changes.The PrometheusQueryLanguageCondition protocol buffer combines the information of the corresponding rule group and alerting rule. The structure of the PrometheusQueryLanguageCondition protocol buffer does NOT mimic the structure of the Prometheus rule group and alerting rule YAML declarations. The PrometheusQueryLanguageCondition protocol buffer may change in the future to support future rule group and/or alerting rule features. There are no new such features at the present time (2023-06-26).
+type PrometheusQueryLanguageConditionArgs struct {
+	// Optional. The alerting rule name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must be a valid Prometheus label name (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This field may not exceed 2048 Unicode characters in length.
+	AlertRule pulumi.StringPtrInput `pulumi:"alertRule"`
+	// Optional. Alerts are considered firing once their PromQL expression was evaluated to be "true" for this long. Alerts whose PromQL expression was not evaluated to be "true" for long enough are considered pending. Must be a non-negative duration or missing. This field is optional. Its default value is zero.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// Optional. How often this rule should be evaluated. Must be a positive multiple of 30 seconds or missing. This field is optional. Its default value is 30 seconds. If this PrometheusQueryLanguageCondition was generated from a Prometheus alerting rule, then this value should be taken from the enclosing rule group.
+	EvaluationInterval pulumi.StringPtrInput `pulumi:"evaluationInterval"`
+	// Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be empty.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The PromQL expression to evaluate. Every evaluation cycle this expression is evaluated at the current time, and all resultant time series become pending/firing alerts. This field must not be empty.
+	Query pulumi.StringInput `pulumi:"query"`
+	// Optional. The rule group name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must contain a valid UTF-8 string. This field may not exceed 2048 Unicode characters in length.
+	RuleGroup pulumi.StringPtrInput `pulumi:"ruleGroup"`
+}
+
+func (PrometheusQueryLanguageConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusQueryLanguageCondition)(nil)).Elem()
+}
+
+func (i PrometheusQueryLanguageConditionArgs) ToPrometheusQueryLanguageConditionOutput() PrometheusQueryLanguageConditionOutput {
+	return i.ToPrometheusQueryLanguageConditionOutputWithContext(context.Background())
+}
+
+func (i PrometheusQueryLanguageConditionArgs) ToPrometheusQueryLanguageConditionOutputWithContext(ctx context.Context) PrometheusQueryLanguageConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusQueryLanguageConditionOutput)
+}
+
+func (i PrometheusQueryLanguageConditionArgs) ToOutput(ctx context.Context) pulumix.Output[PrometheusQueryLanguageCondition] {
+	return pulumix.Output[PrometheusQueryLanguageCondition]{
+		OutputState: i.ToPrometheusQueryLanguageConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PrometheusQueryLanguageConditionArgs) ToPrometheusQueryLanguageConditionPtrOutput() PrometheusQueryLanguageConditionPtrOutput {
+	return i.ToPrometheusQueryLanguageConditionPtrOutputWithContext(context.Background())
+}
+
+func (i PrometheusQueryLanguageConditionArgs) ToPrometheusQueryLanguageConditionPtrOutputWithContext(ctx context.Context) PrometheusQueryLanguageConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusQueryLanguageConditionOutput).ToPrometheusQueryLanguageConditionPtrOutputWithContext(ctx)
+}
+
+// PrometheusQueryLanguageConditionPtrInput is an input type that accepts PrometheusQueryLanguageConditionArgs, PrometheusQueryLanguageConditionPtr and PrometheusQueryLanguageConditionPtrOutput values.
+// You can construct a concrete instance of `PrometheusQueryLanguageConditionPtrInput` via:
+//
+//	        PrometheusQueryLanguageConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrometheusQueryLanguageConditionPtrInput interface {
+	pulumi.Input
+
+	ToPrometheusQueryLanguageConditionPtrOutput() PrometheusQueryLanguageConditionPtrOutput
+	ToPrometheusQueryLanguageConditionPtrOutputWithContext(context.Context) PrometheusQueryLanguageConditionPtrOutput
+}
+
+type prometheusQueryLanguageConditionPtrType PrometheusQueryLanguageConditionArgs
+
+func PrometheusQueryLanguageConditionPtr(v *PrometheusQueryLanguageConditionArgs) PrometheusQueryLanguageConditionPtrInput {
+	return (*prometheusQueryLanguageConditionPtrType)(v)
+}
+
+func (*prometheusQueryLanguageConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusQueryLanguageCondition)(nil)).Elem()
+}
+
+func (i *prometheusQueryLanguageConditionPtrType) ToPrometheusQueryLanguageConditionPtrOutput() PrometheusQueryLanguageConditionPtrOutput {
+	return i.ToPrometheusQueryLanguageConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *prometheusQueryLanguageConditionPtrType) ToPrometheusQueryLanguageConditionPtrOutputWithContext(ctx context.Context) PrometheusQueryLanguageConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusQueryLanguageConditionPtrOutput)
+}
+
+func (i *prometheusQueryLanguageConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrometheusQueryLanguageCondition] {
+	return pulumix.Output[*PrometheusQueryLanguageCondition]{
+		OutputState: i.ToPrometheusQueryLanguageConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A condition type that allows alert policies to be defined using Prometheus Query Language (PromQL) (https://prometheus.io/docs/prometheus/latest/querying/basics/).The PrometheusQueryLanguageCondition message contains information from a Prometheus alerting rule and its associated rule group.A Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). The semantics of a Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/). The semantics of a Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because Cloud Alerting has no representation of a Prometheus rule group resource, we must embed the information of the parent rule group inside each of the conditions that refer to it. We must also update the contents of all Prometheus alerts in case the information of their rule group changes.The PrometheusQueryLanguageCondition protocol buffer combines the information of the corresponding rule group and alerting rule. The structure of the PrometheusQueryLanguageCondition protocol buffer does NOT mimic the structure of the Prometheus rule group and alerting rule YAML declarations. The PrometheusQueryLanguageCondition protocol buffer may change in the future to support future rule group and/or alerting rule features. There are no new such features at the present time (2023-06-26).
+type PrometheusQueryLanguageConditionOutput struct{ *pulumi.OutputState }
+
+func (PrometheusQueryLanguageConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusQueryLanguageCondition)(nil)).Elem()
+}
+
+func (o PrometheusQueryLanguageConditionOutput) ToPrometheusQueryLanguageConditionOutput() PrometheusQueryLanguageConditionOutput {
+	return o
+}
+
+func (o PrometheusQueryLanguageConditionOutput) ToPrometheusQueryLanguageConditionOutputWithContext(ctx context.Context) PrometheusQueryLanguageConditionOutput {
+	return o
+}
+
+func (o PrometheusQueryLanguageConditionOutput) ToPrometheusQueryLanguageConditionPtrOutput() PrometheusQueryLanguageConditionPtrOutput {
+	return o.ToPrometheusQueryLanguageConditionPtrOutputWithContext(context.Background())
+}
+
+func (o PrometheusQueryLanguageConditionOutput) ToPrometheusQueryLanguageConditionPtrOutputWithContext(ctx context.Context) PrometheusQueryLanguageConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrometheusQueryLanguageCondition) *PrometheusQueryLanguageCondition {
+		return &v
+	}).(PrometheusQueryLanguageConditionPtrOutput)
+}
+
+func (o PrometheusQueryLanguageConditionOutput) ToOutput(ctx context.Context) pulumix.Output[PrometheusQueryLanguageCondition] {
+	return pulumix.Output[PrometheusQueryLanguageCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The alerting rule name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must be a valid Prometheus label name (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This field may not exceed 2048 Unicode characters in length.
+func (o PrometheusQueryLanguageConditionOutput) AlertRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageCondition) *string { return v.AlertRule }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Alerts are considered firing once their PromQL expression was evaluated to be "true" for this long. Alerts whose PromQL expression was not evaluated to be "true" for long enough are considered pending. Must be a non-negative duration or missing. This field is optional. Its default value is zero.
+func (o PrometheusQueryLanguageConditionOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageCondition) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// Optional. How often this rule should be evaluated. Must be a positive multiple of 30 seconds or missing. This field is optional. Its default value is 30 seconds. If this PrometheusQueryLanguageCondition was generated from a Prometheus alerting rule, then this value should be taken from the enclosing rule group.
+func (o PrometheusQueryLanguageConditionOutput) EvaluationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageCondition) *string { return v.EvaluationInterval }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be empty.
+func (o PrometheusQueryLanguageConditionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageCondition) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The PromQL expression to evaluate. Every evaluation cycle this expression is evaluated at the current time, and all resultant time series become pending/firing alerts. This field must not be empty.
+func (o PrometheusQueryLanguageConditionOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageCondition) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// Optional. The rule group name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must contain a valid UTF-8 string. This field may not exceed 2048 Unicode characters in length.
+func (o PrometheusQueryLanguageConditionOutput) RuleGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageCondition) *string { return v.RuleGroup }).(pulumi.StringPtrOutput)
+}
+
+type PrometheusQueryLanguageConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (PrometheusQueryLanguageConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusQueryLanguageCondition)(nil)).Elem()
+}
+
+func (o PrometheusQueryLanguageConditionPtrOutput) ToPrometheusQueryLanguageConditionPtrOutput() PrometheusQueryLanguageConditionPtrOutput {
+	return o
+}
+
+func (o PrometheusQueryLanguageConditionPtrOutput) ToPrometheusQueryLanguageConditionPtrOutputWithContext(ctx context.Context) PrometheusQueryLanguageConditionPtrOutput {
+	return o
+}
+
+func (o PrometheusQueryLanguageConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrometheusQueryLanguageCondition] {
+	return pulumix.Output[*PrometheusQueryLanguageCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PrometheusQueryLanguageConditionPtrOutput) Elem() PrometheusQueryLanguageConditionOutput {
+	return o.ApplyT(func(v *PrometheusQueryLanguageCondition) PrometheusQueryLanguageCondition {
+		if v != nil {
+			return *v
+		}
+		var ret PrometheusQueryLanguageCondition
+		return ret
+	}).(PrometheusQueryLanguageConditionOutput)
+}
+
+// Optional. The alerting rule name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must be a valid Prometheus label name (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This field may not exceed 2048 Unicode characters in length.
+func (o PrometheusQueryLanguageConditionPtrOutput) AlertRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusQueryLanguageCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Alerts are considered firing once their PromQL expression was evaluated to be "true" for this long. Alerts whose PromQL expression was not evaluated to be "true" for long enough are considered pending. Must be a non-negative duration or missing. This field is optional. Its default value is zero.
+func (o PrometheusQueryLanguageConditionPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusQueryLanguageCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. How often this rule should be evaluated. Must be a positive multiple of 30 seconds or missing. This field is optional. Its default value is 30 seconds. If this PrometheusQueryLanguageCondition was generated from a Prometheus alerting rule, then this value should be taken from the enclosing rule group.
+func (o PrometheusQueryLanguageConditionPtrOutput) EvaluationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusQueryLanguageCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be empty.
+func (o PrometheusQueryLanguageConditionPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrometheusQueryLanguageCondition) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The PromQL expression to evaluate. Every evaluation cycle this expression is evaluated at the current time, and all resultant time series become pending/firing alerts. This field must not be empty.
+func (o PrometheusQueryLanguageConditionPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusQueryLanguageCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The rule group name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must contain a valid UTF-8 string. This field may not exceed 2048 Unicode characters in length.
+func (o PrometheusQueryLanguageConditionPtrOutput) RuleGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusQueryLanguageCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuleGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// A condition type that allows alert policies to be defined using Prometheus Query Language (PromQL) (https://prometheus.io/docs/prometheus/latest/querying/basics/).The PrometheusQueryLanguageCondition message contains information from a Prometheus alerting rule and its associated rule group.A Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). The semantics of a Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/). The semantics of a Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because Cloud Alerting has no representation of a Prometheus rule group resource, we must embed the information of the parent rule group inside each of the conditions that refer to it. We must also update the contents of all Prometheus alerts in case the information of their rule group changes.The PrometheusQueryLanguageCondition protocol buffer combines the information of the corresponding rule group and alerting rule. The structure of the PrometheusQueryLanguageCondition protocol buffer does NOT mimic the structure of the Prometheus rule group and alerting rule YAML declarations. The PrometheusQueryLanguageCondition protocol buffer may change in the future to support future rule group and/or alerting rule features. There are no new such features at the present time (2023-06-26).
+type PrometheusQueryLanguageConditionResponse struct {
+	// Optional. The alerting rule name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must be a valid Prometheus label name (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This field may not exceed 2048 Unicode characters in length.
+	AlertRule string `pulumi:"alertRule"`
+	// Optional. Alerts are considered firing once their PromQL expression was evaluated to be "true" for this long. Alerts whose PromQL expression was not evaluated to be "true" for long enough are considered pending. Must be a non-negative duration or missing. This field is optional. Its default value is zero.
+	Duration string `pulumi:"duration"`
+	// Optional. How often this rule should be evaluated. Must be a positive multiple of 30 seconds or missing. This field is optional. Its default value is 30 seconds. If this PrometheusQueryLanguageCondition was generated from a Prometheus alerting rule, then this value should be taken from the enclosing rule group.
+	EvaluationInterval string `pulumi:"evaluationInterval"`
+	// Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be empty.
+	Labels map[string]string `pulumi:"labels"`
+	// The PromQL expression to evaluate. Every evaluation cycle this expression is evaluated at the current time, and all resultant time series become pending/firing alerts. This field must not be empty.
+	Query string `pulumi:"query"`
+	// Optional. The rule group name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must contain a valid UTF-8 string. This field may not exceed 2048 Unicode characters in length.
+	RuleGroup string `pulumi:"ruleGroup"`
+}
+
+// A condition type that allows alert policies to be defined using Prometheus Query Language (PromQL) (https://prometheus.io/docs/prometheus/latest/querying/basics/).The PrometheusQueryLanguageCondition message contains information from a Prometheus alerting rule and its associated rule group.A Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). The semantics of a Prometheus alerting rule is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/). The semantics of a Prometheus rule group is described here (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because Cloud Alerting has no representation of a Prometheus rule group resource, we must embed the information of the parent rule group inside each of the conditions that refer to it. We must also update the contents of all Prometheus alerts in case the information of their rule group changes.The PrometheusQueryLanguageCondition protocol buffer combines the information of the corresponding rule group and alerting rule. The structure of the PrometheusQueryLanguageCondition protocol buffer does NOT mimic the structure of the Prometheus rule group and alerting rule YAML declarations. The PrometheusQueryLanguageCondition protocol buffer may change in the future to support future rule group and/or alerting rule features. There are no new such features at the present time (2023-06-26).
+type PrometheusQueryLanguageConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (PrometheusQueryLanguageConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusQueryLanguageConditionResponse)(nil)).Elem()
+}
+
+func (o PrometheusQueryLanguageConditionResponseOutput) ToPrometheusQueryLanguageConditionResponseOutput() PrometheusQueryLanguageConditionResponseOutput {
+	return o
+}
+
+func (o PrometheusQueryLanguageConditionResponseOutput) ToPrometheusQueryLanguageConditionResponseOutputWithContext(ctx context.Context) PrometheusQueryLanguageConditionResponseOutput {
+	return o
+}
+
+func (o PrometheusQueryLanguageConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrometheusQueryLanguageConditionResponse] {
+	return pulumix.Output[PrometheusQueryLanguageConditionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The alerting rule name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must be a valid Prometheus label name (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This field may not exceed 2048 Unicode characters in length.
+func (o PrometheusQueryLanguageConditionResponseOutput) AlertRule() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageConditionResponse) string { return v.AlertRule }).(pulumi.StringOutput)
+}
+
+// Optional. Alerts are considered firing once their PromQL expression was evaluated to be "true" for this long. Alerts whose PromQL expression was not evaluated to be "true" for long enough are considered pending. Must be a non-negative duration or missing. This field is optional. Its default value is zero.
+func (o PrometheusQueryLanguageConditionResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageConditionResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Optional. How often this rule should be evaluated. Must be a positive multiple of 30 seconds or missing. This field is optional. Its default value is 30 seconds. If this PrometheusQueryLanguageCondition was generated from a Prometheus alerting rule, then this value should be taken from the enclosing rule group.
+func (o PrometheusQueryLanguageConditionResponseOutput) EvaluationInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageConditionResponse) string { return v.EvaluationInterval }).(pulumi.StringOutput)
+}
+
+// Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be empty.
+func (o PrometheusQueryLanguageConditionResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageConditionResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The PromQL expression to evaluate. Every evaluation cycle this expression is evaluated at the current time, and all resultant time series become pending/firing alerts. This field must not be empty.
+func (o PrometheusQueryLanguageConditionResponseOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageConditionResponse) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// Optional. The rule group name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must contain a valid UTF-8 string. This field may not exceed 2048 Unicode characters in length.
+func (o PrometheusQueryLanguageConditionResponseOutput) RuleGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusQueryLanguageConditionResponse) string { return v.RuleGroup }).(pulumi.StringOutput)
+}
+
 // Service Level Indicators for which atomic units of service are counted directly.
 type RequestBasedSli struct {
 	// distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
@@ -10831,6 +11404,202 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Describes a Synthetic Monitor to be invoked by Uptime.
+type SyntheticMonitorTarget struct {
+	// Target a Synthetic Monitor GCFv2 instance.
+	CloudFunctionV2 *CloudFunctionV2Target `pulumi:"cloudFunctionV2"`
+}
+
+// SyntheticMonitorTargetInput is an input type that accepts SyntheticMonitorTargetArgs and SyntheticMonitorTargetOutput values.
+// You can construct a concrete instance of `SyntheticMonitorTargetInput` via:
+//
+//	SyntheticMonitorTargetArgs{...}
+type SyntheticMonitorTargetInput interface {
+	pulumi.Input
+
+	ToSyntheticMonitorTargetOutput() SyntheticMonitorTargetOutput
+	ToSyntheticMonitorTargetOutputWithContext(context.Context) SyntheticMonitorTargetOutput
+}
+
+// Describes a Synthetic Monitor to be invoked by Uptime.
+type SyntheticMonitorTargetArgs struct {
+	// Target a Synthetic Monitor GCFv2 instance.
+	CloudFunctionV2 CloudFunctionV2TargetPtrInput `pulumi:"cloudFunctionV2"`
+}
+
+func (SyntheticMonitorTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SyntheticMonitorTarget)(nil)).Elem()
+}
+
+func (i SyntheticMonitorTargetArgs) ToSyntheticMonitorTargetOutput() SyntheticMonitorTargetOutput {
+	return i.ToSyntheticMonitorTargetOutputWithContext(context.Background())
+}
+
+func (i SyntheticMonitorTargetArgs) ToSyntheticMonitorTargetOutputWithContext(ctx context.Context) SyntheticMonitorTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SyntheticMonitorTargetOutput)
+}
+
+func (i SyntheticMonitorTargetArgs) ToOutput(ctx context.Context) pulumix.Output[SyntheticMonitorTarget] {
+	return pulumix.Output[SyntheticMonitorTarget]{
+		OutputState: i.ToSyntheticMonitorTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SyntheticMonitorTargetArgs) ToSyntheticMonitorTargetPtrOutput() SyntheticMonitorTargetPtrOutput {
+	return i.ToSyntheticMonitorTargetPtrOutputWithContext(context.Background())
+}
+
+func (i SyntheticMonitorTargetArgs) ToSyntheticMonitorTargetPtrOutputWithContext(ctx context.Context) SyntheticMonitorTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SyntheticMonitorTargetOutput).ToSyntheticMonitorTargetPtrOutputWithContext(ctx)
+}
+
+// SyntheticMonitorTargetPtrInput is an input type that accepts SyntheticMonitorTargetArgs, SyntheticMonitorTargetPtr and SyntheticMonitorTargetPtrOutput values.
+// You can construct a concrete instance of `SyntheticMonitorTargetPtrInput` via:
+//
+//	        SyntheticMonitorTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type SyntheticMonitorTargetPtrInput interface {
+	pulumi.Input
+
+	ToSyntheticMonitorTargetPtrOutput() SyntheticMonitorTargetPtrOutput
+	ToSyntheticMonitorTargetPtrOutputWithContext(context.Context) SyntheticMonitorTargetPtrOutput
+}
+
+type syntheticMonitorTargetPtrType SyntheticMonitorTargetArgs
+
+func SyntheticMonitorTargetPtr(v *SyntheticMonitorTargetArgs) SyntheticMonitorTargetPtrInput {
+	return (*syntheticMonitorTargetPtrType)(v)
+}
+
+func (*syntheticMonitorTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SyntheticMonitorTarget)(nil)).Elem()
+}
+
+func (i *syntheticMonitorTargetPtrType) ToSyntheticMonitorTargetPtrOutput() SyntheticMonitorTargetPtrOutput {
+	return i.ToSyntheticMonitorTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *syntheticMonitorTargetPtrType) ToSyntheticMonitorTargetPtrOutputWithContext(ctx context.Context) SyntheticMonitorTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SyntheticMonitorTargetPtrOutput)
+}
+
+func (i *syntheticMonitorTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*SyntheticMonitorTarget] {
+	return pulumix.Output[*SyntheticMonitorTarget]{
+		OutputState: i.ToSyntheticMonitorTargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Describes a Synthetic Monitor to be invoked by Uptime.
+type SyntheticMonitorTargetOutput struct{ *pulumi.OutputState }
+
+func (SyntheticMonitorTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SyntheticMonitorTarget)(nil)).Elem()
+}
+
+func (o SyntheticMonitorTargetOutput) ToSyntheticMonitorTargetOutput() SyntheticMonitorTargetOutput {
+	return o
+}
+
+func (o SyntheticMonitorTargetOutput) ToSyntheticMonitorTargetOutputWithContext(ctx context.Context) SyntheticMonitorTargetOutput {
+	return o
+}
+
+func (o SyntheticMonitorTargetOutput) ToSyntheticMonitorTargetPtrOutput() SyntheticMonitorTargetPtrOutput {
+	return o.ToSyntheticMonitorTargetPtrOutputWithContext(context.Background())
+}
+
+func (o SyntheticMonitorTargetOutput) ToSyntheticMonitorTargetPtrOutputWithContext(ctx context.Context) SyntheticMonitorTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SyntheticMonitorTarget) *SyntheticMonitorTarget {
+		return &v
+	}).(SyntheticMonitorTargetPtrOutput)
+}
+
+func (o SyntheticMonitorTargetOutput) ToOutput(ctx context.Context) pulumix.Output[SyntheticMonitorTarget] {
+	return pulumix.Output[SyntheticMonitorTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Target a Synthetic Monitor GCFv2 instance.
+func (o SyntheticMonitorTargetOutput) CloudFunctionV2() CloudFunctionV2TargetPtrOutput {
+	return o.ApplyT(func(v SyntheticMonitorTarget) *CloudFunctionV2Target { return v.CloudFunctionV2 }).(CloudFunctionV2TargetPtrOutput)
+}
+
+type SyntheticMonitorTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (SyntheticMonitorTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SyntheticMonitorTarget)(nil)).Elem()
+}
+
+func (o SyntheticMonitorTargetPtrOutput) ToSyntheticMonitorTargetPtrOutput() SyntheticMonitorTargetPtrOutput {
+	return o
+}
+
+func (o SyntheticMonitorTargetPtrOutput) ToSyntheticMonitorTargetPtrOutputWithContext(ctx context.Context) SyntheticMonitorTargetPtrOutput {
+	return o
+}
+
+func (o SyntheticMonitorTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SyntheticMonitorTarget] {
+	return pulumix.Output[*SyntheticMonitorTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SyntheticMonitorTargetPtrOutput) Elem() SyntheticMonitorTargetOutput {
+	return o.ApplyT(func(v *SyntheticMonitorTarget) SyntheticMonitorTarget {
+		if v != nil {
+			return *v
+		}
+		var ret SyntheticMonitorTarget
+		return ret
+	}).(SyntheticMonitorTargetOutput)
+}
+
+// Target a Synthetic Monitor GCFv2 instance.
+func (o SyntheticMonitorTargetPtrOutput) CloudFunctionV2() CloudFunctionV2TargetPtrOutput {
+	return o.ApplyT(func(v *SyntheticMonitorTarget) *CloudFunctionV2Target {
+		if v == nil {
+			return nil
+		}
+		return v.CloudFunctionV2
+	}).(CloudFunctionV2TargetPtrOutput)
+}
+
+// Describes a Synthetic Monitor to be invoked by Uptime.
+type SyntheticMonitorTargetResponse struct {
+	// Target a Synthetic Monitor GCFv2 instance.
+	CloudFunctionV2 CloudFunctionV2TargetResponse `pulumi:"cloudFunctionV2"`
+}
+
+// Describes a Synthetic Monitor to be invoked by Uptime.
+type SyntheticMonitorTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (SyntheticMonitorTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SyntheticMonitorTargetResponse)(nil)).Elem()
+}
+
+func (o SyntheticMonitorTargetResponseOutput) ToSyntheticMonitorTargetResponseOutput() SyntheticMonitorTargetResponseOutput {
+	return o
+}
+
+func (o SyntheticMonitorTargetResponseOutput) ToSyntheticMonitorTargetResponseOutputWithContext(ctx context.Context) SyntheticMonitorTargetResponseOutput {
+	return o
+}
+
+func (o SyntheticMonitorTargetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SyntheticMonitorTargetResponse] {
+	return pulumix.Output[SyntheticMonitorTargetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Target a Synthetic Monitor GCFv2 instance.
+func (o SyntheticMonitorTargetResponseOutput) CloudFunctionV2() CloudFunctionV2TargetResponseOutput {
+	return o.ApplyT(func(v SyntheticMonitorTargetResponse) CloudFunctionV2TargetResponse { return v.CloudFunctionV2 }).(CloudFunctionV2TargetResponseOutput)
 }
 
 // Information required for a TCP Uptime check request.
@@ -12153,6 +12922,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicSliPtrInput)(nil)).Elem(), BasicSliArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudEndpointsInput)(nil)).Elem(), CloudEndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudEndpointsPtrInput)(nil)).Elem(), CloudEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudFunctionV2TargetInput)(nil)).Elem(), CloudFunctionV2TargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudFunctionV2TargetPtrInput)(nil)).Elem(), CloudFunctionV2TargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunInput)(nil)).Elem(), CloudRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunPtrInput)(nil)).Elem(), CloudRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIstioInput)(nil)).Elem(), ClusterIstioArgs{})
@@ -12217,6 +12988,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceThresholdPtrInput)(nil)).Elem(), PerformanceThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PingConfigInput)(nil)).Elem(), PingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PingConfigPtrInput)(nil)).Elem(), PingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusQueryLanguageConditionInput)(nil)).Elem(), PrometheusQueryLanguageConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusQueryLanguageConditionPtrInput)(nil)).Elem(), PrometheusQueryLanguageConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RequestBasedSliInput)(nil)).Elem(), RequestBasedSliArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RequestBasedSliPtrInput)(nil)).Elem(), RequestBasedSliArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupInput)(nil)).Elem(), ResourceGroupArgs{})
@@ -12227,6 +13000,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelIndicatorPtrInput)(nil)).Elem(), ServiceLevelIndicatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusInput)(nil)).Elem(), StatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusPtrInput)(nil)).Elem(), StatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SyntheticMonitorTargetInput)(nil)).Elem(), SyntheticMonitorTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SyntheticMonitorTargetPtrInput)(nil)).Elem(), SyntheticMonitorTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpCheckInput)(nil)).Elem(), TcpCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpCheckPtrInput)(nil)).Elem(), TcpCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryInput)(nil)).Elem(), TelemetryArgs{})
@@ -12263,6 +13038,9 @@ func init() {
 	pulumi.RegisterOutputType(CloudEndpointsOutput{})
 	pulumi.RegisterOutputType(CloudEndpointsPtrOutput{})
 	pulumi.RegisterOutputType(CloudEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(CloudFunctionV2TargetOutput{})
+	pulumi.RegisterOutputType(CloudFunctionV2TargetPtrOutput{})
+	pulumi.RegisterOutputType(CloudFunctionV2TargetResponseOutput{})
 	pulumi.RegisterOutputType(CloudRunOutput{})
 	pulumi.RegisterOutputType(CloudRunPtrOutput{})
 	pulumi.RegisterOutputType(CloudRunResponseOutput{})
@@ -12365,6 +13143,9 @@ func init() {
 	pulumi.RegisterOutputType(PingConfigOutput{})
 	pulumi.RegisterOutputType(PingConfigPtrOutput{})
 	pulumi.RegisterOutputType(PingConfigResponseOutput{})
+	pulumi.RegisterOutputType(PrometheusQueryLanguageConditionOutput{})
+	pulumi.RegisterOutputType(PrometheusQueryLanguageConditionPtrOutput{})
+	pulumi.RegisterOutputType(PrometheusQueryLanguageConditionResponseOutput{})
 	pulumi.RegisterOutputType(RequestBasedSliOutput{})
 	pulumi.RegisterOutputType(RequestBasedSliPtrOutput{})
 	pulumi.RegisterOutputType(RequestBasedSliResponseOutput{})
@@ -12381,6 +13162,9 @@ func init() {
 	pulumi.RegisterOutputType(StatusOutput{})
 	pulumi.RegisterOutputType(StatusPtrOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(SyntheticMonitorTargetOutput{})
+	pulumi.RegisterOutputType(SyntheticMonitorTargetPtrOutput{})
+	pulumi.RegisterOutputType(SyntheticMonitorTargetResponseOutput{})
 	pulumi.RegisterOutputType(TcpCheckOutput{})
 	pulumi.RegisterOutputType(TcpCheckPtrOutput{})
 	pulumi.RegisterOutputType(TcpCheckResponseOutput{})

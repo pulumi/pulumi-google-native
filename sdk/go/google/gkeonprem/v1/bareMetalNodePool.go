@@ -46,6 +46,8 @@ type BareMetalNodePool struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time at which this bare metal node pool was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The worker node pool upgrade policy.
+	UpgradePolicy BareMetalNodePoolUpgradePolicyResponseOutput `pulumi:"upgradePolicy"`
 }
 
 // NewBareMetalNodePool registers a new resource with the given unique name, arguments, and options.
@@ -115,6 +117,8 @@ type bareMetalNodePoolArgs struct {
 	// Node pool configuration.
 	NodePoolConfig BareMetalNodePoolConfig `pulumi:"nodePoolConfig"`
 	Project        *string                 `pulumi:"project"`
+	// The worker node pool upgrade policy.
+	UpgradePolicy *BareMetalNodePoolUpgradePolicy `pulumi:"upgradePolicy"`
 }
 
 // The set of arguments for constructing a BareMetalNodePool resource.
@@ -134,6 +138,8 @@ type BareMetalNodePoolArgs struct {
 	// Node pool configuration.
 	NodePoolConfig BareMetalNodePoolConfigInput
 	Project        pulumi.StringPtrInput
+	// The worker node pool upgrade policy.
+	UpgradePolicy BareMetalNodePoolUpgradePolicyPtrInput
 }
 
 func (BareMetalNodePoolArgs) ElementType() reflect.Type {
@@ -260,6 +266,11 @@ func (o BareMetalNodePoolOutput) Uid() pulumi.StringOutput {
 // The time at which this bare metal node pool was last updated.
 func (o BareMetalNodePoolOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalNodePool) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The worker node pool upgrade policy.
+func (o BareMetalNodePoolOutput) UpgradePolicy() BareMetalNodePoolUpgradePolicyResponseOutput {
+	return o.ApplyT(func(v *BareMetalNodePool) BareMetalNodePoolUpgradePolicyResponseOutput { return v.UpgradePolicy }).(BareMetalNodePoolUpgradePolicyResponseOutput)
 }
 
 func init() {

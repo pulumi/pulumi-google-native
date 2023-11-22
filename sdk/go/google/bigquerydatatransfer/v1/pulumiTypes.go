@@ -210,6 +210,202 @@ func (o EmailPreferencesResponseOutput) EnableFailureEmail() pulumi.BoolOutput {
 	return o.ApplyT(func(v EmailPreferencesResponse) bool { return v.EnableFailureEmail }).(pulumi.BoolOutput)
 }
 
+// Represents the encryption configuration for a transfer.
+type EncryptionConfiguration struct {
+	// The name of the KMS key used for encrypting BigQuery data.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// EncryptionConfigurationInput is an input type that accepts EncryptionConfigurationArgs and EncryptionConfigurationOutput values.
+// You can construct a concrete instance of `EncryptionConfigurationInput` via:
+//
+//	EncryptionConfigurationArgs{...}
+type EncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigurationOutput() EncryptionConfigurationOutput
+	ToEncryptionConfigurationOutputWithContext(context.Context) EncryptionConfigurationOutput
+}
+
+// Represents the encryption configuration for a transfer.
+type EncryptionConfigurationArgs struct {
+	// The name of the KMS key used for encrypting BigQuery data.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (EncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfiguration)(nil)).Elem()
+}
+
+func (i EncryptionConfigurationArgs) ToEncryptionConfigurationOutput() EncryptionConfigurationOutput {
+	return i.ToEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigurationArgs) ToEncryptionConfigurationOutputWithContext(ctx context.Context) EncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigurationOutput)
+}
+
+func (i EncryptionConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfiguration] {
+	return pulumix.Output[EncryptionConfiguration]{
+		OutputState: i.ToEncryptionConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EncryptionConfigurationArgs) ToEncryptionConfigurationPtrOutput() EncryptionConfigurationPtrOutput {
+	return i.ToEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigurationArgs) ToEncryptionConfigurationPtrOutputWithContext(ctx context.Context) EncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigurationOutput).ToEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// EncryptionConfigurationPtrInput is an input type that accepts EncryptionConfigurationArgs, EncryptionConfigurationPtr and EncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `EncryptionConfigurationPtrInput` via:
+//
+//	        EncryptionConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigurationPtrOutput() EncryptionConfigurationPtrOutput
+	ToEncryptionConfigurationPtrOutputWithContext(context.Context) EncryptionConfigurationPtrOutput
+}
+
+type encryptionConfigurationPtrType EncryptionConfigurationArgs
+
+func EncryptionConfigurationPtr(v *EncryptionConfigurationArgs) EncryptionConfigurationPtrInput {
+	return (*encryptionConfigurationPtrType)(v)
+}
+
+func (*encryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *encryptionConfigurationPtrType) ToEncryptionConfigurationPtrOutput() EncryptionConfigurationPtrOutput {
+	return i.ToEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionConfigurationPtrType) ToEncryptionConfigurationPtrOutputWithContext(ctx context.Context) EncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigurationPtrOutput)
+}
+
+func (i *encryptionConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfiguration] {
+	return pulumix.Output[*EncryptionConfiguration]{
+		OutputState: i.ToEncryptionConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Represents the encryption configuration for a transfer.
+type EncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfiguration)(nil)).Elem()
+}
+
+func (o EncryptionConfigurationOutput) ToEncryptionConfigurationOutput() EncryptionConfigurationOutput {
+	return o
+}
+
+func (o EncryptionConfigurationOutput) ToEncryptionConfigurationOutputWithContext(ctx context.Context) EncryptionConfigurationOutput {
+	return o
+}
+
+func (o EncryptionConfigurationOutput) ToEncryptionConfigurationPtrOutput() EncryptionConfigurationPtrOutput {
+	return o.ToEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionConfigurationOutput) ToEncryptionConfigurationPtrOutputWithContext(ctx context.Context) EncryptionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfiguration) *EncryptionConfiguration {
+		return &v
+	}).(EncryptionConfigurationPtrOutput)
+}
+
+func (o EncryptionConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfiguration] {
+	return pulumix.Output[EncryptionConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the KMS key used for encrypting BigQuery data.
+func (o EncryptionConfigurationOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionConfiguration) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfiguration)(nil)).Elem()
+}
+
+func (o EncryptionConfigurationPtrOutput) ToEncryptionConfigurationPtrOutput() EncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o EncryptionConfigurationPtrOutput) ToEncryptionConfigurationPtrOutputWithContext(ctx context.Context) EncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o EncryptionConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfiguration] {
+	return pulumix.Output[*EncryptionConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EncryptionConfigurationPtrOutput) Elem() EncryptionConfigurationOutput {
+	return o.ApplyT(func(v *EncryptionConfiguration) EncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfiguration
+		return ret
+	}).(EncryptionConfigurationOutput)
+}
+
+// The name of the KMS key used for encrypting BigQuery data.
+func (o EncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the encryption configuration for a transfer.
+type EncryptionConfigurationResponse struct {
+	// The name of the KMS key used for encrypting BigQuery data.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// Represents the encryption configuration for a transfer.
+type EncryptionConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigurationResponse)(nil)).Elem()
+}
+
+func (o EncryptionConfigurationResponseOutput) ToEncryptionConfigurationResponseOutput() EncryptionConfigurationResponseOutput {
+	return o
+}
+
+func (o EncryptionConfigurationResponseOutput) ToEncryptionConfigurationResponseOutputWithContext(ctx context.Context) EncryptionConfigurationResponseOutput {
+	return o
+}
+
+func (o EncryptionConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionConfigurationResponse] {
+	return pulumix.Output[EncryptionConfigurationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the KMS key used for encrypting BigQuery data.
+func (o EncryptionConfigurationResponseOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionConfigurationResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
 // Options customizing the data transfer schedule.
 type ScheduleOptions struct {
 	// If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored.
@@ -493,11 +689,16 @@ func (o UserInfoResponseOutput) Email() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailPreferencesInput)(nil)).Elem(), EmailPreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailPreferencesPtrInput)(nil)).Elem(), EmailPreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationInput)(nil)).Elem(), EncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigurationPtrInput)(nil)).Elem(), EncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleOptionsInput)(nil)).Elem(), ScheduleOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleOptionsPtrInput)(nil)).Elem(), ScheduleOptionsArgs{})
 	pulumi.RegisterOutputType(EmailPreferencesOutput{})
 	pulumi.RegisterOutputType(EmailPreferencesPtrOutput{})
 	pulumi.RegisterOutputType(EmailPreferencesResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleOptionsOutput{})
 	pulumi.RegisterOutputType(ScheduleOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ScheduleOptionsResponseOutput{})

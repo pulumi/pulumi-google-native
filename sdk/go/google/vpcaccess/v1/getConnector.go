@@ -38,11 +38,11 @@ type LookupConnectorResult struct {
 	MachineType string `pulumi:"machineType"`
 	// Maximum value of instances in autoscaling group underlying the connector.
 	MaxInstances int `pulumi:"maxInstances"`
-	// Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
+	// Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput.
 	MaxThroughput int `pulumi:"maxThroughput"`
 	// Minimum value of instances in autoscaling group underlying the connector.
 	MinInstances int `pulumi:"minInstances"`
-	// Minimum throughput of the connector in Mbps. Default and min is 200.
+	// Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput.
 	MinThroughput int `pulumi:"minThroughput"`
 	// The resource name in the format `projects/*/locations/*/connectors/*`.
 	Name string `pulumi:"name"`
@@ -117,7 +117,7 @@ func (o LookupConnectorResultOutput) MaxInstances() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupConnectorResult) int { return v.MaxInstances }).(pulumi.IntOutput)
 }
 
-// Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
+// Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput.
 func (o LookupConnectorResultOutput) MaxThroughput() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupConnectorResult) int { return v.MaxThroughput }).(pulumi.IntOutput)
 }
@@ -127,7 +127,7 @@ func (o LookupConnectorResultOutput) MinInstances() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupConnectorResult) int { return v.MinInstances }).(pulumi.IntOutput)
 }
 
-// Minimum throughput of the connector in Mbps. Default and min is 200.
+// Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput.
 func (o LookupConnectorResultOutput) MinThroughput() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupConnectorResult) int { return v.MinThroughput }).(pulumi.IntOutput)
 }

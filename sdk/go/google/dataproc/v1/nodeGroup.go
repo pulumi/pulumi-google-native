@@ -29,8 +29,10 @@ type NodeGroup struct {
 	NodeGroupConfig InstanceGroupConfigResponseOutput `pulumi:"nodeGroupConfig"`
 	// Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
 	NodeGroupId pulumi.StringPtrOutput `pulumi:"nodeGroupId"`
-	Project     pulumi.StringOutput    `pulumi:"project"`
-	RegionId    pulumi.StringOutput    `pulumi:"regionId"`
+	// Optional. operation id of the parent operation sending the create request
+	ParentOperationId pulumi.StringPtrOutput `pulumi:"parentOperationId"`
+	Project           pulumi.StringOutput    `pulumi:"project"`
+	RegionId          pulumi.StringOutput    `pulumi:"regionId"`
 	// Optional. A unique ID used to identify the request. If the server receives two CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests) with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Node group roles.
@@ -101,8 +103,10 @@ type nodeGroupArgs struct {
 	NodeGroupConfig *InstanceGroupConfig `pulumi:"nodeGroupConfig"`
 	// Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
 	NodeGroupId *string `pulumi:"nodeGroupId"`
-	Project     *string `pulumi:"project"`
-	RegionId    string  `pulumi:"regionId"`
+	// Optional. operation id of the parent operation sending the create request
+	ParentOperationId *string `pulumi:"parentOperationId"`
+	Project           *string `pulumi:"project"`
+	RegionId          string  `pulumi:"regionId"`
 	// Optional. A unique ID used to identify the request. If the server receives two CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests) with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId *string `pulumi:"requestId"`
 	// Node group roles.
@@ -120,8 +124,10 @@ type NodeGroupArgs struct {
 	NodeGroupConfig InstanceGroupConfigPtrInput
 	// Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
 	NodeGroupId pulumi.StringPtrInput
-	Project     pulumi.StringPtrInput
-	RegionId    pulumi.StringInput
+	// Optional. operation id of the parent operation sending the create request
+	ParentOperationId pulumi.StringPtrInput
+	Project           pulumi.StringPtrInput
+	RegionId          pulumi.StringInput
 	// Optional. A unique ID used to identify the request. If the server receives two CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests) with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrInput
 	// Node group roles.
@@ -199,6 +205,11 @@ func (o NodeGroupOutput) NodeGroupConfig() InstanceGroupConfigResponseOutput {
 // Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
 func (o NodeGroupOutput) NodeGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringPtrOutput { return v.NodeGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Optional. operation id of the parent operation sending the create request
+func (o NodeGroupOutput) ParentOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringPtrOutput { return v.ParentOperationId }).(pulumi.StringPtrOutput)
 }
 
 func (o NodeGroupOutput) Project() pulumi.StringOutput {

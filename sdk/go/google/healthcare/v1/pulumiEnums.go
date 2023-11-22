@@ -1336,6 +1336,195 @@ func (in *fieldMetadataActionPtr) ToOutput(ctx context.Context) pulumix.Output[*
 	}
 }
 
+// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+type GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition string
+
+const (
+	// Default behavior is the same as WRITE_EMPTY.
+	GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionWriteDispositionUnspecified = GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED")
+	// Only export data if the destination table is empty.
+	GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionWriteEmpty = GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition("WRITE_EMPTY")
+	// Erase all existing data in the destination table before writing the instances.
+	GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionWriteTruncate = GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition("WRITE_TRUNCATE")
+	// Append data to the destination table.
+	GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionWriteAppend = GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition("WRITE_APPEND")
+)
+
+func (GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition)(nil)).Elem()
+}
+
+func (e GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput {
+	return pulumi.ToOutput(e).(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput)
+}
+
+func (e GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput)
+}
+
+func (e GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
+	return e.ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
+	return GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition(e).ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutputWithContext(ctx).ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
+	return o.ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) *GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition {
+		return &v
+	}).(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput)
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition] {
+	return pulumix.Output[GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition] {
+	return pulumix.Output[*GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput) Elem() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition
+		return ret
+	}).(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput)
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionInput is an input type that accepts GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionArgs and GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionInput` via:
+//
+//	GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionArgs{...}
+type GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput
+	ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutputWithContext(context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput
+}
+
+var googleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrType = reflect.TypeOf((**GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition)(nil)).Elem()
+
+type GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput
+	ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutputWithContext(context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput
+}
+
+type googleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtr string
+
+func GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtr(v string) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrInput {
+	return (*googleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtr)(&v)
+}
+
+func (*googleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtr) ElementType() reflect.Type {
+	return googleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrType
+}
+
+func (in *googleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtr) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput)
+}
+
+func (in *googleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtr) ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput)
+}
+
+func (in *googleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition] {
+	return pulumix.Output[*GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition]{
+		OutputState: in.ToGoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
 type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition string
 
@@ -2861,6 +3050,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreVersionPtrInput)(nil)).Elem(), FhirStoreVersion("VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldMetadataActionInput)(nil)).Elem(), FieldMetadataAction("ACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldMetadataActionPtrInput)(nil)).Elem(), FieldMetadataAction("ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionInput)(nil)).Elem(), GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageConfigTextRedactionModeInput)(nil)).Elem(), ImageConfigTextRedactionMode("TEXT_REDACTION_MODE_UNSPECIFIED"))
@@ -2891,6 +3082,8 @@ func init() {
 	pulumi.RegisterOutputType(FhirStoreVersionPtrOutput{})
 	pulumi.RegisterOutputType(FieldMetadataActionOutput{})
 	pulumi.RegisterOutputType(FieldMetadataActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput{})
 	pulumi.RegisterOutputType(ImageConfigTextRedactionModeOutput{})

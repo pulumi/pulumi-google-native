@@ -40,7 +40,8 @@ type LookupEnvironmentResult struct {
 	// Optional. Display name for this environment.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
-	ForwardProxyUri string `pulumi:"forwardProxyUri"`
+	ForwardProxyUri      string `pulumi:"forwardProxyUri"`
+	HasAttachedFlowHooks bool   `pulumi:"hasAttachedFlowHooks"`
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt string `pulumi:"lastModifiedAt"`
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
@@ -51,6 +52,8 @@ type LookupEnvironmentResult struct {
 	Properties GoogleCloudApigeeV1PropertiesResponse `pulumi:"properties"`
 	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
 	State string `pulumi:"state"`
+	// Optional. EnvironmentType selected for the environment.
+	Type string `pulumi:"type"`
 }
 
 func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
@@ -125,6 +128,10 @@ func (o LookupEnvironmentResultOutput) ForwardProxyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.ForwardProxyUri }).(pulumi.StringOutput)
 }
 
+func (o LookupEnvironmentResultOutput) HasAttachedFlowHooks() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) bool { return v.HasAttachedFlowHooks }).(pulumi.BoolOutput)
+}
+
 // Last modification time of this environment as milliseconds since epoch.
 func (o LookupEnvironmentResultOutput) LastModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.LastModifiedAt }).(pulumi.StringOutput)
@@ -148,6 +155,11 @@ func (o LookupEnvironmentResultOutput) Properties() GoogleCloudApigeeV1Propertie
 // State of the environment. Values other than ACTIVE means the resource is not ready to use.
 func (o LookupEnvironmentResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional. EnvironmentType selected for the environment.
+func (o LookupEnvironmentResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -26,7 +26,7 @@ type BackupSchedule struct {
 	// The unique backup schedule identifier across all locations and databases for the given project. This will be auto-assigned. Format is `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	Retention pulumi.StringOutput `pulumi:"retention"`
 	// The timestamp at which this backup schedule was most recently updated. When a backup schedule is first created, this is the same as create_time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -86,7 +86,7 @@ type backupScheduleArgs struct {
 	DailyRecurrence *GoogleFirestoreAdminV1DailyRecurrence `pulumi:"dailyRecurrence"`
 	DatabaseId      string                                 `pulumi:"databaseId"`
 	Project         *string                                `pulumi:"project"`
-	// At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	Retention *string `pulumi:"retention"`
 	// For a schedule that runs weekly on a specific day and time.
 	WeeklyRecurrence *GoogleFirestoreAdminV1WeeklyRecurrence `pulumi:"weeklyRecurrence"`
@@ -98,7 +98,7 @@ type BackupScheduleArgs struct {
 	DailyRecurrence GoogleFirestoreAdminV1DailyRecurrencePtrInput
 	DatabaseId      pulumi.StringInput
 	Project         pulumi.StringPtrInput
-	// At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	Retention pulumi.StringPtrInput
 	// For a schedule that runs weekly on a specific day and time.
 	WeeklyRecurrence GoogleFirestoreAdminV1WeeklyRecurrencePtrInput
@@ -176,7 +176,7 @@ func (o BackupScheduleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupSchedule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
+// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 func (o BackupScheduleOutput) Retention() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupSchedule) pulumi.StringOutput { return v.Retention }).(pulumi.StringOutput)
 }

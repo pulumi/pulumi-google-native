@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:discoveryengine/v1beta:Conversation":
+		r = &Conversation{}
 	case "google-native:discoveryengine/v1beta:Document":
 		r = &Document{}
+	case "google-native:discoveryengine/v1beta:Schema":
+		r = &Schema{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

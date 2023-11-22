@@ -77,6 +77,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Deployment{}
 	case "google-native:apigeeregistry/v1:DeploymentArtifact":
 		r = &DeploymentArtifact{}
+	case "google-native:apigeeregistry/v1:DocumentIamBinding":
+		r = &DocumentIamBinding{}
+	case "google-native:apigeeregistry/v1:DocumentIamMember":
+		r = &DocumentIamMember{}
+	case "google-native:apigeeregistry/v1:DocumentIamPolicy":
+		r = &DocumentIamPolicy{}
 	case "google-native:apigeeregistry/v1:Instance":
 		r = &Instance{}
 	case "google-native:apigeeregistry/v1:InstanceIamBinding":

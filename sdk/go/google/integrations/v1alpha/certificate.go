@@ -48,6 +48,9 @@ func NewCertificate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.ProductId == nil {
 		return nil, errors.New("invalid value for required argument 'ProductId'")
 	}
@@ -97,7 +100,7 @@ type certificateArgs struct {
 	// Description of the certificate
 	Description *string `pulumi:"description"`
 	// Name of the certificate
-	DisplayName *string `pulumi:"displayName"`
+	DisplayName string  `pulumi:"displayName"`
 	Location    *string `pulumi:"location"`
 	ProductId   string  `pulumi:"productId"`
 	Project     *string `pulumi:"project"`
@@ -116,7 +119,7 @@ type CertificateArgs struct {
 	// Description of the certificate
 	Description pulumi.StringPtrInput
 	// Name of the certificate
-	DisplayName pulumi.StringPtrInput
+	DisplayName pulumi.StringInput
 	Location    pulumi.StringPtrInput
 	ProductId   pulumi.StringInput
 	Project     pulumi.StringPtrInput

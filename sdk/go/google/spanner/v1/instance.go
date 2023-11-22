@@ -17,6 +17,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+	AutoscalingConfig AutoscalingConfigResponseOutput `pulumi:"autoscalingConfig"`
 	// The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
 	Config pulumi.StringOutput `pulumi:"config"`
 	// The time at which the instance was created.
@@ -99,6 +101,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+	AutoscalingConfig *AutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
 	Config string `pulumi:"config"`
 	// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
@@ -126,6 +130,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+	AutoscalingConfig AutoscalingConfigPtrInput
 	// The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
 	Config pulumi.StringInput
 	// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
@@ -198,6 +204,11 @@ func (o InstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*Instance] 
 	return pulumix.Output[*Instance]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+func (o InstanceOutput) AutoscalingConfig() AutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v *Instance) AutoscalingConfigResponseOutput { return v.AutoscalingConfig }).(AutoscalingConfigResponseOutput)
 }
 
 // The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.

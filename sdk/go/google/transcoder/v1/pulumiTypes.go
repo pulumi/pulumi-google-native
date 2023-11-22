@@ -196,6 +196,176 @@ func (o AdBreakResponseArrayOutput) Index(i pulumi.IntInput) AdBreakResponseOutp
 	}).(AdBreakResponseOutput)
 }
 
+// Configuration for AES-128 encryption.
+type Aes128Encryption struct {
+}
+
+// Aes128EncryptionInput is an input type that accepts Aes128EncryptionArgs and Aes128EncryptionOutput values.
+// You can construct a concrete instance of `Aes128EncryptionInput` via:
+//
+//	Aes128EncryptionArgs{...}
+type Aes128EncryptionInput interface {
+	pulumi.Input
+
+	ToAes128EncryptionOutput() Aes128EncryptionOutput
+	ToAes128EncryptionOutputWithContext(context.Context) Aes128EncryptionOutput
+}
+
+// Configuration for AES-128 encryption.
+type Aes128EncryptionArgs struct {
+}
+
+func (Aes128EncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Aes128Encryption)(nil)).Elem()
+}
+
+func (i Aes128EncryptionArgs) ToAes128EncryptionOutput() Aes128EncryptionOutput {
+	return i.ToAes128EncryptionOutputWithContext(context.Background())
+}
+
+func (i Aes128EncryptionArgs) ToAes128EncryptionOutputWithContext(ctx context.Context) Aes128EncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Aes128EncryptionOutput)
+}
+
+func (i Aes128EncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[Aes128Encryption] {
+	return pulumix.Output[Aes128Encryption]{
+		OutputState: i.ToAes128EncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i Aes128EncryptionArgs) ToAes128EncryptionPtrOutput() Aes128EncryptionPtrOutput {
+	return i.ToAes128EncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i Aes128EncryptionArgs) ToAes128EncryptionPtrOutputWithContext(ctx context.Context) Aes128EncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Aes128EncryptionOutput).ToAes128EncryptionPtrOutputWithContext(ctx)
+}
+
+// Aes128EncryptionPtrInput is an input type that accepts Aes128EncryptionArgs, Aes128EncryptionPtr and Aes128EncryptionPtrOutput values.
+// You can construct a concrete instance of `Aes128EncryptionPtrInput` via:
+//
+//	        Aes128EncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type Aes128EncryptionPtrInput interface {
+	pulumi.Input
+
+	ToAes128EncryptionPtrOutput() Aes128EncryptionPtrOutput
+	ToAes128EncryptionPtrOutputWithContext(context.Context) Aes128EncryptionPtrOutput
+}
+
+type aes128EncryptionPtrType Aes128EncryptionArgs
+
+func Aes128EncryptionPtr(v *Aes128EncryptionArgs) Aes128EncryptionPtrInput {
+	return (*aes128EncryptionPtrType)(v)
+}
+
+func (*aes128EncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Aes128Encryption)(nil)).Elem()
+}
+
+func (i *aes128EncryptionPtrType) ToAes128EncryptionPtrOutput() Aes128EncryptionPtrOutput {
+	return i.ToAes128EncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *aes128EncryptionPtrType) ToAes128EncryptionPtrOutputWithContext(ctx context.Context) Aes128EncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Aes128EncryptionPtrOutput)
+}
+
+func (i *aes128EncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*Aes128Encryption] {
+	return pulumix.Output[*Aes128Encryption]{
+		OutputState: i.ToAes128EncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for AES-128 encryption.
+type Aes128EncryptionOutput struct{ *pulumi.OutputState }
+
+func (Aes128EncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Aes128Encryption)(nil)).Elem()
+}
+
+func (o Aes128EncryptionOutput) ToAes128EncryptionOutput() Aes128EncryptionOutput {
+	return o
+}
+
+func (o Aes128EncryptionOutput) ToAes128EncryptionOutputWithContext(ctx context.Context) Aes128EncryptionOutput {
+	return o
+}
+
+func (o Aes128EncryptionOutput) ToAes128EncryptionPtrOutput() Aes128EncryptionPtrOutput {
+	return o.ToAes128EncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o Aes128EncryptionOutput) ToAes128EncryptionPtrOutputWithContext(ctx context.Context) Aes128EncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Aes128Encryption) *Aes128Encryption {
+		return &v
+	}).(Aes128EncryptionPtrOutput)
+}
+
+func (o Aes128EncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[Aes128Encryption] {
+	return pulumix.Output[Aes128Encryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+type Aes128EncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (Aes128EncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Aes128Encryption)(nil)).Elem()
+}
+
+func (o Aes128EncryptionPtrOutput) ToAes128EncryptionPtrOutput() Aes128EncryptionPtrOutput {
+	return o
+}
+
+func (o Aes128EncryptionPtrOutput) ToAes128EncryptionPtrOutputWithContext(ctx context.Context) Aes128EncryptionPtrOutput {
+	return o
+}
+
+func (o Aes128EncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Aes128Encryption] {
+	return pulumix.Output[*Aes128Encryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o Aes128EncryptionPtrOutput) Elem() Aes128EncryptionOutput {
+	return o.ApplyT(func(v *Aes128Encryption) Aes128Encryption {
+		if v != nil {
+			return *v
+		}
+		var ret Aes128Encryption
+		return ret
+	}).(Aes128EncryptionOutput)
+}
+
+// Configuration for AES-128 encryption.
+type Aes128EncryptionResponse struct {
+}
+
+// Configuration for AES-128 encryption.
+type Aes128EncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (Aes128EncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Aes128EncryptionResponse)(nil)).Elem()
+}
+
+func (o Aes128EncryptionResponseOutput) ToAes128EncryptionResponseOutput() Aes128EncryptionResponseOutput {
+	return o
+}
+
+func (o Aes128EncryptionResponseOutput) ToAes128EncryptionResponseOutputWithContext(ctx context.Context) Aes128EncryptionResponseOutput {
+	return o
+}
+
+func (o Aes128EncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Aes128EncryptionResponse] {
+	return pulumix.Output[Aes128EncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Animation types.
 type Animation struct {
 	// End previous animation.
@@ -338,7 +508,7 @@ func (o AnimationArrayOutput) Index(i pulumi.IntInput) AnimationOutput {
 	}).(AnimationOutput)
 }
 
-// End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
+// End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.
 type AnimationEnd struct {
 	// The time to end overlay object, in seconds. Default: 0
 	StartTimeOffset *string `pulumi:"startTimeOffset"`
@@ -355,7 +525,7 @@ type AnimationEndInput interface {
 	ToAnimationEndOutputWithContext(context.Context) AnimationEndOutput
 }
 
-// End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
+// End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.
 type AnimationEndArgs struct {
 	// The time to end overlay object, in seconds. Default: 0
 	StartTimeOffset pulumi.StringPtrInput `pulumi:"startTimeOffset"`
@@ -426,7 +596,7 @@ func (i *animationEndPtrType) ToOutput(ctx context.Context) pulumix.Output[*Anim
 	}
 }
 
-// End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
+// End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.
 type AnimationEndOutput struct{ *pulumi.OutputState }
 
 func (AnimationEndOutput) ElementType() reflect.Type {
@@ -502,13 +672,13 @@ func (o AnimationEndPtrOutput) StartTimeOffset() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
+// End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.
 type AnimationEndResponse struct {
 	// The time to end overlay object, in seconds. Default: 0
 	StartTimeOffset string `pulumi:"startTimeOffset"`
 }
 
-// End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
+// End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.
 type AnimationEndResponseOutput struct{ *pulumi.OutputState }
 
 func (AnimationEndResponseOutput) ElementType() reflect.Type {
@@ -1304,15 +1474,15 @@ func (o AudioPtrOutput) Lufs() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 type AudioMapping struct {
-	// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+	// The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
 	AtomKey string `pulumi:"atomKey"`
 	// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
 	GainDb *float64 `pulumi:"gainDb"`
 	// The zero-based index of the channel in the input audio stream.
 	InputChannel int `pulumi:"inputChannel"`
-	// The `Input.key` that identifies the input file.
+	// The Input.key that identifies the input file.
 	InputKey string `pulumi:"inputKey"`
 	// The zero-based index of the track in the input file.
 	InputTrack int `pulumi:"inputTrack"`
@@ -1331,15 +1501,15 @@ type AudioMappingInput interface {
 	ToAudioMappingOutputWithContext(context.Context) AudioMappingOutput
 }
 
-// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 type AudioMappingArgs struct {
-	// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+	// The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
 	AtomKey pulumi.StringInput `pulumi:"atomKey"`
 	// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
 	GainDb pulumi.Float64PtrInput `pulumi:"gainDb"`
 	// The zero-based index of the channel in the input audio stream.
 	InputChannel pulumi.IntInput `pulumi:"inputChannel"`
-	// The `Input.key` that identifies the input file.
+	// The Input.key that identifies the input file.
 	InputKey pulumi.StringInput `pulumi:"inputKey"`
 	// The zero-based index of the track in the input file.
 	InputTrack pulumi.IntInput `pulumi:"inputTrack"`
@@ -1396,7 +1566,7 @@ func (i AudioMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]AudioM
 	}
 }
 
-// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 type AudioMappingOutput struct{ *pulumi.OutputState }
 
 func (AudioMappingOutput) ElementType() reflect.Type {
@@ -1417,7 +1587,7 @@ func (o AudioMappingOutput) ToOutput(ctx context.Context) pulumix.Output[AudioMa
 	}
 }
 
-// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+// The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
 func (o AudioMappingOutput) AtomKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AudioMapping) string { return v.AtomKey }).(pulumi.StringOutput)
 }
@@ -1432,7 +1602,7 @@ func (o AudioMappingOutput) InputChannel() pulumi.IntOutput {
 	return o.ApplyT(func(v AudioMapping) int { return v.InputChannel }).(pulumi.IntOutput)
 }
 
-// The `Input.key` that identifies the input file.
+// The Input.key that identifies the input file.
 func (o AudioMappingOutput) InputKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AudioMapping) string { return v.InputKey }).(pulumi.StringOutput)
 }
@@ -1473,15 +1643,15 @@ func (o AudioMappingArrayOutput) Index(i pulumi.IntInput) AudioMappingOutput {
 	}).(AudioMappingOutput)
 }
 
-// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 type AudioMappingResponse struct {
-	// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+	// The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
 	AtomKey string `pulumi:"atomKey"`
 	// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
 	GainDb float64 `pulumi:"gainDb"`
 	// The zero-based index of the channel in the input audio stream.
 	InputChannel int `pulumi:"inputChannel"`
-	// The `Input.key` that identifies the input file.
+	// The Input.key that identifies the input file.
 	InputKey string `pulumi:"inputKey"`
 	// The zero-based index of the track in the input file.
 	InputTrack int `pulumi:"inputTrack"`
@@ -1489,7 +1659,7 @@ type AudioMappingResponse struct {
 	OutputChannel int `pulumi:"outputChannel"`
 }
 
-// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 type AudioMappingResponseOutput struct{ *pulumi.OutputState }
 
 func (AudioMappingResponseOutput) ElementType() reflect.Type {
@@ -1510,7 +1680,7 @@ func (o AudioMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+// The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
 func (o AudioMappingResponseOutput) AtomKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AudioMappingResponse) string { return v.AtomKey }).(pulumi.StringOutput)
 }
@@ -1525,7 +1695,7 @@ func (o AudioMappingResponseOutput) InputChannel() pulumi.IntOutput {
 	return o.ApplyT(func(v AudioMappingResponse) int { return v.InputChannel }).(pulumi.IntOutput)
 }
 
-// The `Input.key` that identifies the input file.
+// The Input.key that identifies the input file.
 func (o AudioMappingResponseOutput) InputKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AudioMappingResponse) string { return v.InputKey }).(pulumi.StringOutput)
 }
@@ -1626,7 +1796,7 @@ type AudioStream struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
 	LanguageCode *string `pulumi:"languageCode"`
-	// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+	// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 	Mapping []AudioMapping `pulumi:"mapping"`
 	// The audio sample rate in Hertz. The default is 48000 Hertz.
 	SampleRateHertz *int `pulumi:"sampleRateHertz"`
@@ -1657,7 +1827,7 @@ type AudioStreamArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
 	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
-	// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+	// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 	Mapping AudioMappingArrayInput `pulumi:"mapping"`
 	// The audio sample rate in Hertz. The default is 48000 Hertz.
 	SampleRateHertz pulumi.IntPtrInput `pulumi:"sampleRateHertz"`
@@ -1789,7 +1959,7 @@ func (o AudioStreamOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AudioStream) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
 
-// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 func (o AudioStreamOutput) Mapping() AudioMappingArrayOutput {
 	return o.ApplyT(func(v AudioStream) []AudioMapping { return v.Mapping }).(AudioMappingArrayOutput)
 }
@@ -1889,7 +2059,7 @@ func (o AudioStreamPtrOutput) LanguageCode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 func (o AudioStreamPtrOutput) Mapping() AudioMappingArrayOutput {
 	return o.ApplyT(func(v *AudioStream) []AudioMapping {
 		if v == nil {
@@ -1923,7 +2093,7 @@ type AudioStreamResponse struct {
 	DisplayName string `pulumi:"displayName"`
 	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
 	LanguageCode string `pulumi:"languageCode"`
-	// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+	// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 	Mapping []AudioMappingResponse `pulumi:"mapping"`
 	// The audio sample rate in Hertz. The default is 48000 Hertz.
 	SampleRateHertz int `pulumi:"sampleRateHertz"`
@@ -1980,7 +2150,7 @@ func (o AudioStreamResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v AudioStreamResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
-// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 func (o AudioStreamResponseOutput) Mapping() AudioMappingResponseArrayOutput {
 	return o.ApplyT(func(v AudioStreamResponse) []AudioMappingResponse { return v.Mapping }).(AudioMappingResponseArrayOutput)
 }
@@ -2236,6 +2406,176 @@ func (o BwdifConfigResponseOutput) Mode() pulumi.StringOutput {
 // The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
 func (o BwdifConfigResponseOutput) Parity() pulumi.StringOutput {
 	return o.ApplyT(func(v BwdifConfigResponse) string { return v.Parity }).(pulumi.StringOutput)
+}
+
+// Clearkey configuration.
+type Clearkey struct {
+}
+
+// ClearkeyInput is an input type that accepts ClearkeyArgs and ClearkeyOutput values.
+// You can construct a concrete instance of `ClearkeyInput` via:
+//
+//	ClearkeyArgs{...}
+type ClearkeyInput interface {
+	pulumi.Input
+
+	ToClearkeyOutput() ClearkeyOutput
+	ToClearkeyOutputWithContext(context.Context) ClearkeyOutput
+}
+
+// Clearkey configuration.
+type ClearkeyArgs struct {
+}
+
+func (ClearkeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Clearkey)(nil)).Elem()
+}
+
+func (i ClearkeyArgs) ToClearkeyOutput() ClearkeyOutput {
+	return i.ToClearkeyOutputWithContext(context.Background())
+}
+
+func (i ClearkeyArgs) ToClearkeyOutputWithContext(ctx context.Context) ClearkeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClearkeyOutput)
+}
+
+func (i ClearkeyArgs) ToOutput(ctx context.Context) pulumix.Output[Clearkey] {
+	return pulumix.Output[Clearkey]{
+		OutputState: i.ToClearkeyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClearkeyArgs) ToClearkeyPtrOutput() ClearkeyPtrOutput {
+	return i.ToClearkeyPtrOutputWithContext(context.Background())
+}
+
+func (i ClearkeyArgs) ToClearkeyPtrOutputWithContext(ctx context.Context) ClearkeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClearkeyOutput).ToClearkeyPtrOutputWithContext(ctx)
+}
+
+// ClearkeyPtrInput is an input type that accepts ClearkeyArgs, ClearkeyPtr and ClearkeyPtrOutput values.
+// You can construct a concrete instance of `ClearkeyPtrInput` via:
+//
+//	        ClearkeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClearkeyPtrInput interface {
+	pulumi.Input
+
+	ToClearkeyPtrOutput() ClearkeyPtrOutput
+	ToClearkeyPtrOutputWithContext(context.Context) ClearkeyPtrOutput
+}
+
+type clearkeyPtrType ClearkeyArgs
+
+func ClearkeyPtr(v *ClearkeyArgs) ClearkeyPtrInput {
+	return (*clearkeyPtrType)(v)
+}
+
+func (*clearkeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Clearkey)(nil)).Elem()
+}
+
+func (i *clearkeyPtrType) ToClearkeyPtrOutput() ClearkeyPtrOutput {
+	return i.ToClearkeyPtrOutputWithContext(context.Background())
+}
+
+func (i *clearkeyPtrType) ToClearkeyPtrOutputWithContext(ctx context.Context) ClearkeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClearkeyPtrOutput)
+}
+
+func (i *clearkeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*Clearkey] {
+	return pulumix.Output[*Clearkey]{
+		OutputState: i.ToClearkeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Clearkey configuration.
+type ClearkeyOutput struct{ *pulumi.OutputState }
+
+func (ClearkeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Clearkey)(nil)).Elem()
+}
+
+func (o ClearkeyOutput) ToClearkeyOutput() ClearkeyOutput {
+	return o
+}
+
+func (o ClearkeyOutput) ToClearkeyOutputWithContext(ctx context.Context) ClearkeyOutput {
+	return o
+}
+
+func (o ClearkeyOutput) ToClearkeyPtrOutput() ClearkeyPtrOutput {
+	return o.ToClearkeyPtrOutputWithContext(context.Background())
+}
+
+func (o ClearkeyOutput) ToClearkeyPtrOutputWithContext(ctx context.Context) ClearkeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Clearkey) *Clearkey {
+		return &v
+	}).(ClearkeyPtrOutput)
+}
+
+func (o ClearkeyOutput) ToOutput(ctx context.Context) pulumix.Output[Clearkey] {
+	return pulumix.Output[Clearkey]{
+		OutputState: o.OutputState,
+	}
+}
+
+type ClearkeyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClearkeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Clearkey)(nil)).Elem()
+}
+
+func (o ClearkeyPtrOutput) ToClearkeyPtrOutput() ClearkeyPtrOutput {
+	return o
+}
+
+func (o ClearkeyPtrOutput) ToClearkeyPtrOutputWithContext(ctx context.Context) ClearkeyPtrOutput {
+	return o
+}
+
+func (o ClearkeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Clearkey] {
+	return pulumix.Output[*Clearkey]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClearkeyPtrOutput) Elem() ClearkeyOutput {
+	return o.ApplyT(func(v *Clearkey) Clearkey {
+		if v != nil {
+			return *v
+		}
+		var ret Clearkey
+		return ret
+	}).(ClearkeyOutput)
+}
+
+// Clearkey configuration.
+type ClearkeyResponse struct {
+}
+
+// Clearkey configuration.
+type ClearkeyResponseOutput struct{ *pulumi.OutputState }
+
+func (ClearkeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClearkeyResponse)(nil)).Elem()
+}
+
+func (o ClearkeyResponseOutput) ToClearkeyResponseOutput() ClearkeyResponseOutput {
+	return o
+}
+
+func (o ClearkeyResponseOutput) ToClearkeyResponseOutputWithContext(ctx context.Context) ClearkeyResponseOutput {
+	return o
+}
+
+func (o ClearkeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClearkeyResponse] {
+	return pulumix.Output[ClearkeyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Color preprocessing configuration. **Note:** This configuration is not supported.
@@ -2758,6 +3098,202 @@ func (o CropResponseOutput) RightPixels() pulumi.IntOutput {
 // The number of pixels to crop from the top. The default is 0.
 func (o CropResponseOutput) TopPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v CropResponse) int { return v.TopPixels }).(pulumi.IntOutput)
+}
+
+// `DASH` manifest configuration.
+type DashConfig struct {
+	// The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+	SegmentReferenceScheme *DashConfigSegmentReferenceScheme `pulumi:"segmentReferenceScheme"`
+}
+
+// DashConfigInput is an input type that accepts DashConfigArgs and DashConfigOutput values.
+// You can construct a concrete instance of `DashConfigInput` via:
+//
+//	DashConfigArgs{...}
+type DashConfigInput interface {
+	pulumi.Input
+
+	ToDashConfigOutput() DashConfigOutput
+	ToDashConfigOutputWithContext(context.Context) DashConfigOutput
+}
+
+// `DASH` manifest configuration.
+type DashConfigArgs struct {
+	// The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+	SegmentReferenceScheme DashConfigSegmentReferenceSchemePtrInput `pulumi:"segmentReferenceScheme"`
+}
+
+func (DashConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashConfig)(nil)).Elem()
+}
+
+func (i DashConfigArgs) ToDashConfigOutput() DashConfigOutput {
+	return i.ToDashConfigOutputWithContext(context.Background())
+}
+
+func (i DashConfigArgs) ToDashConfigOutputWithContext(ctx context.Context) DashConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashConfigOutput)
+}
+
+func (i DashConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DashConfig] {
+	return pulumix.Output[DashConfig]{
+		OutputState: i.ToDashConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DashConfigArgs) ToDashConfigPtrOutput() DashConfigPtrOutput {
+	return i.ToDashConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DashConfigArgs) ToDashConfigPtrOutputWithContext(ctx context.Context) DashConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashConfigOutput).ToDashConfigPtrOutputWithContext(ctx)
+}
+
+// DashConfigPtrInput is an input type that accepts DashConfigArgs, DashConfigPtr and DashConfigPtrOutput values.
+// You can construct a concrete instance of `DashConfigPtrInput` via:
+//
+//	        DashConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DashConfigPtrInput interface {
+	pulumi.Input
+
+	ToDashConfigPtrOutput() DashConfigPtrOutput
+	ToDashConfigPtrOutputWithContext(context.Context) DashConfigPtrOutput
+}
+
+type dashConfigPtrType DashConfigArgs
+
+func DashConfigPtr(v *DashConfigArgs) DashConfigPtrInput {
+	return (*dashConfigPtrType)(v)
+}
+
+func (*dashConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashConfig)(nil)).Elem()
+}
+
+func (i *dashConfigPtrType) ToDashConfigPtrOutput() DashConfigPtrOutput {
+	return i.ToDashConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dashConfigPtrType) ToDashConfigPtrOutputWithContext(ctx context.Context) DashConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashConfigPtrOutput)
+}
+
+func (i *dashConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DashConfig] {
+	return pulumix.Output[*DashConfig]{
+		OutputState: i.ToDashConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// `DASH` manifest configuration.
+type DashConfigOutput struct{ *pulumi.OutputState }
+
+func (DashConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashConfig)(nil)).Elem()
+}
+
+func (o DashConfigOutput) ToDashConfigOutput() DashConfigOutput {
+	return o
+}
+
+func (o DashConfigOutput) ToDashConfigOutputWithContext(ctx context.Context) DashConfigOutput {
+	return o
+}
+
+func (o DashConfigOutput) ToDashConfigPtrOutput() DashConfigPtrOutput {
+	return o.ToDashConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DashConfigOutput) ToDashConfigPtrOutputWithContext(ctx context.Context) DashConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashConfig) *DashConfig {
+		return &v
+	}).(DashConfigPtrOutput)
+}
+
+func (o DashConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DashConfig] {
+	return pulumix.Output[DashConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+func (o DashConfigOutput) SegmentReferenceScheme() DashConfigSegmentReferenceSchemePtrOutput {
+	return o.ApplyT(func(v DashConfig) *DashConfigSegmentReferenceScheme { return v.SegmentReferenceScheme }).(DashConfigSegmentReferenceSchemePtrOutput)
+}
+
+type DashConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DashConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashConfig)(nil)).Elem()
+}
+
+func (o DashConfigPtrOutput) ToDashConfigPtrOutput() DashConfigPtrOutput {
+	return o
+}
+
+func (o DashConfigPtrOutput) ToDashConfigPtrOutputWithContext(ctx context.Context) DashConfigPtrOutput {
+	return o
+}
+
+func (o DashConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DashConfig] {
+	return pulumix.Output[*DashConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DashConfigPtrOutput) Elem() DashConfigOutput {
+	return o.ApplyT(func(v *DashConfig) DashConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DashConfig
+		return ret
+	}).(DashConfigOutput)
+}
+
+// The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+func (o DashConfigPtrOutput) SegmentReferenceScheme() DashConfigSegmentReferenceSchemePtrOutput {
+	return o.ApplyT(func(v *DashConfig) *DashConfigSegmentReferenceScheme {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentReferenceScheme
+	}).(DashConfigSegmentReferenceSchemePtrOutput)
+}
+
+// `DASH` manifest configuration.
+type DashConfigResponse struct {
+	// The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+	SegmentReferenceScheme string `pulumi:"segmentReferenceScheme"`
+}
+
+// `DASH` manifest configuration.
+type DashConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DashConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashConfigResponse)(nil)).Elem()
+}
+
+func (o DashConfigResponseOutput) ToDashConfigResponseOutput() DashConfigResponseOutput {
+	return o
+}
+
+func (o DashConfigResponseOutput) ToDashConfigResponseOutputWithContext(ctx context.Context) DashConfigResponseOutput {
+	return o
+}
+
+func (o DashConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DashConfigResponse] {
+	return pulumix.Output[DashConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+func (o DashConfigResponseOutput) SegmentReferenceScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v DashConfigResponse) string { return v.SegmentReferenceScheme }).(pulumi.StringOutput)
 }
 
 // Deblock preprocessing configuration. **Note:** This configuration is not supported.
@@ -3426,11 +3962,158 @@ func (o DenoiseResponseOutput) Tune() pulumi.StringOutput {
 	return o.ApplyT(func(v DenoiseResponse) string { return v.Tune }).(pulumi.StringOutput)
 }
 
+// Defines configuration for DRM systems in use.
+type DrmSystems struct {
+	// Clearkey configuration.
+	Clearkey *Clearkey `pulumi:"clearkey"`
+	// Fairplay configuration.
+	Fairplay *Fairplay `pulumi:"fairplay"`
+	// Playready configuration.
+	Playready *Playready `pulumi:"playready"`
+	// Widevine configuration.
+	Widevine *Widevine `pulumi:"widevine"`
+}
+
+// DrmSystemsInput is an input type that accepts DrmSystemsArgs and DrmSystemsOutput values.
+// You can construct a concrete instance of `DrmSystemsInput` via:
+//
+//	DrmSystemsArgs{...}
+type DrmSystemsInput interface {
+	pulumi.Input
+
+	ToDrmSystemsOutput() DrmSystemsOutput
+	ToDrmSystemsOutputWithContext(context.Context) DrmSystemsOutput
+}
+
+// Defines configuration for DRM systems in use.
+type DrmSystemsArgs struct {
+	// Clearkey configuration.
+	Clearkey ClearkeyPtrInput `pulumi:"clearkey"`
+	// Fairplay configuration.
+	Fairplay FairplayPtrInput `pulumi:"fairplay"`
+	// Playready configuration.
+	Playready PlayreadyPtrInput `pulumi:"playready"`
+	// Widevine configuration.
+	Widevine WidevinePtrInput `pulumi:"widevine"`
+}
+
+func (DrmSystemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DrmSystems)(nil)).Elem()
+}
+
+func (i DrmSystemsArgs) ToDrmSystemsOutput() DrmSystemsOutput {
+	return i.ToDrmSystemsOutputWithContext(context.Background())
+}
+
+func (i DrmSystemsArgs) ToDrmSystemsOutputWithContext(ctx context.Context) DrmSystemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DrmSystemsOutput)
+}
+
+func (i DrmSystemsArgs) ToOutput(ctx context.Context) pulumix.Output[DrmSystems] {
+	return pulumix.Output[DrmSystems]{
+		OutputState: i.ToDrmSystemsOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Defines configuration for DRM systems in use.
+type DrmSystemsOutput struct{ *pulumi.OutputState }
+
+func (DrmSystemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DrmSystems)(nil)).Elem()
+}
+
+func (o DrmSystemsOutput) ToDrmSystemsOutput() DrmSystemsOutput {
+	return o
+}
+
+func (o DrmSystemsOutput) ToDrmSystemsOutputWithContext(ctx context.Context) DrmSystemsOutput {
+	return o
+}
+
+func (o DrmSystemsOutput) ToOutput(ctx context.Context) pulumix.Output[DrmSystems] {
+	return pulumix.Output[DrmSystems]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Clearkey configuration.
+func (o DrmSystemsOutput) Clearkey() ClearkeyPtrOutput {
+	return o.ApplyT(func(v DrmSystems) *Clearkey { return v.Clearkey }).(ClearkeyPtrOutput)
+}
+
+// Fairplay configuration.
+func (o DrmSystemsOutput) Fairplay() FairplayPtrOutput {
+	return o.ApplyT(func(v DrmSystems) *Fairplay { return v.Fairplay }).(FairplayPtrOutput)
+}
+
+// Playready configuration.
+func (o DrmSystemsOutput) Playready() PlayreadyPtrOutput {
+	return o.ApplyT(func(v DrmSystems) *Playready { return v.Playready }).(PlayreadyPtrOutput)
+}
+
+// Widevine configuration.
+func (o DrmSystemsOutput) Widevine() WidevinePtrOutput {
+	return o.ApplyT(func(v DrmSystems) *Widevine { return v.Widevine }).(WidevinePtrOutput)
+}
+
+// Defines configuration for DRM systems in use.
+type DrmSystemsResponse struct {
+	// Clearkey configuration.
+	Clearkey ClearkeyResponse `pulumi:"clearkey"`
+	// Fairplay configuration.
+	Fairplay FairplayResponse `pulumi:"fairplay"`
+	// Playready configuration.
+	Playready PlayreadyResponse `pulumi:"playready"`
+	// Widevine configuration.
+	Widevine WidevineResponse `pulumi:"widevine"`
+}
+
+// Defines configuration for DRM systems in use.
+type DrmSystemsResponseOutput struct{ *pulumi.OutputState }
+
+func (DrmSystemsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DrmSystemsResponse)(nil)).Elem()
+}
+
+func (o DrmSystemsResponseOutput) ToDrmSystemsResponseOutput() DrmSystemsResponseOutput {
+	return o
+}
+
+func (o DrmSystemsResponseOutput) ToDrmSystemsResponseOutputWithContext(ctx context.Context) DrmSystemsResponseOutput {
+	return o
+}
+
+func (o DrmSystemsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DrmSystemsResponse] {
+	return pulumix.Output[DrmSystemsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Clearkey configuration.
+func (o DrmSystemsResponseOutput) Clearkey() ClearkeyResponseOutput {
+	return o.ApplyT(func(v DrmSystemsResponse) ClearkeyResponse { return v.Clearkey }).(ClearkeyResponseOutput)
+}
+
+// Fairplay configuration.
+func (o DrmSystemsResponseOutput) Fairplay() FairplayResponseOutput {
+	return o.ApplyT(func(v DrmSystemsResponse) FairplayResponse { return v.Fairplay }).(FairplayResponseOutput)
+}
+
+// Playready configuration.
+func (o DrmSystemsResponseOutput) Playready() PlayreadyResponseOutput {
+	return o.ApplyT(func(v DrmSystemsResponse) PlayreadyResponse { return v.Playready }).(PlayreadyResponseOutput)
+}
+
+// Widevine configuration.
+func (o DrmSystemsResponseOutput) Widevine() WidevineResponseOutput {
+	return o.ApplyT(func(v DrmSystemsResponse) WidevineResponse { return v.Widevine }).(WidevineResponseOutput)
+}
+
 // Edit atom.
 type EditAtom struct {
 	// End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
 	EndTimeOffset *string `pulumi:"endTimeOffset"`
-	// List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
+	// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
 	Inputs []string `pulumi:"inputs"`
 	// A unique key for this atom. Must be specified when using advanced mapping.
 	Key *string `pulumi:"key"`
@@ -3453,7 +4136,7 @@ type EditAtomInput interface {
 type EditAtomArgs struct {
 	// End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
 	EndTimeOffset pulumi.StringPtrInput `pulumi:"endTimeOffset"`
-	// List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
+	// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
 	Inputs pulumi.StringArrayInput `pulumi:"inputs"`
 	// A unique key for this atom. Must be specified when using advanced mapping.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -3536,7 +4219,7 @@ func (o EditAtomOutput) EndTimeOffset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EditAtom) *string { return v.EndTimeOffset }).(pulumi.StringPtrOutput)
 }
 
-// List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
+// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
 func (o EditAtomOutput) Inputs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EditAtom) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
@@ -3581,7 +4264,7 @@ func (o EditAtomArrayOutput) Index(i pulumi.IntInput) EditAtomOutput {
 type EditAtomResponse struct {
 	// End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
 	EndTimeOffset string `pulumi:"endTimeOffset"`
-	// List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
+	// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
 	Inputs []string `pulumi:"inputs"`
 	// A unique key for this atom. Must be specified when using advanced mapping.
 	Key string `pulumi:"key"`
@@ -3615,7 +4298,7 @@ func (o EditAtomResponseOutput) EndTimeOffset() pulumi.StringOutput {
 	return o.ApplyT(func(v EditAtomResponse) string { return v.EndTimeOffset }).(pulumi.StringOutput)
 }
 
-// List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
+// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
 func (o EditAtomResponseOutput) Inputs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EditAtomResponse) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
@@ -3886,13 +4569,634 @@ func (o ElementaryStreamResponseArrayOutput) Index(i pulumi.IntInput) Elementary
 	}).(ElementaryStreamResponseOutput)
 }
 
+// Encryption settings.
+type Encryption struct {
+	// Configuration for AES-128 encryption.
+	Aes128 *Aes128Encryption `pulumi:"aes128"`
+	// DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+	DrmSystems DrmSystems `pulumi:"drmSystems"`
+	// Identifier for this set of encryption options.
+	Id string `pulumi:"id"`
+	// Configuration for MPEG Common Encryption (MPEG-CENC).
+	MpegCenc *MpegCommonEncryption `pulumi:"mpegCenc"`
+	// Configuration for SAMPLE-AES encryption.
+	SampleAes *SampleAesEncryption `pulumi:"sampleAes"`
+	// Keys are stored in Google Secret Manager.
+	SecretManagerKeySource *SecretManagerSource `pulumi:"secretManagerKeySource"`
+}
+
+// EncryptionInput is an input type that accepts EncryptionArgs and EncryptionOutput values.
+// You can construct a concrete instance of `EncryptionInput` via:
+//
+//	EncryptionArgs{...}
+type EncryptionInput interface {
+	pulumi.Input
+
+	ToEncryptionOutput() EncryptionOutput
+	ToEncryptionOutputWithContext(context.Context) EncryptionOutput
+}
+
+// Encryption settings.
+type EncryptionArgs struct {
+	// Configuration for AES-128 encryption.
+	Aes128 Aes128EncryptionPtrInput `pulumi:"aes128"`
+	// DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+	DrmSystems DrmSystemsInput `pulumi:"drmSystems"`
+	// Identifier for this set of encryption options.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Configuration for MPEG Common Encryption (MPEG-CENC).
+	MpegCenc MpegCommonEncryptionPtrInput `pulumi:"mpegCenc"`
+	// Configuration for SAMPLE-AES encryption.
+	SampleAes SampleAesEncryptionPtrInput `pulumi:"sampleAes"`
+	// Keys are stored in Google Secret Manager.
+	SecretManagerKeySource SecretManagerSourcePtrInput `pulumi:"secretManagerKeySource"`
+}
+
+func (EncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Encryption)(nil)).Elem()
+}
+
+func (i EncryptionArgs) ToEncryptionOutput() EncryptionOutput {
+	return i.ToEncryptionOutputWithContext(context.Background())
+}
+
+func (i EncryptionArgs) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput)
+}
+
+func (i EncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
+	return pulumix.Output[Encryption]{
+		OutputState: i.ToEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EncryptionArrayInput is an input type that accepts EncryptionArray and EncryptionArrayOutput values.
+// You can construct a concrete instance of `EncryptionArrayInput` via:
+//
+//	EncryptionArray{ EncryptionArgs{...} }
+type EncryptionArrayInput interface {
+	pulumi.Input
+
+	ToEncryptionArrayOutput() EncryptionArrayOutput
+	ToEncryptionArrayOutputWithContext(context.Context) EncryptionArrayOutput
+}
+
+type EncryptionArray []EncryptionInput
+
+func (EncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Encryption)(nil)).Elem()
+}
+
+func (i EncryptionArray) ToEncryptionArrayOutput() EncryptionArrayOutput {
+	return i.ToEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i EncryptionArray) ToEncryptionArrayOutputWithContext(ctx context.Context) EncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionArrayOutput)
+}
+
+func (i EncryptionArray) ToOutput(ctx context.Context) pulumix.Output[[]Encryption] {
+	return pulumix.Output[[]Encryption]{
+		OutputState: i.ToEncryptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Encryption settings.
+type EncryptionOutput struct{ *pulumi.OutputState }
+
+func (EncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Encryption)(nil)).Elem()
+}
+
+func (o EncryptionOutput) ToEncryptionOutput() EncryptionOutput {
+	return o
+}
+
+func (o EncryptionOutput) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
+	return o
+}
+
+func (o EncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
+	return pulumix.Output[Encryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Configuration for AES-128 encryption.
+func (o EncryptionOutput) Aes128() Aes128EncryptionPtrOutput {
+	return o.ApplyT(func(v Encryption) *Aes128Encryption { return v.Aes128 }).(Aes128EncryptionPtrOutput)
+}
+
+// DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+func (o EncryptionOutput) DrmSystems() DrmSystemsOutput {
+	return o.ApplyT(func(v Encryption) DrmSystems { return v.DrmSystems }).(DrmSystemsOutput)
+}
+
+// Identifier for this set of encryption options.
+func (o EncryptionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v Encryption) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Configuration for MPEG Common Encryption (MPEG-CENC).
+func (o EncryptionOutput) MpegCenc() MpegCommonEncryptionPtrOutput {
+	return o.ApplyT(func(v Encryption) *MpegCommonEncryption { return v.MpegCenc }).(MpegCommonEncryptionPtrOutput)
+}
+
+// Configuration for SAMPLE-AES encryption.
+func (o EncryptionOutput) SampleAes() SampleAesEncryptionPtrOutput {
+	return o.ApplyT(func(v Encryption) *SampleAesEncryption { return v.SampleAes }).(SampleAesEncryptionPtrOutput)
+}
+
+// Keys are stored in Google Secret Manager.
+func (o EncryptionOutput) SecretManagerKeySource() SecretManagerSourcePtrOutput {
+	return o.ApplyT(func(v Encryption) *SecretManagerSource { return v.SecretManagerKeySource }).(SecretManagerSourcePtrOutput)
+}
+
+type EncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (EncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Encryption)(nil)).Elem()
+}
+
+func (o EncryptionArrayOutput) ToEncryptionArrayOutput() EncryptionArrayOutput {
+	return o
+}
+
+func (o EncryptionArrayOutput) ToEncryptionArrayOutputWithContext(ctx context.Context) EncryptionArrayOutput {
+	return o
+}
+
+func (o EncryptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Encryption] {
+	return pulumix.Output[[]Encryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EncryptionArrayOutput) Index(i pulumi.IntInput) EncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Encryption {
+		return vs[0].([]Encryption)[vs[1].(int)]
+	}).(EncryptionOutput)
+}
+
+// Encryption settings.
+type EncryptionResponse struct {
+	// Configuration for AES-128 encryption.
+	Aes128 Aes128EncryptionResponse `pulumi:"aes128"`
+	// DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+	DrmSystems DrmSystemsResponse `pulumi:"drmSystems"`
+	// Configuration for MPEG Common Encryption (MPEG-CENC).
+	MpegCenc MpegCommonEncryptionResponse `pulumi:"mpegCenc"`
+	// Configuration for SAMPLE-AES encryption.
+	SampleAes SampleAesEncryptionResponse `pulumi:"sampleAes"`
+	// Keys are stored in Google Secret Manager.
+	SecretManagerKeySource SecretManagerSourceResponse `pulumi:"secretManagerKeySource"`
+}
+
+// Encryption settings.
+type EncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionResponse)(nil)).Elem()
+}
+
+func (o EncryptionResponseOutput) ToEncryptionResponseOutput() EncryptionResponseOutput {
+	return o
+}
+
+func (o EncryptionResponseOutput) ToEncryptionResponseOutputWithContext(ctx context.Context) EncryptionResponseOutput {
+	return o
+}
+
+func (o EncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionResponse] {
+	return pulumix.Output[EncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Configuration for AES-128 encryption.
+func (o EncryptionResponseOutput) Aes128() Aes128EncryptionResponseOutput {
+	return o.ApplyT(func(v EncryptionResponse) Aes128EncryptionResponse { return v.Aes128 }).(Aes128EncryptionResponseOutput)
+}
+
+// DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+func (o EncryptionResponseOutput) DrmSystems() DrmSystemsResponseOutput {
+	return o.ApplyT(func(v EncryptionResponse) DrmSystemsResponse { return v.DrmSystems }).(DrmSystemsResponseOutput)
+}
+
+// Configuration for MPEG Common Encryption (MPEG-CENC).
+func (o EncryptionResponseOutput) MpegCenc() MpegCommonEncryptionResponseOutput {
+	return o.ApplyT(func(v EncryptionResponse) MpegCommonEncryptionResponse { return v.MpegCenc }).(MpegCommonEncryptionResponseOutput)
+}
+
+// Configuration for SAMPLE-AES encryption.
+func (o EncryptionResponseOutput) SampleAes() SampleAesEncryptionResponseOutput {
+	return o.ApplyT(func(v EncryptionResponse) SampleAesEncryptionResponse { return v.SampleAes }).(SampleAesEncryptionResponseOutput)
+}
+
+// Keys are stored in Google Secret Manager.
+func (o EncryptionResponseOutput) SecretManagerKeySource() SecretManagerSourceResponseOutput {
+	return o.ApplyT(func(v EncryptionResponse) SecretManagerSourceResponse { return v.SecretManagerKeySource }).(SecretManagerSourceResponseOutput)
+}
+
+type EncryptionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EncryptionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EncryptionResponse)(nil)).Elem()
+}
+
+func (o EncryptionResponseArrayOutput) ToEncryptionResponseArrayOutput() EncryptionResponseArrayOutput {
+	return o
+}
+
+func (o EncryptionResponseArrayOutput) ToEncryptionResponseArrayOutputWithContext(ctx context.Context) EncryptionResponseArrayOutput {
+	return o
+}
+
+func (o EncryptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EncryptionResponse] {
+	return pulumix.Output[[]EncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EncryptionResponseArrayOutput) Index(i pulumi.IntInput) EncryptionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EncryptionResponse {
+		return vs[0].([]EncryptionResponse)[vs[1].(int)]
+	}).(EncryptionResponseOutput)
+}
+
+// Fairplay configuration.
+type Fairplay struct {
+}
+
+// FairplayInput is an input type that accepts FairplayArgs and FairplayOutput values.
+// You can construct a concrete instance of `FairplayInput` via:
+//
+//	FairplayArgs{...}
+type FairplayInput interface {
+	pulumi.Input
+
+	ToFairplayOutput() FairplayOutput
+	ToFairplayOutputWithContext(context.Context) FairplayOutput
+}
+
+// Fairplay configuration.
+type FairplayArgs struct {
+}
+
+func (FairplayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Fairplay)(nil)).Elem()
+}
+
+func (i FairplayArgs) ToFairplayOutput() FairplayOutput {
+	return i.ToFairplayOutputWithContext(context.Background())
+}
+
+func (i FairplayArgs) ToFairplayOutputWithContext(ctx context.Context) FairplayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FairplayOutput)
+}
+
+func (i FairplayArgs) ToOutput(ctx context.Context) pulumix.Output[Fairplay] {
+	return pulumix.Output[Fairplay]{
+		OutputState: i.ToFairplayOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i FairplayArgs) ToFairplayPtrOutput() FairplayPtrOutput {
+	return i.ToFairplayPtrOutputWithContext(context.Background())
+}
+
+func (i FairplayArgs) ToFairplayPtrOutputWithContext(ctx context.Context) FairplayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FairplayOutput).ToFairplayPtrOutputWithContext(ctx)
+}
+
+// FairplayPtrInput is an input type that accepts FairplayArgs, FairplayPtr and FairplayPtrOutput values.
+// You can construct a concrete instance of `FairplayPtrInput` via:
+//
+//	        FairplayArgs{...}
+//
+//	or:
+//
+//	        nil
+type FairplayPtrInput interface {
+	pulumi.Input
+
+	ToFairplayPtrOutput() FairplayPtrOutput
+	ToFairplayPtrOutputWithContext(context.Context) FairplayPtrOutput
+}
+
+type fairplayPtrType FairplayArgs
+
+func FairplayPtr(v *FairplayArgs) FairplayPtrInput {
+	return (*fairplayPtrType)(v)
+}
+
+func (*fairplayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Fairplay)(nil)).Elem()
+}
+
+func (i *fairplayPtrType) ToFairplayPtrOutput() FairplayPtrOutput {
+	return i.ToFairplayPtrOutputWithContext(context.Background())
+}
+
+func (i *fairplayPtrType) ToFairplayPtrOutputWithContext(ctx context.Context) FairplayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FairplayPtrOutput)
+}
+
+func (i *fairplayPtrType) ToOutput(ctx context.Context) pulumix.Output[*Fairplay] {
+	return pulumix.Output[*Fairplay]{
+		OutputState: i.ToFairplayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Fairplay configuration.
+type FairplayOutput struct{ *pulumi.OutputState }
+
+func (FairplayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Fairplay)(nil)).Elem()
+}
+
+func (o FairplayOutput) ToFairplayOutput() FairplayOutput {
+	return o
+}
+
+func (o FairplayOutput) ToFairplayOutputWithContext(ctx context.Context) FairplayOutput {
+	return o
+}
+
+func (o FairplayOutput) ToFairplayPtrOutput() FairplayPtrOutput {
+	return o.ToFairplayPtrOutputWithContext(context.Background())
+}
+
+func (o FairplayOutput) ToFairplayPtrOutputWithContext(ctx context.Context) FairplayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Fairplay) *Fairplay {
+		return &v
+	}).(FairplayPtrOutput)
+}
+
+func (o FairplayOutput) ToOutput(ctx context.Context) pulumix.Output[Fairplay] {
+	return pulumix.Output[Fairplay]{
+		OutputState: o.OutputState,
+	}
+}
+
+type FairplayPtrOutput struct{ *pulumi.OutputState }
+
+func (FairplayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Fairplay)(nil)).Elem()
+}
+
+func (o FairplayPtrOutput) ToFairplayPtrOutput() FairplayPtrOutput {
+	return o
+}
+
+func (o FairplayPtrOutput) ToFairplayPtrOutputWithContext(ctx context.Context) FairplayPtrOutput {
+	return o
+}
+
+func (o FairplayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Fairplay] {
+	return pulumix.Output[*Fairplay]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o FairplayPtrOutput) Elem() FairplayOutput {
+	return o.ApplyT(func(v *Fairplay) Fairplay {
+		if v != nil {
+			return *v
+		}
+		var ret Fairplay
+		return ret
+	}).(FairplayOutput)
+}
+
+// Fairplay configuration.
+type FairplayResponse struct {
+}
+
+// Fairplay configuration.
+type FairplayResponseOutput struct{ *pulumi.OutputState }
+
+func (FairplayResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FairplayResponse)(nil)).Elem()
+}
+
+func (o FairplayResponseOutput) ToFairplayResponseOutput() FairplayResponseOutput {
+	return o
+}
+
+func (o FairplayResponseOutput) ToFairplayResponseOutputWithContext(ctx context.Context) FairplayResponseOutput {
+	return o
+}
+
+func (o FairplayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FairplayResponse] {
+	return pulumix.Output[FairplayResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// `fmp4` container configuration.
+type Fmp4Config struct {
+	// Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
+	CodecTag *string `pulumi:"codecTag"`
+}
+
+// Fmp4ConfigInput is an input type that accepts Fmp4ConfigArgs and Fmp4ConfigOutput values.
+// You can construct a concrete instance of `Fmp4ConfigInput` via:
+//
+//	Fmp4ConfigArgs{...}
+type Fmp4ConfigInput interface {
+	pulumi.Input
+
+	ToFmp4ConfigOutput() Fmp4ConfigOutput
+	ToFmp4ConfigOutputWithContext(context.Context) Fmp4ConfigOutput
+}
+
+// `fmp4` container configuration.
+type Fmp4ConfigArgs struct {
+	// Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
+	CodecTag pulumi.StringPtrInput `pulumi:"codecTag"`
+}
+
+func (Fmp4ConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Fmp4Config)(nil)).Elem()
+}
+
+func (i Fmp4ConfigArgs) ToFmp4ConfigOutput() Fmp4ConfigOutput {
+	return i.ToFmp4ConfigOutputWithContext(context.Background())
+}
+
+func (i Fmp4ConfigArgs) ToFmp4ConfigOutputWithContext(ctx context.Context) Fmp4ConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Fmp4ConfigOutput)
+}
+
+func (i Fmp4ConfigArgs) ToOutput(ctx context.Context) pulumix.Output[Fmp4Config] {
+	return pulumix.Output[Fmp4Config]{
+		OutputState: i.ToFmp4ConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i Fmp4ConfigArgs) ToFmp4ConfigPtrOutput() Fmp4ConfigPtrOutput {
+	return i.ToFmp4ConfigPtrOutputWithContext(context.Background())
+}
+
+func (i Fmp4ConfigArgs) ToFmp4ConfigPtrOutputWithContext(ctx context.Context) Fmp4ConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Fmp4ConfigOutput).ToFmp4ConfigPtrOutputWithContext(ctx)
+}
+
+// Fmp4ConfigPtrInput is an input type that accepts Fmp4ConfigArgs, Fmp4ConfigPtr and Fmp4ConfigPtrOutput values.
+// You can construct a concrete instance of `Fmp4ConfigPtrInput` via:
+//
+//	        Fmp4ConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type Fmp4ConfigPtrInput interface {
+	pulumi.Input
+
+	ToFmp4ConfigPtrOutput() Fmp4ConfigPtrOutput
+	ToFmp4ConfigPtrOutputWithContext(context.Context) Fmp4ConfigPtrOutput
+}
+
+type fmp4ConfigPtrType Fmp4ConfigArgs
+
+func Fmp4ConfigPtr(v *Fmp4ConfigArgs) Fmp4ConfigPtrInput {
+	return (*fmp4ConfigPtrType)(v)
+}
+
+func (*fmp4ConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Fmp4Config)(nil)).Elem()
+}
+
+func (i *fmp4ConfigPtrType) ToFmp4ConfigPtrOutput() Fmp4ConfigPtrOutput {
+	return i.ToFmp4ConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fmp4ConfigPtrType) ToFmp4ConfigPtrOutputWithContext(ctx context.Context) Fmp4ConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Fmp4ConfigPtrOutput)
+}
+
+func (i *fmp4ConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*Fmp4Config] {
+	return pulumix.Output[*Fmp4Config]{
+		OutputState: i.ToFmp4ConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// `fmp4` container configuration.
+type Fmp4ConfigOutput struct{ *pulumi.OutputState }
+
+func (Fmp4ConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Fmp4Config)(nil)).Elem()
+}
+
+func (o Fmp4ConfigOutput) ToFmp4ConfigOutput() Fmp4ConfigOutput {
+	return o
+}
+
+func (o Fmp4ConfigOutput) ToFmp4ConfigOutputWithContext(ctx context.Context) Fmp4ConfigOutput {
+	return o
+}
+
+func (o Fmp4ConfigOutput) ToFmp4ConfigPtrOutput() Fmp4ConfigPtrOutput {
+	return o.ToFmp4ConfigPtrOutputWithContext(context.Background())
+}
+
+func (o Fmp4ConfigOutput) ToFmp4ConfigPtrOutputWithContext(ctx context.Context) Fmp4ConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Fmp4Config) *Fmp4Config {
+		return &v
+	}).(Fmp4ConfigPtrOutput)
+}
+
+func (o Fmp4ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Fmp4Config] {
+	return pulumix.Output[Fmp4Config]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
+func (o Fmp4ConfigOutput) CodecTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Fmp4Config) *string { return v.CodecTag }).(pulumi.StringPtrOutput)
+}
+
+type Fmp4ConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (Fmp4ConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Fmp4Config)(nil)).Elem()
+}
+
+func (o Fmp4ConfigPtrOutput) ToFmp4ConfigPtrOutput() Fmp4ConfigPtrOutput {
+	return o
+}
+
+func (o Fmp4ConfigPtrOutput) ToFmp4ConfigPtrOutputWithContext(ctx context.Context) Fmp4ConfigPtrOutput {
+	return o
+}
+
+func (o Fmp4ConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Fmp4Config] {
+	return pulumix.Output[*Fmp4Config]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o Fmp4ConfigPtrOutput) Elem() Fmp4ConfigOutput {
+	return o.ApplyT(func(v *Fmp4Config) Fmp4Config {
+		if v != nil {
+			return *v
+		}
+		var ret Fmp4Config
+		return ret
+	}).(Fmp4ConfigOutput)
+}
+
+// Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
+func (o Fmp4ConfigPtrOutput) CodecTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Fmp4Config) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodecTag
+	}).(pulumi.StringPtrOutput)
+}
+
+// `fmp4` container configuration.
+type Fmp4ConfigResponse struct {
+	// Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
+	CodecTag string `pulumi:"codecTag"`
+}
+
+// `fmp4` container configuration.
+type Fmp4ConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (Fmp4ConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Fmp4ConfigResponse)(nil)).Elem()
+}
+
+func (o Fmp4ConfigResponseOutput) ToFmp4ConfigResponseOutput() Fmp4ConfigResponseOutput {
+	return o
+}
+
+func (o Fmp4ConfigResponseOutput) ToFmp4ConfigResponseOutputWithContext(ctx context.Context) Fmp4ConfigResponseOutput {
+	return o
+}
+
+func (o Fmp4ConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Fmp4ConfigResponse] {
+	return pulumix.Output[Fmp4ConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
+func (o Fmp4ConfigResponseOutput) CodecTag() pulumi.StringOutput {
+	return o.ApplyT(func(v Fmp4ConfigResponse) string { return v.CodecTag }).(pulumi.StringOutput)
+}
+
 // H264 codec settings.
 type H264CodecSettings struct {
 	// Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
 	AllowOpenGop *bool `pulumi:"allowOpenGop"`
 	// Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
 	AqStrength *float64 `pulumi:"aqStrength"`
-	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.
 	BFrameCount *int `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid *bool `pulumi:"bPyramid"`
@@ -3900,7 +5204,7 @@ type H264CodecSettings struct {
 	BitrateBps int `pulumi:"bitrateBps"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
 	CrfLevel *int `pulumi:"crfLevel"`
-	// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+	// Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 	EnableTwoPass *bool `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`
 	EntropyCoder *string `pulumi:"entropyCoder"`
@@ -3918,13 +5222,13 @@ type H264CodecSettings struct {
 	Preset *string `pulumi:"preset"`
 	// Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
 	Profile *string `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode *string `pulumi:"rateControlMode"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
 	Tune *string `pulumi:"tune"`
-	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
 	VbvFullnessBits *int `pulumi:"vbvFullnessBits"`
-	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
+	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to H264CodecSettings.bitrate_bps.
 	VbvSizeBits *int `pulumi:"vbvSizeBits"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels *int `pulumi:"widthPixels"`
@@ -3947,7 +5251,7 @@ type H264CodecSettingsArgs struct {
 	AllowOpenGop pulumi.BoolPtrInput `pulumi:"allowOpenGop"`
 	// Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
 	AqStrength pulumi.Float64PtrInput `pulumi:"aqStrength"`
-	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.
 	BFrameCount pulumi.IntPtrInput `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid pulumi.BoolPtrInput `pulumi:"bPyramid"`
@@ -3955,7 +5259,7 @@ type H264CodecSettingsArgs struct {
 	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
 	CrfLevel pulumi.IntPtrInput `pulumi:"crfLevel"`
-	// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+	// Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 	EnableTwoPass pulumi.BoolPtrInput `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`
 	EntropyCoder pulumi.StringPtrInput `pulumi:"entropyCoder"`
@@ -3973,13 +5277,13 @@ type H264CodecSettingsArgs struct {
 	Preset pulumi.StringPtrInput `pulumi:"preset"`
 	// Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode pulumi.StringPtrInput `pulumi:"rateControlMode"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
 	Tune pulumi.StringPtrInput `pulumi:"tune"`
-	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
 	VbvFullnessBits pulumi.IntPtrInput `pulumi:"vbvFullnessBits"`
-	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
+	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to H264CodecSettings.bitrate_bps.
 	VbvSizeBits pulumi.IntPtrInput `pulumi:"vbvSizeBits"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels pulumi.IntPtrInput `pulumi:"widthPixels"`
@@ -4091,7 +5395,7 @@ func (o H264CodecSettingsOutput) AqStrength() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *float64 { return v.AqStrength }).(pulumi.Float64PtrOutput)
 }
 
-// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.
 func (o H264CodecSettingsOutput) BFrameCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *int { return v.BFrameCount }).(pulumi.IntPtrOutput)
 }
@@ -4111,7 +5415,7 @@ func (o H264CodecSettingsOutput) CrfLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *int { return v.CrfLevel }).(pulumi.IntPtrOutput)
 }
 
-// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+// Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 func (o H264CodecSettingsOutput) EnableTwoPass() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *bool { return v.EnableTwoPass }).(pulumi.BoolPtrOutput)
 }
@@ -4156,7 +5460,7 @@ func (o H264CodecSettingsOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *string { return v.Profile }).(pulumi.StringPtrOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 func (o H264CodecSettingsOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *string { return v.RateControlMode }).(pulumi.StringPtrOutput)
 }
@@ -4166,12 +5470,12 @@ func (o H264CodecSettingsOutput) Tune() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *string { return v.Tune }).(pulumi.StringPtrOutput)
 }
 
-// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
 func (o H264CodecSettingsOutput) VbvFullnessBits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *int { return v.VbvFullnessBits }).(pulumi.IntPtrOutput)
 }
 
-// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
+// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to H264CodecSettings.bitrate_bps.
 func (o H264CodecSettingsOutput) VbvSizeBits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *int { return v.VbvSizeBits }).(pulumi.IntPtrOutput)
 }
@@ -4231,7 +5535,7 @@ func (o H264CodecSettingsPtrOutput) AqStrength() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.
 func (o H264CodecSettingsPtrOutput) BFrameCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *H264CodecSettings) *int {
 		if v == nil {
@@ -4271,7 +5575,7 @@ func (o H264CodecSettingsPtrOutput) CrfLevel() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+// Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 func (o H264CodecSettingsPtrOutput) EnableTwoPass() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *H264CodecSettings) *bool {
 		if v == nil {
@@ -4361,7 +5665,7 @@ func (o H264CodecSettingsPtrOutput) Profile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 func (o H264CodecSettingsPtrOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *H264CodecSettings) *string {
 		if v == nil {
@@ -4381,7 +5685,7 @@ func (o H264CodecSettingsPtrOutput) Tune() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
 func (o H264CodecSettingsPtrOutput) VbvFullnessBits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *H264CodecSettings) *int {
 		if v == nil {
@@ -4391,7 +5695,7 @@ func (o H264CodecSettingsPtrOutput) VbvFullnessBits() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
+// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to H264CodecSettings.bitrate_bps.
 func (o H264CodecSettingsPtrOutput) VbvSizeBits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *H264CodecSettings) *int {
 		if v == nil {
@@ -4417,7 +5721,7 @@ type H264CodecSettingsResponse struct {
 	AllowOpenGop bool `pulumi:"allowOpenGop"`
 	// Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
 	AqStrength float64 `pulumi:"aqStrength"`
-	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.
 	BFrameCount int `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid bool `pulumi:"bPyramid"`
@@ -4425,7 +5729,7 @@ type H264CodecSettingsResponse struct {
 	BitrateBps int `pulumi:"bitrateBps"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
 	CrfLevel int `pulumi:"crfLevel"`
-	// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+	// Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 	EnableTwoPass bool `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`
 	EntropyCoder string `pulumi:"entropyCoder"`
@@ -4443,13 +5747,13 @@ type H264CodecSettingsResponse struct {
 	Preset string `pulumi:"preset"`
 	// Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
 	Profile string `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode string `pulumi:"rateControlMode"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
 	Tune string `pulumi:"tune"`
-	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
 	VbvFullnessBits int `pulumi:"vbvFullnessBits"`
-	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
+	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to H264CodecSettings.bitrate_bps.
 	VbvSizeBits int `pulumi:"vbvSizeBits"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels int `pulumi:"widthPixels"`
@@ -4486,7 +5790,7 @@ func (o H264CodecSettingsResponseOutput) AqStrength() pulumi.Float64Output {
 	return o.ApplyT(func(v H264CodecSettingsResponse) float64 { return v.AqStrength }).(pulumi.Float64Output)
 }
 
-// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.
 func (o H264CodecSettingsResponseOutput) BFrameCount() pulumi.IntOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) int { return v.BFrameCount }).(pulumi.IntOutput)
 }
@@ -4506,7 +5810,7 @@ func (o H264CodecSettingsResponseOutput) CrfLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) int { return v.CrfLevel }).(pulumi.IntOutput)
 }
 
-// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+// Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 func (o H264CodecSettingsResponseOutput) EnableTwoPass() pulumi.BoolOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) bool { return v.EnableTwoPass }).(pulumi.BoolOutput)
 }
@@ -4551,7 +5855,7 @@ func (o H264CodecSettingsResponseOutput) Profile() pulumi.StringOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) string { return v.Profile }).(pulumi.StringOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 func (o H264CodecSettingsResponseOutput) RateControlMode() pulumi.StringOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) string { return v.RateControlMode }).(pulumi.StringOutput)
 }
@@ -4561,12 +5865,12 @@ func (o H264CodecSettingsResponseOutput) Tune() pulumi.StringOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) string { return v.Tune }).(pulumi.StringOutput)
 }
 
-// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
 func (o H264CodecSettingsResponseOutput) VbvFullnessBits() pulumi.IntOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) int { return v.VbvFullnessBits }).(pulumi.IntOutput)
 }
 
-// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
+// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to H264CodecSettings.bitrate_bps.
 func (o H264CodecSettingsResponseOutput) VbvSizeBits() pulumi.IntOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) int { return v.VbvSizeBits }).(pulumi.IntOutput)
 }
@@ -4582,7 +5886,7 @@ type H265CodecSettings struct {
 	AllowOpenGop *bool `pulumi:"allowOpenGop"`
 	// Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
 	AqStrength *float64 `pulumi:"aqStrength"`
-	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
 	BFrameCount *int `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid *bool `pulumi:"bPyramid"`
@@ -4590,7 +5894,7 @@ type H265CodecSettings struct {
 	BitrateBps int `pulumi:"bitrateBps"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
 	CrfLevel *int `pulumi:"crfLevel"`
-	// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+	// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 	EnableTwoPass *bool `pulumi:"enableTwoPass"`
 	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate float64 `pulumi:"frameRate"`
@@ -4606,11 +5910,11 @@ type H265CodecSettings struct {
 	Preset *string `pulumi:"preset"`
 	// Enforces the specified codec profile. The following profiles are supported: * 8-bit profiles * `main` (default) * `main-intra` * `mainstillpicture` * 10-bit profiles * `main10` (default) * `main10-intra` * `main422-10` * `main422-10-intra` * `main444-10` * `main444-10-intra` * 12-bit profiles * `main12` (default) * `main12-intra` * `main422-12` * `main422-12-intra` * `main444-12` * `main444-12-intra` The available options are [FFmpeg-compatible](https://x265.readthedocs.io/). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
 	Profile *string `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode *string `pulumi:"rateControlMode"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
 	Tune *string `pulumi:"tune"`
-	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
 	VbvFullnessBits *int `pulumi:"vbvFullnessBits"`
 	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
 	VbvSizeBits *int `pulumi:"vbvSizeBits"`
@@ -4635,7 +5939,7 @@ type H265CodecSettingsArgs struct {
 	AllowOpenGop pulumi.BoolPtrInput `pulumi:"allowOpenGop"`
 	// Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
 	AqStrength pulumi.Float64PtrInput `pulumi:"aqStrength"`
-	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
 	BFrameCount pulumi.IntPtrInput `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid pulumi.BoolPtrInput `pulumi:"bPyramid"`
@@ -4643,7 +5947,7 @@ type H265CodecSettingsArgs struct {
 	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
 	CrfLevel pulumi.IntPtrInput `pulumi:"crfLevel"`
-	// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+	// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 	EnableTwoPass pulumi.BoolPtrInput `pulumi:"enableTwoPass"`
 	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
@@ -4659,11 +5963,11 @@ type H265CodecSettingsArgs struct {
 	Preset pulumi.StringPtrInput `pulumi:"preset"`
 	// Enforces the specified codec profile. The following profiles are supported: * 8-bit profiles * `main` (default) * `main-intra` * `mainstillpicture` * 10-bit profiles * `main10` (default) * `main10-intra` * `main422-10` * `main422-10-intra` * `main444-10` * `main444-10-intra` * 12-bit profiles * `main12` (default) * `main12-intra` * `main422-12` * `main422-12-intra` * `main444-12` * `main444-12-intra` The available options are [FFmpeg-compatible](https://x265.readthedocs.io/). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode pulumi.StringPtrInput `pulumi:"rateControlMode"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
 	Tune pulumi.StringPtrInput `pulumi:"tune"`
-	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
 	VbvFullnessBits pulumi.IntPtrInput `pulumi:"vbvFullnessBits"`
 	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
 	VbvSizeBits pulumi.IntPtrInput `pulumi:"vbvSizeBits"`
@@ -4777,7 +6081,7 @@ func (o H265CodecSettingsOutput) AqStrength() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *float64 { return v.AqStrength }).(pulumi.Float64PtrOutput)
 }
 
-// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
 func (o H265CodecSettingsOutput) BFrameCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *int { return v.BFrameCount }).(pulumi.IntPtrOutput)
 }
@@ -4797,7 +6101,7 @@ func (o H265CodecSettingsOutput) CrfLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *int { return v.CrfLevel }).(pulumi.IntPtrOutput)
 }
 
-// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 func (o H265CodecSettingsOutput) EnableTwoPass() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *bool { return v.EnableTwoPass }).(pulumi.BoolPtrOutput)
 }
@@ -4837,7 +6141,7 @@ func (o H265CodecSettingsOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *string { return v.Profile }).(pulumi.StringPtrOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 func (o H265CodecSettingsOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *string { return v.RateControlMode }).(pulumi.StringPtrOutput)
 }
@@ -4847,7 +6151,7 @@ func (o H265CodecSettingsOutput) Tune() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *string { return v.Tune }).(pulumi.StringPtrOutput)
 }
 
-// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
 func (o H265CodecSettingsOutput) VbvFullnessBits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *int { return v.VbvFullnessBits }).(pulumi.IntPtrOutput)
 }
@@ -4912,7 +6216,7 @@ func (o H265CodecSettingsPtrOutput) AqStrength() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
 func (o H265CodecSettingsPtrOutput) BFrameCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *H265CodecSettings) *int {
 		if v == nil {
@@ -4952,7 +6256,7 @@ func (o H265CodecSettingsPtrOutput) CrfLevel() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 func (o H265CodecSettingsPtrOutput) EnableTwoPass() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *H265CodecSettings) *bool {
 		if v == nil {
@@ -5032,7 +6336,7 @@ func (o H265CodecSettingsPtrOutput) Profile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 func (o H265CodecSettingsPtrOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *H265CodecSettings) *string {
 		if v == nil {
@@ -5052,7 +6356,7 @@ func (o H265CodecSettingsPtrOutput) Tune() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
 func (o H265CodecSettingsPtrOutput) VbvFullnessBits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *H265CodecSettings) *int {
 		if v == nil {
@@ -5088,7 +6392,7 @@ type H265CodecSettingsResponse struct {
 	AllowOpenGop bool `pulumi:"allowOpenGop"`
 	// Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
 	AqStrength float64 `pulumi:"aqStrength"`
-	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+	// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
 	BFrameCount int `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid bool `pulumi:"bPyramid"`
@@ -5096,7 +6400,7 @@ type H265CodecSettingsResponse struct {
 	BitrateBps int `pulumi:"bitrateBps"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
 	CrfLevel int `pulumi:"crfLevel"`
-	// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+	// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 	EnableTwoPass bool `pulumi:"enableTwoPass"`
 	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate float64 `pulumi:"frameRate"`
@@ -5112,11 +6416,11 @@ type H265CodecSettingsResponse struct {
 	Preset string `pulumi:"preset"`
 	// Enforces the specified codec profile. The following profiles are supported: * 8-bit profiles * `main` (default) * `main-intra` * `mainstillpicture` * 10-bit profiles * `main10` (default) * `main10-intra` * `main422-10` * `main422-10-intra` * `main444-10` * `main444-10-intra` * 12-bit profiles * `main12` (default) * `main12-intra` * `main422-12` * `main422-12-intra` * `main444-12` * `main444-12-intra` The available options are [FFmpeg-compatible](https://x265.readthedocs.io/). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
 	Profile string `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode string `pulumi:"rateControlMode"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
 	Tune string `pulumi:"tune"`
-	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
 	VbvFullnessBits int `pulumi:"vbvFullnessBits"`
 	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
 	VbvSizeBits int `pulumi:"vbvSizeBits"`
@@ -5155,7 +6459,7 @@ func (o H265CodecSettingsResponseOutput) AqStrength() pulumi.Float64Output {
 	return o.ApplyT(func(v H265CodecSettingsResponse) float64 { return v.AqStrength }).(pulumi.Float64Output)
 }
 
-// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
 func (o H265CodecSettingsResponseOutput) BFrameCount() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.BFrameCount }).(pulumi.IntOutput)
 }
@@ -5175,7 +6479,7 @@ func (o H265CodecSettingsResponseOutput) CrfLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.CrfLevel }).(pulumi.IntOutput)
 }
 
-// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 func (o H265CodecSettingsResponseOutput) EnableTwoPass() pulumi.BoolOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) bool { return v.EnableTwoPass }).(pulumi.BoolOutput)
 }
@@ -5215,7 +6519,7 @@ func (o H265CodecSettingsResponseOutput) Profile() pulumi.StringOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) string { return v.Profile }).(pulumi.StringOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 func (o H265CodecSettingsResponseOutput) RateControlMode() pulumi.StringOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) string { return v.RateControlMode }).(pulumi.StringOutput)
 }
@@ -5225,7 +6529,7 @@ func (o H265CodecSettingsResponseOutput) Tune() pulumi.StringOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) string { return v.Tune }).(pulumi.StringOutput)
 }
 
-// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
 func (o H265CodecSettingsResponseOutput) VbvFullnessBits() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.VbvFullnessBits }).(pulumi.IntOutput)
 }
@@ -5494,7 +6798,7 @@ type Input struct {
 	Key *string `pulumi:"key"`
 	// Preprocessing configurations.
 	PreprocessingConfig *PreprocessingConfig `pulumi:"preprocessingConfig"`
-	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri *string `pulumi:"uri"`
 }
 
@@ -5515,7 +6819,7 @@ type InputArgs struct {
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Preprocessing configurations.
 	PreprocessingConfig PreprocessingConfigPtrInput `pulumi:"preprocessingConfig"`
-	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -5599,7 +6903,7 @@ func (o InputOutput) PreprocessingConfig() PreprocessingConfigPtrOutput {
 	return o.ApplyT(func(v Input) *PreprocessingConfig { return v.PreprocessingConfig }).(PreprocessingConfigPtrOutput)
 }
 
-// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o InputOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Input) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -5636,7 +6940,7 @@ type InputResponse struct {
 	Key string `pulumi:"key"`
 	// Preprocessing configurations.
 	PreprocessingConfig PreprocessingConfigResponse `pulumi:"preprocessingConfig"`
-	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri string `pulumi:"uri"`
 }
 
@@ -5671,7 +6975,7 @@ func (o InputResponseOutput) PreprocessingConfig() PreprocessingConfigResponseOu
 	return o.ApplyT(func(v InputResponse) PreprocessingConfigResponse { return v.PreprocessingConfig }).(PreprocessingConfigResponseOutput)
 }
 
-// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o InputResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v InputResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -5706,10 +7010,12 @@ func (o InputResponseArrayOutput) Index(i pulumi.IntInput) InputResponseOutput {
 type JobConfig struct {
 	// List of ad breaks. Specifies where to insert ad break tags in the output manifests.
 	AdBreaks []AdBreak `pulumi:"adBreaks"`
-	// List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+	// List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
 	EditList []EditAtom `pulumi:"editList"`
 	// List of elementary streams.
 	ElementaryStreams []ElementaryStream `pulumi:"elementaryStreams"`
+	// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
+	Encryptions []Encryption `pulumi:"encryptions"`
 	// List of input assets stored in Cloud Storage.
 	Inputs []Input `pulumi:"inputs"`
 	// List of output manifests.
@@ -5741,10 +7047,12 @@ type JobConfigInput interface {
 type JobConfigArgs struct {
 	// List of ad breaks. Specifies where to insert ad break tags in the output manifests.
 	AdBreaks AdBreakArrayInput `pulumi:"adBreaks"`
-	// List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+	// List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
 	EditList EditAtomArrayInput `pulumi:"editList"`
 	// List of elementary streams.
 	ElementaryStreams ElementaryStreamArrayInput `pulumi:"elementaryStreams"`
+	// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
+	Encryptions EncryptionArrayInput `pulumi:"encryptions"`
 	// List of input assets stored in Cloud Storage.
 	Inputs InputArrayInput `pulumi:"inputs"`
 	// List of output manifests.
@@ -5862,7 +7170,7 @@ func (o JobConfigOutput) AdBreaks() AdBreakArrayOutput {
 	return o.ApplyT(func(v JobConfig) []AdBreak { return v.AdBreaks }).(AdBreakArrayOutput)
 }
 
-// List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+// List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
 func (o JobConfigOutput) EditList() EditAtomArrayOutput {
 	return o.ApplyT(func(v JobConfig) []EditAtom { return v.EditList }).(EditAtomArrayOutput)
 }
@@ -5870,6 +7178,11 @@ func (o JobConfigOutput) EditList() EditAtomArrayOutput {
 // List of elementary streams.
 func (o JobConfigOutput) ElementaryStreams() ElementaryStreamArrayOutput {
 	return o.ApplyT(func(v JobConfig) []ElementaryStream { return v.ElementaryStreams }).(ElementaryStreamArrayOutput)
+}
+
+// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
+func (o JobConfigOutput) Encryptions() EncryptionArrayOutput {
+	return o.ApplyT(func(v JobConfig) []Encryption { return v.Encryptions }).(EncryptionArrayOutput)
 }
 
 // List of input assets stored in Cloud Storage.
@@ -5947,7 +7260,7 @@ func (o JobConfigPtrOutput) AdBreaks() AdBreakArrayOutput {
 	}).(AdBreakArrayOutput)
 }
 
-// List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+// List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
 func (o JobConfigPtrOutput) EditList() EditAtomArrayOutput {
 	return o.ApplyT(func(v *JobConfig) []EditAtom {
 		if v == nil {
@@ -5965,6 +7278,16 @@ func (o JobConfigPtrOutput) ElementaryStreams() ElementaryStreamArrayOutput {
 		}
 		return v.ElementaryStreams
 	}).(ElementaryStreamArrayOutput)
+}
+
+// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
+func (o JobConfigPtrOutput) Encryptions() EncryptionArrayOutput {
+	return o.ApplyT(func(v *JobConfig) []Encryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryptions
+	}).(EncryptionArrayOutput)
 }
 
 // List of input assets stored in Cloud Storage.
@@ -6041,10 +7364,12 @@ func (o JobConfigPtrOutput) SpriteSheets() SpriteSheetArrayOutput {
 type JobConfigResponse struct {
 	// List of ad breaks. Specifies where to insert ad break tags in the output manifests.
 	AdBreaks []AdBreakResponse `pulumi:"adBreaks"`
-	// List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+	// List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
 	EditList []EditAtomResponse `pulumi:"editList"`
 	// List of elementary streams.
 	ElementaryStreams []ElementaryStreamResponse `pulumi:"elementaryStreams"`
+	// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
+	Encryptions []EncryptionResponse `pulumi:"encryptions"`
 	// List of input assets stored in Cloud Storage.
 	Inputs []InputResponse `pulumi:"inputs"`
 	// List of output manifests.
@@ -6087,7 +7412,7 @@ func (o JobConfigResponseOutput) AdBreaks() AdBreakResponseArrayOutput {
 	return o.ApplyT(func(v JobConfigResponse) []AdBreakResponse { return v.AdBreaks }).(AdBreakResponseArrayOutput)
 }
 
-// List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+// List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
 func (o JobConfigResponseOutput) EditList() EditAtomResponseArrayOutput {
 	return o.ApplyT(func(v JobConfigResponse) []EditAtomResponse { return v.EditList }).(EditAtomResponseArrayOutput)
 }
@@ -6095,6 +7420,11 @@ func (o JobConfigResponseOutput) EditList() EditAtomResponseArrayOutput {
 // List of elementary streams.
 func (o JobConfigResponseOutput) ElementaryStreams() ElementaryStreamResponseArrayOutput {
 	return o.ApplyT(func(v JobConfigResponse) []ElementaryStreamResponse { return v.ElementaryStreams }).(ElementaryStreamResponseArrayOutput)
+}
+
+// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
+func (o JobConfigResponseOutput) Encryptions() EncryptionResponseArrayOutput {
+	return o.ApplyT(func(v JobConfigResponse) []EncryptionResponse { return v.Encryptions }).(EncryptionResponseArrayOutput)
 }
 
 // List of input assets stored in Cloud Storage.
@@ -6134,9 +7464,11 @@ func (o JobConfigResponseOutput) SpriteSheets() SpriteSheetResponseArrayOutput {
 
 // Manifest configuration.
 type Manifest struct {
-	// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
+	// `DASH` manifest configuration.
+	Dash *DashConfig `pulumi:"dash"`
+	// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.
 	FileName *string `pulumi:"fileName"`
-	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+	// List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.
 	MuxStreams []string `pulumi:"muxStreams"`
 	// Type of the manifest.
 	Type ManifestType `pulumi:"type"`
@@ -6155,9 +7487,11 @@ type ManifestInput interface {
 
 // Manifest configuration.
 type ManifestArgs struct {
-	// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
+	// `DASH` manifest configuration.
+	Dash DashConfigPtrInput `pulumi:"dash"`
+	// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.
 	FileName pulumi.StringPtrInput `pulumi:"fileName"`
-	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+	// List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.
 	MuxStreams pulumi.StringArrayInput `pulumi:"muxStreams"`
 	// Type of the manifest.
 	Type ManifestTypeInput `pulumi:"type"`
@@ -6233,12 +7567,17 @@ func (o ManifestOutput) ToOutput(ctx context.Context) pulumix.Output[Manifest] {
 	}
 }
 
-// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
+// `DASH` manifest configuration.
+func (o ManifestOutput) Dash() DashConfigPtrOutput {
+	return o.ApplyT(func(v Manifest) *DashConfig { return v.Dash }).(DashConfigPtrOutput)
+}
+
+// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.
 func (o ManifestOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Manifest) *string { return v.FileName }).(pulumi.StringPtrOutput)
 }
 
-// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+// List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.
 func (o ManifestOutput) MuxStreams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Manifest) []string { return v.MuxStreams }).(pulumi.StringArrayOutput)
 }
@@ -6276,9 +7615,11 @@ func (o ManifestArrayOutput) Index(i pulumi.IntInput) ManifestOutput {
 
 // Manifest configuration.
 type ManifestResponse struct {
-	// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
+	// `DASH` manifest configuration.
+	Dash DashConfigResponse `pulumi:"dash"`
+	// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.
 	FileName string `pulumi:"fileName"`
-	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+	// List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.
 	MuxStreams []string `pulumi:"muxStreams"`
 	// Type of the manifest.
 	Type string `pulumi:"type"`
@@ -6305,12 +7646,17 @@ func (o ManifestResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Man
 	}
 }
 
-// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
+// `DASH` manifest configuration.
+func (o ManifestResponseOutput) Dash() DashConfigResponseOutput {
+	return o.ApplyT(func(v ManifestResponse) DashConfigResponse { return v.Dash }).(DashConfigResponseOutput)
+}
+
+// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.
 func (o ManifestResponseOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v ManifestResponse) string { return v.FileName }).(pulumi.StringOutput)
 }
 
-// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+// List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.
 func (o ManifestResponseOutput) MuxStreams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManifestResponse) []string { return v.MuxStreams }).(pulumi.StringArrayOutput)
 }
@@ -6346,15 +7692,215 @@ func (o ManifestResponseArrayOutput) Index(i pulumi.IntInput) ManifestResponseOu
 	}).(ManifestResponseOutput)
 }
 
+// Configuration for MPEG Common Encryption (MPEG-CENC).
+type MpegCommonEncryption struct {
+	// Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
+	Scheme string `pulumi:"scheme"`
+}
+
+// MpegCommonEncryptionInput is an input type that accepts MpegCommonEncryptionArgs and MpegCommonEncryptionOutput values.
+// You can construct a concrete instance of `MpegCommonEncryptionInput` via:
+//
+//	MpegCommonEncryptionArgs{...}
+type MpegCommonEncryptionInput interface {
+	pulumi.Input
+
+	ToMpegCommonEncryptionOutput() MpegCommonEncryptionOutput
+	ToMpegCommonEncryptionOutputWithContext(context.Context) MpegCommonEncryptionOutput
+}
+
+// Configuration for MPEG Common Encryption (MPEG-CENC).
+type MpegCommonEncryptionArgs struct {
+	// Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
+	Scheme pulumi.StringInput `pulumi:"scheme"`
+}
+
+func (MpegCommonEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MpegCommonEncryption)(nil)).Elem()
+}
+
+func (i MpegCommonEncryptionArgs) ToMpegCommonEncryptionOutput() MpegCommonEncryptionOutput {
+	return i.ToMpegCommonEncryptionOutputWithContext(context.Background())
+}
+
+func (i MpegCommonEncryptionArgs) ToMpegCommonEncryptionOutputWithContext(ctx context.Context) MpegCommonEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MpegCommonEncryptionOutput)
+}
+
+func (i MpegCommonEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[MpegCommonEncryption] {
+	return pulumix.Output[MpegCommonEncryption]{
+		OutputState: i.ToMpegCommonEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i MpegCommonEncryptionArgs) ToMpegCommonEncryptionPtrOutput() MpegCommonEncryptionPtrOutput {
+	return i.ToMpegCommonEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i MpegCommonEncryptionArgs) ToMpegCommonEncryptionPtrOutputWithContext(ctx context.Context) MpegCommonEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MpegCommonEncryptionOutput).ToMpegCommonEncryptionPtrOutputWithContext(ctx)
+}
+
+// MpegCommonEncryptionPtrInput is an input type that accepts MpegCommonEncryptionArgs, MpegCommonEncryptionPtr and MpegCommonEncryptionPtrOutput values.
+// You can construct a concrete instance of `MpegCommonEncryptionPtrInput` via:
+//
+//	        MpegCommonEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MpegCommonEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToMpegCommonEncryptionPtrOutput() MpegCommonEncryptionPtrOutput
+	ToMpegCommonEncryptionPtrOutputWithContext(context.Context) MpegCommonEncryptionPtrOutput
+}
+
+type mpegCommonEncryptionPtrType MpegCommonEncryptionArgs
+
+func MpegCommonEncryptionPtr(v *MpegCommonEncryptionArgs) MpegCommonEncryptionPtrInput {
+	return (*mpegCommonEncryptionPtrType)(v)
+}
+
+func (*mpegCommonEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MpegCommonEncryption)(nil)).Elem()
+}
+
+func (i *mpegCommonEncryptionPtrType) ToMpegCommonEncryptionPtrOutput() MpegCommonEncryptionPtrOutput {
+	return i.ToMpegCommonEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *mpegCommonEncryptionPtrType) ToMpegCommonEncryptionPtrOutputWithContext(ctx context.Context) MpegCommonEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MpegCommonEncryptionPtrOutput)
+}
+
+func (i *mpegCommonEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MpegCommonEncryption] {
+	return pulumix.Output[*MpegCommonEncryption]{
+		OutputState: i.ToMpegCommonEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for MPEG Common Encryption (MPEG-CENC).
+type MpegCommonEncryptionOutput struct{ *pulumi.OutputState }
+
+func (MpegCommonEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MpegCommonEncryption)(nil)).Elem()
+}
+
+func (o MpegCommonEncryptionOutput) ToMpegCommonEncryptionOutput() MpegCommonEncryptionOutput {
+	return o
+}
+
+func (o MpegCommonEncryptionOutput) ToMpegCommonEncryptionOutputWithContext(ctx context.Context) MpegCommonEncryptionOutput {
+	return o
+}
+
+func (o MpegCommonEncryptionOutput) ToMpegCommonEncryptionPtrOutput() MpegCommonEncryptionPtrOutput {
+	return o.ToMpegCommonEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o MpegCommonEncryptionOutput) ToMpegCommonEncryptionPtrOutputWithContext(ctx context.Context) MpegCommonEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MpegCommonEncryption) *MpegCommonEncryption {
+		return &v
+	}).(MpegCommonEncryptionPtrOutput)
+}
+
+func (o MpegCommonEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[MpegCommonEncryption] {
+	return pulumix.Output[MpegCommonEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
+func (o MpegCommonEncryptionOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v MpegCommonEncryption) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
+type MpegCommonEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (MpegCommonEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MpegCommonEncryption)(nil)).Elem()
+}
+
+func (o MpegCommonEncryptionPtrOutput) ToMpegCommonEncryptionPtrOutput() MpegCommonEncryptionPtrOutput {
+	return o
+}
+
+func (o MpegCommonEncryptionPtrOutput) ToMpegCommonEncryptionPtrOutputWithContext(ctx context.Context) MpegCommonEncryptionPtrOutput {
+	return o
+}
+
+func (o MpegCommonEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MpegCommonEncryption] {
+	return pulumix.Output[*MpegCommonEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MpegCommonEncryptionPtrOutput) Elem() MpegCommonEncryptionOutput {
+	return o.ApplyT(func(v *MpegCommonEncryption) MpegCommonEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret MpegCommonEncryption
+		return ret
+	}).(MpegCommonEncryptionOutput)
+}
+
+// Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
+func (o MpegCommonEncryptionPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MpegCommonEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for MPEG Common Encryption (MPEG-CENC).
+type MpegCommonEncryptionResponse struct {
+	// Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
+	Scheme string `pulumi:"scheme"`
+}
+
+// Configuration for MPEG Common Encryption (MPEG-CENC).
+type MpegCommonEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (MpegCommonEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MpegCommonEncryptionResponse)(nil)).Elem()
+}
+
+func (o MpegCommonEncryptionResponseOutput) ToMpegCommonEncryptionResponseOutput() MpegCommonEncryptionResponseOutput {
+	return o
+}
+
+func (o MpegCommonEncryptionResponseOutput) ToMpegCommonEncryptionResponseOutputWithContext(ctx context.Context) MpegCommonEncryptionResponseOutput {
+	return o
+}
+
+func (o MpegCommonEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MpegCommonEncryptionResponse] {
+	return pulumix.Output[MpegCommonEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
+func (o MpegCommonEncryptionResponseOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v MpegCommonEncryptionResponse) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
 // Multiplexing settings for output stream.
 type MuxStream struct {
 	// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
 	Container *string `pulumi:"container"`
-	// List of `ElementaryStream.key`s multiplexed in this stream.
+	// List of ElementaryStream.key values multiplexed in this stream.
 	ElementaryStreams []string `pulumi:"elementaryStreams"`
-	// The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
+	// Identifier of the encryption configuration to use. If omitted, output will be unencrypted.
+	EncryptionId *string `pulumi:"encryptionId"`
+	// The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
 	FileName *string `pulumi:"fileName"`
-	// A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
+	// Optional. `fmp4` container configuration.
+	Fmp4 *Fmp4Config `pulumi:"fmp4"`
+	// A unique key for this multiplexed stream.
 	Key *string `pulumi:"key"`
 	// Segment settings for `ts`, `fmp4` and `vtt`.
 	SegmentSettings *SegmentSettings `pulumi:"segmentSettings"`
@@ -6375,11 +7921,15 @@ type MuxStreamInput interface {
 type MuxStreamArgs struct {
 	// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
 	Container pulumi.StringPtrInput `pulumi:"container"`
-	// List of `ElementaryStream.key`s multiplexed in this stream.
+	// List of ElementaryStream.key values multiplexed in this stream.
 	ElementaryStreams pulumi.StringArrayInput `pulumi:"elementaryStreams"`
-	// The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
+	// Identifier of the encryption configuration to use. If omitted, output will be unencrypted.
+	EncryptionId pulumi.StringPtrInput `pulumi:"encryptionId"`
+	// The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
 	FileName pulumi.StringPtrInput `pulumi:"fileName"`
-	// A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
+	// Optional. `fmp4` container configuration.
+	Fmp4 Fmp4ConfigPtrInput `pulumi:"fmp4"`
+	// A unique key for this multiplexed stream.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Segment settings for `ts`, `fmp4` and `vtt`.
 	SegmentSettings SegmentSettingsPtrInput `pulumi:"segmentSettings"`
@@ -6460,17 +8010,27 @@ func (o MuxStreamOutput) Container() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MuxStream) *string { return v.Container }).(pulumi.StringPtrOutput)
 }
 
-// List of `ElementaryStream.key`s multiplexed in this stream.
+// List of ElementaryStream.key values multiplexed in this stream.
 func (o MuxStreamOutput) ElementaryStreams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MuxStream) []string { return v.ElementaryStreams }).(pulumi.StringArrayOutput)
 }
 
-// The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
+// Identifier of the encryption configuration to use. If omitted, output will be unencrypted.
+func (o MuxStreamOutput) EncryptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MuxStream) *string { return v.EncryptionId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
 func (o MuxStreamOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MuxStream) *string { return v.FileName }).(pulumi.StringPtrOutput)
 }
 
-// A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
+// Optional. `fmp4` container configuration.
+func (o MuxStreamOutput) Fmp4() Fmp4ConfigPtrOutput {
+	return o.ApplyT(func(v MuxStream) *Fmp4Config { return v.Fmp4 }).(Fmp4ConfigPtrOutput)
+}
+
+// A unique key for this multiplexed stream.
 func (o MuxStreamOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MuxStream) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -6510,11 +8070,15 @@ func (o MuxStreamArrayOutput) Index(i pulumi.IntInput) MuxStreamOutput {
 type MuxStreamResponse struct {
 	// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
 	Container string `pulumi:"container"`
-	// List of `ElementaryStream.key`s multiplexed in this stream.
+	// List of ElementaryStream.key values multiplexed in this stream.
 	ElementaryStreams []string `pulumi:"elementaryStreams"`
-	// The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
+	// Identifier of the encryption configuration to use. If omitted, output will be unencrypted.
+	EncryptionId string `pulumi:"encryptionId"`
+	// The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
 	FileName string `pulumi:"fileName"`
-	// A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
+	// Optional. `fmp4` container configuration.
+	Fmp4 Fmp4ConfigResponse `pulumi:"fmp4"`
+	// A unique key for this multiplexed stream.
 	Key string `pulumi:"key"`
 	// Segment settings for `ts`, `fmp4` and `vtt`.
 	SegmentSettings SegmentSettingsResponse `pulumi:"segmentSettings"`
@@ -6546,17 +8110,27 @@ func (o MuxStreamResponseOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v MuxStreamResponse) string { return v.Container }).(pulumi.StringOutput)
 }
 
-// List of `ElementaryStream.key`s multiplexed in this stream.
+// List of ElementaryStream.key values multiplexed in this stream.
 func (o MuxStreamResponseOutput) ElementaryStreams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MuxStreamResponse) []string { return v.ElementaryStreams }).(pulumi.StringArrayOutput)
 }
 
-// The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
+// Identifier of the encryption configuration to use. If omitted, output will be unencrypted.
+func (o MuxStreamResponseOutput) EncryptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v MuxStreamResponse) string { return v.EncryptionId }).(pulumi.StringOutput)
+}
+
+// The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
 func (o MuxStreamResponseOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v MuxStreamResponse) string { return v.FileName }).(pulumi.StringOutput)
 }
 
-// A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
+// Optional. `fmp4` container configuration.
+func (o MuxStreamResponseOutput) Fmp4() Fmp4ConfigResponseOutput {
+	return o.ApplyT(func(v MuxStreamResponse) Fmp4ConfigResponse { return v.Fmp4 }).(Fmp4ConfigResponseOutput)
+}
+
+// A unique key for this multiplexed stream.
 func (o MuxStreamResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v MuxStreamResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -6816,7 +8390,7 @@ func (o NormalizedCoordinateResponseOutput) Y() pulumi.Float64Output {
 
 // Location of output file(s) in a Cloud Storage bucket.
 type Output struct {
-	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri *string `pulumi:"uri"`
 }
 
@@ -6833,7 +8407,7 @@ type OutputInput interface {
 
 // Location of output file(s) in a Cloud Storage bucket.
 type OutputArgs struct {
-	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -6933,7 +8507,7 @@ func (o OutputOutput) ToOutput(ctx context.Context) pulumix.Output[Output] {
 	}
 }
 
-// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o OutputOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Output) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -6968,7 +8542,7 @@ func (o OutputPtrOutput) Elem() OutputOutput {
 	}).(OutputOutput)
 }
 
-// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o OutputPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Output) *string {
 		if v == nil {
@@ -6980,7 +8554,7 @@ func (o OutputPtrOutput) Uri() pulumi.StringPtrOutput {
 
 // Location of output file(s) in a Cloud Storage bucket.
 type OutputResponse struct {
-	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri string `pulumi:"uri"`
 }
 
@@ -7005,14 +8579,14 @@ func (o OutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Outpu
 	}
 }
 
-// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o OutputResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OutputResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // Overlay configuration.
 type Overlay struct {
-	// List of Animations. The list should be chronological, without any time overlap.
+	// List of animations. The list should be chronological, without any time overlap.
 	Animations []Animation `pulumi:"animations"`
 	// Image overlay.
 	Image *Image `pulumi:"image"`
@@ -7031,7 +8605,7 @@ type OverlayInput interface {
 
 // Overlay configuration.
 type OverlayArgs struct {
-	// List of Animations. The list should be chronological, without any time overlap.
+	// List of animations. The list should be chronological, without any time overlap.
 	Animations AnimationArrayInput `pulumi:"animations"`
 	// Image overlay.
 	Image ImagePtrInput `pulumi:"image"`
@@ -7107,7 +8681,7 @@ func (o OverlayOutput) ToOutput(ctx context.Context) pulumix.Output[Overlay] {
 	}
 }
 
-// List of Animations. The list should be chronological, without any time overlap.
+// List of animations. The list should be chronological, without any time overlap.
 func (o OverlayOutput) Animations() AnimationArrayOutput {
 	return o.ApplyT(func(v Overlay) []Animation { return v.Animations }).(AnimationArrayOutput)
 }
@@ -7145,7 +8719,7 @@ func (o OverlayArrayOutput) Index(i pulumi.IntInput) OverlayOutput {
 
 // Overlay configuration.
 type OverlayResponse struct {
-	// List of Animations. The list should be chronological, without any time overlap.
+	// List of animations. The list should be chronological, without any time overlap.
 	Animations []AnimationResponse `pulumi:"animations"`
 	// Image overlay.
 	Image ImageResponse `pulumi:"image"`
@@ -7172,7 +8746,7 @@ func (o OverlayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Over
 	}
 }
 
-// List of Animations. The list should be chronological, without any time overlap.
+// List of animations. The list should be chronological, without any time overlap.
 func (o OverlayResponseOutput) Animations() AnimationResponseArrayOutput {
 	return o.ApplyT(func(v OverlayResponse) []AnimationResponse { return v.Animations }).(AnimationResponseArrayOutput)
 }
@@ -7480,6 +9054,176 @@ func (o PadResponseOutput) RightPixels() pulumi.IntOutput {
 // The number of pixels to add to the top. The default is 0.
 func (o PadResponseOutput) TopPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v PadResponse) int { return v.TopPixels }).(pulumi.IntOutput)
+}
+
+// Playready configuration.
+type Playready struct {
+}
+
+// PlayreadyInput is an input type that accepts PlayreadyArgs and PlayreadyOutput values.
+// You can construct a concrete instance of `PlayreadyInput` via:
+//
+//	PlayreadyArgs{...}
+type PlayreadyInput interface {
+	pulumi.Input
+
+	ToPlayreadyOutput() PlayreadyOutput
+	ToPlayreadyOutputWithContext(context.Context) PlayreadyOutput
+}
+
+// Playready configuration.
+type PlayreadyArgs struct {
+}
+
+func (PlayreadyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Playready)(nil)).Elem()
+}
+
+func (i PlayreadyArgs) ToPlayreadyOutput() PlayreadyOutput {
+	return i.ToPlayreadyOutputWithContext(context.Background())
+}
+
+func (i PlayreadyArgs) ToPlayreadyOutputWithContext(ctx context.Context) PlayreadyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlayreadyOutput)
+}
+
+func (i PlayreadyArgs) ToOutput(ctx context.Context) pulumix.Output[Playready] {
+	return pulumix.Output[Playready]{
+		OutputState: i.ToPlayreadyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PlayreadyArgs) ToPlayreadyPtrOutput() PlayreadyPtrOutput {
+	return i.ToPlayreadyPtrOutputWithContext(context.Background())
+}
+
+func (i PlayreadyArgs) ToPlayreadyPtrOutputWithContext(ctx context.Context) PlayreadyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlayreadyOutput).ToPlayreadyPtrOutputWithContext(ctx)
+}
+
+// PlayreadyPtrInput is an input type that accepts PlayreadyArgs, PlayreadyPtr and PlayreadyPtrOutput values.
+// You can construct a concrete instance of `PlayreadyPtrInput` via:
+//
+//	        PlayreadyArgs{...}
+//
+//	or:
+//
+//	        nil
+type PlayreadyPtrInput interface {
+	pulumi.Input
+
+	ToPlayreadyPtrOutput() PlayreadyPtrOutput
+	ToPlayreadyPtrOutputWithContext(context.Context) PlayreadyPtrOutput
+}
+
+type playreadyPtrType PlayreadyArgs
+
+func PlayreadyPtr(v *PlayreadyArgs) PlayreadyPtrInput {
+	return (*playreadyPtrType)(v)
+}
+
+func (*playreadyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Playready)(nil)).Elem()
+}
+
+func (i *playreadyPtrType) ToPlayreadyPtrOutput() PlayreadyPtrOutput {
+	return i.ToPlayreadyPtrOutputWithContext(context.Background())
+}
+
+func (i *playreadyPtrType) ToPlayreadyPtrOutputWithContext(ctx context.Context) PlayreadyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlayreadyPtrOutput)
+}
+
+func (i *playreadyPtrType) ToOutput(ctx context.Context) pulumix.Output[*Playready] {
+	return pulumix.Output[*Playready]{
+		OutputState: i.ToPlayreadyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Playready configuration.
+type PlayreadyOutput struct{ *pulumi.OutputState }
+
+func (PlayreadyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Playready)(nil)).Elem()
+}
+
+func (o PlayreadyOutput) ToPlayreadyOutput() PlayreadyOutput {
+	return o
+}
+
+func (o PlayreadyOutput) ToPlayreadyOutputWithContext(ctx context.Context) PlayreadyOutput {
+	return o
+}
+
+func (o PlayreadyOutput) ToPlayreadyPtrOutput() PlayreadyPtrOutput {
+	return o.ToPlayreadyPtrOutputWithContext(context.Background())
+}
+
+func (o PlayreadyOutput) ToPlayreadyPtrOutputWithContext(ctx context.Context) PlayreadyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Playready) *Playready {
+		return &v
+	}).(PlayreadyPtrOutput)
+}
+
+func (o PlayreadyOutput) ToOutput(ctx context.Context) pulumix.Output[Playready] {
+	return pulumix.Output[Playready]{
+		OutputState: o.OutputState,
+	}
+}
+
+type PlayreadyPtrOutput struct{ *pulumi.OutputState }
+
+func (PlayreadyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Playready)(nil)).Elem()
+}
+
+func (o PlayreadyPtrOutput) ToPlayreadyPtrOutput() PlayreadyPtrOutput {
+	return o
+}
+
+func (o PlayreadyPtrOutput) ToPlayreadyPtrOutputWithContext(ctx context.Context) PlayreadyPtrOutput {
+	return o
+}
+
+func (o PlayreadyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Playready] {
+	return pulumix.Output[*Playready]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PlayreadyPtrOutput) Elem() PlayreadyOutput {
+	return o.ApplyT(func(v *Playready) Playready {
+		if v != nil {
+			return *v
+		}
+		var ret Playready
+		return ret
+	}).(PlayreadyOutput)
+}
+
+// Playready configuration.
+type PlayreadyResponse struct {
+}
+
+// Playready configuration.
+type PlayreadyResponseOutput struct{ *pulumi.OutputState }
+
+func (PlayreadyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlayreadyResponse)(nil)).Elem()
+}
+
+func (o PlayreadyResponseOutput) ToPlayreadyResponseOutput() PlayreadyResponseOutput {
+	return o
+}
+
+func (o PlayreadyResponseOutput) ToPlayreadyResponseOutputWithContext(ctx context.Context) PlayreadyResponseOutput {
+	return o
+}
+
+func (o PlayreadyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PlayreadyResponse] {
+	return pulumix.Output[PlayreadyResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Preprocessing configurations.
@@ -8028,6 +9772,372 @@ func (o PubsubDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.O
 // The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
 func (o PubsubDestinationResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubDestinationResponse) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+// Configuration for SAMPLE-AES encryption.
+type SampleAesEncryption struct {
+}
+
+// SampleAesEncryptionInput is an input type that accepts SampleAesEncryptionArgs and SampleAesEncryptionOutput values.
+// You can construct a concrete instance of `SampleAesEncryptionInput` via:
+//
+//	SampleAesEncryptionArgs{...}
+type SampleAesEncryptionInput interface {
+	pulumi.Input
+
+	ToSampleAesEncryptionOutput() SampleAesEncryptionOutput
+	ToSampleAesEncryptionOutputWithContext(context.Context) SampleAesEncryptionOutput
+}
+
+// Configuration for SAMPLE-AES encryption.
+type SampleAesEncryptionArgs struct {
+}
+
+func (SampleAesEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SampleAesEncryption)(nil)).Elem()
+}
+
+func (i SampleAesEncryptionArgs) ToSampleAesEncryptionOutput() SampleAesEncryptionOutput {
+	return i.ToSampleAesEncryptionOutputWithContext(context.Background())
+}
+
+func (i SampleAesEncryptionArgs) ToSampleAesEncryptionOutputWithContext(ctx context.Context) SampleAesEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SampleAesEncryptionOutput)
+}
+
+func (i SampleAesEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[SampleAesEncryption] {
+	return pulumix.Output[SampleAesEncryption]{
+		OutputState: i.ToSampleAesEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SampleAesEncryptionArgs) ToSampleAesEncryptionPtrOutput() SampleAesEncryptionPtrOutput {
+	return i.ToSampleAesEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i SampleAesEncryptionArgs) ToSampleAesEncryptionPtrOutputWithContext(ctx context.Context) SampleAesEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SampleAesEncryptionOutput).ToSampleAesEncryptionPtrOutputWithContext(ctx)
+}
+
+// SampleAesEncryptionPtrInput is an input type that accepts SampleAesEncryptionArgs, SampleAesEncryptionPtr and SampleAesEncryptionPtrOutput values.
+// You can construct a concrete instance of `SampleAesEncryptionPtrInput` via:
+//
+//	        SampleAesEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SampleAesEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToSampleAesEncryptionPtrOutput() SampleAesEncryptionPtrOutput
+	ToSampleAesEncryptionPtrOutputWithContext(context.Context) SampleAesEncryptionPtrOutput
+}
+
+type sampleAesEncryptionPtrType SampleAesEncryptionArgs
+
+func SampleAesEncryptionPtr(v *SampleAesEncryptionArgs) SampleAesEncryptionPtrInput {
+	return (*sampleAesEncryptionPtrType)(v)
+}
+
+func (*sampleAesEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SampleAesEncryption)(nil)).Elem()
+}
+
+func (i *sampleAesEncryptionPtrType) ToSampleAesEncryptionPtrOutput() SampleAesEncryptionPtrOutput {
+	return i.ToSampleAesEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *sampleAesEncryptionPtrType) ToSampleAesEncryptionPtrOutputWithContext(ctx context.Context) SampleAesEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SampleAesEncryptionPtrOutput)
+}
+
+func (i *sampleAesEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SampleAesEncryption] {
+	return pulumix.Output[*SampleAesEncryption]{
+		OutputState: i.ToSampleAesEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for SAMPLE-AES encryption.
+type SampleAesEncryptionOutput struct{ *pulumi.OutputState }
+
+func (SampleAesEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SampleAesEncryption)(nil)).Elem()
+}
+
+func (o SampleAesEncryptionOutput) ToSampleAesEncryptionOutput() SampleAesEncryptionOutput {
+	return o
+}
+
+func (o SampleAesEncryptionOutput) ToSampleAesEncryptionOutputWithContext(ctx context.Context) SampleAesEncryptionOutput {
+	return o
+}
+
+func (o SampleAesEncryptionOutput) ToSampleAesEncryptionPtrOutput() SampleAesEncryptionPtrOutput {
+	return o.ToSampleAesEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o SampleAesEncryptionOutput) ToSampleAesEncryptionPtrOutputWithContext(ctx context.Context) SampleAesEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SampleAesEncryption) *SampleAesEncryption {
+		return &v
+	}).(SampleAesEncryptionPtrOutput)
+}
+
+func (o SampleAesEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[SampleAesEncryption] {
+	return pulumix.Output[SampleAesEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+type SampleAesEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (SampleAesEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SampleAesEncryption)(nil)).Elem()
+}
+
+func (o SampleAesEncryptionPtrOutput) ToSampleAesEncryptionPtrOutput() SampleAesEncryptionPtrOutput {
+	return o
+}
+
+func (o SampleAesEncryptionPtrOutput) ToSampleAesEncryptionPtrOutputWithContext(ctx context.Context) SampleAesEncryptionPtrOutput {
+	return o
+}
+
+func (o SampleAesEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SampleAesEncryption] {
+	return pulumix.Output[*SampleAesEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SampleAesEncryptionPtrOutput) Elem() SampleAesEncryptionOutput {
+	return o.ApplyT(func(v *SampleAesEncryption) SampleAesEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret SampleAesEncryption
+		return ret
+	}).(SampleAesEncryptionOutput)
+}
+
+// Configuration for SAMPLE-AES encryption.
+type SampleAesEncryptionResponse struct {
+}
+
+// Configuration for SAMPLE-AES encryption.
+type SampleAesEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (SampleAesEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SampleAesEncryptionResponse)(nil)).Elem()
+}
+
+func (o SampleAesEncryptionResponseOutput) ToSampleAesEncryptionResponseOutput() SampleAesEncryptionResponseOutput {
+	return o
+}
+
+func (o SampleAesEncryptionResponseOutput) ToSampleAesEncryptionResponseOutputWithContext(ctx context.Context) SampleAesEncryptionResponseOutput {
+	return o
+}
+
+func (o SampleAesEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SampleAesEncryptionResponse] {
+	return pulumix.Output[SampleAesEncryptionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Configuration for secrets stored in Google Secret Manager.
+type SecretManagerSource struct {
+	// The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+// SecretManagerSourceInput is an input type that accepts SecretManagerSourceArgs and SecretManagerSourceOutput values.
+// You can construct a concrete instance of `SecretManagerSourceInput` via:
+//
+//	SecretManagerSourceArgs{...}
+type SecretManagerSourceInput interface {
+	pulumi.Input
+
+	ToSecretManagerSourceOutput() SecretManagerSourceOutput
+	ToSecretManagerSourceOutputWithContext(context.Context) SecretManagerSourceOutput
+}
+
+// Configuration for secrets stored in Google Secret Manager.
+type SecretManagerSourceArgs struct {
+	// The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
+	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
+}
+
+func (SecretManagerSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretManagerSource)(nil)).Elem()
+}
+
+func (i SecretManagerSourceArgs) ToSecretManagerSourceOutput() SecretManagerSourceOutput {
+	return i.ToSecretManagerSourceOutputWithContext(context.Background())
+}
+
+func (i SecretManagerSourceArgs) ToSecretManagerSourceOutputWithContext(ctx context.Context) SecretManagerSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSourceOutput)
+}
+
+func (i SecretManagerSourceArgs) ToOutput(ctx context.Context) pulumix.Output[SecretManagerSource] {
+	return pulumix.Output[SecretManagerSource]{
+		OutputState: i.ToSecretManagerSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SecretManagerSourceArgs) ToSecretManagerSourcePtrOutput() SecretManagerSourcePtrOutput {
+	return i.ToSecretManagerSourcePtrOutputWithContext(context.Background())
+}
+
+func (i SecretManagerSourceArgs) ToSecretManagerSourcePtrOutputWithContext(ctx context.Context) SecretManagerSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSourceOutput).ToSecretManagerSourcePtrOutputWithContext(ctx)
+}
+
+// SecretManagerSourcePtrInput is an input type that accepts SecretManagerSourceArgs, SecretManagerSourcePtr and SecretManagerSourcePtrOutput values.
+// You can construct a concrete instance of `SecretManagerSourcePtrInput` via:
+//
+//	        SecretManagerSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretManagerSourcePtrInput interface {
+	pulumi.Input
+
+	ToSecretManagerSourcePtrOutput() SecretManagerSourcePtrOutput
+	ToSecretManagerSourcePtrOutputWithContext(context.Context) SecretManagerSourcePtrOutput
+}
+
+type secretManagerSourcePtrType SecretManagerSourceArgs
+
+func SecretManagerSourcePtr(v *SecretManagerSourceArgs) SecretManagerSourcePtrInput {
+	return (*secretManagerSourcePtrType)(v)
+}
+
+func (*secretManagerSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretManagerSource)(nil)).Elem()
+}
+
+func (i *secretManagerSourcePtrType) ToSecretManagerSourcePtrOutput() SecretManagerSourcePtrOutput {
+	return i.ToSecretManagerSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *secretManagerSourcePtrType) ToSecretManagerSourcePtrOutputWithContext(ctx context.Context) SecretManagerSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSourcePtrOutput)
+}
+
+func (i *secretManagerSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretManagerSource] {
+	return pulumix.Output[*SecretManagerSource]{
+		OutputState: i.ToSecretManagerSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for secrets stored in Google Secret Manager.
+type SecretManagerSourceOutput struct{ *pulumi.OutputState }
+
+func (SecretManagerSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretManagerSource)(nil)).Elem()
+}
+
+func (o SecretManagerSourceOutput) ToSecretManagerSourceOutput() SecretManagerSourceOutput {
+	return o
+}
+
+func (o SecretManagerSourceOutput) ToSecretManagerSourceOutputWithContext(ctx context.Context) SecretManagerSourceOutput {
+	return o
+}
+
+func (o SecretManagerSourceOutput) ToSecretManagerSourcePtrOutput() SecretManagerSourcePtrOutput {
+	return o.ToSecretManagerSourcePtrOutputWithContext(context.Background())
+}
+
+func (o SecretManagerSourceOutput) ToSecretManagerSourcePtrOutputWithContext(ctx context.Context) SecretManagerSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretManagerSource) *SecretManagerSource {
+		return &v
+	}).(SecretManagerSourcePtrOutput)
+}
+
+func (o SecretManagerSourceOutput) ToOutput(ctx context.Context) pulumix.Output[SecretManagerSource] {
+	return pulumix.Output[SecretManagerSource]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
+func (o SecretManagerSourceOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretManagerSource) string { return v.SecretVersion }).(pulumi.StringOutput)
+}
+
+type SecretManagerSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretManagerSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretManagerSource)(nil)).Elem()
+}
+
+func (o SecretManagerSourcePtrOutput) ToSecretManagerSourcePtrOutput() SecretManagerSourcePtrOutput {
+	return o
+}
+
+func (o SecretManagerSourcePtrOutput) ToSecretManagerSourcePtrOutputWithContext(ctx context.Context) SecretManagerSourcePtrOutput {
+	return o
+}
+
+func (o SecretManagerSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretManagerSource] {
+	return pulumix.Output[*SecretManagerSource]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecretManagerSourcePtrOutput) Elem() SecretManagerSourceOutput {
+	return o.ApplyT(func(v *SecretManagerSource) SecretManagerSource {
+		if v != nil {
+			return *v
+		}
+		var ret SecretManagerSource
+		return ret
+	}).(SecretManagerSourceOutput)
+}
+
+// The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
+func (o SecretManagerSourcePtrOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretManagerSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for secrets stored in Google Secret Manager.
+type SecretManagerSourceResponse struct {
+	// The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+// Configuration for secrets stored in Google Secret Manager.
+type SecretManagerSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretManagerSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretManagerSourceResponse)(nil)).Elem()
+}
+
+func (o SecretManagerSourceResponseOutput) ToSecretManagerSourceResponseOutput() SecretManagerSourceResponseOutput {
+	return o
+}
+
+func (o SecretManagerSourceResponseOutput) ToSecretManagerSourceResponseOutputWithContext(ctx context.Context) SecretManagerSourceResponseOutput {
+	return o
+}
+
+func (o SecretManagerSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretManagerSourceResponse] {
+	return pulumix.Output[SecretManagerSourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported.
+func (o SecretManagerSourceResponseOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretManagerSourceResponse) string { return v.SecretVersion }).(pulumi.StringOutput)
 }
 
 // Segment settings for `ts`, `fmp4` and `vtt`.
@@ -8640,11 +10750,11 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 type TextMapping struct {
-	// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+	// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
 	AtomKey string `pulumi:"atomKey"`
-	// The `Input.key` that identifies the input file.
+	// The Input.key that identifies the input file.
 	InputKey string `pulumi:"inputKey"`
 	// The zero-based index of the track in the input file.
 	InputTrack int `pulumi:"inputTrack"`
@@ -8661,11 +10771,11 @@ type TextMappingInput interface {
 	ToTextMappingOutputWithContext(context.Context) TextMappingOutput
 }
 
-// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 type TextMappingArgs struct {
-	// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+	// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
 	AtomKey pulumi.StringInput `pulumi:"atomKey"`
-	// The `Input.key` that identifies the input file.
+	// The Input.key that identifies the input file.
 	InputKey pulumi.StringInput `pulumi:"inputKey"`
 	// The zero-based index of the track in the input file.
 	InputTrack pulumi.IntInput `pulumi:"inputTrack"`
@@ -8720,7 +10830,7 @@ func (i TextMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]TextMap
 	}
 }
 
-// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 type TextMappingOutput struct{ *pulumi.OutputState }
 
 func (TextMappingOutput) ElementType() reflect.Type {
@@ -8741,12 +10851,12 @@ func (o TextMappingOutput) ToOutput(ctx context.Context) pulumix.Output[TextMapp
 	}
 }
 
-// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
 func (o TextMappingOutput) AtomKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TextMapping) string { return v.AtomKey }).(pulumi.StringOutput)
 }
 
-// The `Input.key` that identifies the input file.
+// The Input.key that identifies the input file.
 func (o TextMappingOutput) InputKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TextMapping) string { return v.InputKey }).(pulumi.StringOutput)
 }
@@ -8782,17 +10892,17 @@ func (o TextMappingArrayOutput) Index(i pulumi.IntInput) TextMappingOutput {
 	}).(TextMappingOutput)
 }
 
-// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 type TextMappingResponse struct {
-	// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+	// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
 	AtomKey string `pulumi:"atomKey"`
-	// The `Input.key` that identifies the input file.
+	// The Input.key that identifies the input file.
 	InputKey string `pulumi:"inputKey"`
 	// The zero-based index of the track in the input file.
 	InputTrack int `pulumi:"inputTrack"`
 }
 
-// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 type TextMappingResponseOutput struct{ *pulumi.OutputState }
 
 func (TextMappingResponseOutput) ElementType() reflect.Type {
@@ -8813,12 +10923,12 @@ func (o TextMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
 func (o TextMappingResponseOutput) AtomKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TextMappingResponse) string { return v.AtomKey }).(pulumi.StringOutput)
 }
 
-// The `Input.key` that identifies the input file.
+// The Input.key that identifies the input file.
 func (o TextMappingResponseOutput) InputKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TextMappingResponse) string { return v.InputKey }).(pulumi.StringOutput)
 }
@@ -8862,7 +10972,7 @@ type TextStream struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
 	LanguageCode *string `pulumi:"languageCode"`
-	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+	// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 	Mapping []TextMapping `pulumi:"mapping"`
 }
 
@@ -8885,7 +10995,7 @@ type TextStreamArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
 	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
-	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+	// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 	Mapping TextMappingArrayInput `pulumi:"mapping"`
 }
 
@@ -9000,7 +11110,7 @@ func (o TextStreamOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextStream) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
 
-// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 func (o TextStreamOutput) Mapping() TextMappingArrayOutput {
 	return o.ApplyT(func(v TextStream) []TextMapping { return v.Mapping }).(TextMappingArrayOutput)
 }
@@ -9065,7 +11175,7 @@ func (o TextStreamPtrOutput) LanguageCode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 func (o TextStreamPtrOutput) Mapping() TextMappingArrayOutput {
 	return o.ApplyT(func(v *TextStream) []TextMapping {
 		if v == nil {
@@ -9083,7 +11193,7 @@ type TextStreamResponse struct {
 	DisplayName string `pulumi:"displayName"`
 	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
 	LanguageCode string `pulumi:"languageCode"`
-	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+	// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 	Mapping []TextMappingResponse `pulumi:"mapping"`
 }
 
@@ -9123,7 +11233,7 @@ func (o TextStreamResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v TextStreamResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
-// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 func (o TextStreamResponseOutput) Mapping() TextMappingResponseArrayOutput {
 	return o.ApplyT(func(v TextStreamResponse) []TextMappingResponse { return v.Mapping }).(TextMappingResponseArrayOutput)
 }
@@ -9394,7 +11504,7 @@ type Vp9CodecSettings struct {
 	PixelFormat *string `pulumi:"pixelFormat"`
 	// Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
 	Profile *string `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
+	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode *string `pulumi:"rateControlMode"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels *int `pulumi:"widthPixels"`
@@ -9429,7 +11539,7 @@ type Vp9CodecSettingsArgs struct {
 	PixelFormat pulumi.StringPtrInput `pulumi:"pixelFormat"`
 	// Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
+	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode pulumi.StringPtrInput `pulumi:"rateControlMode"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels pulumi.IntPtrInput `pulumi:"widthPixels"`
@@ -9571,7 +11681,7 @@ func (o Vp9CodecSettingsOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *string { return v.Profile }).(pulumi.StringPtrOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
+// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 func (o Vp9CodecSettingsOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *string { return v.RateControlMode }).(pulumi.StringPtrOutput)
 }
@@ -9691,7 +11801,7 @@ func (o Vp9CodecSettingsPtrOutput) Profile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
+// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 func (o Vp9CodecSettingsPtrOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vp9CodecSettings) *string {
 		if v == nil {
@@ -9729,7 +11839,7 @@ type Vp9CodecSettingsResponse struct {
 	PixelFormat string `pulumi:"pixelFormat"`
 	// Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
 	Profile string `pulumi:"profile"`
-	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
+	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode string `pulumi:"rateControlMode"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels int `pulumi:"widthPixels"`
@@ -9796,7 +11906,7 @@ func (o Vp9CodecSettingsResponseOutput) Profile() pulumi.StringOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) string { return v.Profile }).(pulumi.StringOutput)
 }
 
-// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
+// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 func (o Vp9CodecSettingsResponseOutput) RateControlMode() pulumi.StringOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) string { return v.RateControlMode }).(pulumi.StringOutput)
 }
@@ -9804,6 +11914,176 @@ func (o Vp9CodecSettingsResponseOutput) RateControlMode() pulumi.StringOutput {
 // The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o Vp9CodecSettingsResponseOutput) WidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.WidthPixels }).(pulumi.IntOutput)
+}
+
+// Widevine configuration.
+type Widevine struct {
+}
+
+// WidevineInput is an input type that accepts WidevineArgs and WidevineOutput values.
+// You can construct a concrete instance of `WidevineInput` via:
+//
+//	WidevineArgs{...}
+type WidevineInput interface {
+	pulumi.Input
+
+	ToWidevineOutput() WidevineOutput
+	ToWidevineOutputWithContext(context.Context) WidevineOutput
+}
+
+// Widevine configuration.
+type WidevineArgs struct {
+}
+
+func (WidevineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Widevine)(nil)).Elem()
+}
+
+func (i WidevineArgs) ToWidevineOutput() WidevineOutput {
+	return i.ToWidevineOutputWithContext(context.Background())
+}
+
+func (i WidevineArgs) ToWidevineOutputWithContext(ctx context.Context) WidevineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidevineOutput)
+}
+
+func (i WidevineArgs) ToOutput(ctx context.Context) pulumix.Output[Widevine] {
+	return pulumix.Output[Widevine]{
+		OutputState: i.ToWidevineOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i WidevineArgs) ToWidevinePtrOutput() WidevinePtrOutput {
+	return i.ToWidevinePtrOutputWithContext(context.Background())
+}
+
+func (i WidevineArgs) ToWidevinePtrOutputWithContext(ctx context.Context) WidevinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidevineOutput).ToWidevinePtrOutputWithContext(ctx)
+}
+
+// WidevinePtrInput is an input type that accepts WidevineArgs, WidevinePtr and WidevinePtrOutput values.
+// You can construct a concrete instance of `WidevinePtrInput` via:
+//
+//	        WidevineArgs{...}
+//
+//	or:
+//
+//	        nil
+type WidevinePtrInput interface {
+	pulumi.Input
+
+	ToWidevinePtrOutput() WidevinePtrOutput
+	ToWidevinePtrOutputWithContext(context.Context) WidevinePtrOutput
+}
+
+type widevinePtrType WidevineArgs
+
+func WidevinePtr(v *WidevineArgs) WidevinePtrInput {
+	return (*widevinePtrType)(v)
+}
+
+func (*widevinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Widevine)(nil)).Elem()
+}
+
+func (i *widevinePtrType) ToWidevinePtrOutput() WidevinePtrOutput {
+	return i.ToWidevinePtrOutputWithContext(context.Background())
+}
+
+func (i *widevinePtrType) ToWidevinePtrOutputWithContext(ctx context.Context) WidevinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidevinePtrOutput)
+}
+
+func (i *widevinePtrType) ToOutput(ctx context.Context) pulumix.Output[*Widevine] {
+	return pulumix.Output[*Widevine]{
+		OutputState: i.ToWidevinePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Widevine configuration.
+type WidevineOutput struct{ *pulumi.OutputState }
+
+func (WidevineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Widevine)(nil)).Elem()
+}
+
+func (o WidevineOutput) ToWidevineOutput() WidevineOutput {
+	return o
+}
+
+func (o WidevineOutput) ToWidevineOutputWithContext(ctx context.Context) WidevineOutput {
+	return o
+}
+
+func (o WidevineOutput) ToWidevinePtrOutput() WidevinePtrOutput {
+	return o.ToWidevinePtrOutputWithContext(context.Background())
+}
+
+func (o WidevineOutput) ToWidevinePtrOutputWithContext(ctx context.Context) WidevinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Widevine) *Widevine {
+		return &v
+	}).(WidevinePtrOutput)
+}
+
+func (o WidevineOutput) ToOutput(ctx context.Context) pulumix.Output[Widevine] {
+	return pulumix.Output[Widevine]{
+		OutputState: o.OutputState,
+	}
+}
+
+type WidevinePtrOutput struct{ *pulumi.OutputState }
+
+func (WidevinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Widevine)(nil)).Elem()
+}
+
+func (o WidevinePtrOutput) ToWidevinePtrOutput() WidevinePtrOutput {
+	return o
+}
+
+func (o WidevinePtrOutput) ToWidevinePtrOutputWithContext(ctx context.Context) WidevinePtrOutput {
+	return o
+}
+
+func (o WidevinePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Widevine] {
+	return pulumix.Output[*Widevine]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o WidevinePtrOutput) Elem() WidevineOutput {
+	return o.ApplyT(func(v *Widevine) Widevine {
+		if v != nil {
+			return *v
+		}
+		var ret Widevine
+		return ret
+	}).(WidevineOutput)
+}
+
+// Widevine configuration.
+type WidevineResponse struct {
+}
+
+// Widevine configuration.
+type WidevineResponseOutput struct{ *pulumi.OutputState }
+
+func (WidevineResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidevineResponse)(nil)).Elem()
+}
+
+func (o WidevineResponseOutput) ToWidevineResponseOutput() WidevineResponseOutput {
+	return o
+}
+
+func (o WidevineResponseOutput) ToWidevineResponseOutputWithContext(ctx context.Context) WidevineResponseOutput {
+	return o
+}
+
+func (o WidevineResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WidevineResponse] {
+	return pulumix.Output[WidevineResponse]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Yet Another Deinterlacing Filter Configuration.
@@ -10083,6 +12363,8 @@ func (o YadifConfigResponseOutput) Parity() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AdBreakInput)(nil)).Elem(), AdBreakArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AdBreakArrayInput)(nil)).Elem(), AdBreakArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Aes128EncryptionInput)(nil)).Elem(), Aes128EncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Aes128EncryptionPtrInput)(nil)).Elem(), Aes128EncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationInput)(nil)).Elem(), AnimationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationArrayInput)(nil)).Elem(), AnimationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationEndInput)(nil)).Elem(), AnimationEndArgs{})
@@ -10099,20 +12381,31 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AudioStreamPtrInput)(nil)).Elem(), AudioStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BwdifConfigInput)(nil)).Elem(), BwdifConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BwdifConfigPtrInput)(nil)).Elem(), BwdifConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClearkeyInput)(nil)).Elem(), ClearkeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClearkeyPtrInput)(nil)).Elem(), ClearkeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColorInput)(nil)).Elem(), ColorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColorPtrInput)(nil)).Elem(), ColorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CropInput)(nil)).Elem(), CropArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CropPtrInput)(nil)).Elem(), CropArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashConfigInput)(nil)).Elem(), DashConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashConfigPtrInput)(nil)).Elem(), DashConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeblockInput)(nil)).Elem(), DeblockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeblockPtrInput)(nil)).Elem(), DeblockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeinterlaceInput)(nil)).Elem(), DeinterlaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeinterlacePtrInput)(nil)).Elem(), DeinterlaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenoiseInput)(nil)).Elem(), DenoiseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenoisePtrInput)(nil)).Elem(), DenoiseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DrmSystemsInput)(nil)).Elem(), DrmSystemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EditAtomInput)(nil)).Elem(), EditAtomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EditAtomArrayInput)(nil)).Elem(), EditAtomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElementaryStreamInput)(nil)).Elem(), ElementaryStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElementaryStreamArrayInput)(nil)).Elem(), ElementaryStreamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionInput)(nil)).Elem(), EncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionArrayInput)(nil)).Elem(), EncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FairplayInput)(nil)).Elem(), FairplayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FairplayPtrInput)(nil)).Elem(), FairplayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Fmp4ConfigInput)(nil)).Elem(), Fmp4ConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Fmp4ConfigPtrInput)(nil)).Elem(), Fmp4ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H264CodecSettingsInput)(nil)).Elem(), H264CodecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H264CodecSettingsPtrInput)(nil)).Elem(), H264CodecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H265CodecSettingsInput)(nil)).Elem(), H265CodecSettingsArgs{})
@@ -10125,6 +12418,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigPtrInput)(nil)).Elem(), JobConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManifestInput)(nil)).Elem(), ManifestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManifestArrayInput)(nil)).Elem(), ManifestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MpegCommonEncryptionInput)(nil)).Elem(), MpegCommonEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MpegCommonEncryptionPtrInput)(nil)).Elem(), MpegCommonEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MuxStreamInput)(nil)).Elem(), MuxStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MuxStreamArrayInput)(nil)).Elem(), MuxStreamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NormalizedCoordinateInput)(nil)).Elem(), NormalizedCoordinateArgs{})
@@ -10135,10 +12430,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OverlayArrayInput)(nil)).Elem(), OverlayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PadInput)(nil)).Elem(), PadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PadPtrInput)(nil)).Elem(), PadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PlayreadyInput)(nil)).Elem(), PlayreadyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PlayreadyPtrInput)(nil)).Elem(), PlayreadyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreprocessingConfigInput)(nil)).Elem(), PreprocessingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreprocessingConfigPtrInput)(nil)).Elem(), PreprocessingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationInput)(nil)).Elem(), PubsubDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationPtrInput)(nil)).Elem(), PubsubDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SampleAesEncryptionInput)(nil)).Elem(), SampleAesEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SampleAesEncryptionPtrInput)(nil)).Elem(), SampleAesEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretManagerSourceInput)(nil)).Elem(), SecretManagerSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretManagerSourcePtrInput)(nil)).Elem(), SecretManagerSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentSettingsInput)(nil)).Elem(), SegmentSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentSettingsPtrInput)(nil)).Elem(), SegmentSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpriteSheetInput)(nil)).Elem(), SpriteSheetArgs{})
@@ -10151,12 +12452,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VideoStreamPtrInput)(nil)).Elem(), VideoStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsInput)(nil)).Elem(), Vp9CodecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsPtrInput)(nil)).Elem(), Vp9CodecSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidevineInput)(nil)).Elem(), WidevineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidevinePtrInput)(nil)).Elem(), WidevineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*YadifConfigInput)(nil)).Elem(), YadifConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*YadifConfigPtrInput)(nil)).Elem(), YadifConfigArgs{})
 	pulumi.RegisterOutputType(AdBreakOutput{})
 	pulumi.RegisterOutputType(AdBreakArrayOutput{})
 	pulumi.RegisterOutputType(AdBreakResponseOutput{})
 	pulumi.RegisterOutputType(AdBreakResponseArrayOutput{})
+	pulumi.RegisterOutputType(Aes128EncryptionOutput{})
+	pulumi.RegisterOutputType(Aes128EncryptionPtrOutput{})
+	pulumi.RegisterOutputType(Aes128EncryptionResponseOutput{})
 	pulumi.RegisterOutputType(AnimationOutput{})
 	pulumi.RegisterOutputType(AnimationArrayOutput{})
 	pulumi.RegisterOutputType(AnimationEndOutput{})
@@ -10183,12 +12489,18 @@ func init() {
 	pulumi.RegisterOutputType(BwdifConfigOutput{})
 	pulumi.RegisterOutputType(BwdifConfigPtrOutput{})
 	pulumi.RegisterOutputType(BwdifConfigResponseOutput{})
+	pulumi.RegisterOutputType(ClearkeyOutput{})
+	pulumi.RegisterOutputType(ClearkeyPtrOutput{})
+	pulumi.RegisterOutputType(ClearkeyResponseOutput{})
 	pulumi.RegisterOutputType(ColorOutput{})
 	pulumi.RegisterOutputType(ColorPtrOutput{})
 	pulumi.RegisterOutputType(ColorResponseOutput{})
 	pulumi.RegisterOutputType(CropOutput{})
 	pulumi.RegisterOutputType(CropPtrOutput{})
 	pulumi.RegisterOutputType(CropResponseOutput{})
+	pulumi.RegisterOutputType(DashConfigOutput{})
+	pulumi.RegisterOutputType(DashConfigPtrOutput{})
+	pulumi.RegisterOutputType(DashConfigResponseOutput{})
 	pulumi.RegisterOutputType(DeblockOutput{})
 	pulumi.RegisterOutputType(DeblockPtrOutput{})
 	pulumi.RegisterOutputType(DeblockResponseOutput{})
@@ -10198,6 +12510,8 @@ func init() {
 	pulumi.RegisterOutputType(DenoiseOutput{})
 	pulumi.RegisterOutputType(DenoisePtrOutput{})
 	pulumi.RegisterOutputType(DenoiseResponseOutput{})
+	pulumi.RegisterOutputType(DrmSystemsOutput{})
+	pulumi.RegisterOutputType(DrmSystemsResponseOutput{})
 	pulumi.RegisterOutputType(EditAtomOutput{})
 	pulumi.RegisterOutputType(EditAtomArrayOutput{})
 	pulumi.RegisterOutputType(EditAtomResponseOutput{})
@@ -10206,6 +12520,16 @@ func init() {
 	pulumi.RegisterOutputType(ElementaryStreamArrayOutput{})
 	pulumi.RegisterOutputType(ElementaryStreamResponseOutput{})
 	pulumi.RegisterOutputType(ElementaryStreamResponseArrayOutput{})
+	pulumi.RegisterOutputType(EncryptionOutput{})
+	pulumi.RegisterOutputType(EncryptionArrayOutput{})
+	pulumi.RegisterOutputType(EncryptionResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionResponseArrayOutput{})
+	pulumi.RegisterOutputType(FairplayOutput{})
+	pulumi.RegisterOutputType(FairplayPtrOutput{})
+	pulumi.RegisterOutputType(FairplayResponseOutput{})
+	pulumi.RegisterOutputType(Fmp4ConfigOutput{})
+	pulumi.RegisterOutputType(Fmp4ConfigPtrOutput{})
+	pulumi.RegisterOutputType(Fmp4ConfigResponseOutput{})
 	pulumi.RegisterOutputType(H264CodecSettingsOutput{})
 	pulumi.RegisterOutputType(H264CodecSettingsPtrOutput{})
 	pulumi.RegisterOutputType(H264CodecSettingsResponseOutput{})
@@ -10226,6 +12550,9 @@ func init() {
 	pulumi.RegisterOutputType(ManifestArrayOutput{})
 	pulumi.RegisterOutputType(ManifestResponseOutput{})
 	pulumi.RegisterOutputType(ManifestResponseArrayOutput{})
+	pulumi.RegisterOutputType(MpegCommonEncryptionOutput{})
+	pulumi.RegisterOutputType(MpegCommonEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(MpegCommonEncryptionResponseOutput{})
 	pulumi.RegisterOutputType(MuxStreamOutput{})
 	pulumi.RegisterOutputType(MuxStreamArrayOutput{})
 	pulumi.RegisterOutputType(MuxStreamResponseOutput{})
@@ -10243,12 +12570,21 @@ func init() {
 	pulumi.RegisterOutputType(PadOutput{})
 	pulumi.RegisterOutputType(PadPtrOutput{})
 	pulumi.RegisterOutputType(PadResponseOutput{})
+	pulumi.RegisterOutputType(PlayreadyOutput{})
+	pulumi.RegisterOutputType(PlayreadyPtrOutput{})
+	pulumi.RegisterOutputType(PlayreadyResponseOutput{})
 	pulumi.RegisterOutputType(PreprocessingConfigOutput{})
 	pulumi.RegisterOutputType(PreprocessingConfigPtrOutput{})
 	pulumi.RegisterOutputType(PreprocessingConfigResponseOutput{})
 	pulumi.RegisterOutputType(PubsubDestinationOutput{})
 	pulumi.RegisterOutputType(PubsubDestinationPtrOutput{})
 	pulumi.RegisterOutputType(PubsubDestinationResponseOutput{})
+	pulumi.RegisterOutputType(SampleAesEncryptionOutput{})
+	pulumi.RegisterOutputType(SampleAesEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(SampleAesEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(SecretManagerSourceOutput{})
+	pulumi.RegisterOutputType(SecretManagerSourcePtrOutput{})
+	pulumi.RegisterOutputType(SecretManagerSourceResponseOutput{})
 	pulumi.RegisterOutputType(SegmentSettingsOutput{})
 	pulumi.RegisterOutputType(SegmentSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SegmentSettingsResponseOutput{})
@@ -10270,6 +12606,9 @@ func init() {
 	pulumi.RegisterOutputType(Vp9CodecSettingsOutput{})
 	pulumi.RegisterOutputType(Vp9CodecSettingsPtrOutput{})
 	pulumi.RegisterOutputType(Vp9CodecSettingsResponseOutput{})
+	pulumi.RegisterOutputType(WidevineOutput{})
+	pulumi.RegisterOutputType(WidevinePtrOutput{})
+	pulumi.RegisterOutputType(WidevineResponseOutput{})
 	pulumi.RegisterOutputType(YadifConfigOutput{})
 	pulumi.RegisterOutputType(YadifConfigPtrOutput{})
 	pulumi.RegisterOutputType(YadifConfigResponseOutput{})

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Gets a category on the portal.
+// Gets an API category.
 func GetApicategory(ctx *pulumi.Context, args *GetApicategoryArgs, opts ...pulumi.InvokeOption) (*GetApicategoryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApicategoryResult
@@ -30,13 +30,13 @@ type GetApicategoryArgs struct {
 }
 
 type GetApicategoryResult struct {
-	// Details of category.
-	Data GoogleCloudApigeeV1ApiCategoryDataResponse `pulumi:"data"`
-	// ID that can be used to find errors in the log files.
+	// The API category resource.
+	Data GoogleCloudApigeeV1ApiCategoryResponse `pulumi:"data"`
+	// Unique error code for the request, if any.
 	ErrorCode string `pulumi:"errorCode"`
 	// Description of the operation.
 	Message string `pulumi:"message"`
-	// ID that can be used to find request details in the log files.
+	// Unique ID of the request.
 	RequestId string `pulumi:"requestId"`
 	// Status of the operation.
 	Status string `pulumi:"status"`
@@ -85,12 +85,12 @@ func (o GetApicategoryResultOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// Details of category.
-func (o GetApicategoryResultOutput) Data() GoogleCloudApigeeV1ApiCategoryDataResponseOutput {
-	return o.ApplyT(func(v GetApicategoryResult) GoogleCloudApigeeV1ApiCategoryDataResponse { return v.Data }).(GoogleCloudApigeeV1ApiCategoryDataResponseOutput)
+// The API category resource.
+func (o GetApicategoryResultOutput) Data() GoogleCloudApigeeV1ApiCategoryResponseOutput {
+	return o.ApplyT(func(v GetApicategoryResult) GoogleCloudApigeeV1ApiCategoryResponse { return v.Data }).(GoogleCloudApigeeV1ApiCategoryResponseOutput)
 }
 
-// ID that can be used to find errors in the log files.
+// Unique error code for the request, if any.
 func (o GetApicategoryResultOutput) ErrorCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApicategoryResult) string { return v.ErrorCode }).(pulumi.StringOutput)
 }
@@ -100,7 +100,7 @@ func (o GetApicategoryResultOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApicategoryResult) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// ID that can be used to find request details in the log files.
+// Unique ID of the request.
 func (o GetApicategoryResultOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApicategoryResult) string { return v.RequestId }).(pulumi.StringOutput)
 }

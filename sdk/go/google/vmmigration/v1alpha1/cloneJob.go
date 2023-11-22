@@ -22,6 +22,8 @@ type CloneJob struct {
 
 	// Required. The clone job identifier.
 	CloneJobId pulumi.StringOutput `pulumi:"cloneJobId"`
+	// Details of the target Persistent Disks in Compute Engine.
+	ComputeEngineDisksTargetDetails ComputeEngineDisksTargetDetailsResponseOutput `pulumi:"computeEngineDisksTargetDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponseOutput `pulumi:"computeEngineTargetDetails"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
@@ -185,6 +187,13 @@ func (o CloneJobOutput) ToOutput(ctx context.Context) pulumix.Output[*CloneJob] 
 // Required. The clone job identifier.
 func (o CloneJobOutput) CloneJobId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.CloneJobId }).(pulumi.StringOutput)
+}
+
+// Details of the target Persistent Disks in Compute Engine.
+func (o CloneJobOutput) ComputeEngineDisksTargetDetails() ComputeEngineDisksTargetDetailsResponseOutput {
+	return o.ApplyT(func(v *CloneJob) ComputeEngineDisksTargetDetailsResponseOutput {
+		return v.ComputeEngineDisksTargetDetails
+	}).(ComputeEngineDisksTargetDetailsResponseOutput)
 }
 
 // Details of the target VM in Compute Engine.

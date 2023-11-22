@@ -17,8 +17,18 @@ import (
 type PhraseSet struct {
 	pulumi.CustomResourceState
 
+	// Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
 	Boost pulumi.Float64Output `pulumi:"boost"`
+	// The time at which this resource was requested for deletion. This field is not used.
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// User-settable, human-readable name for the PhraseSet. Must be 63 characters or less. This field is not used.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The time at which this resource will be purged. This field is not used.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
@@ -29,6 +39,12 @@ type PhraseSet struct {
 	// A list of word and phrases.
 	Phrases PhraseResponseArrayOutput `pulumi:"phrases"`
 	Project pulumi.StringOutput       `pulumi:"project"`
+	// Whether or not this PhraseSet is in the process of being updated. This field is not used.
+	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
+	// The CustomClass lifecycle state. This field is not used.
+	State pulumi.StringOutput `pulumi:"state"`
+	// System-assigned unique identifier for the PhraseSet. This field is not used.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 }
 
 // NewPhraseSet registers a new resource with the given unique name, arguments, and options.
@@ -154,9 +170,34 @@ func (o PhraseSetOutput) ToOutput(ctx context.Context) pulumix.Output[*PhraseSet
 	}
 }
 
+// Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+func (o PhraseSetOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
 // Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
 func (o PhraseSetOutput) Boost() pulumi.Float64Output {
 	return o.ApplyT(func(v *PhraseSet) pulumi.Float64Output { return v.Boost }).(pulumi.Float64Output)
+}
+
+// The time at which this resource was requested for deletion. This field is not used.
+func (o PhraseSetOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// User-settable, human-readable name for the PhraseSet. Must be 63 characters or less. This field is not used.
+func (o PhraseSetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+func (o PhraseSetOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The time at which this resource will be purged. This field is not used.
+func (o PhraseSetOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -185,6 +226,21 @@ func (o PhraseSetOutput) Phrases() PhraseResponseArrayOutput {
 
 func (o PhraseSetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Whether or not this PhraseSet is in the process of being updated. This field is not used.
+func (o PhraseSetOutput) Reconciling() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// The CustomClass lifecycle state. This field is not used.
+func (o PhraseSetOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// System-assigned unique identifier for the PhraseSet. This field is not used.
+func (o PhraseSetOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -201,142 +201,142 @@ func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output
 }
 
 // The enablement state of the custom module.
-type CustomModuleEnablementState string
+type FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState string
 
 const (
 	// Unspecified enablement state.
-	CustomModuleEnablementStateEnablementStateUnspecified = CustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
+	FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnablementStateUnspecified = FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
 	// The module is enabled at the given CRM resource.
-	CustomModuleEnablementStateEnabled = CustomModuleEnablementState("ENABLED")
+	FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnabled = FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLED")
 	// The module is disabled at the given CRM resource.
-	CustomModuleEnablementStateDisabled = CustomModuleEnablementState("DISABLED")
+	FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateDisabled = FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("DISABLED")
 	// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
-	CustomModuleEnablementStateInherited = CustomModuleEnablementState("INHERITED")
+	FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInherited = FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("INHERITED")
 )
 
-func (CustomModuleEnablementState) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomModuleEnablementState)(nil)).Elem()
+func (FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
 }
 
-func (e CustomModuleEnablementState) ToCustomModuleEnablementStateOutput() CustomModuleEnablementStateOutput {
-	return pulumi.ToOutput(e).(CustomModuleEnablementStateOutput)
+func (e FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput() FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutput(e).(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput)
 }
 
-func (e CustomModuleEnablementState) ToCustomModuleEnablementStateOutputWithContext(ctx context.Context) CustomModuleEnablementStateOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(CustomModuleEnablementStateOutput)
+func (e FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput)
 }
 
-func (e CustomModuleEnablementState) ToCustomModuleEnablementStatePtrOutput() CustomModuleEnablementStatePtrOutput {
-	return e.ToCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+func (e FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return e.ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
 }
 
-func (e CustomModuleEnablementState) ToCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) CustomModuleEnablementStatePtrOutput {
-	return CustomModuleEnablementState(e).ToCustomModuleEnablementStateOutputWithContext(ctx).ToCustomModuleEnablementStatePtrOutputWithContext(ctx)
+func (e FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState(e).ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(ctx).ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx)
 }
 
-func (e CustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
+func (e FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e CustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e CustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e CustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type CustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
+type FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
 
-func (CustomModuleEnablementStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomModuleEnablementState)(nil)).Elem()
+func (FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
 }
 
-func (o CustomModuleEnablementStateOutput) ToCustomModuleEnablementStateOutput() CustomModuleEnablementStateOutput {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput() FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
 	return o
 }
 
-func (o CustomModuleEnablementStateOutput) ToCustomModuleEnablementStateOutputWithContext(ctx context.Context) CustomModuleEnablementStateOutput {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
 	return o
 }
 
-func (o CustomModuleEnablementStateOutput) ToCustomModuleEnablementStatePtrOutput() CustomModuleEnablementStatePtrOutput {
-	return o.ToCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return o.ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
 }
 
-func (o CustomModuleEnablementStateOutput) ToCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) CustomModuleEnablementStatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomModuleEnablementState) *CustomModuleEnablementState {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) *FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState {
 		return &v
-	}).(CustomModuleEnablementStatePtrOutput)
+	}).(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
 }
 
-func (o CustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[CustomModuleEnablementState] {
-	return pulumix.Output[CustomModuleEnablementState]{
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
+	return pulumix.Output[FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o CustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o CustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomModuleEnablementState) string {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o CustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o CustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomModuleEnablementState) *string {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type CustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
+type FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
 
-func (CustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomModuleEnablementState)(nil)).Elem()
+func (FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
 }
 
-func (o CustomModuleEnablementStatePtrOutput) ToCustomModuleEnablementStatePtrOutput() CustomModuleEnablementStatePtrOutput {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
 	return o
 }
 
-func (o CustomModuleEnablementStatePtrOutput) ToCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) CustomModuleEnablementStatePtrOutput {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
 	return o
 }
 
-func (o CustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomModuleEnablementState] {
-	return pulumix.Output[*CustomModuleEnablementState]{
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
+	return pulumix.Output[*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o CustomModuleEnablementStatePtrOutput) Elem() CustomModuleEnablementStateOutput {
-	return o.ApplyT(func(v *CustomModuleEnablementState) CustomModuleEnablementState {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) Elem() FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return o.ApplyT(func(v *FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState {
 		if v != nil {
 			return *v
 		}
-		var ret CustomModuleEnablementState
+		var ret FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState
 		return ret
-	}).(CustomModuleEnablementStateOutput)
+	}).(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput)
 }
 
-func (o CustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o CustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CustomModuleEnablementState) *string {
+func (o FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState) *string {
 		if e == nil {
 			return nil
 		}
@@ -345,236 +345,47 @@ func (o CustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// CustomModuleEnablementStateInput is an input type that accepts CustomModuleEnablementStateArgs and CustomModuleEnablementStateOutput values.
-// You can construct a concrete instance of `CustomModuleEnablementStateInput` via:
+// FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput is an input type that accepts FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs and FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput values.
+// You can construct a concrete instance of `FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput` via:
 //
-//	CustomModuleEnablementStateArgs{...}
-type CustomModuleEnablementStateInput interface {
+//	FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs{...}
+type FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput interface {
 	pulumi.Input
 
-	ToCustomModuleEnablementStateOutput() CustomModuleEnablementStateOutput
-	ToCustomModuleEnablementStateOutputWithContext(context.Context) CustomModuleEnablementStateOutput
+	ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput() FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput
+	ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(context.Context) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput
 }
 
-var customModuleEnablementStatePtrType = reflect.TypeOf((**CustomModuleEnablementState)(nil)).Elem()
+var folderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrType = reflect.TypeOf((**FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
 
-type CustomModuleEnablementStatePtrInput interface {
+type FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput interface {
 	pulumi.Input
 
-	ToCustomModuleEnablementStatePtrOutput() CustomModuleEnablementStatePtrOutput
-	ToCustomModuleEnablementStatePtrOutputWithContext(context.Context) CustomModuleEnablementStatePtrOutput
+	ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput
+	ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(context.Context) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput
 }
 
-type customModuleEnablementStatePtr string
+type folderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr string
 
-func CustomModuleEnablementStatePtr(v string) CustomModuleEnablementStatePtrInput {
-	return (*customModuleEnablementStatePtr)(&v)
+func FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr(v string) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput {
+	return (*folderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr)(&v)
 }
 
-func (*customModuleEnablementStatePtr) ElementType() reflect.Type {
-	return customModuleEnablementStatePtrType
+func (*folderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ElementType() reflect.Type {
+	return folderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrType
 }
 
-func (in *customModuleEnablementStatePtr) ToCustomModuleEnablementStatePtrOutput() CustomModuleEnablementStatePtrOutput {
-	return pulumi.ToOutput(in).(CustomModuleEnablementStatePtrOutput)
+func (in *folderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutput(in).(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
 }
 
-func (in *customModuleEnablementStatePtr) ToCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) CustomModuleEnablementStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(CustomModuleEnablementStatePtrOutput)
+func (in *folderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
 }
 
-func (in *customModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomModuleEnablementState] {
-	return pulumix.Output[*CustomModuleEnablementState]{
-		OutputState: in.ToCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-// The enablement state of the custom module.
-type FolderCustomModuleEnablementState string
-
-const (
-	// Unspecified enablement state.
-	FolderCustomModuleEnablementStateEnablementStateUnspecified = FolderCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
-	// The module is enabled at the given CRM resource.
-	FolderCustomModuleEnablementStateEnabled = FolderCustomModuleEnablementState("ENABLED")
-	// The module is disabled at the given CRM resource.
-	FolderCustomModuleEnablementStateDisabled = FolderCustomModuleEnablementState("DISABLED")
-	// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
-	FolderCustomModuleEnablementStateInherited = FolderCustomModuleEnablementState("INHERITED")
-)
-
-func (FolderCustomModuleEnablementState) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderCustomModuleEnablementState)(nil)).Elem()
-}
-
-func (e FolderCustomModuleEnablementState) ToFolderCustomModuleEnablementStateOutput() FolderCustomModuleEnablementStateOutput {
-	return pulumi.ToOutput(e).(FolderCustomModuleEnablementStateOutput)
-}
-
-func (e FolderCustomModuleEnablementState) ToFolderCustomModuleEnablementStateOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStateOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(FolderCustomModuleEnablementStateOutput)
-}
-
-func (e FolderCustomModuleEnablementState) ToFolderCustomModuleEnablementStatePtrOutput() FolderCustomModuleEnablementStatePtrOutput {
-	return e.ToFolderCustomModuleEnablementStatePtrOutputWithContext(context.Background())
-}
-
-func (e FolderCustomModuleEnablementState) ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStatePtrOutput {
-	return FolderCustomModuleEnablementState(e).ToFolderCustomModuleEnablementStateOutputWithContext(ctx).ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx)
-}
-
-func (e FolderCustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e FolderCustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e FolderCustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e FolderCustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type FolderCustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
-
-func (FolderCustomModuleEnablementStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderCustomModuleEnablementState)(nil)).Elem()
-}
-
-func (o FolderCustomModuleEnablementStateOutput) ToFolderCustomModuleEnablementStateOutput() FolderCustomModuleEnablementStateOutput {
-	return o
-}
-
-func (o FolderCustomModuleEnablementStateOutput) ToFolderCustomModuleEnablementStateOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStateOutput {
-	return o
-}
-
-func (o FolderCustomModuleEnablementStateOutput) ToFolderCustomModuleEnablementStatePtrOutput() FolderCustomModuleEnablementStatePtrOutput {
-	return o.ToFolderCustomModuleEnablementStatePtrOutputWithContext(context.Background())
-}
-
-func (o FolderCustomModuleEnablementStateOutput) ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderCustomModuleEnablementState) *FolderCustomModuleEnablementState {
-		return &v
-	}).(FolderCustomModuleEnablementStatePtrOutput)
-}
-
-func (o FolderCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[FolderCustomModuleEnablementState] {
-	return pulumix.Output[FolderCustomModuleEnablementState]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o FolderCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o FolderCustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e FolderCustomModuleEnablementState) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o FolderCustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o FolderCustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e FolderCustomModuleEnablementState) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type FolderCustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
-
-func (FolderCustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FolderCustomModuleEnablementState)(nil)).Elem()
-}
-
-func (o FolderCustomModuleEnablementStatePtrOutput) ToFolderCustomModuleEnablementStatePtrOutput() FolderCustomModuleEnablementStatePtrOutput {
-	return o
-}
-
-func (o FolderCustomModuleEnablementStatePtrOutput) ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStatePtrOutput {
-	return o
-}
-
-func (o FolderCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleEnablementState] {
-	return pulumix.Output[*FolderCustomModuleEnablementState]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o FolderCustomModuleEnablementStatePtrOutput) Elem() FolderCustomModuleEnablementStateOutput {
-	return o.ApplyT(func(v *FolderCustomModuleEnablementState) FolderCustomModuleEnablementState {
-		if v != nil {
-			return *v
-		}
-		var ret FolderCustomModuleEnablementState
-		return ret
-	}).(FolderCustomModuleEnablementStateOutput)
-}
-
-func (o FolderCustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o FolderCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FolderCustomModuleEnablementState) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// FolderCustomModuleEnablementStateInput is an input type that accepts FolderCustomModuleEnablementStateArgs and FolderCustomModuleEnablementStateOutput values.
-// You can construct a concrete instance of `FolderCustomModuleEnablementStateInput` via:
-//
-//	FolderCustomModuleEnablementStateArgs{...}
-type FolderCustomModuleEnablementStateInput interface {
-	pulumi.Input
-
-	ToFolderCustomModuleEnablementStateOutput() FolderCustomModuleEnablementStateOutput
-	ToFolderCustomModuleEnablementStateOutputWithContext(context.Context) FolderCustomModuleEnablementStateOutput
-}
-
-var folderCustomModuleEnablementStatePtrType = reflect.TypeOf((**FolderCustomModuleEnablementState)(nil)).Elem()
-
-type FolderCustomModuleEnablementStatePtrInput interface {
-	pulumi.Input
-
-	ToFolderCustomModuleEnablementStatePtrOutput() FolderCustomModuleEnablementStatePtrOutput
-	ToFolderCustomModuleEnablementStatePtrOutputWithContext(context.Context) FolderCustomModuleEnablementStatePtrOutput
-}
-
-type folderCustomModuleEnablementStatePtr string
-
-func FolderCustomModuleEnablementStatePtr(v string) FolderCustomModuleEnablementStatePtrInput {
-	return (*folderCustomModuleEnablementStatePtr)(&v)
-}
-
-func (*folderCustomModuleEnablementStatePtr) ElementType() reflect.Type {
-	return folderCustomModuleEnablementStatePtrType
-}
-
-func (in *folderCustomModuleEnablementStatePtr) ToFolderCustomModuleEnablementStatePtrOutput() FolderCustomModuleEnablementStatePtrOutput {
-	return pulumi.ToOutput(in).(FolderCustomModuleEnablementStatePtrOutput)
-}
-
-func (in *folderCustomModuleEnablementStatePtr) ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(FolderCustomModuleEnablementStatePtrOutput)
-}
-
-func (in *folderCustomModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FolderCustomModuleEnablementState] {
-	return pulumix.Output[*FolderCustomModuleEnablementState]{
-		OutputState: in.ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
+func (in *folderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
+	return pulumix.Output[*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
+		OutputState: in.ToFolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -769,143 +580,141 @@ func (in *googleCloudSecuritycenterV1CustomConfigSeverityPtr) ToOutput(ctx conte
 	}
 }
 
-// The enablement state of the custom module.
-type OrganizationCustomModuleEnablementState string
+// The state of enablement for the module at the given level of the hierarchy.
+type OrganizationEventThreatDetectionSettingCustomModuleEnablementState string
 
 const (
 	// Unspecified enablement state.
-	OrganizationCustomModuleEnablementStateEnablementStateUnspecified = OrganizationCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
-	// The module is enabled at the given CRM resource.
-	OrganizationCustomModuleEnablementStateEnabled = OrganizationCustomModuleEnablementState("ENABLED")
-	// The module is disabled at the given CRM resource.
-	OrganizationCustomModuleEnablementStateDisabled = OrganizationCustomModuleEnablementState("DISABLED")
-	// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
-	OrganizationCustomModuleEnablementStateInherited = OrganizationCustomModuleEnablementState("INHERITED")
+	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateEnablementStateUnspecified = OrganizationEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
+	// The module is enabled at the given level.
+	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateEnabled = OrganizationEventThreatDetectionSettingCustomModuleEnablementState("ENABLED")
+	// The module is disabled at the given level.
+	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateDisabled = OrganizationEventThreatDetectionSettingCustomModuleEnablementState("DISABLED")
 )
 
-func (OrganizationCustomModuleEnablementState) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationCustomModuleEnablementState)(nil)).Elem()
+func (OrganizationEventThreatDetectionSettingCustomModuleEnablementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
 }
 
-func (e OrganizationCustomModuleEnablementState) ToOrganizationCustomModuleEnablementStateOutput() OrganizationCustomModuleEnablementStateOutput {
-	return pulumi.ToOutput(e).(OrganizationCustomModuleEnablementStateOutput)
+func (e OrganizationEventThreatDetectionSettingCustomModuleEnablementState) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput() OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutput(e).(OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput)
 }
 
-func (e OrganizationCustomModuleEnablementState) ToOrganizationCustomModuleEnablementStateOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStateOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(OrganizationCustomModuleEnablementStateOutput)
+func (e OrganizationEventThreatDetectionSettingCustomModuleEnablementState) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput)
 }
 
-func (e OrganizationCustomModuleEnablementState) ToOrganizationCustomModuleEnablementStatePtrOutput() OrganizationCustomModuleEnablementStatePtrOutput {
-	return e.ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+func (e OrganizationEventThreatDetectionSettingCustomModuleEnablementState) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return e.ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
 }
 
-func (e OrganizationCustomModuleEnablementState) ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStatePtrOutput {
-	return OrganizationCustomModuleEnablementState(e).ToOrganizationCustomModuleEnablementStateOutputWithContext(ctx).ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx)
+func (e OrganizationEventThreatDetectionSettingCustomModuleEnablementState) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return OrganizationEventThreatDetectionSettingCustomModuleEnablementState(e).ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(ctx).ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx)
 }
 
-func (e OrganizationCustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
+func (e OrganizationEventThreatDetectionSettingCustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e OrganizationCustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e OrganizationEventThreatDetectionSettingCustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e OrganizationCustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e OrganizationEventThreatDetectionSettingCustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e OrganizationCustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e OrganizationEventThreatDetectionSettingCustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type OrganizationCustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
+type OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
 
-func (OrganizationCustomModuleEnablementStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationCustomModuleEnablementState)(nil)).Elem()
+func (OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
 }
 
-func (o OrganizationCustomModuleEnablementStateOutput) ToOrganizationCustomModuleEnablementStateOutput() OrganizationCustomModuleEnablementStateOutput {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput() OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput {
 	return o
 }
 
-func (o OrganizationCustomModuleEnablementStateOutput) ToOrganizationCustomModuleEnablementStateOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStateOutput {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput {
 	return o
 }
 
-func (o OrganizationCustomModuleEnablementStateOutput) ToOrganizationCustomModuleEnablementStatePtrOutput() OrganizationCustomModuleEnablementStatePtrOutput {
-	return o.ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return o.ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
 }
 
-func (o OrganizationCustomModuleEnablementStateOutput) ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationCustomModuleEnablementState) *OrganizationCustomModuleEnablementState {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationEventThreatDetectionSettingCustomModuleEnablementState) *OrganizationEventThreatDetectionSettingCustomModuleEnablementState {
 		return &v
-	}).(OrganizationCustomModuleEnablementStatePtrOutput)
+	}).(OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput)
 }
 
-func (o OrganizationCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationCustomModuleEnablementState] {
-	return pulumix.Output[OrganizationCustomModuleEnablementState]{
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationEventThreatDetectionSettingCustomModuleEnablementState] {
+	return pulumix.Output[OrganizationEventThreatDetectionSettingCustomModuleEnablementState]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o OrganizationCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o OrganizationCustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationCustomModuleEnablementState) string {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationEventThreatDetectionSettingCustomModuleEnablementState) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o OrganizationCustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o OrganizationCustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationCustomModuleEnablementState) *string {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationEventThreatDetectionSettingCustomModuleEnablementState) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type OrganizationCustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
+type OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
 
-func (OrganizationCustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationCustomModuleEnablementState)(nil)).Elem()
+func (OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
 }
 
-func (o OrganizationCustomModuleEnablementStatePtrOutput) ToOrganizationCustomModuleEnablementStatePtrOutput() OrganizationCustomModuleEnablementStatePtrOutput {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
 	return o
 }
 
-func (o OrganizationCustomModuleEnablementStatePtrOutput) ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStatePtrOutput {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
 	return o
 }
 
-func (o OrganizationCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleEnablementState] {
-	return pulumix.Output[*OrganizationCustomModuleEnablementState]{
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationEventThreatDetectionSettingCustomModuleEnablementState] {
+	return pulumix.Output[*OrganizationEventThreatDetectionSettingCustomModuleEnablementState]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o OrganizationCustomModuleEnablementStatePtrOutput) Elem() OrganizationCustomModuleEnablementStateOutput {
-	return o.ApplyT(func(v *OrganizationCustomModuleEnablementState) OrganizationCustomModuleEnablementState {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) Elem() OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return o.ApplyT(func(v *OrganizationEventThreatDetectionSettingCustomModuleEnablementState) OrganizationEventThreatDetectionSettingCustomModuleEnablementState {
 		if v != nil {
 			return *v
 		}
-		var ret OrganizationCustomModuleEnablementState
+		var ret OrganizationEventThreatDetectionSettingCustomModuleEnablementState
 		return ret
-	}).(OrganizationCustomModuleEnablementStateOutput)
+	}).(OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput)
 }
 
-func (o OrganizationCustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o OrganizationCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationCustomModuleEnablementState) *string {
+func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationEventThreatDetectionSettingCustomModuleEnablementState) *string {
 		if e == nil {
 			return nil
 		}
@@ -914,69 +723,451 @@ func (o OrganizationCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithC
 	}).(pulumi.StringPtrOutput)
 }
 
-// OrganizationCustomModuleEnablementStateInput is an input type that accepts OrganizationCustomModuleEnablementStateArgs and OrganizationCustomModuleEnablementStateOutput values.
-// You can construct a concrete instance of `OrganizationCustomModuleEnablementStateInput` via:
+// OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInput is an input type that accepts OrganizationEventThreatDetectionSettingCustomModuleEnablementStateArgs and OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput values.
+// You can construct a concrete instance of `OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInput` via:
 //
-//	OrganizationCustomModuleEnablementStateArgs{...}
-type OrganizationCustomModuleEnablementStateInput interface {
+//	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateArgs{...}
+type OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInput interface {
 	pulumi.Input
 
-	ToOrganizationCustomModuleEnablementStateOutput() OrganizationCustomModuleEnablementStateOutput
-	ToOrganizationCustomModuleEnablementStateOutputWithContext(context.Context) OrganizationCustomModuleEnablementStateOutput
+	ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput() OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput
+	ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(context.Context) OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput
 }
 
-var organizationCustomModuleEnablementStatePtrType = reflect.TypeOf((**OrganizationCustomModuleEnablementState)(nil)).Elem()
+var organizationEventThreatDetectionSettingCustomModuleEnablementStatePtrType = reflect.TypeOf((**OrganizationEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
 
-type OrganizationCustomModuleEnablementStatePtrInput interface {
+type OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrInput interface {
 	pulumi.Input
 
-	ToOrganizationCustomModuleEnablementStatePtrOutput() OrganizationCustomModuleEnablementStatePtrOutput
-	ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(context.Context) OrganizationCustomModuleEnablementStatePtrOutput
+	ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput
+	ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(context.Context) OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput
 }
 
-type organizationCustomModuleEnablementStatePtr string
+type organizationEventThreatDetectionSettingCustomModuleEnablementStatePtr string
 
-func OrganizationCustomModuleEnablementStatePtr(v string) OrganizationCustomModuleEnablementStatePtrInput {
-	return (*organizationCustomModuleEnablementStatePtr)(&v)
+func OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtr(v string) OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrInput {
+	return (*organizationEventThreatDetectionSettingCustomModuleEnablementStatePtr)(&v)
 }
 
-func (*organizationCustomModuleEnablementStatePtr) ElementType() reflect.Type {
-	return organizationCustomModuleEnablementStatePtrType
+func (*organizationEventThreatDetectionSettingCustomModuleEnablementStatePtr) ElementType() reflect.Type {
+	return organizationEventThreatDetectionSettingCustomModuleEnablementStatePtrType
 }
 
-func (in *organizationCustomModuleEnablementStatePtr) ToOrganizationCustomModuleEnablementStatePtrOutput() OrganizationCustomModuleEnablementStatePtrOutput {
-	return pulumi.ToOutput(in).(OrganizationCustomModuleEnablementStatePtrOutput)
+func (in *organizationEventThreatDetectionSettingCustomModuleEnablementStatePtr) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutput(in).(OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput)
 }
 
-func (in *organizationCustomModuleEnablementStatePtr) ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(OrganizationCustomModuleEnablementStatePtrOutput)
+func (in *organizationEventThreatDetectionSettingCustomModuleEnablementStatePtr) ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput)
 }
 
-func (in *organizationCustomModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationCustomModuleEnablementState] {
-	return pulumix.Output[*OrganizationCustomModuleEnablementState]{
-		OutputState: in.ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
+func (in *organizationEventThreatDetectionSettingCustomModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationEventThreatDetectionSettingCustomModuleEnablementState] {
+	return pulumix.Output[*OrganizationEventThreatDetectionSettingCustomModuleEnablementState]{
+		OutputState: in.ToOrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The enablement state of the custom module.
+type OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState string
+
+const (
+	// Unspecified enablement state.
+	OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnablementStateUnspecified = OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
+	// The module is enabled at the given CRM resource.
+	OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnabled = OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLED")
+	// The module is disabled at the given CRM resource.
+	OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateDisabled = OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("DISABLED")
+	// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
+	OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInherited = OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("INHERITED")
+)
+
+func (OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (e OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput() OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutput(e).(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput)
+}
+
+func (e OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput)
+}
+
+func (e OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return e.ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState(e).ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(ctx).ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx)
+}
+
+func (e OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput() OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return o.ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) *OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState {
+		return &v
+	}).(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
+	return pulumix.Output[OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
+	return pulumix.Output[*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) Elem() OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return o.ApplyT(func(v *OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState
+		return ret
+	}).(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput)
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput is an input type that accepts OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs and OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput values.
+// You can construct a concrete instance of `OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput` via:
+//
+//	OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs{...}
+type OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput interface {
+	pulumi.Input
+
+	ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput() OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput
+	ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(context.Context) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput
+}
+
+var organizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrType = reflect.TypeOf((**OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
+
+type OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput
+	ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(context.Context) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput
+}
+
+type organizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr string
+
+func OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr(v string) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput {
+	return (*organizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr)(&v)
+}
+
+func (*organizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ElementType() reflect.Type {
+	return organizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrType
+}
+
+func (in *organizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutput(in).(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *organizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *organizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
+	return pulumix.Output[*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
+		OutputState: in.ToOrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The enablement state of the custom module.
+type ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState string
+
+const (
+	// Unspecified enablement state.
+	ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnablementStateUnspecified = ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
+	// The module is enabled at the given CRM resource.
+	ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateEnabled = ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLED")
+	// The module is disabled at the given CRM resource.
+	ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateDisabled = ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("DISABLED")
+	// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
+	ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInherited = ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("INHERITED")
+)
+
+func (ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (e ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput() ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutput(e).(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput)
+}
+
+func (e ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput)
+}
+
+func (e ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return e.ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (e ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState(e).ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(ctx).ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx)
+}
+
+func (e ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
+
+func (ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput() ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return o.ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) *ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState {
+		return &v
+	}).(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
+	return pulumix.Output[ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
+	return pulumix.Output[*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) Elem() ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput {
+	return o.ApplyT(func(v *ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState
+		return ret
+	}).(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput)
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput is an input type that accepts ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs and ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput values.
+// You can construct a concrete instance of `ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput` via:
+//
+//	ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateArgs{...}
+type ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput interface {
+	pulumi.Input
+
+	ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput() ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput
+	ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutputWithContext(context.Context) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput
+}
+
+var projectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrType = reflect.TypeOf((**ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState)(nil)).Elem()
+
+type ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput interface {
+	pulumi.Input
+
+	ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput
+	ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(context.Context) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput
+}
+
+type projectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr string
+
+func ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr(v string) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput {
+	return (*projectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr)(&v)
+}
+
+func (*projectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ElementType() reflect.Type {
+	return projectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrType
+}
+
+func (in *projectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput() ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutput(in).(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *projectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *projectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState] {
+	return pulumix.Output[*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState]{
+		OutputState: in.ToProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomModuleEnablementStateInput)(nil)).Elem(), CustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomModuleEnablementStatePtrInput)(nil)).Elem(), CustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*FolderCustomModuleEnablementStateInput)(nil)).Elem(), FolderCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*FolderCustomModuleEnablementStatePtrInput)(nil)).Elem(), FolderCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput)(nil)).Elem(), FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput)(nil)).Elem(), FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudSecuritycenterV1CustomConfigSeverityInput)(nil)).Elem(), GoogleCloudSecuritycenterV1CustomConfigSeverity("SEVERITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudSecuritycenterV1CustomConfigSeverityPtrInput)(nil)).Elem(), GoogleCloudSecuritycenterV1CustomConfigSeverity("SEVERITY_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationCustomModuleEnablementStateInput)(nil)).Elem(), OrganizationCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationCustomModuleEnablementStatePtrInput)(nil)).Elem(), OrganizationCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInput)(nil)).Elem(), OrganizationEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrInput)(nil)).Elem(), OrganizationEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput)(nil)).Elem(), OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput)(nil)).Elem(), OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput)(nil)).Elem(), ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput)(nil)).Elem(), ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
-	pulumi.RegisterOutputType(CustomModuleEnablementStateOutput{})
-	pulumi.RegisterOutputType(CustomModuleEnablementStatePtrOutput{})
-	pulumi.RegisterOutputType(FolderCustomModuleEnablementStateOutput{})
-	pulumi.RegisterOutputType(FolderCustomModuleEnablementStatePtrOutput{})
+	pulumi.RegisterOutputType(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput{})
+	pulumi.RegisterOutputType(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudSecuritycenterV1CustomConfigSeverityOutput{})
 	pulumi.RegisterOutputType(GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput{})
-	pulumi.RegisterOutputType(OrganizationCustomModuleEnablementStateOutput{})
-	pulumi.RegisterOutputType(OrganizationCustomModuleEnablementStatePtrOutput{})
+	pulumi.RegisterOutputType(OrganizationEventThreatDetectionSettingCustomModuleEnablementStateOutput{})
+	pulumi.RegisterOutputType(OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput{})
+	pulumi.RegisterOutputType(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput{})
+	pulumi.RegisterOutputType(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput{})
+	pulumi.RegisterOutputType(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput{})
+	pulumi.RegisterOutputType(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput{})
 }

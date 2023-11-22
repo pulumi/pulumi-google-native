@@ -235,6 +235,121 @@ func (o AggregationPtrOutput) PerSeriesAligner() AggregationPerSeriesAlignerPtrO
 	}).(AggregationPerSeriesAlignerPtrOutput)
 }
 
+// Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release.
+type AggregationFunction struct {
+	// Optional. Parameters applied to the aggregation function. Only used for functions that require them.
+	Parameters []Parameter `pulumi:"parameters"`
+	// The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
+	Type string `pulumi:"type"`
+}
+
+// AggregationFunctionInput is an input type that accepts AggregationFunctionArgs and AggregationFunctionOutput values.
+// You can construct a concrete instance of `AggregationFunctionInput` via:
+//
+//	AggregationFunctionArgs{...}
+type AggregationFunctionInput interface {
+	pulumi.Input
+
+	ToAggregationFunctionOutput() AggregationFunctionOutput
+	ToAggregationFunctionOutputWithContext(context.Context) AggregationFunctionOutput
+}
+
+// Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release.
+type AggregationFunctionArgs struct {
+	// Optional. Parameters applied to the aggregation function. Only used for functions that require them.
+	Parameters ParameterArrayInput `pulumi:"parameters"`
+	// The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AggregationFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationFunction)(nil)).Elem()
+}
+
+func (i AggregationFunctionArgs) ToAggregationFunctionOutput() AggregationFunctionOutput {
+	return i.ToAggregationFunctionOutputWithContext(context.Background())
+}
+
+func (i AggregationFunctionArgs) ToAggregationFunctionOutputWithContext(ctx context.Context) AggregationFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationFunctionOutput)
+}
+
+func (i AggregationFunctionArgs) ToOutput(ctx context.Context) pulumix.Output[AggregationFunction] {
+	return pulumix.Output[AggregationFunction]{
+		OutputState: i.ToAggregationFunctionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release.
+type AggregationFunctionOutput struct{ *pulumi.OutputState }
+
+func (AggregationFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationFunction)(nil)).Elem()
+}
+
+func (o AggregationFunctionOutput) ToAggregationFunctionOutput() AggregationFunctionOutput {
+	return o
+}
+
+func (o AggregationFunctionOutput) ToAggregationFunctionOutputWithContext(ctx context.Context) AggregationFunctionOutput {
+	return o
+}
+
+func (o AggregationFunctionOutput) ToOutput(ctx context.Context) pulumix.Output[AggregationFunction] {
+	return pulumix.Output[AggregationFunction]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Parameters applied to the aggregation function. Only used for functions that require them.
+func (o AggregationFunctionOutput) Parameters() ParameterArrayOutput {
+	return o.ApplyT(func(v AggregationFunction) []Parameter { return v.Parameters }).(ParameterArrayOutput)
+}
+
+// The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
+func (o AggregationFunctionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationFunction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release.
+type AggregationFunctionResponse struct {
+	// Optional. Parameters applied to the aggregation function. Only used for functions that require them.
+	Parameters []ParameterResponse `pulumi:"parameters"`
+	// The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
+	Type string `pulumi:"type"`
+}
+
+// Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release.
+type AggregationFunctionResponseOutput struct{ *pulumi.OutputState }
+
+func (AggregationFunctionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationFunctionResponse)(nil)).Elem()
+}
+
+func (o AggregationFunctionResponseOutput) ToAggregationFunctionResponseOutput() AggregationFunctionResponseOutput {
+	return o
+}
+
+func (o AggregationFunctionResponseOutput) ToAggregationFunctionResponseOutputWithContext(ctx context.Context) AggregationFunctionResponseOutput {
+	return o
+}
+
+func (o AggregationFunctionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AggregationFunctionResponse] {
+	return pulumix.Output[AggregationFunctionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Parameters applied to the aggregation function. Only used for functions that require them.
+func (o AggregationFunctionResponseOutput) Parameters() ParameterResponseArrayOutput {
+	return o.ApplyT(func(v AggregationFunctionResponse) []ParameterResponse { return v.Parameters }).(ParameterResponseArrayOutput)
+}
+
+// The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
+func (o AggregationFunctionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationFunctionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
 type AggregationResponse struct {
 	// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
@@ -706,8 +821,240 @@ func (o AxisResponseOutput) Scale() pulumi.StringOutput {
 	return o.ApplyT(func(v AxisResponse) string { return v.Scale }).(pulumi.StringOutput)
 }
 
+// Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release.
+type Breakdown struct {
+	// The Aggregation function is applied across all data in each breakdown created.
+	AggregationFunction AggregationFunction `pulumi:"aggregationFunction"`
+	// The name of the column in the dataset containing the breakdown values.
+	Column string `pulumi:"column"`
+	// A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
+	Limit int `pulumi:"limit"`
+	// The sort order is applied to the values of the breakdown column.
+	SortOrder BreakdownSortOrder `pulumi:"sortOrder"`
+}
+
+// BreakdownInput is an input type that accepts BreakdownArgs and BreakdownOutput values.
+// You can construct a concrete instance of `BreakdownInput` via:
+//
+//	BreakdownArgs{...}
+type BreakdownInput interface {
+	pulumi.Input
+
+	ToBreakdownOutput() BreakdownOutput
+	ToBreakdownOutputWithContext(context.Context) BreakdownOutput
+}
+
+// Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release.
+type BreakdownArgs struct {
+	// The Aggregation function is applied across all data in each breakdown created.
+	AggregationFunction AggregationFunctionInput `pulumi:"aggregationFunction"`
+	// The name of the column in the dataset containing the breakdown values.
+	Column pulumi.StringInput `pulumi:"column"`
+	// A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The sort order is applied to the values of the breakdown column.
+	SortOrder BreakdownSortOrderInput `pulumi:"sortOrder"`
+}
+
+func (BreakdownArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Breakdown)(nil)).Elem()
+}
+
+func (i BreakdownArgs) ToBreakdownOutput() BreakdownOutput {
+	return i.ToBreakdownOutputWithContext(context.Background())
+}
+
+func (i BreakdownArgs) ToBreakdownOutputWithContext(ctx context.Context) BreakdownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BreakdownOutput)
+}
+
+func (i BreakdownArgs) ToOutput(ctx context.Context) pulumix.Output[Breakdown] {
+	return pulumix.Output[Breakdown]{
+		OutputState: i.ToBreakdownOutputWithContext(ctx).OutputState,
+	}
+}
+
+// BreakdownArrayInput is an input type that accepts BreakdownArray and BreakdownArrayOutput values.
+// You can construct a concrete instance of `BreakdownArrayInput` via:
+//
+//	BreakdownArray{ BreakdownArgs{...} }
+type BreakdownArrayInput interface {
+	pulumi.Input
+
+	ToBreakdownArrayOutput() BreakdownArrayOutput
+	ToBreakdownArrayOutputWithContext(context.Context) BreakdownArrayOutput
+}
+
+type BreakdownArray []BreakdownInput
+
+func (BreakdownArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Breakdown)(nil)).Elem()
+}
+
+func (i BreakdownArray) ToBreakdownArrayOutput() BreakdownArrayOutput {
+	return i.ToBreakdownArrayOutputWithContext(context.Background())
+}
+
+func (i BreakdownArray) ToBreakdownArrayOutputWithContext(ctx context.Context) BreakdownArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BreakdownArrayOutput)
+}
+
+func (i BreakdownArray) ToOutput(ctx context.Context) pulumix.Output[[]Breakdown] {
+	return pulumix.Output[[]Breakdown]{
+		OutputState: i.ToBreakdownArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release.
+type BreakdownOutput struct{ *pulumi.OutputState }
+
+func (BreakdownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Breakdown)(nil)).Elem()
+}
+
+func (o BreakdownOutput) ToBreakdownOutput() BreakdownOutput {
+	return o
+}
+
+func (o BreakdownOutput) ToBreakdownOutputWithContext(ctx context.Context) BreakdownOutput {
+	return o
+}
+
+func (o BreakdownOutput) ToOutput(ctx context.Context) pulumix.Output[Breakdown] {
+	return pulumix.Output[Breakdown]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Aggregation function is applied across all data in each breakdown created.
+func (o BreakdownOutput) AggregationFunction() AggregationFunctionOutput {
+	return o.ApplyT(func(v Breakdown) AggregationFunction { return v.AggregationFunction }).(AggregationFunctionOutput)
+}
+
+// The name of the column in the dataset containing the breakdown values.
+func (o BreakdownOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v Breakdown) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
+func (o BreakdownOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v Breakdown) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The sort order is applied to the values of the breakdown column.
+func (o BreakdownOutput) SortOrder() BreakdownSortOrderOutput {
+	return o.ApplyT(func(v Breakdown) BreakdownSortOrder { return v.SortOrder }).(BreakdownSortOrderOutput)
+}
+
+type BreakdownArrayOutput struct{ *pulumi.OutputState }
+
+func (BreakdownArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Breakdown)(nil)).Elem()
+}
+
+func (o BreakdownArrayOutput) ToBreakdownArrayOutput() BreakdownArrayOutput {
+	return o
+}
+
+func (o BreakdownArrayOutput) ToBreakdownArrayOutputWithContext(ctx context.Context) BreakdownArrayOutput {
+	return o
+}
+
+func (o BreakdownArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Breakdown] {
+	return pulumix.Output[[]Breakdown]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BreakdownArrayOutput) Index(i pulumi.IntInput) BreakdownOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Breakdown {
+		return vs[0].([]Breakdown)[vs[1].(int)]
+	}).(BreakdownOutput)
+}
+
+// Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release.
+type BreakdownResponse struct {
+	// The Aggregation function is applied across all data in each breakdown created.
+	AggregationFunction AggregationFunctionResponse `pulumi:"aggregationFunction"`
+	// The name of the column in the dataset containing the breakdown values.
+	Column string `pulumi:"column"`
+	// A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
+	Limit int `pulumi:"limit"`
+	// The sort order is applied to the values of the breakdown column.
+	SortOrder string `pulumi:"sortOrder"`
+}
+
+// Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release.
+type BreakdownResponseOutput struct{ *pulumi.OutputState }
+
+func (BreakdownResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BreakdownResponse)(nil)).Elem()
+}
+
+func (o BreakdownResponseOutput) ToBreakdownResponseOutput() BreakdownResponseOutput {
+	return o
+}
+
+func (o BreakdownResponseOutput) ToBreakdownResponseOutputWithContext(ctx context.Context) BreakdownResponseOutput {
+	return o
+}
+
+func (o BreakdownResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BreakdownResponse] {
+	return pulumix.Output[BreakdownResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Aggregation function is applied across all data in each breakdown created.
+func (o BreakdownResponseOutput) AggregationFunction() AggregationFunctionResponseOutput {
+	return o.ApplyT(func(v BreakdownResponse) AggregationFunctionResponse { return v.AggregationFunction }).(AggregationFunctionResponseOutput)
+}
+
+// The name of the column in the dataset containing the breakdown values.
+func (o BreakdownResponseOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v BreakdownResponse) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
+func (o BreakdownResponseOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v BreakdownResponse) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The sort order is applied to the values of the breakdown column.
+func (o BreakdownResponseOutput) SortOrder() pulumi.StringOutput {
+	return o.ApplyT(func(v BreakdownResponse) string { return v.SortOrder }).(pulumi.StringOutput)
+}
+
+type BreakdownResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BreakdownResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BreakdownResponse)(nil)).Elem()
+}
+
+func (o BreakdownResponseArrayOutput) ToBreakdownResponseArrayOutput() BreakdownResponseArrayOutput {
+	return o
+}
+
+func (o BreakdownResponseArrayOutput) ToBreakdownResponseArrayOutputWithContext(ctx context.Context) BreakdownResponseArrayOutput {
+	return o
+}
+
+func (o BreakdownResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BreakdownResponse] {
+	return pulumix.Output[[]BreakdownResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BreakdownResponseArrayOutput) Index(i pulumi.IntInput) BreakdownResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BreakdownResponse {
+		return vs[0].([]BreakdownResponse)[vs[1].(int)]
+	}).(BreakdownResponseOutput)
+}
+
 // Options to control visual rendering of a chart.
 type ChartOptions struct {
+	// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
+	DisplayHorizontal *bool `pulumi:"displayHorizontal"`
 	// The chart mode.
 	Mode *ChartOptionsMode `pulumi:"mode"`
 }
@@ -725,6 +1072,8 @@ type ChartOptionsInput interface {
 
 // Options to control visual rendering of a chart.
 type ChartOptionsArgs struct {
+	// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
+	DisplayHorizontal pulumi.BoolPtrInput `pulumi:"displayHorizontal"`
 	// The chart mode.
 	Mode ChartOptionsModePtrInput `pulumi:"mode"`
 }
@@ -825,6 +1174,11 @@ func (o ChartOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[ChartOp
 	}
 }
 
+// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
+func (o ChartOptionsOutput) DisplayHorizontal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ChartOptions) *bool { return v.DisplayHorizontal }).(pulumi.BoolPtrOutput)
+}
+
 // The chart mode.
 func (o ChartOptionsOutput) Mode() ChartOptionsModePtrOutput {
 	return o.ApplyT(func(v ChartOptions) *ChartOptionsMode { return v.Mode }).(ChartOptionsModePtrOutput)
@@ -860,6 +1214,16 @@ func (o ChartOptionsPtrOutput) Elem() ChartOptionsOutput {
 	}).(ChartOptionsOutput)
 }
 
+// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
+func (o ChartOptionsPtrOutput) DisplayHorizontal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ChartOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayHorizontal
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The chart mode.
 func (o ChartOptionsPtrOutput) Mode() ChartOptionsModePtrOutput {
 	return o.ApplyT(func(v *ChartOptions) *ChartOptionsMode {
@@ -872,6 +1236,8 @@ func (o ChartOptionsPtrOutput) Mode() ChartOptionsModePtrOutput {
 
 // Options to control visual rendering of a chart.
 type ChartOptionsResponse struct {
+	// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
+	DisplayHorizontal bool `pulumi:"displayHorizontal"`
 	// The chart mode.
 	Mode string `pulumi:"mode"`
 }
@@ -895,6 +1261,11 @@ func (o ChartOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output
 	return pulumix.Output[ChartOptionsResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
+func (o ChartOptionsResponseOutput) DisplayHorizontal() pulumi.BoolOutput {
+	return o.ApplyT(func(v ChartOptionsResponse) bool { return v.DisplayHorizontal }).(pulumi.BoolOutput)
 }
 
 // The chart mode.
@@ -1922,8 +2293,14 @@ func (o DashboardFilterResponseArrayOutput) Index(i pulumi.IntInput) DashboardFi
 
 // Groups a time series query definition with charting options.
 type DataSet struct {
+	// Optional. The collection of breakdowns to be applied to the dataset.
+	Breakdowns []Breakdown `pulumi:"breakdowns"`
+	// Optional. A collection of dimension columns.
+	Dimensions []Dimension `pulumi:"dimensions"`
 	// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
 	LegendTemplate *string `pulumi:"legendTemplate"`
+	// Optional. A collection of measures.
+	Measures []Measure `pulumi:"measures"`
 	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 	MinAlignmentPeriod *string `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
@@ -1947,8 +2324,14 @@ type DataSetInput interface {
 
 // Groups a time series query definition with charting options.
 type DataSetArgs struct {
+	// Optional. The collection of breakdowns to be applied to the dataset.
+	Breakdowns BreakdownArrayInput `pulumi:"breakdowns"`
+	// Optional. A collection of dimension columns.
+	Dimensions DimensionArrayInput `pulumi:"dimensions"`
 	// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
 	LegendTemplate pulumi.StringPtrInput `pulumi:"legendTemplate"`
+	// Optional. A collection of measures.
+	Measures MeasureArrayInput `pulumi:"measures"`
 	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
@@ -2029,9 +2412,24 @@ func (o DataSetOutput) ToOutput(ctx context.Context) pulumix.Output[DataSet] {
 	}
 }
 
+// Optional. The collection of breakdowns to be applied to the dataset.
+func (o DataSetOutput) Breakdowns() BreakdownArrayOutput {
+	return o.ApplyT(func(v DataSet) []Breakdown { return v.Breakdowns }).(BreakdownArrayOutput)
+}
+
+// Optional. A collection of dimension columns.
+func (o DataSetOutput) Dimensions() DimensionArrayOutput {
+	return o.ApplyT(func(v DataSet) []Dimension { return v.Dimensions }).(DimensionArrayOutput)
+}
+
 // A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
 func (o DataSetOutput) LegendTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataSet) *string { return v.LegendTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A collection of measures.
+func (o DataSetOutput) Measures() MeasureArrayOutput {
+	return o.ApplyT(func(v DataSet) []Measure { return v.Measures }).(MeasureArrayOutput)
 }
 
 // Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
@@ -2082,8 +2480,14 @@ func (o DataSetArrayOutput) Index(i pulumi.IntInput) DataSetOutput {
 
 // Groups a time series query definition with charting options.
 type DataSetResponse struct {
+	// Optional. The collection of breakdowns to be applied to the dataset.
+	Breakdowns []BreakdownResponse `pulumi:"breakdowns"`
+	// Optional. A collection of dimension columns.
+	Dimensions []DimensionResponse `pulumi:"dimensions"`
 	// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
 	LegendTemplate string `pulumi:"legendTemplate"`
+	// Optional. A collection of measures.
+	Measures []MeasureResponse `pulumi:"measures"`
 	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 	MinAlignmentPeriod string `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
@@ -2115,9 +2519,24 @@ func (o DataSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Data
 	}
 }
 
+// Optional. The collection of breakdowns to be applied to the dataset.
+func (o DataSetResponseOutput) Breakdowns() BreakdownResponseArrayOutput {
+	return o.ApplyT(func(v DataSetResponse) []BreakdownResponse { return v.Breakdowns }).(BreakdownResponseArrayOutput)
+}
+
+// Optional. A collection of dimension columns.
+func (o DataSetResponseOutput) Dimensions() DimensionResponseArrayOutput {
+	return o.ApplyT(func(v DataSetResponse) []DimensionResponse { return v.Dimensions }).(DimensionResponseArrayOutput)
+}
+
 // A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
 func (o DataSetResponseOutput) LegendTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v DataSetResponse) string { return v.LegendTemplate }).(pulumi.StringOutput)
+}
+
+// Optional. A collection of measures.
+func (o DataSetResponseOutput) Measures() MeasureResponseArrayOutput {
+	return o.ApplyT(func(v DataSetResponse) []MeasureResponse { return v.Measures }).(MeasureResponseArrayOutput)
 }
 
 // Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
@@ -2164,6 +2583,300 @@ func (o DataSetResponseArrayOutput) Index(i pulumi.IntInput) DataSetResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataSetResponse {
 		return vs[0].([]DataSetResponse)[vs[1].(int)]
 	}).(DataSetResponseOutput)
+}
+
+// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+type Dimension struct {
+	// The name of the column in the source SQL query that is used to chart the dimension.
+	Column string `pulumi:"column"`
+	// Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64.
+	ColumnType *string `pulumi:"columnType"`
+	// Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column.
+	FloatBinSize *float64 `pulumi:"floatBinSize"`
+	// A limit to the number of bins generated. When 0 is specified, the maximum count is not enforced.
+	MaxBinCount *int `pulumi:"maxBinCount"`
+	// numeric_bin_size is used when the column type used for a dimension is numeric or string.
+	NumericBinSize *int `pulumi:"numericBinSize"`
+	// The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used.
+	SortColumn *string `pulumi:"sortColumn"`
+	// The sort order applied to the sort column.
+	SortOrder *DimensionSortOrder `pulumi:"sortOrder"`
+	// time_bin_size is used when the data type specified by column is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours.
+	TimeBinSize *string `pulumi:"timeBinSize"`
+}
+
+// DimensionInput is an input type that accepts DimensionArgs and DimensionOutput values.
+// You can construct a concrete instance of `DimensionInput` via:
+//
+//	DimensionArgs{...}
+type DimensionInput interface {
+	pulumi.Input
+
+	ToDimensionOutput() DimensionOutput
+	ToDimensionOutputWithContext(context.Context) DimensionOutput
+}
+
+// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+type DimensionArgs struct {
+	// The name of the column in the source SQL query that is used to chart the dimension.
+	Column pulumi.StringInput `pulumi:"column"`
+	// Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64.
+	ColumnType pulumi.StringPtrInput `pulumi:"columnType"`
+	// Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column.
+	FloatBinSize pulumi.Float64PtrInput `pulumi:"floatBinSize"`
+	// A limit to the number of bins generated. When 0 is specified, the maximum count is not enforced.
+	MaxBinCount pulumi.IntPtrInput `pulumi:"maxBinCount"`
+	// numeric_bin_size is used when the column type used for a dimension is numeric or string.
+	NumericBinSize pulumi.IntPtrInput `pulumi:"numericBinSize"`
+	// The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used.
+	SortColumn pulumi.StringPtrInput `pulumi:"sortColumn"`
+	// The sort order applied to the sort column.
+	SortOrder DimensionSortOrderPtrInput `pulumi:"sortOrder"`
+	// time_bin_size is used when the data type specified by column is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours.
+	TimeBinSize pulumi.StringPtrInput `pulumi:"timeBinSize"`
+}
+
+func (DimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Dimension)(nil)).Elem()
+}
+
+func (i DimensionArgs) ToDimensionOutput() DimensionOutput {
+	return i.ToDimensionOutputWithContext(context.Background())
+}
+
+func (i DimensionArgs) ToDimensionOutputWithContext(ctx context.Context) DimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DimensionOutput)
+}
+
+func (i DimensionArgs) ToOutput(ctx context.Context) pulumix.Output[Dimension] {
+	return pulumix.Output[Dimension]{
+		OutputState: i.ToDimensionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// DimensionArrayInput is an input type that accepts DimensionArray and DimensionArrayOutput values.
+// You can construct a concrete instance of `DimensionArrayInput` via:
+//
+//	DimensionArray{ DimensionArgs{...} }
+type DimensionArrayInput interface {
+	pulumi.Input
+
+	ToDimensionArrayOutput() DimensionArrayOutput
+	ToDimensionArrayOutputWithContext(context.Context) DimensionArrayOutput
+}
+
+type DimensionArray []DimensionInput
+
+func (DimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Dimension)(nil)).Elem()
+}
+
+func (i DimensionArray) ToDimensionArrayOutput() DimensionArrayOutput {
+	return i.ToDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i DimensionArray) ToDimensionArrayOutputWithContext(ctx context.Context) DimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DimensionArrayOutput)
+}
+
+func (i DimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]Dimension] {
+	return pulumix.Output[[]Dimension]{
+		OutputState: i.ToDimensionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+type DimensionOutput struct{ *pulumi.OutputState }
+
+func (DimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Dimension)(nil)).Elem()
+}
+
+func (o DimensionOutput) ToDimensionOutput() DimensionOutput {
+	return o
+}
+
+func (o DimensionOutput) ToDimensionOutputWithContext(ctx context.Context) DimensionOutput {
+	return o
+}
+
+func (o DimensionOutput) ToOutput(ctx context.Context) pulumix.Output[Dimension] {
+	return pulumix.Output[Dimension]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the column in the source SQL query that is used to chart the dimension.
+func (o DimensionOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v Dimension) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64.
+func (o DimensionOutput) ColumnType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Dimension) *string { return v.ColumnType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column.
+func (o DimensionOutput) FloatBinSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Dimension) *float64 { return v.FloatBinSize }).(pulumi.Float64PtrOutput)
+}
+
+// A limit to the number of bins generated. When 0 is specified, the maximum count is not enforced.
+func (o DimensionOutput) MaxBinCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Dimension) *int { return v.MaxBinCount }).(pulumi.IntPtrOutput)
+}
+
+// numeric_bin_size is used when the column type used for a dimension is numeric or string.
+func (o DimensionOutput) NumericBinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Dimension) *int { return v.NumericBinSize }).(pulumi.IntPtrOutput)
+}
+
+// The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used.
+func (o DimensionOutput) SortColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Dimension) *string { return v.SortColumn }).(pulumi.StringPtrOutput)
+}
+
+// The sort order applied to the sort column.
+func (o DimensionOutput) SortOrder() DimensionSortOrderPtrOutput {
+	return o.ApplyT(func(v Dimension) *DimensionSortOrder { return v.SortOrder }).(DimensionSortOrderPtrOutput)
+}
+
+// time_bin_size is used when the data type specified by column is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours.
+func (o DimensionOutput) TimeBinSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Dimension) *string { return v.TimeBinSize }).(pulumi.StringPtrOutput)
+}
+
+type DimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (DimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Dimension)(nil)).Elem()
+}
+
+func (o DimensionArrayOutput) ToDimensionArrayOutput() DimensionArrayOutput {
+	return o
+}
+
+func (o DimensionArrayOutput) ToDimensionArrayOutputWithContext(ctx context.Context) DimensionArrayOutput {
+	return o
+}
+
+func (o DimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Dimension] {
+	return pulumix.Output[[]Dimension]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DimensionArrayOutput) Index(i pulumi.IntInput) DimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Dimension {
+		return vs[0].([]Dimension)[vs[1].(int)]
+	}).(DimensionOutput)
+}
+
+// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+type DimensionResponse struct {
+	// The name of the column in the source SQL query that is used to chart the dimension.
+	Column string `pulumi:"column"`
+	// Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64.
+	ColumnType string `pulumi:"columnType"`
+	// Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column.
+	FloatBinSize float64 `pulumi:"floatBinSize"`
+	// A limit to the number of bins generated. When 0 is specified, the maximum count is not enforced.
+	MaxBinCount int `pulumi:"maxBinCount"`
+	// numeric_bin_size is used when the column type used for a dimension is numeric or string.
+	NumericBinSize int `pulumi:"numericBinSize"`
+	// The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used.
+	SortColumn string `pulumi:"sortColumn"`
+	// The sort order applied to the sort column.
+	SortOrder string `pulumi:"sortOrder"`
+	// time_bin_size is used when the data type specified by column is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours.
+	TimeBinSize string `pulumi:"timeBinSize"`
+}
+
+// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+type DimensionResponseOutput struct{ *pulumi.OutputState }
+
+func (DimensionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DimensionResponse)(nil)).Elem()
+}
+
+func (o DimensionResponseOutput) ToDimensionResponseOutput() DimensionResponseOutput {
+	return o
+}
+
+func (o DimensionResponseOutput) ToDimensionResponseOutputWithContext(ctx context.Context) DimensionResponseOutput {
+	return o
+}
+
+func (o DimensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DimensionResponse] {
+	return pulumix.Output[DimensionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the column in the source SQL query that is used to chart the dimension.
+func (o DimensionResponseOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v DimensionResponse) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64.
+func (o DimensionResponseOutput) ColumnType() pulumi.StringOutput {
+	return o.ApplyT(func(v DimensionResponse) string { return v.ColumnType }).(pulumi.StringOutput)
+}
+
+// Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column.
+func (o DimensionResponseOutput) FloatBinSize() pulumi.Float64Output {
+	return o.ApplyT(func(v DimensionResponse) float64 { return v.FloatBinSize }).(pulumi.Float64Output)
+}
+
+// A limit to the number of bins generated. When 0 is specified, the maximum count is not enforced.
+func (o DimensionResponseOutput) MaxBinCount() pulumi.IntOutput {
+	return o.ApplyT(func(v DimensionResponse) int { return v.MaxBinCount }).(pulumi.IntOutput)
+}
+
+// numeric_bin_size is used when the column type used for a dimension is numeric or string.
+func (o DimensionResponseOutput) NumericBinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v DimensionResponse) int { return v.NumericBinSize }).(pulumi.IntOutput)
+}
+
+// The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used.
+func (o DimensionResponseOutput) SortColumn() pulumi.StringOutput {
+	return o.ApplyT(func(v DimensionResponse) string { return v.SortColumn }).(pulumi.StringOutput)
+}
+
+// The sort order applied to the sort column.
+func (o DimensionResponseOutput) SortOrder() pulumi.StringOutput {
+	return o.ApplyT(func(v DimensionResponse) string { return v.SortOrder }).(pulumi.StringOutput)
+}
+
+// time_bin_size is used when the data type specified by column is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours.
+func (o DimensionResponseOutput) TimeBinSize() pulumi.StringOutput {
+	return o.ApplyT(func(v DimensionResponse) string { return v.TimeBinSize }).(pulumi.StringOutput)
+}
+
+type DimensionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DimensionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DimensionResponse)(nil)).Elem()
+}
+
+func (o DimensionResponseArrayOutput) ToDimensionResponseArrayOutput() DimensionResponseArrayOutput {
+	return o
+}
+
+func (o DimensionResponseArrayOutput) ToDimensionResponseArrayOutputWithContext(ctx context.Context) DimensionResponseArrayOutput {
+	return o
+}
+
+func (o DimensionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DimensionResponse] {
+	return pulumix.Output[[]DimensionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DimensionResponseArrayOutput) Index(i pulumi.IntInput) DimensionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponse {
+		return vs[0].([]DimensionResponse)[vs[1].(int)]
+	}).(DimensionResponseOutput)
 }
 
 // A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -2334,6 +3047,254 @@ func (o EmptyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EmptyR
 	return pulumix.Output[EmptyResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// A widget that displays a list of error groups.
+type ErrorReportingPanel struct {
+	// The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
+	ProjectNames []string `pulumi:"projectNames"`
+	// An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used.
+	Services []string `pulumi:"services"`
+	// Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+	Versions []string `pulumi:"versions"`
+}
+
+// ErrorReportingPanelInput is an input type that accepts ErrorReportingPanelArgs and ErrorReportingPanelOutput values.
+// You can construct a concrete instance of `ErrorReportingPanelInput` via:
+//
+//	ErrorReportingPanelArgs{...}
+type ErrorReportingPanelInput interface {
+	pulumi.Input
+
+	ToErrorReportingPanelOutput() ErrorReportingPanelOutput
+	ToErrorReportingPanelOutputWithContext(context.Context) ErrorReportingPanelOutput
+}
+
+// A widget that displays a list of error groups.
+type ErrorReportingPanelArgs struct {
+	// The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
+	ProjectNames pulumi.StringArrayInput `pulumi:"projectNames"`
+	// An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used.
+	Services pulumi.StringArrayInput `pulumi:"services"`
+	// Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+	Versions pulumi.StringArrayInput `pulumi:"versions"`
+}
+
+func (ErrorReportingPanelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorReportingPanel)(nil)).Elem()
+}
+
+func (i ErrorReportingPanelArgs) ToErrorReportingPanelOutput() ErrorReportingPanelOutput {
+	return i.ToErrorReportingPanelOutputWithContext(context.Background())
+}
+
+func (i ErrorReportingPanelArgs) ToErrorReportingPanelOutputWithContext(ctx context.Context) ErrorReportingPanelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErrorReportingPanelOutput)
+}
+
+func (i ErrorReportingPanelArgs) ToOutput(ctx context.Context) pulumix.Output[ErrorReportingPanel] {
+	return pulumix.Output[ErrorReportingPanel]{
+		OutputState: i.ToErrorReportingPanelOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ErrorReportingPanelArgs) ToErrorReportingPanelPtrOutput() ErrorReportingPanelPtrOutput {
+	return i.ToErrorReportingPanelPtrOutputWithContext(context.Background())
+}
+
+func (i ErrorReportingPanelArgs) ToErrorReportingPanelPtrOutputWithContext(ctx context.Context) ErrorReportingPanelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErrorReportingPanelOutput).ToErrorReportingPanelPtrOutputWithContext(ctx)
+}
+
+// ErrorReportingPanelPtrInput is an input type that accepts ErrorReportingPanelArgs, ErrorReportingPanelPtr and ErrorReportingPanelPtrOutput values.
+// You can construct a concrete instance of `ErrorReportingPanelPtrInput` via:
+//
+//	        ErrorReportingPanelArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErrorReportingPanelPtrInput interface {
+	pulumi.Input
+
+	ToErrorReportingPanelPtrOutput() ErrorReportingPanelPtrOutput
+	ToErrorReportingPanelPtrOutputWithContext(context.Context) ErrorReportingPanelPtrOutput
+}
+
+type errorReportingPanelPtrType ErrorReportingPanelArgs
+
+func ErrorReportingPanelPtr(v *ErrorReportingPanelArgs) ErrorReportingPanelPtrInput {
+	return (*errorReportingPanelPtrType)(v)
+}
+
+func (*errorReportingPanelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorReportingPanel)(nil)).Elem()
+}
+
+func (i *errorReportingPanelPtrType) ToErrorReportingPanelPtrOutput() ErrorReportingPanelPtrOutput {
+	return i.ToErrorReportingPanelPtrOutputWithContext(context.Background())
+}
+
+func (i *errorReportingPanelPtrType) ToErrorReportingPanelPtrOutputWithContext(ctx context.Context) ErrorReportingPanelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErrorReportingPanelPtrOutput)
+}
+
+func (i *errorReportingPanelPtrType) ToOutput(ctx context.Context) pulumix.Output[*ErrorReportingPanel] {
+	return pulumix.Output[*ErrorReportingPanel]{
+		OutputState: i.ToErrorReportingPanelPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A widget that displays a list of error groups.
+type ErrorReportingPanelOutput struct{ *pulumi.OutputState }
+
+func (ErrorReportingPanelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorReportingPanel)(nil)).Elem()
+}
+
+func (o ErrorReportingPanelOutput) ToErrorReportingPanelOutput() ErrorReportingPanelOutput {
+	return o
+}
+
+func (o ErrorReportingPanelOutput) ToErrorReportingPanelOutputWithContext(ctx context.Context) ErrorReportingPanelOutput {
+	return o
+}
+
+func (o ErrorReportingPanelOutput) ToErrorReportingPanelPtrOutput() ErrorReportingPanelPtrOutput {
+	return o.ToErrorReportingPanelPtrOutputWithContext(context.Background())
+}
+
+func (o ErrorReportingPanelOutput) ToErrorReportingPanelPtrOutputWithContext(ctx context.Context) ErrorReportingPanelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErrorReportingPanel) *ErrorReportingPanel {
+		return &v
+	}).(ErrorReportingPanelPtrOutput)
+}
+
+func (o ErrorReportingPanelOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorReportingPanel] {
+	return pulumix.Output[ErrorReportingPanel]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
+func (o ErrorReportingPanelOutput) ProjectNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErrorReportingPanel) []string { return v.ProjectNames }).(pulumi.StringArrayOutput)
+}
+
+// An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used.
+func (o ErrorReportingPanelOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErrorReportingPanel) []string { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+// Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+func (o ErrorReportingPanelOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErrorReportingPanel) []string { return v.Versions }).(pulumi.StringArrayOutput)
+}
+
+type ErrorReportingPanelPtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorReportingPanelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorReportingPanel)(nil)).Elem()
+}
+
+func (o ErrorReportingPanelPtrOutput) ToErrorReportingPanelPtrOutput() ErrorReportingPanelPtrOutput {
+	return o
+}
+
+func (o ErrorReportingPanelPtrOutput) ToErrorReportingPanelPtrOutputWithContext(ctx context.Context) ErrorReportingPanelPtrOutput {
+	return o
+}
+
+func (o ErrorReportingPanelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorReportingPanel] {
+	return pulumix.Output[*ErrorReportingPanel]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ErrorReportingPanelPtrOutput) Elem() ErrorReportingPanelOutput {
+	return o.ApplyT(func(v *ErrorReportingPanel) ErrorReportingPanel {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorReportingPanel
+		return ret
+	}).(ErrorReportingPanelOutput)
+}
+
+// The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
+func (o ErrorReportingPanelPtrOutput) ProjectNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErrorReportingPanel) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used.
+func (o ErrorReportingPanelPtrOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErrorReportingPanel) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Services
+	}).(pulumi.StringArrayOutput)
+}
+
+// Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+func (o ErrorReportingPanelPtrOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErrorReportingPanel) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Versions
+	}).(pulumi.StringArrayOutput)
+}
+
+// A widget that displays a list of error groups.
+type ErrorReportingPanelResponse struct {
+	// The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
+	ProjectNames []string `pulumi:"projectNames"`
+	// An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used.
+	Services []string `pulumi:"services"`
+	// Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+	Versions []string `pulumi:"versions"`
+}
+
+// A widget that displays a list of error groups.
+type ErrorReportingPanelResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorReportingPanelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorReportingPanelResponse)(nil)).Elem()
+}
+
+func (o ErrorReportingPanelResponseOutput) ToErrorReportingPanelResponseOutput() ErrorReportingPanelResponseOutput {
+	return o
+}
+
+func (o ErrorReportingPanelResponseOutput) ToErrorReportingPanelResponseOutputWithContext(ctx context.Context) ErrorReportingPanelResponseOutput {
+	return o
+}
+
+func (o ErrorReportingPanelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorReportingPanelResponse] {
+	return pulumix.Output[ErrorReportingPanelResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234.
+func (o ErrorReportingPanelResponseOutput) ProjectNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErrorReportingPanelResponse) []string { return v.ProjectNames }).(pulumi.StringArrayOutput)
+}
+
+// An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used.
+func (o ErrorReportingPanelResponseOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErrorReportingPanelResponse) []string { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+// Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+func (o ErrorReportingPanelResponseOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErrorReportingPanelResponse) []string { return v.Versions }).(pulumi.StringArrayOutput)
 }
 
 // A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive).
@@ -3224,6 +4185,204 @@ func (o LogsPanelResponseOutput) ResourceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogsPanelResponse) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
 }
 
+// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+type Measure struct {
+	// The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
+	AggregationFunction AggregationFunction `pulumi:"aggregationFunction"`
+	// The column name within in the dataset used for the measure.
+	Column string `pulumi:"column"`
+}
+
+// MeasureInput is an input type that accepts MeasureArgs and MeasureOutput values.
+// You can construct a concrete instance of `MeasureInput` via:
+//
+//	MeasureArgs{...}
+type MeasureInput interface {
+	pulumi.Input
+
+	ToMeasureOutput() MeasureOutput
+	ToMeasureOutputWithContext(context.Context) MeasureOutput
+}
+
+// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+type MeasureArgs struct {
+	// The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
+	AggregationFunction AggregationFunctionInput `pulumi:"aggregationFunction"`
+	// The column name within in the dataset used for the measure.
+	Column pulumi.StringInput `pulumi:"column"`
+}
+
+func (MeasureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Measure)(nil)).Elem()
+}
+
+func (i MeasureArgs) ToMeasureOutput() MeasureOutput {
+	return i.ToMeasureOutputWithContext(context.Background())
+}
+
+func (i MeasureArgs) ToMeasureOutputWithContext(ctx context.Context) MeasureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeasureOutput)
+}
+
+func (i MeasureArgs) ToOutput(ctx context.Context) pulumix.Output[Measure] {
+	return pulumix.Output[Measure]{
+		OutputState: i.ToMeasureOutputWithContext(ctx).OutputState,
+	}
+}
+
+// MeasureArrayInput is an input type that accepts MeasureArray and MeasureArrayOutput values.
+// You can construct a concrete instance of `MeasureArrayInput` via:
+//
+//	MeasureArray{ MeasureArgs{...} }
+type MeasureArrayInput interface {
+	pulumi.Input
+
+	ToMeasureArrayOutput() MeasureArrayOutput
+	ToMeasureArrayOutputWithContext(context.Context) MeasureArrayOutput
+}
+
+type MeasureArray []MeasureInput
+
+func (MeasureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Measure)(nil)).Elem()
+}
+
+func (i MeasureArray) ToMeasureArrayOutput() MeasureArrayOutput {
+	return i.ToMeasureArrayOutputWithContext(context.Background())
+}
+
+func (i MeasureArray) ToMeasureArrayOutputWithContext(ctx context.Context) MeasureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeasureArrayOutput)
+}
+
+func (i MeasureArray) ToOutput(ctx context.Context) pulumix.Output[[]Measure] {
+	return pulumix.Output[[]Measure]{
+		OutputState: i.ToMeasureArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+type MeasureOutput struct{ *pulumi.OutputState }
+
+func (MeasureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Measure)(nil)).Elem()
+}
+
+func (o MeasureOutput) ToMeasureOutput() MeasureOutput {
+	return o
+}
+
+func (o MeasureOutput) ToMeasureOutputWithContext(ctx context.Context) MeasureOutput {
+	return o
+}
+
+func (o MeasureOutput) ToOutput(ctx context.Context) pulumix.Output[Measure] {
+	return pulumix.Output[Measure]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
+func (o MeasureOutput) AggregationFunction() AggregationFunctionOutput {
+	return o.ApplyT(func(v Measure) AggregationFunction { return v.AggregationFunction }).(AggregationFunctionOutput)
+}
+
+// The column name within in the dataset used for the measure.
+func (o MeasureOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v Measure) string { return v.Column }).(pulumi.StringOutput)
+}
+
+type MeasureArrayOutput struct{ *pulumi.OutputState }
+
+func (MeasureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Measure)(nil)).Elem()
+}
+
+func (o MeasureArrayOutput) ToMeasureArrayOutput() MeasureArrayOutput {
+	return o
+}
+
+func (o MeasureArrayOutput) ToMeasureArrayOutputWithContext(ctx context.Context) MeasureArrayOutput {
+	return o
+}
+
+func (o MeasureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Measure] {
+	return pulumix.Output[[]Measure]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MeasureArrayOutput) Index(i pulumi.IntInput) MeasureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Measure {
+		return vs[0].([]Measure)[vs[1].(int)]
+	}).(MeasureOutput)
+}
+
+// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+type MeasureResponse struct {
+	// The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
+	AggregationFunction AggregationFunctionResponse `pulumi:"aggregationFunction"`
+	// The column name within in the dataset used for the measure.
+	Column string `pulumi:"column"`
+}
+
+// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+type MeasureResponseOutput struct{ *pulumi.OutputState }
+
+func (MeasureResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeasureResponse)(nil)).Elem()
+}
+
+func (o MeasureResponseOutput) ToMeasureResponseOutput() MeasureResponseOutput {
+	return o
+}
+
+func (o MeasureResponseOutput) ToMeasureResponseOutputWithContext(ctx context.Context) MeasureResponseOutput {
+	return o
+}
+
+func (o MeasureResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MeasureResponse] {
+	return pulumix.Output[MeasureResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
+func (o MeasureResponseOutput) AggregationFunction() AggregationFunctionResponseOutput {
+	return o.ApplyT(func(v MeasureResponse) AggregationFunctionResponse { return v.AggregationFunction }).(AggregationFunctionResponseOutput)
+}
+
+// The column name within in the dataset used for the measure.
+func (o MeasureResponseOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v MeasureResponse) string { return v.Column }).(pulumi.StringOutput)
+}
+
+type MeasureResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MeasureResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MeasureResponse)(nil)).Elem()
+}
+
+func (o MeasureResponseArrayOutput) ToMeasureResponseArrayOutput() MeasureResponseArrayOutput {
+	return o
+}
+
+func (o MeasureResponseArrayOutput) ToMeasureResponseArrayOutputWithContext(ctx context.Context) MeasureResponseArrayOutput {
+	return o
+}
+
+func (o MeasureResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MeasureResponse] {
+	return pulumix.Output[[]MeasureResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o MeasureResponseArrayOutput) Index(i pulumi.IntInput) MeasureResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MeasureResponse {
+		return vs[0].([]MeasureResponse)[vs[1].(int)]
+	}).(MeasureResponseOutput)
+}
+
 // An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
 type MonitoredResource struct {
 	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
@@ -3644,6 +4803,400 @@ func (o MosaicLayoutResponseOutput) Tiles() TileResponseArrayOutput {
 	return o.ApplyT(func(v MosaicLayoutResponse) []TileResponse { return v.Tiles }).(TileResponseArrayOutput)
 }
 
+// Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release.
+type OpsAnalyticsQuery struct {
+	// A SQL query to fetch time series, category series, or numeric series data.
+	Sql *string `pulumi:"sql"`
+}
+
+// OpsAnalyticsQueryInput is an input type that accepts OpsAnalyticsQueryArgs and OpsAnalyticsQueryOutput values.
+// You can construct a concrete instance of `OpsAnalyticsQueryInput` via:
+//
+//	OpsAnalyticsQueryArgs{...}
+type OpsAnalyticsQueryInput interface {
+	pulumi.Input
+
+	ToOpsAnalyticsQueryOutput() OpsAnalyticsQueryOutput
+	ToOpsAnalyticsQueryOutputWithContext(context.Context) OpsAnalyticsQueryOutput
+}
+
+// Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release.
+type OpsAnalyticsQueryArgs struct {
+	// A SQL query to fetch time series, category series, or numeric series data.
+	Sql pulumi.StringPtrInput `pulumi:"sql"`
+}
+
+func (OpsAnalyticsQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpsAnalyticsQuery)(nil)).Elem()
+}
+
+func (i OpsAnalyticsQueryArgs) ToOpsAnalyticsQueryOutput() OpsAnalyticsQueryOutput {
+	return i.ToOpsAnalyticsQueryOutputWithContext(context.Background())
+}
+
+func (i OpsAnalyticsQueryArgs) ToOpsAnalyticsQueryOutputWithContext(ctx context.Context) OpsAnalyticsQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpsAnalyticsQueryOutput)
+}
+
+func (i OpsAnalyticsQueryArgs) ToOutput(ctx context.Context) pulumix.Output[OpsAnalyticsQuery] {
+	return pulumix.Output[OpsAnalyticsQuery]{
+		OutputState: i.ToOpsAnalyticsQueryOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i OpsAnalyticsQueryArgs) ToOpsAnalyticsQueryPtrOutput() OpsAnalyticsQueryPtrOutput {
+	return i.ToOpsAnalyticsQueryPtrOutputWithContext(context.Background())
+}
+
+func (i OpsAnalyticsQueryArgs) ToOpsAnalyticsQueryPtrOutputWithContext(ctx context.Context) OpsAnalyticsQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpsAnalyticsQueryOutput).ToOpsAnalyticsQueryPtrOutputWithContext(ctx)
+}
+
+// OpsAnalyticsQueryPtrInput is an input type that accepts OpsAnalyticsQueryArgs, OpsAnalyticsQueryPtr and OpsAnalyticsQueryPtrOutput values.
+// You can construct a concrete instance of `OpsAnalyticsQueryPtrInput` via:
+//
+//	        OpsAnalyticsQueryArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpsAnalyticsQueryPtrInput interface {
+	pulumi.Input
+
+	ToOpsAnalyticsQueryPtrOutput() OpsAnalyticsQueryPtrOutput
+	ToOpsAnalyticsQueryPtrOutputWithContext(context.Context) OpsAnalyticsQueryPtrOutput
+}
+
+type opsAnalyticsQueryPtrType OpsAnalyticsQueryArgs
+
+func OpsAnalyticsQueryPtr(v *OpsAnalyticsQueryArgs) OpsAnalyticsQueryPtrInput {
+	return (*opsAnalyticsQueryPtrType)(v)
+}
+
+func (*opsAnalyticsQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpsAnalyticsQuery)(nil)).Elem()
+}
+
+func (i *opsAnalyticsQueryPtrType) ToOpsAnalyticsQueryPtrOutput() OpsAnalyticsQueryPtrOutput {
+	return i.ToOpsAnalyticsQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *opsAnalyticsQueryPtrType) ToOpsAnalyticsQueryPtrOutputWithContext(ctx context.Context) OpsAnalyticsQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpsAnalyticsQueryPtrOutput)
+}
+
+func (i *opsAnalyticsQueryPtrType) ToOutput(ctx context.Context) pulumix.Output[*OpsAnalyticsQuery] {
+	return pulumix.Output[*OpsAnalyticsQuery]{
+		OutputState: i.ToOpsAnalyticsQueryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release.
+type OpsAnalyticsQueryOutput struct{ *pulumi.OutputState }
+
+func (OpsAnalyticsQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpsAnalyticsQuery)(nil)).Elem()
+}
+
+func (o OpsAnalyticsQueryOutput) ToOpsAnalyticsQueryOutput() OpsAnalyticsQueryOutput {
+	return o
+}
+
+func (o OpsAnalyticsQueryOutput) ToOpsAnalyticsQueryOutputWithContext(ctx context.Context) OpsAnalyticsQueryOutput {
+	return o
+}
+
+func (o OpsAnalyticsQueryOutput) ToOpsAnalyticsQueryPtrOutput() OpsAnalyticsQueryPtrOutput {
+	return o.ToOpsAnalyticsQueryPtrOutputWithContext(context.Background())
+}
+
+func (o OpsAnalyticsQueryOutput) ToOpsAnalyticsQueryPtrOutputWithContext(ctx context.Context) OpsAnalyticsQueryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpsAnalyticsQuery) *OpsAnalyticsQuery {
+		return &v
+	}).(OpsAnalyticsQueryPtrOutput)
+}
+
+func (o OpsAnalyticsQueryOutput) ToOutput(ctx context.Context) pulumix.Output[OpsAnalyticsQuery] {
+	return pulumix.Output[OpsAnalyticsQuery]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A SQL query to fetch time series, category series, or numeric series data.
+func (o OpsAnalyticsQueryOutput) Sql() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpsAnalyticsQuery) *string { return v.Sql }).(pulumi.StringPtrOutput)
+}
+
+type OpsAnalyticsQueryPtrOutput struct{ *pulumi.OutputState }
+
+func (OpsAnalyticsQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpsAnalyticsQuery)(nil)).Elem()
+}
+
+func (o OpsAnalyticsQueryPtrOutput) ToOpsAnalyticsQueryPtrOutput() OpsAnalyticsQueryPtrOutput {
+	return o
+}
+
+func (o OpsAnalyticsQueryPtrOutput) ToOpsAnalyticsQueryPtrOutputWithContext(ctx context.Context) OpsAnalyticsQueryPtrOutput {
+	return o
+}
+
+func (o OpsAnalyticsQueryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpsAnalyticsQuery] {
+	return pulumix.Output[*OpsAnalyticsQuery]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OpsAnalyticsQueryPtrOutput) Elem() OpsAnalyticsQueryOutput {
+	return o.ApplyT(func(v *OpsAnalyticsQuery) OpsAnalyticsQuery {
+		if v != nil {
+			return *v
+		}
+		var ret OpsAnalyticsQuery
+		return ret
+	}).(OpsAnalyticsQueryOutput)
+}
+
+// A SQL query to fetch time series, category series, or numeric series data.
+func (o OpsAnalyticsQueryPtrOutput) Sql() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpsAnalyticsQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sql
+	}).(pulumi.StringPtrOutput)
+}
+
+// Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release.
+type OpsAnalyticsQueryResponse struct {
+	// A SQL query to fetch time series, category series, or numeric series data.
+	Sql string `pulumi:"sql"`
+}
+
+// Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release.
+type OpsAnalyticsQueryResponseOutput struct{ *pulumi.OutputState }
+
+func (OpsAnalyticsQueryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpsAnalyticsQueryResponse)(nil)).Elem()
+}
+
+func (o OpsAnalyticsQueryResponseOutput) ToOpsAnalyticsQueryResponseOutput() OpsAnalyticsQueryResponseOutput {
+	return o
+}
+
+func (o OpsAnalyticsQueryResponseOutput) ToOpsAnalyticsQueryResponseOutputWithContext(ctx context.Context) OpsAnalyticsQueryResponseOutput {
+	return o
+}
+
+func (o OpsAnalyticsQueryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpsAnalyticsQueryResponse] {
+	return pulumix.Output[OpsAnalyticsQueryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A SQL query to fetch time series, category series, or numeric series data.
+func (o OpsAnalyticsQueryResponseOutput) Sql() pulumi.StringOutput {
+	return o.ApplyT(func(v OpsAnalyticsQueryResponse) string { return v.Sql }).(pulumi.StringOutput)
+}
+
+// Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release.
+type Parameter struct {
+	// A floating-point parameter value.
+	DoubleValue *float64 `pulumi:"doubleValue"`
+	// An integer parameter value.
+	IntValue *string `pulumi:"intValue"`
+}
+
+// ParameterInput is an input type that accepts ParameterArgs and ParameterOutput values.
+// You can construct a concrete instance of `ParameterInput` via:
+//
+//	ParameterArgs{...}
+type ParameterInput interface {
+	pulumi.Input
+
+	ToParameterOutput() ParameterOutput
+	ToParameterOutputWithContext(context.Context) ParameterOutput
+}
+
+// Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release.
+type ParameterArgs struct {
+	// A floating-point parameter value.
+	DoubleValue pulumi.Float64PtrInput `pulumi:"doubleValue"`
+	// An integer parameter value.
+	IntValue pulumi.StringPtrInput `pulumi:"intValue"`
+}
+
+func (ParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Parameter)(nil)).Elem()
+}
+
+func (i ParameterArgs) ToParameterOutput() ParameterOutput {
+	return i.ToParameterOutputWithContext(context.Background())
+}
+
+func (i ParameterArgs) ToParameterOutputWithContext(ctx context.Context) ParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterOutput)
+}
+
+func (i ParameterArgs) ToOutput(ctx context.Context) pulumix.Output[Parameter] {
+	return pulumix.Output[Parameter]{
+		OutputState: i.ToParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ParameterArrayInput is an input type that accepts ParameterArray and ParameterArrayOutput values.
+// You can construct a concrete instance of `ParameterArrayInput` via:
+//
+//	ParameterArray{ ParameterArgs{...} }
+type ParameterArrayInput interface {
+	pulumi.Input
+
+	ToParameterArrayOutput() ParameterArrayOutput
+	ToParameterArrayOutputWithContext(context.Context) ParameterArrayOutput
+}
+
+type ParameterArray []ParameterInput
+
+func (ParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Parameter)(nil)).Elem()
+}
+
+func (i ParameterArray) ToParameterArrayOutput() ParameterArrayOutput {
+	return i.ToParameterArrayOutputWithContext(context.Background())
+}
+
+func (i ParameterArray) ToParameterArrayOutputWithContext(ctx context.Context) ParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterArrayOutput)
+}
+
+func (i ParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]Parameter] {
+	return pulumix.Output[[]Parameter]{
+		OutputState: i.ToParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release.
+type ParameterOutput struct{ *pulumi.OutputState }
+
+func (ParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Parameter)(nil)).Elem()
+}
+
+func (o ParameterOutput) ToParameterOutput() ParameterOutput {
+	return o
+}
+
+func (o ParameterOutput) ToParameterOutputWithContext(ctx context.Context) ParameterOutput {
+	return o
+}
+
+func (o ParameterOutput) ToOutput(ctx context.Context) pulumix.Output[Parameter] {
+	return pulumix.Output[Parameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A floating-point parameter value.
+func (o ParameterOutput) DoubleValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Parameter) *float64 { return v.DoubleValue }).(pulumi.Float64PtrOutput)
+}
+
+// An integer parameter value.
+func (o ParameterOutput) IntValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Parameter) *string { return v.IntValue }).(pulumi.StringPtrOutput)
+}
+
+type ParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Parameter)(nil)).Elem()
+}
+
+func (o ParameterArrayOutput) ToParameterArrayOutput() ParameterArrayOutput {
+	return o
+}
+
+func (o ParameterArrayOutput) ToParameterArrayOutputWithContext(ctx context.Context) ParameterArrayOutput {
+	return o
+}
+
+func (o ParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Parameter] {
+	return pulumix.Output[[]Parameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ParameterArrayOutput) Index(i pulumi.IntInput) ParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Parameter {
+		return vs[0].([]Parameter)[vs[1].(int)]
+	}).(ParameterOutput)
+}
+
+// Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release.
+type ParameterResponse struct {
+	// A floating-point parameter value.
+	DoubleValue float64 `pulumi:"doubleValue"`
+	// An integer parameter value.
+	IntValue string `pulumi:"intValue"`
+}
+
+// Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release.
+type ParameterResponseOutput struct{ *pulumi.OutputState }
+
+func (ParameterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterResponse)(nil)).Elem()
+}
+
+func (o ParameterResponseOutput) ToParameterResponseOutput() ParameterResponseOutput {
+	return o
+}
+
+func (o ParameterResponseOutput) ToParameterResponseOutputWithContext(ctx context.Context) ParameterResponseOutput {
+	return o
+}
+
+func (o ParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterResponse] {
+	return pulumix.Output[ParameterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A floating-point parameter value.
+func (o ParameterResponseOutput) DoubleValue() pulumi.Float64Output {
+	return o.ApplyT(func(v ParameterResponse) float64 { return v.DoubleValue }).(pulumi.Float64Output)
+}
+
+// An integer parameter value.
+func (o ParameterResponseOutput) IntValue() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterResponse) string { return v.IntValue }).(pulumi.StringOutput)
+}
+
+type ParameterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterResponse)(nil)).Elem()
+}
+
+func (o ParameterResponseArrayOutput) ToParameterResponseArrayOutput() ParameterResponseArrayOutput {
+	return o
+}
+
+func (o ParameterResponseArrayOutput) ToParameterResponseArrayOutputWithContext(ctx context.Context) ParameterResponseArrayOutput {
+	return o
+}
+
+func (o ParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ParameterResponse] {
+	return pulumix.Output[[]ParameterResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ParameterResponseArrayOutput) Index(i pulumi.IntInput) ParameterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterResponse {
+		return vs[0].([]ParameterResponse)[vs[1].(int)]
+	}).(ParameterResponseOutput)
+}
+
 // Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
 type PickTimeSeriesFilter struct {
 	// How to use the ranking to select time series that pass through the filter.
@@ -3890,6 +5443,468 @@ func (o PickTimeSeriesFilterResponseOutput) NumTimeSeries() pulumi.IntOutput {
 // ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
 func (o PickTimeSeriesFilterResponseOutput) RankingMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v PickTimeSeriesFilterResponse) string { return v.RankingMethod }).(pulumi.StringOutput)
+}
+
+// A widget that displays timeseries data as a pie or a donut.
+type PieChart struct {
+	// Indicates the visualization type for the PieChart.
+	ChartType PieChartChartType `pulumi:"chartType"`
+	// The queries for the chart's data.
+	DataSets []PieChartDataSet `pulumi:"dataSets"`
+	// Optional. Indicates whether or not the pie chart should show slices' labels
+	ShowLabels *bool `pulumi:"showLabels"`
+}
+
+// PieChartInput is an input type that accepts PieChartArgs and PieChartOutput values.
+// You can construct a concrete instance of `PieChartInput` via:
+//
+//	PieChartArgs{...}
+type PieChartInput interface {
+	pulumi.Input
+
+	ToPieChartOutput() PieChartOutput
+	ToPieChartOutputWithContext(context.Context) PieChartOutput
+}
+
+// A widget that displays timeseries data as a pie or a donut.
+type PieChartArgs struct {
+	// Indicates the visualization type for the PieChart.
+	ChartType PieChartChartTypeInput `pulumi:"chartType"`
+	// The queries for the chart's data.
+	DataSets PieChartDataSetArrayInput `pulumi:"dataSets"`
+	// Optional. Indicates whether or not the pie chart should show slices' labels
+	ShowLabels pulumi.BoolPtrInput `pulumi:"showLabels"`
+}
+
+func (PieChartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PieChart)(nil)).Elem()
+}
+
+func (i PieChartArgs) ToPieChartOutput() PieChartOutput {
+	return i.ToPieChartOutputWithContext(context.Background())
+}
+
+func (i PieChartArgs) ToPieChartOutputWithContext(ctx context.Context) PieChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PieChartOutput)
+}
+
+func (i PieChartArgs) ToOutput(ctx context.Context) pulumix.Output[PieChart] {
+	return pulumix.Output[PieChart]{
+		OutputState: i.ToPieChartOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PieChartArgs) ToPieChartPtrOutput() PieChartPtrOutput {
+	return i.ToPieChartPtrOutputWithContext(context.Background())
+}
+
+func (i PieChartArgs) ToPieChartPtrOutputWithContext(ctx context.Context) PieChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PieChartOutput).ToPieChartPtrOutputWithContext(ctx)
+}
+
+// PieChartPtrInput is an input type that accepts PieChartArgs, PieChartPtr and PieChartPtrOutput values.
+// You can construct a concrete instance of `PieChartPtrInput` via:
+//
+//	        PieChartArgs{...}
+//
+//	or:
+//
+//	        nil
+type PieChartPtrInput interface {
+	pulumi.Input
+
+	ToPieChartPtrOutput() PieChartPtrOutput
+	ToPieChartPtrOutputWithContext(context.Context) PieChartPtrOutput
+}
+
+type pieChartPtrType PieChartArgs
+
+func PieChartPtr(v *PieChartArgs) PieChartPtrInput {
+	return (*pieChartPtrType)(v)
+}
+
+func (*pieChartPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PieChart)(nil)).Elem()
+}
+
+func (i *pieChartPtrType) ToPieChartPtrOutput() PieChartPtrOutput {
+	return i.ToPieChartPtrOutputWithContext(context.Background())
+}
+
+func (i *pieChartPtrType) ToPieChartPtrOutputWithContext(ctx context.Context) PieChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PieChartPtrOutput)
+}
+
+func (i *pieChartPtrType) ToOutput(ctx context.Context) pulumix.Output[*PieChart] {
+	return pulumix.Output[*PieChart]{
+		OutputState: i.ToPieChartPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A widget that displays timeseries data as a pie or a donut.
+type PieChartOutput struct{ *pulumi.OutputState }
+
+func (PieChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PieChart)(nil)).Elem()
+}
+
+func (o PieChartOutput) ToPieChartOutput() PieChartOutput {
+	return o
+}
+
+func (o PieChartOutput) ToPieChartOutputWithContext(ctx context.Context) PieChartOutput {
+	return o
+}
+
+func (o PieChartOutput) ToPieChartPtrOutput() PieChartPtrOutput {
+	return o.ToPieChartPtrOutputWithContext(context.Background())
+}
+
+func (o PieChartOutput) ToPieChartPtrOutputWithContext(ctx context.Context) PieChartPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PieChart) *PieChart {
+		return &v
+	}).(PieChartPtrOutput)
+}
+
+func (o PieChartOutput) ToOutput(ctx context.Context) pulumix.Output[PieChart] {
+	return pulumix.Output[PieChart]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Indicates the visualization type for the PieChart.
+func (o PieChartOutput) ChartType() PieChartChartTypeOutput {
+	return o.ApplyT(func(v PieChart) PieChartChartType { return v.ChartType }).(PieChartChartTypeOutput)
+}
+
+// The queries for the chart's data.
+func (o PieChartOutput) DataSets() PieChartDataSetArrayOutput {
+	return o.ApplyT(func(v PieChart) []PieChartDataSet { return v.DataSets }).(PieChartDataSetArrayOutput)
+}
+
+// Optional. Indicates whether or not the pie chart should show slices' labels
+func (o PieChartOutput) ShowLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PieChart) *bool { return v.ShowLabels }).(pulumi.BoolPtrOutput)
+}
+
+type PieChartPtrOutput struct{ *pulumi.OutputState }
+
+func (PieChartPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PieChart)(nil)).Elem()
+}
+
+func (o PieChartPtrOutput) ToPieChartPtrOutput() PieChartPtrOutput {
+	return o
+}
+
+func (o PieChartPtrOutput) ToPieChartPtrOutputWithContext(ctx context.Context) PieChartPtrOutput {
+	return o
+}
+
+func (o PieChartPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PieChart] {
+	return pulumix.Output[*PieChart]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PieChartPtrOutput) Elem() PieChartOutput {
+	return o.ApplyT(func(v *PieChart) PieChart {
+		if v != nil {
+			return *v
+		}
+		var ret PieChart
+		return ret
+	}).(PieChartOutput)
+}
+
+// Indicates the visualization type for the PieChart.
+func (o PieChartPtrOutput) ChartType() PieChartChartTypePtrOutput {
+	return o.ApplyT(func(v *PieChart) *PieChartChartType {
+		if v == nil {
+			return nil
+		}
+		return &v.ChartType
+	}).(PieChartChartTypePtrOutput)
+}
+
+// The queries for the chart's data.
+func (o PieChartPtrOutput) DataSets() PieChartDataSetArrayOutput {
+	return o.ApplyT(func(v *PieChart) []PieChartDataSet {
+		if v == nil {
+			return nil
+		}
+		return v.DataSets
+	}).(PieChartDataSetArrayOutput)
+}
+
+// Optional. Indicates whether or not the pie chart should show slices' labels
+func (o PieChartPtrOutput) ShowLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PieChart) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShowLabels
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Groups a time series query definition.
+type PieChartDataSet struct {
+	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+	MinAlignmentPeriod *string `pulumi:"minAlignmentPeriod"`
+	// Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
+	SliceNameTemplate *string `pulumi:"sliceNameTemplate"`
+	// The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery.
+	TimeSeriesQuery TimeSeriesQuery `pulumi:"timeSeriesQuery"`
+}
+
+// PieChartDataSetInput is an input type that accepts PieChartDataSetArgs and PieChartDataSetOutput values.
+// You can construct a concrete instance of `PieChartDataSetInput` via:
+//
+//	PieChartDataSetArgs{...}
+type PieChartDataSetInput interface {
+	pulumi.Input
+
+	ToPieChartDataSetOutput() PieChartDataSetOutput
+	ToPieChartDataSetOutputWithContext(context.Context) PieChartDataSetOutput
+}
+
+// Groups a time series query definition.
+type PieChartDataSetArgs struct {
+	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
+	// Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
+	SliceNameTemplate pulumi.StringPtrInput `pulumi:"sliceNameTemplate"`
+	// The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery.
+	TimeSeriesQuery TimeSeriesQueryInput `pulumi:"timeSeriesQuery"`
+}
+
+func (PieChartDataSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PieChartDataSet)(nil)).Elem()
+}
+
+func (i PieChartDataSetArgs) ToPieChartDataSetOutput() PieChartDataSetOutput {
+	return i.ToPieChartDataSetOutputWithContext(context.Background())
+}
+
+func (i PieChartDataSetArgs) ToPieChartDataSetOutputWithContext(ctx context.Context) PieChartDataSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PieChartDataSetOutput)
+}
+
+func (i PieChartDataSetArgs) ToOutput(ctx context.Context) pulumix.Output[PieChartDataSet] {
+	return pulumix.Output[PieChartDataSet]{
+		OutputState: i.ToPieChartDataSetOutputWithContext(ctx).OutputState,
+	}
+}
+
+// PieChartDataSetArrayInput is an input type that accepts PieChartDataSetArray and PieChartDataSetArrayOutput values.
+// You can construct a concrete instance of `PieChartDataSetArrayInput` via:
+//
+//	PieChartDataSetArray{ PieChartDataSetArgs{...} }
+type PieChartDataSetArrayInput interface {
+	pulumi.Input
+
+	ToPieChartDataSetArrayOutput() PieChartDataSetArrayOutput
+	ToPieChartDataSetArrayOutputWithContext(context.Context) PieChartDataSetArrayOutput
+}
+
+type PieChartDataSetArray []PieChartDataSetInput
+
+func (PieChartDataSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PieChartDataSet)(nil)).Elem()
+}
+
+func (i PieChartDataSetArray) ToPieChartDataSetArrayOutput() PieChartDataSetArrayOutput {
+	return i.ToPieChartDataSetArrayOutputWithContext(context.Background())
+}
+
+func (i PieChartDataSetArray) ToPieChartDataSetArrayOutputWithContext(ctx context.Context) PieChartDataSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PieChartDataSetArrayOutput)
+}
+
+func (i PieChartDataSetArray) ToOutput(ctx context.Context) pulumix.Output[[]PieChartDataSet] {
+	return pulumix.Output[[]PieChartDataSet]{
+		OutputState: i.ToPieChartDataSetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Groups a time series query definition.
+type PieChartDataSetOutput struct{ *pulumi.OutputState }
+
+func (PieChartDataSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PieChartDataSet)(nil)).Elem()
+}
+
+func (o PieChartDataSetOutput) ToPieChartDataSetOutput() PieChartDataSetOutput {
+	return o
+}
+
+func (o PieChartDataSetOutput) ToPieChartDataSetOutputWithContext(ctx context.Context) PieChartDataSetOutput {
+	return o
+}
+
+func (o PieChartDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[PieChartDataSet] {
+	return pulumix.Output[PieChartDataSet]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+func (o PieChartDataSetOutput) MinAlignmentPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PieChartDataSet) *string { return v.MinAlignmentPeriod }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
+func (o PieChartDataSetOutput) SliceNameTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PieChartDataSet) *string { return v.SliceNameTemplate }).(pulumi.StringPtrOutput)
+}
+
+// The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery.
+func (o PieChartDataSetOutput) TimeSeriesQuery() TimeSeriesQueryOutput {
+	return o.ApplyT(func(v PieChartDataSet) TimeSeriesQuery { return v.TimeSeriesQuery }).(TimeSeriesQueryOutput)
+}
+
+type PieChartDataSetArrayOutput struct{ *pulumi.OutputState }
+
+func (PieChartDataSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PieChartDataSet)(nil)).Elem()
+}
+
+func (o PieChartDataSetArrayOutput) ToPieChartDataSetArrayOutput() PieChartDataSetArrayOutput {
+	return o
+}
+
+func (o PieChartDataSetArrayOutput) ToPieChartDataSetArrayOutputWithContext(ctx context.Context) PieChartDataSetArrayOutput {
+	return o
+}
+
+func (o PieChartDataSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PieChartDataSet] {
+	return pulumix.Output[[]PieChartDataSet]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PieChartDataSetArrayOutput) Index(i pulumi.IntInput) PieChartDataSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PieChartDataSet {
+		return vs[0].([]PieChartDataSet)[vs[1].(int)]
+	}).(PieChartDataSetOutput)
+}
+
+// Groups a time series query definition.
+type PieChartDataSetResponse struct {
+	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+	MinAlignmentPeriod string `pulumi:"minAlignmentPeriod"`
+	// Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
+	SliceNameTemplate string `pulumi:"sliceNameTemplate"`
+	// The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery.
+	TimeSeriesQuery TimeSeriesQueryResponse `pulumi:"timeSeriesQuery"`
+}
+
+// Groups a time series query definition.
+type PieChartDataSetResponseOutput struct{ *pulumi.OutputState }
+
+func (PieChartDataSetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PieChartDataSetResponse)(nil)).Elem()
+}
+
+func (o PieChartDataSetResponseOutput) ToPieChartDataSetResponseOutput() PieChartDataSetResponseOutput {
+	return o
+}
+
+func (o PieChartDataSetResponseOutput) ToPieChartDataSetResponseOutputWithContext(ctx context.Context) PieChartDataSetResponseOutput {
+	return o
+}
+
+func (o PieChartDataSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PieChartDataSetResponse] {
+	return pulumix.Output[PieChartDataSetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+func (o PieChartDataSetResponseOutput) MinAlignmentPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v PieChartDataSetResponse) string { return v.MinAlignmentPeriod }).(pulumi.StringOutput)
+}
+
+// Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
+func (o PieChartDataSetResponseOutput) SliceNameTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v PieChartDataSetResponse) string { return v.SliceNameTemplate }).(pulumi.StringOutput)
+}
+
+// The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery.
+func (o PieChartDataSetResponseOutput) TimeSeriesQuery() TimeSeriesQueryResponseOutput {
+	return o.ApplyT(func(v PieChartDataSetResponse) TimeSeriesQueryResponse { return v.TimeSeriesQuery }).(TimeSeriesQueryResponseOutput)
+}
+
+type PieChartDataSetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PieChartDataSetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PieChartDataSetResponse)(nil)).Elem()
+}
+
+func (o PieChartDataSetResponseArrayOutput) ToPieChartDataSetResponseArrayOutput() PieChartDataSetResponseArrayOutput {
+	return o
+}
+
+func (o PieChartDataSetResponseArrayOutput) ToPieChartDataSetResponseArrayOutputWithContext(ctx context.Context) PieChartDataSetResponseArrayOutput {
+	return o
+}
+
+func (o PieChartDataSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PieChartDataSetResponse] {
+	return pulumix.Output[[]PieChartDataSetResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PieChartDataSetResponseArrayOutput) Index(i pulumi.IntInput) PieChartDataSetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PieChartDataSetResponse {
+		return vs[0].([]PieChartDataSetResponse)[vs[1].(int)]
+	}).(PieChartDataSetResponseOutput)
+}
+
+// A widget that displays timeseries data as a pie or a donut.
+type PieChartResponse struct {
+	// Indicates the visualization type for the PieChart.
+	ChartType string `pulumi:"chartType"`
+	// The queries for the chart's data.
+	DataSets []PieChartDataSetResponse `pulumi:"dataSets"`
+	// Optional. Indicates whether or not the pie chart should show slices' labels
+	ShowLabels bool `pulumi:"showLabels"`
+}
+
+// A widget that displays timeseries data as a pie or a donut.
+type PieChartResponseOutput struct{ *pulumi.OutputState }
+
+func (PieChartResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PieChartResponse)(nil)).Elem()
+}
+
+func (o PieChartResponseOutput) ToPieChartResponseOutput() PieChartResponseOutput {
+	return o
+}
+
+func (o PieChartResponseOutput) ToPieChartResponseOutputWithContext(ctx context.Context) PieChartResponseOutput {
+	return o
+}
+
+func (o PieChartResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PieChartResponse] {
+	return pulumix.Output[PieChartResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Indicates the visualization type for the PieChart.
+func (o PieChartResponseOutput) ChartType() pulumi.StringOutput {
+	return o.ApplyT(func(v PieChartResponse) string { return v.ChartType }).(pulumi.StringOutput)
+}
+
+// The queries for the chart's data.
+func (o PieChartResponseOutput) DataSets() PieChartDataSetResponseArrayOutput {
+	return o.ApplyT(func(v PieChartResponse) []PieChartDataSetResponse { return v.DataSets }).(PieChartDataSetResponseArrayOutput)
+}
+
+// Optional. Indicates whether or not the pie chart should show slices' labels
+func (o PieChartResponseOutput) ShowLabels() pulumi.BoolOutput {
+	return o.ApplyT(func(v PieChartResponse) bool { return v.ShowLabels }).(pulumi.BoolOutput)
 }
 
 // Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.
@@ -4510,6 +6525,8 @@ func (o RowResponseArrayOutput) Index(i pulumi.IntInput) RowResponseOutput {
 
 // A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
 type Scorecard struct {
+	// Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
+	BlankView *Empty `pulumi:"blankView"`
 	// Will cause the scorecard to show a gauge chart.
 	GaugeView *GaugeView `pulumi:"gaugeView"`
 	// Will cause the scorecard to show a spark chart.
@@ -4533,6 +6550,8 @@ type ScorecardInput interface {
 
 // A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
 type ScorecardArgs struct {
+	// Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
+	BlankView EmptyPtrInput `pulumi:"blankView"`
 	// Will cause the scorecard to show a gauge chart.
 	GaugeView GaugeViewPtrInput `pulumi:"gaugeView"`
 	// Will cause the scorecard to show a spark chart.
@@ -4639,6 +6658,11 @@ func (o ScorecardOutput) ToOutput(ctx context.Context) pulumix.Output[Scorecard]
 	}
 }
 
+// Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
+func (o ScorecardOutput) BlankView() EmptyPtrOutput {
+	return o.ApplyT(func(v Scorecard) *Empty { return v.BlankView }).(EmptyPtrOutput)
+}
+
 // Will cause the scorecard to show a gauge chart.
 func (o ScorecardOutput) GaugeView() GaugeViewPtrOutput {
 	return o.ApplyT(func(v Scorecard) *GaugeView { return v.GaugeView }).(GaugeViewPtrOutput)
@@ -4689,6 +6713,16 @@ func (o ScorecardPtrOutput) Elem() ScorecardOutput {
 	}).(ScorecardOutput)
 }
 
+// Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
+func (o ScorecardPtrOutput) BlankView() EmptyPtrOutput {
+	return o.ApplyT(func(v *Scorecard) *Empty {
+		if v == nil {
+			return nil
+		}
+		return v.BlankView
+	}).(EmptyPtrOutput)
+}
+
 // Will cause the scorecard to show a gauge chart.
 func (o ScorecardPtrOutput) GaugeView() GaugeViewPtrOutput {
 	return o.ApplyT(func(v *Scorecard) *GaugeView {
@@ -4731,6 +6765,8 @@ func (o ScorecardPtrOutput) TimeSeriesQuery() TimeSeriesQueryPtrOutput {
 
 // A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
 type ScorecardResponse struct {
+	// Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
+	BlankView EmptyResponse `pulumi:"blankView"`
 	// Will cause the scorecard to show a gauge chart.
 	GaugeView GaugeViewResponse `pulumi:"gaugeView"`
 	// Will cause the scorecard to show a spark chart.
@@ -4760,6 +6796,11 @@ func (o ScorecardResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Sc
 	return pulumix.Output[ScorecardResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds.
+func (o ScorecardResponseOutput) BlankView() EmptyResponseOutput {
+	return o.ApplyT(func(v ScorecardResponse) EmptyResponse { return v.BlankView }).(EmptyResponseOutput)
 }
 
 // Will cause the scorecard to show a gauge chart.
@@ -5658,6 +7699,8 @@ type Text struct {
 	Content *string `pulumi:"content"`
 	// How the text content is formatted.
 	Format *TextFormat `pulumi:"format"`
+	// How the text is styled
+	Style *TextStyle `pulumi:"style"`
 }
 
 // TextInput is an input type that accepts TextArgs and TextOutput values.
@@ -5677,6 +7720,8 @@ type TextArgs struct {
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// How the text content is formatted.
 	Format TextFormatPtrInput `pulumi:"format"`
+	// How the text is styled
+	Style TextStylePtrInput `pulumi:"style"`
 }
 
 func (TextArgs) ElementType() reflect.Type {
@@ -5785,6 +7830,11 @@ func (o TextOutput) Format() TextFormatPtrOutput {
 	return o.ApplyT(func(v Text) *TextFormat { return v.Format }).(TextFormatPtrOutput)
 }
 
+// How the text is styled
+func (o TextOutput) Style() TextStylePtrOutput {
+	return o.ApplyT(func(v Text) *TextStyle { return v.Style }).(TextStylePtrOutput)
+}
+
 type TextPtrOutput struct{ *pulumi.OutputState }
 
 func (TextPtrOutput) ElementType() reflect.Type {
@@ -5835,12 +7885,24 @@ func (o TextPtrOutput) Format() TextFormatPtrOutput {
 	}).(TextFormatPtrOutput)
 }
 
+// How the text is styled
+func (o TextPtrOutput) Style() TextStylePtrOutput {
+	return o.ApplyT(func(v *Text) *TextStyle {
+		if v == nil {
+			return nil
+		}
+		return v.Style
+	}).(TextStylePtrOutput)
+}
+
 // A widget that displays textual content.
 type TextResponse struct {
 	// The text content to be displayed.
 	Content string `pulumi:"content"`
 	// How the text content is formatted.
 	Format string `pulumi:"format"`
+	// How the text is styled
+	Style TextStyleResponse `pulumi:"style"`
 }
 
 // A widget that displays textual content.
@@ -5872,6 +7934,363 @@ func (o TextResponseOutput) Content() pulumi.StringOutput {
 // How the text content is formatted.
 func (o TextResponseOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v TextResponse) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// How the text is styled
+func (o TextResponseOutput) Style() TextStyleResponseOutput {
+	return o.ApplyT(func(v TextResponse) TextStyleResponse { return v.Style }).(TextStyleResponseOutput)
+}
+
+// Properties that determine how the title and content are styled
+type TextStyle struct {
+	// The background color as a hex string. "#RRGGBB" or "#RGB"
+	BackgroundColor *string `pulumi:"backgroundColor"`
+	// Font sizes for both the title and content. The title will still be larger relative to the content.
+	FontSize *TextStyleFontSize `pulumi:"fontSize"`
+	// The horizontal alignment of both the title and content
+	HorizontalAlignment *TextStyleHorizontalAlignment `pulumi:"horizontalAlignment"`
+	// The amount of padding around the widget
+	Padding *TextStylePadding `pulumi:"padding"`
+	// The pointer location for this widget (also sometimes called a "tail")
+	PointerLocation *TextStylePointerLocation `pulumi:"pointerLocation"`
+	// The text color as a hex string. "#RRGGBB" or "#RGB"
+	TextColor *string `pulumi:"textColor"`
+	// The vertical alignment of both the title and content
+	VerticalAlignment *TextStyleVerticalAlignment `pulumi:"verticalAlignment"`
+}
+
+// TextStyleInput is an input type that accepts TextStyleArgs and TextStyleOutput values.
+// You can construct a concrete instance of `TextStyleInput` via:
+//
+//	TextStyleArgs{...}
+type TextStyleInput interface {
+	pulumi.Input
+
+	ToTextStyleOutput() TextStyleOutput
+	ToTextStyleOutputWithContext(context.Context) TextStyleOutput
+}
+
+// Properties that determine how the title and content are styled
+type TextStyleArgs struct {
+	// The background color as a hex string. "#RRGGBB" or "#RGB"
+	BackgroundColor pulumi.StringPtrInput `pulumi:"backgroundColor"`
+	// Font sizes for both the title and content. The title will still be larger relative to the content.
+	FontSize TextStyleFontSizePtrInput `pulumi:"fontSize"`
+	// The horizontal alignment of both the title and content
+	HorizontalAlignment TextStyleHorizontalAlignmentPtrInput `pulumi:"horizontalAlignment"`
+	// The amount of padding around the widget
+	Padding TextStylePaddingPtrInput `pulumi:"padding"`
+	// The pointer location for this widget (also sometimes called a "tail")
+	PointerLocation TextStylePointerLocationPtrInput `pulumi:"pointerLocation"`
+	// The text color as a hex string. "#RRGGBB" or "#RGB"
+	TextColor pulumi.StringPtrInput `pulumi:"textColor"`
+	// The vertical alignment of both the title and content
+	VerticalAlignment TextStyleVerticalAlignmentPtrInput `pulumi:"verticalAlignment"`
+}
+
+func (TextStyleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStyle)(nil)).Elem()
+}
+
+func (i TextStyleArgs) ToTextStyleOutput() TextStyleOutput {
+	return i.ToTextStyleOutputWithContext(context.Background())
+}
+
+func (i TextStyleArgs) ToTextStyleOutputWithContext(ctx context.Context) TextStyleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextStyleOutput)
+}
+
+func (i TextStyleArgs) ToOutput(ctx context.Context) pulumix.Output[TextStyle] {
+	return pulumix.Output[TextStyle]{
+		OutputState: i.ToTextStyleOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TextStyleArgs) ToTextStylePtrOutput() TextStylePtrOutput {
+	return i.ToTextStylePtrOutputWithContext(context.Background())
+}
+
+func (i TextStyleArgs) ToTextStylePtrOutputWithContext(ctx context.Context) TextStylePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextStyleOutput).ToTextStylePtrOutputWithContext(ctx)
+}
+
+// TextStylePtrInput is an input type that accepts TextStyleArgs, TextStylePtr and TextStylePtrOutput values.
+// You can construct a concrete instance of `TextStylePtrInput` via:
+//
+//	        TextStyleArgs{...}
+//
+//	or:
+//
+//	        nil
+type TextStylePtrInput interface {
+	pulumi.Input
+
+	ToTextStylePtrOutput() TextStylePtrOutput
+	ToTextStylePtrOutputWithContext(context.Context) TextStylePtrOutput
+}
+
+type textStylePtrType TextStyleArgs
+
+func TextStylePtr(v *TextStyleArgs) TextStylePtrInput {
+	return (*textStylePtrType)(v)
+}
+
+func (*textStylePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextStyle)(nil)).Elem()
+}
+
+func (i *textStylePtrType) ToTextStylePtrOutput() TextStylePtrOutput {
+	return i.ToTextStylePtrOutputWithContext(context.Background())
+}
+
+func (i *textStylePtrType) ToTextStylePtrOutputWithContext(ctx context.Context) TextStylePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextStylePtrOutput)
+}
+
+func (i *textStylePtrType) ToOutput(ctx context.Context) pulumix.Output[*TextStyle] {
+	return pulumix.Output[*TextStyle]{
+		OutputState: i.ToTextStylePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Properties that determine how the title and content are styled
+type TextStyleOutput struct{ *pulumi.OutputState }
+
+func (TextStyleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStyle)(nil)).Elem()
+}
+
+func (o TextStyleOutput) ToTextStyleOutput() TextStyleOutput {
+	return o
+}
+
+func (o TextStyleOutput) ToTextStyleOutputWithContext(ctx context.Context) TextStyleOutput {
+	return o
+}
+
+func (o TextStyleOutput) ToTextStylePtrOutput() TextStylePtrOutput {
+	return o.ToTextStylePtrOutputWithContext(context.Background())
+}
+
+func (o TextStyleOutput) ToTextStylePtrOutputWithContext(ctx context.Context) TextStylePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextStyle) *TextStyle {
+		return &v
+	}).(TextStylePtrOutput)
+}
+
+func (o TextStyleOutput) ToOutput(ctx context.Context) pulumix.Output[TextStyle] {
+	return pulumix.Output[TextStyle]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The background color as a hex string. "#RRGGBB" or "#RGB"
+func (o TextStyleOutput) BackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextStyle) *string { return v.BackgroundColor }).(pulumi.StringPtrOutput)
+}
+
+// Font sizes for both the title and content. The title will still be larger relative to the content.
+func (o TextStyleOutput) FontSize() TextStyleFontSizePtrOutput {
+	return o.ApplyT(func(v TextStyle) *TextStyleFontSize { return v.FontSize }).(TextStyleFontSizePtrOutput)
+}
+
+// The horizontal alignment of both the title and content
+func (o TextStyleOutput) HorizontalAlignment() TextStyleHorizontalAlignmentPtrOutput {
+	return o.ApplyT(func(v TextStyle) *TextStyleHorizontalAlignment { return v.HorizontalAlignment }).(TextStyleHorizontalAlignmentPtrOutput)
+}
+
+// The amount of padding around the widget
+func (o TextStyleOutput) Padding() TextStylePaddingPtrOutput {
+	return o.ApplyT(func(v TextStyle) *TextStylePadding { return v.Padding }).(TextStylePaddingPtrOutput)
+}
+
+// The pointer location for this widget (also sometimes called a "tail")
+func (o TextStyleOutput) PointerLocation() TextStylePointerLocationPtrOutput {
+	return o.ApplyT(func(v TextStyle) *TextStylePointerLocation { return v.PointerLocation }).(TextStylePointerLocationPtrOutput)
+}
+
+// The text color as a hex string. "#RRGGBB" or "#RGB"
+func (o TextStyleOutput) TextColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextStyle) *string { return v.TextColor }).(pulumi.StringPtrOutput)
+}
+
+// The vertical alignment of both the title and content
+func (o TextStyleOutput) VerticalAlignment() TextStyleVerticalAlignmentPtrOutput {
+	return o.ApplyT(func(v TextStyle) *TextStyleVerticalAlignment { return v.VerticalAlignment }).(TextStyleVerticalAlignmentPtrOutput)
+}
+
+type TextStylePtrOutput struct{ *pulumi.OutputState }
+
+func (TextStylePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextStyle)(nil)).Elem()
+}
+
+func (o TextStylePtrOutput) ToTextStylePtrOutput() TextStylePtrOutput {
+	return o
+}
+
+func (o TextStylePtrOutput) ToTextStylePtrOutputWithContext(ctx context.Context) TextStylePtrOutput {
+	return o
+}
+
+func (o TextStylePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TextStyle] {
+	return pulumix.Output[*TextStyle]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TextStylePtrOutput) Elem() TextStyleOutput {
+	return o.ApplyT(func(v *TextStyle) TextStyle {
+		if v != nil {
+			return *v
+		}
+		var ret TextStyle
+		return ret
+	}).(TextStyleOutput)
+}
+
+// The background color as a hex string. "#RRGGBB" or "#RGB"
+func (o TextStylePtrOutput) BackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TextStyle) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackgroundColor
+	}).(pulumi.StringPtrOutput)
+}
+
+// Font sizes for both the title and content. The title will still be larger relative to the content.
+func (o TextStylePtrOutput) FontSize() TextStyleFontSizePtrOutput {
+	return o.ApplyT(func(v *TextStyle) *TextStyleFontSize {
+		if v == nil {
+			return nil
+		}
+		return v.FontSize
+	}).(TextStyleFontSizePtrOutput)
+}
+
+// The horizontal alignment of both the title and content
+func (o TextStylePtrOutput) HorizontalAlignment() TextStyleHorizontalAlignmentPtrOutput {
+	return o.ApplyT(func(v *TextStyle) *TextStyleHorizontalAlignment {
+		if v == nil {
+			return nil
+		}
+		return v.HorizontalAlignment
+	}).(TextStyleHorizontalAlignmentPtrOutput)
+}
+
+// The amount of padding around the widget
+func (o TextStylePtrOutput) Padding() TextStylePaddingPtrOutput {
+	return o.ApplyT(func(v *TextStyle) *TextStylePadding {
+		if v == nil {
+			return nil
+		}
+		return v.Padding
+	}).(TextStylePaddingPtrOutput)
+}
+
+// The pointer location for this widget (also sometimes called a "tail")
+func (o TextStylePtrOutput) PointerLocation() TextStylePointerLocationPtrOutput {
+	return o.ApplyT(func(v *TextStyle) *TextStylePointerLocation {
+		if v == nil {
+			return nil
+		}
+		return v.PointerLocation
+	}).(TextStylePointerLocationPtrOutput)
+}
+
+// The text color as a hex string. "#RRGGBB" or "#RGB"
+func (o TextStylePtrOutput) TextColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TextStyle) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TextColor
+	}).(pulumi.StringPtrOutput)
+}
+
+// The vertical alignment of both the title and content
+func (o TextStylePtrOutput) VerticalAlignment() TextStyleVerticalAlignmentPtrOutput {
+	return o.ApplyT(func(v *TextStyle) *TextStyleVerticalAlignment {
+		if v == nil {
+			return nil
+		}
+		return v.VerticalAlignment
+	}).(TextStyleVerticalAlignmentPtrOutput)
+}
+
+// Properties that determine how the title and content are styled
+type TextStyleResponse struct {
+	// The background color as a hex string. "#RRGGBB" or "#RGB"
+	BackgroundColor string `pulumi:"backgroundColor"`
+	// Font sizes for both the title and content. The title will still be larger relative to the content.
+	FontSize string `pulumi:"fontSize"`
+	// The horizontal alignment of both the title and content
+	HorizontalAlignment string `pulumi:"horizontalAlignment"`
+	// The amount of padding around the widget
+	Padding string `pulumi:"padding"`
+	// The pointer location for this widget (also sometimes called a "tail")
+	PointerLocation string `pulumi:"pointerLocation"`
+	// The text color as a hex string. "#RRGGBB" or "#RGB"
+	TextColor string `pulumi:"textColor"`
+	// The vertical alignment of both the title and content
+	VerticalAlignment string `pulumi:"verticalAlignment"`
+}
+
+// Properties that determine how the title and content are styled
+type TextStyleResponseOutput struct{ *pulumi.OutputState }
+
+func (TextStyleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextStyleResponse)(nil)).Elem()
+}
+
+func (o TextStyleResponseOutput) ToTextStyleResponseOutput() TextStyleResponseOutput {
+	return o
+}
+
+func (o TextStyleResponseOutput) ToTextStyleResponseOutputWithContext(ctx context.Context) TextStyleResponseOutput {
+	return o
+}
+
+func (o TextStyleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TextStyleResponse] {
+	return pulumix.Output[TextStyleResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The background color as a hex string. "#RRGGBB" or "#RGB"
+func (o TextStyleResponseOutput) BackgroundColor() pulumi.StringOutput {
+	return o.ApplyT(func(v TextStyleResponse) string { return v.BackgroundColor }).(pulumi.StringOutput)
+}
+
+// Font sizes for both the title and content. The title will still be larger relative to the content.
+func (o TextStyleResponseOutput) FontSize() pulumi.StringOutput {
+	return o.ApplyT(func(v TextStyleResponse) string { return v.FontSize }).(pulumi.StringOutput)
+}
+
+// The horizontal alignment of both the title and content
+func (o TextStyleResponseOutput) HorizontalAlignment() pulumi.StringOutput {
+	return o.ApplyT(func(v TextStyleResponse) string { return v.HorizontalAlignment }).(pulumi.StringOutput)
+}
+
+// The amount of padding around the widget
+func (o TextStyleResponseOutput) Padding() pulumi.StringOutput {
+	return o.ApplyT(func(v TextStyleResponse) string { return v.Padding }).(pulumi.StringOutput)
+}
+
+// The pointer location for this widget (also sometimes called a "tail")
+func (o TextStyleResponseOutput) PointerLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v TextStyleResponse) string { return v.PointerLocation }).(pulumi.StringOutput)
+}
+
+// The text color as a hex string. "#RRGGBB" or "#RGB"
+func (o TextStyleResponseOutput) TextColor() pulumi.StringOutput {
+	return o.ApplyT(func(v TextStyleResponse) string { return v.TextColor }).(pulumi.StringOutput)
+}
+
+// The vertical alignment of both the title and content
+func (o TextStyleResponseOutput) VerticalAlignment() pulumi.StringOutput {
+	return o.ApplyT(func(v TextStyleResponse) string { return v.VerticalAlignment }).(pulumi.StringOutput)
 }
 
 // Defines a threshold for categorizing time series values.
@@ -6996,6 +9415,10 @@ func (o TimeSeriesFilterResponseOutput) StatisticalTimeSeriesFilter() Statistica
 
 // TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
 type TimeSeriesQuery struct {
+	// Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
+	OpsAnalyticsQuery *OpsAnalyticsQuery `pulumi:"opsAnalyticsQuery"`
+	// Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
+	OutputFullDuration *bool `pulumi:"outputFullDuration"`
 	// A query used to fetch time series with PromQL.
 	PrometheusQuery *string `pulumi:"prometheusQuery"`
 	// Filter parameters to fetch time series.
@@ -7021,6 +9444,10 @@ type TimeSeriesQueryInput interface {
 
 // TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
 type TimeSeriesQueryArgs struct {
+	// Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
+	OpsAnalyticsQuery OpsAnalyticsQueryPtrInput `pulumi:"opsAnalyticsQuery"`
+	// Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
+	OutputFullDuration pulumi.BoolPtrInput `pulumi:"outputFullDuration"`
 	// A query used to fetch time series with PromQL.
 	PrometheusQuery pulumi.StringPtrInput `pulumi:"prometheusQuery"`
 	// Filter parameters to fetch time series.
@@ -7129,6 +9556,16 @@ func (o TimeSeriesQueryOutput) ToOutput(ctx context.Context) pulumix.Output[Time
 	}
 }
 
+// Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
+func (o TimeSeriesQueryOutput) OpsAnalyticsQuery() OpsAnalyticsQueryPtrOutput {
+	return o.ApplyT(func(v TimeSeriesQuery) *OpsAnalyticsQuery { return v.OpsAnalyticsQuery }).(OpsAnalyticsQueryPtrOutput)
+}
+
+// Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
+func (o TimeSeriesQueryOutput) OutputFullDuration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TimeSeriesQuery) *bool { return v.OutputFullDuration }).(pulumi.BoolPtrOutput)
+}
+
 // A query used to fetch time series with PromQL.
 func (o TimeSeriesQueryOutput) PrometheusQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeSeriesQuery) *string { return v.PrometheusQuery }).(pulumi.StringPtrOutput)
@@ -7184,6 +9621,26 @@ func (o TimeSeriesQueryPtrOutput) Elem() TimeSeriesQueryOutput {
 	}).(TimeSeriesQueryOutput)
 }
 
+// Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
+func (o TimeSeriesQueryPtrOutput) OpsAnalyticsQuery() OpsAnalyticsQueryPtrOutput {
+	return o.ApplyT(func(v *TimeSeriesQuery) *OpsAnalyticsQuery {
+		if v == nil {
+			return nil
+		}
+		return v.OpsAnalyticsQuery
+	}).(OpsAnalyticsQueryPtrOutput)
+}
+
+// Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
+func (o TimeSeriesQueryPtrOutput) OutputFullDuration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TimeSeriesQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFullDuration
+	}).(pulumi.BoolPtrOutput)
+}
+
 // A query used to fetch time series with PromQL.
 func (o TimeSeriesQueryPtrOutput) PrometheusQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeSeriesQuery) *string {
@@ -7236,6 +9693,10 @@ func (o TimeSeriesQueryPtrOutput) UnitOverride() pulumi.StringPtrOutput {
 
 // TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
 type TimeSeriesQueryResponse struct {
+	// Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
+	OpsAnalyticsQuery OpsAnalyticsQueryResponse `pulumi:"opsAnalyticsQuery"`
+	// Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
+	OutputFullDuration bool `pulumi:"outputFullDuration"`
 	// A query used to fetch time series with PromQL.
 	PrometheusQuery string `pulumi:"prometheusQuery"`
 	// Filter parameters to fetch time series.
@@ -7267,6 +9728,16 @@ func (o TimeSeriesQueryResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	return pulumix.Output[TimeSeriesQueryResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release.
+func (o TimeSeriesQueryResponseOutput) OpsAnalyticsQuery() OpsAnalyticsQueryResponseOutput {
+	return o.ApplyT(func(v TimeSeriesQueryResponse) OpsAnalyticsQueryResponse { return v.OpsAnalyticsQuery }).(OpsAnalyticsQueryResponseOutput)
+}
+
+// Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart
+func (o TimeSeriesQueryResponseOutput) OutputFullDuration() pulumi.BoolOutput {
+	return o.ApplyT(func(v TimeSeriesQueryResponse) bool { return v.OutputFullDuration }).(pulumi.BoolOutput)
 }
 
 // A query used to fetch time series with PromQL.
@@ -7550,10 +10021,16 @@ type Widget struct {
 	Blank *Empty `pulumi:"blank"`
 	// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
 	CollapsibleGroup *CollapsibleGroup `pulumi:"collapsibleGroup"`
+	// A widget that displays a list of error groups.
+	ErrorReportingPanel *ErrorReportingPanel `pulumi:"errorReportingPanel"`
+	// Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional.
+	Id *string `pulumi:"id"`
 	// A widget that shows list of incidents.
 	IncidentList *IncidentList `pulumi:"incidentList"`
 	// A widget that shows a stream of logs.
 	LogsPanel *LogsPanel `pulumi:"logsPanel"`
+	// A widget that displays timeseries data as a pie chart.
+	PieChart *PieChart `pulumi:"pieChart"`
 	// A scorecard summarizing time series data.
 	Scorecard *Scorecard `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
@@ -7585,10 +10062,16 @@ type WidgetArgs struct {
 	Blank EmptyPtrInput `pulumi:"blank"`
 	// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
 	CollapsibleGroup CollapsibleGroupPtrInput `pulumi:"collapsibleGroup"`
+	// A widget that displays a list of error groups.
+	ErrorReportingPanel ErrorReportingPanelPtrInput `pulumi:"errorReportingPanel"`
+	// Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A widget that shows list of incidents.
 	IncidentList IncidentListPtrInput `pulumi:"incidentList"`
 	// A widget that shows a stream of logs.
 	LogsPanel LogsPanelPtrInput `pulumi:"logsPanel"`
+	// A widget that displays timeseries data as a pie chart.
+	PieChart PieChartPtrInput `pulumi:"pieChart"`
 	// A scorecard summarizing time series data.
 	Scorecard ScorecardPtrInput `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
@@ -7743,6 +10226,16 @@ func (o WidgetOutput) CollapsibleGroup() CollapsibleGroupPtrOutput {
 	return o.ApplyT(func(v Widget) *CollapsibleGroup { return v.CollapsibleGroup }).(CollapsibleGroupPtrOutput)
 }
 
+// A widget that displays a list of error groups.
+func (o WidgetOutput) ErrorReportingPanel() ErrorReportingPanelPtrOutput {
+	return o.ApplyT(func(v Widget) *ErrorReportingPanel { return v.ErrorReportingPanel }).(ErrorReportingPanelPtrOutput)
+}
+
+// Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional.
+func (o WidgetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Widget) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
 // A widget that shows list of incidents.
 func (o WidgetOutput) IncidentList() IncidentListPtrOutput {
 	return o.ApplyT(func(v Widget) *IncidentList { return v.IncidentList }).(IncidentListPtrOutput)
@@ -7751,6 +10244,11 @@ func (o WidgetOutput) IncidentList() IncidentListPtrOutput {
 // A widget that shows a stream of logs.
 func (o WidgetOutput) LogsPanel() LogsPanelPtrOutput {
 	return o.ApplyT(func(v Widget) *LogsPanel { return v.LogsPanel }).(LogsPanelPtrOutput)
+}
+
+// A widget that displays timeseries data as a pie chart.
+func (o WidgetOutput) PieChart() PieChartPtrOutput {
+	return o.ApplyT(func(v Widget) *PieChart { return v.PieChart }).(PieChartPtrOutput)
 }
 
 // A scorecard summarizing time series data.
@@ -7838,6 +10336,26 @@ func (o WidgetPtrOutput) CollapsibleGroup() CollapsibleGroupPtrOutput {
 	}).(CollapsibleGroupPtrOutput)
 }
 
+// A widget that displays a list of error groups.
+func (o WidgetPtrOutput) ErrorReportingPanel() ErrorReportingPanelPtrOutput {
+	return o.ApplyT(func(v *Widget) *ErrorReportingPanel {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorReportingPanel
+	}).(ErrorReportingPanelPtrOutput)
+}
+
+// Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional.
+func (o WidgetPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Widget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // A widget that shows list of incidents.
 func (o WidgetPtrOutput) IncidentList() IncidentListPtrOutput {
 	return o.ApplyT(func(v *Widget) *IncidentList {
@@ -7856,6 +10374,16 @@ func (o WidgetPtrOutput) LogsPanel() LogsPanelPtrOutput {
 		}
 		return v.LogsPanel
 	}).(LogsPanelPtrOutput)
+}
+
+// A widget that displays timeseries data as a pie chart.
+func (o WidgetPtrOutput) PieChart() PieChartPtrOutput {
+	return o.ApplyT(func(v *Widget) *PieChart {
+		if v == nil {
+			return nil
+		}
+		return v.PieChart
+	}).(PieChartPtrOutput)
 }
 
 // A scorecard summarizing time series data.
@@ -7942,10 +10470,14 @@ type WidgetResponse struct {
 	Blank EmptyResponse `pulumi:"blank"`
 	// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
 	CollapsibleGroup CollapsibleGroupResponse `pulumi:"collapsibleGroup"`
+	// A widget that displays a list of error groups.
+	ErrorReportingPanel ErrorReportingPanelResponse `pulumi:"errorReportingPanel"`
 	// A widget that shows list of incidents.
 	IncidentList IncidentListResponse `pulumi:"incidentList"`
 	// A widget that shows a stream of logs.
 	LogsPanel LogsPanelResponse `pulumi:"logsPanel"`
+	// A widget that displays timeseries data as a pie chart.
+	PieChart PieChartResponse `pulumi:"pieChart"`
 	// A scorecard summarizing time series data.
 	Scorecard ScorecardResponse `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
@@ -7994,6 +10526,11 @@ func (o WidgetResponseOutput) CollapsibleGroup() CollapsibleGroupResponseOutput 
 	return o.ApplyT(func(v WidgetResponse) CollapsibleGroupResponse { return v.CollapsibleGroup }).(CollapsibleGroupResponseOutput)
 }
 
+// A widget that displays a list of error groups.
+func (o WidgetResponseOutput) ErrorReportingPanel() ErrorReportingPanelResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) ErrorReportingPanelResponse { return v.ErrorReportingPanel }).(ErrorReportingPanelResponseOutput)
+}
+
 // A widget that shows list of incidents.
 func (o WidgetResponseOutput) IncidentList() IncidentListResponseOutput {
 	return o.ApplyT(func(v WidgetResponse) IncidentListResponse { return v.IncidentList }).(IncidentListResponseOutput)
@@ -8002,6 +10539,11 @@ func (o WidgetResponseOutput) IncidentList() IncidentListResponseOutput {
 // A widget that shows a stream of logs.
 func (o WidgetResponseOutput) LogsPanel() LogsPanelResponseOutput {
 	return o.ApplyT(func(v WidgetResponse) LogsPanelResponse { return v.LogsPanel }).(LogsPanelResponseOutput)
+}
+
+// A widget that displays timeseries data as a pie chart.
+func (o WidgetResponseOutput) PieChart() PieChartResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) PieChartResponse { return v.PieChart }).(PieChartResponseOutput)
 }
 
 // A scorecard summarizing time series data.
@@ -8410,10 +10952,13 @@ func (o XyChartResponseOutput) YAxis() AxisResponseOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationInput)(nil)).Elem(), AggregationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPtrInput)(nil)).Elem(), AggregationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationFunctionInput)(nil)).Elem(), AggregationFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertChartInput)(nil)).Elem(), AlertChartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertChartPtrInput)(nil)).Elem(), AlertChartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AxisInput)(nil)).Elem(), AxisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AxisPtrInput)(nil)).Elem(), AxisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BreakdownInput)(nil)).Elem(), BreakdownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BreakdownArrayInput)(nil)).Elem(), BreakdownArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsInput)(nil)).Elem(), ChartOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsPtrInput)(nil)).Elem(), ChartOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollapsibleGroupInput)(nil)).Elem(), CollapsibleGroupArgs{})
@@ -8428,8 +10973,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardFilterArrayInput)(nil)).Elem(), DashboardFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetInput)(nil)).Elem(), DataSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetArrayInput)(nil)).Elem(), DataSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DimensionInput)(nil)).Elem(), DimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DimensionArrayInput)(nil)).Elem(), DimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmptyInput)(nil)).Elem(), EmptyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmptyPtrInput)(nil)).Elem(), EmptyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErrorReportingPanelInput)(nil)).Elem(), ErrorReportingPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErrorReportingPanelPtrInput)(nil)).Elem(), ErrorReportingPanelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GaugeViewInput)(nil)).Elem(), GaugeViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GaugeViewPtrInput)(nil)).Elem(), GaugeViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutInput)(nil)).Elem(), GridLayoutArgs{})
@@ -8438,12 +10987,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IncidentListPtrInput)(nil)).Elem(), IncidentListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogsPanelInput)(nil)).Elem(), LogsPanelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogsPanelPtrInput)(nil)).Elem(), LogsPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MeasureInput)(nil)).Elem(), MeasureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MeasureArrayInput)(nil)).Elem(), MeasureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceInput)(nil)).Elem(), MonitoredResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceArrayInput)(nil)).Elem(), MonitoredResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutInput)(nil)).Elem(), MosaicLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutPtrInput)(nil)).Elem(), MosaicLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpsAnalyticsQueryInput)(nil)).Elem(), OpsAnalyticsQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpsAnalyticsQueryPtrInput)(nil)).Elem(), OpsAnalyticsQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParameterInput)(nil)).Elem(), ParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParameterArrayInput)(nil)).Elem(), ParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterInput)(nil)).Elem(), PickTimeSeriesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterPtrInput)(nil)).Elem(), PickTimeSeriesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PieChartInput)(nil)).Elem(), PieChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PieChartPtrInput)(nil)).Elem(), PieChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PieChartDataSetInput)(nil)).Elem(), PieChartDataSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PieChartDataSetArrayInput)(nil)).Elem(), PieChartDataSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RatioPartInput)(nil)).Elem(), RatioPartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RatioPartPtrInput)(nil)).Elem(), RatioPartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RowInput)(nil)).Elem(), RowArgs{})
@@ -8462,6 +11021,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableDisplayOptionsPtrInput)(nil)).Elem(), TableDisplayOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TextInput)(nil)).Elem(), TextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TextPtrInput)(nil)).Elem(), TextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStyleInput)(nil)).Elem(), TextStyleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextStylePtrInput)(nil)).Elem(), TextStyleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdInput)(nil)).Elem(), ThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdArrayInput)(nil)).Elem(), ThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TileInput)(nil)).Elem(), TileArgs{})
@@ -8481,6 +11042,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*XyChartPtrInput)(nil)).Elem(), XyChartArgs{})
 	pulumi.RegisterOutputType(AggregationOutput{})
 	pulumi.RegisterOutputType(AggregationPtrOutput{})
+	pulumi.RegisterOutputType(AggregationFunctionOutput{})
+	pulumi.RegisterOutputType(AggregationFunctionResponseOutput{})
 	pulumi.RegisterOutputType(AggregationResponseOutput{})
 	pulumi.RegisterOutputType(AlertChartOutput{})
 	pulumi.RegisterOutputType(AlertChartPtrOutput{})
@@ -8488,6 +11051,10 @@ func init() {
 	pulumi.RegisterOutputType(AxisOutput{})
 	pulumi.RegisterOutputType(AxisPtrOutput{})
 	pulumi.RegisterOutputType(AxisResponseOutput{})
+	pulumi.RegisterOutputType(BreakdownOutput{})
+	pulumi.RegisterOutputType(BreakdownArrayOutput{})
+	pulumi.RegisterOutputType(BreakdownResponseOutput{})
+	pulumi.RegisterOutputType(BreakdownResponseArrayOutput{})
 	pulumi.RegisterOutputType(ChartOptionsOutput{})
 	pulumi.RegisterOutputType(ChartOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ChartOptionsResponseOutput{})
@@ -8513,9 +11080,16 @@ func init() {
 	pulumi.RegisterOutputType(DataSetArrayOutput{})
 	pulumi.RegisterOutputType(DataSetResponseOutput{})
 	pulumi.RegisterOutputType(DataSetResponseArrayOutput{})
+	pulumi.RegisterOutputType(DimensionOutput{})
+	pulumi.RegisterOutputType(DimensionArrayOutput{})
+	pulumi.RegisterOutputType(DimensionResponseOutput{})
+	pulumi.RegisterOutputType(DimensionResponseArrayOutput{})
 	pulumi.RegisterOutputType(EmptyOutput{})
 	pulumi.RegisterOutputType(EmptyPtrOutput{})
 	pulumi.RegisterOutputType(EmptyResponseOutput{})
+	pulumi.RegisterOutputType(ErrorReportingPanelOutput{})
+	pulumi.RegisterOutputType(ErrorReportingPanelPtrOutput{})
+	pulumi.RegisterOutputType(ErrorReportingPanelResponseOutput{})
 	pulumi.RegisterOutputType(GaugeViewOutput{})
 	pulumi.RegisterOutputType(GaugeViewPtrOutput{})
 	pulumi.RegisterOutputType(GaugeViewResponseOutput{})
@@ -8528,6 +11102,10 @@ func init() {
 	pulumi.RegisterOutputType(LogsPanelOutput{})
 	pulumi.RegisterOutputType(LogsPanelPtrOutput{})
 	pulumi.RegisterOutputType(LogsPanelResponseOutput{})
+	pulumi.RegisterOutputType(MeasureOutput{})
+	pulumi.RegisterOutputType(MeasureArrayOutput{})
+	pulumi.RegisterOutputType(MeasureResponseOutput{})
+	pulumi.RegisterOutputType(MeasureResponseArrayOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceArrayOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceResponseOutput{})
@@ -8535,9 +11113,23 @@ func init() {
 	pulumi.RegisterOutputType(MosaicLayoutOutput{})
 	pulumi.RegisterOutputType(MosaicLayoutPtrOutput{})
 	pulumi.RegisterOutputType(MosaicLayoutResponseOutput{})
+	pulumi.RegisterOutputType(OpsAnalyticsQueryOutput{})
+	pulumi.RegisterOutputType(OpsAnalyticsQueryPtrOutput{})
+	pulumi.RegisterOutputType(OpsAnalyticsQueryResponseOutput{})
+	pulumi.RegisterOutputType(ParameterOutput{})
+	pulumi.RegisterOutputType(ParameterArrayOutput{})
+	pulumi.RegisterOutputType(ParameterResponseOutput{})
+	pulumi.RegisterOutputType(ParameterResponseArrayOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterPtrOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterResponseOutput{})
+	pulumi.RegisterOutputType(PieChartOutput{})
+	pulumi.RegisterOutputType(PieChartPtrOutput{})
+	pulumi.RegisterOutputType(PieChartDataSetOutput{})
+	pulumi.RegisterOutputType(PieChartDataSetArrayOutput{})
+	pulumi.RegisterOutputType(PieChartDataSetResponseOutput{})
+	pulumi.RegisterOutputType(PieChartDataSetResponseArrayOutput{})
+	pulumi.RegisterOutputType(PieChartResponseOutput{})
 	pulumi.RegisterOutputType(RatioPartOutput{})
 	pulumi.RegisterOutputType(RatioPartPtrOutput{})
 	pulumi.RegisterOutputType(RatioPartResponseOutput{})
@@ -8567,6 +11159,9 @@ func init() {
 	pulumi.RegisterOutputType(TextOutput{})
 	pulumi.RegisterOutputType(TextPtrOutput{})
 	pulumi.RegisterOutputType(TextResponseOutput{})
+	pulumi.RegisterOutputType(TextStyleOutput{})
+	pulumi.RegisterOutputType(TextStylePtrOutput{})
+	pulumi.RegisterOutputType(TextStyleResponseOutput{})
 	pulumi.RegisterOutputType(ThresholdOutput{})
 	pulumi.RegisterOutputType(ThresholdArrayOutput{})
 	pulumi.RegisterOutputType(ThresholdResponseOutput{})

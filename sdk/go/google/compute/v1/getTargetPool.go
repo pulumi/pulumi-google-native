@@ -48,6 +48,8 @@ type LookupTargetPoolResult struct {
 	Name string `pulumi:"name"`
 	// URL of the region where the target pool resides.
 	Region string `pulumi:"region"`
+	// The resource URL for the security policy associated with this target pool.
+	SecurityPolicy string `pulumi:"securityPolicy"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
@@ -140,6 +142,11 @@ func (o LookupTargetPoolResultOutput) Name() pulumi.StringOutput {
 // URL of the region where the target pool resides.
 func (o LookupTargetPoolResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetPoolResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The resource URL for the security policy associated with this target pool.
+func (o LookupTargetPoolResultOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetPoolResult) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

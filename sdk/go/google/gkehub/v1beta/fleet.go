@@ -19,11 +19,15 @@ type Fleet struct {
 
 	// When the Fleet was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. The default cluster configurations to apply across the fleet.
+	DefaultClusterConfig DefaultClusterConfigResponseOutput `pulumi:"defaultClusterConfig"`
 	// When the Fleet was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	Location    pulumi.StringOutput `pulumi:"location"`
+	// Optional. Labels for this Fleet.
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -80,18 +84,26 @@ func (FleetState) ElementType() reflect.Type {
 }
 
 type fleetArgs struct {
+	// Optional. The default cluster configurations to apply across the fleet.
+	DefaultClusterConfig *DefaultClusterConfig `pulumi:"defaultClusterConfig"`
 	// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 	DisplayName *string `pulumi:"displayName"`
-	Location    *string `pulumi:"location"`
-	Project     *string `pulumi:"project"`
+	// Optional. Labels for this Fleet.
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
+	Project  *string           `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Fleet resource.
 type FleetArgs struct {
+	// Optional. The default cluster configurations to apply across the fleet.
+	DefaultClusterConfig DefaultClusterConfigPtrInput
 	// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 	DisplayName pulumi.StringPtrInput
-	Location    pulumi.StringPtrInput
-	Project     pulumi.StringPtrInput
+	// Optional. Labels for this Fleet.
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 }
 
 func (FleetArgs) ElementType() reflect.Type {
@@ -148,6 +160,11 @@ func (o FleetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. The default cluster configurations to apply across the fleet.
+func (o FleetOutput) DefaultClusterConfig() DefaultClusterConfigResponseOutput {
+	return o.ApplyT(func(v *Fleet) DefaultClusterConfigResponseOutput { return v.DefaultClusterConfig }).(DefaultClusterConfigResponseOutput)
+}
+
 // When the Fleet was deleted.
 func (o FleetOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
@@ -156,6 +173,11 @@ func (o FleetOutput) DeleteTime() pulumi.StringOutput {
 // Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 func (o FleetOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Labels for this Fleet.
+func (o FleetOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Fleet) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o FleetOutput) Location() pulumi.StringOutput {

@@ -813,6 +813,8 @@ type BitbucketServerConfigResponse struct {
 	Name string `pulumi:"name"`
 	// Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 	PeeredNetwork string `pulumi:"peeredNetwork"`
+	// Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
+	PeeredNetworkIpRange string `pulumi:"peeredNetworkIpRange"`
 	// Secret Manager secrets needed by the config.
 	Secrets BitbucketServerSecretsResponse `pulumi:"secrets"`
 	// Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
@@ -874,6 +876,11 @@ func (o BitbucketServerConfigResponseOutput) Name() pulumi.StringOutput {
 // Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 func (o BitbucketServerConfigResponseOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v BitbucketServerConfigResponse) string { return v.PeeredNetwork }).(pulumi.StringOutput)
+}
+
+// Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
+func (o BitbucketServerConfigResponseOutput) PeeredNetworkIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigResponse) string { return v.PeeredNetworkIpRange }).(pulumi.StringOutput)
 }
 
 // Secret Manager secrets needed by the config.
@@ -1416,7 +1423,7 @@ type BuildType struct {
 	AvailableSecrets *Secrets `pulumi:"availableSecrets"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images []string `pulumi:"images"`
-	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+	// Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket *string `pulumi:"logsBucket"`
 	// Special options for this build.
 	Options *BuildOptions `pulumi:"options"`
@@ -1457,7 +1464,7 @@ type BuildTypeArgs struct {
 	AvailableSecrets SecretsPtrInput `pulumi:"availableSecrets"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images pulumi.StringArrayInput `pulumi:"images"`
-	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+	// Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket pulumi.StringPtrInput `pulumi:"logsBucket"`
 	// Special options for this build.
 	Options BuildOptionsPtrInput `pulumi:"options"`
@@ -1590,7 +1597,7 @@ func (o BuildTypeOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildType) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
-// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+// Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 func (o BuildTypeOutput) LogsBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildType) *string { return v.LogsBucket }).(pulumi.StringPtrOutput)
 }
@@ -1700,7 +1707,7 @@ func (o BuildTypePtrOutput) Images() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+// Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 func (o BuildTypePtrOutput) LogsBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildType) *string {
 		if v == nil {
@@ -1848,6 +1855,8 @@ func (o BuildApprovalResponseOutput) State() pulumi.StringOutput {
 
 // Optional arguments to enable specific features of builds.
 type BuildOptions struct {
+	// Option to include built-in and custom substitutions as env variables for all build steps.
+	AutomapSubstitutions *bool `pulumi:"automapSubstitutions"`
 	// Optional. Option to specify how default logs buckets are setup.
 	DefaultLogsBucketBehavior *BuildOptionsDefaultLogsBucketBehavior `pulumi:"defaultLogsBucketBehavior"`
 	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
@@ -1856,7 +1865,7 @@ type BuildOptions struct {
 	DynamicSubstitutions *bool `pulumi:"dynamicSubstitutions"`
 	// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env []string `pulumi:"env"`
-	// Option to define build log streaming behavior to Google Cloud Storage.
+	// Option to define build log streaming behavior to Cloud Storage.
 	LogStreamingOption *BuildOptionsLogStreamingOption `pulumi:"logStreamingOption"`
 	// Option to specify the logging mode, which determines if and where build logs are stored.
 	Logging *BuildOptionsLogging `pulumi:"logging"`
@@ -1891,6 +1900,8 @@ type BuildOptionsInput interface {
 
 // Optional arguments to enable specific features of builds.
 type BuildOptionsArgs struct {
+	// Option to include built-in and custom substitutions as env variables for all build steps.
+	AutomapSubstitutions pulumi.BoolPtrInput `pulumi:"automapSubstitutions"`
 	// Optional. Option to specify how default logs buckets are setup.
 	DefaultLogsBucketBehavior BuildOptionsDefaultLogsBucketBehaviorPtrInput `pulumi:"defaultLogsBucketBehavior"`
 	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
@@ -1899,7 +1910,7 @@ type BuildOptionsArgs struct {
 	DynamicSubstitutions pulumi.BoolPtrInput `pulumi:"dynamicSubstitutions"`
 	// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env pulumi.StringArrayInput `pulumi:"env"`
-	// Option to define build log streaming behavior to Google Cloud Storage.
+	// Option to define build log streaming behavior to Cloud Storage.
 	LogStreamingOption BuildOptionsLogStreamingOptionPtrInput `pulumi:"logStreamingOption"`
 	// Option to specify the logging mode, which determines if and where build logs are stored.
 	Logging BuildOptionsLoggingPtrInput `pulumi:"logging"`
@@ -2017,6 +2028,11 @@ func (o BuildOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[BuildOp
 	}
 }
 
+// Option to include built-in and custom substitutions as env variables for all build steps.
+func (o BuildOptionsOutput) AutomapSubstitutions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BuildOptions) *bool { return v.AutomapSubstitutions }).(pulumi.BoolPtrOutput)
+}
+
 // Optional. Option to specify how default logs buckets are setup.
 func (o BuildOptionsOutput) DefaultLogsBucketBehavior() BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
 	return o.ApplyT(func(v BuildOptions) *BuildOptionsDefaultLogsBucketBehavior { return v.DefaultLogsBucketBehavior }).(BuildOptionsDefaultLogsBucketBehaviorPtrOutput)
@@ -2037,7 +2053,7 @@ func (o BuildOptionsOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildOptions) []string { return v.Env }).(pulumi.StringArrayOutput)
 }
 
-// Option to define build log streaming behavior to Google Cloud Storage.
+// Option to define build log streaming behavior to Cloud Storage.
 func (o BuildOptionsOutput) LogStreamingOption() BuildOptionsLogStreamingOptionPtrOutput {
 	return o.ApplyT(func(v BuildOptions) *BuildOptionsLogStreamingOption { return v.LogStreamingOption }).(BuildOptionsLogStreamingOptionPtrOutput)
 }
@@ -2117,6 +2133,16 @@ func (o BuildOptionsPtrOutput) Elem() BuildOptionsOutput {
 	}).(BuildOptionsOutput)
 }
 
+// Option to include built-in and custom substitutions as env variables for all build steps.
+func (o BuildOptionsPtrOutput) AutomapSubstitutions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BuildOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutomapSubstitutions
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Optional. Option to specify how default logs buckets are setup.
 func (o BuildOptionsPtrOutput) DefaultLogsBucketBehavior() BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
 	return o.ApplyT(func(v *BuildOptions) *BuildOptionsDefaultLogsBucketBehavior {
@@ -2157,7 +2183,7 @@ func (o BuildOptionsPtrOutput) Env() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Option to define build log streaming behavior to Google Cloud Storage.
+// Option to define build log streaming behavior to Cloud Storage.
 func (o BuildOptionsPtrOutput) LogStreamingOption() BuildOptionsLogStreamingOptionPtrOutput {
 	return o.ApplyT(func(v *BuildOptions) *BuildOptionsLogStreamingOption {
 		if v == nil {
@@ -2259,6 +2285,8 @@ func (o BuildOptionsPtrOutput) WorkerPool() pulumi.StringPtrOutput {
 
 // Optional arguments to enable specific features of builds.
 type BuildOptionsResponse struct {
+	// Option to include built-in and custom substitutions as env variables for all build steps.
+	AutomapSubstitutions bool `pulumi:"automapSubstitutions"`
 	// Optional. Option to specify how default logs buckets are setup.
 	DefaultLogsBucketBehavior string `pulumi:"defaultLogsBucketBehavior"`
 	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
@@ -2267,7 +2295,7 @@ type BuildOptionsResponse struct {
 	DynamicSubstitutions bool `pulumi:"dynamicSubstitutions"`
 	// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env []string `pulumi:"env"`
-	// Option to define build log streaming behavior to Google Cloud Storage.
+	// Option to define build log streaming behavior to Cloud Storage.
 	LogStreamingOption string `pulumi:"logStreamingOption"`
 	// Option to specify the logging mode, which determines if and where build logs are stored.
 	Logging string `pulumi:"logging"`
@@ -2310,6 +2338,11 @@ func (o BuildOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Option to include built-in and custom substitutions as env variables for all build steps.
+func (o BuildOptionsResponseOutput) AutomapSubstitutions() pulumi.BoolOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) bool { return v.AutomapSubstitutions }).(pulumi.BoolOutput)
+}
+
 // Optional. Option to specify how default logs buckets are setup.
 func (o BuildOptionsResponseOutput) DefaultLogsBucketBehavior() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildOptionsResponse) string { return v.DefaultLogsBucketBehavior }).(pulumi.StringOutput)
@@ -2330,7 +2363,7 @@ func (o BuildOptionsResponseOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildOptionsResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
 }
 
-// Option to define build log streaming behavior to Google Cloud Storage.
+// Option to define build log streaming behavior to Cloud Storage.
 func (o BuildOptionsResponseOutput) LogStreamingOption() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildOptionsResponse) string { return v.LogStreamingOption }).(pulumi.StringOutput)
 }
@@ -2400,7 +2433,7 @@ type BuildResponse struct {
 	Images []string `pulumi:"images"`
 	// URL to logs for this build in Google Cloud Console.
 	LogUrl string `pulumi:"logUrl"`
-	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+	// Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket string `pulumi:"logsBucket"`
 	// The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
 	Name string `pulumi:"name"`
@@ -2506,7 +2539,7 @@ func (o BuildResponseOutput) LogUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.LogUrl }).(pulumi.StringOutput)
 }
 
-// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+// Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 func (o BuildResponseOutput) LogsBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.LogsBucket }).(pulumi.StringOutput)
 }
@@ -2609,6 +2642,8 @@ type BuildStep struct {
 	AllowFailure *bool `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 	Args []string `pulumi:"args"`
+	// Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
+	AutomapSubstitutions *bool `pulumi:"automapSubstitutions"`
 	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
 	Dir *string `pulumi:"dir"`
 	// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
@@ -2650,6 +2685,8 @@ type BuildStepArgs struct {
 	AllowFailure pulumi.BoolPtrInput `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
+	AutomapSubstitutions pulumi.BoolPtrInput `pulumi:"automapSubstitutions"`
 	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
 	Dir pulumi.StringPtrInput `pulumi:"dir"`
 	// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
@@ -2757,6 +2794,11 @@ func (o BuildStepOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStep) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
+func (o BuildStepOutput) AutomapSubstitutions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BuildStep) *bool { return v.AutomapSubstitutions }).(pulumi.BoolPtrOutput)
+}
+
 // Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
 func (o BuildStepOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildStep) *string { return v.Dir }).(pulumi.StringPtrOutput)
@@ -2841,6 +2883,8 @@ type BuildStepResponse struct {
 	AllowFailure bool `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 	Args []string `pulumi:"args"`
+	// Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
+	AutomapSubstitutions bool `pulumi:"automapSubstitutions"`
 	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
 	Dir string `pulumi:"dir"`
 	// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
@@ -2903,6 +2947,11 @@ func (o BuildStepResponseOutput) AllowFailure() pulumi.BoolOutput {
 // A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 func (o BuildStepResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStepResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption.
+func (o BuildStepResponseOutput) AutomapSubstitutions() pulumi.BoolOutput {
+	return o.ApplyT(func(v BuildStepResponse) bool { return v.AutomapSubstitutions }).(pulumi.BoolOutput)
 }
 
 // Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
@@ -3068,6 +3117,254 @@ func (o BuiltImageResponseArrayOutput) Index(i pulumi.IntInput) BuiltImageRespon
 	}).(BuiltImageResponseOutput)
 }
 
+// Location of the source in a 2nd-gen Google Cloud Build repository resource.
+type ConnectedRepository struct {
+	// Directory, relative to the source root, in which to run the build.
+	Dir *string `pulumi:"dir"`
+	// Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
+	Repository string `pulumi:"repository"`
+	// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+	Revision *string `pulumi:"revision"`
+}
+
+// ConnectedRepositoryInput is an input type that accepts ConnectedRepositoryArgs and ConnectedRepositoryOutput values.
+// You can construct a concrete instance of `ConnectedRepositoryInput` via:
+//
+//	ConnectedRepositoryArgs{...}
+type ConnectedRepositoryInput interface {
+	pulumi.Input
+
+	ToConnectedRepositoryOutput() ConnectedRepositoryOutput
+	ToConnectedRepositoryOutputWithContext(context.Context) ConnectedRepositoryOutput
+}
+
+// Location of the source in a 2nd-gen Google Cloud Build repository resource.
+type ConnectedRepositoryArgs struct {
+	// Directory, relative to the source root, in which to run the build.
+	Dir pulumi.StringPtrInput `pulumi:"dir"`
+	// Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+}
+
+func (ConnectedRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectedRepository)(nil)).Elem()
+}
+
+func (i ConnectedRepositoryArgs) ToConnectedRepositoryOutput() ConnectedRepositoryOutput {
+	return i.ToConnectedRepositoryOutputWithContext(context.Background())
+}
+
+func (i ConnectedRepositoryArgs) ToConnectedRepositoryOutputWithContext(ctx context.Context) ConnectedRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectedRepositoryOutput)
+}
+
+func (i ConnectedRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectedRepository] {
+	return pulumix.Output[ConnectedRepository]{
+		OutputState: i.ToConnectedRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConnectedRepositoryArgs) ToConnectedRepositoryPtrOutput() ConnectedRepositoryPtrOutput {
+	return i.ToConnectedRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectedRepositoryArgs) ToConnectedRepositoryPtrOutputWithContext(ctx context.Context) ConnectedRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectedRepositoryOutput).ToConnectedRepositoryPtrOutputWithContext(ctx)
+}
+
+// ConnectedRepositoryPtrInput is an input type that accepts ConnectedRepositoryArgs, ConnectedRepositoryPtr and ConnectedRepositoryPtrOutput values.
+// You can construct a concrete instance of `ConnectedRepositoryPtrInput` via:
+//
+//	        ConnectedRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectedRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToConnectedRepositoryPtrOutput() ConnectedRepositoryPtrOutput
+	ToConnectedRepositoryPtrOutputWithContext(context.Context) ConnectedRepositoryPtrOutput
+}
+
+type connectedRepositoryPtrType ConnectedRepositoryArgs
+
+func ConnectedRepositoryPtr(v *ConnectedRepositoryArgs) ConnectedRepositoryPtrInput {
+	return (*connectedRepositoryPtrType)(v)
+}
+
+func (*connectedRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectedRepository)(nil)).Elem()
+}
+
+func (i *connectedRepositoryPtrType) ToConnectedRepositoryPtrOutput() ConnectedRepositoryPtrOutput {
+	return i.ToConnectedRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *connectedRepositoryPtrType) ToConnectedRepositoryPtrOutputWithContext(ctx context.Context) ConnectedRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectedRepositoryPtrOutput)
+}
+
+func (i *connectedRepositoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectedRepository] {
+	return pulumix.Output[*ConnectedRepository]{
+		OutputState: i.ToConnectedRepositoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Location of the source in a 2nd-gen Google Cloud Build repository resource.
+type ConnectedRepositoryOutput struct{ *pulumi.OutputState }
+
+func (ConnectedRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectedRepository)(nil)).Elem()
+}
+
+func (o ConnectedRepositoryOutput) ToConnectedRepositoryOutput() ConnectedRepositoryOutput {
+	return o
+}
+
+func (o ConnectedRepositoryOutput) ToConnectedRepositoryOutputWithContext(ctx context.Context) ConnectedRepositoryOutput {
+	return o
+}
+
+func (o ConnectedRepositoryOutput) ToConnectedRepositoryPtrOutput() ConnectedRepositoryPtrOutput {
+	return o.ToConnectedRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectedRepositoryOutput) ToConnectedRepositoryPtrOutputWithContext(ctx context.Context) ConnectedRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectedRepository) *ConnectedRepository {
+		return &v
+	}).(ConnectedRepositoryPtrOutput)
+}
+
+func (o ConnectedRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectedRepository] {
+	return pulumix.Output[ConnectedRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Directory, relative to the source root, in which to run the build.
+func (o ConnectedRepositoryOutput) Dir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectedRepository) *string { return v.Dir }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
+func (o ConnectedRepositoryOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectedRepository) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+func (o ConnectedRepositoryOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectedRepository) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+type ConnectedRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectedRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectedRepository)(nil)).Elem()
+}
+
+func (o ConnectedRepositoryPtrOutput) ToConnectedRepositoryPtrOutput() ConnectedRepositoryPtrOutput {
+	return o
+}
+
+func (o ConnectedRepositoryPtrOutput) ToConnectedRepositoryPtrOutputWithContext(ctx context.Context) ConnectedRepositoryPtrOutput {
+	return o
+}
+
+func (o ConnectedRepositoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectedRepository] {
+	return pulumix.Output[*ConnectedRepository]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectedRepositoryPtrOutput) Elem() ConnectedRepositoryOutput {
+	return o.ApplyT(func(v *ConnectedRepository) ConnectedRepository {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectedRepository
+		return ret
+	}).(ConnectedRepositoryOutput)
+}
+
+// Directory, relative to the source root, in which to run the build.
+func (o ConnectedRepositoryPtrOutput) Dir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dir
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
+func (o ConnectedRepositoryPtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+func (o ConnectedRepositoryPtrOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectedRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Revision
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location of the source in a 2nd-gen Google Cloud Build repository resource.
+type ConnectedRepositoryResponse struct {
+	// Directory, relative to the source root, in which to run the build.
+	Dir string `pulumi:"dir"`
+	// Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
+	Repository string `pulumi:"repository"`
+	// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+	Revision string `pulumi:"revision"`
+}
+
+// Location of the source in a 2nd-gen Google Cloud Build repository resource.
+type ConnectedRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectedRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectedRepositoryResponse)(nil)).Elem()
+}
+
+func (o ConnectedRepositoryResponseOutput) ToConnectedRepositoryResponseOutput() ConnectedRepositoryResponseOutput {
+	return o
+}
+
+func (o ConnectedRepositoryResponseOutput) ToConnectedRepositoryResponseOutputWithContext(ctx context.Context) ConnectedRepositoryResponseOutput {
+	return o
+}
+
+func (o ConnectedRepositoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectedRepositoryResponse] {
+	return pulumix.Output[ConnectedRepositoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Directory, relative to the source root, in which to run the build.
+func (o ConnectedRepositoryResponseOutput) Dir() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectedRepositoryResponse) string { return v.Dir }).(pulumi.StringOutput)
+}
+
+// Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
+func (o ConnectedRepositoryResponseOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectedRepositoryResponse) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+func (o ConnectedRepositoryResponseOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectedRepositoryResponse) string { return v.Revision }).(pulumi.StringOutput)
+}
+
 // A fatal problem encountered during the execution of the build.
 type FailureInfoResponse struct {
 	// Explains the failure issue in more detail using hard-coded text.
@@ -3149,7 +3446,7 @@ type GitFileSource struct {
 	Path *string `pulumi:"path"`
 	// See RepoType above.
 	RepoType *GitFileSourceRepoType `pulumi:"repoType"`
-	// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 	Repository *string `pulumi:"repository"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision *string `pulumi:"revision"`
@@ -3178,7 +3475,7 @@ type GitFileSourceArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// See RepoType above.
 	RepoType GitFileSourceRepoTypePtrInput `pulumi:"repoType"`
-	// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 	Repository pulumi.StringPtrInput `pulumi:"repository"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
@@ -3302,7 +3599,7 @@ func (o GitFileSourceOutput) RepoType() GitFileSourceRepoTypePtrOutput {
 	return o.ApplyT(func(v GitFileSource) *GitFileSourceRepoType { return v.RepoType }).(GitFileSourceRepoTypePtrOutput)
 }
 
-// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 func (o GitFileSourceOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitFileSource) *string { return v.Repository }).(pulumi.StringPtrOutput)
 }
@@ -3387,7 +3684,7 @@ func (o GitFileSourcePtrOutput) RepoType() GitFileSourceRepoTypePtrOutput {
 	}).(GitFileSourceRepoTypePtrOutput)
 }
 
-// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 func (o GitFileSourcePtrOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitFileSource) *string {
 		if v == nil {
@@ -3427,7 +3724,7 @@ type GitFileSourceResponse struct {
 	Path string `pulumi:"path"`
 	// See RepoType above.
 	RepoType string `pulumi:"repoType"`
-	// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 	Repository string `pulumi:"repository"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision string `pulumi:"revision"`
@@ -3476,7 +3773,7 @@ func (o GitFileSourceResponseOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v GitFileSourceResponse) string { return v.RepoType }).(pulumi.StringOutput)
 }
 
-// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 func (o GitFileSourceResponseOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v GitFileSourceResponse) string { return v.Repository }).(pulumi.StringOutput)
 }
@@ -5137,9 +5434,9 @@ type GitRepoSource struct {
 	Ref *string `pulumi:"ref"`
 	// See RepoType below.
 	RepoType *GitRepoSourceRepoType `pulumi:"repoType"`
-	// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+	// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
 	Repository *string `pulumi:"repository"`
-	// The URI of the repo. Either uri or repository can be specified and is required.
+	// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -5164,9 +5461,9 @@ type GitRepoSourceArgs struct {
 	Ref pulumi.StringPtrInput `pulumi:"ref"`
 	// See RepoType below.
 	RepoType GitRepoSourceRepoTypePtrInput `pulumi:"repoType"`
-	// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+	// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
 	Repository pulumi.StringPtrInput `pulumi:"repository"`
-	// The URI of the repo. Either uri or repository can be specified and is required.
+	// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -5286,12 +5583,12 @@ func (o GitRepoSourceOutput) RepoType() GitRepoSourceRepoTypePtrOutput {
 	return o.ApplyT(func(v GitRepoSource) *GitRepoSourceRepoType { return v.RepoType }).(GitRepoSourceRepoTypePtrOutput)
 }
 
-// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
 func (o GitRepoSourceOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitRepoSource) *string { return v.Repository }).(pulumi.StringPtrOutput)
 }
 
-// The URI of the repo. Either uri or repository can be specified and is required.
+// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
 func (o GitRepoSourceOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitRepoSource) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -5366,7 +5663,7 @@ func (o GitRepoSourcePtrOutput) RepoType() GitRepoSourceRepoTypePtrOutput {
 	}).(GitRepoSourceRepoTypePtrOutput)
 }
 
-// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
 func (o GitRepoSourcePtrOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitRepoSource) *string {
 		if v == nil {
@@ -5376,7 +5673,7 @@ func (o GitRepoSourcePtrOutput) Repository() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The URI of the repo. Either uri or repository can be specified and is required.
+// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
 func (o GitRepoSourcePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitRepoSource) *string {
 		if v == nil {
@@ -5396,9 +5693,9 @@ type GitRepoSourceResponse struct {
 	Ref string `pulumi:"ref"`
 	// See RepoType below.
 	RepoType string `pulumi:"repoType"`
-	// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+	// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
 	Repository string `pulumi:"repository"`
-	// The URI of the repo. Either uri or repository can be specified and is required.
+	// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
 	Uri string `pulumi:"uri"`
 }
 
@@ -5443,12 +5740,12 @@ func (o GitRepoSourceResponseOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.RepoType }).(pulumi.StringOutput)
 }
 
-// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
 func (o GitRepoSourceResponseOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.Repository }).(pulumi.StringOutput)
 }
 
-// The URI of the repo. Either uri or repository can be specified and is required.
+// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
 func (o GitRepoSourceResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -8664,7 +8961,7 @@ type ResultsResponse struct {
 	ArtifactTiming TimeSpanResponse `pulumi:"artifactTiming"`
 	// List of build step digests, in the order corresponding to build step indices.
 	BuildStepImages []string `pulumi:"buildStepImages"`
-	// List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
+	// List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
 	BuildStepOutputs []string `pulumi:"buildStepOutputs"`
 	// Container images that were built as a part of the build.
 	Images []BuiltImageResponse `pulumi:"images"`
@@ -8714,7 +9011,7 @@ func (o ResultsResponseOutput) BuildStepImages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResultsResponse) []string { return v.BuildStepImages }).(pulumi.StringArrayOutput)
 }
 
-// List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
+// List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
 func (o ResultsResponseOutput) BuildStepOutputs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResultsResponse) []string { return v.BuildStepOutputs }).(pulumi.StringArrayOutput)
 }
@@ -9560,13 +9857,15 @@ func (o ServiceDirectoryConfigResponseOutput) Service() pulumi.StringOutput {
 
 // Location of the source in a supported storage service.
 type Source struct {
+	// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+	ConnectedRepository *ConnectedRepository `pulumi:"connectedRepository"`
 	// If provided, get the source from this Git repository.
 	GitSource *GitSource `pulumi:"gitSource"`
 	// If provided, get the source from this location in a Cloud Source Repository.
 	RepoSource *RepoSource `pulumi:"repoSource"`
-	// If provided, get the source from this location in Google Cloud Storage.
+	// If provided, get the source from this location in Cloud Storage.
 	StorageSource *StorageSource `pulumi:"storageSource"`
-	// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+	// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 	StorageSourceManifest *StorageSourceManifest `pulumi:"storageSourceManifest"`
 }
 
@@ -9583,13 +9882,15 @@ type SourceInput interface {
 
 // Location of the source in a supported storage service.
 type SourceArgs struct {
+	// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+	ConnectedRepository ConnectedRepositoryPtrInput `pulumi:"connectedRepository"`
 	// If provided, get the source from this Git repository.
 	GitSource GitSourcePtrInput `pulumi:"gitSource"`
 	// If provided, get the source from this location in a Cloud Source Repository.
 	RepoSource RepoSourcePtrInput `pulumi:"repoSource"`
-	// If provided, get the source from this location in Google Cloud Storage.
+	// If provided, get the source from this location in Cloud Storage.
 	StorageSource StorageSourcePtrInput `pulumi:"storageSource"`
-	// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+	// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 	StorageSourceManifest StorageSourceManifestPtrInput `pulumi:"storageSourceManifest"`
 }
 
@@ -9689,6 +9990,11 @@ func (o SourceOutput) ToOutput(ctx context.Context) pulumix.Output[Source] {
 	}
 }
 
+// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+func (o SourceOutput) ConnectedRepository() ConnectedRepositoryPtrOutput {
+	return o.ApplyT(func(v Source) *ConnectedRepository { return v.ConnectedRepository }).(ConnectedRepositoryPtrOutput)
+}
+
 // If provided, get the source from this Git repository.
 func (o SourceOutput) GitSource() GitSourcePtrOutput {
 	return o.ApplyT(func(v Source) *GitSource { return v.GitSource }).(GitSourcePtrOutput)
@@ -9699,12 +10005,12 @@ func (o SourceOutput) RepoSource() RepoSourcePtrOutput {
 	return o.ApplyT(func(v Source) *RepoSource { return v.RepoSource }).(RepoSourcePtrOutput)
 }
 
-// If provided, get the source from this location in Google Cloud Storage.
+// If provided, get the source from this location in Cloud Storage.
 func (o SourceOutput) StorageSource() StorageSourcePtrOutput {
 	return o.ApplyT(func(v Source) *StorageSource { return v.StorageSource }).(StorageSourcePtrOutput)
 }
 
-// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 func (o SourceOutput) StorageSourceManifest() StorageSourceManifestPtrOutput {
 	return o.ApplyT(func(v Source) *StorageSourceManifest { return v.StorageSourceManifest }).(StorageSourceManifestPtrOutput)
 }
@@ -9739,6 +10045,16 @@ func (o SourcePtrOutput) Elem() SourceOutput {
 	}).(SourceOutput)
 }
 
+// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+func (o SourcePtrOutput) ConnectedRepository() ConnectedRepositoryPtrOutput {
+	return o.ApplyT(func(v *Source) *ConnectedRepository {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectedRepository
+	}).(ConnectedRepositoryPtrOutput)
+}
+
 // If provided, get the source from this Git repository.
 func (o SourcePtrOutput) GitSource() GitSourcePtrOutput {
 	return o.ApplyT(func(v *Source) *GitSource {
@@ -9759,7 +10075,7 @@ func (o SourcePtrOutput) RepoSource() RepoSourcePtrOutput {
 	}).(RepoSourcePtrOutput)
 }
 
-// If provided, get the source from this location in Google Cloud Storage.
+// If provided, get the source from this location in Cloud Storage.
 func (o SourcePtrOutput) StorageSource() StorageSourcePtrOutput {
 	return o.ApplyT(func(v *Source) *StorageSource {
 		if v == nil {
@@ -9769,7 +10085,7 @@ func (o SourcePtrOutput) StorageSource() StorageSourcePtrOutput {
 	}).(StorageSourcePtrOutput)
 }
 
-// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 func (o SourcePtrOutput) StorageSourceManifest() StorageSourceManifestPtrOutput {
 	return o.ApplyT(func(v *Source) *StorageSourceManifest {
 		if v == nil {
@@ -9783,6 +10099,10 @@ func (o SourcePtrOutput) StorageSourceManifest() StorageSourceManifestPtrOutput 
 type SourceProvenanceResponse struct {
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
 	FileHashes map[string]string `pulumi:"fileHashes"`
+	// A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
+	ResolvedConnectedRepository ConnectedRepositoryResponse `pulumi:"resolvedConnectedRepository"`
+	// A copy of the build's `source.git_source`, if exists, with any revisions resolved.
+	ResolvedGitSource GitSourceResponse `pulumi:"resolvedGitSource"`
 	// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
 	ResolvedRepoSource RepoSourceResponse `pulumi:"resolvedRepoSource"`
 	// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
@@ -9817,6 +10137,16 @@ func (o SourceProvenanceResponseOutput) FileHashes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SourceProvenanceResponse) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
 }
 
+// A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
+func (o SourceProvenanceResponseOutput) ResolvedConnectedRepository() ConnectedRepositoryResponseOutput {
+	return o.ApplyT(func(v SourceProvenanceResponse) ConnectedRepositoryResponse { return v.ResolvedConnectedRepository }).(ConnectedRepositoryResponseOutput)
+}
+
+// A copy of the build's `source.git_source`, if exists, with any revisions resolved.
+func (o SourceProvenanceResponseOutput) ResolvedGitSource() GitSourceResponseOutput {
+	return o.ApplyT(func(v SourceProvenanceResponse) GitSourceResponse { return v.ResolvedGitSource }).(GitSourceResponseOutput)
+}
+
 // A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
 func (o SourceProvenanceResponseOutput) ResolvedRepoSource() RepoSourceResponseOutput {
 	return o.ApplyT(func(v SourceProvenanceResponse) RepoSourceResponse { return v.ResolvedRepoSource }).(RepoSourceResponseOutput)
@@ -9834,13 +10164,15 @@ func (o SourceProvenanceResponseOutput) ResolvedStorageSourceManifest() StorageS
 
 // Location of the source in a supported storage service.
 type SourceResponse struct {
+	// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+	ConnectedRepository ConnectedRepositoryResponse `pulumi:"connectedRepository"`
 	// If provided, get the source from this Git repository.
 	GitSource GitSourceResponse `pulumi:"gitSource"`
 	// If provided, get the source from this location in a Cloud Source Repository.
 	RepoSource RepoSourceResponse `pulumi:"repoSource"`
-	// If provided, get the source from this location in Google Cloud Storage.
+	// If provided, get the source from this location in Cloud Storage.
 	StorageSource StorageSourceResponse `pulumi:"storageSource"`
-	// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+	// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 	StorageSourceManifest StorageSourceManifestResponse `pulumi:"storageSourceManifest"`
 }
 
@@ -9865,6 +10197,11 @@ func (o SourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Sourc
 	}
 }
 
+// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+func (o SourceResponseOutput) ConnectedRepository() ConnectedRepositoryResponseOutput {
+	return o.ApplyT(func(v SourceResponse) ConnectedRepositoryResponse { return v.ConnectedRepository }).(ConnectedRepositoryResponseOutput)
+}
+
 // If provided, get the source from this Git repository.
 func (o SourceResponseOutput) GitSource() GitSourceResponseOutput {
 	return o.ApplyT(func(v SourceResponse) GitSourceResponse { return v.GitSource }).(GitSourceResponseOutput)
@@ -9875,24 +10212,26 @@ func (o SourceResponseOutput) RepoSource() RepoSourceResponseOutput {
 	return o.ApplyT(func(v SourceResponse) RepoSourceResponse { return v.RepoSource }).(RepoSourceResponseOutput)
 }
 
-// If provided, get the source from this location in Google Cloud Storage.
+// If provided, get the source from this location in Cloud Storage.
 func (o SourceResponseOutput) StorageSource() StorageSourceResponseOutput {
 	return o.ApplyT(func(v SourceResponse) StorageSourceResponse { return v.StorageSource }).(StorageSourceResponseOutput)
 }
 
-// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 func (o SourceResponseOutput) StorageSourceManifest() StorageSourceManifestResponseOutput {
 	return o.ApplyT(func(v SourceResponse) StorageSourceManifestResponse { return v.StorageSourceManifest }).(StorageSourceManifestResponseOutput)
 }
 
-// Location of the source in an archive file in Google Cloud Storage.
+// Location of the source in an archive file in Cloud Storage.
 type StorageSource struct {
-	// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	// Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 	Bucket *string `pulumi:"bucket"`
-	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 	Generation *string `pulumi:"generation"`
-	// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+	// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 	Object *string `pulumi:"object"`
+	// Optional. Option to specify the tool to fetch the source file for the build.
+	SourceFetcher *StorageSourceSourceFetcher `pulumi:"sourceFetcher"`
 }
 
 // StorageSourceInput is an input type that accepts StorageSourceArgs and StorageSourceOutput values.
@@ -9906,14 +10245,16 @@ type StorageSourceInput interface {
 	ToStorageSourceOutputWithContext(context.Context) StorageSourceOutput
 }
 
-// Location of the source in an archive file in Google Cloud Storage.
+// Location of the source in an archive file in Cloud Storage.
 type StorageSourceArgs struct {
-	// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	// Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 	Generation pulumi.StringPtrInput `pulumi:"generation"`
-	// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+	// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 	Object pulumi.StringPtrInput `pulumi:"object"`
+	// Optional. Option to specify the tool to fetch the source file for the build.
+	SourceFetcher StorageSourceSourceFetcherPtrInput `pulumi:"sourceFetcher"`
 }
 
 func (StorageSourceArgs) ElementType() reflect.Type {
@@ -9981,7 +10322,7 @@ func (i *storageSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*Sto
 	}
 }
 
-// Location of the source in an archive file in Google Cloud Storage.
+// Location of the source in an archive file in Cloud Storage.
 type StorageSourceOutput struct{ *pulumi.OutputState }
 
 func (StorageSourceOutput) ElementType() reflect.Type {
@@ -10012,19 +10353,24 @@ func (o StorageSourceOutput) ToOutput(ctx context.Context) pulumix.Output[Storag
 	}
 }
 
-// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+// Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 func (o StorageSourceOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageSource) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 func (o StorageSourceOutput) Generation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageSource) *string { return v.Generation }).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 func (o StorageSourceOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageSource) *string { return v.Object }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Option to specify the tool to fetch the source file for the build.
+func (o StorageSourceOutput) SourceFetcher() StorageSourceSourceFetcherPtrOutput {
+	return o.ApplyT(func(v StorageSource) *StorageSourceSourceFetcher { return v.SourceFetcher }).(StorageSourceSourceFetcherPtrOutput)
 }
 
 type StorageSourcePtrOutput struct{ *pulumi.OutputState }
@@ -10057,7 +10403,7 @@ func (o StorageSourcePtrOutput) Elem() StorageSourceOutput {
 	}).(StorageSourceOutput)
 }
 
-// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+// Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 func (o StorageSourcePtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageSource) *string {
 		if v == nil {
@@ -10067,7 +10413,7 @@ func (o StorageSourcePtrOutput) Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 func (o StorageSourcePtrOutput) Generation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageSource) *string {
 		if v == nil {
@@ -10077,7 +10423,7 @@ func (o StorageSourcePtrOutput) Generation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 func (o StorageSourcePtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageSource) *string {
 		if v == nil {
@@ -10087,13 +10433,23 @@ func (o StorageSourcePtrOutput) Object() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+// Optional. Option to specify the tool to fetch the source file for the build.
+func (o StorageSourcePtrOutput) SourceFetcher() StorageSourceSourceFetcherPtrOutput {
+	return o.ApplyT(func(v *StorageSource) *StorageSourceSourceFetcher {
+		if v == nil {
+			return nil
+		}
+		return v.SourceFetcher
+	}).(StorageSourceSourceFetcherPtrOutput)
+}
+
+// Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 type StorageSourceManifest struct {
-	// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	// Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 	Bucket *string `pulumi:"bucket"`
-	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 	Generation *string `pulumi:"generation"`
-	// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+	// Cloud Storage object containing the source manifest. This object must be a JSON file.
 	Object *string `pulumi:"object"`
 }
 
@@ -10108,13 +10464,13 @@ type StorageSourceManifestInput interface {
 	ToStorageSourceManifestOutputWithContext(context.Context) StorageSourceManifestOutput
 }
 
-// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+// Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 type StorageSourceManifestArgs struct {
-	// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	// Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 	Generation pulumi.StringPtrInput `pulumi:"generation"`
-	// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+	// Cloud Storage object containing the source manifest. This object must be a JSON file.
 	Object pulumi.StringPtrInput `pulumi:"object"`
 }
 
@@ -10183,7 +10539,7 @@ func (i *storageSourceManifestPtrType) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+// Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 type StorageSourceManifestOutput struct{ *pulumi.OutputState }
 
 func (StorageSourceManifestOutput) ElementType() reflect.Type {
@@ -10214,17 +10570,17 @@ func (o StorageSourceManifestOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+// Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 func (o StorageSourceManifestOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageSourceManifest) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 func (o StorageSourceManifestOutput) Generation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageSourceManifest) *string { return v.Generation }).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+// Cloud Storage object containing the source manifest. This object must be a JSON file.
 func (o StorageSourceManifestOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageSourceManifest) *string { return v.Object }).(pulumi.StringPtrOutput)
 }
@@ -10259,7 +10615,7 @@ func (o StorageSourceManifestPtrOutput) Elem() StorageSourceManifestOutput {
 	}).(StorageSourceManifestOutput)
 }
 
-// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+// Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 func (o StorageSourceManifestPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageSourceManifest) *string {
 		if v == nil {
@@ -10269,7 +10625,7 @@ func (o StorageSourceManifestPtrOutput) Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 func (o StorageSourceManifestPtrOutput) Generation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageSourceManifest) *string {
 		if v == nil {
@@ -10279,7 +10635,7 @@ func (o StorageSourceManifestPtrOutput) Generation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+// Cloud Storage object containing the source manifest. This object must be a JSON file.
 func (o StorageSourceManifestPtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageSourceManifest) *string {
 		if v == nil {
@@ -10289,17 +10645,17 @@ func (o StorageSourceManifestPtrOutput) Object() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+// Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 type StorageSourceManifestResponse struct {
-	// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	// Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 	Bucket string `pulumi:"bucket"`
-	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 	Generation string `pulumi:"generation"`
-	// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+	// Cloud Storage object containing the source manifest. This object must be a JSON file.
 	Object string `pulumi:"object"`
 }
 
-// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+// Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 type StorageSourceManifestResponseOutput struct{ *pulumi.OutputState }
 
 func (StorageSourceManifestResponseOutput) ElementType() reflect.Type {
@@ -10320,32 +10676,34 @@ func (o StorageSourceManifestResponseOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+// Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 func (o StorageSourceManifestResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceManifestResponse) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 func (o StorageSourceManifestResponseOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceManifestResponse) string { return v.Generation }).(pulumi.StringOutput)
 }
 
-// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+// Cloud Storage object containing the source manifest. This object must be a JSON file.
 func (o StorageSourceManifestResponseOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceManifestResponse) string { return v.Object }).(pulumi.StringOutput)
 }
 
-// Location of the source in an archive file in Google Cloud Storage.
+// Location of the source in an archive file in Cloud Storage.
 type StorageSourceResponse struct {
-	// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	// Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 	Bucket string `pulumi:"bucket"`
-	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 	Generation string `pulumi:"generation"`
-	// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+	// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 	Object string `pulumi:"object"`
+	// Optional. Option to specify the tool to fetch the source file for the build.
+	SourceFetcher string `pulumi:"sourceFetcher"`
 }
 
-// Location of the source in an archive file in Google Cloud Storage.
+// Location of the source in an archive file in Cloud Storage.
 type StorageSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (StorageSourceResponseOutput) ElementType() reflect.Type {
@@ -10366,19 +10724,24 @@ func (o StorageSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+// Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 func (o StorageSourceResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceResponse) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 func (o StorageSourceResponseOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceResponse) string { return v.Generation }).(pulumi.StringOutput)
 }
 
-// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 func (o StorageSourceResponseOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceResponse) string { return v.Object }).(pulumi.StringOutput)
+}
+
+// Optional. Option to specify the tool to fetch the source file for the build.
+func (o StorageSourceResponseOutput) SourceFetcher() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageSourceResponse) string { return v.SourceFetcher }).(pulumi.StringOutput)
 }
 
 // Start and end times for a build execution phase.
@@ -11359,6 +11722,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildOptionsPtrInput)(nil)).Elem(), BuildOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildStepInput)(nil)).Elem(), BuildStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildStepArrayInput)(nil)).Elem(), BuildStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectedRepositoryInput)(nil)).Elem(), ConnectedRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectedRepositoryPtrInput)(nil)).Elem(), ConnectedRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitFileSourceInput)(nil)).Elem(), GitFileSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitFileSourcePtrInput)(nil)).Elem(), GitFileSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEnterpriseSecretsInput)(nil)).Elem(), GitHubEnterpriseSecretsArgs{})
@@ -11451,6 +11816,9 @@ func init() {
 	pulumi.RegisterOutputType(BuildStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(BuiltImageResponseOutput{})
 	pulumi.RegisterOutputType(BuiltImageResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConnectedRepositoryOutput{})
+	pulumi.RegisterOutputType(ConnectedRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(ConnectedRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(FailureInfoResponseOutput{})
 	pulumi.RegisterOutputType(FileHashesResponseOutput{})
 	pulumi.RegisterOutputType(GitFileSourceOutput{})

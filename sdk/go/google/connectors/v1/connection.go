@@ -24,8 +24,14 @@ type Connection struct {
 	ConfigVariables ConfigVariableResponseArrayOutput `pulumi:"configVariables"`
 	// Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
+	// Connection revision. This field is only updated when the connection is created or updated by User.
+	ConnectionRevision pulumi.StringOutput `pulumi:"connectionRevision"`
 	// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
 	ConnectorVersion pulumi.StringOutput `pulumi:"connectorVersion"`
+	// Infra configs supported by Connector Version.
+	ConnectorVersionInfraConfig ConnectorVersionInfraConfigResponseOutput `pulumi:"connectorVersionInfraConfig"`
+	// Flag to mark the version indicating the launch stage.
+	ConnectorVersionLaunchStage pulumi.StringOutput `pulumi:"connectorVersionLaunchStage"`
 	// Created time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Description of the resource.
@@ -34,8 +40,16 @@ type Connection struct {
 	DestinationConfigs DestinationConfigResponseArrayOutput `pulumi:"destinationConfigs"`
 	// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 	EnvoyImageLocation pulumi.StringOutput `pulumi:"envoyImageLocation"`
+	// Optional. Eventing config of a connection
+	EventingConfig EventingConfigResponseOutput `pulumi:"eventingConfig"`
+	// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+	EventingEnablementType pulumi.StringOutput `pulumi:"eventingEnablementType"`
+	// Eventing Runtime Data.
+	EventingRuntimeData EventingRuntimeDataResponseOutput `pulumi:"eventingRuntimeData"`
 	// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 	ImageLocation pulumi.StringOutput `pulumi:"imageLocation"`
+	// Is trusted tester program enabled for the project.
+	IsTrustedTester pulumi.BoolOutput `pulumi:"isTrustedTester"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
@@ -48,7 +62,7 @@ type Connection struct {
 	// Optional. Node configuration for the connection.
 	NodeConfig NodeConfigResponseOutput `pulumi:"nodeConfig"`
 	Project    pulumi.StringOutput      `pulumi:"project"`
-	// Optional. Service account needed for runtime plane to access GCP resources.
+	// Optional. Service account needed for runtime plane to access Google Cloud resources.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
 	ServiceDirectory pulumi.StringOutput `pulumi:"serviceDirectory"`
@@ -128,6 +142,10 @@ type connectionArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
 	DestinationConfigs []DestinationConfig `pulumi:"destinationConfigs"`
+	// Optional. Eventing config of a connection
+	EventingConfig *EventingConfig `pulumi:"eventingConfig"`
+	// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+	EventingEnablementType *ConnectionEventingEnablementType `pulumi:"eventingEnablementType"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -138,7 +156,7 @@ type connectionArgs struct {
 	// Optional. Node configuration for the connection.
 	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	Project    *string     `pulumi:"project"`
-	// Optional. Service account needed for runtime plane to access GCP resources.
+	// Optional. Service account needed for runtime plane to access Google Cloud resources.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. Ssl config of a connection
 	SslConfig *SslConfig `pulumi:"sslConfig"`
@@ -160,6 +178,10 @@ type ConnectionArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
 	DestinationConfigs DestinationConfigArrayInput
+	// Optional. Eventing config of a connection
+	EventingConfig EventingConfigPtrInput
+	// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+	EventingEnablementType ConnectionEventingEnablementTypePtrInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -170,7 +192,7 @@ type ConnectionArgs struct {
 	// Optional. Node configuration for the connection.
 	NodeConfig NodeConfigPtrInput
 	Project    pulumi.StringPtrInput
-	// Optional. Service account needed for runtime plane to access GCP resources.
+	// Optional. Service account needed for runtime plane to access Google Cloud resources.
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. Ssl config of a connection
 	SslConfig SslConfigPtrInput
@@ -242,9 +264,24 @@ func (o ConnectionOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
+// Connection revision. This field is only updated when the connection is created or updated by User.
+func (o ConnectionOutput) ConnectionRevision() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionRevision }).(pulumi.StringOutput)
+}
+
 // Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
 func (o ConnectionOutput) ConnectorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectorVersion }).(pulumi.StringOutput)
+}
+
+// Infra configs supported by Connector Version.
+func (o ConnectionOutput) ConnectorVersionInfraConfig() ConnectorVersionInfraConfigResponseOutput {
+	return o.ApplyT(func(v *Connection) ConnectorVersionInfraConfigResponseOutput { return v.ConnectorVersionInfraConfig }).(ConnectorVersionInfraConfigResponseOutput)
+}
+
+// Flag to mark the version indicating the launch stage.
+func (o ConnectionOutput) ConnectorVersionLaunchStage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectorVersionLaunchStage }).(pulumi.StringOutput)
 }
 
 // Created time.
@@ -267,9 +304,29 @@ func (o ConnectionOutput) EnvoyImageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.EnvoyImageLocation }).(pulumi.StringOutput)
 }
 
+// Optional. Eventing config of a connection
+func (o ConnectionOutput) EventingConfig() EventingConfigResponseOutput {
+	return o.ApplyT(func(v *Connection) EventingConfigResponseOutput { return v.EventingConfig }).(EventingConfigResponseOutput)
+}
+
+// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
+func (o ConnectionOutput) EventingEnablementType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.EventingEnablementType }).(pulumi.StringOutput)
+}
+
+// Eventing Runtime Data.
+func (o ConnectionOutput) EventingRuntimeData() EventingRuntimeDataResponseOutput {
+	return o.ApplyT(func(v *Connection) EventingRuntimeDataResponseOutput { return v.EventingRuntimeData }).(EventingRuntimeDataResponseOutput)
+}
+
 // GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 func (o ConnectionOutput) ImageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ImageLocation }).(pulumi.StringOutput)
+}
+
+// Is trusted tester program enabled for the project.
+func (o ConnectionOutput) IsTrustedTester() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.IsTrustedTester }).(pulumi.BoolOutput)
 }
 
 // Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -305,7 +362,7 @@ func (o ConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Optional. Service account needed for runtime plane to access GCP resources.
+// Optional. Service account needed for runtime plane to access Google Cloud resources.
 func (o ConnectionOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }

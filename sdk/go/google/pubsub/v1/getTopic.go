@@ -29,19 +29,19 @@ type LookupTopicArgs struct {
 }
 
 type LookupTopicResult struct {
-	// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	KmsKeyName string `pulumi:"kmsKeyName"`
-	// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+	// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
 	Labels map[string]string `pulumi:"labels"`
-	// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
+	// Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration string `pulumi:"messageRetentionDuration"`
-	// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+	// Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
 	MessageStoragePolicy MessageStoragePolicyResponse `pulumi:"messageStoragePolicy"`
 	// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
 	Name string `pulumi:"name"`
-	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+	// Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
-	// Settings for validating messages published against a schema.
+	// Optional. Settings for validating messages published against a schema.
 	SchemaSettings SchemaSettingsResponse `pulumi:"schemaSettings"`
 }
 
@@ -87,22 +87,22 @@ func (o LookupTopicResultOutput) ToOutput(ctx context.Context) pulumix.Output[Lo
 	}
 }
 
-// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 func (o LookupTopicResultOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
 func (o LookupTopicResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTopicResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
+// Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
 func (o LookupTopicResultOutput) MessageRetentionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.MessageRetentionDuration }).(pulumi.StringOutput)
 }
 
-// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+// Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
 func (o LookupTopicResultOutput) MessageStoragePolicy() MessageStoragePolicyResponseOutput {
 	return o.ApplyT(func(v LookupTopicResult) MessageStoragePolicyResponse { return v.MessageStoragePolicy }).(MessageStoragePolicyResponseOutput)
 }
@@ -112,12 +112,12 @@ func (o LookupTopicResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+// Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 func (o LookupTopicResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTopicResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
-// Settings for validating messages published against a schema.
+// Optional. Settings for validating messages published against a schema.
 func (o LookupTopicResultOutput) SchemaSettings() SchemaSettingsResponseOutput {
 	return o.ApplyT(func(v LookupTopicResult) SchemaSettingsResponse { return v.SchemaSettings }).(SchemaSettingsResponseOutput)
 }

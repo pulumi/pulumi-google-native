@@ -45,6 +45,8 @@ type Device struct {
 	EnabledUsbDebugging pulumi.BoolOutput `pulumi:"enabledUsbDebugging"`
 	// Device encryption state.
 	EncryptionState pulumi.StringOutput `pulumi:"encryptionState"`
+	// Host name of the device.
+	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// IMEI number of device if GSM device; empty otherwise.
 	Imei pulumi.StringOutput `pulumi:"imei"`
 	// Kernel version of the device.
@@ -125,6 +127,8 @@ type deviceArgs struct {
 	Customer *string `pulumi:"customer"`
 	// Unique identifier for the device.
 	DeviceId *string `pulumi:"deviceId"`
+	// Host name of the device.
+	Hostname *string `pulumi:"hostname"`
 	// Most recent time when device synced with this service.
 	LastSyncTime *string `pulumi:"lastSyncTime"`
 	// Serial Number of device. Example: HT82V1A01076.
@@ -141,6 +145,8 @@ type DeviceArgs struct {
 	Customer pulumi.StringPtrInput
 	// Unique identifier for the device.
 	DeviceId pulumi.StringPtrInput
+	// Host name of the device.
+	Hostname pulumi.StringPtrInput
 	// Most recent time when device synced with this service.
 	LastSyncTime pulumi.StringPtrInput
 	// Serial Number of device. Example: HT82V1A01076.
@@ -268,6 +274,11 @@ func (o DeviceOutput) EnabledUsbDebugging() pulumi.BoolOutput {
 // Device encryption state.
 func (o DeviceOutput) EncryptionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.EncryptionState }).(pulumi.StringOutput)
+}
+
+// Host name of the device.
+func (o DeviceOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // IMEI number of device if GSM device; empty otherwise.

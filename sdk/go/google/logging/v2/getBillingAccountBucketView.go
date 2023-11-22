@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Gets a view on a log bucket..
+// Gets a view on a log bucket.
 func LookupBillingAccountBucketView(ctx *pulumi.Context, args *LookupBillingAccountBucketViewArgs, opts ...pulumi.InvokeOption) (*LookupBillingAccountBucketViewResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBillingAccountBucketViewResult

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:dlp/v2:DeidentifyTemplate":
 		r = &DeidentifyTemplate{}
+	case "google-native:dlp/v2:DiscoveryConfig":
+		r = &DiscoveryConfig{}
 	case "google-native:dlp/v2:DlpJob":
 		r = &DlpJob{}
 	case "google-native:dlp/v2:InspectTemplate":

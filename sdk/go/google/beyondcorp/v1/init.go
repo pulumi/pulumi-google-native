@@ -57,18 +57,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClientGatewayIamMember{}
 	case "google-native:beyondcorp/v1:ClientGatewayIamPolicy":
 		r = &ClientGatewayIamPolicy{}
-	case "google-native:beyondcorp/v1:OrganizationTenantIamBinding":
-		r = &OrganizationTenantIamBinding{}
-	case "google-native:beyondcorp/v1:OrganizationTenantIamMember":
-		r = &OrganizationTenantIamMember{}
-	case "google-native:beyondcorp/v1:OrganizationTenantIamPolicy":
-		r = &OrganizationTenantIamPolicy{}
-	case "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamBinding":
-		r = &OrganizationTenantProxyConfigIamBinding{}
-	case "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamMember":
-		r = &OrganizationTenantProxyConfigIamMember{}
-	case "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamPolicy":
-		r = &OrganizationTenantProxyConfigIamPolicy{}
+	case "google-native:beyondcorp/v1:OrganizationPartnerTenantBrowserDlpRuleIamBinding":
+		r = &OrganizationPartnerTenantBrowserDlpRuleIamBinding{}
+	case "google-native:beyondcorp/v1:OrganizationPartnerTenantBrowserDlpRuleIamMember":
+		r = &OrganizationPartnerTenantBrowserDlpRuleIamMember{}
+	case "google-native:beyondcorp/v1:OrganizationPartnerTenantBrowserDlpRuleIamPolicy":
+		r = &OrganizationPartnerTenantBrowserDlpRuleIamPolicy{}
+	case "google-native:beyondcorp/v1:OrganizationPartnerTenantIamBinding":
+		r = &OrganizationPartnerTenantIamBinding{}
+	case "google-native:beyondcorp/v1:OrganizationPartnerTenantIamMember":
+		r = &OrganizationPartnerTenantIamMember{}
+	case "google-native:beyondcorp/v1:OrganizationPartnerTenantIamPolicy":
+		r = &OrganizationPartnerTenantIamPolicy{}
+	case "google-native:beyondcorp/v1:OrganizationPartnerTenantProxyConfigIamBinding":
+		r = &OrganizationPartnerTenantProxyConfigIamBinding{}
+	case "google-native:beyondcorp/v1:OrganizationPartnerTenantProxyConfigIamMember":
+		r = &OrganizationPartnerTenantProxyConfigIamMember{}
+	case "google-native:beyondcorp/v1:OrganizationPartnerTenantProxyConfigIamPolicy":
+		r = &OrganizationPartnerTenantProxyConfigIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

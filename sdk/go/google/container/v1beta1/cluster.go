@@ -52,6 +52,8 @@ type Cluster struct {
 	DefaultMaxPodsConstraint MaxPodsConstraintResponseOutput `pulumi:"defaultMaxPodsConstraint"`
 	// An optional description of this cluster.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+	EnableK8sBetaApis K8sBetaAPIConfigResponseOutput `pulumi:"enableK8sBetaApis"`
 	// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 	EnableKubernetesAlpha pulumi.BoolOutput `pulumi:"enableKubernetesAlpha"`
 	// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
@@ -60,6 +62,8 @@ type Cluster struct {
 	EnableTpu pulumi.BoolOutput `pulumi:"enableTpu"`
 	// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	// GKE Enterprise Configuration.
+	EnterpriseConfig EnterpriseConfigResponseOutput `pulumi:"enterpriseConfig"`
 	// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -131,6 +135,8 @@ type Cluster struct {
 	NodePools NodePoolResponseArrayOutput `pulumi:"nodePools"`
 	// Notification configuration of the cluster.
 	NotificationConfig NotificationConfigResponseOutput `pulumi:"notificationConfig"`
+	// The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+	ParentProductConfig ParentProductConfigResponseOutput `pulumi:"parentProductConfig"`
 	// Configuration for the PodSecurityPolicy feature.
 	PodSecurityPolicyConfig PodSecurityPolicyConfigResponseOutput `pulumi:"podSecurityPolicyConfig"`
 	// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
@@ -140,7 +146,9 @@ type Cluster struct {
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigResponseOutput `pulumi:"privateClusterConfig"`
 	Project              pulumi.StringOutput                `pulumi:"project"`
-	// Enable/Disable Protect API features for the cluster.
+	// Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
+	//
+	// Deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
 	ProtectConfig ProtectConfigResponseOutput `pulumi:"protectConfig"`
 	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 	ReleaseChannel ReleaseChannelResponseOutput `pulumi:"releaseChannel"`
@@ -148,6 +156,8 @@ type Cluster struct {
 	ResourceLabels pulumi.StringMapOutput `pulumi:"resourceLabels"`
 	// Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
 	ResourceUsageExportConfig ResourceUsageExportConfigResponseOutput `pulumi:"resourceUsageExportConfig"`
+	// Enable/Disable Security Posture API features for the cluster.
+	SecurityPostureConfig SecurityPostureConfigResponseOutput `pulumi:"securityPostureConfig"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
@@ -251,12 +261,16 @@ type clusterArgs struct {
 	DefaultMaxPodsConstraint *MaxPodsConstraint `pulumi:"defaultMaxPodsConstraint"`
 	// An optional description of this cluster.
 	Description *string `pulumi:"description"`
+	// Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+	EnableK8sBetaApis *K8sBetaAPIConfig `pulumi:"enableK8sBetaApis"`
 	// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 	EnableKubernetesAlpha *bool `pulumi:"enableKubernetesAlpha"`
 	// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
 	//
 	// Deprecated: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
 	EnableTpu *bool `pulumi:"enableTpu"`
+	// GKE Enterprise Configuration.
+	EnterpriseConfig *EnterpriseConfig `pulumi:"enterpriseConfig"`
 	// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Fleet information for the cluster.
@@ -324,6 +338,8 @@ type clusterArgs struct {
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
 	// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
 	Parent *string `pulumi:"parent"`
+	// The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+	ParentProductConfig *ParentProductConfig `pulumi:"parentProductConfig"`
 	// Configuration for the PodSecurityPolicy feature.
 	PodSecurityPolicyConfig *PodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
 	// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
@@ -336,7 +352,9 @@ type clusterArgs struct {
 	//
 	// Deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	Project *string `pulumi:"project"`
-	// Enable/Disable Protect API features for the cluster.
+	// Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
+	//
+	// Deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
 	ProtectConfig *ProtectConfig `pulumi:"protectConfig"`
 	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 	ReleaseChannel *ReleaseChannel `pulumi:"releaseChannel"`
@@ -344,6 +362,8 @@ type clusterArgs struct {
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
 	ResourceUsageExportConfig *ResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
+	// Enable/Disable Security Posture API features for the cluster.
+	SecurityPostureConfig *SecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// Shielded Nodes configuration.
 	ShieldedNodes *ShieldedNodes `pulumi:"shieldedNodes"`
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
@@ -392,12 +412,16 @@ type ClusterArgs struct {
 	DefaultMaxPodsConstraint MaxPodsConstraintPtrInput
 	// An optional description of this cluster.
 	Description pulumi.StringPtrInput
+	// Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+	EnableK8sBetaApis K8sBetaAPIConfigPtrInput
 	// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 	EnableKubernetesAlpha pulumi.BoolPtrInput
 	// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
 	//
 	// Deprecated: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
 	EnableTpu pulumi.BoolPtrInput
+	// GKE Enterprise Configuration.
+	EnterpriseConfig EnterpriseConfigPtrInput
 	// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Fleet information for the cluster.
@@ -465,6 +489,8 @@ type ClusterArgs struct {
 	NotificationConfig NotificationConfigPtrInput
 	// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
 	Parent pulumi.StringPtrInput
+	// The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+	ParentProductConfig ParentProductConfigPtrInput
 	// Configuration for the PodSecurityPolicy feature.
 	PodSecurityPolicyConfig PodSecurityPolicyConfigPtrInput
 	// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
@@ -477,7 +503,9 @@ type ClusterArgs struct {
 	//
 	// Deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	Project pulumi.StringPtrInput
-	// Enable/Disable Protect API features for the cluster.
+	// Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
+	//
+	// Deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
 	ProtectConfig ProtectConfigPtrInput
 	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 	ReleaseChannel ReleaseChannelPtrInput
@@ -485,6 +513,8 @@ type ClusterArgs struct {
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
 	ResourceUsageExportConfig ResourceUsageExportConfigPtrInput
+	// Enable/Disable Security Posture API features for the cluster.
+	SecurityPostureConfig SecurityPostureConfigPtrInput
 	// Shielded Nodes configuration.
 	ShieldedNodes ShieldedNodesPtrInput
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
@@ -670,6 +700,11 @@ func (o ClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Kubernetes open source beta apis enabled on the cluster. Only beta apis.
+func (o ClusterOutput) EnableK8sBetaApis() K8sBetaAPIConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) K8sBetaAPIConfigResponseOutput { return v.EnableK8sBetaApis }).(K8sBetaAPIConfigResponseOutput)
+}
+
 // Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 func (o ClusterOutput) EnableKubernetesAlpha() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableKubernetesAlpha }).(pulumi.BoolOutput)
@@ -685,6 +720,11 @@ func (o ClusterOutput) EnableTpu() pulumi.BoolOutput {
 // [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
 func (o ClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// GKE Enterprise Configuration.
+func (o ClusterOutput) EnterpriseConfig() EnterpriseConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) EnterpriseConfigResponseOutput { return v.EnterpriseConfig }).(EnterpriseConfigResponseOutput)
 }
 
 // This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
@@ -854,6 +894,11 @@ func (o ClusterOutput) NotificationConfig() NotificationConfigResponseOutput {
 	return o.ApplyT(func(v *Cluster) NotificationConfigResponseOutput { return v.NotificationConfig }).(NotificationConfigResponseOutput)
 }
 
+// The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+func (o ClusterOutput) ParentProductConfig() ParentProductConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) ParentProductConfigResponseOutput { return v.ParentProductConfig }).(ParentProductConfigResponseOutput)
+}
+
 // Configuration for the PodSecurityPolicy feature.
 func (o ClusterOutput) PodSecurityPolicyConfig() PodSecurityPolicyConfigResponseOutput {
 	return o.ApplyT(func(v *Cluster) PodSecurityPolicyConfigResponseOutput { return v.PodSecurityPolicyConfig }).(PodSecurityPolicyConfigResponseOutput)
@@ -875,7 +920,9 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Enable/Disable Protect API features for the cluster.
+// Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
+//
+// Deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
 func (o ClusterOutput) ProtectConfig() ProtectConfigResponseOutput {
 	return o.ApplyT(func(v *Cluster) ProtectConfigResponseOutput { return v.ProtectConfig }).(ProtectConfigResponseOutput)
 }
@@ -893,6 +940,11 @@ func (o ClusterOutput) ResourceLabels() pulumi.StringMapOutput {
 // Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
 func (o ClusterOutput) ResourceUsageExportConfig() ResourceUsageExportConfigResponseOutput {
 	return o.ApplyT(func(v *Cluster) ResourceUsageExportConfigResponseOutput { return v.ResourceUsageExportConfig }).(ResourceUsageExportConfigResponseOutput)
+}
+
+// Enable/Disable Security Posture API features for the cluster.
+func (o ClusterOutput) SecurityPostureConfig() SecurityPostureConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) SecurityPostureConfigResponseOutput { return v.SecurityPostureConfig }).(SecurityPostureConfigResponseOutput)
 }
 
 // [Output only] Server-defined URL for the resource.

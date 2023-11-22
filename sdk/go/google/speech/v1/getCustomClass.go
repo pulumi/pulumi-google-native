@@ -30,8 +30,18 @@ type LookupCustomClassArgs struct {
 }
 
 type LookupCustomClassResult struct {
+	// Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+	Annotations map[string]string `pulumi:"annotations"`
 	// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
 	CustomClassId string `pulumi:"customClassId"`
+	// The time at which this resource was requested for deletion. This field is not used.
+	DeleteTime string `pulumi:"deleteTime"`
+	// User-settable, human-readable name for the CustomClass. Must be 63 characters or less. This field is not used.
+	DisplayName string `pulumi:"displayName"`
+	// This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+	Etag string `pulumi:"etag"`
+	// The time at which this resource will be purged. This field is not used.
+	ExpireTime string `pulumi:"expireTime"`
 	// A collection of class items.
 	Items []ClassItemResponse `pulumi:"items"`
 	// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -40,6 +50,12 @@ type LookupCustomClassResult struct {
 	KmsKeyVersionName string `pulumi:"kmsKeyVersionName"`
 	// The resource name of the custom class.
 	Name string `pulumi:"name"`
+	// Whether or not this CustomClass is in the process of being updated. This field is not used.
+	Reconciling bool `pulumi:"reconciling"`
+	// The CustomClass lifecycle state. This field is not used.
+	State string `pulumi:"state"`
+	// System-assigned unique identifier for the CustomClass. This field is not used.
+	Uid string `pulumi:"uid"`
 }
 
 func LookupCustomClassOutput(ctx *pulumi.Context, args LookupCustomClassOutputArgs, opts ...pulumi.InvokeOption) LookupCustomClassResultOutput {
@@ -85,9 +101,34 @@ func (o LookupCustomClassResultOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+func (o LookupCustomClassResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCustomClassResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
 // If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
 func (o LookupCustomClassResultOutput) CustomClassId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomClassResult) string { return v.CustomClassId }).(pulumi.StringOutput)
+}
+
+// The time at which this resource was requested for deletion. This field is not used.
+func (o LookupCustomClassResultOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomClassResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// User-settable, human-readable name for the CustomClass. Must be 63 characters or less. This field is not used.
+func (o LookupCustomClassResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomClassResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+func (o LookupCustomClassResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomClassResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The time at which this resource will be purged. This field is not used.
+func (o LookupCustomClassResultOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomClassResult) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // A collection of class items.
@@ -108,6 +149,21 @@ func (o LookupCustomClassResultOutput) KmsKeyVersionName() pulumi.StringOutput {
 // The resource name of the custom class.
 func (o LookupCustomClassResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomClassResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether or not this CustomClass is in the process of being updated. This field is not used.
+func (o LookupCustomClassResultOutput) Reconciling() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupCustomClassResult) bool { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// The CustomClass lifecycle state. This field is not used.
+func (o LookupCustomClassResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomClassResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// System-assigned unique identifier for the CustomClass. This field is not used.
+func (o LookupCustomClassResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomClassResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 func init() {

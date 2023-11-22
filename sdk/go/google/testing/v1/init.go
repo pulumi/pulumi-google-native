@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:testing/v1:DeviceSession":
+		r = &DeviceSession{}
 	case "google-native:testing/v1:TestMatrix":
 		r = &TestMatrix{}
 	default:

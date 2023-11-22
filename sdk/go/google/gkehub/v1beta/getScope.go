@@ -30,14 +30,16 @@ type LookupScopeArgs struct {
 }
 
 type LookupScopeResult struct {
-	// If true, all Memberships in the Fleet bind to this Scope.
-	AllMemberships bool `pulumi:"allMemberships"`
 	// When the scope was created.
 	CreateTime string `pulumi:"createTime"`
 	// When the scope was deleted.
 	DeleteTime string `pulumi:"deleteTime"`
+	// Optional. Labels for this Scope.
+	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
 	Name string `pulumi:"name"`
+	// Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels map[string]string `pulumi:"namespaceLabels"`
 	// State of the scope resource.
 	State ScopeLifecycleStateResponse `pulumi:"state"`
 	// Google-generated UUID for this resource. This is unique across all scope resources. If a scope resource is deleted and another resource with the same name is created, it gets a different uid.
@@ -89,11 +91,6 @@ func (o LookupScopeResultOutput) ToOutput(ctx context.Context) pulumix.Output[Lo
 	}
 }
 
-// If true, all Memberships in the Fleet bind to this Scope.
-func (o LookupScopeResultOutput) AllMemberships() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupScopeResult) bool { return v.AllMemberships }).(pulumi.BoolOutput)
-}
-
 // When the scope was created.
 func (o LookupScopeResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -104,9 +101,19 @@ func (o LookupScopeResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeResult) string { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// Optional. Labels for this Scope.
+func (o LookupScopeResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupScopeResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
 func (o LookupScopeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
+func (o LookupScopeResultOutput) NamespaceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupScopeResult) map[string]string { return v.NamespaceLabels }).(pulumi.StringMapOutput)
 }
 
 // State of the scope resource.

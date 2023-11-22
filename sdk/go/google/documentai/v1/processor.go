@@ -23,14 +23,16 @@ type Processor struct {
 	DefaultProcessorVersion pulumi.StringOutput `pulumi:"defaultProcessorVersion"`
 	// The display name of the processor.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+	// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	Location   pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The http endpoint that can be called to invoke processing.
 	ProcessEndpoint pulumi.StringOutput `pulumi:"processEndpoint"`
-	Project         pulumi.StringOutput `pulumi:"project"`
+	// The processor version aliases.
+	ProcessorVersionAliases GoogleCloudDocumentaiV1ProcessorVersionAliasResponseArrayOutput `pulumi:"processorVersionAliases"`
+	Project                 pulumi.StringOutput                                             `pulumi:"project"`
 	// The state of the processor.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
@@ -88,7 +90,7 @@ type processorArgs struct {
 	DefaultProcessorVersion *string `pulumi:"defaultProcessorVersion"`
 	// The display name of the processor.
 	DisplayName *string `pulumi:"displayName"`
-	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+	// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	Location   *string `pulumi:"location"`
 	Project    *string `pulumi:"project"`
@@ -104,7 +106,7 @@ type ProcessorArgs struct {
 	DefaultProcessorVersion pulumi.StringPtrInput
 	// The display name of the processor.
 	DisplayName pulumi.StringPtrInput
-	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+	// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
 	KmsKeyName pulumi.StringPtrInput
 	Location   pulumi.StringPtrInput
 	Project    pulumi.StringPtrInput
@@ -176,7 +178,7 @@ func (o ProcessorOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
 func (o ProcessorOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -193,6 +195,13 @@ func (o ProcessorOutput) Name() pulumi.StringOutput {
 // Immutable. The http endpoint that can be called to invoke processing.
 func (o ProcessorOutput) ProcessEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.ProcessEndpoint }).(pulumi.StringOutput)
+}
+
+// The processor version aliases.
+func (o ProcessorOutput) ProcessorVersionAliases() GoogleCloudDocumentaiV1ProcessorVersionAliasResponseArrayOutput {
+	return o.ApplyT(func(v *Processor) GoogleCloudDocumentaiV1ProcessorVersionAliasResponseArrayOutput {
+		return v.ProcessorVersionAliases
+	}).(GoogleCloudDocumentaiV1ProcessorVersionAliasResponseArrayOutput)
 }
 
 func (o ProcessorOutput) Project() pulumi.StringOutput {

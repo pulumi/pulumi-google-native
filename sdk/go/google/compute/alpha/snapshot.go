@@ -32,7 +32,7 @@ type Snapshot struct {
 	DiskSizeGb pulumi.StringOutput `pulumi:"diskSizeGb"`
 	// Number of bytes downloaded to restore a snapshot to a disk.
 	DownloadBytes pulumi.StringOutput `pulumi:"downloadBytes"`
-	// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+	// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
 	EnableConfidentialCompute pulumi.BoolOutput `pulumi:"enableConfidentialCompute"`
 	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolOutput `pulumi:"guestFlush"`
@@ -55,6 +55,8 @@ type Snapshot struct {
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// URL of the region where the snapshot resides. Only applicable for regional snapshots.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Reserved for future use.
@@ -77,6 +79,8 @@ type Snapshot struct {
 	SourceDiskId pulumi.StringOutput `pulumi:"sourceDiskId"`
 	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
 	SourceInstantSnapshot pulumi.StringOutput `pulumi:"sourceInstantSnapshot"`
+	// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+	SourceInstantSnapshotEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"sourceInstantSnapshotEncryptionKey"`
 	// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
 	SourceInstantSnapshotId pulumi.StringOutput `pulumi:"sourceInstantSnapshotId"`
 	// URL of the resource policy which created this scheduled snapshot.
@@ -143,7 +147,7 @@ type snapshotArgs struct {
 	ChainName *string `pulumi:"chainName"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+	// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush *bool `pulumi:"guestFlush"`
@@ -170,6 +174,8 @@ type snapshotArgs struct {
 	SourceDiskForRecoveryCheckpoint *string `pulumi:"sourceDiskForRecoveryCheckpoint"`
 	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
 	SourceInstantSnapshot *string `pulumi:"sourceInstantSnapshot"`
+	// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+	SourceInstantSnapshotEncryptionKey *CustomerEncryptionKey `pulumi:"sourceInstantSnapshotEncryptionKey"`
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations []string `pulumi:"storageLocations"`
 }
@@ -180,7 +186,7 @@ type SnapshotArgs struct {
 	ChainName pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+	// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
 	EnableConfidentialCompute pulumi.BoolPtrInput
 	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolPtrInput
@@ -207,6 +213,8 @@ type SnapshotArgs struct {
 	SourceDiskForRecoveryCheckpoint pulumi.StringPtrInput
 	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
 	SourceInstantSnapshot pulumi.StringPtrInput
+	// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+	SourceInstantSnapshotEncryptionKey CustomerEncryptionKeyPtrInput
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations pulumi.StringArrayInput
 }
@@ -300,7 +308,7 @@ func (o SnapshotOutput) DownloadBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.DownloadBytes }).(pulumi.StringOutput)
 }
 
-// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
 func (o SnapshotOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.BoolOutput { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -359,6 +367,11 @@ func (o SnapshotOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// URL of the region where the snapshot resides. Only applicable for regional snapshots.
+func (o SnapshotOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 // An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 func (o SnapshotOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
@@ -412,6 +425,11 @@ func (o SnapshotOutput) SourceDiskId() pulumi.StringOutput {
 // The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
 func (o SnapshotOutput) SourceInstantSnapshot() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceInstantSnapshot }).(pulumi.StringOutput)
+}
+
+// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+func (o SnapshotOutput) SourceInstantSnapshotEncryptionKey() CustomerEncryptionKeyResponseOutput {
+	return o.ApplyT(func(v *Snapshot) CustomerEncryptionKeyResponseOutput { return v.SourceInstantSnapshotEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
 }
 
 // The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.

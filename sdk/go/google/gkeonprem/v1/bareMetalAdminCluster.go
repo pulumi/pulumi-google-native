@@ -25,6 +25,8 @@ type BareMetalAdminCluster struct {
 	BareMetalAdminClusterId pulumi.StringOutput `pulumi:"bareMetalAdminClusterId"`
 	// The Anthos clusters on bare metal version for the bare metal admin cluster.
 	BareMetalVersion pulumi.StringOutput `pulumi:"bareMetalVersion"`
+	// Binary Authorization related configurations.
+	BinaryAuthorization BinaryAuthorizationResponseOutput `pulumi:"binaryAuthorization"`
 	// Cluster operations configuration.
 	ClusterOperations BareMetalAdminClusterOperationsConfigResponseOutput `pulumi:"clusterOperations"`
 	// Control plane configuration.
@@ -136,6 +138,8 @@ type bareMetalAdminClusterArgs struct {
 	BareMetalAdminClusterId string `pulumi:"bareMetalAdminClusterId"`
 	// The Anthos clusters on bare metal version for the bare metal admin cluster.
 	BareMetalVersion *string `pulumi:"bareMetalVersion"`
+	// Binary Authorization related configurations.
+	BinaryAuthorization *BinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Cluster operations configuration.
 	ClusterOperations *BareMetalAdminClusterOperationsConfig `pulumi:"clusterOperations"`
 	// Control plane configuration.
@@ -176,6 +180,8 @@ type BareMetalAdminClusterArgs struct {
 	BareMetalAdminClusterId pulumi.StringInput
 	// The Anthos clusters on bare metal version for the bare metal admin cluster.
 	BareMetalVersion pulumi.StringPtrInput
+	// Binary Authorization related configurations.
+	BinaryAuthorization BinaryAuthorizationPtrInput
 	// Cluster operations configuration.
 	ClusterOperations BareMetalAdminClusterOperationsConfigPtrInput
 	// Control plane configuration.
@@ -270,6 +276,11 @@ func (o BareMetalAdminClusterOutput) BareMetalAdminClusterId() pulumi.StringOutp
 // The Anthos clusters on bare metal version for the bare metal admin cluster.
 func (o BareMetalAdminClusterOutput) BareMetalVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalAdminCluster) pulumi.StringOutput { return v.BareMetalVersion }).(pulumi.StringOutput)
+}
+
+// Binary Authorization related configurations.
+func (o BareMetalAdminClusterOutput) BinaryAuthorization() BinaryAuthorizationResponseOutput {
+	return o.ApplyT(func(v *BareMetalAdminCluster) BinaryAuthorizationResponseOutput { return v.BinaryAuthorization }).(BinaryAuthorizationResponseOutput)
 }
 
 // Cluster operations configuration.

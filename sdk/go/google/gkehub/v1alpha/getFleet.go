@@ -32,10 +32,14 @@ type LookupFleetArgs struct {
 type LookupFleetResult struct {
 	// When the Fleet was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. The default cluster configurations to apply across the fleet.
+	DefaultClusterConfig DefaultClusterConfigResponse `pulumi:"defaultClusterConfig"`
 	// When the Fleet was deleted.
 	DeleteTime string `pulumi:"deleteTime"`
 	// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 	DisplayName string `pulumi:"displayName"`
+	// Optional. Labels for this Fleet.
+	Labels map[string]string `pulumi:"labels"`
 	// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".
 	Name string `pulumi:"name"`
 	// State of the namespace resource.
@@ -94,6 +98,11 @@ func (o LookupFleetResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. The default cluster configurations to apply across the fleet.
+func (o LookupFleetResultOutput) DefaultClusterConfig() DefaultClusterConfigResponseOutput {
+	return o.ApplyT(func(v LookupFleetResult) DefaultClusterConfigResponse { return v.DefaultClusterConfig }).(DefaultClusterConfigResponseOutput)
+}
+
 // When the Fleet was deleted.
 func (o LookupFleetResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetResult) string { return v.DeleteTime }).(pulumi.StringOutput)
@@ -102,6 +111,11 @@ func (o LookupFleetResultOutput) DeleteTime() pulumi.StringOutput {
 // Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 func (o LookupFleetResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Labels for this Fleet.
+func (o LookupFleetResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFleetResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".

@@ -610,6 +610,8 @@ func (o CloudDataLineageIntegrationResponseOutput) Enabled() pulumi.BoolOutput {
 type DatabaseConfig struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType *string `pulumi:"machineType"`
+	// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+	Zone *string `pulumi:"zone"`
 }
 
 // DatabaseConfigInput is an input type that accepts DatabaseConfigArgs and DatabaseConfigOutput values.
@@ -627,6 +629,8 @@ type DatabaseConfigInput interface {
 type DatabaseConfigArgs struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (DatabaseConfigArgs) ElementType() reflect.Type {
@@ -730,6 +734,11 @@ func (o DatabaseConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+func (o DatabaseConfigOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
 type DatabaseConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseConfigPtrOutput) ElementType() reflect.Type {
@@ -770,10 +779,22 @@ func (o DatabaseConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+func (o DatabaseConfigPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software.
 type DatabaseConfigResponse struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType string `pulumi:"machineType"`
+	// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+	Zone string `pulumi:"zone"`
 }
 
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software.
@@ -800,6 +821,11 @@ func (o DatabaseConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 // Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o DatabaseConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+func (o DatabaseConfigResponseOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseConfigResponse) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 // The encryption options for the Cloud Composer environment and its dependencies. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1018,6 +1044,8 @@ type EnvironmentConfig struct {
 	PrivateEnvironmentConfig *PrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
 	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	RecoveryConfig *RecoveryConfig `pulumi:"recoveryConfig"`
+	// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+	ResilienceMode *EnvironmentConfigResilienceMode `pulumi:"resilienceMode"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig *SoftwareConfig `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1059,6 +1087,8 @@ type EnvironmentConfigArgs struct {
 	PrivateEnvironmentConfig PrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
 	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	RecoveryConfig RecoveryConfigPtrInput `pulumi:"recoveryConfig"`
+	// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+	ResilienceMode EnvironmentConfigResilienceModePtrInput `pulumi:"resilienceMode"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig SoftwareConfigPtrInput `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1210,6 +1240,11 @@ func (o EnvironmentConfigOutput) RecoveryConfig() RecoveryConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *RecoveryConfig { return v.RecoveryConfig }).(RecoveryConfigPtrOutput)
 }
 
+// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+func (o EnvironmentConfigOutput) ResilienceMode() EnvironmentConfigResilienceModePtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigResilienceMode { return v.ResilienceMode }).(EnvironmentConfigResilienceModePtrOutput)
+}
+
 // The configuration settings for software inside the environment.
 func (o EnvironmentConfigOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *SoftwareConfig { return v.SoftwareConfig }).(SoftwareConfigPtrOutput)
@@ -1350,6 +1385,16 @@ func (o EnvironmentConfigPtrOutput) RecoveryConfig() RecoveryConfigPtrOutput {
 	}).(RecoveryConfigPtrOutput)
 }
 
+// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+func (o EnvironmentConfigPtrOutput) ResilienceMode() EnvironmentConfigResilienceModePtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigResilienceMode {
+		if v == nil {
+			return nil
+		}
+		return v.ResilienceMode
+	}).(EnvironmentConfigResilienceModePtrOutput)
+}
+
 // The configuration settings for software inside the environment.
 func (o EnvironmentConfigPtrOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *SoftwareConfig {
@@ -1418,6 +1463,8 @@ type EnvironmentConfigResponse struct {
 	PrivateEnvironmentConfig PrivateEnvironmentConfigResponse `pulumi:"privateEnvironmentConfig"`
 	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	RecoveryConfig RecoveryConfigResponse `pulumi:"recoveryConfig"`
+	// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+	ResilienceMode string `pulumi:"resilienceMode"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig SoftwareConfigResponse `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1514,6 +1561,11 @@ func (o EnvironmentConfigResponseOutput) PrivateEnvironmentConfig() PrivateEnvir
 // Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigResponseOutput) RecoveryConfig() RecoveryConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) RecoveryConfigResponse { return v.RecoveryConfig }).(RecoveryConfigResponseOutput)
+}
+
+// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+func (o EnvironmentConfigResponseOutput) ResilienceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigResponse) string { return v.ResilienceMode }).(pulumi.StringOutput)
 }
 
 // The configuration settings for software inside the environment.
@@ -4679,6 +4731,202 @@ func (o SoftwareConfigResponseOutput) SchedulerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) int { return v.SchedulerCount }).(pulumi.IntOutput)
 }
 
+// The configuration for data storage in the environment.
+type StorageConfig struct {
+	// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+	Bucket *string `pulumi:"bucket"`
+}
+
+// StorageConfigInput is an input type that accepts StorageConfigArgs and StorageConfigOutput values.
+// You can construct a concrete instance of `StorageConfigInput` via:
+//
+//	StorageConfigArgs{...}
+type StorageConfigInput interface {
+	pulumi.Input
+
+	ToStorageConfigOutput() StorageConfigOutput
+	ToStorageConfigOutputWithContext(context.Context) StorageConfigOutput
+}
+
+// The configuration for data storage in the environment.
+type StorageConfigArgs struct {
+	// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+}
+
+func (StorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageConfig)(nil)).Elem()
+}
+
+func (i StorageConfigArgs) ToStorageConfigOutput() StorageConfigOutput {
+	return i.ToStorageConfigOutputWithContext(context.Background())
+}
+
+func (i StorageConfigArgs) ToStorageConfigOutputWithContext(ctx context.Context) StorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigOutput)
+}
+
+func (i StorageConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StorageConfig] {
+	return pulumix.Output[StorageConfig]{
+		OutputState: i.ToStorageConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i StorageConfigArgs) ToStorageConfigPtrOutput() StorageConfigPtrOutput {
+	return i.ToStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StorageConfigArgs) ToStorageConfigPtrOutputWithContext(ctx context.Context) StorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigOutput).ToStorageConfigPtrOutputWithContext(ctx)
+}
+
+// StorageConfigPtrInput is an input type that accepts StorageConfigArgs, StorageConfigPtr and StorageConfigPtrOutput values.
+// You can construct a concrete instance of `StorageConfigPtrInput` via:
+//
+//	        StorageConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToStorageConfigPtrOutput() StorageConfigPtrOutput
+	ToStorageConfigPtrOutputWithContext(context.Context) StorageConfigPtrOutput
+}
+
+type storageConfigPtrType StorageConfigArgs
+
+func StorageConfigPtr(v *StorageConfigArgs) StorageConfigPtrInput {
+	return (*storageConfigPtrType)(v)
+}
+
+func (*storageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageConfig)(nil)).Elem()
+}
+
+func (i *storageConfigPtrType) ToStorageConfigPtrOutput() StorageConfigPtrOutput {
+	return i.ToStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *storageConfigPtrType) ToStorageConfigPtrOutputWithContext(ctx context.Context) StorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigPtrOutput)
+}
+
+func (i *storageConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageConfig] {
+	return pulumix.Output[*StorageConfig]{
+		OutputState: i.ToStorageConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The configuration for data storage in the environment.
+type StorageConfigOutput struct{ *pulumi.OutputState }
+
+func (StorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageConfig)(nil)).Elem()
+}
+
+func (o StorageConfigOutput) ToStorageConfigOutput() StorageConfigOutput {
+	return o
+}
+
+func (o StorageConfigOutput) ToStorageConfigOutputWithContext(ctx context.Context) StorageConfigOutput {
+	return o
+}
+
+func (o StorageConfigOutput) ToStorageConfigPtrOutput() StorageConfigPtrOutput {
+	return o.ToStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StorageConfigOutput) ToStorageConfigPtrOutputWithContext(ctx context.Context) StorageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageConfig) *StorageConfig {
+		return &v
+	}).(StorageConfigPtrOutput)
+}
+
+func (o StorageConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StorageConfig] {
+	return pulumix.Output[StorageConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+func (o StorageConfigOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+type StorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageConfig)(nil)).Elem()
+}
+
+func (o StorageConfigPtrOutput) ToStorageConfigPtrOutput() StorageConfigPtrOutput {
+	return o
+}
+
+func (o StorageConfigPtrOutput) ToStorageConfigPtrOutputWithContext(ctx context.Context) StorageConfigPtrOutput {
+	return o
+}
+
+func (o StorageConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageConfig] {
+	return pulumix.Output[*StorageConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StorageConfigPtrOutput) Elem() StorageConfigOutput {
+	return o.ApplyT(func(v *StorageConfig) StorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StorageConfig
+		return ret
+	}).(StorageConfigOutput)
+}
+
+// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+func (o StorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration for data storage in the environment.
+type StorageConfigResponse struct {
+	// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+	Bucket string `pulumi:"bucket"`
+}
+
+// The configuration for data storage in the environment.
+type StorageConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageConfigResponse)(nil)).Elem()
+}
+
+func (o StorageConfigResponseOutput) ToStorageConfigResponseOutput() StorageConfigResponseOutput {
+	return o
+}
+
+func (o StorageConfigResponseOutput) ToStorageConfigResponseOutputWithContext(ctx context.Context) StorageConfigResponseOutput {
+	return o
+}
+
+func (o StorageConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageConfigResponse] {
+	return pulumix.Output[StorageConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+func (o StorageConfigResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageConfigResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
 // Configuration for resources used by Airflow triggerers.
 type TriggererResource struct {
 	// Optional. The number of triggerers.
@@ -6176,6 +6424,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourcePtrInput)(nil)).Elem(), SchedulerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigInput)(nil)).Elem(), SoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigPtrInput)(nil)).Elem(), SoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageConfigInput)(nil)).Elem(), StorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageConfigPtrInput)(nil)).Elem(), StorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggererResourceInput)(nil)).Elem(), TriggererResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggererResourcePtrInput)(nil)).Elem(), TriggererResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigInput)(nil)).Elem(), WebServerConfigArgs{})
@@ -6241,6 +6491,9 @@ func init() {
 	pulumi.RegisterOutputType(SoftwareConfigOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigResponseOutput{})
+	pulumi.RegisterOutputType(StorageConfigOutput{})
+	pulumi.RegisterOutputType(StorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(StorageConfigResponseOutput{})
 	pulumi.RegisterOutputType(TriggererResourceOutput{})
 	pulumi.RegisterOutputType(TriggererResourcePtrOutput{})
 	pulumi.RegisterOutputType(TriggererResourceResponseOutput{})

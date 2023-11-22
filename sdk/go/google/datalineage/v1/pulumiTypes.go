@@ -16,7 +16,7 @@ var _ = internal.GetEnvOrDefault
 
 // The soft reference to everything you can attach a lineage event to.
 type GoogleCloudDatacatalogLineageV1EntityReference struct {
-	// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
+	// [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
 	FullyQualifiedName string `pulumi:"fullyQualifiedName"`
 }
 
@@ -33,7 +33,7 @@ type GoogleCloudDatacatalogLineageV1EntityReferenceInput interface {
 
 // The soft reference to everything you can attach a lineage event to.
 type GoogleCloudDatacatalogLineageV1EntityReferenceArgs struct {
-	// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
+	// [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
 	FullyQualifiedName pulumi.StringInput `pulumi:"fullyQualifiedName"`
 }
 
@@ -76,14 +76,14 @@ func (o GoogleCloudDatacatalogLineageV1EntityReferenceOutput) ToOutput(ctx conte
 	}
 }
 
-// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
+// [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
 func (o GoogleCloudDatacatalogLineageV1EntityReferenceOutput) FullyQualifiedName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogLineageV1EntityReference) string { return v.FullyQualifiedName }).(pulumi.StringOutput)
 }
 
 // The soft reference to everything you can attach a lineage event to.
 type GoogleCloudDatacatalogLineageV1EntityReferenceResponse struct {
-	// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
+	// [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
 	FullyQualifiedName string `pulumi:"fullyQualifiedName"`
 }
 
@@ -108,7 +108,7 @@ func (o GoogleCloudDatacatalogLineageV1EntityReferenceResponseOutput) ToOutput(c
 	}
 }
 
-// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
+// [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
 func (o GoogleCloudDatacatalogLineageV1EntityReferenceResponseOutput) FullyQualifiedName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogLineageV1EntityReferenceResponse) string { return v.FullyQualifiedName }).(pulumi.StringOutput)
 }

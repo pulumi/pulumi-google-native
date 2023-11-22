@@ -24,8 +24,9 @@ func LookupDataset(ctx *pulumi.Context, args *LookupDatasetArgs, opts ...pulumi.
 }
 
 type LookupDatasetArgs struct {
-	DatasetId string  `pulumi:"datasetId"`
-	Project   *string `pulumi:"project"`
+	DatasetId   string  `pulumi:"datasetId"`
+	DatasetView *string `pulumi:"datasetView"`
+	Project     *string `pulumi:"project"`
 }
 
 type LookupDatasetResult struct {
@@ -48,6 +49,8 @@ type LookupDatasetResult struct {
 	Description string `pulumi:"description"`
 	// A hash of the resource.
 	Etag string `pulumi:"etag"`
+	// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+	ExternalDatasetReference ExternalDatasetReferenceResponse `pulumi:"externalDatasetReference"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName string `pulumi:"friendlyName"`
 	// [Optional] Indicates if table names are case insensitive in the dataset.
@@ -86,8 +89,9 @@ func LookupDatasetOutput(ctx *pulumi.Context, args LookupDatasetOutputArgs, opts
 }
 
 type LookupDatasetOutputArgs struct {
-	DatasetId pulumi.StringInput    `pulumi:"datasetId"`
-	Project   pulumi.StringPtrInput `pulumi:"project"`
+	DatasetId   pulumi.StringInput    `pulumi:"datasetId"`
+	DatasetView pulumi.StringPtrInput `pulumi:"datasetView"`
+	Project     pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (LookupDatasetOutputArgs) ElementType() reflect.Type {
@@ -161,6 +165,11 @@ func (o LookupDatasetResultOutput) Description() pulumi.StringOutput {
 // A hash of the resource.
 func (o LookupDatasetResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+func (o LookupDatasetResultOutput) ExternalDatasetReference() ExternalDatasetReferenceResponseOutput {
+	return o.ApplyT(func(v LookupDatasetResult) ExternalDatasetReferenceResponse { return v.ExternalDatasetReference }).(ExternalDatasetReferenceResponseOutput)
 }
 
 // [Optional] A descriptive name for the dataset.

@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AttestorIamMember{}
 	case "google-native:binaryauthorization/v1:AttestorIamPolicy":
 		r = &AttestorIamPolicy{}
+	case "google-native:binaryauthorization/v1:Policy":
+		r = &Policy{}
 	case "google-native:binaryauthorization/v1:PolicyIamBinding":
 		r = &PolicyIamBinding{}
 	case "google-native:binaryauthorization/v1:PolicyIamMember":

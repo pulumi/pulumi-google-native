@@ -18,6 +18,10 @@ import (
 type Version struct {
 	pulumi.CustomResourceState
 
+	// Optional. Cloud Logging details for the integration version
+	CloudLoggingDetails GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponseOutput `pulumi:"cloudLoggingDetails"`
+	// Optional. Optional. Indicates if sample workflow should be created.
+	CreateSampleIntegrations pulumi.BoolPtrOutput `pulumi:"createSampleIntegrations"`
 	// Auto-generated.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
@@ -123,6 +127,10 @@ func (VersionState) ElementType() reflect.Type {
 }
 
 type versionArgs struct {
+	// Optional. Cloud Logging details for the integration version
+	CloudLoggingDetails *GoogleCloudIntegrationsV1alphaCloudLoggingDetails `pulumi:"cloudLoggingDetails"`
+	// Optional. Optional. Indicates if sample workflow should be created.
+	CreateSampleIntegrations *bool `pulumi:"createSampleIntegrations"`
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 	DatabasePersistencePolicy *VersionDatabasePersistencePolicy `pulumi:"databasePersistencePolicy"`
 	// Optional. The integration description.
@@ -167,6 +175,10 @@ type versionArgs struct {
 
 // The set of arguments for constructing a Version resource.
 type VersionArgs struct {
+	// Optional. Cloud Logging details for the integration version
+	CloudLoggingDetails GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrInput
+	// Optional. Optional. Indicates if sample workflow should be created.
+	CreateSampleIntegrations pulumi.BoolPtrInput
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 	DatabasePersistencePolicy VersionDatabasePersistencePolicyPtrInput
 	// Optional. The integration description.
@@ -256,6 +268,18 @@ func (o VersionOutput) ToOutput(ctx context.Context) pulumix.Output[*Version] {
 	return pulumix.Output[*Version]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. Cloud Logging details for the integration version
+func (o VersionOutput) CloudLoggingDetails() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponseOutput {
+	return o.ApplyT(func(v *Version) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponseOutput {
+		return v.CloudLoggingDetails
+	}).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponseOutput)
+}
+
+// Optional. Optional. Indicates if sample workflow should be created.
+func (o VersionOutput) CreateSampleIntegrations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Version) pulumi.BoolPtrOutput { return v.CreateSampleIntegrations }).(pulumi.BoolPtrOutput)
 }
 
 // Auto-generated.

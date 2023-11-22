@@ -1346,6 +1346,384 @@ func (in *reportTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportTyp
 	}
 }
 
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+type SoleTenancyPreferencesCommitmentPlan string
+
+const (
+	// Unspecified commitment plan.
+	SoleTenancyPreferencesCommitmentPlanCommitmentPlanUnspecified = SoleTenancyPreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED")
+	// No commitment plan (on-demand usage).
+	SoleTenancyPreferencesCommitmentPlanOnDemand = SoleTenancyPreferencesCommitmentPlan("ON_DEMAND")
+	// 1 year commitment.
+	SoleTenancyPreferencesCommitmentPlanCommitment1Year = SoleTenancyPreferencesCommitmentPlan("COMMITMENT_1_YEAR")
+	// 3 years commitment.
+	SoleTenancyPreferencesCommitmentPlanCommitment3Year = SoleTenancyPreferencesCommitmentPlan("COMMITMENT_3_YEAR")
+)
+
+func (SoleTenancyPreferencesCommitmentPlan) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenancyPreferencesCommitmentPlan)(nil)).Elem()
+}
+
+func (e SoleTenancyPreferencesCommitmentPlan) ToSoleTenancyPreferencesCommitmentPlanOutput() SoleTenancyPreferencesCommitmentPlanOutput {
+	return pulumi.ToOutput(e).(SoleTenancyPreferencesCommitmentPlanOutput)
+}
+
+func (e SoleTenancyPreferencesCommitmentPlan) ToSoleTenancyPreferencesCommitmentPlanOutputWithContext(ctx context.Context) SoleTenancyPreferencesCommitmentPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SoleTenancyPreferencesCommitmentPlanOutput)
+}
+
+func (e SoleTenancyPreferencesCommitmentPlan) ToSoleTenancyPreferencesCommitmentPlanPtrOutput() SoleTenancyPreferencesCommitmentPlanPtrOutput {
+	return e.ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(context.Background())
+}
+
+func (e SoleTenancyPreferencesCommitmentPlan) ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesCommitmentPlanPtrOutput {
+	return SoleTenancyPreferencesCommitmentPlan(e).ToSoleTenancyPreferencesCommitmentPlanOutputWithContext(ctx).ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(ctx)
+}
+
+func (e SoleTenancyPreferencesCommitmentPlan) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SoleTenancyPreferencesCommitmentPlan) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SoleTenancyPreferencesCommitmentPlan) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SoleTenancyPreferencesCommitmentPlan) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SoleTenancyPreferencesCommitmentPlanOutput struct{ *pulumi.OutputState }
+
+func (SoleTenancyPreferencesCommitmentPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenancyPreferencesCommitmentPlan)(nil)).Elem()
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanOutput) ToSoleTenancyPreferencesCommitmentPlanOutput() SoleTenancyPreferencesCommitmentPlanOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanOutput) ToSoleTenancyPreferencesCommitmentPlanOutputWithContext(ctx context.Context) SoleTenancyPreferencesCommitmentPlanOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanOutput) ToSoleTenancyPreferencesCommitmentPlanPtrOutput() SoleTenancyPreferencesCommitmentPlanPtrOutput {
+	return o.ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(context.Background())
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanOutput) ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesCommitmentPlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoleTenancyPreferencesCommitmentPlan) *SoleTenancyPreferencesCommitmentPlan {
+		return &v
+	}).(SoleTenancyPreferencesCommitmentPlanPtrOutput)
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanOutput) ToOutput(ctx context.Context) pulumix.Output[SoleTenancyPreferencesCommitmentPlan] {
+	return pulumix.Output[SoleTenancyPreferencesCommitmentPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoleTenancyPreferencesCommitmentPlan) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoleTenancyPreferencesCommitmentPlan) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SoleTenancyPreferencesCommitmentPlanPtrOutput struct{ *pulumi.OutputState }
+
+func (SoleTenancyPreferencesCommitmentPlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoleTenancyPreferencesCommitmentPlan)(nil)).Elem()
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanPtrOutput) ToSoleTenancyPreferencesCommitmentPlanPtrOutput() SoleTenancyPreferencesCommitmentPlanPtrOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanPtrOutput) ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesCommitmentPlanPtrOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoleTenancyPreferencesCommitmentPlan] {
+	return pulumix.Output[*SoleTenancyPreferencesCommitmentPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanPtrOutput) Elem() SoleTenancyPreferencesCommitmentPlanOutput {
+	return o.ApplyT(func(v *SoleTenancyPreferencesCommitmentPlan) SoleTenancyPreferencesCommitmentPlan {
+		if v != nil {
+			return *v
+		}
+		var ret SoleTenancyPreferencesCommitmentPlan
+		return ret
+	}).(SoleTenancyPreferencesCommitmentPlanOutput)
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoleTenancyPreferencesCommitmentPlanPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SoleTenancyPreferencesCommitmentPlan) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SoleTenancyPreferencesCommitmentPlanInput is an input type that accepts SoleTenancyPreferencesCommitmentPlanArgs and SoleTenancyPreferencesCommitmentPlanOutput values.
+// You can construct a concrete instance of `SoleTenancyPreferencesCommitmentPlanInput` via:
+//
+//	SoleTenancyPreferencesCommitmentPlanArgs{...}
+type SoleTenancyPreferencesCommitmentPlanInput interface {
+	pulumi.Input
+
+	ToSoleTenancyPreferencesCommitmentPlanOutput() SoleTenancyPreferencesCommitmentPlanOutput
+	ToSoleTenancyPreferencesCommitmentPlanOutputWithContext(context.Context) SoleTenancyPreferencesCommitmentPlanOutput
+}
+
+var soleTenancyPreferencesCommitmentPlanPtrType = reflect.TypeOf((**SoleTenancyPreferencesCommitmentPlan)(nil)).Elem()
+
+type SoleTenancyPreferencesCommitmentPlanPtrInput interface {
+	pulumi.Input
+
+	ToSoleTenancyPreferencesCommitmentPlanPtrOutput() SoleTenancyPreferencesCommitmentPlanPtrOutput
+	ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(context.Context) SoleTenancyPreferencesCommitmentPlanPtrOutput
+}
+
+type soleTenancyPreferencesCommitmentPlanPtr string
+
+func SoleTenancyPreferencesCommitmentPlanPtr(v string) SoleTenancyPreferencesCommitmentPlanPtrInput {
+	return (*soleTenancyPreferencesCommitmentPlanPtr)(&v)
+}
+
+func (*soleTenancyPreferencesCommitmentPlanPtr) ElementType() reflect.Type {
+	return soleTenancyPreferencesCommitmentPlanPtrType
+}
+
+func (in *soleTenancyPreferencesCommitmentPlanPtr) ToSoleTenancyPreferencesCommitmentPlanPtrOutput() SoleTenancyPreferencesCommitmentPlanPtrOutput {
+	return pulumi.ToOutput(in).(SoleTenancyPreferencesCommitmentPlanPtrOutput)
+}
+
+func (in *soleTenancyPreferencesCommitmentPlanPtr) ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesCommitmentPlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SoleTenancyPreferencesCommitmentPlanPtrOutput)
+}
+
+func (in *soleTenancyPreferencesCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*SoleTenancyPreferencesCommitmentPlan] {
+	return pulumix.Output[*SoleTenancyPreferencesCommitmentPlan]{
+		OutputState: in.ToSoleTenancyPreferencesCommitmentPlanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Sole Tenancy nodes maintenance policy.
+type SoleTenancyPreferencesHostMaintenancePolicy string
+
+const (
+	// Unspecified host maintenance policy.
+	SoleTenancyPreferencesHostMaintenancePolicyHostMaintenancePolicyUnspecified = SoleTenancyPreferencesHostMaintenancePolicy("HOST_MAINTENANCE_POLICY_UNSPECIFIED")
+	// Default host maintenance policy.
+	SoleTenancyPreferencesHostMaintenancePolicyHostMaintenancePolicyDefault = SoleTenancyPreferencesHostMaintenancePolicy("HOST_MAINTENANCE_POLICY_DEFAULT")
+	// Restart in place host maintenance policy.
+	SoleTenancyPreferencesHostMaintenancePolicyHostMaintenancePolicyRestartInPlace = SoleTenancyPreferencesHostMaintenancePolicy("HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE")
+	// Migrate within node group host maintenance policy.
+	SoleTenancyPreferencesHostMaintenancePolicyHostMaintenancePolicyMigrateWithinNodeGroup = SoleTenancyPreferencesHostMaintenancePolicy("HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP")
+)
+
+func (SoleTenancyPreferencesHostMaintenancePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenancyPreferencesHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (e SoleTenancyPreferencesHostMaintenancePolicy) ToSoleTenancyPreferencesHostMaintenancePolicyOutput() SoleTenancyPreferencesHostMaintenancePolicyOutput {
+	return pulumi.ToOutput(e).(SoleTenancyPreferencesHostMaintenancePolicyOutput)
+}
+
+func (e SoleTenancyPreferencesHostMaintenancePolicy) ToSoleTenancyPreferencesHostMaintenancePolicyOutputWithContext(ctx context.Context) SoleTenancyPreferencesHostMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SoleTenancyPreferencesHostMaintenancePolicyOutput)
+}
+
+func (e SoleTenancyPreferencesHostMaintenancePolicy) ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutput() SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
+	return e.ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (e SoleTenancyPreferencesHostMaintenancePolicy) ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
+	return SoleTenancyPreferencesHostMaintenancePolicy(e).ToSoleTenancyPreferencesHostMaintenancePolicyOutputWithContext(ctx).ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+func (e SoleTenancyPreferencesHostMaintenancePolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SoleTenancyPreferencesHostMaintenancePolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SoleTenancyPreferencesHostMaintenancePolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SoleTenancyPreferencesHostMaintenancePolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SoleTenancyPreferencesHostMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (SoleTenancyPreferencesHostMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoleTenancyPreferencesHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToSoleTenancyPreferencesHostMaintenancePolicyOutput() SoleTenancyPreferencesHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToSoleTenancyPreferencesHostMaintenancePolicyOutputWithContext(ctx context.Context) SoleTenancyPreferencesHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutput() SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
+	return o.ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoleTenancyPreferencesHostMaintenancePolicy) *SoleTenancyPreferencesHostMaintenancePolicy {
+		return &v
+	}).(SoleTenancyPreferencesHostMaintenancePolicyPtrOutput)
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[SoleTenancyPreferencesHostMaintenancePolicy] {
+	return pulumix.Output[SoleTenancyPreferencesHostMaintenancePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoleTenancyPreferencesHostMaintenancePolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoleTenancyPreferencesHostMaintenancePolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SoleTenancyPreferencesHostMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoleTenancyPreferencesHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutput() SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SoleTenancyPreferencesHostMaintenancePolicy] {
+	return pulumix.Output[*SoleTenancyPreferencesHostMaintenancePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) Elem() SoleTenancyPreferencesHostMaintenancePolicyOutput {
+	return o.ApplyT(func(v *SoleTenancyPreferencesHostMaintenancePolicy) SoleTenancyPreferencesHostMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SoleTenancyPreferencesHostMaintenancePolicy
+		return ret
+	}).(SoleTenancyPreferencesHostMaintenancePolicyOutput)
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoleTenancyPreferencesHostMaintenancePolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SoleTenancyPreferencesHostMaintenancePolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SoleTenancyPreferencesHostMaintenancePolicyInput is an input type that accepts SoleTenancyPreferencesHostMaintenancePolicyArgs and SoleTenancyPreferencesHostMaintenancePolicyOutput values.
+// You can construct a concrete instance of `SoleTenancyPreferencesHostMaintenancePolicyInput` via:
+//
+//	SoleTenancyPreferencesHostMaintenancePolicyArgs{...}
+type SoleTenancyPreferencesHostMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToSoleTenancyPreferencesHostMaintenancePolicyOutput() SoleTenancyPreferencesHostMaintenancePolicyOutput
+	ToSoleTenancyPreferencesHostMaintenancePolicyOutputWithContext(context.Context) SoleTenancyPreferencesHostMaintenancePolicyOutput
+}
+
+var soleTenancyPreferencesHostMaintenancePolicyPtrType = reflect.TypeOf((**SoleTenancyPreferencesHostMaintenancePolicy)(nil)).Elem()
+
+type SoleTenancyPreferencesHostMaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutput() SoleTenancyPreferencesHostMaintenancePolicyPtrOutput
+	ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(context.Context) SoleTenancyPreferencesHostMaintenancePolicyPtrOutput
+}
+
+type soleTenancyPreferencesHostMaintenancePolicyPtr string
+
+func SoleTenancyPreferencesHostMaintenancePolicyPtr(v string) SoleTenancyPreferencesHostMaintenancePolicyPtrInput {
+	return (*soleTenancyPreferencesHostMaintenancePolicyPtr)(&v)
+}
+
+func (*soleTenancyPreferencesHostMaintenancePolicyPtr) ElementType() reflect.Type {
+	return soleTenancyPreferencesHostMaintenancePolicyPtrType
+}
+
+func (in *soleTenancyPreferencesHostMaintenancePolicyPtr) ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutput() SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
+	return pulumi.ToOutput(in).(SoleTenancyPreferencesHostMaintenancePolicyPtrOutput)
+}
+
+func (in *soleTenancyPreferencesHostMaintenancePolicyPtr) ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) SoleTenancyPreferencesHostMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SoleTenancyPreferencesHostMaintenancePolicyPtrOutput)
+}
+
+func (in *soleTenancyPreferencesHostMaintenancePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*SoleTenancyPreferencesHostMaintenancePolicy] {
+	return pulumix.Output[*SoleTenancyPreferencesHostMaintenancePolicy]{
+		OutputState: in.ToSoleTenancyPreferencesHostMaintenancePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Data source type.
 type SourceType string
 
@@ -1726,6 +2104,197 @@ func (in *virtualMachinePreferencesCommitmentPlanPtr) ToOutput(ctx context.Conte
 	}
 }
 
+// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
+type VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod string
+
+const (
+	// Unspecified aggregation method. Can be used for default value.
+	VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodAggregationMethodUnspecified = VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_UNSPECIFIED")
+	// Average of utilization data.
+	VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodAggregationMethodAverage = VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_AVERAGE")
+	// Median of utilization data.
+	VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodAggregationMethodMedian = VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_MEDIAN")
+	// 95th percentile of utilization data.
+	VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodAggregationMethodNinetyFifthPercentile = VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_NINETY_FIFTH_PERCENTILE")
+	// Peak of utilization data.
+	VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodAggregationMethodPeak = VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_PEAK")
+)
+
+func (VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod)(nil)).Elem()
+}
+
+func (e VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput {
+	return pulumi.ToOutput(e).(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput)
+}
+
+func (e VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput)
+}
+
+func (e VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput {
+	return e.ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutputWithContext(context.Background())
+}
+
+func (e VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput {
+	return VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod(e).ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutputWithContext(ctx).ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutputWithContext(ctx)
+}
+
+func (e VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod)(nil)).Elem()
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput {
+	return o.ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) *VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod {
+		return &v
+	}).(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput)
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod] {
+	return pulumix.Output[VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod)(nil)).Elem()
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod] {
+	return pulumix.Output[*VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput) Elem() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod
+		return ret
+	}).(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput)
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodInput is an input type that accepts VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodArgs and VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput values.
+// You can construct a concrete instance of `VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodInput` via:
+//
+//	VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodArgs{...}
+type VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput
+	ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutputWithContext(context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput
+}
+
+var virtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrType = reflect.TypeOf((**VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod)(nil)).Elem()
+
+type VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput
+	ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutputWithContext(context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput
+}
+
+type virtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtr string
+
+func VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtr(v string) VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrInput {
+	return (*virtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtr)(&v)
+}
+
+func (*virtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtr) ElementType() reflect.Type {
+	return virtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrType
+}
+
+func (in *virtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtr) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput() VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput {
+	return pulumi.ToOutput(in).(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput)
+}
+
+func (in *virtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtr) ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput)
+}
+
+func (in *virtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod] {
+	return pulumix.Output[*VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod]{
+		OutputState: in.ToVirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
 type VirtualMachinePreferencesSizingOptimizationStrategy string
 
@@ -1738,6 +2307,8 @@ const (
 	VirtualMachinePreferencesSizingOptimizationStrategySizingOptimizationStrategyModerate = VirtualMachinePreferencesSizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_MODERATE")
 	// Virtual machine sizing will match the reported usage, with little slack. Using this option can help reduce costs.
 	VirtualMachinePreferencesSizingOptimizationStrategySizingOptimizationStrategyAggressive = VirtualMachinePreferencesSizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE")
+	// Virtual machine sizing will be determined by custom parameters. While not supported in the v1 API, this value is converted to UNSPECIFIED in conversions to the v1 API.
+	VirtualMachinePreferencesSizingOptimizationStrategySizingOptimizationStrategyCustom = VirtualMachinePreferencesSizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_CUSTOM")
 )
 
 func (VirtualMachinePreferencesSizingOptimizationStrategy) ElementType() reflect.Type {
@@ -1915,6 +2486,388 @@ func (in *virtualMachinePreferencesSizingOptimizationStrategyPtr) ToOutput(ctx c
 	}
 }
 
+// Target product for assets using this preference set. Specify either target product or business goal, but not both.
+type VirtualMachinePreferencesTargetProduct string
+
+const (
+	// Unspecified (default value).
+	VirtualMachinePreferencesTargetProductComputeMigrationTargetProductUnspecified = VirtualMachinePreferencesTargetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED")
+	// Prefer to migrate to Google Cloud Compute Engine.
+	VirtualMachinePreferencesTargetProductComputeMigrationTargetProductComputeEngine = VirtualMachinePreferencesTargetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE")
+	// Prefer to migrate to Google Cloud VMware Engine.
+	VirtualMachinePreferencesTargetProductComputeMigrationTargetProductVmwareEngine = VirtualMachinePreferencesTargetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE")
+	// Prefer to migrate to Google Cloud Sole Tenant Nodes.
+	VirtualMachinePreferencesTargetProductComputeMigrationTargetProductSoleTenancy = VirtualMachinePreferencesTargetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY")
+)
+
+func (VirtualMachinePreferencesTargetProduct) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachinePreferencesTargetProduct)(nil)).Elem()
+}
+
+func (e VirtualMachinePreferencesTargetProduct) ToVirtualMachinePreferencesTargetProductOutput() VirtualMachinePreferencesTargetProductOutput {
+	return pulumi.ToOutput(e).(VirtualMachinePreferencesTargetProductOutput)
+}
+
+func (e VirtualMachinePreferencesTargetProduct) ToVirtualMachinePreferencesTargetProductOutputWithContext(ctx context.Context) VirtualMachinePreferencesTargetProductOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VirtualMachinePreferencesTargetProductOutput)
+}
+
+func (e VirtualMachinePreferencesTargetProduct) ToVirtualMachinePreferencesTargetProductPtrOutput() VirtualMachinePreferencesTargetProductPtrOutput {
+	return e.ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(context.Background())
+}
+
+func (e VirtualMachinePreferencesTargetProduct) ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesTargetProductPtrOutput {
+	return VirtualMachinePreferencesTargetProduct(e).ToVirtualMachinePreferencesTargetProductOutputWithContext(ctx).ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(ctx)
+}
+
+func (e VirtualMachinePreferencesTargetProduct) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VirtualMachinePreferencesTargetProduct) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VirtualMachinePreferencesTargetProduct) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VirtualMachinePreferencesTargetProduct) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VirtualMachinePreferencesTargetProductOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePreferencesTargetProductOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachinePreferencesTargetProduct)(nil)).Elem()
+}
+
+func (o VirtualMachinePreferencesTargetProductOutput) ToVirtualMachinePreferencesTargetProductOutput() VirtualMachinePreferencesTargetProductOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesTargetProductOutput) ToVirtualMachinePreferencesTargetProductOutputWithContext(ctx context.Context) VirtualMachinePreferencesTargetProductOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesTargetProductOutput) ToVirtualMachinePreferencesTargetProductPtrOutput() VirtualMachinePreferencesTargetProductPtrOutput {
+	return o.ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachinePreferencesTargetProductOutput) ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesTargetProductPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePreferencesTargetProduct) *VirtualMachinePreferencesTargetProduct {
+		return &v
+	}).(VirtualMachinePreferencesTargetProductPtrOutput)
+}
+
+func (o VirtualMachinePreferencesTargetProductOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachinePreferencesTargetProduct] {
+	return pulumix.Output[VirtualMachinePreferencesTargetProduct]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualMachinePreferencesTargetProductOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VirtualMachinePreferencesTargetProductOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VirtualMachinePreferencesTargetProduct) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VirtualMachinePreferencesTargetProductOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachinePreferencesTargetProductOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VirtualMachinePreferencesTargetProduct) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachinePreferencesTargetProductPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePreferencesTargetProductPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachinePreferencesTargetProduct)(nil)).Elem()
+}
+
+func (o VirtualMachinePreferencesTargetProductPtrOutput) ToVirtualMachinePreferencesTargetProductPtrOutput() VirtualMachinePreferencesTargetProductPtrOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesTargetProductPtrOutput) ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesTargetProductPtrOutput {
+	return o
+}
+
+func (o VirtualMachinePreferencesTargetProductPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesTargetProduct] {
+	return pulumix.Output[*VirtualMachinePreferencesTargetProduct]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VirtualMachinePreferencesTargetProductPtrOutput) Elem() VirtualMachinePreferencesTargetProductOutput {
+	return o.ApplyT(func(v *VirtualMachinePreferencesTargetProduct) VirtualMachinePreferencesTargetProduct {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachinePreferencesTargetProduct
+		return ret
+	}).(VirtualMachinePreferencesTargetProductOutput)
+}
+
+func (o VirtualMachinePreferencesTargetProductPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachinePreferencesTargetProductPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VirtualMachinePreferencesTargetProduct) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VirtualMachinePreferencesTargetProductInput is an input type that accepts VirtualMachinePreferencesTargetProductArgs and VirtualMachinePreferencesTargetProductOutput values.
+// You can construct a concrete instance of `VirtualMachinePreferencesTargetProductInput` via:
+//
+//	VirtualMachinePreferencesTargetProductArgs{...}
+type VirtualMachinePreferencesTargetProductInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePreferencesTargetProductOutput() VirtualMachinePreferencesTargetProductOutput
+	ToVirtualMachinePreferencesTargetProductOutputWithContext(context.Context) VirtualMachinePreferencesTargetProductOutput
+}
+
+var virtualMachinePreferencesTargetProductPtrType = reflect.TypeOf((**VirtualMachinePreferencesTargetProduct)(nil)).Elem()
+
+type VirtualMachinePreferencesTargetProductPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePreferencesTargetProductPtrOutput() VirtualMachinePreferencesTargetProductPtrOutput
+	ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(context.Context) VirtualMachinePreferencesTargetProductPtrOutput
+}
+
+type virtualMachinePreferencesTargetProductPtr string
+
+func VirtualMachinePreferencesTargetProductPtr(v string) VirtualMachinePreferencesTargetProductPtrInput {
+	return (*virtualMachinePreferencesTargetProductPtr)(&v)
+}
+
+func (*virtualMachinePreferencesTargetProductPtr) ElementType() reflect.Type {
+	return virtualMachinePreferencesTargetProductPtrType
+}
+
+func (in *virtualMachinePreferencesTargetProductPtr) ToVirtualMachinePreferencesTargetProductPtrOutput() VirtualMachinePreferencesTargetProductPtrOutput {
+	return pulumi.ToOutput(in).(VirtualMachinePreferencesTargetProductPtrOutput)
+}
+
+func (in *virtualMachinePreferencesTargetProductPtr) ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(ctx context.Context) VirtualMachinePreferencesTargetProductPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachinePreferencesTargetProductPtrOutput)
+}
+
+func (in *virtualMachinePreferencesTargetProductPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePreferencesTargetProduct] {
+	return pulumix.Output[*VirtualMachinePreferencesTargetProduct]{
+		OutputState: in.ToVirtualMachinePreferencesTargetProductPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+type VmwareEnginePreferencesCommitmentPlan string
+
+const (
+	// Unspecified commitment plan.
+	VmwareEnginePreferencesCommitmentPlanCommitmentPlanUnspecified = VmwareEnginePreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED")
+	// No commitment plan (on-demand usage).
+	VmwareEnginePreferencesCommitmentPlanOnDemand = VmwareEnginePreferencesCommitmentPlan("ON_DEMAND")
+	// 1 year commitment (monthly payments).
+	VmwareEnginePreferencesCommitmentPlanCommitment1YearMonthlyPayments = VmwareEnginePreferencesCommitmentPlan("COMMITMENT_1_YEAR_MONTHLY_PAYMENTS")
+	// 3 year commitment (monthly payments).
+	VmwareEnginePreferencesCommitmentPlanCommitment3YearMonthlyPayments = VmwareEnginePreferencesCommitmentPlan("COMMITMENT_3_YEAR_MONTHLY_PAYMENTS")
+	// 1 year commitment (upfront payment).
+	VmwareEnginePreferencesCommitmentPlanCommitment1YearUpfrontPayment = VmwareEnginePreferencesCommitmentPlan("COMMITMENT_1_YEAR_UPFRONT_PAYMENT")
+	// 3 years commitment (upfront payment).
+	VmwareEnginePreferencesCommitmentPlanCommitment3YearUpfrontPayment = VmwareEnginePreferencesCommitmentPlan("COMMITMENT_3_YEAR_UPFRONT_PAYMENT")
+)
+
+func (VmwareEnginePreferencesCommitmentPlan) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareEnginePreferencesCommitmentPlan)(nil)).Elem()
+}
+
+func (e VmwareEnginePreferencesCommitmentPlan) ToVmwareEnginePreferencesCommitmentPlanOutput() VmwareEnginePreferencesCommitmentPlanOutput {
+	return pulumi.ToOutput(e).(VmwareEnginePreferencesCommitmentPlanOutput)
+}
+
+func (e VmwareEnginePreferencesCommitmentPlan) ToVmwareEnginePreferencesCommitmentPlanOutputWithContext(ctx context.Context) VmwareEnginePreferencesCommitmentPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VmwareEnginePreferencesCommitmentPlanOutput)
+}
+
+func (e VmwareEnginePreferencesCommitmentPlan) ToVmwareEnginePreferencesCommitmentPlanPtrOutput() VmwareEnginePreferencesCommitmentPlanPtrOutput {
+	return e.ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(context.Background())
+}
+
+func (e VmwareEnginePreferencesCommitmentPlan) ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) VmwareEnginePreferencesCommitmentPlanPtrOutput {
+	return VmwareEnginePreferencesCommitmentPlan(e).ToVmwareEnginePreferencesCommitmentPlanOutputWithContext(ctx).ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(ctx)
+}
+
+func (e VmwareEnginePreferencesCommitmentPlan) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VmwareEnginePreferencesCommitmentPlan) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VmwareEnginePreferencesCommitmentPlan) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VmwareEnginePreferencesCommitmentPlan) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VmwareEnginePreferencesCommitmentPlanOutput struct{ *pulumi.OutputState }
+
+func (VmwareEnginePreferencesCommitmentPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareEnginePreferencesCommitmentPlan)(nil)).Elem()
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanOutput) ToVmwareEnginePreferencesCommitmentPlanOutput() VmwareEnginePreferencesCommitmentPlanOutput {
+	return o
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanOutput) ToVmwareEnginePreferencesCommitmentPlanOutputWithContext(ctx context.Context) VmwareEnginePreferencesCommitmentPlanOutput {
+	return o
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanOutput) ToVmwareEnginePreferencesCommitmentPlanPtrOutput() VmwareEnginePreferencesCommitmentPlanPtrOutput {
+	return o.ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanOutput) ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) VmwareEnginePreferencesCommitmentPlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareEnginePreferencesCommitmentPlan) *VmwareEnginePreferencesCommitmentPlan {
+		return &v
+	}).(VmwareEnginePreferencesCommitmentPlanPtrOutput)
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareEnginePreferencesCommitmentPlan] {
+	return pulumix.Output[VmwareEnginePreferencesCommitmentPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VmwareEnginePreferencesCommitmentPlan) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VmwareEnginePreferencesCommitmentPlan) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmwareEnginePreferencesCommitmentPlanPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareEnginePreferencesCommitmentPlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareEnginePreferencesCommitmentPlan)(nil)).Elem()
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanPtrOutput) ToVmwareEnginePreferencesCommitmentPlanPtrOutput() VmwareEnginePreferencesCommitmentPlanPtrOutput {
+	return o
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanPtrOutput) ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) VmwareEnginePreferencesCommitmentPlanPtrOutput {
+	return o
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareEnginePreferencesCommitmentPlan] {
+	return pulumix.Output[*VmwareEnginePreferencesCommitmentPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanPtrOutput) Elem() VmwareEnginePreferencesCommitmentPlanOutput {
+	return o.ApplyT(func(v *VmwareEnginePreferencesCommitmentPlan) VmwareEnginePreferencesCommitmentPlan {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareEnginePreferencesCommitmentPlan
+		return ret
+	}).(VmwareEnginePreferencesCommitmentPlanOutput)
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareEnginePreferencesCommitmentPlanPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VmwareEnginePreferencesCommitmentPlan) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VmwareEnginePreferencesCommitmentPlanInput is an input type that accepts VmwareEnginePreferencesCommitmentPlanArgs and VmwareEnginePreferencesCommitmentPlanOutput values.
+// You can construct a concrete instance of `VmwareEnginePreferencesCommitmentPlanInput` via:
+//
+//	VmwareEnginePreferencesCommitmentPlanArgs{...}
+type VmwareEnginePreferencesCommitmentPlanInput interface {
+	pulumi.Input
+
+	ToVmwareEnginePreferencesCommitmentPlanOutput() VmwareEnginePreferencesCommitmentPlanOutput
+	ToVmwareEnginePreferencesCommitmentPlanOutputWithContext(context.Context) VmwareEnginePreferencesCommitmentPlanOutput
+}
+
+var vmwareEnginePreferencesCommitmentPlanPtrType = reflect.TypeOf((**VmwareEnginePreferencesCommitmentPlan)(nil)).Elem()
+
+type VmwareEnginePreferencesCommitmentPlanPtrInput interface {
+	pulumi.Input
+
+	ToVmwareEnginePreferencesCommitmentPlanPtrOutput() VmwareEnginePreferencesCommitmentPlanPtrOutput
+	ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(context.Context) VmwareEnginePreferencesCommitmentPlanPtrOutput
+}
+
+type vmwareEnginePreferencesCommitmentPlanPtr string
+
+func VmwareEnginePreferencesCommitmentPlanPtr(v string) VmwareEnginePreferencesCommitmentPlanPtrInput {
+	return (*vmwareEnginePreferencesCommitmentPlanPtr)(&v)
+}
+
+func (*vmwareEnginePreferencesCommitmentPlanPtr) ElementType() reflect.Type {
+	return vmwareEnginePreferencesCommitmentPlanPtrType
+}
+
+func (in *vmwareEnginePreferencesCommitmentPlanPtr) ToVmwareEnginePreferencesCommitmentPlanPtrOutput() VmwareEnginePreferencesCommitmentPlanPtrOutput {
+	return pulumi.ToOutput(in).(VmwareEnginePreferencesCommitmentPlanPtrOutput)
+}
+
+func (in *vmwareEnginePreferencesCommitmentPlanPtr) ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(ctx context.Context) VmwareEnginePreferencesCommitmentPlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VmwareEnginePreferencesCommitmentPlanPtrOutput)
+}
+
+func (in *vmwareEnginePreferencesCommitmentPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*VmwareEnginePreferencesCommitmentPlan] {
+	return pulumix.Output[*VmwareEnginePreferencesCommitmentPlan]{
+		OutputState: in.ToVmwareEnginePreferencesCommitmentPlanPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEnginePreferencesLicenseTypeInput)(nil)).Elem(), ComputeEnginePreferencesLicenseType("LICENSE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEnginePreferencesLicenseTypePtrInput)(nil)).Elem(), ComputeEnginePreferencesLicenseType("LICENSE_TYPE_UNSPECIFIED"))
@@ -1930,12 +2883,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReportStateEnumPtrInput)(nil)).Elem(), ReportStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReportTypeInput)(nil)).Elem(), ReportType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReportTypePtrInput)(nil)).Elem(), ReportType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenancyPreferencesCommitmentPlanInput)(nil)).Elem(), SoleTenancyPreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenancyPreferencesCommitmentPlanPtrInput)(nil)).Elem(), SoleTenancyPreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenancyPreferencesHostMaintenancePolicyInput)(nil)).Elem(), SoleTenancyPreferencesHostMaintenancePolicy("HOST_MAINTENANCE_POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenancyPreferencesHostMaintenancePolicyPtrInput)(nil)).Elem(), SoleTenancyPreferencesHostMaintenancePolicy("HOST_MAINTENANCE_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceTypeInput)(nil)).Elem(), SourceType("SOURCE_TYPE_UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceTypePtrInput)(nil)).Elem(), SourceType("SOURCE_TYPE_UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesCommitmentPlanInput)(nil)).Elem(), VirtualMachinePreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesCommitmentPlanPtrInput)(nil)).Elem(), VirtualMachinePreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodInput)(nil)).Elem(), VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrInput)(nil)).Elem(), VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod("AGGREGATION_METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationStrategyInput)(nil)).Elem(), VirtualMachinePreferencesSizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesSizingOptimizationStrategyPtrInput)(nil)).Elem(), VirtualMachinePreferencesSizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesTargetProductInput)(nil)).Elem(), VirtualMachinePreferencesTargetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachinePreferencesTargetProductPtrInput)(nil)).Elem(), VirtualMachinePreferencesTargetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareEnginePreferencesCommitmentPlanInput)(nil)).Elem(), VmwareEnginePreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareEnginePreferencesCommitmentPlanPtrInput)(nil)).Elem(), VmwareEnginePreferencesCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ComputeEnginePreferencesLicenseTypeOutput{})
 	pulumi.RegisterOutputType(ComputeEnginePreferencesLicenseTypePtrOutput{})
 	pulumi.RegisterOutputType(ComputeEnginePreferencesPersistentDiskTypeOutput{})
@@ -1950,10 +2913,20 @@ func init() {
 	pulumi.RegisterOutputType(ReportStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(ReportTypeOutput{})
 	pulumi.RegisterOutputType(ReportTypePtrOutput{})
+	pulumi.RegisterOutputType(SoleTenancyPreferencesCommitmentPlanOutput{})
+	pulumi.RegisterOutputType(SoleTenancyPreferencesCommitmentPlanPtrOutput{})
+	pulumi.RegisterOutputType(SoleTenancyPreferencesHostMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(SoleTenancyPreferencesHostMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(SourceTypeOutput{})
 	pulumi.RegisterOutputType(SourceTypePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePreferencesCommitmentPlanOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePreferencesCommitmentPlanPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePreferencesSizingOptimizationStrategyOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePreferencesSizingOptimizationStrategyPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePreferencesTargetProductOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePreferencesTargetProductPtrOutput{})
+	pulumi.RegisterOutputType(VmwareEnginePreferencesCommitmentPlanOutput{})
+	pulumi.RegisterOutputType(VmwareEnginePreferencesCommitmentPlanPtrOutput{})
 }

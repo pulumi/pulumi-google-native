@@ -1492,6 +1492,7 @@ func (in *policyAlternativeNameServerConfigTargetNameServerForwardingPathPtr) To
 	}
 }
 
+// The protocol of the load balancer to health check.
 type RRSetRoutingPolicyLoadBalancerTargetIpProtocol string
 
 const (
@@ -1675,12 +1676,14 @@ func (in *rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtr) ToOutput(ctx contex
 	}
 }
 
-// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer.
 type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType string
 
 const (
 	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeNone          = RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("none")
+	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeGlobalL7ilb   = RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("globalL7ilb")
 	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeRegionalL4ilb = RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("regionalL4ilb")
+	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeRegionalL7ilb = RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("regionalL7ilb")
 )
 
 func (RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) ElementType() reflect.Type {

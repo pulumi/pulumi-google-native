@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Gets details of a single Tenant.
+// Gets details of a single ProxyConfig.
 func LookupProxyConfig(ctx *pulumi.Context, args *LookupProxyConfigArgs, opts ...pulumi.InvokeOption) (*LookupProxyConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProxyConfigResult
@@ -24,18 +24,18 @@ func LookupProxyConfig(ctx *pulumi.Context, args *LookupProxyConfigArgs, opts ..
 }
 
 type LookupProxyConfigArgs struct {
-	OrganizationId string `pulumi:"organizationId"`
-	ProxyConfigId  string `pulumi:"proxyConfigId"`
-	TenantId       string `pulumi:"tenantId"`
+	OrganizationId  string `pulumi:"organizationId"`
+	PartnerTenantId string `pulumi:"partnerTenantId"`
+	ProxyConfigId   string `pulumi:"proxyConfigId"`
 }
 
 type LookupProxyConfigResult struct {
-	// Optional. Information to facilitate Authentication against the proxy server.
-	AuthenticationInfo GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse `pulumi:"authenticationInfo"`
 	// Timestamp when the resource was created.
 	CreateTime string `pulumi:"createTime"`
 	// Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
 	DisplayName string `pulumi:"displayName"`
+	// Optional. Information to encrypt JWT for the proxy server.
+	EncryptionInfo GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse `pulumi:"encryptionInfo"`
 	// ProxyConfig resource name.
 	Name string `pulumi:"name"`
 	// The URI of the proxy server.
@@ -62,9 +62,9 @@ func LookupProxyConfigOutput(ctx *pulumi.Context, args LookupProxyConfigOutputAr
 }
 
 type LookupProxyConfigOutputArgs struct {
-	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
-	ProxyConfigId  pulumi.StringInput `pulumi:"proxyConfigId"`
-	TenantId       pulumi.StringInput `pulumi:"tenantId"`
+	OrganizationId  pulumi.StringInput `pulumi:"organizationId"`
+	PartnerTenantId pulumi.StringInput `pulumi:"partnerTenantId"`
+	ProxyConfigId   pulumi.StringInput `pulumi:"proxyConfigId"`
 }
 
 func (LookupProxyConfigOutputArgs) ElementType() reflect.Type {
@@ -91,13 +91,6 @@ func (o LookupProxyConfigResultOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// Optional. Information to facilitate Authentication against the proxy server.
-func (o LookupProxyConfigResultOutput) AuthenticationInfo() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput {
-	return o.ApplyT(func(v LookupProxyConfigResult) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse {
-		return v.AuthenticationInfo
-	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput)
-}
-
 // Timestamp when the resource was created.
 func (o LookupProxyConfigResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProxyConfigResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -106,6 +99,13 @@ func (o LookupProxyConfigResultOutput) CreateTime() pulumi.StringOutput {
 // Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
 func (o LookupProxyConfigResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProxyConfigResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Information to encrypt JWT for the proxy server.
+func (o LookupProxyConfigResultOutput) EncryptionInfo() GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput {
+	return o.ApplyT(func(v LookupProxyConfigResult) GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse {
+		return v.EncryptionInfo
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponseOutput)
 }
 
 // ProxyConfig resource name.

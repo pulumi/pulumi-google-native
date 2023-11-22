@@ -44,6 +44,8 @@ type LookupFunctionResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
 	Name string `pulumi:"name"`
+	// Reserved for future use.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
 	ServiceConfig ServiceConfigResponse `pulumi:"serviceConfig"`
 	// State of the function.
@@ -52,6 +54,8 @@ type LookupFunctionResult struct {
 	StateMessages []GoogleCloudFunctionsV2alphaStateMessageResponse `pulumi:"stateMessages"`
 	// The last update timestamp of a Cloud Function.
 	UpdateTime string `pulumi:"updateTime"`
+	// The deployed url for the function.
+	Url string `pulumi:"url"`
 }
 
 func LookupFunctionOutput(ctx *pulumi.Context, args LookupFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupFunctionResultOutput {
@@ -132,6 +136,11 @@ func (o LookupFunctionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Reserved for future use.
+func (o LookupFunctionResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupFunctionResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
 // Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
 func (o LookupFunctionResultOutput) ServiceConfig() ServiceConfigResponseOutput {
 	return o.ApplyT(func(v LookupFunctionResult) ServiceConfigResponse { return v.ServiceConfig }).(ServiceConfigResponseOutput)
@@ -150,6 +159,11 @@ func (o LookupFunctionResultOutput) StateMessages() GoogleCloudFunctionsV2alphaS
 // The last update timestamp of a Cloud Function.
 func (o LookupFunctionResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The deployed url for the function.
+func (o LookupFunctionResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
 func init() {

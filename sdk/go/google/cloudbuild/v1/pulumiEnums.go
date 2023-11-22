@@ -17,7 +17,7 @@ type BuildOptionsDefaultLogsBucketBehavior string
 const (
 	// Unspecified.
 	BuildOptionsDefaultLogsBucketBehaviorDefaultLogsBucketBehaviorUnspecified = BuildOptionsDefaultLogsBucketBehavior("DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED")
-	// Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to GCS buckets in the build project.
+	// Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to Cloud Storage buckets in the build project.
 	BuildOptionsDefaultLogsBucketBehaviorRegionalUserOwnedBucket = BuildOptionsDefaultLogsBucketBehavior("REGIONAL_USER_OWNED_BUCKET")
 )
 
@@ -196,15 +196,15 @@ func (in *buildOptionsDefaultLogsBucketBehaviorPtr) ToOutput(ctx context.Context
 	}
 }
 
-// Option to define build log streaming behavior to Google Cloud Storage.
+// Option to define build log streaming behavior to Cloud Storage.
 type BuildOptionsLogStreamingOption string
 
 const (
 	// Service may automatically determine build log streaming behavior.
 	BuildOptionsLogStreamingOptionStreamDefault = BuildOptionsLogStreamingOption("STREAM_DEFAULT")
-	// Build logs should be streamed to Google Cloud Storage.
+	// Build logs should be streamed to Cloud Storage.
 	BuildOptionsLogStreamingOptionStreamOn = BuildOptionsLogStreamingOption("STREAM_ON")
-	// Build logs should not be streamed to Google Cloud Storage; they will be written when the build is completed.
+	// Build logs should not be streamed to Cloud Storage; they will be written when the build is completed.
 	BuildOptionsLogStreamingOptionStreamOff = BuildOptionsLogStreamingOption("STREAM_OFF")
 )
 
@@ -590,6 +590,8 @@ const (
 	BuildOptionsMachineTypeE2Highcpu8 = BuildOptionsMachineType("E2_HIGHCPU_8")
 	// Highcpu e2 machine with 32 CPUs.
 	BuildOptionsMachineTypeE2Highcpu32 = BuildOptionsMachineType("E2_HIGHCPU_32")
+	// E2 machine with 1 CPU.
+	BuildOptionsMachineTypeE2Medium = BuildOptionsMachineType("E2_MEDIUM")
 )
 
 func (BuildOptionsMachineType) ElementType() reflect.Type {
@@ -2329,6 +2331,193 @@ func (in *pullRequestFilterCommentControlPtr) ToOutput(ctx context.Context) pulu
 	}
 }
 
+// Optional. Option to specify the tool to fetch the source file for the build.
+type StorageSourceSourceFetcher string
+
+const (
+	// Unspecified defaults to GSUTIL.
+	StorageSourceSourceFetcherSourceFetcherUnspecified = StorageSourceSourceFetcher("SOURCE_FETCHER_UNSPECIFIED")
+	// Use the "gsutil" tool to download the source file.
+	StorageSourceSourceFetcherGsutil = StorageSourceSourceFetcher("GSUTIL")
+	// Use the Cloud Storage Fetcher tool to download the source file.
+	StorageSourceSourceFetcherGcsFetcher = StorageSourceSourceFetcher("GCS_FETCHER")
+)
+
+func (StorageSourceSourceFetcher) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSourceSourceFetcher)(nil)).Elem()
+}
+
+func (e StorageSourceSourceFetcher) ToStorageSourceSourceFetcherOutput() StorageSourceSourceFetcherOutput {
+	return pulumi.ToOutput(e).(StorageSourceSourceFetcherOutput)
+}
+
+func (e StorageSourceSourceFetcher) ToStorageSourceSourceFetcherOutputWithContext(ctx context.Context) StorageSourceSourceFetcherOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StorageSourceSourceFetcherOutput)
+}
+
+func (e StorageSourceSourceFetcher) ToStorageSourceSourceFetcherPtrOutput() StorageSourceSourceFetcherPtrOutput {
+	return e.ToStorageSourceSourceFetcherPtrOutputWithContext(context.Background())
+}
+
+func (e StorageSourceSourceFetcher) ToStorageSourceSourceFetcherPtrOutputWithContext(ctx context.Context) StorageSourceSourceFetcherPtrOutput {
+	return StorageSourceSourceFetcher(e).ToStorageSourceSourceFetcherOutputWithContext(ctx).ToStorageSourceSourceFetcherPtrOutputWithContext(ctx)
+}
+
+func (e StorageSourceSourceFetcher) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageSourceSourceFetcher) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageSourceSourceFetcher) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StorageSourceSourceFetcher) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StorageSourceSourceFetcherOutput struct{ *pulumi.OutputState }
+
+func (StorageSourceSourceFetcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSourceSourceFetcher)(nil)).Elem()
+}
+
+func (o StorageSourceSourceFetcherOutput) ToStorageSourceSourceFetcherOutput() StorageSourceSourceFetcherOutput {
+	return o
+}
+
+func (o StorageSourceSourceFetcherOutput) ToStorageSourceSourceFetcherOutputWithContext(ctx context.Context) StorageSourceSourceFetcherOutput {
+	return o
+}
+
+func (o StorageSourceSourceFetcherOutput) ToStorageSourceSourceFetcherPtrOutput() StorageSourceSourceFetcherPtrOutput {
+	return o.ToStorageSourceSourceFetcherPtrOutputWithContext(context.Background())
+}
+
+func (o StorageSourceSourceFetcherOutput) ToStorageSourceSourceFetcherPtrOutputWithContext(ctx context.Context) StorageSourceSourceFetcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSourceSourceFetcher) *StorageSourceSourceFetcher {
+		return &v
+	}).(StorageSourceSourceFetcherPtrOutput)
+}
+
+func (o StorageSourceSourceFetcherOutput) ToOutput(ctx context.Context) pulumix.Output[StorageSourceSourceFetcher] {
+	return pulumix.Output[StorageSourceSourceFetcher]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StorageSourceSourceFetcherOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StorageSourceSourceFetcherOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageSourceSourceFetcher) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StorageSourceSourceFetcherOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageSourceSourceFetcherOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageSourceSourceFetcher) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageSourceSourceFetcherPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageSourceSourceFetcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageSourceSourceFetcher)(nil)).Elem()
+}
+
+func (o StorageSourceSourceFetcherPtrOutput) ToStorageSourceSourceFetcherPtrOutput() StorageSourceSourceFetcherPtrOutput {
+	return o
+}
+
+func (o StorageSourceSourceFetcherPtrOutput) ToStorageSourceSourceFetcherPtrOutputWithContext(ctx context.Context) StorageSourceSourceFetcherPtrOutput {
+	return o
+}
+
+func (o StorageSourceSourceFetcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageSourceSourceFetcher] {
+	return pulumix.Output[*StorageSourceSourceFetcher]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StorageSourceSourceFetcherPtrOutput) Elem() StorageSourceSourceFetcherOutput {
+	return o.ApplyT(func(v *StorageSourceSourceFetcher) StorageSourceSourceFetcher {
+		if v != nil {
+			return *v
+		}
+		var ret StorageSourceSourceFetcher
+		return ret
+	}).(StorageSourceSourceFetcherOutput)
+}
+
+func (o StorageSourceSourceFetcherPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageSourceSourceFetcherPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StorageSourceSourceFetcher) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StorageSourceSourceFetcherInput is an input type that accepts StorageSourceSourceFetcherArgs and StorageSourceSourceFetcherOutput values.
+// You can construct a concrete instance of `StorageSourceSourceFetcherInput` via:
+//
+//	StorageSourceSourceFetcherArgs{...}
+type StorageSourceSourceFetcherInput interface {
+	pulumi.Input
+
+	ToStorageSourceSourceFetcherOutput() StorageSourceSourceFetcherOutput
+	ToStorageSourceSourceFetcherOutputWithContext(context.Context) StorageSourceSourceFetcherOutput
+}
+
+var storageSourceSourceFetcherPtrType = reflect.TypeOf((**StorageSourceSourceFetcher)(nil)).Elem()
+
+type StorageSourceSourceFetcherPtrInput interface {
+	pulumi.Input
+
+	ToStorageSourceSourceFetcherPtrOutput() StorageSourceSourceFetcherPtrOutput
+	ToStorageSourceSourceFetcherPtrOutputWithContext(context.Context) StorageSourceSourceFetcherPtrOutput
+}
+
+type storageSourceSourceFetcherPtr string
+
+func StorageSourceSourceFetcherPtr(v string) StorageSourceSourceFetcherPtrInput {
+	return (*storageSourceSourceFetcherPtr)(&v)
+}
+
+func (*storageSourceSourceFetcherPtr) ElementType() reflect.Type {
+	return storageSourceSourceFetcherPtrType
+}
+
+func (in *storageSourceSourceFetcherPtr) ToStorageSourceSourceFetcherPtrOutput() StorageSourceSourceFetcherPtrOutput {
+	return pulumi.ToOutput(in).(StorageSourceSourceFetcherPtrOutput)
+}
+
+func (in *storageSourceSourceFetcherPtr) ToStorageSourceSourceFetcherPtrOutputWithContext(ctx context.Context) StorageSourceSourceFetcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StorageSourceSourceFetcherPtrOutput)
+}
+
+func (in *storageSourceSourceFetcherPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageSourceSourceFetcher] {
+	return pulumix.Output[*StorageSourceSourceFetcher]{
+		OutputState: in.ToStorageSourceSourceFetcherPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
 type TriggerEventType string
 
@@ -2918,6 +3107,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigStatePtrInput)(nil)).Elem(), PubsubConfigState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PullRequestFilterCommentControlInput)(nil)).Elem(), PullRequestFilterCommentControl("COMMENTS_DISABLED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PullRequestFilterCommentControlPtrInput)(nil)).Elem(), PullRequestFilterCommentControl("COMMENTS_DISABLED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceSourceFetcherInput)(nil)).Elem(), StorageSourceSourceFetcher("SOURCE_FETCHER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceSourceFetcherPtrInput)(nil)).Elem(), StorageSourceSourceFetcher("SOURCE_FETCHER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerEventTypeInput)(nil)).Elem(), TriggerEventType("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerEventTypePtrInput)(nil)).Elem(), TriggerEventType("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerIncludeBuildLogsInput)(nil)).Elem(), TriggerIncludeBuildLogs("INCLUDE_BUILD_LOGS_UNSPECIFIED"))
@@ -2949,6 +3140,8 @@ func init() {
 	pulumi.RegisterOutputType(PubsubConfigStatePtrOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterCommentControlOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterCommentControlPtrOutput{})
+	pulumi.RegisterOutputType(StorageSourceSourceFetcherOutput{})
+	pulumi.RegisterOutputType(StorageSourceSourceFetcherPtrOutput{})
 	pulumi.RegisterOutputType(TriggerEventTypeOutput{})
 	pulumi.RegisterOutputType(TriggerEventTypePtrOutput{})
 	pulumi.RegisterOutputType(TriggerIncludeBuildLogsOutput{})

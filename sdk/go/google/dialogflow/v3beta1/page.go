@@ -17,7 +17,9 @@ import (
 type Page struct {
 	pulumi.CustomResourceState
 
-	AgentId pulumi.StringOutput `pulumi:"agentId"`
+	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponseOutput `pulumi:"advancedSettings"`
+	AgentId          pulumi.StringOutput                                          `pulumi:"agentId"`
 	// The human-readable name of the page, unique within the flow.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
@@ -27,13 +29,15 @@ type Page struct {
 	FlowId        pulumi.StringOutput                                           `pulumi:"flowId"`
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	Form GoogleCloudDialogflowCxV3beta1FormResponseOutput `pulumi:"form"`
+	// Optional. Knowledge connector configuration.
+	KnowledgeConnectorSettings GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponseOutput `pulumi:"knowledgeConnectorSettings"`
 	// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
 	Location     pulumi.StringOutput    `pulumi:"location"`
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+	// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 	TransitionRouteGroups pulumi.StringArrayOutput `pulumi:"transitionRouteGroups"`
 	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
 	TransitionRoutes GoogleCloudDialogflowCxV3beta1TransitionRouteResponseArrayOutput `pulumi:"transitionRoutes"`
@@ -95,7 +99,9 @@ func (PageState) ElementType() reflect.Type {
 }
 
 type pageArgs struct {
-	AgentId string `pulumi:"agentId"`
+	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings *GoogleCloudDialogflowCxV3beta1AdvancedSettings `pulumi:"advancedSettings"`
+	AgentId          string                                          `pulumi:"agentId"`
 	// The human-readable name of the page, unique within the flow.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
@@ -105,13 +111,15 @@ type pageArgs struct {
 	FlowId        string                                       `pulumi:"flowId"`
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	Form *GoogleCloudDialogflowCxV3beta1Form `pulumi:"form"`
+	// Optional. Knowledge connector configuration.
+	KnowledgeConnectorSettings *GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings `pulumi:"knowledgeConnectorSettings"`
 	// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     *string `pulumi:"location"`
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+	// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
 	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
 	TransitionRoutes []GoogleCloudDialogflowCxV3beta1TransitionRoute `pulumi:"transitionRoutes"`
@@ -119,7 +127,9 @@ type pageArgs struct {
 
 // The set of arguments for constructing a Page resource.
 type PageArgs struct {
-	AgentId pulumi.StringInput
+	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings GoogleCloudDialogflowCxV3beta1AdvancedSettingsPtrInput
+	AgentId          pulumi.StringInput
 	// The human-readable name of the page, unique within the flow.
 	DisplayName pulumi.StringInput
 	// The fulfillment to call when the session is entering the page.
@@ -129,13 +139,15 @@ type PageArgs struct {
 	FlowId        pulumi.StringInput
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	Form GoogleCloudDialogflowCxV3beta1FormPtrInput
+	// Optional. Knowledge connector configuration.
+	KnowledgeConnectorSettings GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsPtrInput
 	// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringPtrInput
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+	// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 	TransitionRouteGroups pulumi.StringArrayInput
 	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
 	TransitionRoutes GoogleCloudDialogflowCxV3beta1TransitionRouteArrayInput
@@ -190,6 +202,11 @@ func (o PageOutput) ToOutput(ctx context.Context) pulumix.Output[*Page] {
 	}
 }
 
+// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+func (o PageOutput) AdvancedSettings() GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponseOutput {
+	return o.ApplyT(func(v *Page) GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponseOutput { return v.AdvancedSettings }).(GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponseOutput)
+}
+
 func (o PageOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
 }
@@ -218,6 +235,13 @@ func (o PageOutput) Form() GoogleCloudDialogflowCxV3beta1FormResponseOutput {
 	return o.ApplyT(func(v *Page) GoogleCloudDialogflowCxV3beta1FormResponseOutput { return v.Form }).(GoogleCloudDialogflowCxV3beta1FormResponseOutput)
 }
 
+// Optional. Knowledge connector configuration.
+func (o PageOutput) KnowledgeConnectorSettings() GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponseOutput {
+	return o.ApplyT(func(v *Page) GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponseOutput {
+		return v.KnowledgeConnectorSettings
+	}).(GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponseOutput)
+}
+
 // The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 func (o PageOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
@@ -236,7 +260,7 @@ func (o PageOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 func (o PageOutput) TransitionRouteGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringArrayOutput { return v.TransitionRouteGroups }).(pulumi.StringArrayOutput)
 }

@@ -33,12 +33,16 @@ type LookupHubResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// An optional description of the hub.
 	Description string `pulumi:"description"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 	Name string `pulumi:"name"`
+	// The route tables that belong to this hub. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is read-only. Network Connectivity Center automatically populates it based on the route tables nested under the hub.
+	RouteTables []string `pulumi:"routeTables"`
 	// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 	RoutingVpcs []RoutingVPCResponse `pulumi:"routingVpcs"`
+	// A summary of the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
+	SpokeSummary SpokeSummaryResponse `pulumi:"spokeSummary"`
 	// The current lifecycle state of this hub.
 	State string `pulumi:"state"`
 	// The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
@@ -99,7 +103,7 @@ func (o LookupHubResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 func (o LookupHubResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupHubResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -109,9 +113,19 @@ func (o LookupHubResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The route tables that belong to this hub. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is read-only. Network Connectivity Center automatically populates it based on the route tables nested under the hub.
+func (o LookupHubResultOutput) RouteTables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupHubResult) []string { return v.RouteTables }).(pulumi.StringArrayOutput)
+}
+
 // The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 func (o LookupHubResultOutput) RoutingVpcs() RoutingVPCResponseArrayOutput {
 	return o.ApplyT(func(v LookupHubResult) []RoutingVPCResponse { return v.RoutingVpcs }).(RoutingVPCResponseArrayOutput)
+}
+
+// A summary of the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
+func (o LookupHubResultOutput) SpokeSummary() SpokeSummaryResponseOutput {
+	return o.ApplyT(func(v LookupHubResult) SpokeSummaryResponse { return v.SpokeSummary }).(SpokeSummaryResponseOutput)
 }
 
 // The current lifecycle state of this hub.

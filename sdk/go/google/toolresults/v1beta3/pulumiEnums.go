@@ -2165,6 +2165,8 @@ const (
 	TestIssueTypeLogcatCollectionError = TestIssueType("logcatCollectionError")
 	// Robo detected a splash screen provided by app (vs. Android OS splash screen).
 	TestIssueTypeDetectedAppSplashScreen = TestIssueType("detectedAppSplashScreen")
+	// There was an issue with the assets in this test.
+	TestIssueTypeAssetIssue = TestIssueType("assetIssue")
 )
 
 func (TestIssueType) ElementType() reflect.Type {

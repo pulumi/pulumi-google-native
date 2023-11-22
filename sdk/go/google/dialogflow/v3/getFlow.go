@@ -32,17 +32,21 @@ type LookupFlowArgs struct {
 }
 
 type LookupFlowResult struct {
+	// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings GoogleCloudDialogflowCxV3AdvancedSettingsResponse `pulumi:"advancedSettings"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description string `pulumi:"description"`
 	// The human-readable name of the flow.
 	DisplayName string `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers []GoogleCloudDialogflowCxV3EventHandlerResponse `pulumi:"eventHandlers"`
+	// Optional. Knowledge connector configuration.
+	KnowledgeConnectorSettings GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse `pulumi:"knowledgeConnectorSettings"`
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
 	Name string `pulumi:"name"`
 	// NLU related settings of the flow.
 	NluSettings GoogleCloudDialogflowCxV3NluSettingsResponse `pulumi:"nluSettings"`
-	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
 	// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
 	TransitionRoutes []GoogleCloudDialogflowCxV3TransitionRouteResponse `pulumi:"transitionRoutes"`
@@ -93,6 +97,11 @@ func (o LookupFlowResultOutput) ToOutput(ctx context.Context) pulumix.Output[Loo
 	}
 }
 
+// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+func (o LookupFlowResultOutput) AdvancedSettings() GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput {
+	return o.ApplyT(func(v LookupFlowResult) GoogleCloudDialogflowCxV3AdvancedSettingsResponse { return v.AdvancedSettings }).(GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput)
+}
+
 // The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 func (o LookupFlowResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlowResult) string { return v.Description }).(pulumi.StringOutput)
@@ -108,6 +117,13 @@ func (o LookupFlowResultOutput) EventHandlers() GoogleCloudDialogflowCxV3EventHa
 	return o.ApplyT(func(v LookupFlowResult) []GoogleCloudDialogflowCxV3EventHandlerResponse { return v.EventHandlers }).(GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput)
 }
 
+// Optional. Knowledge connector configuration.
+func (o LookupFlowResultOutput) KnowledgeConnectorSettings() GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponseOutput {
+	return o.ApplyT(func(v LookupFlowResult) GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse {
+		return v.KnowledgeConnectorSettings
+	}).(GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponseOutput)
+}
+
 // The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
 func (o LookupFlowResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlowResult) string { return v.Name }).(pulumi.StringOutput)
@@ -118,7 +134,7 @@ func (o LookupFlowResultOutput) NluSettings() GoogleCloudDialogflowCxV3NluSettin
 	return o.ApplyT(func(v LookupFlowResult) GoogleCloudDialogflowCxV3NluSettingsResponse { return v.NluSettings }).(GoogleCloudDialogflowCxV3NluSettingsResponseOutput)
 }
 
-// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 func (o LookupFlowResultOutput) TransitionRouteGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFlowResult) []string { return v.TransitionRouteGroups }).(pulumi.StringArrayOutput)
 }

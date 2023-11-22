@@ -20,7 +20,9 @@ type FhirStore struct {
 
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	ComplexDataTypeReferenceParsing pulumi.StringOutput `pulumi:"complexDataTypeReferenceParsing"`
-	DatasetId                       pulumi.StringOutput `pulumi:"datasetId"`
+	// Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+	ConsentConfig ConsentConfigResponseOutput `pulumi:"consentConfig"`
+	DatasetId     pulumi.StringOutput         `pulumi:"datasetId"`
 	// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
 	DefaultSearchHandlingStrict pulumi.BoolOutput `pulumi:"defaultSearchHandlingStrict"`
 	// Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
@@ -104,7 +106,9 @@ func (FhirStoreState) ElementType() reflect.Type {
 type fhirStoreArgs struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	ComplexDataTypeReferenceParsing *FhirStoreComplexDataTypeReferenceParsing `pulumi:"complexDataTypeReferenceParsing"`
-	DatasetId                       string                                    `pulumi:"datasetId"`
+	// Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+	ConsentConfig *ConsentConfig `pulumi:"consentConfig"`
+	DatasetId     string         `pulumi:"datasetId"`
 	// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
 	DefaultSearchHandlingStrict *bool `pulumi:"defaultSearchHandlingStrict"`
 	// Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
@@ -139,7 +143,9 @@ type fhirStoreArgs struct {
 type FhirStoreArgs struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	ComplexDataTypeReferenceParsing FhirStoreComplexDataTypeReferenceParsingPtrInput
-	DatasetId                       pulumi.StringInput
+	// Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+	ConsentConfig ConsentConfigPtrInput
+	DatasetId     pulumi.StringInput
 	// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
 	DefaultSearchHandlingStrict pulumi.BoolPtrInput
 	// Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
@@ -222,6 +228,11 @@ func (o FhirStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStore
 // Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 func (o FhirStoreOutput) ComplexDataTypeReferenceParsing() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.ComplexDataTypeReferenceParsing }).(pulumi.StringOutput)
+}
+
+// Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
+func (o FhirStoreOutput) ConsentConfig() ConsentConfigResponseOutput {
+	return o.ApplyT(func(v *FhirStore) ConsentConfigResponseOutput { return v.ConsentConfig }).(ConsentConfigResponseOutput)
 }
 
 func (o FhirStoreOutput) DatasetId() pulumi.StringOutput {

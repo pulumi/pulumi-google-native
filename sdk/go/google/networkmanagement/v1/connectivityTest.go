@@ -29,8 +29,10 @@ type ConnectivityTest struct {
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+	ProbingDetails ProbingDetailsResponseOutput `pulumi:"probingDetails"`
+	Project        pulumi.StringOutput          `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
@@ -219,6 +221,11 @@ func (o ConnectivityTestOutput) Labels() pulumi.StringMapOutput {
 // Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
 func (o ConnectivityTestOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+func (o ConnectivityTestOutput) ProbingDetails() ProbingDetailsResponseOutput {
+	return o.ApplyT(func(v *ConnectivityTest) ProbingDetailsResponseOutput { return v.ProbingDetails }).(ProbingDetailsResponseOutput)
 }
 
 func (o ConnectivityTestOutput) Project() pulumi.StringOutput {

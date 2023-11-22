@@ -3438,7 +3438,7 @@ func (o DriverSchedulingConfigResponseOutput) Vcores() pulumi.IntOutput {
 type EncryptionConfig struct {
 	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
 	GcePdKmsKeyName *string `pulumi:"gcePdKmsKeyName"`
-	// Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all instances in the cluster.
+	// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
 	KmsKey *string `pulumi:"kmsKey"`
 }
 
@@ -3457,7 +3457,7 @@ type EncryptionConfigInput interface {
 type EncryptionConfigArgs struct {
 	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
 	GcePdKmsKeyName pulumi.StringPtrInput `pulumi:"gcePdKmsKeyName"`
-	// Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all instances in the cluster.
+	// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 }
 
@@ -3562,7 +3562,7 @@ func (o EncryptionConfigOutput) GcePdKmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfig) *string { return v.GcePdKmsKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all instances in the cluster.
+// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
 func (o EncryptionConfigOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -3607,7 +3607,7 @@ func (o EncryptionConfigPtrOutput) GcePdKmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all instances in the cluster.
+// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
 func (o EncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EncryptionConfig) *string {
 		if v == nil {
@@ -3621,7 +3621,7 @@ func (o EncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
 type EncryptionConfigResponse struct {
 	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
 	GcePdKmsKeyName string `pulumi:"gcePdKmsKeyName"`
-	// Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all instances in the cluster.
+	// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
 	KmsKey string `pulumi:"kmsKey"`
 }
 
@@ -3651,7 +3651,7 @@ func (o EncryptionConfigResponseOutput) GcePdKmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.GcePdKmsKeyName }).(pulumi.StringOutput)
 }
 
-// Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all instances in the cluster.
+// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
 func (o EncryptionConfigResponseOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKey }).(pulumi.StringOutput)
 }
@@ -4083,7 +4083,7 @@ func (o EnvironmentConfigResponseOutput) PeripheralsConfig() PeripheralsConfigRe
 
 // Execution configuration for a workload.
 type ExecutionConfig struct {
-	// Optional. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceed, whichever occurs first.
+	// Optional. Applies to sessions only. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 1 hour if not set. If both ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 	IdleTtl *string `pulumi:"idleTtl"`
 	// Optional. The Cloud KMS key to use for encryption.
 	KmsKey *string `pulumi:"kmsKey"`
@@ -4097,7 +4097,7 @@ type ExecutionConfig struct {
 	StagingBucket *string `pulumi:"stagingBucket"`
 	// Optional. Subnetwork URI to connect workload to.
 	SubnetworkUri *string `pulumi:"subnetworkUri"`
-	// Optional. The duration after which the workload will be terminated. When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or runs forever without exiting). If ttl is not specified for an interactive session, it defaults to 24h. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
+	// Optional. The duration after which the workload will be terminated, specified as the JSON representation for Duration (https://protobuf.dev/programming-guides/proto3/#json). When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or run forever without exiting). If ttl is not specified for an interactive session, it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours. Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 	Ttl *string `pulumi:"ttl"`
 }
 
@@ -4114,7 +4114,7 @@ type ExecutionConfigInput interface {
 
 // Execution configuration for a workload.
 type ExecutionConfigArgs struct {
-	// Optional. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceed, whichever occurs first.
+	// Optional. Applies to sessions only. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 1 hour if not set. If both ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 	IdleTtl pulumi.StringPtrInput `pulumi:"idleTtl"`
 	// Optional. The Cloud KMS key to use for encryption.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
@@ -4128,7 +4128,7 @@ type ExecutionConfigArgs struct {
 	StagingBucket pulumi.StringPtrInput `pulumi:"stagingBucket"`
 	// Optional. Subnetwork URI to connect workload to.
 	SubnetworkUri pulumi.StringPtrInput `pulumi:"subnetworkUri"`
-	// Optional. The duration after which the workload will be terminated. When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or runs forever without exiting). If ttl is not specified for an interactive session, it defaults to 24h. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
+	// Optional. The duration after which the workload will be terminated, specified as the JSON representation for Duration (https://protobuf.dev/programming-guides/proto3/#json). When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or run forever without exiting). If ttl is not specified for an interactive session, it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours. Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 	Ttl pulumi.StringPtrInput `pulumi:"ttl"`
 }
 
@@ -4228,7 +4228,7 @@ func (o ExecutionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Exec
 	}
 }
 
-// Optional. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceed, whichever occurs first.
+// Optional. Applies to sessions only. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 1 hour if not set. If both ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 func (o ExecutionConfigOutput) IdleTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionConfig) *string { return v.IdleTtl }).(pulumi.StringPtrOutput)
 }
@@ -4263,7 +4263,7 @@ func (o ExecutionConfigOutput) SubnetworkUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionConfig) *string { return v.SubnetworkUri }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The duration after which the workload will be terminated. When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or runs forever without exiting). If ttl is not specified for an interactive session, it defaults to 24h. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
+// Optional. The duration after which the workload will be terminated, specified as the JSON representation for Duration (https://protobuf.dev/programming-guides/proto3/#json). When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or run forever without exiting). If ttl is not specified for an interactive session, it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours. Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 func (o ExecutionConfigOutput) Ttl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionConfig) *string { return v.Ttl }).(pulumi.StringPtrOutput)
 }
@@ -4298,7 +4298,7 @@ func (o ExecutionConfigPtrOutput) Elem() ExecutionConfigOutput {
 	}).(ExecutionConfigOutput)
 }
 
-// Optional. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceed, whichever occurs first.
+// Optional. Applies to sessions only. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 1 hour if not set. If both ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 func (o ExecutionConfigPtrOutput) IdleTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionConfig) *string {
 		if v == nil {
@@ -4368,7 +4368,7 @@ func (o ExecutionConfigPtrOutput) SubnetworkUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The duration after which the workload will be terminated. When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or runs forever without exiting). If ttl is not specified for an interactive session, it defaults to 24h. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
+// Optional. The duration after which the workload will be terminated, specified as the JSON representation for Duration (https://protobuf.dev/programming-guides/proto3/#json). When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or run forever without exiting). If ttl is not specified for an interactive session, it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours. Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 func (o ExecutionConfigPtrOutput) Ttl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionConfig) *string {
 		if v == nil {
@@ -4380,7 +4380,7 @@ func (o ExecutionConfigPtrOutput) Ttl() pulumi.StringPtrOutput {
 
 // Execution configuration for a workload.
 type ExecutionConfigResponse struct {
-	// Optional. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceed, whichever occurs first.
+	// Optional. Applies to sessions only. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 1 hour if not set. If both ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 	IdleTtl string `pulumi:"idleTtl"`
 	// Optional. The Cloud KMS key to use for encryption.
 	KmsKey string `pulumi:"kmsKey"`
@@ -4394,7 +4394,7 @@ type ExecutionConfigResponse struct {
 	StagingBucket string `pulumi:"stagingBucket"`
 	// Optional. Subnetwork URI to connect workload to.
 	SubnetworkUri string `pulumi:"subnetworkUri"`
-	// Optional. The duration after which the workload will be terminated. When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or runs forever without exiting). If ttl is not specified for an interactive session, it defaults to 24h. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
+	// Optional. The duration after which the workload will be terminated, specified as the JSON representation for Duration (https://protobuf.dev/programming-guides/proto3/#json). When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or run forever without exiting). If ttl is not specified for an interactive session, it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours. Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 	Ttl string `pulumi:"ttl"`
 }
 
@@ -4419,7 +4419,7 @@ func (o ExecutionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// Optional. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceed, whichever occurs first.
+// Optional. Applies to sessions only. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 1 hour if not set. If both ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 func (o ExecutionConfigResponseOutput) IdleTtl() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.IdleTtl }).(pulumi.StringOutput)
 }
@@ -4454,7 +4454,7 @@ func (o ExecutionConfigResponseOutput) SubnetworkUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.SubnetworkUri }).(pulumi.StringOutput)
 }
 
-// Optional. The duration after which the workload will be terminated. When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or runs forever without exiting). If ttl is not specified for an interactive session, it defaults to 24h. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
+// Optional. The duration after which the workload will be terminated, specified as the JSON representation for Duration (https://protobuf.dev/programming-guides/proto3/#json). When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it exits naturally (or run forever without exiting). If ttl is not specified for an interactive session, it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours. Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idle_ttl are specified (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
 func (o ExecutionConfigResponseOutput) Ttl() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.Ttl }).(pulumi.StringOutput)
 }
@@ -4733,13 +4733,365 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// A Dataproc job for running Apache Flink applications on YARN.
+type FlinkJob struct {
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig *LoggingConfig `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jarFileUris.
+	MainClass *string `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri *string `pulumi:"mainJarFileUri"`
+	// Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.conf and classes in user code.
+	Properties map[string]string `pulumi:"properties"`
+	// Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job.
+	SavepointUri *string `pulumi:"savepointUri"`
+}
+
+// FlinkJobInput is an input type that accepts FlinkJobArgs and FlinkJobOutput values.
+// You can construct a concrete instance of `FlinkJobInput` via:
+//
+//	FlinkJobArgs{...}
+type FlinkJobInput interface {
+	pulumi.Input
+
+	ToFlinkJobOutput() FlinkJobOutput
+	ToFlinkJobOutputWithContext(context.Context) FlinkJobOutput
+}
+
+// A Dataproc job for running Apache Flink applications on YARN.
+type FlinkJobArgs struct {
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and tasks.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigPtrInput `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jarFileUris.
+	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri pulumi.StringPtrInput `pulumi:"mainJarFileUri"`
+	// Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.conf and classes in user code.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job.
+	SavepointUri pulumi.StringPtrInput `pulumi:"savepointUri"`
+}
+
+func (FlinkJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkJob)(nil)).Elem()
+}
+
+func (i FlinkJobArgs) ToFlinkJobOutput() FlinkJobOutput {
+	return i.ToFlinkJobOutputWithContext(context.Background())
+}
+
+func (i FlinkJobArgs) ToFlinkJobOutputWithContext(ctx context.Context) FlinkJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkJobOutput)
+}
+
+func (i FlinkJobArgs) ToOutput(ctx context.Context) pulumix.Output[FlinkJob] {
+	return pulumix.Output[FlinkJob]{
+		OutputState: i.ToFlinkJobOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i FlinkJobArgs) ToFlinkJobPtrOutput() FlinkJobPtrOutput {
+	return i.ToFlinkJobPtrOutputWithContext(context.Background())
+}
+
+func (i FlinkJobArgs) ToFlinkJobPtrOutputWithContext(ctx context.Context) FlinkJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkJobOutput).ToFlinkJobPtrOutputWithContext(ctx)
+}
+
+// FlinkJobPtrInput is an input type that accepts FlinkJobArgs, FlinkJobPtr and FlinkJobPtrOutput values.
+// You can construct a concrete instance of `FlinkJobPtrInput` via:
+//
+//	        FlinkJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type FlinkJobPtrInput interface {
+	pulumi.Input
+
+	ToFlinkJobPtrOutput() FlinkJobPtrOutput
+	ToFlinkJobPtrOutputWithContext(context.Context) FlinkJobPtrOutput
+}
+
+type flinkJobPtrType FlinkJobArgs
+
+func FlinkJobPtr(v *FlinkJobArgs) FlinkJobPtrInput {
+	return (*flinkJobPtrType)(v)
+}
+
+func (*flinkJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlinkJob)(nil)).Elem()
+}
+
+func (i *flinkJobPtrType) ToFlinkJobPtrOutput() FlinkJobPtrOutput {
+	return i.ToFlinkJobPtrOutputWithContext(context.Background())
+}
+
+func (i *flinkJobPtrType) ToFlinkJobPtrOutputWithContext(ctx context.Context) FlinkJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkJobPtrOutput)
+}
+
+func (i *flinkJobPtrType) ToOutput(ctx context.Context) pulumix.Output[*FlinkJob] {
+	return pulumix.Output[*FlinkJob]{
+		OutputState: i.ToFlinkJobPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// A Dataproc job for running Apache Flink applications on YARN.
+type FlinkJobOutput struct{ *pulumi.OutputState }
+
+func (FlinkJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkJob)(nil)).Elem()
+}
+
+func (o FlinkJobOutput) ToFlinkJobOutput() FlinkJobOutput {
+	return o
+}
+
+func (o FlinkJobOutput) ToFlinkJobOutputWithContext(ctx context.Context) FlinkJobOutput {
+	return o
+}
+
+func (o FlinkJobOutput) ToFlinkJobPtrOutput() FlinkJobPtrOutput {
+	return o.ToFlinkJobPtrOutputWithContext(context.Background())
+}
+
+func (o FlinkJobOutput) ToFlinkJobPtrOutputWithContext(ctx context.Context) FlinkJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlinkJob) *FlinkJob {
+		return &v
+	}).(FlinkJobPtrOutput)
+}
+
+func (o FlinkJobOutput) ToOutput(ctx context.Context) pulumix.Output[FlinkJob] {
+	return pulumix.Output[FlinkJob]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
+func (o FlinkJobOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlinkJob) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and tasks.
+func (o FlinkJobOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlinkJob) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o FlinkJobOutput) LoggingConfig() LoggingConfigPtrOutput {
+	return o.ApplyT(func(v FlinkJob) *LoggingConfig { return v.LoggingConfig }).(LoggingConfigPtrOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jarFileUris.
+func (o FlinkJobOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJob) *string { return v.MainClass }).(pulumi.StringPtrOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o FlinkJobOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJob) *string { return v.MainJarFileUri }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.conf and classes in user code.
+func (o FlinkJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FlinkJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job.
+func (o FlinkJobOutput) SavepointUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJob) *string { return v.SavepointUri }).(pulumi.StringPtrOutput)
+}
+
+type FlinkJobPtrOutput struct{ *pulumi.OutputState }
+
+func (FlinkJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlinkJob)(nil)).Elem()
+}
+
+func (o FlinkJobPtrOutput) ToFlinkJobPtrOutput() FlinkJobPtrOutput {
+	return o
+}
+
+func (o FlinkJobPtrOutput) ToFlinkJobPtrOutputWithContext(ctx context.Context) FlinkJobPtrOutput {
+	return o
+}
+
+func (o FlinkJobPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FlinkJob] {
+	return pulumix.Output[*FlinkJob]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o FlinkJobPtrOutput) Elem() FlinkJobOutput {
+	return o.ApplyT(func(v *FlinkJob) FlinkJob {
+		if v != nil {
+			return *v
+		}
+		var ret FlinkJob
+		return ret
+	}).(FlinkJobOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
+func (o FlinkJobPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlinkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and tasks.
+func (o FlinkJobPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlinkJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o FlinkJobPtrOutput) LoggingConfig() LoggingConfigPtrOutput {
+	return o.ApplyT(func(v *FlinkJob) *LoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(LoggingConfigPtrOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jarFileUris.
+func (o FlinkJobPtrOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o FlinkJobPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainJarFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.conf and classes in user code.
+func (o FlinkJobPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FlinkJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job.
+func (o FlinkJobPtrOutput) SavepointUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SavepointUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A Dataproc job for running Apache Flink applications on YARN.
+type FlinkJobResponse struct {
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jarFileUris.
+	MainClass string `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri string `pulumi:"mainJarFileUri"`
+	// Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.conf and classes in user code.
+	Properties map[string]string `pulumi:"properties"`
+	// Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job.
+	SavepointUri string `pulumi:"savepointUri"`
+}
+
+// A Dataproc job for running Apache Flink applications on YARN.
+type FlinkJobResponseOutput struct{ *pulumi.OutputState }
+
+func (FlinkJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkJobResponse)(nil)).Elem()
+}
+
+func (o FlinkJobResponseOutput) ToFlinkJobResponseOutput() FlinkJobResponseOutput {
+	return o
+}
+
+func (o FlinkJobResponseOutput) ToFlinkJobResponseOutputWithContext(ctx context.Context) FlinkJobResponseOutput {
+	return o
+}
+
+func (o FlinkJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FlinkJobResponse] {
+	return pulumix.Output[FlinkJobResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
+func (o FlinkJobResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlinkJobResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and tasks.
+func (o FlinkJobResponseOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlinkJobResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o FlinkJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v FlinkJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jarFileUris.
+func (o FlinkJobResponseOutput) MainClass() pulumi.StringOutput {
+	return o.ApplyT(func(v FlinkJobResponse) string { return v.MainClass }).(pulumi.StringOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o FlinkJobResponseOutput) MainJarFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v FlinkJobResponse) string { return v.MainJarFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.conf and classes in user code.
+func (o FlinkJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FlinkJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job.
+func (o FlinkJobResponseOutput) SavepointUri() pulumi.StringOutput {
+	return o.ApplyT(func(v FlinkJobResponse) string { return v.SavepointUri }).(pulumi.StringOutput)
+}
+
 // Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
 type GceClusterConfig struct {
 	// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
 	ConfidentialInstanceConfig *ConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly *bool `pulumi:"internalIpOnly"`
-	// The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+	// Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata map[string]string `pulumi:"metadata"`
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default projects/[project_id]/global/networks/default default
 	NetworkUri *string `pulumi:"networkUri"`
@@ -4780,7 +5132,7 @@ type GceClusterConfigArgs struct {
 	ConfidentialInstanceConfig ConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
 	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly pulumi.BoolPtrInput `pulumi:"internalIpOnly"`
-	// The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+	// Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default projects/[project_id]/global/networks/default default
 	NetworkUri pulumi.StringPtrInput `pulumi:"networkUri"`
@@ -4910,7 +5262,7 @@ func (o GceClusterConfigOutput) InternalIpOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GceClusterConfig) *bool { return v.InternalIpOnly }).(pulumi.BoolPtrOutput)
 }
 
-// The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+// Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 func (o GceClusterConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GceClusterConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -5015,7 +5367,7 @@ func (o GceClusterConfigPtrOutput) InternalIpOnly() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+// Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 func (o GceClusterConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GceClusterConfig) map[string]string {
 		if v == nil {
@@ -5131,7 +5483,7 @@ type GceClusterConfigResponse struct {
 	ConfidentialInstanceConfig ConfidentialInstanceConfigResponse `pulumi:"confidentialInstanceConfig"`
 	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly bool `pulumi:"internalIpOnly"`
-	// The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+	// Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata map[string]string `pulumi:"metadata"`
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default projects/[project_id]/global/networks/default default
 	NetworkUri string `pulumi:"networkUri"`
@@ -5188,7 +5540,7 @@ func (o GceClusterConfigResponseOutput) InternalIpOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GceClusterConfigResponse) bool { return v.InternalIpOnly }).(pulumi.BoolOutput)
 }
 
-// The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+// Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 func (o GceClusterConfigResponseOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GceClusterConfigResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -6755,11 +7107,207 @@ func (o GkeNodePoolTargetResponseArrayOutput) Index(i pulumi.IntInput) GkeNodePo
 	}).(GkeNodePoolTargetResponseOutput)
 }
 
+// Encryption settings for the encrypting customer core content. NEXT ID: 2
+type GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig struct {
+	// Optional. The Cloud KMS key name to use for encrypting customer core content.
+	KmsKey *string `pulumi:"kmsKey"`
+}
+
+// GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigInput is an input type that accepts GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs and GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigInput` via:
+//
+//	GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs{...}
+type GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput
+	ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutputWithContext(context.Context) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput
+}
+
+// Encryption settings for the encrypting customer core content. NEXT ID: 2
+type GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs struct {
+	// Optional. The Cloud KMS key name to use for encrypting customer core content.
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+}
+
+func (GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput {
+	return i.ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutputWithContext(ctx context.Context) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput)
+}
+
+func (i GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig] {
+	return pulumix.Output[GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig]{
+		OutputState: i.ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput {
+	return i.ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput).ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrInput is an input type that accepts GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs, GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtr and GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrInput` via:
+//
+//	        GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput
+	ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutputWithContext(context.Context) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput
+}
+
+type googleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrType GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs
+
+func GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtr(v *GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrInput {
+	return (*googleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrType)(v)
+}
+
+func (*googleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrType) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput {
+	return i.ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrType) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput)
+}
+
+func (i *googleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig] {
+	return pulumix.Output[*GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig]{
+		OutputState: i.ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Encryption settings for the encrypting customer core content. NEXT ID: 2
+type GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutputWithContext(ctx context.Context) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput {
+	return o.ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig) *GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig {
+		return &v
+	}).(GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput)
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig] {
+	return pulumix.Output[GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The Cloud KMS key name to use for encrypting customer core content.
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig] {
+	return pulumix.Output[*GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput) Elem() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig
+		return ret
+	}).(GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput)
+}
+
+// Optional. The Cloud KMS key name to use for encrypting customer core content.
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption settings for the encrypting customer core content. NEXT ID: 2
+type GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse struct {
+	// Optional. The Cloud KMS key name to use for encrypting customer core content.
+	KmsKey string `pulumi:"kmsKey"`
+}
+
+// Encryption settings for the encrypting customer core content. NEXT ID: 2
+type GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput) ToGoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse] {
+	return pulumix.Output[GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The Cloud KMS key name to use for encrypting customer core content.
+func (o GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
 // A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
 type HadoopJob struct {
 	// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
-	// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
 	Args []string `pulumi:"args"`
 	// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
 	FileUris []string `pulumi:"fileUris"`
@@ -6771,7 +7319,7 @@ type HadoopJob struct {
 	MainClass *string `pulumi:"mainClass"`
 	// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
 	MainJarFileUri *string `pulumi:"mainJarFileUri"`
-	// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+	// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -6790,7 +7338,7 @@ type HadoopJobInput interface {
 type HadoopJobArgs struct {
 	// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
 	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
-	// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
 	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
@@ -6802,7 +7350,7 @@ type HadoopJobArgs struct {
 	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
 	// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
 	MainJarFileUri pulumi.StringPtrInput `pulumi:"mainJarFileUri"`
-	// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+	// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
 
@@ -6907,7 +7455,7 @@ func (o HadoopJobOutput) ArchiveUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HadoopJob) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
 }
 
-// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
 func (o HadoopJobOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HadoopJob) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
@@ -6937,7 +7485,7 @@ func (o HadoopJobOutput) MainJarFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HadoopJob) *string { return v.MainJarFileUri }).(pulumi.StringPtrOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
 func (o HadoopJobOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HadoopJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -6982,7 +7530,7 @@ func (o HadoopJobPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
 func (o HadoopJobPtrOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HadoopJob) []string {
 		if v == nil {
@@ -7042,7 +7590,7 @@ func (o HadoopJobPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
 func (o HadoopJobPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HadoopJob) map[string]string {
 		if v == nil {
@@ -7056,7 +7604,7 @@ func (o HadoopJobPtrOutput) Properties() pulumi.StringMapOutput {
 type HadoopJobResponse struct {
 	// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
-	// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
 	Args []string `pulumi:"args"`
 	// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
 	FileUris []string `pulumi:"fileUris"`
@@ -7068,7 +7616,7 @@ type HadoopJobResponse struct {
 	MainClass string `pulumi:"mainClass"`
 	// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
 	MainJarFileUri string `pulumi:"mainJarFileUri"`
-	// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+	// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -7098,7 +7646,7 @@ func (o HadoopJobResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HadoopJobResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
 }
 
-// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission.
 func (o HadoopJobResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HadoopJobResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
@@ -7128,7 +7676,7 @@ func (o HadoopJobResponseOutput) MainJarFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v HadoopJobResponse) string { return v.MainJarFileUri }).(pulumi.StringOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
 func (o HadoopJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HadoopJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -7139,7 +7687,7 @@ type HiveJob struct {
 	ContinueOnFailure *bool `pulumi:"continueOnFailure"`
 	// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
 	JarFileUris []string `pulumi:"jarFileUris"`
-	// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+	// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 	// The HCFS URI of the script that contains Hive queries.
 	QueryFileUri *string `pulumi:"queryFileUri"`
@@ -7166,7 +7714,7 @@ type HiveJobArgs struct {
 	ContinueOnFailure pulumi.BoolPtrInput `pulumi:"continueOnFailure"`
 	// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
 	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
-	// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+	// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// The HCFS URI of the script that contains Hive queries.
 	QueryFileUri pulumi.StringPtrInput `pulumi:"queryFileUri"`
@@ -7282,7 +7830,7 @@ func (o HiveJobOutput) JarFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HiveJob) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
 }
 
-// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
 func (o HiveJobOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -7352,7 +7900,7 @@ func (o HiveJobPtrOutput) JarFileUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
 func (o HiveJobPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HiveJob) map[string]string {
 		if v == nil {
@@ -7398,7 +7946,7 @@ type HiveJobResponse struct {
 	ContinueOnFailure bool `pulumi:"continueOnFailure"`
 	// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
 	JarFileUris []string `pulumi:"jarFileUris"`
-	// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+	// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 	// The HCFS URI of the script that contains Hive queries.
 	QueryFileUri string `pulumi:"queryFileUri"`
@@ -7439,7 +7987,7 @@ func (o HiveJobResponseOutput) JarFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HiveJobResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
 }
 
-// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
 func (o HiveJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -7653,6 +8201,211 @@ func (o IdentityConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 // Map of user to service account.
 func (o IdentityConfigResponseOutput) UserServiceAccountMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v IdentityConfigResponse) map[string]string { return v.UserServiceAccountMapping }).(pulumi.StringMapOutput)
+}
+
+// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+type InstanceFlexibilityPolicy struct {
+	// Optional. List of instance selection options that the group will use when creating new VMs.
+	InstanceSelectionList []InstanceSelection `pulumi:"instanceSelectionList"`
+}
+
+// InstanceFlexibilityPolicyInput is an input type that accepts InstanceFlexibilityPolicyArgs and InstanceFlexibilityPolicyOutput values.
+// You can construct a concrete instance of `InstanceFlexibilityPolicyInput` via:
+//
+//	InstanceFlexibilityPolicyArgs{...}
+type InstanceFlexibilityPolicyInput interface {
+	pulumi.Input
+
+	ToInstanceFlexibilityPolicyOutput() InstanceFlexibilityPolicyOutput
+	ToInstanceFlexibilityPolicyOutputWithContext(context.Context) InstanceFlexibilityPolicyOutput
+}
+
+// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+type InstanceFlexibilityPolicyArgs struct {
+	// Optional. List of instance selection options that the group will use when creating new VMs.
+	InstanceSelectionList InstanceSelectionArrayInput `pulumi:"instanceSelectionList"`
+}
+
+func (InstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i InstanceFlexibilityPolicyArgs) ToInstanceFlexibilityPolicyOutput() InstanceFlexibilityPolicyOutput {
+	return i.ToInstanceFlexibilityPolicyOutputWithContext(context.Background())
+}
+
+func (i InstanceFlexibilityPolicyArgs) ToInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) InstanceFlexibilityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFlexibilityPolicyOutput)
+}
+
+func (i InstanceFlexibilityPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceFlexibilityPolicy] {
+	return pulumix.Output[InstanceFlexibilityPolicy]{
+		OutputState: i.ToInstanceFlexibilityPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InstanceFlexibilityPolicyArgs) ToInstanceFlexibilityPolicyPtrOutput() InstanceFlexibilityPolicyPtrOutput {
+	return i.ToInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFlexibilityPolicyArgs) ToInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) InstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFlexibilityPolicyOutput).ToInstanceFlexibilityPolicyPtrOutputWithContext(ctx)
+}
+
+// InstanceFlexibilityPolicyPtrInput is an input type that accepts InstanceFlexibilityPolicyArgs, InstanceFlexibilityPolicyPtr and InstanceFlexibilityPolicyPtrOutput values.
+// You can construct a concrete instance of `InstanceFlexibilityPolicyPtrInput` via:
+//
+//	        InstanceFlexibilityPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceFlexibilityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFlexibilityPolicyPtrOutput() InstanceFlexibilityPolicyPtrOutput
+	ToInstanceFlexibilityPolicyPtrOutputWithContext(context.Context) InstanceFlexibilityPolicyPtrOutput
+}
+
+type instanceFlexibilityPolicyPtrType InstanceFlexibilityPolicyArgs
+
+func InstanceFlexibilityPolicyPtr(v *InstanceFlexibilityPolicyArgs) InstanceFlexibilityPolicyPtrInput {
+	return (*instanceFlexibilityPolicyPtrType)(v)
+}
+
+func (*instanceFlexibilityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i *instanceFlexibilityPolicyPtrType) ToInstanceFlexibilityPolicyPtrOutput() InstanceFlexibilityPolicyPtrOutput {
+	return i.ToInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFlexibilityPolicyPtrType) ToInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) InstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFlexibilityPolicyPtrOutput)
+}
+
+func (i *instanceFlexibilityPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceFlexibilityPolicy] {
+	return pulumix.Output[*InstanceFlexibilityPolicy]{
+		OutputState: i.ToInstanceFlexibilityPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+type InstanceFlexibilityPolicyOutput struct{ *pulumi.OutputState }
+
+func (InstanceFlexibilityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o InstanceFlexibilityPolicyOutput) ToInstanceFlexibilityPolicyOutput() InstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o InstanceFlexibilityPolicyOutput) ToInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) InstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o InstanceFlexibilityPolicyOutput) ToInstanceFlexibilityPolicyPtrOutput() InstanceFlexibilityPolicyPtrOutput {
+	return o.ToInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFlexibilityPolicyOutput) ToInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) InstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceFlexibilityPolicy) *InstanceFlexibilityPolicy {
+		return &v
+	}).(InstanceFlexibilityPolicyPtrOutput)
+}
+
+func (o InstanceFlexibilityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceFlexibilityPolicy] {
+	return pulumix.Output[InstanceFlexibilityPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. List of instance selection options that the group will use when creating new VMs.
+func (o InstanceFlexibilityPolicyOutput) InstanceSelectionList() InstanceSelectionArrayOutput {
+	return o.ApplyT(func(v InstanceFlexibilityPolicy) []InstanceSelection { return v.InstanceSelectionList }).(InstanceSelectionArrayOutput)
+}
+
+type InstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFlexibilityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o InstanceFlexibilityPolicyPtrOutput) ToInstanceFlexibilityPolicyPtrOutput() InstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o InstanceFlexibilityPolicyPtrOutput) ToInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) InstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o InstanceFlexibilityPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceFlexibilityPolicy] {
+	return pulumix.Output[*InstanceFlexibilityPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InstanceFlexibilityPolicyPtrOutput) Elem() InstanceFlexibilityPolicyOutput {
+	return o.ApplyT(func(v *InstanceFlexibilityPolicy) InstanceFlexibilityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceFlexibilityPolicy
+		return ret
+	}).(InstanceFlexibilityPolicyOutput)
+}
+
+// Optional. List of instance selection options that the group will use when creating new VMs.
+func (o InstanceFlexibilityPolicyPtrOutput) InstanceSelectionList() InstanceSelectionArrayOutput {
+	return o.ApplyT(func(v *InstanceFlexibilityPolicy) []InstanceSelection {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionList
+	}).(InstanceSelectionArrayOutput)
+}
+
+// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+type InstanceFlexibilityPolicyResponse struct {
+	// Optional. List of instance selection options that the group will use when creating new VMs.
+	InstanceSelectionList []InstanceSelectionResponse `pulumi:"instanceSelectionList"`
+	// A list of instance selection results in the group.
+	InstanceSelectionResults []InstanceSelectionResultResponse `pulumi:"instanceSelectionResults"`
+}
+
+// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+type InstanceFlexibilityPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceFlexibilityPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFlexibilityPolicyResponse)(nil)).Elem()
+}
+
+func (o InstanceFlexibilityPolicyResponseOutput) ToInstanceFlexibilityPolicyResponseOutput() InstanceFlexibilityPolicyResponseOutput {
+	return o
+}
+
+func (o InstanceFlexibilityPolicyResponseOutput) ToInstanceFlexibilityPolicyResponseOutputWithContext(ctx context.Context) InstanceFlexibilityPolicyResponseOutput {
+	return o
+}
+
+func (o InstanceFlexibilityPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceFlexibilityPolicyResponse] {
+	return pulumix.Output[InstanceFlexibilityPolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. List of instance selection options that the group will use when creating new VMs.
+func (o InstanceFlexibilityPolicyResponseOutput) InstanceSelectionList() InstanceSelectionResponseArrayOutput {
+	return o.ApplyT(func(v InstanceFlexibilityPolicyResponse) []InstanceSelectionResponse { return v.InstanceSelectionList }).(InstanceSelectionResponseArrayOutput)
+}
+
+// A list of instance selection results in the group.
+func (o InstanceFlexibilityPolicyResponseOutput) InstanceSelectionResults() InstanceSelectionResultResponseArrayOutput {
+	return o.ApplyT(func(v InstanceFlexibilityPolicyResponse) []InstanceSelectionResultResponse {
+		return v.InstanceSelectionResults
+	}).(InstanceSelectionResultResponseArrayOutput)
 }
 
 // Configuration for the size bounds of an instance group, including its proportional size to other groups.
@@ -7911,14 +8664,20 @@ type InstanceGroupConfig struct {
 	DiskConfig *DiskConfig `pulumi:"diskConfig"`
 	// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
 	ImageUri *string `pulumi:"imageUri"`
+	// Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+	InstanceFlexibilityPolicy *InstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
 	// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
 	MachineTypeUri *string `pulumi:"machineTypeUri"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
+	MinNumInstances *int `pulumi:"minNumInstances"`
 	// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
 	NumInstances *int `pulumi:"numInstances"`
 	// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
 	Preemptibility *InstanceGroupConfigPreemptibility `pulumi:"preemptibility"`
+	// Optional. Configuration to handle the startup of instances during cluster create and update process.
+	StartupConfig *StartupConfig `pulumi:"startupConfig"`
 }
 
 // InstanceGroupConfigInput is an input type that accepts InstanceGroupConfigArgs and InstanceGroupConfigOutput values.
@@ -7940,14 +8699,20 @@ type InstanceGroupConfigArgs struct {
 	DiskConfig DiskConfigPtrInput `pulumi:"diskConfig"`
 	// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
 	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+	InstanceFlexibilityPolicy InstanceFlexibilityPolicyPtrInput `pulumi:"instanceFlexibilityPolicy"`
 	// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
 	MachineTypeUri pulumi.StringPtrInput `pulumi:"machineTypeUri"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
+	MinNumInstances pulumi.IntPtrInput `pulumi:"minNumInstances"`
 	// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
 	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
 	// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
 	Preemptibility InstanceGroupConfigPreemptibilityPtrInput `pulumi:"preemptibility"`
+	// Optional. Configuration to handle the startup of instances during cluster create and update process.
+	StartupConfig StartupConfigPtrInput `pulumi:"startupConfig"`
 }
 
 func (InstanceGroupConfigArgs) ElementType() reflect.Type {
@@ -8061,6 +8826,11 @@ func (o InstanceGroupConfigOutput) ImageUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupConfig) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+func (o InstanceGroupConfigOutput) InstanceFlexibilityPolicy() InstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v InstanceGroupConfig) *InstanceFlexibilityPolicy { return v.InstanceFlexibilityPolicy }).(InstanceFlexibilityPolicyPtrOutput)
+}
+
 // Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
 func (o InstanceGroupConfigOutput) MachineTypeUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupConfig) *string { return v.MachineTypeUri }).(pulumi.StringPtrOutput)
@@ -8071,6 +8841,11 @@ func (o InstanceGroupConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
+func (o InstanceGroupConfigOutput) MinNumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceGroupConfig) *int { return v.MinNumInstances }).(pulumi.IntPtrOutput)
+}
+
 // Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
 func (o InstanceGroupConfigOutput) NumInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceGroupConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
@@ -8079,6 +8854,11 @@ func (o InstanceGroupConfigOutput) NumInstances() pulumi.IntPtrOutput {
 // Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
 func (o InstanceGroupConfigOutput) Preemptibility() InstanceGroupConfigPreemptibilityPtrOutput {
 	return o.ApplyT(func(v InstanceGroupConfig) *InstanceGroupConfigPreemptibility { return v.Preemptibility }).(InstanceGroupConfigPreemptibilityPtrOutput)
+}
+
+// Optional. Configuration to handle the startup of instances during cluster create and update process.
+func (o InstanceGroupConfigOutput) StartupConfig() StartupConfigPtrOutput {
+	return o.ApplyT(func(v InstanceGroupConfig) *StartupConfig { return v.StartupConfig }).(StartupConfigPtrOutput)
 }
 
 type InstanceGroupConfigPtrOutput struct{ *pulumi.OutputState }
@@ -8141,6 +8921,16 @@ func (o InstanceGroupConfigPtrOutput) ImageUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+func (o InstanceGroupConfigPtrOutput) InstanceFlexibilityPolicy() InstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfig) *InstanceFlexibilityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceFlexibilityPolicy
+	}).(InstanceFlexibilityPolicyPtrOutput)
+}
+
 // Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
 func (o InstanceGroupConfigPtrOutput) MachineTypeUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupConfig) *string {
@@ -8159,6 +8949,16 @@ func (o InstanceGroupConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 		}
 		return v.MinCpuPlatform
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
+func (o InstanceGroupConfigPtrOutput) MinNumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNumInstances
+	}).(pulumi.IntPtrOutput)
 }
 
 // Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
@@ -8181,6 +8981,16 @@ func (o InstanceGroupConfigPtrOutput) Preemptibility() InstanceGroupConfigPreemp
 	}).(InstanceGroupConfigPreemptibilityPtrOutput)
 }
 
+// Optional. Configuration to handle the startup of instances during cluster create and update process.
+func (o InstanceGroupConfigPtrOutput) StartupConfig() StartupConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfig) *StartupConfig {
+		if v == nil {
+			return nil
+		}
+		return v.StartupConfig
+	}).(StartupConfigPtrOutput)
+}
+
 // The config settings for Compute Engine resources in an instance group, such as a master or worker group.
 type InstanceGroupConfigResponse struct {
 	// Optional. The Compute Engine accelerator configuration for these instances.
@@ -8189,6 +8999,8 @@ type InstanceGroupConfigResponse struct {
 	DiskConfig DiskConfigResponse `pulumi:"diskConfig"`
 	// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
 	ImageUri string `pulumi:"imageUri"`
+	// Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+	InstanceFlexibilityPolicy InstanceFlexibilityPolicyResponse `pulumi:"instanceFlexibilityPolicy"`
 	// The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
 	InstanceNames []string `pulumi:"instanceNames"`
 	// List of references to Compute Engine instances.
@@ -8201,10 +9013,14 @@ type InstanceGroupConfigResponse struct {
 	ManagedGroupConfig ManagedGroupConfigResponse `pulumi:"managedGroupConfig"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform string `pulumi:"minCpuPlatform"`
+	// Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
+	MinNumInstances int `pulumi:"minNumInstances"`
 	// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
 	NumInstances int `pulumi:"numInstances"`
 	// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
 	Preemptibility string `pulumi:"preemptibility"`
+	// Optional. Configuration to handle the startup of instances during cluster create and update process.
+	StartupConfig StartupConfigResponse `pulumi:"startupConfig"`
 }
 
 // The config settings for Compute Engine resources in an instance group, such as a master or worker group.
@@ -8243,6 +9059,13 @@ func (o InstanceGroupConfigResponseOutput) ImageUri() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupConfigResponse) string { return v.ImageUri }).(pulumi.StringOutput)
 }
 
+// Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+func (o InstanceGroupConfigResponseOutput) InstanceFlexibilityPolicy() InstanceFlexibilityPolicyResponseOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) InstanceFlexibilityPolicyResponse {
+		return v.InstanceFlexibilityPolicy
+	}).(InstanceFlexibilityPolicyResponseOutput)
+}
+
 // The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
 func (o InstanceGroupConfigResponseOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceGroupConfigResponse) []string { return v.InstanceNames }).(pulumi.StringArrayOutput)
@@ -8273,6 +9096,11 @@ func (o InstanceGroupConfigResponseOutput) MinCpuPlatform() pulumi.StringOutput 
 	return o.ApplyT(func(v InstanceGroupConfigResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
 
+// Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
+func (o InstanceGroupConfigResponseOutput) MinNumInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) int { return v.MinNumInstances }).(pulumi.IntOutput)
+}
+
 // Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
 func (o InstanceGroupConfigResponseOutput) NumInstances() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupConfigResponse) int { return v.NumInstances }).(pulumi.IntOutput)
@@ -8281,6 +9109,11 @@ func (o InstanceGroupConfigResponseOutput) NumInstances() pulumi.IntOutput {
 // Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
 func (o InstanceGroupConfigResponseOutput) Preemptibility() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupConfigResponse) string { return v.Preemptibility }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration to handle the startup of instances during cluster create and update process.
+func (o InstanceGroupConfigResponseOutput) StartupConfig() StartupConfigResponseOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) StartupConfigResponse { return v.StartupConfig }).(StartupConfigResponseOutput)
 }
 
 // A reference to a Compute Engine instance.
@@ -8360,6 +9193,269 @@ func (o InstanceReferenceResponseArrayOutput) Index(i pulumi.IntInput) InstanceR
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceReferenceResponse {
 		return vs[0].([]InstanceReferenceResponse)[vs[1].(int)]
 	}).(InstanceReferenceResponseOutput)
+}
+
+// Defines machines types and a rank to which the machines types belong.
+type InstanceSelection struct {
+	// Optional. Full machine-type names, e.g. "n1-standard-16".
+	MachineTypes []string `pulumi:"machineTypes"`
+	// Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank *int `pulumi:"rank"`
+}
+
+// InstanceSelectionInput is an input type that accepts InstanceSelectionArgs and InstanceSelectionOutput values.
+// You can construct a concrete instance of `InstanceSelectionInput` via:
+//
+//	InstanceSelectionArgs{...}
+type InstanceSelectionInput interface {
+	pulumi.Input
+
+	ToInstanceSelectionOutput() InstanceSelectionOutput
+	ToInstanceSelectionOutputWithContext(context.Context) InstanceSelectionOutput
+}
+
+// Defines machines types and a rank to which the machines types belong.
+type InstanceSelectionArgs struct {
+	// Optional. Full machine-type names, e.g. "n1-standard-16".
+	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
+	// Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank pulumi.IntPtrInput `pulumi:"rank"`
+}
+
+func (InstanceSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSelection)(nil)).Elem()
+}
+
+func (i InstanceSelectionArgs) ToInstanceSelectionOutput() InstanceSelectionOutput {
+	return i.ToInstanceSelectionOutputWithContext(context.Background())
+}
+
+func (i InstanceSelectionArgs) ToInstanceSelectionOutputWithContext(ctx context.Context) InstanceSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSelectionOutput)
+}
+
+func (i InstanceSelectionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceSelection] {
+	return pulumix.Output[InstanceSelection]{
+		OutputState: i.ToInstanceSelectionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// InstanceSelectionArrayInput is an input type that accepts InstanceSelectionArray and InstanceSelectionArrayOutput values.
+// You can construct a concrete instance of `InstanceSelectionArrayInput` via:
+//
+//	InstanceSelectionArray{ InstanceSelectionArgs{...} }
+type InstanceSelectionArrayInput interface {
+	pulumi.Input
+
+	ToInstanceSelectionArrayOutput() InstanceSelectionArrayOutput
+	ToInstanceSelectionArrayOutputWithContext(context.Context) InstanceSelectionArrayOutput
+}
+
+type InstanceSelectionArray []InstanceSelectionInput
+
+func (InstanceSelectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSelection)(nil)).Elem()
+}
+
+func (i InstanceSelectionArray) ToInstanceSelectionArrayOutput() InstanceSelectionArrayOutput {
+	return i.ToInstanceSelectionArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceSelectionArray) ToInstanceSelectionArrayOutputWithContext(ctx context.Context) InstanceSelectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSelectionArrayOutput)
+}
+
+func (i InstanceSelectionArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSelection] {
+	return pulumix.Output[[]InstanceSelection]{
+		OutputState: i.ToInstanceSelectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Defines machines types and a rank to which the machines types belong.
+type InstanceSelectionOutput struct{ *pulumi.OutputState }
+
+func (InstanceSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSelection)(nil)).Elem()
+}
+
+func (o InstanceSelectionOutput) ToInstanceSelectionOutput() InstanceSelectionOutput {
+	return o
+}
+
+func (o InstanceSelectionOutput) ToInstanceSelectionOutputWithContext(ctx context.Context) InstanceSelectionOutput {
+	return o
+}
+
+func (o InstanceSelectionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceSelection] {
+	return pulumix.Output[InstanceSelection]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Full machine-type names, e.g. "n1-standard-16".
+func (o InstanceSelectionOutput) MachineTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceSelection) []string { return v.MachineTypes }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+func (o InstanceSelectionOutput) Rank() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSelection) *int { return v.Rank }).(pulumi.IntPtrOutput)
+}
+
+type InstanceSelectionArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceSelectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSelection)(nil)).Elem()
+}
+
+func (o InstanceSelectionArrayOutput) ToInstanceSelectionArrayOutput() InstanceSelectionArrayOutput {
+	return o
+}
+
+func (o InstanceSelectionArrayOutput) ToInstanceSelectionArrayOutputWithContext(ctx context.Context) InstanceSelectionArrayOutput {
+	return o
+}
+
+func (o InstanceSelectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSelection] {
+	return pulumix.Output[[]InstanceSelection]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InstanceSelectionArrayOutput) Index(i pulumi.IntInput) InstanceSelectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSelection {
+		return vs[0].([]InstanceSelection)[vs[1].(int)]
+	}).(InstanceSelectionOutput)
+}
+
+// Defines machines types and a rank to which the machines types belong.
+type InstanceSelectionResponse struct {
+	// Optional. Full machine-type names, e.g. "n1-standard-16".
+	MachineTypes []string `pulumi:"machineTypes"`
+	// Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank int `pulumi:"rank"`
+}
+
+// Defines machines types and a rank to which the machines types belong.
+type InstanceSelectionResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceSelectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSelectionResponse)(nil)).Elem()
+}
+
+func (o InstanceSelectionResponseOutput) ToInstanceSelectionResponseOutput() InstanceSelectionResponseOutput {
+	return o
+}
+
+func (o InstanceSelectionResponseOutput) ToInstanceSelectionResponseOutputWithContext(ctx context.Context) InstanceSelectionResponseOutput {
+	return o
+}
+
+func (o InstanceSelectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceSelectionResponse] {
+	return pulumix.Output[InstanceSelectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Full machine-type names, e.g. "n1-standard-16".
+func (o InstanceSelectionResponseOutput) MachineTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceSelectionResponse) []string { return v.MachineTypes }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+func (o InstanceSelectionResponseOutput) Rank() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceSelectionResponse) int { return v.Rank }).(pulumi.IntOutput)
+}
+
+type InstanceSelectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceSelectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSelectionResponse)(nil)).Elem()
+}
+
+func (o InstanceSelectionResponseArrayOutput) ToInstanceSelectionResponseArrayOutput() InstanceSelectionResponseArrayOutput {
+	return o
+}
+
+func (o InstanceSelectionResponseArrayOutput) ToInstanceSelectionResponseArrayOutputWithContext(ctx context.Context) InstanceSelectionResponseArrayOutput {
+	return o
+}
+
+func (o InstanceSelectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSelectionResponse] {
+	return pulumix.Output[[]InstanceSelectionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InstanceSelectionResponseArrayOutput) Index(i pulumi.IntInput) InstanceSelectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSelectionResponse {
+		return vs[0].([]InstanceSelectionResponse)[vs[1].(int)]
+	}).(InstanceSelectionResponseOutput)
+}
+
+// Defines a mapping from machine types to the number of VMs that are created with each machine type.
+type InstanceSelectionResultResponse struct {
+	// Full machine-type names, e.g. "n1-standard-16".
+	MachineType string `pulumi:"machineType"`
+	// Number of VM provisioned with the machine_type.
+	VmCount int `pulumi:"vmCount"`
+}
+
+// Defines a mapping from machine types to the number of VMs that are created with each machine type.
+type InstanceSelectionResultResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceSelectionResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSelectionResultResponse)(nil)).Elem()
+}
+
+func (o InstanceSelectionResultResponseOutput) ToInstanceSelectionResultResponseOutput() InstanceSelectionResultResponseOutput {
+	return o
+}
+
+func (o InstanceSelectionResultResponseOutput) ToInstanceSelectionResultResponseOutputWithContext(ctx context.Context) InstanceSelectionResultResponseOutput {
+	return o
+}
+
+func (o InstanceSelectionResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceSelectionResultResponse] {
+	return pulumix.Output[InstanceSelectionResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Full machine-type names, e.g. "n1-standard-16".
+func (o InstanceSelectionResultResponseOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceSelectionResultResponse) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Number of VM provisioned with the machine_type.
+func (o InstanceSelectionResultResponseOutput) VmCount() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceSelectionResultResponse) int { return v.VmCount }).(pulumi.IntOutput)
+}
+
+type InstanceSelectionResultResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceSelectionResultResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSelectionResultResponse)(nil)).Elem()
+}
+
+func (o InstanceSelectionResultResponseArrayOutput) ToInstanceSelectionResultResponseArrayOutput() InstanceSelectionResultResponseArrayOutput {
+	return o
+}
+
+func (o InstanceSelectionResultResponseArrayOutput) ToInstanceSelectionResultResponseArrayOutputWithContext(ctx context.Context) InstanceSelectionResultResponseArrayOutput {
+	return o
+}
+
+func (o InstanceSelectionResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSelectionResultResponse] {
+	return pulumix.Output[[]InstanceSelectionResultResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InstanceSelectionResultResponseArrayOutput) Index(i pulumi.IntInput) InstanceSelectionResultResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSelectionResultResponse {
+		return vs[0].([]InstanceSelectionResultResponse)[vs[1].(int)]
+	}).(InstanceSelectionResultResponseOutput)
 }
 
 // Dataproc job config.
@@ -8708,9 +9804,9 @@ func (o JobReferenceResponseOutput) Project() pulumi.StringOutput {
 
 // Job scheduling options.
 type JobScheduling struct {
-	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+	// Optional. Maximum number of times per hour a driver can be restarted as a result of driver exiting with non-zero code before job is reported failed.A job might be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresPerHour *int `pulumi:"maxFailuresPerHour"`
-	// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+	// Optional. Maximum total number of times a driver can be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresTotal *int `pulumi:"maxFailuresTotal"`
 }
 
@@ -8727,9 +9823,9 @@ type JobSchedulingInput interface {
 
 // Job scheduling options.
 type JobSchedulingArgs struct {
-	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+	// Optional. Maximum number of times per hour a driver can be restarted as a result of driver exiting with non-zero code before job is reported failed.A job might be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresPerHour pulumi.IntPtrInput `pulumi:"maxFailuresPerHour"`
-	// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+	// Optional. Maximum total number of times a driver can be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresTotal pulumi.IntPtrInput `pulumi:"maxFailuresTotal"`
 }
 
@@ -8829,12 +9925,12 @@ func (o JobSchedulingOutput) ToOutput(ctx context.Context) pulumix.Output[JobSch
 	}
 }
 
-// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+// Optional. Maximum number of times per hour a driver can be restarted as a result of driver exiting with non-zero code before job is reported failed.A job might be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobScheduling) *int { return v.MaxFailuresPerHour }).(pulumi.IntPtrOutput)
 }
 
-// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+// Optional. Maximum total number of times a driver can be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobScheduling) *int { return v.MaxFailuresTotal }).(pulumi.IntPtrOutput)
 }
@@ -8869,7 +9965,7 @@ func (o JobSchedulingPtrOutput) Elem() JobSchedulingOutput {
 	}).(JobSchedulingOutput)
 }
 
-// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+// Optional. Maximum number of times per hour a driver can be restarted as a result of driver exiting with non-zero code before job is reported failed.A job might be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobScheduling) *int {
 		if v == nil {
@@ -8879,7 +9975,7 @@ func (o JobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+// Optional. Maximum total number of times a driver can be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobScheduling) *int {
 		if v == nil {
@@ -8891,9 +9987,9 @@ func (o JobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 
 // Job scheduling options.
 type JobSchedulingResponse struct {
-	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+	// Optional. Maximum number of times per hour a driver can be restarted as a result of driver exiting with non-zero code before job is reported failed.A job might be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresPerHour int `pulumi:"maxFailuresPerHour"`
-	// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+	// Optional. Maximum total number of times a driver can be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresTotal int `pulumi:"maxFailuresTotal"`
 }
 
@@ -8918,12 +10014,12 @@ func (o JobSchedulingResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+// Optional. Maximum number of times per hour a driver can be restarted as a result of driver exiting with non-zero code before job is reported failed.A job might be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingResponseOutput) MaxFailuresPerHour() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSchedulingResponse) int { return v.MaxFailuresPerHour }).(pulumi.IntOutput)
 }
 
-// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+// Optional. Maximum total number of times a driver can be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingResponseOutput) MaxFailuresTotal() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSchedulingResponse) int { return v.MaxFailuresTotal }).(pulumi.IntOutput)
 }
@@ -9005,6 +10101,228 @@ func (o JobStatusResponseArrayOutput) Index(i pulumi.IntInput) JobStatusResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatusResponse {
 		return vs[0].([]JobStatusResponse)[vs[1].(int)]
 	}).(JobStatusResponseOutput)
+}
+
+// Jupyter configuration for an interactive session.
+type JupyterConfig struct {
+	// Optional. Display name, shown in the Jupyter kernelspec card.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. Kernel
+	Kernel *JupyterConfigKernel `pulumi:"kernel"`
+}
+
+// JupyterConfigInput is an input type that accepts JupyterConfigArgs and JupyterConfigOutput values.
+// You can construct a concrete instance of `JupyterConfigInput` via:
+//
+//	JupyterConfigArgs{...}
+type JupyterConfigInput interface {
+	pulumi.Input
+
+	ToJupyterConfigOutput() JupyterConfigOutput
+	ToJupyterConfigOutputWithContext(context.Context) JupyterConfigOutput
+}
+
+// Jupyter configuration for an interactive session.
+type JupyterConfigArgs struct {
+	// Optional. Display name, shown in the Jupyter kernelspec card.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Optional. Kernel
+	Kernel JupyterConfigKernelPtrInput `pulumi:"kernel"`
+}
+
+func (JupyterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JupyterConfig)(nil)).Elem()
+}
+
+func (i JupyterConfigArgs) ToJupyterConfigOutput() JupyterConfigOutput {
+	return i.ToJupyterConfigOutputWithContext(context.Background())
+}
+
+func (i JupyterConfigArgs) ToJupyterConfigOutputWithContext(ctx context.Context) JupyterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JupyterConfigOutput)
+}
+
+func (i JupyterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JupyterConfig] {
+	return pulumix.Output[JupyterConfig]{
+		OutputState: i.ToJupyterConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i JupyterConfigArgs) ToJupyterConfigPtrOutput() JupyterConfigPtrOutput {
+	return i.ToJupyterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i JupyterConfigArgs) ToJupyterConfigPtrOutputWithContext(ctx context.Context) JupyterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JupyterConfigOutput).ToJupyterConfigPtrOutputWithContext(ctx)
+}
+
+// JupyterConfigPtrInput is an input type that accepts JupyterConfigArgs, JupyterConfigPtr and JupyterConfigPtrOutput values.
+// You can construct a concrete instance of `JupyterConfigPtrInput` via:
+//
+//	        JupyterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type JupyterConfigPtrInput interface {
+	pulumi.Input
+
+	ToJupyterConfigPtrOutput() JupyterConfigPtrOutput
+	ToJupyterConfigPtrOutputWithContext(context.Context) JupyterConfigPtrOutput
+}
+
+type jupyterConfigPtrType JupyterConfigArgs
+
+func JupyterConfigPtr(v *JupyterConfigArgs) JupyterConfigPtrInput {
+	return (*jupyterConfigPtrType)(v)
+}
+
+func (*jupyterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JupyterConfig)(nil)).Elem()
+}
+
+func (i *jupyterConfigPtrType) ToJupyterConfigPtrOutput() JupyterConfigPtrOutput {
+	return i.ToJupyterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *jupyterConfigPtrType) ToJupyterConfigPtrOutputWithContext(ctx context.Context) JupyterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JupyterConfigPtrOutput)
+}
+
+func (i *jupyterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JupyterConfig] {
+	return pulumix.Output[*JupyterConfig]{
+		OutputState: i.ToJupyterConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Jupyter configuration for an interactive session.
+type JupyterConfigOutput struct{ *pulumi.OutputState }
+
+func (JupyterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JupyterConfig)(nil)).Elem()
+}
+
+func (o JupyterConfigOutput) ToJupyterConfigOutput() JupyterConfigOutput {
+	return o
+}
+
+func (o JupyterConfigOutput) ToJupyterConfigOutputWithContext(ctx context.Context) JupyterConfigOutput {
+	return o
+}
+
+func (o JupyterConfigOutput) ToJupyterConfigPtrOutput() JupyterConfigPtrOutput {
+	return o.ToJupyterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o JupyterConfigOutput) ToJupyterConfigPtrOutputWithContext(ctx context.Context) JupyterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JupyterConfig) *JupyterConfig {
+		return &v
+	}).(JupyterConfigPtrOutput)
+}
+
+func (o JupyterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JupyterConfig] {
+	return pulumix.Output[JupyterConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Display name, shown in the Jupyter kernelspec card.
+func (o JupyterConfigOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JupyterConfig) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Kernel
+func (o JupyterConfigOutput) Kernel() JupyterConfigKernelPtrOutput {
+	return o.ApplyT(func(v JupyterConfig) *JupyterConfigKernel { return v.Kernel }).(JupyterConfigKernelPtrOutput)
+}
+
+type JupyterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (JupyterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JupyterConfig)(nil)).Elem()
+}
+
+func (o JupyterConfigPtrOutput) ToJupyterConfigPtrOutput() JupyterConfigPtrOutput {
+	return o
+}
+
+func (o JupyterConfigPtrOutput) ToJupyterConfigPtrOutputWithContext(ctx context.Context) JupyterConfigPtrOutput {
+	return o
+}
+
+func (o JupyterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JupyterConfig] {
+	return pulumix.Output[*JupyterConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JupyterConfigPtrOutput) Elem() JupyterConfigOutput {
+	return o.ApplyT(func(v *JupyterConfig) JupyterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JupyterConfig
+		return ret
+	}).(JupyterConfigOutput)
+}
+
+// Optional. Display name, shown in the Jupyter kernelspec card.
+func (o JupyterConfigPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JupyterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Kernel
+func (o JupyterConfigPtrOutput) Kernel() JupyterConfigKernelPtrOutput {
+	return o.ApplyT(func(v *JupyterConfig) *JupyterConfigKernel {
+		if v == nil {
+			return nil
+		}
+		return v.Kernel
+	}).(JupyterConfigKernelPtrOutput)
+}
+
+// Jupyter configuration for an interactive session.
+type JupyterConfigResponse struct {
+	// Optional. Display name, shown in the Jupyter kernelspec card.
+	DisplayName string `pulumi:"displayName"`
+	// Optional. Kernel
+	Kernel string `pulumi:"kernel"`
+}
+
+// Jupyter configuration for an interactive session.
+type JupyterConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (JupyterConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JupyterConfigResponse)(nil)).Elem()
+}
+
+func (o JupyterConfigResponseOutput) ToJupyterConfigResponseOutput() JupyterConfigResponseOutput {
+	return o
+}
+
+func (o JupyterConfigResponseOutput) ToJupyterConfigResponseOutputWithContext(ctx context.Context) JupyterConfigResponseOutput {
+	return o
+}
+
+func (o JupyterConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JupyterConfigResponse] {
+	return pulumix.Output[JupyterConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Display name, shown in the Jupyter kernelspec card.
+func (o JupyterConfigResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v JupyterConfigResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Kernel
+func (o JupyterConfigResponseOutput) Kernel() pulumi.StringOutput {
+	return o.ApplyT(func(v JupyterConfigResponse) string { return v.Kernel }).(pulumi.StringOutput)
 }
 
 // Specifies Kerberos related configuration.
@@ -10296,7 +11614,7 @@ func (o LifecycleConfigResponseOutput) IdleStartTime() pulumi.StringOutput {
 
 // The runtime logging config of the job.
 type LoggingConfig struct {
-	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
+	// The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -10313,7 +11631,7 @@ type LoggingConfigInput interface {
 
 // The runtime logging config of the job.
 type LoggingConfigArgs struct {
-	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
+	// The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -10413,7 +11731,7 @@ func (o LoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Loggin
 	}
 }
 
-// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
+// The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 func (o LoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -10448,7 +11766,7 @@ func (o LoggingConfigPtrOutput) Elem() LoggingConfigOutput {
 	}).(LoggingConfigOutput)
 }
 
-// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
+// The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 func (o LoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LoggingConfig) map[string]string {
 		if v == nil {
@@ -10460,7 +11778,7 @@ func (o LoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 
 // The runtime logging config of the job.
 type LoggingConfigResponse struct {
-	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
+	// The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -10485,7 +11803,7 @@ func (o LoggingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
+// The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
 func (o LoggingConfigResponseOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LoggingConfigResponse) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -10742,6 +12060,8 @@ func (o ManagedClusterResponseOutput) Labels() pulumi.StringMapOutput {
 type ManagedGroupConfigResponse struct {
 	// The name of the Instance Group Manager for this group.
 	InstanceGroupManagerName string `pulumi:"instanceGroupManagerName"`
+	// The partial URI to the instance group manager for this group. E.g. projects/my-project/regions/us-central1/instanceGroupManagers/my-igm.
+	InstanceGroupManagerUri string `pulumi:"instanceGroupManagerUri"`
 	// The name of the Instance Template used for the Managed Instance Group.
 	InstanceTemplateName string `pulumi:"instanceTemplateName"`
 }
@@ -10770,6 +12090,11 @@ func (o ManagedGroupConfigResponseOutput) ToOutput(ctx context.Context) pulumix.
 // The name of the Instance Group Manager for this group.
 func (o ManagedGroupConfigResponseOutput) InstanceGroupManagerName() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedGroupConfigResponse) string { return v.InstanceGroupManagerName }).(pulumi.StringOutput)
+}
+
+// The partial URI to the instance group manager for this group. E.g. projects/my-project/regions/us-central1/instanceGroupManagers/my-igm.
+func (o ManagedGroupConfigResponseOutput) InstanceGroupManagerUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedGroupConfigResponse) string { return v.InstanceGroupManagerUri }).(pulumi.StringOutput)
 }
 
 // The name of the Instance Template used for the Managed Instance Group.
@@ -11936,6 +13261,8 @@ func (o NodeInitializationActionResponseArrayOutput) Index(i pulumi.IntInput) No
 
 // A job executed by the workflow.
 type OrderedJob struct {
+	// Optional. Job is a Flink job.
+	FlinkJob *FlinkJob `pulumi:"flinkJob"`
 	// Optional. Job is a Hadoop job.
 	HadoopJob *HadoopJob `pulumi:"hadoopJob"`
 	// Optional. Job is a Hive job.
@@ -11977,6 +13304,8 @@ type OrderedJobInput interface {
 
 // A job executed by the workflow.
 type OrderedJobArgs struct {
+	// Optional. Job is a Flink job.
+	FlinkJob FlinkJobPtrInput `pulumi:"flinkJob"`
 	// Optional. Job is a Hadoop job.
 	HadoopJob HadoopJobPtrInput `pulumi:"hadoopJob"`
 	// Optional. Job is a Hive job.
@@ -12075,6 +13404,11 @@ func (o OrderedJobOutput) ToOutput(ctx context.Context) pulumix.Output[OrderedJo
 	}
 }
 
+// Optional. Job is a Flink job.
+func (o OrderedJobOutput) FlinkJob() FlinkJobPtrOutput {
+	return o.ApplyT(func(v OrderedJob) *FlinkJob { return v.FlinkJob }).(FlinkJobPtrOutput)
+}
+
 // Optional. Job is a Hadoop job.
 func (o OrderedJobOutput) HadoopJob() HadoopJobPtrOutput {
 	return o.ApplyT(func(v OrderedJob) *HadoopJob { return v.HadoopJob }).(HadoopJobPtrOutput)
@@ -12168,6 +13502,8 @@ func (o OrderedJobArrayOutput) Index(i pulumi.IntInput) OrderedJobOutput {
 
 // A job executed by the workflow.
 type OrderedJobResponse struct {
+	// Optional. Job is a Flink job.
+	FlinkJob FlinkJobResponse `pulumi:"flinkJob"`
 	// Optional. Job is a Hadoop job.
 	HadoopJob HadoopJobResponse `pulumi:"hadoopJob"`
 	// Optional. Job is a Hive job.
@@ -12215,6 +13551,11 @@ func (o OrderedJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[O
 	return pulumix.Output[OrderedJobResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Optional. Job is a Flink job.
+func (o OrderedJobResponseOutput) FlinkJob() FlinkJobResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) FlinkJobResponse { return v.FlinkJob }).(FlinkJobResponseOutput)
 }
 
 // Optional. Job is a Hadoop job.
@@ -12760,7 +14101,7 @@ type PigJob struct {
 	JarFileUris []string `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig *LoggingConfig `pulumi:"loggingConfig"`
-	// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+	// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 	// The HCFS URI of the script that contains the Pig queries.
 	QueryFileUri *string `pulumi:"queryFileUri"`
@@ -12789,7 +14130,7 @@ type PigJobArgs struct {
 	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigPtrInput `pulumi:"loggingConfig"`
-	// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+	// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// The HCFS URI of the script that contains the Pig queries.
 	QueryFileUri pulumi.StringPtrInput `pulumi:"queryFileUri"`
@@ -12910,7 +14251,7 @@ func (o PigJobOutput) LoggingConfig() LoggingConfigPtrOutput {
 	return o.ApplyT(func(v PigJob) *LoggingConfig { return v.LoggingConfig }).(LoggingConfigPtrOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
 func (o PigJobOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PigJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -12990,7 +14331,7 @@ func (o PigJobPtrOutput) LoggingConfig() LoggingConfigPtrOutput {
 	}).(LoggingConfigPtrOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
 func (o PigJobPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PigJob) map[string]string {
 		if v == nil {
@@ -13038,7 +14379,7 @@ type PigJobResponse struct {
 	JarFileUris []string `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
-	// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+	// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 	// The HCFS URI of the script that contains the Pig queries.
 	QueryFileUri string `pulumi:"queryFileUri"`
@@ -13084,7 +14425,7 @@ func (o PigJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
 	return o.ApplyT(func(v PigJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
 func (o PigJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PigJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -13456,6 +14797,202 @@ func (o PrestoJobResponseOutput) QueryList() QueryListResponseOutput {
 	return o.ApplyT(func(v PrestoJobResponse) QueryListResponse { return v.QueryList }).(QueryListResponseOutput)
 }
 
+// Configuration for PyPi repository
+type PyPiRepositoryConfig struct {
+	// Optional. PyPi repository address
+	PypiRepository *string `pulumi:"pypiRepository"`
+}
+
+// PyPiRepositoryConfigInput is an input type that accepts PyPiRepositoryConfigArgs and PyPiRepositoryConfigOutput values.
+// You can construct a concrete instance of `PyPiRepositoryConfigInput` via:
+//
+//	PyPiRepositoryConfigArgs{...}
+type PyPiRepositoryConfigInput interface {
+	pulumi.Input
+
+	ToPyPiRepositoryConfigOutput() PyPiRepositoryConfigOutput
+	ToPyPiRepositoryConfigOutputWithContext(context.Context) PyPiRepositoryConfigOutput
+}
+
+// Configuration for PyPi repository
+type PyPiRepositoryConfigArgs struct {
+	// Optional. PyPi repository address
+	PypiRepository pulumi.StringPtrInput `pulumi:"pypiRepository"`
+}
+
+func (PyPiRepositoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PyPiRepositoryConfig)(nil)).Elem()
+}
+
+func (i PyPiRepositoryConfigArgs) ToPyPiRepositoryConfigOutput() PyPiRepositoryConfigOutput {
+	return i.ToPyPiRepositoryConfigOutputWithContext(context.Background())
+}
+
+func (i PyPiRepositoryConfigArgs) ToPyPiRepositoryConfigOutputWithContext(ctx context.Context) PyPiRepositoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PyPiRepositoryConfigOutput)
+}
+
+func (i PyPiRepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PyPiRepositoryConfig] {
+	return pulumix.Output[PyPiRepositoryConfig]{
+		OutputState: i.ToPyPiRepositoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i PyPiRepositoryConfigArgs) ToPyPiRepositoryConfigPtrOutput() PyPiRepositoryConfigPtrOutput {
+	return i.ToPyPiRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PyPiRepositoryConfigArgs) ToPyPiRepositoryConfigPtrOutputWithContext(ctx context.Context) PyPiRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PyPiRepositoryConfigOutput).ToPyPiRepositoryConfigPtrOutputWithContext(ctx)
+}
+
+// PyPiRepositoryConfigPtrInput is an input type that accepts PyPiRepositoryConfigArgs, PyPiRepositoryConfigPtr and PyPiRepositoryConfigPtrOutput values.
+// You can construct a concrete instance of `PyPiRepositoryConfigPtrInput` via:
+//
+//	        PyPiRepositoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PyPiRepositoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToPyPiRepositoryConfigPtrOutput() PyPiRepositoryConfigPtrOutput
+	ToPyPiRepositoryConfigPtrOutputWithContext(context.Context) PyPiRepositoryConfigPtrOutput
+}
+
+type pyPiRepositoryConfigPtrType PyPiRepositoryConfigArgs
+
+func PyPiRepositoryConfigPtr(v *PyPiRepositoryConfigArgs) PyPiRepositoryConfigPtrInput {
+	return (*pyPiRepositoryConfigPtrType)(v)
+}
+
+func (*pyPiRepositoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PyPiRepositoryConfig)(nil)).Elem()
+}
+
+func (i *pyPiRepositoryConfigPtrType) ToPyPiRepositoryConfigPtrOutput() PyPiRepositoryConfigPtrOutput {
+	return i.ToPyPiRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pyPiRepositoryConfigPtrType) ToPyPiRepositoryConfigPtrOutputWithContext(ctx context.Context) PyPiRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PyPiRepositoryConfigPtrOutput)
+}
+
+func (i *pyPiRepositoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PyPiRepositoryConfig] {
+	return pulumix.Output[*PyPiRepositoryConfig]{
+		OutputState: i.ToPyPiRepositoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for PyPi repository
+type PyPiRepositoryConfigOutput struct{ *pulumi.OutputState }
+
+func (PyPiRepositoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PyPiRepositoryConfig)(nil)).Elem()
+}
+
+func (o PyPiRepositoryConfigOutput) ToPyPiRepositoryConfigOutput() PyPiRepositoryConfigOutput {
+	return o
+}
+
+func (o PyPiRepositoryConfigOutput) ToPyPiRepositoryConfigOutputWithContext(ctx context.Context) PyPiRepositoryConfigOutput {
+	return o
+}
+
+func (o PyPiRepositoryConfigOutput) ToPyPiRepositoryConfigPtrOutput() PyPiRepositoryConfigPtrOutput {
+	return o.ToPyPiRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PyPiRepositoryConfigOutput) ToPyPiRepositoryConfigPtrOutputWithContext(ctx context.Context) PyPiRepositoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PyPiRepositoryConfig) *PyPiRepositoryConfig {
+		return &v
+	}).(PyPiRepositoryConfigPtrOutput)
+}
+
+func (o PyPiRepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PyPiRepositoryConfig] {
+	return pulumix.Output[PyPiRepositoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. PyPi repository address
+func (o PyPiRepositoryConfigOutput) PypiRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PyPiRepositoryConfig) *string { return v.PypiRepository }).(pulumi.StringPtrOutput)
+}
+
+type PyPiRepositoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PyPiRepositoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PyPiRepositoryConfig)(nil)).Elem()
+}
+
+func (o PyPiRepositoryConfigPtrOutput) ToPyPiRepositoryConfigPtrOutput() PyPiRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o PyPiRepositoryConfigPtrOutput) ToPyPiRepositoryConfigPtrOutputWithContext(ctx context.Context) PyPiRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o PyPiRepositoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PyPiRepositoryConfig] {
+	return pulumix.Output[*PyPiRepositoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o PyPiRepositoryConfigPtrOutput) Elem() PyPiRepositoryConfigOutput {
+	return o.ApplyT(func(v *PyPiRepositoryConfig) PyPiRepositoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PyPiRepositoryConfig
+		return ret
+	}).(PyPiRepositoryConfigOutput)
+}
+
+// Optional. PyPi repository address
+func (o PyPiRepositoryConfigPtrOutput) PypiRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PyPiRepositoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PypiRepository
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for PyPi repository
+type PyPiRepositoryConfigResponse struct {
+	// Optional. PyPi repository address
+	PypiRepository string `pulumi:"pypiRepository"`
+}
+
+// Configuration for PyPi repository
+type PyPiRepositoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PyPiRepositoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PyPiRepositoryConfigResponse)(nil)).Elem()
+}
+
+func (o PyPiRepositoryConfigResponseOutput) ToPyPiRepositoryConfigResponseOutput() PyPiRepositoryConfigResponseOutput {
+	return o
+}
+
+func (o PyPiRepositoryConfigResponseOutput) ToPyPiRepositoryConfigResponseOutputWithContext(ctx context.Context) PyPiRepositoryConfigResponseOutput {
+	return o
+}
+
+func (o PyPiRepositoryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PyPiRepositoryConfigResponse] {
+	return pulumix.Output[PyPiRepositoryConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. PyPi repository address
+func (o PyPiRepositoryConfigResponseOutput) PypiRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v PyPiRepositoryConfigResponse) string { return v.PypiRepository }).(pulumi.StringOutput)
+}
+
 // A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
 type PySparkBatch struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -13796,7 +15333,7 @@ type PySparkJob struct {
 	LoggingConfig *LoggingConfig `pulumi:"loggingConfig"`
 	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
-	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
 	PythonFileUris []string `pulumi:"pythonFileUris"`
@@ -13827,7 +15364,7 @@ type PySparkJobArgs struct {
 	LoggingConfig LoggingConfigPtrInput `pulumi:"loggingConfig"`
 	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 	MainPythonFileUri pulumi.StringInput `pulumi:"mainPythonFileUri"`
-	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
 	PythonFileUris pulumi.StringArrayInput `pulumi:"pythonFileUris"`
@@ -13959,7 +15496,7 @@ func (o PySparkJobOutput) MainPythonFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v PySparkJob) string { return v.MainPythonFileUri }).(pulumi.StringOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o PySparkJobOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PySparkJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -14059,7 +15596,7 @@ func (o PySparkJobPtrOutput) MainPythonFileUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o PySparkJobPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PySparkJob) map[string]string {
 		if v == nil {
@@ -14093,7 +15630,7 @@ type PySparkJobResponse struct {
 	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
 	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
-	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
 	PythonFileUris []string `pulumi:"pythonFileUris"`
@@ -14150,7 +15687,7 @@ func (o PySparkJobResponseOutput) MainPythonFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v PySparkJobResponse) string { return v.MainPythonFileUri }).(pulumi.StringOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o PySparkJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PySparkJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -14552,6 +16089,202 @@ func (o RegexValidationResponseOutput) Regexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegexValidationResponse) []string { return v.Regexes }).(pulumi.StringArrayOutput)
 }
 
+// Configuration for dependency repositories
+type RepositoryConfig struct {
+	// Optional. Configuration for PyPi repository.
+	PypiRepositoryConfig *PyPiRepositoryConfig `pulumi:"pypiRepositoryConfig"`
+}
+
+// RepositoryConfigInput is an input type that accepts RepositoryConfigArgs and RepositoryConfigOutput values.
+// You can construct a concrete instance of `RepositoryConfigInput` via:
+//
+//	RepositoryConfigArgs{...}
+type RepositoryConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryConfigOutput() RepositoryConfigOutput
+	ToRepositoryConfigOutputWithContext(context.Context) RepositoryConfigOutput
+}
+
+// Configuration for dependency repositories
+type RepositoryConfigArgs struct {
+	// Optional. Configuration for PyPi repository.
+	PypiRepositoryConfig PyPiRepositoryConfigPtrInput `pulumi:"pypiRepositoryConfig"`
+}
+
+func (RepositoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryConfig)(nil)).Elem()
+}
+
+func (i RepositoryConfigArgs) ToRepositoryConfigOutput() RepositoryConfigOutput {
+	return i.ToRepositoryConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryConfigArgs) ToRepositoryConfigOutputWithContext(ctx context.Context) RepositoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryConfigOutput)
+}
+
+func (i RepositoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryConfig] {
+	return pulumix.Output[RepositoryConfig]{
+		OutputState: i.ToRepositoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RepositoryConfigArgs) ToRepositoryConfigPtrOutput() RepositoryConfigPtrOutput {
+	return i.ToRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryConfigArgs) ToRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryConfigOutput).ToRepositoryConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryConfigPtrInput is an input type that accepts RepositoryConfigArgs, RepositoryConfigPtr and RepositoryConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryConfigPtrInput` via:
+//
+//	        RepositoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryConfigPtrOutput() RepositoryConfigPtrOutput
+	ToRepositoryConfigPtrOutputWithContext(context.Context) RepositoryConfigPtrOutput
+}
+
+type repositoryConfigPtrType RepositoryConfigArgs
+
+func RepositoryConfigPtr(v *RepositoryConfigArgs) RepositoryConfigPtrInput {
+	return (*repositoryConfigPtrType)(v)
+}
+
+func (*repositoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryConfig)(nil)).Elem()
+}
+
+func (i *repositoryConfigPtrType) ToRepositoryConfigPtrOutput() RepositoryConfigPtrOutput {
+	return i.ToRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryConfigPtrType) ToRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryConfigPtrOutput)
+}
+
+func (i *repositoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryConfig] {
+	return pulumix.Output[*RepositoryConfig]{
+		OutputState: i.ToRepositoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for dependency repositories
+type RepositoryConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryConfig)(nil)).Elem()
+}
+
+func (o RepositoryConfigOutput) ToRepositoryConfigOutput() RepositoryConfigOutput {
+	return o
+}
+
+func (o RepositoryConfigOutput) ToRepositoryConfigOutputWithContext(ctx context.Context) RepositoryConfigOutput {
+	return o
+}
+
+func (o RepositoryConfigOutput) ToRepositoryConfigPtrOutput() RepositoryConfigPtrOutput {
+	return o.ToRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryConfigOutput) ToRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryConfig) *RepositoryConfig {
+		return &v
+	}).(RepositoryConfigPtrOutput)
+}
+
+func (o RepositoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryConfig] {
+	return pulumix.Output[RepositoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Configuration for PyPi repository.
+func (o RepositoryConfigOutput) PypiRepositoryConfig() PyPiRepositoryConfigPtrOutput {
+	return o.ApplyT(func(v RepositoryConfig) *PyPiRepositoryConfig { return v.PypiRepositoryConfig }).(PyPiRepositoryConfigPtrOutput)
+}
+
+type RepositoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryConfig)(nil)).Elem()
+}
+
+func (o RepositoryConfigPtrOutput) ToRepositoryConfigPtrOutput() RepositoryConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryConfigPtrOutput) ToRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryConfig] {
+	return pulumix.Output[*RepositoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RepositoryConfigPtrOutput) Elem() RepositoryConfigOutput {
+	return o.ApplyT(func(v *RepositoryConfig) RepositoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryConfig
+		return ret
+	}).(RepositoryConfigOutput)
+}
+
+// Optional. Configuration for PyPi repository.
+func (o RepositoryConfigPtrOutput) PypiRepositoryConfig() PyPiRepositoryConfigPtrOutput {
+	return o.ApplyT(func(v *RepositoryConfig) *PyPiRepositoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PypiRepositoryConfig
+	}).(PyPiRepositoryConfigPtrOutput)
+}
+
+// Configuration for dependency repositories
+type RepositoryConfigResponse struct {
+	// Optional. Configuration for PyPi repository.
+	PypiRepositoryConfig PyPiRepositoryConfigResponse `pulumi:"pypiRepositoryConfig"`
+}
+
+// Configuration for dependency repositories
+type RepositoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RepositoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryConfigResponse)(nil)).Elem()
+}
+
+func (o RepositoryConfigResponseOutput) ToRepositoryConfigResponseOutput() RepositoryConfigResponseOutput {
+	return o
+}
+
+func (o RepositoryConfigResponseOutput) ToRepositoryConfigResponseOutputWithContext(ctx context.Context) RepositoryConfigResponseOutput {
+	return o
+}
+
+func (o RepositoryConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryConfigResponse] {
+	return pulumix.Output[RepositoryConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Configuration for PyPi repository.
+func (o RepositoryConfigResponseOutput) PypiRepositoryConfig() PyPiRepositoryConfigResponseOutput {
+	return o.ApplyT(func(v RepositoryConfigResponse) PyPiRepositoryConfigResponse { return v.PypiRepositoryConfig }).(PyPiRepositoryConfigResponseOutput)
+}
+
 // Reservation Affinity for consuming Zonal reservation.
 type ReservationAffinity struct {
 	// Optional. Type of reservation to consume
@@ -14808,6 +16541,8 @@ type RuntimeConfig struct {
 	ContainerImage *string `pulumi:"containerImage"`
 	// Optional. A mapping of property names to values, which are used to configure workload execution.
 	Properties map[string]string `pulumi:"properties"`
+	// Optional. Dependency repository configuration.
+	RepositoryConfig *RepositoryConfig `pulumi:"repositoryConfig"`
 	// Optional. Version of the batch runtime.
 	Version *string `pulumi:"version"`
 }
@@ -14829,6 +16564,8 @@ type RuntimeConfigArgs struct {
 	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
 	// Optional. A mapping of property names to values, which are used to configure workload execution.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Optional. Dependency repository configuration.
+	RepositoryConfig RepositoryConfigPtrInput `pulumi:"repositoryConfig"`
 	// Optional. Version of the batch runtime.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -14939,6 +16676,11 @@ func (o RuntimeConfigOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RuntimeConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Optional. Dependency repository configuration.
+func (o RuntimeConfigOutput) RepositoryConfig() RepositoryConfigPtrOutput {
+	return o.ApplyT(func(v RuntimeConfig) *RepositoryConfig { return v.RepositoryConfig }).(RepositoryConfigPtrOutput)
+}
+
 // Optional. Version of the batch runtime.
 func (o RuntimeConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
@@ -14994,6 +16736,16 @@ func (o RuntimeConfigPtrOutput) Properties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Optional. Dependency repository configuration.
+func (o RuntimeConfigPtrOutput) RepositoryConfig() RepositoryConfigPtrOutput {
+	return o.ApplyT(func(v *RuntimeConfig) *RepositoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryConfig
+	}).(RepositoryConfigPtrOutput)
+}
+
 // Optional. Version of the batch runtime.
 func (o RuntimeConfigPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeConfig) *string {
@@ -15010,6 +16762,8 @@ type RuntimeConfigResponse struct {
 	ContainerImage string `pulumi:"containerImage"`
 	// Optional. A mapping of property names to values, which are used to configure workload execution.
 	Properties map[string]string `pulumi:"properties"`
+	// Optional. Dependency repository configuration.
+	RepositoryConfig RepositoryConfigResponse `pulumi:"repositoryConfig"`
 	// Optional. Version of the batch runtime.
 	Version string `pulumi:"version"`
 }
@@ -15045,6 +16799,11 @@ func (o RuntimeConfigResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RuntimeConfigResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Optional. Dependency repository configuration.
+func (o RuntimeConfigResponseOutput) RepositoryConfig() RepositoryConfigResponseOutput {
+	return o.ApplyT(func(v RuntimeConfigResponse) RepositoryConfigResponse { return v.RepositoryConfig }).(RepositoryConfigResponseOutput)
+}
+
 // Optional. Version of the batch runtime.
 func (o RuntimeConfigResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v RuntimeConfigResponse) string { return v.Version }).(pulumi.StringOutput)
@@ -15052,7 +16811,7 @@ func (o RuntimeConfigResponseOutput) Version() pulumi.StringOutput {
 
 // Runtime information about workload execution.
 type RuntimeInfoResponse struct {
-	// Approximate workload resource usage calculated after workload finishes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+	// Approximate workload resource usage, calculated when the workload completes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).Note: This metric calculation may change in the future, for example, to capture cumulative workload resource consumption during workload execution (see the Dataproc Serverless release notes (https://cloud.google.com/dataproc-serverless/docs/release-notes) for announcements, changes, fixes and other Dataproc developments).
 	ApproximateUsage UsageMetricsResponse `pulumi:"approximateUsage"`
 	// Snapshot of current workload resource usage.
 	CurrentUsage UsageSnapshotResponse `pulumi:"currentUsage"`
@@ -15085,7 +16844,7 @@ func (o RuntimeInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// Approximate workload resource usage calculated after workload finishes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+// Approximate workload resource usage, calculated when the workload completes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).Note: This metric calculation may change in the future, for example, to capture cumulative workload resource consumption during workload execution (see the Dataproc Serverless release notes (https://cloud.google.com/dataproc-serverless/docs/release-notes) for announcements, changes, fixes and other Dataproc developments).
 func (o RuntimeInfoResponseOutput) ApproximateUsage() UsageMetricsResponseOutput {
 	return o.ApplyT(func(v RuntimeInfoResponse) UsageMetricsResponse { return v.ApproximateUsage }).(UsageMetricsResponseOutput)
 }
@@ -15330,6 +17089,78 @@ func (o SecurityConfigResponseOutput) IdentityConfig() IdentityConfigResponseOut
 // Optional. Kerberos related configuration.
 func (o SecurityConfigResponseOutput) KerberosConfig() KerberosConfigResponseOutput {
 	return o.ApplyT(func(v SecurityConfigResponse) KerberosConfigResponse { return v.KerberosConfig }).(KerberosConfigResponseOutput)
+}
+
+// Historical state information.
+type SessionStateHistoryResponse struct {
+	// The state of the session at this point in the session history.
+	State string `pulumi:"state"`
+	// Details about the state at this point in the session history.
+	StateMessage string `pulumi:"stateMessage"`
+	// The time when the session entered the historical state.
+	StateStartTime string `pulumi:"stateStartTime"`
+}
+
+// Historical state information.
+type SessionStateHistoryResponseOutput struct{ *pulumi.OutputState }
+
+func (SessionStateHistoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionStateHistoryResponse)(nil)).Elem()
+}
+
+func (o SessionStateHistoryResponseOutput) ToSessionStateHistoryResponseOutput() SessionStateHistoryResponseOutput {
+	return o
+}
+
+func (o SessionStateHistoryResponseOutput) ToSessionStateHistoryResponseOutputWithContext(ctx context.Context) SessionStateHistoryResponseOutput {
+	return o
+}
+
+func (o SessionStateHistoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SessionStateHistoryResponse] {
+	return pulumix.Output[SessionStateHistoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The state of the session at this point in the session history.
+func (o SessionStateHistoryResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v SessionStateHistoryResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Details about the state at this point in the session history.
+func (o SessionStateHistoryResponseOutput) StateMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v SessionStateHistoryResponse) string { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// The time when the session entered the historical state.
+func (o SessionStateHistoryResponseOutput) StateStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SessionStateHistoryResponse) string { return v.StateStartTime }).(pulumi.StringOutput)
+}
+
+type SessionStateHistoryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SessionStateHistoryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SessionStateHistoryResponse)(nil)).Elem()
+}
+
+func (o SessionStateHistoryResponseArrayOutput) ToSessionStateHistoryResponseArrayOutput() SessionStateHistoryResponseArrayOutput {
+	return o
+}
+
+func (o SessionStateHistoryResponseArrayOutput) ToSessionStateHistoryResponseArrayOutputWithContext(ctx context.Context) SessionStateHistoryResponseArrayOutput {
+	return o
+}
+
+func (o SessionStateHistoryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SessionStateHistoryResponse] {
+	return pulumix.Output[[]SessionStateHistoryResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SessionStateHistoryResponseArrayOutput) Index(i pulumi.IntInput) SessionStateHistoryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SessionStateHistoryResponse {
+		return vs[0].([]SessionStateHistoryResponse)[vs[1].(int)]
+	}).(SessionStateHistoryResponseOutput)
 }
 
 // Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
@@ -16362,11 +18193,11 @@ type SparkJob struct {
 	JarFileUris []string `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig *LoggingConfig `pulumi:"loggingConfig"`
-	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in SparkJob.jar_file_uris.
 	MainClass *string `pulumi:"mainClass"`
 	// The HCFS URI of the jar file that contains the main class.
 	MainJarFileUri *string `pulumi:"mainJarFileUri"`
-	// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -16393,11 +18224,11 @@ type SparkJobArgs struct {
 	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigPtrInput `pulumi:"loggingConfig"`
-	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in SparkJob.jar_file_uris.
 	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
 	// The HCFS URI of the jar file that contains the main class.
 	MainJarFileUri pulumi.StringPtrInput `pulumi:"mainJarFileUri"`
-	// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
 
@@ -16522,7 +18353,7 @@ func (o SparkJobOutput) LoggingConfig() LoggingConfigPtrOutput {
 	return o.ApplyT(func(v SparkJob) *LoggingConfig { return v.LoggingConfig }).(LoggingConfigPtrOutput)
 }
 
-// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in SparkJob.jar_file_uris.
 func (o SparkJobOutput) MainClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkJob) *string { return v.MainClass }).(pulumi.StringPtrOutput)
 }
@@ -16532,7 +18363,7 @@ func (o SparkJobOutput) MainJarFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkJob) *string { return v.MainJarFileUri }).(pulumi.StringPtrOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o SparkJobOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -16617,7 +18448,7 @@ func (o SparkJobPtrOutput) LoggingConfig() LoggingConfigPtrOutput {
 	}).(LoggingConfigPtrOutput)
 }
 
-// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in SparkJob.jar_file_uris.
 func (o SparkJobPtrOutput) MainClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SparkJob) *string {
 		if v == nil {
@@ -16637,7 +18468,7 @@ func (o SparkJobPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o SparkJobPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SparkJob) map[string]string {
 		if v == nil {
@@ -16659,11 +18490,11 @@ type SparkJobResponse struct {
 	JarFileUris []string `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
-	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in SparkJob.jar_file_uris.
 	MainClass string `pulumi:"mainClass"`
 	// The HCFS URI of the jar file that contains the main class.
 	MainJarFileUri string `pulumi:"mainJarFileUri"`
-	// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -16713,7 +18544,7 @@ func (o SparkJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
 	return o.ApplyT(func(v SparkJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
 }
 
-// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in SparkJob.jar_file_uris.
 func (o SparkJobResponseOutput) MainClass() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkJobResponse) string { return v.MainClass }).(pulumi.StringOutput)
 }
@@ -16723,7 +18554,7 @@ func (o SparkJobResponseOutput) MainJarFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkJobResponse) string { return v.MainJarFileUri }).(pulumi.StringOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o SparkJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -17014,7 +18845,7 @@ type SparkRJob struct {
 	LoggingConfig *LoggingConfig `pulumi:"loggingConfig"`
 	// The HCFS URI of the main R file to use as the driver. Must be a .R file.
 	MainRFileUri string `pulumi:"mainRFileUri"`
-	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -17041,7 +18872,7 @@ type SparkRJobArgs struct {
 	LoggingConfig LoggingConfigPtrInput `pulumi:"loggingConfig"`
 	// The HCFS URI of the main R file to use as the driver. Must be a .R file.
 	MainRFileUri pulumi.StringInput `pulumi:"mainRFileUri"`
-	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
 
@@ -17166,7 +18997,7 @@ func (o SparkRJobOutput) MainRFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkRJob) string { return v.MainRFileUri }).(pulumi.StringOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o SparkRJobOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkRJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -17251,7 +19082,7 @@ func (o SparkRJobPtrOutput) MainRFileUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o SparkRJobPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SparkRJob) map[string]string {
 		if v == nil {
@@ -17273,7 +19104,7 @@ type SparkRJobResponse struct {
 	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
 	// The HCFS URI of the main R file to use as the driver. Must be a .R file.
 	MainRFileUri string `pulumi:"mainRFileUri"`
-	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -17323,7 +19154,7 @@ func (o SparkRJobResponseOutput) MainRFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkRJobResponse) string { return v.MainRFileUri }).(pulumi.StringOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o SparkRJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkRJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -17582,7 +19413,7 @@ type SparkSqlJob struct {
 	JarFileUris []string `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig *LoggingConfig `pulumi:"loggingConfig"`
-	// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+	// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
 	Properties map[string]string `pulumi:"properties"`
 	// The HCFS URI of the script that contains SQL queries.
 	QueryFileUri *string `pulumi:"queryFileUri"`
@@ -17609,7 +19440,7 @@ type SparkSqlJobArgs struct {
 	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigPtrInput `pulumi:"loggingConfig"`
-	// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+	// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// The HCFS URI of the script that contains SQL queries.
 	QueryFileUri pulumi.StringPtrInput `pulumi:"queryFileUri"`
@@ -17725,7 +19556,7 @@ func (o SparkSqlJobOutput) LoggingConfig() LoggingConfigPtrOutput {
 	return o.ApplyT(func(v SparkSqlJob) *LoggingConfig { return v.LoggingConfig }).(LoggingConfigPtrOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
 func (o SparkSqlJobOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkSqlJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -17795,7 +19626,7 @@ func (o SparkSqlJobPtrOutput) LoggingConfig() LoggingConfigPtrOutput {
 	}).(LoggingConfigPtrOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
 func (o SparkSqlJobPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SparkSqlJob) map[string]string {
 		if v == nil {
@@ -17841,7 +19672,7 @@ type SparkSqlJobResponse struct {
 	JarFileUris []string `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
-	// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+	// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
 	Properties map[string]string `pulumi:"properties"`
 	// The HCFS URI of the script that contains SQL queries.
 	QueryFileUri string `pulumi:"queryFileUri"`
@@ -17882,7 +19713,7 @@ func (o SparkSqlJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
 	return o.ApplyT(func(v SparkSqlJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
 }
 
-// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten.
 func (o SparkSqlJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkSqlJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -17906,6 +19737,8 @@ func (o SparkSqlJobResponseOutput) ScriptVariables() pulumi.StringMapOutput {
 type SparkStandaloneAutoscalingConfig struct {
 	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
 	GracefulDecommissionTimeout string `pulumi:"gracefulDecommissionTimeout"`
+	// Optional. Remove only idle workers when scaling down cluster
+	RemoveOnlyIdleWorkers *bool `pulumi:"removeOnlyIdleWorkers"`
 	// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
 	ScaleDownFactor float64 `pulumi:"scaleDownFactor"`
 	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
@@ -17931,6 +19764,8 @@ type SparkStandaloneAutoscalingConfigInput interface {
 type SparkStandaloneAutoscalingConfigArgs struct {
 	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
 	GracefulDecommissionTimeout pulumi.StringInput `pulumi:"gracefulDecommissionTimeout"`
+	// Optional. Remove only idle workers when scaling down cluster
+	RemoveOnlyIdleWorkers pulumi.BoolPtrInput `pulumi:"removeOnlyIdleWorkers"`
 	// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
 	ScaleDownFactor pulumi.Float64Input `pulumi:"scaleDownFactor"`
 	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
@@ -18042,6 +19877,11 @@ func (o SparkStandaloneAutoscalingConfigOutput) GracefulDecommissionTimeout() pu
 	return o.ApplyT(func(v SparkStandaloneAutoscalingConfig) string { return v.GracefulDecommissionTimeout }).(pulumi.StringOutput)
 }
 
+// Optional. Remove only idle workers when scaling down cluster
+func (o SparkStandaloneAutoscalingConfigOutput) RemoveOnlyIdleWorkers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfig) *bool { return v.RemoveOnlyIdleWorkers }).(pulumi.BoolPtrOutput)
+}
+
 // Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
 func (o SparkStandaloneAutoscalingConfigOutput) ScaleDownFactor() pulumi.Float64Output {
 	return o.ApplyT(func(v SparkStandaloneAutoscalingConfig) float64 { return v.ScaleDownFactor }).(pulumi.Float64Output)
@@ -18102,6 +19942,16 @@ func (o SparkStandaloneAutoscalingConfigPtrOutput) GracefulDecommissionTimeout()
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Remove only idle workers when scaling down cluster
+func (o SparkStandaloneAutoscalingConfigPtrOutput) RemoveOnlyIdleWorkers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RemoveOnlyIdleWorkers
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
 func (o SparkStandaloneAutoscalingConfigPtrOutput) ScaleDownFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfig) *float64 {
@@ -18146,6 +19996,8 @@ func (o SparkStandaloneAutoscalingConfigPtrOutput) ScaleUpMinWorkerFraction() pu
 type SparkStandaloneAutoscalingConfigResponse struct {
 	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
 	GracefulDecommissionTimeout string `pulumi:"gracefulDecommissionTimeout"`
+	// Optional. Remove only idle workers when scaling down cluster
+	RemoveOnlyIdleWorkers bool `pulumi:"removeOnlyIdleWorkers"`
 	// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
 	ScaleDownFactor float64 `pulumi:"scaleDownFactor"`
 	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
@@ -18182,6 +20034,11 @@ func (o SparkStandaloneAutoscalingConfigResponseOutput) GracefulDecommissionTime
 	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) string { return v.GracefulDecommissionTimeout }).(pulumi.StringOutput)
 }
 
+// Optional. Remove only idle workers when scaling down cluster
+func (o SparkStandaloneAutoscalingConfigResponseOutput) RemoveOnlyIdleWorkers() pulumi.BoolOutput {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) bool { return v.RemoveOnlyIdleWorkers }).(pulumi.BoolOutput)
+}
+
 // Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
 func (o SparkStandaloneAutoscalingConfigResponseOutput) ScaleDownFactor() pulumi.Float64Output {
 	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) float64 { return v.ScaleDownFactor }).(pulumi.Float64Output)
@@ -18200,6 +20057,202 @@ func (o SparkStandaloneAutoscalingConfigResponseOutput) ScaleUpFactor() pulumi.F
 // Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
 func (o SparkStandaloneAutoscalingConfigResponseOutput) ScaleUpMinWorkerFraction() pulumi.Float64Output {
 	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) float64 { return v.ScaleUpMinWorkerFraction }).(pulumi.Float64Output)
+}
+
+// Configuration to handle the startup of instances during cluster create and update process.
+type StartupConfig struct {
+	// Optional. The config setting to enable cluster creation/ updation to be successful only after required_registration_fraction of instances are up and running. This configuration is applicable to only secondary workers for now. The cluster will fail if required_registration_fraction of instances are not available. This will include instance creation, agent registration, and service registration (if enabled).
+	RequiredRegistrationFraction *float64 `pulumi:"requiredRegistrationFraction"`
+}
+
+// StartupConfigInput is an input type that accepts StartupConfigArgs and StartupConfigOutput values.
+// You can construct a concrete instance of `StartupConfigInput` via:
+//
+//	StartupConfigArgs{...}
+type StartupConfigInput interface {
+	pulumi.Input
+
+	ToStartupConfigOutput() StartupConfigOutput
+	ToStartupConfigOutputWithContext(context.Context) StartupConfigOutput
+}
+
+// Configuration to handle the startup of instances during cluster create and update process.
+type StartupConfigArgs struct {
+	// Optional. The config setting to enable cluster creation/ updation to be successful only after required_registration_fraction of instances are up and running. This configuration is applicable to only secondary workers for now. The cluster will fail if required_registration_fraction of instances are not available. This will include instance creation, agent registration, and service registration (if enabled).
+	RequiredRegistrationFraction pulumi.Float64PtrInput `pulumi:"requiredRegistrationFraction"`
+}
+
+func (StartupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StartupConfig)(nil)).Elem()
+}
+
+func (i StartupConfigArgs) ToStartupConfigOutput() StartupConfigOutput {
+	return i.ToStartupConfigOutputWithContext(context.Background())
+}
+
+func (i StartupConfigArgs) ToStartupConfigOutputWithContext(ctx context.Context) StartupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StartupConfigOutput)
+}
+
+func (i StartupConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StartupConfig] {
+	return pulumix.Output[StartupConfig]{
+		OutputState: i.ToStartupConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i StartupConfigArgs) ToStartupConfigPtrOutput() StartupConfigPtrOutput {
+	return i.ToStartupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StartupConfigArgs) ToStartupConfigPtrOutputWithContext(ctx context.Context) StartupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StartupConfigOutput).ToStartupConfigPtrOutputWithContext(ctx)
+}
+
+// StartupConfigPtrInput is an input type that accepts StartupConfigArgs, StartupConfigPtr and StartupConfigPtrOutput values.
+// You can construct a concrete instance of `StartupConfigPtrInput` via:
+//
+//	        StartupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StartupConfigPtrInput interface {
+	pulumi.Input
+
+	ToStartupConfigPtrOutput() StartupConfigPtrOutput
+	ToStartupConfigPtrOutputWithContext(context.Context) StartupConfigPtrOutput
+}
+
+type startupConfigPtrType StartupConfigArgs
+
+func StartupConfigPtr(v *StartupConfigArgs) StartupConfigPtrInput {
+	return (*startupConfigPtrType)(v)
+}
+
+func (*startupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StartupConfig)(nil)).Elem()
+}
+
+func (i *startupConfigPtrType) ToStartupConfigPtrOutput() StartupConfigPtrOutput {
+	return i.ToStartupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *startupConfigPtrType) ToStartupConfigPtrOutputWithContext(ctx context.Context) StartupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StartupConfigPtrOutput)
+}
+
+func (i *startupConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StartupConfig] {
+	return pulumix.Output[*StartupConfig]{
+		OutputState: i.ToStartupConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration to handle the startup of instances during cluster create and update process.
+type StartupConfigOutput struct{ *pulumi.OutputState }
+
+func (StartupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StartupConfig)(nil)).Elem()
+}
+
+func (o StartupConfigOutput) ToStartupConfigOutput() StartupConfigOutput {
+	return o
+}
+
+func (o StartupConfigOutput) ToStartupConfigOutputWithContext(ctx context.Context) StartupConfigOutput {
+	return o
+}
+
+func (o StartupConfigOutput) ToStartupConfigPtrOutput() StartupConfigPtrOutput {
+	return o.ToStartupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StartupConfigOutput) ToStartupConfigPtrOutputWithContext(ctx context.Context) StartupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StartupConfig) *StartupConfig {
+		return &v
+	}).(StartupConfigPtrOutput)
+}
+
+func (o StartupConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StartupConfig] {
+	return pulumix.Output[StartupConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The config setting to enable cluster creation/ updation to be successful only after required_registration_fraction of instances are up and running. This configuration is applicable to only secondary workers for now. The cluster will fail if required_registration_fraction of instances are not available. This will include instance creation, agent registration, and service registration (if enabled).
+func (o StartupConfigOutput) RequiredRegistrationFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StartupConfig) *float64 { return v.RequiredRegistrationFraction }).(pulumi.Float64PtrOutput)
+}
+
+type StartupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StartupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StartupConfig)(nil)).Elem()
+}
+
+func (o StartupConfigPtrOutput) ToStartupConfigPtrOutput() StartupConfigPtrOutput {
+	return o
+}
+
+func (o StartupConfigPtrOutput) ToStartupConfigPtrOutputWithContext(ctx context.Context) StartupConfigPtrOutput {
+	return o
+}
+
+func (o StartupConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StartupConfig] {
+	return pulumix.Output[*StartupConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StartupConfigPtrOutput) Elem() StartupConfigOutput {
+	return o.ApplyT(func(v *StartupConfig) StartupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StartupConfig
+		return ret
+	}).(StartupConfigOutput)
+}
+
+// Optional. The config setting to enable cluster creation/ updation to be successful only after required_registration_fraction of instances are up and running. This configuration is applicable to only secondary workers for now. The cluster will fail if required_registration_fraction of instances are not available. This will include instance creation, agent registration, and service registration (if enabled).
+func (o StartupConfigPtrOutput) RequiredRegistrationFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StartupConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredRegistrationFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Configuration to handle the startup of instances during cluster create and update process.
+type StartupConfigResponse struct {
+	// Optional. The config setting to enable cluster creation/ updation to be successful only after required_registration_fraction of instances are up and running. This configuration is applicable to only secondary workers for now. The cluster will fail if required_registration_fraction of instances are not available. This will include instance creation, agent registration, and service registration (if enabled).
+	RequiredRegistrationFraction float64 `pulumi:"requiredRegistrationFraction"`
+}
+
+// Configuration to handle the startup of instances during cluster create and update process.
+type StartupConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (StartupConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StartupConfigResponse)(nil)).Elem()
+}
+
+func (o StartupConfigResponseOutput) ToStartupConfigResponseOutput() StartupConfigResponseOutput {
+	return o
+}
+
+func (o StartupConfigResponseOutput) ToStartupConfigResponseOutputWithContext(ctx context.Context) StartupConfigResponseOutput {
+	return o
+}
+
+func (o StartupConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StartupConfigResponse] {
+	return pulumix.Output[StartupConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The config setting to enable cluster creation/ updation to be successful only after required_registration_fraction of instances are up and running. This configuration is applicable to only secondary workers for now. The cluster will fail if required_registration_fraction of instances are not available. This will include instance creation, agent registration, and service registration (if enabled).
+func (o StartupConfigResponseOutput) RequiredRegistrationFraction() pulumi.Float64Output {
+	return o.ApplyT(func(v StartupConfigResponse) float64 { return v.RequiredRegistrationFraction }).(pulumi.Float64Output)
 }
 
 // Historical state information.
@@ -18858,6 +20911,10 @@ func (o TrinoJobResponseOutput) QueryList() QueryListResponseOutput {
 
 // Usage metrics represent approximate total resources consumed by a workload.
 type UsageMetricsResponse struct {
+	// Optional. Accelerator type being used, if any
+	AcceleratorType string `pulumi:"acceleratorType"`
+	// Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+	MilliAcceleratorSeconds string `pulumi:"milliAcceleratorSeconds"`
 	// Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
 	MilliDcuSeconds string `pulumi:"milliDcuSeconds"`
 	// Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -18885,6 +20942,16 @@ func (o UsageMetricsResponseOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Optional. Accelerator type being used, if any
+func (o UsageMetricsResponseOutput) AcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageMetricsResponse) string { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+// Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+func (o UsageMetricsResponseOutput) MilliAcceleratorSeconds() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageMetricsResponse) string { return v.MilliAcceleratorSeconds }).(pulumi.StringOutput)
+}
+
 // Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
 func (o UsageMetricsResponseOutput) MilliDcuSeconds() pulumi.StringOutput {
 	return o.ApplyT(func(v UsageMetricsResponse) string { return v.MilliDcuSeconds }).(pulumi.StringOutput)
@@ -18895,17 +20962,25 @@ func (o UsageMetricsResponseOutput) ShuffleStorageGbSeconds() pulumi.StringOutpu
 	return o.ApplyT(func(v UsageMetricsResponse) string { return v.ShuffleStorageGbSeconds }).(pulumi.StringOutput)
 }
 
-// The usage snaphot represents the resources consumed by a workload at a specified time.
+// The usage snapshot represents the resources consumed by a workload at a specified time.
 type UsageSnapshotResponse struct {
+	// Optional. Accelerator type being used, if any
+	AcceleratorType string `pulumi:"acceleratorType"`
+	// Optional. Milli (one-thousandth) accelerator. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
+	MilliAccelerator string `pulumi:"milliAccelerator"`
 	// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
 	MilliDcu string `pulumi:"milliDcu"`
+	// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+	MilliDcuPremium string `pulumi:"milliDcuPremium"`
 	// Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
 	ShuffleStorageGb string `pulumi:"shuffleStorageGb"`
+	// Optional. Shuffle Storage in gigabytes (GB) charged at premium tier. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
+	ShuffleStorageGbPremium string `pulumi:"shuffleStorageGbPremium"`
 	// Optional. The timestamp of the usage snapshot.
 	SnapshotTime string `pulumi:"snapshotTime"`
 }
 
-// The usage snaphot represents the resources consumed by a workload at a specified time.
+// The usage snapshot represents the resources consumed by a workload at a specified time.
 type UsageSnapshotResponseOutput struct{ *pulumi.OutputState }
 
 func (UsageSnapshotResponseOutput) ElementType() reflect.Type {
@@ -18926,14 +21001,34 @@ func (o UsageSnapshotResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// Optional. Accelerator type being used, if any
+func (o UsageSnapshotResponseOutput) AcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageSnapshotResponse) string { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+// Optional. Milli (one-thousandth) accelerator. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
+func (o UsageSnapshotResponseOutput) MilliAccelerator() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageSnapshotResponse) string { return v.MilliAccelerator }).(pulumi.StringOutput)
+}
+
 // Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
 func (o UsageSnapshotResponseOutput) MilliDcu() pulumi.StringOutput {
 	return o.ApplyT(func(v UsageSnapshotResponse) string { return v.MilliDcu }).(pulumi.StringOutput)
 }
 
+// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+func (o UsageSnapshotResponseOutput) MilliDcuPremium() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageSnapshotResponse) string { return v.MilliDcuPremium }).(pulumi.StringOutput)
+}
+
 // Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
 func (o UsageSnapshotResponseOutput) ShuffleStorageGb() pulumi.StringOutput {
 	return o.ApplyT(func(v UsageSnapshotResponse) string { return v.ShuffleStorageGb }).(pulumi.StringOutput)
+}
+
+// Optional. Shuffle Storage in gigabytes (GB) charged at premium tier. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
+func (o UsageSnapshotResponseOutput) ShuffleStorageGbPremium() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageSnapshotResponse) string { return v.ShuffleStorageGbPremium }).(pulumi.StringOutput)
 }
 
 // Optional. The timestamp of the usage snapshot.
@@ -19616,6 +21711,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigPtrInput)(nil)).Elem(), ExecutionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJobInput)(nil)).Elem(), FlinkJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJobPtrInput)(nil)).Elem(), FlinkJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigInput)(nil)).Elem(), GceClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigPtrInput)(nil)).Elem(), GceClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterConfigInput)(nil)).Elem(), GkeClusterConfigArgs{})
@@ -19630,21 +21727,29 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolConfigPtrInput)(nil)).Elem(), GkeNodePoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolTargetInput)(nil)).Elem(), GkeNodePoolTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolTargetArrayInput)(nil)).Elem(), GkeNodePoolTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigInput)(nil)).Elem(), GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrInput)(nil)).Elem(), GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HadoopJobInput)(nil)).Elem(), HadoopJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HadoopJobPtrInput)(nil)).Elem(), HadoopJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveJobInput)(nil)).Elem(), HiveJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveJobPtrInput)(nil)).Elem(), HiveJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityConfigInput)(nil)).Elem(), IdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityConfigPtrInput)(nil)).Elem(), IdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFlexibilityPolicyInput)(nil)).Elem(), InstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFlexibilityPolicyPtrInput)(nil)).Elem(), InstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupAutoscalingPolicyConfigInput)(nil)).Elem(), InstanceGroupAutoscalingPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupAutoscalingPolicyConfigPtrInput)(nil)).Elem(), InstanceGroupAutoscalingPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigInput)(nil)).Elem(), InstanceGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigPtrInput)(nil)).Elem(), InstanceGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSelectionInput)(nil)).Elem(), InstanceSelectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSelectionArrayInput)(nil)).Elem(), InstanceSelectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPlacementInput)(nil)).Elem(), JobPlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobReferenceInput)(nil)).Elem(), JobReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobReferencePtrInput)(nil)).Elem(), JobReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSchedulingInput)(nil)).Elem(), JobSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSchedulingPtrInput)(nil)).Elem(), JobSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JupyterConfigInput)(nil)).Elem(), JupyterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JupyterConfigPtrInput)(nil)).Elem(), JupyterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigInput)(nil)).Elem(), KerberosConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigPtrInput)(nil)).Elem(), KerberosConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterConfigInput)(nil)).Elem(), KubernetesClusterConfigArgs{})
@@ -19678,6 +21783,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PigJobPtrInput)(nil)).Elem(), PigJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrestoJobInput)(nil)).Elem(), PrestoJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrestoJobPtrInput)(nil)).Elem(), PrestoJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PyPiRepositoryConfigInput)(nil)).Elem(), PyPiRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PyPiRepositoryConfigPtrInput)(nil)).Elem(), PyPiRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PySparkBatchInput)(nil)).Elem(), PySparkBatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PySparkBatchPtrInput)(nil)).Elem(), PySparkBatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PySparkJobInput)(nil)).Elem(), PySparkJobArgs{})
@@ -19686,6 +21793,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryListPtrInput)(nil)).Elem(), QueryListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegexValidationInput)(nil)).Elem(), RegexValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegexValidationPtrInput)(nil)).Elem(), RegexValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryConfigInput)(nil)).Elem(), RepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryConfigPtrInput)(nil)).Elem(), RepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityInput)(nil)).Elem(), ReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityPtrInput)(nil)).Elem(), ReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeConfigInput)(nil)).Elem(), RuntimeConfigArgs{})
@@ -19712,6 +21821,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkSqlJobPtrInput)(nil)).Elem(), SparkSqlJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkStandaloneAutoscalingConfigInput)(nil)).Elem(), SparkStandaloneAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkStandaloneAutoscalingConfigPtrInput)(nil)).Elem(), SparkStandaloneAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StartupConfigInput)(nil)).Elem(), StartupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StartupConfigPtrInput)(nil)).Elem(), StartupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateParameterInput)(nil)).Elem(), TemplateParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateParameterArrayInput)(nil)).Elem(), TemplateParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrinoJobInput)(nil)).Elem(), TrinoJobArgs{})
@@ -19781,6 +21892,9 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FlinkJobOutput{})
+	pulumi.RegisterOutputType(FlinkJobPtrOutput{})
+	pulumi.RegisterOutputType(FlinkJobResponseOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigResponseOutput{})
@@ -19804,6 +21918,9 @@ func init() {
 	pulumi.RegisterOutputType(GkeNodePoolTargetArrayOutput{})
 	pulumi.RegisterOutputType(GkeNodePoolTargetResponseOutput{})
 	pulumi.RegisterOutputType(GkeNodePoolTargetResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput{})
 	pulumi.RegisterOutputType(HadoopJobOutput{})
 	pulumi.RegisterOutputType(HadoopJobPtrOutput{})
 	pulumi.RegisterOutputType(HadoopJobResponseOutput{})
@@ -19813,6 +21930,9 @@ func init() {
 	pulumi.RegisterOutputType(IdentityConfigOutput{})
 	pulumi.RegisterOutputType(IdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(IdentityConfigResponseOutput{})
+	pulumi.RegisterOutputType(InstanceFlexibilityPolicyOutput{})
+	pulumi.RegisterOutputType(InstanceFlexibilityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFlexibilityPolicyResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigOutput{})
 	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigResponseOutput{})
@@ -19821,6 +21941,12 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupConfigResponseOutput{})
 	pulumi.RegisterOutputType(InstanceReferenceResponseOutput{})
 	pulumi.RegisterOutputType(InstanceReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceSelectionOutput{})
+	pulumi.RegisterOutputType(InstanceSelectionArrayOutput{})
+	pulumi.RegisterOutputType(InstanceSelectionResponseOutput{})
+	pulumi.RegisterOutputType(InstanceSelectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceSelectionResultResponseOutput{})
+	pulumi.RegisterOutputType(InstanceSelectionResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobPlacementOutput{})
 	pulumi.RegisterOutputType(JobPlacementResponseOutput{})
 	pulumi.RegisterOutputType(JobReferenceOutput{})
@@ -19831,6 +21957,9 @@ func init() {
 	pulumi.RegisterOutputType(JobSchedulingResponseOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseArrayOutput{})
+	pulumi.RegisterOutputType(JupyterConfigOutput{})
+	pulumi.RegisterOutputType(JupyterConfigPtrOutput{})
+	pulumi.RegisterOutputType(JupyterConfigResponseOutput{})
 	pulumi.RegisterOutputType(KerberosConfigOutput{})
 	pulumi.RegisterOutputType(KerberosConfigPtrOutput{})
 	pulumi.RegisterOutputType(KerberosConfigResponseOutput{})
@@ -19885,6 +22014,9 @@ func init() {
 	pulumi.RegisterOutputType(PrestoJobOutput{})
 	pulumi.RegisterOutputType(PrestoJobPtrOutput{})
 	pulumi.RegisterOutputType(PrestoJobResponseOutput{})
+	pulumi.RegisterOutputType(PyPiRepositoryConfigOutput{})
+	pulumi.RegisterOutputType(PyPiRepositoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(PyPiRepositoryConfigResponseOutput{})
 	pulumi.RegisterOutputType(PySparkBatchOutput{})
 	pulumi.RegisterOutputType(PySparkBatchPtrOutput{})
 	pulumi.RegisterOutputType(PySparkBatchResponseOutput{})
@@ -19897,6 +22029,9 @@ func init() {
 	pulumi.RegisterOutputType(RegexValidationOutput{})
 	pulumi.RegisterOutputType(RegexValidationPtrOutput{})
 	pulumi.RegisterOutputType(RegexValidationResponseOutput{})
+	pulumi.RegisterOutputType(RepositoryConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryConfigResponseOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityResponseOutput{})
@@ -19907,6 +22042,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityConfigOutput{})
 	pulumi.RegisterOutputType(SecurityConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityConfigResponseOutput{})
+	pulumi.RegisterOutputType(SessionStateHistoryResponseOutput{})
+	pulumi.RegisterOutputType(SessionStateHistoryResponseArrayOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigResponseOutput{})
@@ -19937,6 +22074,9 @@ func init() {
 	pulumi.RegisterOutputType(SparkStandaloneAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(SparkStandaloneAutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(SparkStandaloneAutoscalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(StartupConfigOutput{})
+	pulumi.RegisterOutputType(StartupConfigPtrOutput{})
+	pulumi.RegisterOutputType(StartupConfigResponseOutput{})
 	pulumi.RegisterOutputType(StateHistoryResponseOutput{})
 	pulumi.RegisterOutputType(StateHistoryResponseArrayOutput{})
 	pulumi.RegisterOutputType(TemplateParameterOutput{})

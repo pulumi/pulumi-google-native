@@ -46,7 +46,7 @@ type LookupServiceResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
-	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationResponse `pulumi:"metadataIntegration"`
 	// The metadata management activities of the metastore service.
 	MetadataManagementActivity MetadataManagementActivityResponse `pulumi:"metadataManagementActivity"`
@@ -159,7 +159,7 @@ func (o LookupServiceResultOutput) MaintenanceWindow() MaintenanceWindowResponse
 	return o.ApplyT(func(v LookupServiceResult) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
 }
 
-// The setting that defines how metastore metadata should be integrated with external services and systems.
+// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
 func (o LookupServiceResultOutput) MetadataIntegration() MetadataIntegrationResponseOutput {
 	return o.ApplyT(func(v LookupServiceResult) MetadataIntegrationResponse { return v.MetadataIntegration }).(MetadataIntegrationResponseOutput)
 }

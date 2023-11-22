@@ -20,6 +20,8 @@ type ServiceConnectionPolicy struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A description of this resource.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The type of underlying resources used to create the connection.
 	Infrastructure pulumi.StringOutput `pulumi:"infrastructure"`
 	// User-defined labels.
@@ -91,6 +93,8 @@ func (ServiceConnectionPolicyState) ElementType() reflect.Type {
 type serviceConnectionPolicyArgs struct {
 	// A description of this resource.
 	Description *string `pulumi:"description"`
+	// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
 	// User-defined labels.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -113,6 +117,8 @@ type serviceConnectionPolicyArgs struct {
 type ServiceConnectionPolicyArgs struct {
 	// A description of this resource.
 	Description pulumi.StringPtrInput
+	// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput
 	// User-defined labels.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -188,6 +194,11 @@ func (o ServiceConnectionPolicyOutput) CreateTime() pulumi.StringOutput {
 // A description of this resource.
 func (o ServiceConnectionPolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o ServiceConnectionPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The type of underlying resources used to create the connection.

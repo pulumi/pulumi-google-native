@@ -414,6 +414,8 @@ func (o CidrBlockResponseArrayOutput) Index(i pulumi.IntInput) CidrBlockResponse
 type DatabaseConfig struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType *string `pulumi:"machineType"`
+	// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+	Zone *string `pulumi:"zone"`
 }
 
 // DatabaseConfigInput is an input type that accepts DatabaseConfigArgs and DatabaseConfigOutput values.
@@ -431,6 +433,8 @@ type DatabaseConfigInput interface {
 type DatabaseConfigArgs struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (DatabaseConfigArgs) ElementType() reflect.Type {
@@ -534,6 +538,11 @@ func (o DatabaseConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+func (o DatabaseConfigOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
 type DatabaseConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseConfigPtrOutput) ElementType() reflect.Type {
@@ -574,10 +583,22 @@ func (o DatabaseConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+func (o DatabaseConfigPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software.
 type DatabaseConfigResponse struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType string `pulumi:"machineType"`
+	// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+	Zone string `pulumi:"zone"`
 }
 
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software.
@@ -604,6 +625,11 @@ func (o DatabaseConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 // Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o DatabaseConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.
+func (o DatabaseConfigResponseOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseConfigResponse) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 // The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -822,6 +848,8 @@ type EnvironmentConfig struct {
 	PrivateEnvironmentConfig *PrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
 	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	RecoveryConfig *RecoveryConfig `pulumi:"recoveryConfig"`
+	// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+	ResilienceMode *EnvironmentConfigResilienceMode `pulumi:"resilienceMode"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig *SoftwareConfig `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance.
@@ -863,6 +891,8 @@ type EnvironmentConfigArgs struct {
 	PrivateEnvironmentConfig PrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
 	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	RecoveryConfig RecoveryConfigPtrInput `pulumi:"recoveryConfig"`
+	// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+	ResilienceMode EnvironmentConfigResilienceModePtrInput `pulumi:"resilienceMode"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig SoftwareConfigPtrInput `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance.
@@ -1014,6 +1044,11 @@ func (o EnvironmentConfigOutput) RecoveryConfig() RecoveryConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *RecoveryConfig { return v.RecoveryConfig }).(RecoveryConfigPtrOutput)
 }
 
+// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+func (o EnvironmentConfigOutput) ResilienceMode() EnvironmentConfigResilienceModePtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigResilienceMode { return v.ResilienceMode }).(EnvironmentConfigResilienceModePtrOutput)
+}
+
 // The configuration settings for software inside the environment.
 func (o EnvironmentConfigOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *SoftwareConfig { return v.SoftwareConfig }).(SoftwareConfigPtrOutput)
@@ -1154,6 +1189,16 @@ func (o EnvironmentConfigPtrOutput) RecoveryConfig() RecoveryConfigPtrOutput {
 	}).(RecoveryConfigPtrOutput)
 }
 
+// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+func (o EnvironmentConfigPtrOutput) ResilienceMode() EnvironmentConfigResilienceModePtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigResilienceMode {
+		if v == nil {
+			return nil
+		}
+		return v.ResilienceMode
+	}).(EnvironmentConfigResilienceModePtrOutput)
+}
+
 // The configuration settings for software inside the environment.
 func (o EnvironmentConfigPtrOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *SoftwareConfig {
@@ -1222,6 +1267,8 @@ type EnvironmentConfigResponse struct {
 	PrivateEnvironmentConfig PrivateEnvironmentConfigResponse `pulumi:"privateEnvironmentConfig"`
 	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	RecoveryConfig RecoveryConfigResponse `pulumi:"recoveryConfig"`
+	// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+	ResilienceMode string `pulumi:"resilienceMode"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig SoftwareConfigResponse `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance.
@@ -1318,6 +1365,11 @@ func (o EnvironmentConfigResponseOutput) PrivateEnvironmentConfig() PrivateEnvir
 // Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigResponseOutput) RecoveryConfig() RecoveryConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) RecoveryConfigResponse { return v.RecoveryConfig }).(RecoveryConfigResponseOutput)
+}
+
+// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
+func (o EnvironmentConfigResponseOutput) ResilienceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigResponse) string { return v.ResilienceMode }).(pulumi.StringOutput)
 }
 
 // The configuration settings for software inside the environment.
@@ -4429,6 +4481,450 @@ func (o SoftwareConfigResponseOutput) SchedulerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) int { return v.SchedulerCount }).(pulumi.IntOutput)
 }
 
+// The configuration for data storage in the environment.
+type StorageConfig struct {
+	// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+	Bucket *string `pulumi:"bucket"`
+}
+
+// StorageConfigInput is an input type that accepts StorageConfigArgs and StorageConfigOutput values.
+// You can construct a concrete instance of `StorageConfigInput` via:
+//
+//	StorageConfigArgs{...}
+type StorageConfigInput interface {
+	pulumi.Input
+
+	ToStorageConfigOutput() StorageConfigOutput
+	ToStorageConfigOutputWithContext(context.Context) StorageConfigOutput
+}
+
+// The configuration for data storage in the environment.
+type StorageConfigArgs struct {
+	// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+}
+
+func (StorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageConfig)(nil)).Elem()
+}
+
+func (i StorageConfigArgs) ToStorageConfigOutput() StorageConfigOutput {
+	return i.ToStorageConfigOutputWithContext(context.Background())
+}
+
+func (i StorageConfigArgs) ToStorageConfigOutputWithContext(ctx context.Context) StorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigOutput)
+}
+
+func (i StorageConfigArgs) ToOutput(ctx context.Context) pulumix.Output[StorageConfig] {
+	return pulumix.Output[StorageConfig]{
+		OutputState: i.ToStorageConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i StorageConfigArgs) ToStorageConfigPtrOutput() StorageConfigPtrOutput {
+	return i.ToStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StorageConfigArgs) ToStorageConfigPtrOutputWithContext(ctx context.Context) StorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigOutput).ToStorageConfigPtrOutputWithContext(ctx)
+}
+
+// StorageConfigPtrInput is an input type that accepts StorageConfigArgs, StorageConfigPtr and StorageConfigPtrOutput values.
+// You can construct a concrete instance of `StorageConfigPtrInput` via:
+//
+//	        StorageConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToStorageConfigPtrOutput() StorageConfigPtrOutput
+	ToStorageConfigPtrOutputWithContext(context.Context) StorageConfigPtrOutput
+}
+
+type storageConfigPtrType StorageConfigArgs
+
+func StorageConfigPtr(v *StorageConfigArgs) StorageConfigPtrInput {
+	return (*storageConfigPtrType)(v)
+}
+
+func (*storageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageConfig)(nil)).Elem()
+}
+
+func (i *storageConfigPtrType) ToStorageConfigPtrOutput() StorageConfigPtrOutput {
+	return i.ToStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *storageConfigPtrType) ToStorageConfigPtrOutputWithContext(ctx context.Context) StorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigPtrOutput)
+}
+
+func (i *storageConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageConfig] {
+	return pulumix.Output[*StorageConfig]{
+		OutputState: i.ToStorageConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// The configuration for data storage in the environment.
+type StorageConfigOutput struct{ *pulumi.OutputState }
+
+func (StorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageConfig)(nil)).Elem()
+}
+
+func (o StorageConfigOutput) ToStorageConfigOutput() StorageConfigOutput {
+	return o
+}
+
+func (o StorageConfigOutput) ToStorageConfigOutputWithContext(ctx context.Context) StorageConfigOutput {
+	return o
+}
+
+func (o StorageConfigOutput) ToStorageConfigPtrOutput() StorageConfigPtrOutput {
+	return o.ToStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StorageConfigOutput) ToStorageConfigPtrOutputWithContext(ctx context.Context) StorageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageConfig) *StorageConfig {
+		return &v
+	}).(StorageConfigPtrOutput)
+}
+
+func (o StorageConfigOutput) ToOutput(ctx context.Context) pulumix.Output[StorageConfig] {
+	return pulumix.Output[StorageConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+func (o StorageConfigOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+type StorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageConfig)(nil)).Elem()
+}
+
+func (o StorageConfigPtrOutput) ToStorageConfigPtrOutput() StorageConfigPtrOutput {
+	return o
+}
+
+func (o StorageConfigPtrOutput) ToStorageConfigPtrOutputWithContext(ctx context.Context) StorageConfigPtrOutput {
+	return o
+}
+
+func (o StorageConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageConfig] {
+	return pulumix.Output[*StorageConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StorageConfigPtrOutput) Elem() StorageConfigOutput {
+	return o.ApplyT(func(v *StorageConfig) StorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StorageConfig
+		return ret
+	}).(StorageConfigOutput)
+}
+
+// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+func (o StorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration for data storage in the environment.
+type StorageConfigResponse struct {
+	// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+	Bucket string `pulumi:"bucket"`
+}
+
+// The configuration for data storage in the environment.
+type StorageConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageConfigResponse)(nil)).Elem()
+}
+
+func (o StorageConfigResponseOutput) ToStorageConfigResponseOutput() StorageConfigResponseOutput {
+	return o
+}
+
+func (o StorageConfigResponseOutput) ToStorageConfigResponseOutputWithContext(ctx context.Context) StorageConfigResponseOutput {
+	return o
+}
+
+func (o StorageConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageConfigResponse] {
+	return pulumix.Output[StorageConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+func (o StorageConfigResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageConfigResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Configuration for resources used by Airflow triggerers.
+type TriggererResource struct {
+	// Optional. The number of triggerers.
+	Count *int `pulumi:"count"`
+	// Optional. CPU request and limit for a single Airflow triggerer replica.
+	Cpu *float64 `pulumi:"cpu"`
+	// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+	MemoryGb *float64 `pulumi:"memoryGb"`
+}
+
+// TriggererResourceInput is an input type that accepts TriggererResourceArgs and TriggererResourceOutput values.
+// You can construct a concrete instance of `TriggererResourceInput` via:
+//
+//	TriggererResourceArgs{...}
+type TriggererResourceInput interface {
+	pulumi.Input
+
+	ToTriggererResourceOutput() TriggererResourceOutput
+	ToTriggererResourceOutputWithContext(context.Context) TriggererResourceOutput
+}
+
+// Configuration for resources used by Airflow triggerers.
+type TriggererResourceArgs struct {
+	// Optional. The number of triggerers.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Optional. CPU request and limit for a single Airflow triggerer replica.
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+	MemoryGb pulumi.Float64PtrInput `pulumi:"memoryGb"`
+}
+
+func (TriggererResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggererResource)(nil)).Elem()
+}
+
+func (i TriggererResourceArgs) ToTriggererResourceOutput() TriggererResourceOutput {
+	return i.ToTriggererResourceOutputWithContext(context.Background())
+}
+
+func (i TriggererResourceArgs) ToTriggererResourceOutputWithContext(ctx context.Context) TriggererResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggererResourceOutput)
+}
+
+func (i TriggererResourceArgs) ToOutput(ctx context.Context) pulumix.Output[TriggererResource] {
+	return pulumix.Output[TriggererResource]{
+		OutputState: i.ToTriggererResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TriggererResourceArgs) ToTriggererResourcePtrOutput() TriggererResourcePtrOutput {
+	return i.ToTriggererResourcePtrOutputWithContext(context.Background())
+}
+
+func (i TriggererResourceArgs) ToTriggererResourcePtrOutputWithContext(ctx context.Context) TriggererResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggererResourceOutput).ToTriggererResourcePtrOutputWithContext(ctx)
+}
+
+// TriggererResourcePtrInput is an input type that accepts TriggererResourceArgs, TriggererResourcePtr and TriggererResourcePtrOutput values.
+// You can construct a concrete instance of `TriggererResourcePtrInput` via:
+//
+//	        TriggererResourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggererResourcePtrInput interface {
+	pulumi.Input
+
+	ToTriggererResourcePtrOutput() TriggererResourcePtrOutput
+	ToTriggererResourcePtrOutputWithContext(context.Context) TriggererResourcePtrOutput
+}
+
+type triggererResourcePtrType TriggererResourceArgs
+
+func TriggererResourcePtr(v *TriggererResourceArgs) TriggererResourcePtrInput {
+	return (*triggererResourcePtrType)(v)
+}
+
+func (*triggererResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggererResource)(nil)).Elem()
+}
+
+func (i *triggererResourcePtrType) ToTriggererResourcePtrOutput() TriggererResourcePtrOutput {
+	return i.ToTriggererResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *triggererResourcePtrType) ToTriggererResourcePtrOutputWithContext(ctx context.Context) TriggererResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggererResourcePtrOutput)
+}
+
+func (i *triggererResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggererResource] {
+	return pulumix.Output[*TriggererResource]{
+		OutputState: i.ToTriggererResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for resources used by Airflow triggerers.
+type TriggererResourceOutput struct{ *pulumi.OutputState }
+
+func (TriggererResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggererResource)(nil)).Elem()
+}
+
+func (o TriggererResourceOutput) ToTriggererResourceOutput() TriggererResourceOutput {
+	return o
+}
+
+func (o TriggererResourceOutput) ToTriggererResourceOutputWithContext(ctx context.Context) TriggererResourceOutput {
+	return o
+}
+
+func (o TriggererResourceOutput) ToTriggererResourcePtrOutput() TriggererResourcePtrOutput {
+	return o.ToTriggererResourcePtrOutputWithContext(context.Background())
+}
+
+func (o TriggererResourceOutput) ToTriggererResourcePtrOutputWithContext(ctx context.Context) TriggererResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggererResource) *TriggererResource {
+		return &v
+	}).(TriggererResourcePtrOutput)
+}
+
+func (o TriggererResourceOutput) ToOutput(ctx context.Context) pulumix.Output[TriggererResource] {
+	return pulumix.Output[TriggererResource]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The number of triggerers.
+func (o TriggererResourceOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TriggererResource) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Optional. CPU request and limit for a single Airflow triggerer replica.
+func (o TriggererResourceOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TriggererResource) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+func (o TriggererResourceOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TriggererResource) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
+}
+
+type TriggererResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TriggererResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggererResource)(nil)).Elem()
+}
+
+func (o TriggererResourcePtrOutput) ToTriggererResourcePtrOutput() TriggererResourcePtrOutput {
+	return o
+}
+
+func (o TriggererResourcePtrOutput) ToTriggererResourcePtrOutputWithContext(ctx context.Context) TriggererResourcePtrOutput {
+	return o
+}
+
+func (o TriggererResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggererResource] {
+	return pulumix.Output[*TriggererResource]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TriggererResourcePtrOutput) Elem() TriggererResourceOutput {
+	return o.ApplyT(func(v *TriggererResource) TriggererResource {
+		if v != nil {
+			return *v
+		}
+		var ret TriggererResource
+		return ret
+	}).(TriggererResourceOutput)
+}
+
+// Optional. The number of triggerers.
+func (o TriggererResourcePtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TriggererResource) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. CPU request and limit for a single Airflow triggerer replica.
+func (o TriggererResourcePtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TriggererResource) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+func (o TriggererResourcePtrOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TriggererResource) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryGb
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Configuration for resources used by Airflow triggerers.
+type TriggererResourceResponse struct {
+	// Optional. The number of triggerers.
+	Count int `pulumi:"count"`
+	// Optional. CPU request and limit for a single Airflow triggerer replica.
+	Cpu float64 `pulumi:"cpu"`
+	// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+	MemoryGb float64 `pulumi:"memoryGb"`
+}
+
+// Configuration for resources used by Airflow triggerers.
+type TriggererResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (TriggererResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggererResourceResponse)(nil)).Elem()
+}
+
+func (o TriggererResourceResponseOutput) ToTriggererResourceResponseOutput() TriggererResourceResponseOutput {
+	return o
+}
+
+func (o TriggererResourceResponseOutput) ToTriggererResourceResponseOutputWithContext(ctx context.Context) TriggererResourceResponseOutput {
+	return o
+}
+
+func (o TriggererResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TriggererResourceResponse] {
+	return pulumix.Output[TriggererResourceResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. The number of triggerers.
+func (o TriggererResourceResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v TriggererResourceResponse) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Optional. CPU request and limit for a single Airflow triggerer replica.
+func (o TriggererResourceResponseOutput) Cpu() pulumi.Float64Output {
+	return o.ApplyT(func(v TriggererResourceResponse) float64 { return v.Cpu }).(pulumi.Float64Output)
+}
+
+// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+func (o TriggererResourceResponseOutput) MemoryGb() pulumi.Float64Output {
+	return o.ApplyT(func(v TriggererResourceResponse) float64 { return v.MemoryGb }).(pulumi.Float64Output)
+}
+
 // The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
 type WebServerConfig struct {
 	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
@@ -5373,6 +5869,8 @@ func (o WorkerResourceResponseOutput) StorageGb() pulumi.Float64Output {
 type WorkloadsConfig struct {
 	// Optional. Resources used by Airflow schedulers.
 	Scheduler *SchedulerResource `pulumi:"scheduler"`
+	// Optional. Resources used by Airflow triggerers.
+	Triggerer *TriggererResource `pulumi:"triggerer"`
 	// Optional. Resources used by Airflow web server.
 	WebServer *WebServerResource `pulumi:"webServer"`
 	// Optional. Resources used by Airflow workers.
@@ -5394,6 +5892,8 @@ type WorkloadsConfigInput interface {
 type WorkloadsConfigArgs struct {
 	// Optional. Resources used by Airflow schedulers.
 	Scheduler SchedulerResourcePtrInput `pulumi:"scheduler"`
+	// Optional. Resources used by Airflow triggerers.
+	Triggerer TriggererResourcePtrInput `pulumi:"triggerer"`
 	// Optional. Resources used by Airflow web server.
 	WebServer WebServerResourcePtrInput `pulumi:"webServer"`
 	// Optional. Resources used by Airflow workers.
@@ -5501,6 +6001,11 @@ func (o WorkloadsConfigOutput) Scheduler() SchedulerResourcePtrOutput {
 	return o.ApplyT(func(v WorkloadsConfig) *SchedulerResource { return v.Scheduler }).(SchedulerResourcePtrOutput)
 }
 
+// Optional. Resources used by Airflow triggerers.
+func (o WorkloadsConfigOutput) Triggerer() TriggererResourcePtrOutput {
+	return o.ApplyT(func(v WorkloadsConfig) *TriggererResource { return v.Triggerer }).(TriggererResourcePtrOutput)
+}
+
 // Optional. Resources used by Airflow web server.
 func (o WorkloadsConfigOutput) WebServer() WebServerResourcePtrOutput {
 	return o.ApplyT(func(v WorkloadsConfig) *WebServerResource { return v.WebServer }).(WebServerResourcePtrOutput)
@@ -5551,6 +6056,16 @@ func (o WorkloadsConfigPtrOutput) Scheduler() SchedulerResourcePtrOutput {
 	}).(SchedulerResourcePtrOutput)
 }
 
+// Optional. Resources used by Airflow triggerers.
+func (o WorkloadsConfigPtrOutput) Triggerer() TriggererResourcePtrOutput {
+	return o.ApplyT(func(v *WorkloadsConfig) *TriggererResource {
+		if v == nil {
+			return nil
+		}
+		return v.Triggerer
+	}).(TriggererResourcePtrOutput)
+}
+
 // Optional. Resources used by Airflow web server.
 func (o WorkloadsConfigPtrOutput) WebServer() WebServerResourcePtrOutput {
 	return o.ApplyT(func(v *WorkloadsConfig) *WebServerResource {
@@ -5575,6 +6090,8 @@ func (o WorkloadsConfigPtrOutput) Worker() WorkerResourcePtrOutput {
 type WorkloadsConfigResponse struct {
 	// Optional. Resources used by Airflow schedulers.
 	Scheduler SchedulerResourceResponse `pulumi:"scheduler"`
+	// Optional. Resources used by Airflow triggerers.
+	Triggerer TriggererResourceResponse `pulumi:"triggerer"`
 	// Optional. Resources used by Airflow web server.
 	WebServer WebServerResourceResponse `pulumi:"webServer"`
 	// Optional. Resources used by Airflow workers.
@@ -5605,6 +6122,11 @@ func (o WorkloadsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Out
 // Optional. Resources used by Airflow schedulers.
 func (o WorkloadsConfigResponseOutput) Scheduler() SchedulerResourceResponseOutput {
 	return o.ApplyT(func(v WorkloadsConfigResponse) SchedulerResourceResponse { return v.Scheduler }).(SchedulerResourceResponseOutput)
+}
+
+// Optional. Resources used by Airflow triggerers.
+func (o WorkloadsConfigResponseOutput) Triggerer() TriggererResourceResponseOutput {
+	return o.ApplyT(func(v WorkloadsConfigResponse) TriggererResourceResponse { return v.Triggerer }).(TriggererResourceResponseOutput)
 }
 
 // Optional. Resources used by Airflow web server.
@@ -5650,6 +6172,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourcePtrInput)(nil)).Elem(), SchedulerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigInput)(nil)).Elem(), SoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigPtrInput)(nil)).Elem(), SoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageConfigInput)(nil)).Elem(), StorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageConfigPtrInput)(nil)).Elem(), StorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggererResourceInput)(nil)).Elem(), TriggererResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggererResourcePtrInput)(nil)).Elem(), TriggererResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigInput)(nil)).Elem(), WebServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigPtrInput)(nil)).Elem(), WebServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlInput)(nil)).Elem(), WebServerNetworkAccessControlArgs{})
@@ -5710,6 +6236,12 @@ func init() {
 	pulumi.RegisterOutputType(SoftwareConfigOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigResponseOutput{})
+	pulumi.RegisterOutputType(StorageConfigOutput{})
+	pulumi.RegisterOutputType(StorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(StorageConfigResponseOutput{})
+	pulumi.RegisterOutputType(TriggererResourceOutput{})
+	pulumi.RegisterOutputType(TriggererResourcePtrOutput{})
+	pulumi.RegisterOutputType(TriggererResourceResponseOutput{})
 	pulumi.RegisterOutputType(WebServerConfigOutput{})
 	pulumi.RegisterOutputType(WebServerConfigPtrOutput{})
 	pulumi.RegisterOutputType(WebServerConfigResponseOutput{})

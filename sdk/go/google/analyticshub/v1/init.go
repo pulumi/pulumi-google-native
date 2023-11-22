@@ -37,6 +37,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataExchangeListingIamPolicy{}
 	case "google-native:analyticshub/v1:Listing":
 		r = &Listing{}
+	case "google-native:analyticshub/v1:SubscriptionIamBinding":
+		r = &SubscriptionIamBinding{}
+	case "google-native:analyticshub/v1:SubscriptionIamMember":
+		r = &SubscriptionIamMember{}
+	case "google-native:analyticshub/v1:SubscriptionIamPolicy":
+		r = &SubscriptionIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

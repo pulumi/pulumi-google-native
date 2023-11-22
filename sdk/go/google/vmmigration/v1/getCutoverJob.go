@@ -32,6 +32,8 @@ type LookupCutoverJobArgs struct {
 }
 
 type LookupCutoverJobResult struct {
+	// Details of the target Persistent Disks in Compute Engine.
+	ComputeEngineDisksTargetDetails ComputeEngineDisksTargetDetailsResponse `pulumi:"computeEngineDisksTargetDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
 	// The time the cutover job was created (as an API call, not when it was actually created in the target).
@@ -97,6 +99,13 @@ func (o LookupCutoverJobResultOutput) ToOutput(ctx context.Context) pulumix.Outp
 	return pulumix.Output[LookupCutoverJobResult]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Details of the target Persistent Disks in Compute Engine.
+func (o LookupCutoverJobResultOutput) ComputeEngineDisksTargetDetails() ComputeEngineDisksTargetDetailsResponseOutput {
+	return o.ApplyT(func(v LookupCutoverJobResult) ComputeEngineDisksTargetDetailsResponse {
+		return v.ComputeEngineDisksTargetDetails
+	}).(ComputeEngineDisksTargetDetailsResponseOutput)
 }
 
 // Details of the target VM in Compute Engine.

@@ -32,7 +32,7 @@ type Function struct {
 	DockerRegistry pulumi.StringOutput `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository pulumi.StringOutput `pulumi:"dockerRepository"`
-	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
 	EntryPoint pulumi.StringOutput `pulumi:"entryPoint"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables pulumi.StringMapOutput `pulumi:"environmentVariables"`
@@ -53,7 +53,9 @@ type Function struct {
 	MinInstances pulumi.IntOutput `pulumi:"minInstances"`
 	// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+	// Deprecated: use vpc_connector
+	//
+	// Deprecated: Deprecated: use vpc_connector
 	Network pulumi.StringOutput `pulumi:"network"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
@@ -143,7 +145,7 @@ type functionArgs struct {
 	DockerRegistry *FunctionDockerRegistry `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository *string `pulumi:"dockerRepository"`
-	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
 	EntryPoint *string `pulumi:"entryPoint"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
@@ -164,7 +166,9 @@ type functionArgs struct {
 	MinInstances *int `pulumi:"minInstances"`
 	// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
 	Name *string `pulumi:"name"`
-	// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+	// Deprecated: use vpc_connector
+	//
+	// Deprecated: Deprecated: use vpc_connector
 	Network *string `pulumi:"network"`
 	Project *string `pulumi:"project"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
@@ -205,7 +209,7 @@ type FunctionArgs struct {
 	DockerRegistry FunctionDockerRegistryPtrInput
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository pulumi.StringPtrInput
-	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
 	EntryPoint pulumi.StringPtrInput
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables pulumi.StringMapInput
@@ -226,7 +230,9 @@ type FunctionArgs struct {
 	MinInstances pulumi.IntPtrInput
 	// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
 	Name pulumi.StringPtrInput
-	// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+	// Deprecated: use vpc_connector
+	//
+	// Deprecated: Deprecated: use vpc_connector
 	Network pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
@@ -342,7 +348,7 @@ func (o FunctionOutput) DockerRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.DockerRepository }).(pulumi.StringOutput)
 }
 
-// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
 func (o FunctionOutput) EntryPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.EntryPoint }).(pulumi.StringOutput)
 }
@@ -396,7 +402,9 @@ func (o FunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+// Deprecated: use vpc_connector
+//
+// Deprecated: Deprecated: use vpc_connector
 func (o FunctionOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }

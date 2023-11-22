@@ -66,12 +66,16 @@ type LookupClusterResult struct {
 	DefaultMaxPodsConstraint MaxPodsConstraintResponse `pulumi:"defaultMaxPodsConstraint"`
 	// An optional description of this cluster.
 	Description string `pulumi:"description"`
+	// Beta APIs Config
+	EnableK8sBetaApis K8sBetaAPIConfigResponse `pulumi:"enableK8sBetaApis"`
 	// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1alpha1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 	EnableKubernetesAlpha bool `pulumi:"enableKubernetesAlpha"`
 	// Enable the ability to use Cloud TPUs in this cluster.
 	EnableTpu bool `pulumi:"enableTpu"`
 	// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
 	Endpoint string `pulumi:"endpoint"`
+	// GKE Enterprise Configuration.
+	EnterpriseConfig EnterpriseConfigResponse `pulumi:"enterpriseConfig"`
 	// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
 	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -138,6 +142,8 @@ type LookupClusterResult struct {
 	NodePools []NodePoolResponse `pulumi:"nodePools"`
 	// Notification configuration of the cluster.
 	NotificationConfig NotificationConfigResponse `pulumi:"notificationConfig"`
+	// The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+	ParentProductConfig ParentProductConfigResponse `pulumi:"parentProductConfig"`
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigResponse `pulumi:"privateClusterConfig"`
 	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
@@ -146,6 +152,8 @@ type LookupClusterResult struct {
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
 	ResourceUsageExportConfig ResourceUsageExportConfigResponse `pulumi:"resourceUsageExportConfig"`
+	// Enable/Disable Security Posture API features for the cluster.
+	SecurityPostureConfig SecurityPostureConfigResponse `pulumi:"securityPostureConfig"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
@@ -299,6 +307,11 @@ func (o LookupClusterResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Beta APIs Config
+func (o LookupClusterResultOutput) EnableK8sBetaApis() K8sBetaAPIConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) K8sBetaAPIConfigResponse { return v.EnableK8sBetaApis }).(K8sBetaAPIConfigResponseOutput)
+}
+
 // Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1alpha1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
 func (o LookupClusterResultOutput) EnableKubernetesAlpha() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableKubernetesAlpha }).(pulumi.BoolOutput)
@@ -312,6 +325,11 @@ func (o LookupClusterResultOutput) EnableTpu() pulumi.BoolOutput {
 // [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
 func (o LookupClusterResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// GKE Enterprise Configuration.
+func (o LookupClusterResultOutput) EnterpriseConfig() EnterpriseConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) EnterpriseConfigResponse { return v.EnterpriseConfig }).(EnterpriseConfigResponseOutput)
 }
 
 // This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
@@ -472,6 +490,11 @@ func (o LookupClusterResultOutput) NotificationConfig() NotificationConfigRespon
 	return o.ApplyT(func(v LookupClusterResult) NotificationConfigResponse { return v.NotificationConfig }).(NotificationConfigResponseOutput)
 }
 
+// The configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of the GKE cluster and take the ownership of the cluster.
+func (o LookupClusterResultOutput) ParentProductConfig() ParentProductConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) ParentProductConfigResponse { return v.ParentProductConfig }).(ParentProductConfigResponseOutput)
+}
+
 // Configuration for private cluster.
 func (o LookupClusterResultOutput) PrivateClusterConfig() PrivateClusterConfigResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) PrivateClusterConfigResponse { return v.PrivateClusterConfig }).(PrivateClusterConfigResponseOutput)
@@ -490,6 +513,11 @@ func (o LookupClusterResultOutput) ResourceLabels() pulumi.StringMapOutput {
 // Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
 func (o LookupClusterResultOutput) ResourceUsageExportConfig() ResourceUsageExportConfigResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) ResourceUsageExportConfigResponse { return v.ResourceUsageExportConfig }).(ResourceUsageExportConfigResponseOutput)
+}
+
+// Enable/Disable Security Posture API features for the cluster.
+func (o LookupClusterResultOutput) SecurityPostureConfig() SecurityPostureConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) SecurityPostureConfigResponse { return v.SecurityPostureConfig }).(SecurityPostureConfigResponseOutput)
 }
 
 // [Output only] Server-defined URL for the resource.

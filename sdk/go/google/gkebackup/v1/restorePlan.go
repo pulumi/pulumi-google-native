@@ -24,11 +24,11 @@ type RestorePlan struct {
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The timestamp when this RestorePlan resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// User specified descriptive string for this RestorePlan.
+	// Optional. User specified descriptive string for this RestorePlan.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// A set of custom labels supplied by user.
+	// Optional. A set of custom labels supplied by user.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.
@@ -38,6 +38,10 @@ type RestorePlan struct {
 	RestoreConfig RestoreConfigResponseOutput `pulumi:"restoreConfig"`
 	// Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
 	RestorePlanId pulumi.StringOutput `pulumi:"restorePlanId"`
+	// State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in during the Create operation.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Human-readable description of why RestorePlan is in the current `state`
+	StateReason pulumi.StringOutput `pulumi:"stateReason"`
 	// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The timestamp when this RestorePlan resource was last updated.
@@ -106,9 +110,9 @@ type restorePlanArgs struct {
 	BackupPlan string `pulumi:"backupPlan"`
 	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
 	Cluster string `pulumi:"cluster"`
-	// User specified descriptive string for this RestorePlan.
+	// Optional. User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
-	// A set of custom labels supplied by user.
+	// Optional. A set of custom labels supplied by user.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
@@ -124,9 +128,9 @@ type RestorePlanArgs struct {
 	BackupPlan pulumi.StringInput
 	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
 	Cluster pulumi.StringInput
-	// User specified descriptive string for this RestorePlan.
+	// Optional. User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput
-	// A set of custom labels supplied by user.
+	// Optional. A set of custom labels supplied by user.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
@@ -200,7 +204,7 @@ func (o RestorePlanOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// User specified descriptive string for this RestorePlan.
+// Optional. User specified descriptive string for this RestorePlan.
 func (o RestorePlanOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -210,7 +214,7 @@ func (o RestorePlanOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// A set of custom labels supplied by user.
+// Optional. A set of custom labels supplied by user.
 func (o RestorePlanOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -236,6 +240,16 @@ func (o RestorePlanOutput) RestoreConfig() RestoreConfigResponseOutput {
 // Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
 func (o RestorePlanOutput) RestorePlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.RestorePlanId }).(pulumi.StringOutput)
+}
+
+// State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in during the Create operation.
+func (o RestorePlanOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Human-readable description of why RestorePlan is in the current `state`
+func (o RestorePlanOutput) StateReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
 }
 
 // Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.

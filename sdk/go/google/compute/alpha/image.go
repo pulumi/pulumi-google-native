@@ -28,6 +28,8 @@ type Image struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.StringOutput `pulumi:"diskSizeGb"`
+	// Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute pulumi.BoolOutput `pulumi:"enableConfidentialCompute"`
 	// The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family pulumi.StringOutput `pulumi:"family"`
 	// Force image creation if true.
@@ -147,6 +149,8 @@ type imageArgs struct {
 	Description *string `pulumi:"description"`
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
+	// Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family *string `pulumi:"family"`
 	// Force image creation if true.
@@ -206,6 +210,8 @@ type ImageArgs struct {
 	Description pulumi.StringPtrInput
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.StringPtrInput
+	// Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute pulumi.BoolPtrInput
 	// The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family pulumi.StringPtrInput
 	// Force image creation if true.
@@ -330,6 +336,11 @@ func (o ImageOutput) Description() pulumi.StringOutput {
 // Size of the image when restored onto a persistent disk (in GB).
 func (o ImageOutput) DiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.DiskSizeGb }).(pulumi.StringOutput)
+}
+
+// Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+func (o ImageOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
 
 // The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.

@@ -37,7 +37,7 @@ type LookupBackendBucketResult struct {
 	CompressionMode string `pulumi:"compressionMode"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
-	// Headers that the HTTP/S load balancer should add to proxied responses.
+	// Headers that the Application Load Balancer should add to proxied responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description string `pulumi:"description"`
@@ -117,7 +117,7 @@ func (o LookupBackendBucketResultOutput) CreationTimestamp() pulumi.StringOutput
 	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// Headers that the HTTP/S load balancer should add to proxied responses.
+// Headers that the Application Load Balancer should add to proxied responses.
 func (o LookupBackendBucketResultOutput) CustomResponseHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupBackendBucketResult) []string { return v.CustomResponseHeaders }).(pulumi.StringArrayOutput)
 }

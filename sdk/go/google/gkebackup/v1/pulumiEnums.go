@@ -200,7 +200,7 @@ func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
+// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
 type RestoreConfigClusterResourceConflictPolicy string
 
 const (
@@ -208,7 +208,7 @@ const (
 	RestoreConfigClusterResourceConflictPolicyClusterResourceConflictPolicyUnspecified = RestoreConfigClusterResourceConflictPolicy("CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED")
 	// Do not attempt to restore the conflicting resource.
 	RestoreConfigClusterResourceConflictPolicyUseExistingVersion = RestoreConfigClusterResourceConflictPolicy("USE_EXISTING_VERSION")
-	// Delete the existing version before re-creating it from the Backup. Note that this is a dangerous option which could cause unintentional data loss if used inappropriately - for example, deleting a CRD will cause Kubernetes to delete all CRs of that type.
+	// Delete the existing version before re-creating it from the Backup. This is a dangerous option which could cause unintentional data loss if used inappropriately. For example, deleting a CRD will cause Kubernetes to delete all CRs of that type.
 	RestoreConfigClusterResourceConflictPolicyUseBackupVersion = RestoreConfigClusterResourceConflictPolicy("USE_BACKUP_VERSION")
 )
 
@@ -387,7 +387,7 @@ func (in *restoreConfigClusterResourceConflictPolicyPtr) ToOutput(ctx context.Co
 	}
 }
 
-// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
 type RestoreConfigNamespacedResourceRestoreMode string
 
 const (
@@ -574,17 +574,17 @@ func (in *restoreConfigNamespacedResourceRestoreModePtr) ToOutput(ctx context.Co
 	}
 }
 
-// Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
+// Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
 type RestoreConfigVolumeDataRestorePolicy string
 
 const (
 	// Unspecified (illegal).
 	RestoreConfigVolumeDataRestorePolicyVolumeDataRestorePolicyUnspecified = RestoreConfigVolumeDataRestorePolicy("VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED")
-	// For each PVC to be restored, will create a new underlying volume (and PV) from the corresponding VolumeBackup contained within the Backup.
+	// For each PVC to be restored, create a new underlying volume and PV from the corresponding VolumeBackup contained within the Backup.
 	RestoreConfigVolumeDataRestorePolicyRestoreVolumeDataFromBackup = RestoreConfigVolumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
-	// For each PVC to be restored, attempt to reuse the original PV contained in the Backup (with its original underlying volume). Note that option is likely only usable when restoring a workload to its original cluster.
+	// For each PVC to be restored, attempt to reuse the original PV contained in the Backup (with its original underlying volume). This option is likely only usable when restoring a workload to its original cluster.
 	RestoreConfigVolumeDataRestorePolicyReuseVolumeHandleFromBackup = RestoreConfigVolumeDataRestorePolicy("REUSE_VOLUME_HANDLE_FROM_BACKUP")
-	// For each PVC to be restored, PVCs will be created without any particular action to restore data. In this case, the normal Kubernetes provisioning logic would kick in, and this would likely result in either dynamically provisioning blank PVs or binding to statically provisioned PVs.
+	// For each PVC to be restored, create PVC without any particular action to restore data. In this case, the normal Kubernetes provisioning logic would kick in, and this would likely result in either dynamically provisioning blank PVs or binding to statically provisioned PVs.
 	RestoreConfigVolumeDataRestorePolicyNoVolumeDataRestoration = RestoreConfigVolumeDataRestorePolicy("NO_VOLUME_DATA_RESTORATION")
 )
 
@@ -763,6 +763,201 @@ func (in *restoreConfigVolumeDataRestorePolicyPtr) ToOutput(ctx context.Context)
 	}
 }
 
+// Required. op specifies the operation to perform.
+type TransformationRuleActionOp string
+
+const (
+	// Unspecified operation
+	TransformationRuleActionOpOpUnspecified = TransformationRuleActionOp("OP_UNSPECIFIED")
+	// The "remove" operation removes the value at the target location.
+	TransformationRuleActionOpRemove = TransformationRuleActionOp("REMOVE")
+	// The "move" operation removes the value at a specified location and adds it to the target location.
+	TransformationRuleActionOpMove = TransformationRuleActionOp("MOVE")
+	// The "copy" operation copies the value at a specified location to the target location.
+	TransformationRuleActionOpCopy = TransformationRuleActionOp("COPY")
+	// The "add" operation performs one of the following functions, depending upon what the target location references: 1. If the target location specifies an array index, a new value is inserted into the array at the specified index. 2. If the target location specifies an object member that does not already exist, a new member is added to the object. 3. If the target location specifies an object member that does exist, that member's value is replaced.
+	TransformationRuleActionOpAdd = TransformationRuleActionOp("ADD")
+	// The "test" operation tests that a value at the target location is equal to a specified value.
+	TransformationRuleActionOpTest = TransformationRuleActionOp("TEST")
+	// The "replace" operation replaces the value at the target location with a new value. The operation object MUST contain a "value" member whose content specifies the replacement value.
+	TransformationRuleActionOpReplace = TransformationRuleActionOp("REPLACE")
+)
+
+func (TransformationRuleActionOp) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformationRuleActionOp)(nil)).Elem()
+}
+
+func (e TransformationRuleActionOp) ToTransformationRuleActionOpOutput() TransformationRuleActionOpOutput {
+	return pulumi.ToOutput(e).(TransformationRuleActionOpOutput)
+}
+
+func (e TransformationRuleActionOp) ToTransformationRuleActionOpOutputWithContext(ctx context.Context) TransformationRuleActionOpOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TransformationRuleActionOpOutput)
+}
+
+func (e TransformationRuleActionOp) ToTransformationRuleActionOpPtrOutput() TransformationRuleActionOpPtrOutput {
+	return e.ToTransformationRuleActionOpPtrOutputWithContext(context.Background())
+}
+
+func (e TransformationRuleActionOp) ToTransformationRuleActionOpPtrOutputWithContext(ctx context.Context) TransformationRuleActionOpPtrOutput {
+	return TransformationRuleActionOp(e).ToTransformationRuleActionOpOutputWithContext(ctx).ToTransformationRuleActionOpPtrOutputWithContext(ctx)
+}
+
+func (e TransformationRuleActionOp) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TransformationRuleActionOp) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TransformationRuleActionOp) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TransformationRuleActionOp) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TransformationRuleActionOpOutput struct{ *pulumi.OutputState }
+
+func (TransformationRuleActionOpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransformationRuleActionOp)(nil)).Elem()
+}
+
+func (o TransformationRuleActionOpOutput) ToTransformationRuleActionOpOutput() TransformationRuleActionOpOutput {
+	return o
+}
+
+func (o TransformationRuleActionOpOutput) ToTransformationRuleActionOpOutputWithContext(ctx context.Context) TransformationRuleActionOpOutput {
+	return o
+}
+
+func (o TransformationRuleActionOpOutput) ToTransformationRuleActionOpPtrOutput() TransformationRuleActionOpPtrOutput {
+	return o.ToTransformationRuleActionOpPtrOutputWithContext(context.Background())
+}
+
+func (o TransformationRuleActionOpOutput) ToTransformationRuleActionOpPtrOutputWithContext(ctx context.Context) TransformationRuleActionOpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransformationRuleActionOp) *TransformationRuleActionOp {
+		return &v
+	}).(TransformationRuleActionOpPtrOutput)
+}
+
+func (o TransformationRuleActionOpOutput) ToOutput(ctx context.Context) pulumix.Output[TransformationRuleActionOp] {
+	return pulumix.Output[TransformationRuleActionOp]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TransformationRuleActionOpOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TransformationRuleActionOpOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TransformationRuleActionOp) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TransformationRuleActionOpOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TransformationRuleActionOpOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TransformationRuleActionOp) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransformationRuleActionOpPtrOutput struct{ *pulumi.OutputState }
+
+func (TransformationRuleActionOpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransformationRuleActionOp)(nil)).Elem()
+}
+
+func (o TransformationRuleActionOpPtrOutput) ToTransformationRuleActionOpPtrOutput() TransformationRuleActionOpPtrOutput {
+	return o
+}
+
+func (o TransformationRuleActionOpPtrOutput) ToTransformationRuleActionOpPtrOutputWithContext(ctx context.Context) TransformationRuleActionOpPtrOutput {
+	return o
+}
+
+func (o TransformationRuleActionOpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransformationRuleActionOp] {
+	return pulumix.Output[*TransformationRuleActionOp]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TransformationRuleActionOpPtrOutput) Elem() TransformationRuleActionOpOutput {
+	return o.ApplyT(func(v *TransformationRuleActionOp) TransformationRuleActionOp {
+		if v != nil {
+			return *v
+		}
+		var ret TransformationRuleActionOp
+		return ret
+	}).(TransformationRuleActionOpOutput)
+}
+
+func (o TransformationRuleActionOpPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TransformationRuleActionOpPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TransformationRuleActionOp) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TransformationRuleActionOpInput is an input type that accepts TransformationRuleActionOpArgs and TransformationRuleActionOpOutput values.
+// You can construct a concrete instance of `TransformationRuleActionOpInput` via:
+//
+//	TransformationRuleActionOpArgs{...}
+type TransformationRuleActionOpInput interface {
+	pulumi.Input
+
+	ToTransformationRuleActionOpOutput() TransformationRuleActionOpOutput
+	ToTransformationRuleActionOpOutputWithContext(context.Context) TransformationRuleActionOpOutput
+}
+
+var transformationRuleActionOpPtrType = reflect.TypeOf((**TransformationRuleActionOp)(nil)).Elem()
+
+type TransformationRuleActionOpPtrInput interface {
+	pulumi.Input
+
+	ToTransformationRuleActionOpPtrOutput() TransformationRuleActionOpPtrOutput
+	ToTransformationRuleActionOpPtrOutputWithContext(context.Context) TransformationRuleActionOpPtrOutput
+}
+
+type transformationRuleActionOpPtr string
+
+func TransformationRuleActionOpPtr(v string) TransformationRuleActionOpPtrInput {
+	return (*transformationRuleActionOpPtr)(&v)
+}
+
+func (*transformationRuleActionOpPtr) ElementType() reflect.Type {
+	return transformationRuleActionOpPtrType
+}
+
+func (in *transformationRuleActionOpPtr) ToTransformationRuleActionOpPtrOutput() TransformationRuleActionOpPtrOutput {
+	return pulumi.ToOutput(in).(TransformationRuleActionOpPtrOutput)
+}
+
+func (in *transformationRuleActionOpPtr) ToTransformationRuleActionOpPtrOutputWithContext(ctx context.Context) TransformationRuleActionOpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TransformationRuleActionOpPtrOutput)
+}
+
+func (in *transformationRuleActionOpPtr) ToOutput(ctx context.Context) pulumix.Output[*TransformationRuleActionOp] {
+	return pulumix.Output[*TransformationRuleActionOp]{
+		OutputState: in.ToTransformationRuleActionOpPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
@@ -772,6 +967,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreConfigNamespacedResourceRestoreModePtrInput)(nil)).Elem(), RestoreConfigNamespacedResourceRestoreMode("NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreConfigVolumeDataRestorePolicyInput)(nil)).Elem(), RestoreConfigVolumeDataRestorePolicy("VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreConfigVolumeDataRestorePolicyPtrInput)(nil)).Elem(), RestoreConfigVolumeDataRestorePolicy("VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformationRuleActionOpInput)(nil)).Elem(), TransformationRuleActionOp("OP_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TransformationRuleActionOpPtrInput)(nil)).Elem(), TransformationRuleActionOp("OP_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(RestoreConfigClusterResourceConflictPolicyOutput{})
@@ -780,4 +977,6 @@ func init() {
 	pulumi.RegisterOutputType(RestoreConfigNamespacedResourceRestoreModePtrOutput{})
 	pulumi.RegisterOutputType(RestoreConfigVolumeDataRestorePolicyOutput{})
 	pulumi.RegisterOutputType(RestoreConfigVolumeDataRestorePolicyPtrOutput{})
+	pulumi.RegisterOutputType(TransformationRuleActionOpOutput{})
+	pulumi.RegisterOutputType(TransformationRuleActionOpPtrOutput{})
 }

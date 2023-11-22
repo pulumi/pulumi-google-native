@@ -1349,6 +1349,8 @@ type AllocationAggregateReservation struct {
 	ReservedResources []AllocationAggregateReservationReservedResourceInfo `pulumi:"reservedResources"`
 	// The VM family that all instances scheduled against this reservation must belong to.
 	VmFamily *AllocationAggregateReservationVmFamily `pulumi:"vmFamily"`
+	// The workload type of the instances that will target this reservation.
+	WorkloadType *AllocationAggregateReservationWorkloadType `pulumi:"workloadType"`
 }
 
 // AllocationAggregateReservationInput is an input type that accepts AllocationAggregateReservationArgs and AllocationAggregateReservationOutput values.
@@ -1368,6 +1370,8 @@ type AllocationAggregateReservationArgs struct {
 	ReservedResources AllocationAggregateReservationReservedResourceInfoArrayInput `pulumi:"reservedResources"`
 	// The VM family that all instances scheduled against this reservation must belong to.
 	VmFamily AllocationAggregateReservationVmFamilyPtrInput `pulumi:"vmFamily"`
+	// The workload type of the instances that will target this reservation.
+	WorkloadType AllocationAggregateReservationWorkloadTypePtrInput `pulumi:"workloadType"`
 }
 
 func (AllocationAggregateReservationArgs) ElementType() reflect.Type {
@@ -1478,6 +1482,13 @@ func (o AllocationAggregateReservationOutput) VmFamily() AllocationAggregateRese
 	return o.ApplyT(func(v AllocationAggregateReservation) *AllocationAggregateReservationVmFamily { return v.VmFamily }).(AllocationAggregateReservationVmFamilyPtrOutput)
 }
 
+// The workload type of the instances that will target this reservation.
+func (o AllocationAggregateReservationOutput) WorkloadType() AllocationAggregateReservationWorkloadTypePtrOutput {
+	return o.ApplyT(func(v AllocationAggregateReservation) *AllocationAggregateReservationWorkloadType {
+		return v.WorkloadType
+	}).(AllocationAggregateReservationWorkloadTypePtrOutput)
+}
+
 type AllocationAggregateReservationPtrOutput struct{ *pulumi.OutputState }
 
 func (AllocationAggregateReservationPtrOutput) ElementType() reflect.Type {
@@ -1526,6 +1537,16 @@ func (o AllocationAggregateReservationPtrOutput) VmFamily() AllocationAggregateR
 		}
 		return v.VmFamily
 	}).(AllocationAggregateReservationVmFamilyPtrOutput)
+}
+
+// The workload type of the instances that will target this reservation.
+func (o AllocationAggregateReservationPtrOutput) WorkloadType() AllocationAggregateReservationWorkloadTypePtrOutput {
+	return o.ApplyT(func(v *AllocationAggregateReservation) *AllocationAggregateReservationWorkloadType {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadType
+	}).(AllocationAggregateReservationWorkloadTypePtrOutput)
 }
 
 type AllocationAggregateReservationReservedResourceInfo struct {
@@ -1940,6 +1961,8 @@ type AllocationAggregateReservationResponse struct {
 	ReservedResources []AllocationAggregateReservationReservedResourceInfoResponse `pulumi:"reservedResources"`
 	// The VM family that all instances scheduled against this reservation must belong to.
 	VmFamily string `pulumi:"vmFamily"`
+	// The workload type of the instances that will target this reservation.
+	WorkloadType string `pulumi:"workloadType"`
 }
 
 // This reservation type is specified by total resource amounts (e.g. total count of CPUs) and can account for multiple instance SKUs. In other words, one can create instances of varying shapes against this reservation.
@@ -1980,6 +2003,11 @@ func (o AllocationAggregateReservationResponseOutput) ReservedResources() Alloca
 // The VM family that all instances scheduled against this reservation must belong to.
 func (o AllocationAggregateReservationResponseOutput) VmFamily() pulumi.StringOutput {
 	return o.ApplyT(func(v AllocationAggregateReservationResponse) string { return v.VmFamily }).(pulumi.StringOutput)
+}
+
+// The workload type of the instances that will target this reservation.
+func (o AllocationAggregateReservationResponseOutput) WorkloadType() pulumi.StringOutput {
+	return o.ApplyT(func(v AllocationAggregateReservationResponse) string { return v.WorkloadType }).(pulumi.StringOutput)
 }
 
 // [Output Only] Contains output only fields.
@@ -3133,7 +3161,7 @@ type AttachedDiskInitializeParams struct {
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 	DiskType *string `pulumi:"diskType"`
-	// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+	// Whether this disk is using confidential compute mode.
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
@@ -3155,7 +3183,7 @@ type AttachedDiskInitializeParams struct {
 	ProvisionedIops *string `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
 	ProvisionedThroughput *string `pulumi:"provisionedThroughput"`
-	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
@@ -3198,7 +3226,7 @@ type AttachedDiskInitializeParamsArgs struct {
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+	// Whether this disk is using confidential compute mode.
 	EnableConfidentialCompute pulumi.BoolPtrInput `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 	GuestOsFeatures GuestOsFeatureArrayInput `pulumi:"guestOsFeatures"`
@@ -3220,7 +3248,7 @@ type AttachedDiskInitializeParamsArgs struct {
 	ProvisionedIops pulumi.StringPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
 	ProvisionedThroughput pulumi.StringPtrInput `pulumi:"provisionedThroughput"`
-	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
@@ -3361,7 +3389,7 @@ func (o AttachedDiskInitializeParamsOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+// Whether this disk is using confidential compute mode.
 func (o AttachedDiskInitializeParamsOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *bool { return v.EnableConfidentialCompute }).(pulumi.BoolPtrOutput)
 }
@@ -3415,7 +3443,7 @@ func (o AttachedDiskInitializeParamsOutput) ProvisionedThroughput() pulumi.Strin
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.ProvisionedThroughput }).(pulumi.StringPtrOutput)
 }
 
-// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 func (o AttachedDiskInitializeParamsOutput) ReplicaZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
 }
@@ -3540,7 +3568,7 @@ func (o AttachedDiskInitializeParamsPtrOutput) DiskType() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+// Whether this disk is using confidential compute mode.
 func (o AttachedDiskInitializeParamsPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) *bool {
 		if v == nil {
@@ -3642,7 +3670,7 @@ func (o AttachedDiskInitializeParamsPtrOutput) ProvisionedThroughput() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 func (o AttachedDiskInitializeParamsPtrOutput) ReplicaZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) []string {
 		if v == nil {
@@ -3744,7 +3772,7 @@ type AttachedDiskInitializeParamsResponse struct {
 	DiskSizeGb string `pulumi:"diskSizeGb"`
 	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 	DiskType string `pulumi:"diskType"`
-	// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+	// Whether this disk is using confidential compute mode.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
@@ -3766,7 +3794,7 @@ type AttachedDiskInitializeParamsResponse struct {
 	ProvisionedIops string `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
 	ProvisionedThroughput string `pulumi:"provisionedThroughput"`
-	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
@@ -3832,7 +3860,7 @@ func (o AttachedDiskInitializeParamsResponseOutput) DiskType() pulumi.StringOutp
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
-// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+// Whether this disk is using confidential compute mode.
 func (o AttachedDiskInitializeParamsResponseOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -3884,7 +3912,7 @@ func (o AttachedDiskInitializeParamsResponseOutput) ProvisionedThroughput() pulu
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
 
-// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 func (o AttachedDiskInitializeParamsResponseOutput) ReplicaZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
 }
@@ -5285,7 +5313,7 @@ func (o AutoscalerStatusDetailsResponseArrayOutput) Index(i pulumi.IntInput) Aut
 
 // Cloud Autoscaler policy.
 type AutoscalingPolicy struct {
-	// The number of seconds that the autoscaler waits before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. The default time autoscaler waits is 60 seconds. Virtual machine initialization times might vary because of numerous factors. We recommend that you test how long an instance may take to initialize. To do this, create an instance and time the startup process.
+	// The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process.
 	CoolDownPeriodSec *int `pulumi:"coolDownPeriodSec"`
 	// Defines the CPU utilization policy that allows the autoscaler to scale based on the average CPU utilization of a managed instance group.
 	CpuUtilization *AutoscalingPolicyCpuUtilization `pulumi:"cpuUtilization"`
@@ -5297,7 +5325,7 @@ type AutoscalingPolicy struct {
 	MaxNumReplicas *int `pulumi:"maxNumReplicas"`
 	// The minimum number of replicas that the autoscaler can scale in to. This cannot be less than 0. If not provided, autoscaler chooses a default value depending on maximum number of instances allowed.
 	MinNumReplicas *int `pulumi:"minNumReplicas"`
-	// Defines operating mode for this policy.
+	// Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
 	Mode             *AutoscalingPolicyMode             `pulumi:"mode"`
 	ScaleDownControl *AutoscalingPolicyScaleDownControl `pulumi:"scaleDownControl"`
 	ScaleInControl   *AutoscalingPolicyScaleInControl   `pulumi:"scaleInControl"`
@@ -5318,7 +5346,7 @@ type AutoscalingPolicyInput interface {
 
 // Cloud Autoscaler policy.
 type AutoscalingPolicyArgs struct {
-	// The number of seconds that the autoscaler waits before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. The default time autoscaler waits is 60 seconds. Virtual machine initialization times might vary because of numerous factors. We recommend that you test how long an instance may take to initialize. To do this, create an instance and time the startup process.
+	// The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process.
 	CoolDownPeriodSec pulumi.IntPtrInput `pulumi:"coolDownPeriodSec"`
 	// Defines the CPU utilization policy that allows the autoscaler to scale based on the average CPU utilization of a managed instance group.
 	CpuUtilization AutoscalingPolicyCpuUtilizationPtrInput `pulumi:"cpuUtilization"`
@@ -5330,7 +5358,7 @@ type AutoscalingPolicyArgs struct {
 	MaxNumReplicas pulumi.IntPtrInput `pulumi:"maxNumReplicas"`
 	// The minimum number of replicas that the autoscaler can scale in to. This cannot be less than 0. If not provided, autoscaler chooses a default value depending on maximum number of instances allowed.
 	MinNumReplicas pulumi.IntPtrInput `pulumi:"minNumReplicas"`
-	// Defines operating mode for this policy.
+	// Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
 	Mode             AutoscalingPolicyModePtrInput             `pulumi:"mode"`
 	ScaleDownControl AutoscalingPolicyScaleDownControlPtrInput `pulumi:"scaleDownControl"`
 	ScaleInControl   AutoscalingPolicyScaleInControlPtrInput   `pulumi:"scaleInControl"`
@@ -5434,7 +5462,7 @@ func (o AutoscalingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[Au
 	}
 }
 
-// The number of seconds that the autoscaler waits before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. The default time autoscaler waits is 60 seconds. Virtual machine initialization times might vary because of numerous factors. We recommend that you test how long an instance may take to initialize. To do this, create an instance and time the startup process.
+// The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process.
 func (o AutoscalingPolicyOutput) CoolDownPeriodSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AutoscalingPolicy) *int { return v.CoolDownPeriodSec }).(pulumi.IntPtrOutput)
 }
@@ -5468,7 +5496,7 @@ func (o AutoscalingPolicyOutput) MinNumReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AutoscalingPolicy) *int { return v.MinNumReplicas }).(pulumi.IntPtrOutput)
 }
 
-// Defines operating mode for this policy.
+// Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
 func (o AutoscalingPolicyOutput) Mode() AutoscalingPolicyModePtrOutput {
 	return o.ApplyT(func(v AutoscalingPolicy) *AutoscalingPolicyMode { return v.Mode }).(AutoscalingPolicyModePtrOutput)
 }
@@ -5516,7 +5544,7 @@ func (o AutoscalingPolicyPtrOutput) Elem() AutoscalingPolicyOutput {
 	}).(AutoscalingPolicyOutput)
 }
 
-// The number of seconds that the autoscaler waits before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. The default time autoscaler waits is 60 seconds. Virtual machine initialization times might vary because of numerous factors. We recommend that you test how long an instance may take to initialize. To do this, create an instance and time the startup process.
+// The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process.
 func (o AutoscalingPolicyPtrOutput) CoolDownPeriodSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AutoscalingPolicy) *int {
 		if v == nil {
@@ -5576,7 +5604,7 @@ func (o AutoscalingPolicyPtrOutput) MinNumReplicas() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Defines operating mode for this policy.
+// Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
 func (o AutoscalingPolicyPtrOutput) Mode() AutoscalingPolicyModePtrOutput {
 	return o.ApplyT(func(v *AutoscalingPolicy) *AutoscalingPolicyMode {
 		if v == nil {
@@ -6284,7 +6312,7 @@ func (o AutoscalingPolicyLoadBalancingUtilizationResponseOutput) UtilizationTarg
 
 // Cloud Autoscaler policy.
 type AutoscalingPolicyResponse struct {
-	// The number of seconds that the autoscaler waits before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. The default time autoscaler waits is 60 seconds. Virtual machine initialization times might vary because of numerous factors. We recommend that you test how long an instance may take to initialize. To do this, create an instance and time the startup process.
+	// The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process.
 	CoolDownPeriodSec int `pulumi:"coolDownPeriodSec"`
 	// Defines the CPU utilization policy that allows the autoscaler to scale based on the average CPU utilization of a managed instance group.
 	CpuUtilization AutoscalingPolicyCpuUtilizationResponse `pulumi:"cpuUtilization"`
@@ -6296,7 +6324,7 @@ type AutoscalingPolicyResponse struct {
 	MaxNumReplicas int `pulumi:"maxNumReplicas"`
 	// The minimum number of replicas that the autoscaler can scale in to. This cannot be less than 0. If not provided, autoscaler chooses a default value depending on maximum number of instances allowed.
 	MinNumReplicas int `pulumi:"minNumReplicas"`
-	// Defines operating mode for this policy.
+	// Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
 	Mode             string                                    `pulumi:"mode"`
 	ScaleDownControl AutoscalingPolicyScaleDownControlResponse `pulumi:"scaleDownControl"`
 	ScaleInControl   AutoscalingPolicyScaleInControlResponse   `pulumi:"scaleInControl"`
@@ -6325,7 +6353,7 @@ func (o AutoscalingPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// The number of seconds that the autoscaler waits before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. The default time autoscaler waits is 60 seconds. Virtual machine initialization times might vary because of numerous factors. We recommend that you test how long an instance may take to initialize. To do this, create an instance and time the startup process.
+// The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process.
 func (o AutoscalingPolicyResponseOutput) CoolDownPeriodSec() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingPolicyResponse) int { return v.CoolDownPeriodSec }).(pulumi.IntOutput)
 }
@@ -6359,7 +6387,7 @@ func (o AutoscalingPolicyResponseOutput) MinNumReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingPolicyResponse) int { return v.MinNumReplicas }).(pulumi.IntOutput)
 }
 
-// Defines operating mode for this policy.
+// Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
 func (o AutoscalingPolicyResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoscalingPolicyResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -6849,6 +6877,8 @@ type Backend struct {
 	MaxRatePerInstance *float64 `pulumi:"maxRatePerInstance"`
 	// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 	MaxUtilization *float64 `pulumi:"maxUtilization"`
+	// This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default
+	Preference *BackendPreference `pulumi:"preference"`
 }
 
 // BackendInput is an input type that accepts BackendArgs and BackendOutput values.
@@ -6888,6 +6918,8 @@ type BackendArgs struct {
 	MaxRatePerInstance pulumi.Float64PtrInput `pulumi:"maxRatePerInstance"`
 	// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 	MaxUtilization pulumi.Float64PtrInput `pulumi:"maxUtilization"`
+	// This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default
+	Preference BackendPreferencePtrInput `pulumi:"preference"`
 }
 
 func (BackendArgs) ElementType() reflect.Type {
@@ -7018,6 +7050,11 @@ func (o BackendOutput) MaxRatePerInstance() pulumi.Float64PtrOutput {
 // Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 func (o BackendOutput) MaxUtilization() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxUtilization }).(pulumi.Float64PtrOutput)
+}
+
+// This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default
+func (o BackendOutput) Preference() BackendPreferencePtrOutput {
+	return o.ApplyT(func(v Backend) *BackendPreference { return v.Preference }).(BackendPreferencePtrOutput)
 }
 
 type BackendArrayOutput struct{ *pulumi.OutputState }
@@ -8147,6 +8184,8 @@ type BackendResponse struct {
 	MaxRatePerInstance float64 `pulumi:"maxRatePerInstance"`
 	// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 	MaxUtilization float64 `pulumi:"maxUtilization"`
+	// This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default
+	Preference string `pulumi:"preference"`
 }
 
 // Message containing information of one individual backend.
@@ -8228,6 +8267,11 @@ func (o BackendResponseOutput) MaxRatePerInstance() pulumi.Float64Output {
 // Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 func (o BackendResponseOutput) MaxUtilization() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendResponse) float64 { return v.MaxUtilization }).(pulumi.Float64Output)
+}
+
+// This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default
+func (o BackendResponseOutput) Preference() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendResponse) string { return v.Preference }).(pulumi.StringOutput)
 }
 
 type BackendResponseArrayOutput struct{ *pulumi.OutputState }
@@ -9637,7 +9681,7 @@ func (o BackendServiceFailoverPolicyResponseOutput) FailoverRatio() pulumi.Float
 
 // Identity-Aware Proxy
 type BackendServiceIAP struct {
-	// Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
 	Enabled *bool `pulumi:"enabled"`
 	// OAuth2 client ID to use for the authentication flow.
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
@@ -9660,7 +9704,7 @@ type BackendServiceIAPInput interface {
 
 // Identity-Aware Proxy
 type BackendServiceIAPArgs struct {
-	// Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// OAuth2 client ID to use for the authentication flow.
 	Oauth2ClientId pulumi.StringPtrInput `pulumi:"oauth2ClientId"`
@@ -9766,7 +9810,7 @@ func (o BackendServiceIAPOutput) ToOutput(ctx context.Context) pulumix.Output[Ba
 	}
 }
 
-// Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
+// Whether the serving infrastructure will authenticate and authorize all incoming requests.
 func (o BackendServiceIAPOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendServiceIAP) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -9816,7 +9860,7 @@ func (o BackendServiceIAPPtrOutput) Elem() BackendServiceIAPOutput {
 	}).(BackendServiceIAPOutput)
 }
 
-// Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
+// Whether the serving infrastructure will authenticate and authorize all incoming requests.
 func (o BackendServiceIAPPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackendServiceIAP) *bool {
 		if v == nil {
@@ -10101,7 +10145,7 @@ func (o BackendServiceIAPOAuth2ClientInfoResponseOutput) DeveloperEmailAddress()
 
 // Identity-Aware Proxy
 type BackendServiceIAPResponse struct {
-	// Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
 	Enabled bool `pulumi:"enabled"`
 	// OAuth2 client ID to use for the authentication flow.
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
@@ -10134,7 +10178,7 @@ func (o BackendServiceIAPResponseOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
+// Whether the serving infrastructure will authenticate and authorize all incoming requests.
 func (o BackendServiceIAPResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackendServiceIAPResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -11085,6 +11129,178 @@ func (o BackendServiceLogConfigResponseOutput) OptionalMode() pulumi.StringOutpu
 // This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
 func (o BackendServiceLogConfigResponseOutput) SampleRate() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendServiceLogConfigResponse) float64 { return v.SampleRate }).(pulumi.Float64Output)
+}
+
+type BackendServiceUsedBy struct {
+	Reference *string `pulumi:"reference"`
+}
+
+// BackendServiceUsedByInput is an input type that accepts BackendServiceUsedByArgs and BackendServiceUsedByOutput values.
+// You can construct a concrete instance of `BackendServiceUsedByInput` via:
+//
+//	BackendServiceUsedByArgs{...}
+type BackendServiceUsedByInput interface {
+	pulumi.Input
+
+	ToBackendServiceUsedByOutput() BackendServiceUsedByOutput
+	ToBackendServiceUsedByOutputWithContext(context.Context) BackendServiceUsedByOutput
+}
+
+type BackendServiceUsedByArgs struct {
+	Reference pulumi.StringPtrInput `pulumi:"reference"`
+}
+
+func (BackendServiceUsedByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceUsedBy)(nil)).Elem()
+}
+
+func (i BackendServiceUsedByArgs) ToBackendServiceUsedByOutput() BackendServiceUsedByOutput {
+	return i.ToBackendServiceUsedByOutputWithContext(context.Background())
+}
+
+func (i BackendServiceUsedByArgs) ToBackendServiceUsedByOutputWithContext(ctx context.Context) BackendServiceUsedByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceUsedByOutput)
+}
+
+func (i BackendServiceUsedByArgs) ToOutput(ctx context.Context) pulumix.Output[BackendServiceUsedBy] {
+	return pulumix.Output[BackendServiceUsedBy]{
+		OutputState: i.ToBackendServiceUsedByOutputWithContext(ctx).OutputState,
+	}
+}
+
+// BackendServiceUsedByArrayInput is an input type that accepts BackendServiceUsedByArray and BackendServiceUsedByArrayOutput values.
+// You can construct a concrete instance of `BackendServiceUsedByArrayInput` via:
+//
+//	BackendServiceUsedByArray{ BackendServiceUsedByArgs{...} }
+type BackendServiceUsedByArrayInput interface {
+	pulumi.Input
+
+	ToBackendServiceUsedByArrayOutput() BackendServiceUsedByArrayOutput
+	ToBackendServiceUsedByArrayOutputWithContext(context.Context) BackendServiceUsedByArrayOutput
+}
+
+type BackendServiceUsedByArray []BackendServiceUsedByInput
+
+func (BackendServiceUsedByArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceUsedBy)(nil)).Elem()
+}
+
+func (i BackendServiceUsedByArray) ToBackendServiceUsedByArrayOutput() BackendServiceUsedByArrayOutput {
+	return i.ToBackendServiceUsedByArrayOutputWithContext(context.Background())
+}
+
+func (i BackendServiceUsedByArray) ToBackendServiceUsedByArrayOutputWithContext(ctx context.Context) BackendServiceUsedByArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceUsedByArrayOutput)
+}
+
+func (i BackendServiceUsedByArray) ToOutput(ctx context.Context) pulumix.Output[[]BackendServiceUsedBy] {
+	return pulumix.Output[[]BackendServiceUsedBy]{
+		OutputState: i.ToBackendServiceUsedByArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type BackendServiceUsedByOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceUsedByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceUsedBy)(nil)).Elem()
+}
+
+func (o BackendServiceUsedByOutput) ToBackendServiceUsedByOutput() BackendServiceUsedByOutput {
+	return o
+}
+
+func (o BackendServiceUsedByOutput) ToBackendServiceUsedByOutputWithContext(ctx context.Context) BackendServiceUsedByOutput {
+	return o
+}
+
+func (o BackendServiceUsedByOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceUsedBy] {
+	return pulumix.Output[BackendServiceUsedBy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BackendServiceUsedByOutput) Reference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceUsedBy) *string { return v.Reference }).(pulumi.StringPtrOutput)
+}
+
+type BackendServiceUsedByArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceUsedByArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceUsedBy)(nil)).Elem()
+}
+
+func (o BackendServiceUsedByArrayOutput) ToBackendServiceUsedByArrayOutput() BackendServiceUsedByArrayOutput {
+	return o
+}
+
+func (o BackendServiceUsedByArrayOutput) ToBackendServiceUsedByArrayOutputWithContext(ctx context.Context) BackendServiceUsedByArrayOutput {
+	return o
+}
+
+func (o BackendServiceUsedByArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BackendServiceUsedBy] {
+	return pulumix.Output[[]BackendServiceUsedBy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BackendServiceUsedByArrayOutput) Index(i pulumi.IntInput) BackendServiceUsedByOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceUsedBy {
+		return vs[0].([]BackendServiceUsedBy)[vs[1].(int)]
+	}).(BackendServiceUsedByOutput)
+}
+
+type BackendServiceUsedByResponse struct {
+	Reference string `pulumi:"reference"`
+}
+
+type BackendServiceUsedByResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceUsedByResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceUsedByResponse)(nil)).Elem()
+}
+
+func (o BackendServiceUsedByResponseOutput) ToBackendServiceUsedByResponseOutput() BackendServiceUsedByResponseOutput {
+	return o
+}
+
+func (o BackendServiceUsedByResponseOutput) ToBackendServiceUsedByResponseOutputWithContext(ctx context.Context) BackendServiceUsedByResponseOutput {
+	return o
+}
+
+func (o BackendServiceUsedByResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceUsedByResponse] {
+	return pulumix.Output[BackendServiceUsedByResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BackendServiceUsedByResponseOutput) Reference() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceUsedByResponse) string { return v.Reference }).(pulumi.StringOutput)
+}
+
+type BackendServiceUsedByResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceUsedByResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceUsedByResponse)(nil)).Elem()
+}
+
+func (o BackendServiceUsedByResponseArrayOutput) ToBackendServiceUsedByResponseArrayOutput() BackendServiceUsedByResponseArrayOutput {
+	return o
+}
+
+func (o BackendServiceUsedByResponseArrayOutput) ToBackendServiceUsedByResponseArrayOutputWithContext(ctx context.Context) BackendServiceUsedByResponseArrayOutput {
+	return o
+}
+
+func (o BackendServiceUsedByResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BackendServiceUsedByResponse] {
+	return pulumix.Output[[]BackendServiceUsedByResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BackendServiceUsedByResponseArrayOutput) Index(i pulumi.IntInput) BackendServiceUsedByResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceUsedByResponse {
+		return vs[0].([]BackendServiceUsedByResponse)[vs[1].(int)]
+	}).(BackendServiceUsedByResponseOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -13063,6 +13279,108 @@ func (o ClientTlsSettingsResponseOutput) Sni() pulumi.StringOutput {
 // A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
 func (o ClientTlsSettingsResponseOutput) SubjectAltNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClientTlsSettingsResponse) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
+}
+
+type CommitmentResourceStatusCancellationInformationResponse struct {
+	// An optional amount of CUDs canceled so far in the last 365 days.
+	CanceledCommitment MoneyResponse `pulumi:"canceledCommitment"`
+	// An optional last update time of canceled_commitment. RFC3339 text format.
+	CanceledCommitmentLastUpdatedTimestamp string `pulumi:"canceledCommitmentLastUpdatedTimestamp"`
+	// An optional,the cancellation cap for how much commitments can be canceled in a rolling 365 per billing account.
+	CancellationCap MoneyResponse `pulumi:"cancellationCap"`
+	// An optional, cancellation fee.
+	CancellationFee MoneyResponse `pulumi:"cancellationFee"`
+	// An optional, cancellation fee expiration time. RFC3339 text format.
+	CancellationFeeExpirationTimestamp string `pulumi:"cancellationFeeExpirationTimestamp"`
+}
+
+type CommitmentResourceStatusCancellationInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (CommitmentResourceStatusCancellationInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommitmentResourceStatusCancellationInformationResponse)(nil)).Elem()
+}
+
+func (o CommitmentResourceStatusCancellationInformationResponseOutput) ToCommitmentResourceStatusCancellationInformationResponseOutput() CommitmentResourceStatusCancellationInformationResponseOutput {
+	return o
+}
+
+func (o CommitmentResourceStatusCancellationInformationResponseOutput) ToCommitmentResourceStatusCancellationInformationResponseOutputWithContext(ctx context.Context) CommitmentResourceStatusCancellationInformationResponseOutput {
+	return o
+}
+
+func (o CommitmentResourceStatusCancellationInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CommitmentResourceStatusCancellationInformationResponse] {
+	return pulumix.Output[CommitmentResourceStatusCancellationInformationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An optional amount of CUDs canceled so far in the last 365 days.
+func (o CommitmentResourceStatusCancellationInformationResponseOutput) CanceledCommitment() MoneyResponseOutput {
+	return o.ApplyT(func(v CommitmentResourceStatusCancellationInformationResponse) MoneyResponse {
+		return v.CanceledCommitment
+	}).(MoneyResponseOutput)
+}
+
+// An optional last update time of canceled_commitment. RFC3339 text format.
+func (o CommitmentResourceStatusCancellationInformationResponseOutput) CanceledCommitmentLastUpdatedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v CommitmentResourceStatusCancellationInformationResponse) string {
+		return v.CanceledCommitmentLastUpdatedTimestamp
+	}).(pulumi.StringOutput)
+}
+
+// An optional,the cancellation cap for how much commitments can be canceled in a rolling 365 per billing account.
+func (o CommitmentResourceStatusCancellationInformationResponseOutput) CancellationCap() MoneyResponseOutput {
+	return o.ApplyT(func(v CommitmentResourceStatusCancellationInformationResponse) MoneyResponse {
+		return v.CancellationCap
+	}).(MoneyResponseOutput)
+}
+
+// An optional, cancellation fee.
+func (o CommitmentResourceStatusCancellationInformationResponseOutput) CancellationFee() MoneyResponseOutput {
+	return o.ApplyT(func(v CommitmentResourceStatusCancellationInformationResponse) MoneyResponse {
+		return v.CancellationFee
+	}).(MoneyResponseOutput)
+}
+
+// An optional, cancellation fee expiration time. RFC3339 text format.
+func (o CommitmentResourceStatusCancellationInformationResponseOutput) CancellationFeeExpirationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v CommitmentResourceStatusCancellationInformationResponse) string {
+		return v.CancellationFeeExpirationTimestamp
+	}).(pulumi.StringOutput)
+}
+
+// [Output Only] Contains output only fields.
+type CommitmentResourceStatusResponse struct {
+	// An optional, contains all the needed information of cancellation.
+	CancellationInformation CommitmentResourceStatusCancellationInformationResponse `pulumi:"cancellationInformation"`
+}
+
+// [Output Only] Contains output only fields.
+type CommitmentResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (CommitmentResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommitmentResourceStatusResponse)(nil)).Elem()
+}
+
+func (o CommitmentResourceStatusResponseOutput) ToCommitmentResourceStatusResponseOutput() CommitmentResourceStatusResponseOutput {
+	return o
+}
+
+func (o CommitmentResourceStatusResponseOutput) ToCommitmentResourceStatusResponseOutputWithContext(ctx context.Context) CommitmentResourceStatusResponseOutput {
+	return o
+}
+
+func (o CommitmentResourceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CommitmentResourceStatusResponse] {
+	return pulumix.Output[CommitmentResourceStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An optional, contains all the needed information of cancellation.
+func (o CommitmentResourceStatusResponseOutput) CancellationInformation() CommitmentResourceStatusCancellationInformationResponseOutput {
+	return o.ApplyT(func(v CommitmentResourceStatusResponse) CommitmentResourceStatusCancellationInformationResponse {
+		return v.CancellationInformation
+	}).(CommitmentResourceStatusCancellationInformationResponseOutput)
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -15050,7 +15368,7 @@ func (o CustomErrorResponsePolicyResponseOutput) ErrorService() pulumi.StringOut
 }
 
 type CustomerEncryptionKey struct {
-	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
+	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
@@ -15072,7 +15390,7 @@ type CustomerEncryptionKeyInput interface {
 }
 
 type CustomerEncryptionKeyArgs struct {
-	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
+	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
@@ -15177,7 +15495,7 @@ func (o CustomerEncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
+// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
 func (o CustomerEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
@@ -15227,7 +15545,7 @@ func (o CustomerEncryptionKeyPtrOutput) Elem() CustomerEncryptionKeyOutput {
 	}).(CustomerEncryptionKeyOutput)
 }
 
-// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
+// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
 func (o CustomerEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
 		if v == nil {
@@ -15268,7 +15586,7 @@ func (o CustomerEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput
 }
 
 type CustomerEncryptionKeyResponse struct {
-	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
+	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
 	KmsKeyName string `pulumi:"kmsKeyName"`
 	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. For example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
@@ -15300,7 +15618,7 @@ func (o CustomerEncryptionKeyResponseOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
+// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
 func (o CustomerEncryptionKeyResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -16321,6 +16639,8 @@ type DiskResourceStatusResponse struct {
 	AsyncPrimaryDisk DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncPrimaryDisk"`
 	// Key: disk, value: AsyncReplicationStatus message
 	AsyncSecondaryDisks map[string]string `pulumi:"asyncSecondaryDisks"`
+	// Space used by data stored in the disk (in bytes). Note that this field is set only when the disk is in a storage pool.
+	UsedBytes string `pulumi:"usedBytes"`
 }
 
 type DiskResourceStatusResponseOutput struct{ *pulumi.OutputState }
@@ -16352,6 +16672,11 @@ func (o DiskResourceStatusResponseOutput) AsyncPrimaryDisk() DiskResourceStatusA
 // Key: disk, value: AsyncReplicationStatus message
 func (o DiskResourceStatusResponseOutput) AsyncSecondaryDisks() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DiskResourceStatusResponse) map[string]string { return v.AsyncSecondaryDisks }).(pulumi.StringMapOutput)
+}
+
+// Space used by data stored in the disk (in bytes). Note that this field is set only when the disk is in a storage pool.
+func (o DiskResourceStatusResponseOutput) UsedBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResourceStatusResponse) string { return v.UsedBytes }).(pulumi.StringOutput)
 }
 
 // A set of Display Device options
@@ -20829,6 +21154,8 @@ type FutureReservationStatusLastKnownGoodStateResponse struct {
 	// The description of the FutureReservation before an amendment was requested.
 	Description            string                                                                  `pulumi:"description"`
 	FutureReservationSpecs FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse `pulumi:"futureReservationSpecs"`
+	// The lock time of the FutureReservation before an amendment was requested.
+	LockTime string `pulumi:"lockTime"`
 	// The name prefix of the Future Reservation before an amendment was requested.
 	NamePrefix string `pulumi:"namePrefix"`
 	// The status of the last known good state for the Future Reservation.
@@ -20865,6 +21192,11 @@ func (o FutureReservationStatusLastKnownGoodStateResponseOutput) FutureReservati
 	return o.ApplyT(func(v FutureReservationStatusLastKnownGoodStateResponse) FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse {
 		return v.FutureReservationSpecs
 	}).(FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput)
+}
+
+// The lock time of the FutureReservation before an amendment was requested.
+func (o FutureReservationStatusLastKnownGoodStateResponseOutput) LockTime() pulumi.StringOutput {
+	return o.ApplyT(func(v FutureReservationStatusLastKnownGoodStateResponse) string { return v.LockTime }).(pulumi.StringOutput)
 }
 
 // The name prefix of the Future Reservation before an amendment was requested.
@@ -21735,7 +22067,7 @@ func (o GrpcServiceConfigResponseOutput) TargetUri() pulumi.StringOutput {
 
 // Guest OS features.
 type GuestOsFeature struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type *GuestOsFeatureType `pulumi:"type"`
 }
 
@@ -21752,7 +22084,7 @@ type GuestOsFeatureInput interface {
 
 // Guest OS features.
 type GuestOsFeatureArgs struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type GuestOsFeatureTypePtrInput `pulumi:"type"`
 }
 
@@ -21826,7 +22158,7 @@ func (o GuestOsFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[Guest
 	}
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureOutput) Type() GuestOsFeatureTypePtrOutput {
 	return o.ApplyT(func(v GuestOsFeature) *GuestOsFeatureType { return v.Type }).(GuestOsFeatureTypePtrOutput)
 }
@@ -21859,7 +22191,7 @@ func (o GuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureOutput
 
 // Guest OS features.
 type GuestOsFeatureResponse struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type string `pulumi:"type"`
 }
 
@@ -21884,7 +22216,7 @@ func (o GuestOsFeatureResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -26010,7 +26342,7 @@ func (o HttpRetryPolicyResponseOutput) RetryConditions() pulumi.StringArrayOutpu
 type HttpRouteAction struct {
 	// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 	CorsPolicy *CorsPolicy `pulumi:"corsPolicy"`
-	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the classic Application Load Balancer . To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 	FaultInjectionPolicy *HttpFaultInjection `pulumi:"faultInjectionPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	MaxStreamDuration *Duration `pulumi:"maxStreamDuration"`
@@ -26020,7 +26352,7 @@ type HttpRouteAction struct {
 	RetryPolicy *HttpRetryPolicy `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	Timeout *Duration `pulumi:"timeout"`
-	// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+	// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for classic Application Load Balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	UrlRewrite *UrlRewrite `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 	WeightedBackendServices []WeightedBackendService `pulumi:"weightedBackendServices"`
@@ -26040,7 +26372,7 @@ type HttpRouteActionInput interface {
 type HttpRouteActionArgs struct {
 	// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 	CorsPolicy CorsPolicyPtrInput `pulumi:"corsPolicy"`
-	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the classic Application Load Balancer . To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 	FaultInjectionPolicy HttpFaultInjectionPtrInput `pulumi:"faultInjectionPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	MaxStreamDuration DurationPtrInput `pulumi:"maxStreamDuration"`
@@ -26050,7 +26382,7 @@ type HttpRouteActionArgs struct {
 	RetryPolicy HttpRetryPolicyPtrInput `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	Timeout DurationPtrInput `pulumi:"timeout"`
-	// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+	// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for classic Application Load Balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	UrlRewrite UrlRewritePtrInput `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 	WeightedBackendServices WeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
@@ -26156,7 +26488,7 @@ func (o HttpRouteActionOutput) CorsPolicy() CorsPolicyPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *CorsPolicy { return v.CorsPolicy }).(CorsPolicyPtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the classic Application Load Balancer . To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 func (o HttpRouteActionOutput) FaultInjectionPolicy() HttpFaultInjectionPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *HttpFaultInjection { return v.FaultInjectionPolicy }).(HttpFaultInjectionPtrOutput)
 }
@@ -26181,7 +26513,7 @@ func (o HttpRouteActionOutput) Timeout() DurationPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *Duration { return v.Timeout }).(DurationPtrOutput)
 }
 
-// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for classic Application Load Balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionOutput) UrlRewrite() UrlRewritePtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *UrlRewrite { return v.UrlRewrite }).(UrlRewritePtrOutput)
 }
@@ -26231,7 +26563,7 @@ func (o HttpRouteActionPtrOutput) CorsPolicy() CorsPolicyPtrOutput {
 	}).(CorsPolicyPtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the classic Application Load Balancer . To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 func (o HttpRouteActionPtrOutput) FaultInjectionPolicy() HttpFaultInjectionPtrOutput {
 	return o.ApplyT(func(v *HttpRouteAction) *HttpFaultInjection {
 		if v == nil {
@@ -26281,7 +26613,7 @@ func (o HttpRouteActionPtrOutput) Timeout() DurationPtrOutput {
 	}).(DurationPtrOutput)
 }
 
-// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for classic Application Load Balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionPtrOutput) UrlRewrite() UrlRewritePtrOutput {
 	return o.ApplyT(func(v *HttpRouteAction) *UrlRewrite {
 		if v == nil {
@@ -26304,7 +26636,7 @@ func (o HttpRouteActionPtrOutput) WeightedBackendServices() WeightedBackendServi
 type HttpRouteActionResponse struct {
 	// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 	CorsPolicy CorsPolicyResponse `pulumi:"corsPolicy"`
-	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the classic Application Load Balancer . To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 	FaultInjectionPolicy HttpFaultInjectionResponse `pulumi:"faultInjectionPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	MaxStreamDuration DurationResponse `pulumi:"maxStreamDuration"`
@@ -26314,7 +26646,7 @@ type HttpRouteActionResponse struct {
 	RetryPolicy HttpRetryPolicyResponse `pulumi:"retryPolicy"`
 	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	Timeout DurationResponse `pulumi:"timeout"`
-	// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+	// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for classic Application Load Balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	UrlRewrite UrlRewriteResponse `pulumi:"urlRewrite"`
 	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 	WeightedBackendServices []WeightedBackendServiceResponse `pulumi:"weightedBackendServices"`
@@ -26345,7 +26677,7 @@ func (o HttpRouteActionResponseOutput) CorsPolicy() CorsPolicyResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) CorsPolicyResponse { return v.CorsPolicy }).(CorsPolicyResponseOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the classic Application Load Balancer . To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 func (o HttpRouteActionResponseOutput) FaultInjectionPolicy() HttpFaultInjectionResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) HttpFaultInjectionResponse { return v.FaultInjectionPolicy }).(HttpFaultInjectionResponseOutput)
 }
@@ -26370,7 +26702,7 @@ func (o HttpRouteActionResponseOutput) Timeout() DurationResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) DurationResponse { return v.Timeout }).(DurationResponseOutput)
 }
 
-// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for classic Application Load Balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionResponseOutput) UrlRewrite() UrlRewriteResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) UrlRewriteResponse { return v.UrlRewrite }).(UrlRewriteResponseOutput)
 }
@@ -26382,7 +26714,7 @@ func (o HttpRouteActionResponseOutput) WeightedBackendServices() WeightedBackend
 
 // The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRule struct {
-	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for global external Application Load Balancers.
 	CustomErrorResponsePolicy *CustomErrorResponsePolicy `pulumi:"customErrorResponsePolicy"`
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description *string `pulumi:"description"`
@@ -26396,7 +26728,7 @@ type HttpRouteRule struct {
 	MatchRules []HttpRouteRuleMatch `pulumi:"matchRules"`
 	// For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
 	Priority *int `pulumi:"priority"`
-	// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a route rule's routeAction.
+	// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a route rule's routeAction.
 	RouteAction *HttpRouteAction `pulumi:"routeAction"`
 	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service *string `pulumi:"service"`
@@ -26417,7 +26749,7 @@ type HttpRouteRuleInput interface {
 
 // The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleArgs struct {
-	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for global external Application Load Balancers.
 	CustomErrorResponsePolicy CustomErrorResponsePolicyPtrInput `pulumi:"customErrorResponsePolicy"`
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -26431,7 +26763,7 @@ type HttpRouteRuleArgs struct {
 	MatchRules HttpRouteRuleMatchArrayInput `pulumi:"matchRules"`
 	// For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a route rule's routeAction.
+	// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a route rule's routeAction.
 	RouteAction HttpRouteActionPtrInput `pulumi:"routeAction"`
 	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service pulumi.StringPtrInput `pulumi:"service"`
@@ -26509,7 +26841,7 @@ func (o HttpRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRo
 	}
 }
 
-// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for global external Application Load Balancers.
 func (o HttpRouteRuleOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyPtrOutput {
 	return o.ApplyT(func(v HttpRouteRule) *CustomErrorResponsePolicy { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyPtrOutput)
 }
@@ -26544,7 +26876,7 @@ func (o HttpRouteRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpRouteRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a route rule's routeAction.
+// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a route rule's routeAction.
 func (o HttpRouteRuleOutput) RouteAction() HttpRouteActionPtrOutput {
 	return o.ApplyT(func(v HttpRouteRule) *HttpRouteAction { return v.RouteAction }).(HttpRouteActionPtrOutput)
 }
@@ -26881,7 +27213,7 @@ func (o HttpRouteRuleMatchResponseArrayOutput) Index(i pulumi.IntInput) HttpRout
 
 // The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleResponse struct {
-	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for global external Application Load Balancers.
 	CustomErrorResponsePolicy CustomErrorResponsePolicyResponse `pulumi:"customErrorResponsePolicy"`
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description string `pulumi:"description"`
@@ -26895,7 +27227,7 @@ type HttpRouteRuleResponse struct {
 	MatchRules []HttpRouteRuleMatchResponse `pulumi:"matchRules"`
 	// For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
 	Priority int `pulumi:"priority"`
-	// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a route rule's routeAction.
+	// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a route rule's routeAction.
 	RouteAction HttpRouteActionResponse `pulumi:"routeAction"`
 	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service string `pulumi:"service"`
@@ -26924,7 +27256,7 @@ func (o HttpRouteRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for global external Application Load Balancers.
 func (o HttpRouteRuleResponseOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyResponseOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) CustomErrorResponsePolicyResponse { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyResponseOutput)
 }
@@ -26959,7 +27291,7 @@ func (o HttpRouteRuleResponseOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) int { return v.Priority }).(pulumi.IntOutput)
 }
 
-// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a route rule's routeAction.
+// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a route rule's routeAction.
 func (o HttpRouteRuleResponseOutput) RouteAction() HttpRouteActionResponseOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) HttpRouteActionResponse { return v.RouteAction }).(HttpRouteActionResponseOutput)
 }
@@ -27860,7 +28192,7 @@ type InstanceGroupManagerAutoHealingPolicy struct {
 	AutoHealingTriggers *InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers `pulumi:"autoHealingTriggers"`
 	// The URL for the health check that signals autohealing.
 	HealthCheck *string `pulumi:"healthCheck"`
-	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+	// The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 	InitialDelaySec *int `pulumi:"initialDelaySec"`
 	// Maximum number of instances that can be unavailable when autohealing. When 'percent' is used, the value is rounded if necessary. The instance is considered available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2. Instance's currentAction is NONE (in particular its liveness health check result was observed to be HEALTHY at least once as it passed VERIFYING). 3. There is no outgoing action on an instance triggered by IGM. By default, number of concurrently autohealed instances is smaller than the managed instance group target size. However, if a zonal managed instance group has only one instance, or a regional managed instance group has only one instance per zone, autohealing will recreate these instances when they become unhealthy.
 	MaxUnavailable *FixedOrPercent `pulumi:"maxUnavailable"`
@@ -27882,7 +28214,7 @@ type InstanceGroupManagerAutoHealingPolicyArgs struct {
 	AutoHealingTriggers InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersPtrInput `pulumi:"autoHealingTriggers"`
 	// The URL for the health check that signals autohealing.
 	HealthCheck pulumi.StringPtrInput `pulumi:"healthCheck"`
-	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+	// The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 	InitialDelaySec pulumi.IntPtrInput `pulumi:"initialDelaySec"`
 	// Maximum number of instances that can be unavailable when autohealing. When 'percent' is used, the value is rounded if necessary. The instance is considered available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2. Instance's currentAction is NONE (in particular its liveness health check result was observed to be HEALTHY at least once as it passed VERIFYING). 3. There is no outgoing action on an instance triggered by IGM. By default, number of concurrently autohealed instances is smaller than the managed instance group target size. However, if a zonal managed instance group has only one instance, or a regional managed instance group has only one instance per zone, autohealing will recreate these instances when they become unhealthy.
 	MaxUnavailable FixedOrPercentPtrInput `pulumi:"maxUnavailable"`
@@ -27969,7 +28301,7 @@ func (o InstanceGroupManagerAutoHealingPolicyOutput) HealthCheck() pulumi.String
 	return o.ApplyT(func(v InstanceGroupManagerAutoHealingPolicy) *string { return v.HealthCheck }).(pulumi.StringPtrOutput)
 }
 
-// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+// The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 func (o InstanceGroupManagerAutoHealingPolicyOutput) InitialDelaySec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerAutoHealingPolicy) *int { return v.InitialDelaySec }).(pulumi.IntPtrOutput)
 }
@@ -28205,7 +28537,7 @@ type InstanceGroupManagerAutoHealingPolicyResponse struct {
 	AutoHealingTriggers InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse `pulumi:"autoHealingTriggers"`
 	// The URL for the health check that signals autohealing.
 	HealthCheck string `pulumi:"healthCheck"`
-	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+	// The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 	InitialDelaySec int `pulumi:"initialDelaySec"`
 	// Maximum number of instances that can be unavailable when autohealing. When 'percent' is used, the value is rounded if necessary. The instance is considered available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2. Instance's currentAction is NONE (in particular its liveness health check result was observed to be HEALTHY at least once as it passed VERIFYING). 3. There is no outgoing action on an instance triggered by IGM. By default, number of concurrently autohealed instances is smaller than the managed instance group target size. However, if a zonal managed instance group has only one instance, or a regional managed instance group has only one instance per zone, autohealing will recreate these instances when they become unhealthy.
 	MaxUnavailable FixedOrPercentResponse `pulumi:"maxUnavailable"`
@@ -28243,7 +28575,7 @@ func (o InstanceGroupManagerAutoHealingPolicyResponseOutput) HealthCheck() pulum
 	return o.ApplyT(func(v InstanceGroupManagerAutoHealingPolicyResponse) string { return v.HealthCheck }).(pulumi.StringOutput)
 }
 
-// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+// The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 func (o InstanceGroupManagerAutoHealingPolicyResponseOutput) InitialDelaySec() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerAutoHealingPolicyResponse) int { return v.InitialDelaySec }).(pulumi.IntOutput)
 }
@@ -28280,8 +28612,10 @@ func (o InstanceGroupManagerAutoHealingPolicyResponseArrayOutput) Index(i pulumi
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicy struct {
-	// List of instance selection options that the group will use when creating new VMs.
+	// Named instance selections configuring properties that the group will use when creating new VMs.
 	InstanceSelectionLists map[string]string `pulumi:"instanceSelectionLists"`
+	// Named instance selections configuring properties that the group will use when creating new VMs.
+	InstanceSelections map[string]string `pulumi:"instanceSelections"`
 }
 
 // InstanceGroupManagerInstanceFlexibilityPolicyInput is an input type that accepts InstanceGroupManagerInstanceFlexibilityPolicyArgs and InstanceGroupManagerInstanceFlexibilityPolicyOutput values.
@@ -28296,8 +28630,10 @@ type InstanceGroupManagerInstanceFlexibilityPolicyInput interface {
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyArgs struct {
-	// List of instance selection options that the group will use when creating new VMs.
+	// Named instance selections configuring properties that the group will use when creating new VMs.
 	InstanceSelectionLists pulumi.StringMapInput `pulumi:"instanceSelectionLists"`
+	// Named instance selections configuring properties that the group will use when creating new VMs.
+	InstanceSelections pulumi.StringMapInput `pulumi:"instanceSelections"`
 }
 
 func (InstanceGroupManagerInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
@@ -28395,11 +28731,16 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) ToOutput(ctx contex
 	}
 }
 
-// List of instance selection options that the group will use when creating new VMs.
+// Named instance selections configuring properties that the group will use when creating new VMs.
 func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelectionLists() pulumi.StringMapOutput {
 	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string {
 		return v.InstanceSelectionLists
 	}).(pulumi.StringMapOutput)
+}
+
+// Named instance selections configuring properties that the group will use when creating new VMs.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelections() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string { return v.InstanceSelections }).(pulumi.StringMapOutput)
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -28432,7 +28773,7 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) Elem() InstanceG
 	}).(InstanceGroupManagerInstanceFlexibilityPolicyOutput)
 }
 
-// List of instance selection options that the group will use when creating new VMs.
+// Named instance selections configuring properties that the group will use when creating new VMs.
 func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string {
 		if v == nil {
@@ -28442,9 +28783,21 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelectio
 	}).(pulumi.StringMapOutput)
 }
 
+// Named instance selections configuring properties that the group will use when creating new VMs.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelections() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelections
+	}).(pulumi.StringMapOutput)
+}
+
 type InstanceGroupManagerInstanceFlexibilityPolicyResponse struct {
-	// List of instance selection options that the group will use when creating new VMs.
+	// Named instance selections configuring properties that the group will use when creating new VMs.
 	InstanceSelectionLists map[string]string `pulumi:"instanceSelectionLists"`
+	// Named instance selections configuring properties that the group will use when creating new VMs.
+	InstanceSelections map[string]string `pulumi:"instanceSelections"`
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput struct{ *pulumi.OutputState }
@@ -28467,15 +28820,22 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) ToOutput(ct
 	}
 }
 
-// List of instance selection options that the group will use when creating new VMs.
+// Named instance selections configuring properties that the group will use when creating new VMs.
 func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelectionLists() pulumi.StringMapOutput {
 	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]string {
 		return v.InstanceSelectionLists
 	}).(pulumi.StringMapOutput)
 }
 
+// Named instance selections configuring properties that the group will use when creating new VMs.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelections() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]string {
+		return v.InstanceSelections
+	}).(pulumi.StringMapOutput)
+}
+
 type InstanceGroupManagerInstanceLifecyclePolicy struct {
-	// Defines behaviour for all instance or failures
+	// The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
 	DefaultActionOnFailure *InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure `pulumi:"defaultActionOnFailure"`
 	// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair.
 	ForceUpdateOnRepair *InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair `pulumi:"forceUpdateOnRepair"`
@@ -28495,7 +28855,7 @@ type InstanceGroupManagerInstanceLifecyclePolicyInput interface {
 }
 
 type InstanceGroupManagerInstanceLifecyclePolicyArgs struct {
-	// Defines behaviour for all instance or failures
+	// The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
 	DefaultActionOnFailure InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrInput `pulumi:"defaultActionOnFailure"`
 	// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair.
 	ForceUpdateOnRepair InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrInput `pulumi:"forceUpdateOnRepair"`
@@ -28598,7 +28958,7 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyOutput) ToOutput(ctx context.
 	}
 }
 
-// Defines behaviour for all instance or failures
+// The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
 func (o InstanceGroupManagerInstanceLifecyclePolicyOutput) DefaultActionOnFailure() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerInstanceLifecyclePolicy) *InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure {
 		return v.DefaultActionOnFailure
@@ -28649,7 +29009,7 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyPtrOutput) Elem() InstanceGro
 	}).(InstanceGroupManagerInstanceLifecyclePolicyOutput)
 }
 
-// Defines behaviour for all instance or failures
+// The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
 func (o InstanceGroupManagerInstanceLifecyclePolicyPtrOutput) DefaultActionOnFailure() InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailurePtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerInstanceLifecyclePolicy) *InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure {
 		if v == nil {
@@ -28875,7 +29235,7 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalR
 }
 
 type InstanceGroupManagerInstanceLifecyclePolicyResponse struct {
-	// Defines behaviour for all instance or failures
+	// The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
 	DefaultActionOnFailure string `pulumi:"defaultActionOnFailure"`
 	// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair.
 	ForceUpdateOnRepair string `pulumi:"forceUpdateOnRepair"`
@@ -28903,7 +29263,7 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyResponseOutput) ToOutput(ctx 
 	}
 }
 
-// Defines behaviour for all instance or failures
+// The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM.
 func (o InstanceGroupManagerInstanceLifecyclePolicyResponseOutput) DefaultActionOnFailure() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupManagerInstanceLifecyclePolicyResponse) string { return v.DefaultActionOnFailure }).(pulumi.StringOutput)
 }
@@ -29151,6 +29511,8 @@ func (o InstanceGroupManagerResizeRequestStatusResponseOutput) QueuingPolicy() Q
 
 type InstanceGroupManagerStandbyPolicy struct {
 	InitialDelaySec *int `pulumi:"initialDelaySec"`
+	// Defines behaviour of using instances from standby pool to resize MIG.
+	Mode *InstanceGroupManagerStandbyPolicyMode `pulumi:"mode"`
 }
 
 // InstanceGroupManagerStandbyPolicyInput is an input type that accepts InstanceGroupManagerStandbyPolicyArgs and InstanceGroupManagerStandbyPolicyOutput values.
@@ -29166,6 +29528,8 @@ type InstanceGroupManagerStandbyPolicyInput interface {
 
 type InstanceGroupManagerStandbyPolicyArgs struct {
 	InitialDelaySec pulumi.IntPtrInput `pulumi:"initialDelaySec"`
+	// Defines behaviour of using instances from standby pool to resize MIG.
+	Mode InstanceGroupManagerStandbyPolicyModePtrInput `pulumi:"mode"`
 }
 
 func (InstanceGroupManagerStandbyPolicyArgs) ElementType() reflect.Type {
@@ -29267,6 +29631,11 @@ func (o InstanceGroupManagerStandbyPolicyOutput) InitialDelaySec() pulumi.IntPtr
 	return o.ApplyT(func(v InstanceGroupManagerStandbyPolicy) *int { return v.InitialDelaySec }).(pulumi.IntPtrOutput)
 }
 
+// Defines behaviour of using instances from standby pool to resize MIG.
+func (o InstanceGroupManagerStandbyPolicyOutput) Mode() InstanceGroupManagerStandbyPolicyModePtrOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStandbyPolicy) *InstanceGroupManagerStandbyPolicyMode { return v.Mode }).(InstanceGroupManagerStandbyPolicyModePtrOutput)
+}
+
 type InstanceGroupManagerStandbyPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerStandbyPolicyPtrOutput) ElementType() reflect.Type {
@@ -29306,8 +29675,20 @@ func (o InstanceGroupManagerStandbyPolicyPtrOutput) InitialDelaySec() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
+// Defines behaviour of using instances from standby pool to resize MIG.
+func (o InstanceGroupManagerStandbyPolicyPtrOutput) Mode() InstanceGroupManagerStandbyPolicyModePtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerStandbyPolicy) *InstanceGroupManagerStandbyPolicyMode {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(InstanceGroupManagerStandbyPolicyModePtrOutput)
+}
+
 type InstanceGroupManagerStandbyPolicyResponse struct {
 	InitialDelaySec int `pulumi:"initialDelaySec"`
+	// Defines behaviour of using instances from standby pool to resize MIG.
+	Mode string `pulumi:"mode"`
 }
 
 type InstanceGroupManagerStandbyPolicyResponseOutput struct{ *pulumi.OutputState }
@@ -29332,6 +29713,11 @@ func (o InstanceGroupManagerStandbyPolicyResponseOutput) ToOutput(ctx context.Co
 
 func (o InstanceGroupManagerStandbyPolicyResponseOutput) InitialDelaySec() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStandbyPolicyResponse) int { return v.InitialDelaySec }).(pulumi.IntOutput)
+}
+
+// Defines behaviour of using instances from standby pool to resize MIG.
+func (o InstanceGroupManagerStandbyPolicyResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStandbyPolicyResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 type InstanceGroupManagerStatusAllInstancesConfigResponse struct {
@@ -29556,11 +29942,11 @@ type InstanceGroupManagerUpdatePolicy struct {
 	MinReadySec *int `pulumi:"minReadySec"`
 	// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 	MinimalAction *InstanceGroupManagerUpdatePolicyMinimalAction `pulumi:"minimalAction"`
-	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 	MostDisruptiveAllowedAction *InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction `pulumi:"mostDisruptiveAllowedAction"`
 	// What action should be used to replace instances. See minimal_action.REPLACE
 	ReplacementMethod *InstanceGroupManagerUpdatePolicyReplacementMethod `pulumi:"replacementMethod"`
-	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+	// The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
 	Type *InstanceGroupManagerUpdatePolicyType `pulumi:"type"`
 }
 
@@ -29586,11 +29972,11 @@ type InstanceGroupManagerUpdatePolicyArgs struct {
 	MinReadySec pulumi.IntPtrInput `pulumi:"minReadySec"`
 	// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 	MinimalAction InstanceGroupManagerUpdatePolicyMinimalActionPtrInput `pulumi:"minimalAction"`
-	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 	MostDisruptiveAllowedAction InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrInput `pulumi:"mostDisruptiveAllowedAction"`
 	// What action should be used to replace instances. See minimal_action.REPLACE
 	ReplacementMethod InstanceGroupManagerUpdatePolicyReplacementMethodPtrInput `pulumi:"replacementMethod"`
-	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+	// The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
 	Type InstanceGroupManagerUpdatePolicyTypePtrInput `pulumi:"type"`
 }
 
@@ -29718,7 +30104,7 @@ func (o InstanceGroupManagerUpdatePolicyOutput) MinimalAction() InstanceGroupMan
 	}).(InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput)
 }
 
-// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 func (o InstanceGroupManagerUpdatePolicyOutput) MostDisruptiveAllowedAction() InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction {
 		return v.MostDisruptiveAllowedAction
@@ -29732,7 +30118,7 @@ func (o InstanceGroupManagerUpdatePolicyOutput) ReplacementMethod() InstanceGrou
 	}).(InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput)
 }
 
-// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+// The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
 func (o InstanceGroupManagerUpdatePolicyOutput) Type() InstanceGroupManagerUpdatePolicyTypePtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *InstanceGroupManagerUpdatePolicyType { return v.Type }).(InstanceGroupManagerUpdatePolicyTypePtrOutput)
 }
@@ -29817,7 +30203,7 @@ func (o InstanceGroupManagerUpdatePolicyPtrOutput) MinimalAction() InstanceGroup
 	}).(InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput)
 }
 
-// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 func (o InstanceGroupManagerUpdatePolicyPtrOutput) MostDisruptiveAllowedAction() InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicy) *InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction {
 		if v == nil {
@@ -29837,7 +30223,7 @@ func (o InstanceGroupManagerUpdatePolicyPtrOutput) ReplacementMethod() InstanceG
 	}).(InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput)
 }
 
-// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+// The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
 func (o InstanceGroupManagerUpdatePolicyPtrOutput) Type() InstanceGroupManagerUpdatePolicyTypePtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicy) *InstanceGroupManagerUpdatePolicyType {
 		if v == nil {
@@ -29858,11 +30244,11 @@ type InstanceGroupManagerUpdatePolicyResponse struct {
 	MinReadySec int `pulumi:"minReadySec"`
 	// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 	MinimalAction string `pulumi:"minimalAction"`
-	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 	MostDisruptiveAllowedAction string `pulumi:"mostDisruptiveAllowedAction"`
 	// What action should be used to replace instances. See minimal_action.REPLACE
 	ReplacementMethod string `pulumi:"replacementMethod"`
-	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+	// The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
 	Type string `pulumi:"type"`
 }
 
@@ -29911,7 +30297,7 @@ func (o InstanceGroupManagerUpdatePolicyResponseOutput) MinimalAction() pulumi.S
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicyResponse) string { return v.MinimalAction }).(pulumi.StringOutput)
 }
 
-// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 func (o InstanceGroupManagerUpdatePolicyResponseOutput) MostDisruptiveAllowedAction() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicyResponse) string { return v.MostDisruptiveAllowedAction }).(pulumi.StringOutput)
 }
@@ -29921,7 +30307,7 @@ func (o InstanceGroupManagerUpdatePolicyResponseOutput) ReplacementMethod() pulu
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicyResponse) string { return v.ReplacementMethod }).(pulumi.StringOutput)
 }
 
-// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+// The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.
 func (o InstanceGroupManagerUpdatePolicyResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicyResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -30386,6 +30772,8 @@ type InstanceProperties struct {
 	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType *InstancePropertiesPostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -30452,6 +30840,8 @@ type InstancePropertiesArgs struct {
 	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
+	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata pulumi.StringMapInput `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType InstancePropertiesPostKeyRevocationActionTypePtrInput `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -30643,6 +31033,11 @@ func (o InstancePropertiesOutput) NetworkInterfaces() NetworkInterfaceArrayOutpu
 // Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *NetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigPtrOutput)
+}
+
+// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+func (o InstancePropertiesOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceProperties) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -30877,6 +31272,16 @@ func (o InstancePropertiesPtrOutput) NetworkPerformanceConfig() NetworkPerforman
 		}
 		return v.NetworkPerformanceConfig
 	}).(NetworkPerformanceConfigPtrOutput)
+}
+
+// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+func (o InstancePropertiesPtrOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PartnerMetadata
+	}).(pulumi.StringMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -31250,6 +31655,8 @@ type InstancePropertiesResponse struct {
 	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
+	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -31366,6 +31773,11 @@ func (o InstancePropertiesResponseOutput) NetworkInterfaces() NetworkInterfaceRe
 // Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
+}
+
+// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+func (o InstancePropertiesResponseOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -32130,11 +32542,11 @@ func (o InterconnectCircuitInfoResponseArrayOutput) Index(i pulumi.IntInput) Int
 	}).(InterconnectCircuitInfoResponseOutput)
 }
 
-// Configuration information for enabling Media Access Control security (Macsec) on this Interconnect between Google and your on-premises router.
+// Configuration information for enabling Media Access Control security (MACsec) on this Cloud Interconnect connection between Google and your on-premises router.
 type InterconnectMacsec struct {
-	// If set to true, the Interconnect will be configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect will be configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
+	// If set to true, the Interconnect connection is configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect connection is configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
 	FailOpen *bool `pulumi:"failOpen"`
-	// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK will be generated for each key in the key chain. Google router will automatically pick the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
+	// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
 	PreSharedKeys []InterconnectMacsecPreSharedKey `pulumi:"preSharedKeys"`
 }
 
@@ -32149,11 +32561,11 @@ type InterconnectMacsecInput interface {
 	ToInterconnectMacsecOutputWithContext(context.Context) InterconnectMacsecOutput
 }
 
-// Configuration information for enabling Media Access Control security (Macsec) on this Interconnect between Google and your on-premises router.
+// Configuration information for enabling Media Access Control security (MACsec) on this Cloud Interconnect connection between Google and your on-premises router.
 type InterconnectMacsecArgs struct {
-	// If set to true, the Interconnect will be configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect will be configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
+	// If set to true, the Interconnect connection is configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect connection is configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
 	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
-	// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK will be generated for each key in the key chain. Google router will automatically pick the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
+	// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
 	PreSharedKeys InterconnectMacsecPreSharedKeyArrayInput `pulumi:"preSharedKeys"`
 }
 
@@ -32222,7 +32634,7 @@ func (i *interconnectMacsecPtrType) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// Configuration information for enabling Media Access Control security (Macsec) on this Interconnect between Google and your on-premises router.
+// Configuration information for enabling Media Access Control security (MACsec) on this Cloud Interconnect connection between Google and your on-premises router.
 type InterconnectMacsecOutput struct{ *pulumi.OutputState }
 
 func (InterconnectMacsecOutput) ElementType() reflect.Type {
@@ -32253,12 +32665,12 @@ func (o InterconnectMacsecOutput) ToOutput(ctx context.Context) pulumix.Output[I
 	}
 }
 
-// If set to true, the Interconnect will be configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect will be configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
+// If set to true, the Interconnect connection is configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect connection is configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
 func (o InterconnectMacsecOutput) FailOpen() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InterconnectMacsec) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
 }
 
-// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK will be generated for each key in the key chain. Google router will automatically pick the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
+// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
 func (o InterconnectMacsecOutput) PreSharedKeys() InterconnectMacsecPreSharedKeyArrayOutput {
 	return o.ApplyT(func(v InterconnectMacsec) []InterconnectMacsecPreSharedKey { return v.PreSharedKeys }).(InterconnectMacsecPreSharedKeyArrayOutput)
 }
@@ -32293,7 +32705,7 @@ func (o InterconnectMacsecPtrOutput) Elem() InterconnectMacsecOutput {
 	}).(InterconnectMacsecOutput)
 }
 
-// If set to true, the Interconnect will be configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect will be configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
+// If set to true, the Interconnect connection is configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect connection is configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
 func (o InterconnectMacsecPtrOutput) FailOpen() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InterconnectMacsec) *bool {
 		if v == nil {
@@ -32303,7 +32715,7 @@ func (o InterconnectMacsecPtrOutput) FailOpen() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK will be generated for each key in the key chain. Google router will automatically pick the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
+// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
 func (o InterconnectMacsecPtrOutput) PreSharedKeys() InterconnectMacsecPreSharedKeyArrayOutput {
 	return o.ApplyT(func(v *InterconnectMacsec) []InterconnectMacsecPreSharedKey {
 		if v == nil {
@@ -32511,15 +32923,15 @@ func (o InterconnectMacsecPreSharedKeyResponseArrayOutput) Index(i pulumi.IntInp
 	}).(InterconnectMacsecPreSharedKeyResponseOutput)
 }
 
-// Configuration information for enabling Media Access Control security (Macsec) on this Interconnect between Google and your on-premises router.
+// Configuration information for enabling Media Access Control security (MACsec) on this Cloud Interconnect connection between Google and your on-premises router.
 type InterconnectMacsecResponse struct {
-	// If set to true, the Interconnect will be configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect will be configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
+	// If set to true, the Interconnect connection is configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect connection is configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
 	FailOpen bool `pulumi:"failOpen"`
-	// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK will be generated for each key in the key chain. Google router will automatically pick the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
+	// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
 	PreSharedKeys []InterconnectMacsecPreSharedKeyResponse `pulumi:"preSharedKeys"`
 }
 
-// Configuration information for enabling Media Access Control security (Macsec) on this Interconnect between Google and your on-premises router.
+// Configuration information for enabling Media Access Control security (MACsec) on this Cloud Interconnect connection between Google and your on-premises router.
 type InterconnectMacsecResponseOutput struct{ *pulumi.OutputState }
 
 func (InterconnectMacsecResponseOutput) ElementType() reflect.Type {
@@ -32540,12 +32952,12 @@ func (o InterconnectMacsecResponseOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// If set to true, the Interconnect will be configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect will be configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
+// If set to true, the Interconnect connection is configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect connection is configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
 func (o InterconnectMacsecResponseOutput) FailOpen() pulumi.BoolOutput {
 	return o.ApplyT(func(v InterconnectMacsecResponse) bool { return v.FailOpen }).(pulumi.BoolOutput)
 }
 
-// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK will be generated for each key in the key chain. Google router will automatically pick the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
+// A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
 func (o InterconnectMacsecResponseOutput) PreSharedKeys() InterconnectMacsecPreSharedKeyResponseArrayOutput {
 	return o.ApplyT(func(v InterconnectMacsecResponse) []InterconnectMacsecPreSharedKeyResponse { return v.PreSharedKeys }).(InterconnectMacsecPreSharedKeyResponseArrayOutput)
 }
@@ -36198,6 +36610,52 @@ func (o MetadataResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Represents an amount of money with its currency type.
+type MoneyResponse struct {
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode string `pulumi:"currencyCode"`
+	// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos int `pulumi:"nanos"`
+	// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units string `pulumi:"units"`
+}
+
+// Represents an amount of money with its currency type.
+type MoneyResponseOutput struct{ *pulumi.OutputState }
+
+func (MoneyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoneyResponse)(nil)).Elem()
+}
+
+func (o MoneyResponseOutput) ToMoneyResponseOutput() MoneyResponseOutput {
+	return o
+}
+
+func (o MoneyResponseOutput) ToMoneyResponseOutputWithContext(ctx context.Context) MoneyResponseOutput {
+	return o
+}
+
+func (o MoneyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MoneyResponse] {
+	return pulumix.Output[MoneyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The three-letter currency code defined in ISO 4217.
+func (o MoneyResponseOutput) CurrencyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v MoneyResponse) string { return v.CurrencyCode }).(pulumi.StringOutput)
+}
+
+// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o MoneyResponseOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v MoneyResponse) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o MoneyResponseOutput) Units() pulumi.StringOutput {
+	return o.ApplyT(func(v MoneyResponse) string { return v.Units }).(pulumi.StringOutput)
+}
+
 // [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
 type MutualTls struct {
 	// Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
@@ -36594,8 +37052,10 @@ func (o NamedPortResponseArrayOutput) Index(i pulumi.IntInput) NamedPortResponse
 
 // [Output Only] A connection connected to this network attachment.
 type NetworkAttachmentConnectedEndpointResponse struct {
-	// The IP address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+	// The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
 	IpAddress string `pulumi:"ipAddress"`
+	// The IPv6 address assigned to the producer instance network interface. This is only assigned when the stack types of both the instance network interface and the consumer subnet are IPv4_IPv6.
+	Ipv6Address string `pulumi:"ipv6Address"`
 	// The project id or number of the interface to which the IP was assigned.
 	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
 	// Alias IP ranges from the same subnetwork.
@@ -36604,6 +37064,8 @@ type NetworkAttachmentConnectedEndpointResponse struct {
 	Status string `pulumi:"status"`
 	// The subnetwork used to assign the IP to the producer instance network interface.
 	Subnetwork string `pulumi:"subnetwork"`
+	// The CIDR range of the subnet from which the IPv4 internal IP was allocated from.
+	SubnetworkCidrRange string `pulumi:"subnetworkCidrRange"`
 }
 
 // [Output Only] A connection connected to this network attachment.
@@ -36627,9 +37089,14 @@ func (o NetworkAttachmentConnectedEndpointResponseOutput) ToOutput(ctx context.C
 	}
 }
 
-// The IP address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+// The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
 func (o NetworkAttachmentConnectedEndpointResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The IPv6 address assigned to the producer instance network interface. This is only assigned when the stack types of both the instance network interface and the consumer subnet are IPv4_IPv6.
+func (o NetworkAttachmentConnectedEndpointResponseOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
 // The project id or number of the interface to which the IP was assigned.
@@ -36650,6 +37117,11 @@ func (o NetworkAttachmentConnectedEndpointResponseOutput) Status() pulumi.String
 // The subnetwork used to assign the IP to the producer instance network interface.
 func (o NetworkAttachmentConnectedEndpointResponseOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The CIDR range of the subnet from which the IPv4 internal IP was allocated from.
+func (o NetworkAttachmentConnectedEndpointResponseOutput) SubnetworkCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.SubnetworkCidrRange }).(pulumi.StringOutput)
 }
 
 type NetworkAttachmentConnectedEndpointResponseArrayOutput struct{ *pulumi.OutputState }
@@ -39165,6 +39637,12 @@ func (o NetworkPerformanceConfigResponseOutput) TotalEgressBandwidthTier() pulum
 
 // A routing configuration attached to a network resource. The message includes the list of routers associated with the network, and a flag indicating the type of routing behavior to enforce network-wide.
 type NetworkRoutingConfig struct {
+	// Enable comparison of Multi-Exit Discriminators (MED) across routes with different neighbor ASNs when using the STANDARD BGP best path selection algorithm.
+	BgpAlwaysCompareMed *bool `pulumi:"bgpAlwaysCompareMed"`
+	// The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+	BgpBestPathSelectionMode *NetworkRoutingConfigBgpBestPathSelectionMode `pulumi:"bgpBestPathSelectionMode"`
+	// Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
+	BgpInterRegionCost *NetworkRoutingConfigBgpInterRegionCost `pulumi:"bgpInterRegionCost"`
 	// The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
 	RoutingMode *NetworkRoutingConfigRoutingMode `pulumi:"routingMode"`
 }
@@ -39182,6 +39660,12 @@ type NetworkRoutingConfigInput interface {
 
 // A routing configuration attached to a network resource. The message includes the list of routers associated with the network, and a flag indicating the type of routing behavior to enforce network-wide.
 type NetworkRoutingConfigArgs struct {
+	// Enable comparison of Multi-Exit Discriminators (MED) across routes with different neighbor ASNs when using the STANDARD BGP best path selection algorithm.
+	BgpAlwaysCompareMed pulumi.BoolPtrInput `pulumi:"bgpAlwaysCompareMed"`
+	// The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+	BgpBestPathSelectionMode NetworkRoutingConfigBgpBestPathSelectionModePtrInput `pulumi:"bgpBestPathSelectionMode"`
+	// Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
+	BgpInterRegionCost NetworkRoutingConfigBgpInterRegionCostPtrInput `pulumi:"bgpInterRegionCost"`
 	// The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
 	RoutingMode NetworkRoutingConfigRoutingModePtrInput `pulumi:"routingMode"`
 }
@@ -39282,6 +39766,23 @@ func (o NetworkRoutingConfigOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Enable comparison of Multi-Exit Discriminators (MED) across routes with different neighbor ASNs when using the STANDARD BGP best path selection algorithm.
+func (o NetworkRoutingConfigOutput) BgpAlwaysCompareMed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkRoutingConfig) *bool { return v.BgpAlwaysCompareMed }).(pulumi.BoolPtrOutput)
+}
+
+// The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+func (o NetworkRoutingConfigOutput) BgpBestPathSelectionMode() NetworkRoutingConfigBgpBestPathSelectionModePtrOutput {
+	return o.ApplyT(func(v NetworkRoutingConfig) *NetworkRoutingConfigBgpBestPathSelectionMode {
+		return v.BgpBestPathSelectionMode
+	}).(NetworkRoutingConfigBgpBestPathSelectionModePtrOutput)
+}
+
+// Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
+func (o NetworkRoutingConfigOutput) BgpInterRegionCost() NetworkRoutingConfigBgpInterRegionCostPtrOutput {
+	return o.ApplyT(func(v NetworkRoutingConfig) *NetworkRoutingConfigBgpInterRegionCost { return v.BgpInterRegionCost }).(NetworkRoutingConfigBgpInterRegionCostPtrOutput)
+}
+
 // The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
 func (o NetworkRoutingConfigOutput) RoutingMode() NetworkRoutingConfigRoutingModePtrOutput {
 	return o.ApplyT(func(v NetworkRoutingConfig) *NetworkRoutingConfigRoutingMode { return v.RoutingMode }).(NetworkRoutingConfigRoutingModePtrOutput)
@@ -39317,6 +39818,36 @@ func (o NetworkRoutingConfigPtrOutput) Elem() NetworkRoutingConfigOutput {
 	}).(NetworkRoutingConfigOutput)
 }
 
+// Enable comparison of Multi-Exit Discriminators (MED) across routes with different neighbor ASNs when using the STANDARD BGP best path selection algorithm.
+func (o NetworkRoutingConfigPtrOutput) BgpAlwaysCompareMed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkRoutingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BgpAlwaysCompareMed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+func (o NetworkRoutingConfigPtrOutput) BgpBestPathSelectionMode() NetworkRoutingConfigBgpBestPathSelectionModePtrOutput {
+	return o.ApplyT(func(v *NetworkRoutingConfig) *NetworkRoutingConfigBgpBestPathSelectionMode {
+		if v == nil {
+			return nil
+		}
+		return v.BgpBestPathSelectionMode
+	}).(NetworkRoutingConfigBgpBestPathSelectionModePtrOutput)
+}
+
+// Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
+func (o NetworkRoutingConfigPtrOutput) BgpInterRegionCost() NetworkRoutingConfigBgpInterRegionCostPtrOutput {
+	return o.ApplyT(func(v *NetworkRoutingConfig) *NetworkRoutingConfigBgpInterRegionCost {
+		if v == nil {
+			return nil
+		}
+		return v.BgpInterRegionCost
+	}).(NetworkRoutingConfigBgpInterRegionCostPtrOutput)
+}
+
 // The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
 func (o NetworkRoutingConfigPtrOutput) RoutingMode() NetworkRoutingConfigRoutingModePtrOutput {
 	return o.ApplyT(func(v *NetworkRoutingConfig) *NetworkRoutingConfigRoutingMode {
@@ -39329,6 +39860,12 @@ func (o NetworkRoutingConfigPtrOutput) RoutingMode() NetworkRoutingConfigRouting
 
 // A routing configuration attached to a network resource. The message includes the list of routers associated with the network, and a flag indicating the type of routing behavior to enforce network-wide.
 type NetworkRoutingConfigResponse struct {
+	// Enable comparison of Multi-Exit Discriminators (MED) across routes with different neighbor ASNs when using the STANDARD BGP best path selection algorithm.
+	BgpAlwaysCompareMed bool `pulumi:"bgpAlwaysCompareMed"`
+	// The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+	BgpBestPathSelectionMode string `pulumi:"bgpBestPathSelectionMode"`
+	// Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
+	BgpInterRegionCost string `pulumi:"bgpInterRegionCost"`
 	// The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
 	RoutingMode string `pulumi:"routingMode"`
 }
@@ -39352,6 +39889,21 @@ func (o NetworkRoutingConfigResponseOutput) ToOutput(ctx context.Context) pulumi
 	return pulumix.Output[NetworkRoutingConfigResponse]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Enable comparison of Multi-Exit Discriminators (MED) across routes with different neighbor ASNs when using the STANDARD BGP best path selection algorithm.
+func (o NetworkRoutingConfigResponseOutput) BgpAlwaysCompareMed() pulumi.BoolOutput {
+	return o.ApplyT(func(v NetworkRoutingConfigResponse) bool { return v.BgpAlwaysCompareMed }).(pulumi.BoolOutput)
+}
+
+// The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
+func (o NetworkRoutingConfigResponseOutput) BgpBestPathSelectionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkRoutingConfigResponse) string { return v.BgpBestPathSelectionMode }).(pulumi.StringOutput)
+}
+
+// Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
+func (o NetworkRoutingConfigResponseOutput) BgpInterRegionCost() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkRoutingConfigResponse) string { return v.BgpInterRegionCost }).(pulumi.StringOutput)
 }
 
 // The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
@@ -40516,27 +41068,27 @@ func (o OriginAuthenticationMethodResponseArrayOutput) Index(i pulumi.IntInput) 
 
 // Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
 type OutlierDetection struct {
-	// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
+	// The base time that a backend endpoint is ejected for. Defaults to 30000ms or 30s. After a backend endpoint is returned back to the load balancing pool, it can be ejected again in another ejection analysis. Thus, the total ejection time is equal to the base ejection time multiplied by the number of times the backend endpoint has been ejected. Defaults to 30000ms or 30s.
 	BaseEjectionTime *Duration `pulumi:"baseEjectionTime"`
-	// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Number of consecutive errors before a backend endpoint is ejected from the load balancing pool. When the backend endpoint is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
 	ConsecutiveErrors *int `pulumi:"consecutiveErrors"`
-	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
 	ConsecutiveGatewayFailure *int `pulumi:"consecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
 	EnforcingConsecutiveErrors *int `pulumi:"enforcingConsecutiveErrors"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
 	EnforcingConsecutiveGatewayFailure *int `pulumi:"enforcingConsecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+	// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 	EnforcingSuccessRate *int `pulumi:"enforcingSuccessRate"`
-	// Time interval between ejection analysis sweeps. This can result in both new ejections as well as hosts being returned to service. Defaults to 1 second.
+	// Time interval between ejection analysis sweeps. This can result in both new ejections and backend endpoints being returned to service. The interval is equal to the number of seconds as defined in outlierDetection.interval.seconds plus the number of nanoseconds as defined in outlierDetection.interval.nanos. Defaults to 1 second.
 	Interval *Duration `pulumi:"interval"`
-	// Maximum percentage of hosts in the load balancing pool for the backend service that can be ejected. Defaults to 50%.
+	// Maximum percentage of backend endpoints in the load balancing pool for the backend service that can be ejected if the ejection conditions are met. Defaults to 50%.
 	MaxEjectionPercent *int `pulumi:"maxEjectionPercent"`
-	// The number of hosts in a cluster that must have enough request volume to detect success rate outliers. If the number of hosts is less than this setting, outlier detection via success rate statistics is not performed for any host in the cluster. Defaults to 5.
+	// The number of backend endpoints in the load balancing pool that must have enough request volume to detect success rate outliers. If the number of backend endpoints is fewer than this setting, outlier detection via success rate statistics is not performed for any backend endpoint in the load balancing pool. Defaults to 5. Not supported when the backend service uses Serverless NEG.
 	SuccessRateMinimumHosts *int `pulumi:"successRateMinimumHosts"`
-	// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this host in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that host. Defaults to 100.
+	// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this backend endpoint in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that backend endpoint. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 	SuccessRateRequestVolume *int `pulumi:"successRateRequestVolume"`
-	// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900.
+	// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * successRateStdevFactor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900. Not supported when the backend service uses Serverless NEG.
 	SuccessRateStdevFactor *int `pulumi:"successRateStdevFactor"`
 }
 
@@ -40553,27 +41105,27 @@ type OutlierDetectionInput interface {
 
 // Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
 type OutlierDetectionArgs struct {
-	// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
+	// The base time that a backend endpoint is ejected for. Defaults to 30000ms or 30s. After a backend endpoint is returned back to the load balancing pool, it can be ejected again in another ejection analysis. Thus, the total ejection time is equal to the base ejection time multiplied by the number of times the backend endpoint has been ejected. Defaults to 30000ms or 30s.
 	BaseEjectionTime DurationPtrInput `pulumi:"baseEjectionTime"`
-	// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Number of consecutive errors before a backend endpoint is ejected from the load balancing pool. When the backend endpoint is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
 	ConsecutiveErrors pulumi.IntPtrInput `pulumi:"consecutiveErrors"`
-	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
 	ConsecutiveGatewayFailure pulumi.IntPtrInput `pulumi:"consecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
 	EnforcingConsecutiveErrors pulumi.IntPtrInput `pulumi:"enforcingConsecutiveErrors"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
 	EnforcingConsecutiveGatewayFailure pulumi.IntPtrInput `pulumi:"enforcingConsecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+	// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 	EnforcingSuccessRate pulumi.IntPtrInput `pulumi:"enforcingSuccessRate"`
-	// Time interval between ejection analysis sweeps. This can result in both new ejections as well as hosts being returned to service. Defaults to 1 second.
+	// Time interval between ejection analysis sweeps. This can result in both new ejections and backend endpoints being returned to service. The interval is equal to the number of seconds as defined in outlierDetection.interval.seconds plus the number of nanoseconds as defined in outlierDetection.interval.nanos. Defaults to 1 second.
 	Interval DurationPtrInput `pulumi:"interval"`
-	// Maximum percentage of hosts in the load balancing pool for the backend service that can be ejected. Defaults to 50%.
+	// Maximum percentage of backend endpoints in the load balancing pool for the backend service that can be ejected if the ejection conditions are met. Defaults to 50%.
 	MaxEjectionPercent pulumi.IntPtrInput `pulumi:"maxEjectionPercent"`
-	// The number of hosts in a cluster that must have enough request volume to detect success rate outliers. If the number of hosts is less than this setting, outlier detection via success rate statistics is not performed for any host in the cluster. Defaults to 5.
+	// The number of backend endpoints in the load balancing pool that must have enough request volume to detect success rate outliers. If the number of backend endpoints is fewer than this setting, outlier detection via success rate statistics is not performed for any backend endpoint in the load balancing pool. Defaults to 5. Not supported when the backend service uses Serverless NEG.
 	SuccessRateMinimumHosts pulumi.IntPtrInput `pulumi:"successRateMinimumHosts"`
-	// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this host in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that host. Defaults to 100.
+	// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this backend endpoint in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that backend endpoint. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 	SuccessRateRequestVolume pulumi.IntPtrInput `pulumi:"successRateRequestVolume"`
-	// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900.
+	// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * successRateStdevFactor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900. Not supported when the backend service uses Serverless NEG.
 	SuccessRateStdevFactor pulumi.IntPtrInput `pulumi:"successRateStdevFactor"`
 }
 
@@ -40673,57 +41225,57 @@ func (o OutlierDetectionOutput) ToOutput(ctx context.Context) pulumix.Output[Out
 	}
 }
 
-// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
+// The base time that a backend endpoint is ejected for. Defaults to 30000ms or 30s. After a backend endpoint is returned back to the load balancing pool, it can be ejected again in another ejection analysis. Thus, the total ejection time is equal to the base ejection time multiplied by the number of times the backend endpoint has been ejected. Defaults to 30000ms or 30s.
 func (o OutlierDetectionOutput) BaseEjectionTime() DurationPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *Duration { return v.BaseEjectionTime }).(DurationPtrOutput)
 }
 
-// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Number of consecutive errors before a backend endpoint is ejected from the load balancing pool. When the backend endpoint is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
 func (o OutlierDetectionOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.ConsecutiveErrors }).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
 func (o OutlierDetectionOutput) ConsecutiveGatewayFailure() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.ConsecutiveGatewayFailure }).(pulumi.IntPtrOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
 func (o OutlierDetectionOutput) EnforcingConsecutiveErrors() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.EnforcingConsecutiveErrors }).(pulumi.IntPtrOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
 func (o OutlierDetectionOutput) EnforcingConsecutiveGatewayFailure() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.EnforcingConsecutiveGatewayFailure }).(pulumi.IntPtrOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionOutput) EnforcingSuccessRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.EnforcingSuccessRate }).(pulumi.IntPtrOutput)
 }
 
-// Time interval between ejection analysis sweeps. This can result in both new ejections as well as hosts being returned to service. Defaults to 1 second.
+// Time interval between ejection analysis sweeps. This can result in both new ejections and backend endpoints being returned to service. The interval is equal to the number of seconds as defined in outlierDetection.interval.seconds plus the number of nanoseconds as defined in outlierDetection.interval.nanos. Defaults to 1 second.
 func (o OutlierDetectionOutput) Interval() DurationPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *Duration { return v.Interval }).(DurationPtrOutput)
 }
 
-// Maximum percentage of hosts in the load balancing pool for the backend service that can be ejected. Defaults to 50%.
+// Maximum percentage of backend endpoints in the load balancing pool for the backend service that can be ejected if the ejection conditions are met. Defaults to 50%.
 func (o OutlierDetectionOutput) MaxEjectionPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.MaxEjectionPercent }).(pulumi.IntPtrOutput)
 }
 
-// The number of hosts in a cluster that must have enough request volume to detect success rate outliers. If the number of hosts is less than this setting, outlier detection via success rate statistics is not performed for any host in the cluster. Defaults to 5.
+// The number of backend endpoints in the load balancing pool that must have enough request volume to detect success rate outliers. If the number of backend endpoints is fewer than this setting, outlier detection via success rate statistics is not performed for any backend endpoint in the load balancing pool. Defaults to 5. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionOutput) SuccessRateMinimumHosts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.SuccessRateMinimumHosts }).(pulumi.IntPtrOutput)
 }
 
-// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this host in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that host. Defaults to 100.
+// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this backend endpoint in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that backend endpoint. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionOutput) SuccessRateRequestVolume() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.SuccessRateRequestVolume }).(pulumi.IntPtrOutput)
 }
 
-// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900.
+// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * successRateStdevFactor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionOutput) SuccessRateStdevFactor() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.SuccessRateStdevFactor }).(pulumi.IntPtrOutput)
 }
@@ -40758,7 +41310,7 @@ func (o OutlierDetectionPtrOutput) Elem() OutlierDetectionOutput {
 	}).(OutlierDetectionOutput)
 }
 
-// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
+// The base time that a backend endpoint is ejected for. Defaults to 30000ms or 30s. After a backend endpoint is returned back to the load balancing pool, it can be ejected again in another ejection analysis. Thus, the total ejection time is equal to the base ejection time multiplied by the number of times the backend endpoint has been ejected. Defaults to 30000ms or 30s.
 func (o OutlierDetectionPtrOutput) BaseEjectionTime() DurationPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *Duration {
 		if v == nil {
@@ -40768,7 +41320,7 @@ func (o OutlierDetectionPtrOutput) BaseEjectionTime() DurationPtrOutput {
 	}).(DurationPtrOutput)
 }
 
-// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Number of consecutive errors before a backend endpoint is ejected from the load balancing pool. When the backend endpoint is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
 func (o OutlierDetectionPtrOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -40778,7 +41330,7 @@ func (o OutlierDetectionPtrOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
 func (o OutlierDetectionPtrOutput) ConsecutiveGatewayFailure() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -40788,7 +41340,7 @@ func (o OutlierDetectionPtrOutput) ConsecutiveGatewayFailure() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
 func (o OutlierDetectionPtrOutput) EnforcingConsecutiveErrors() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -40798,7 +41350,7 @@ func (o OutlierDetectionPtrOutput) EnforcingConsecutiveErrors() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
 func (o OutlierDetectionPtrOutput) EnforcingConsecutiveGatewayFailure() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -40808,7 +41360,7 @@ func (o OutlierDetectionPtrOutput) EnforcingConsecutiveGatewayFailure() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionPtrOutput) EnforcingSuccessRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -40818,7 +41370,7 @@ func (o OutlierDetectionPtrOutput) EnforcingSuccessRate() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Time interval between ejection analysis sweeps. This can result in both new ejections as well as hosts being returned to service. Defaults to 1 second.
+// Time interval between ejection analysis sweeps. This can result in both new ejections and backend endpoints being returned to service. The interval is equal to the number of seconds as defined in outlierDetection.interval.seconds plus the number of nanoseconds as defined in outlierDetection.interval.nanos. Defaults to 1 second.
 func (o OutlierDetectionPtrOutput) Interval() DurationPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *Duration {
 		if v == nil {
@@ -40828,7 +41380,7 @@ func (o OutlierDetectionPtrOutput) Interval() DurationPtrOutput {
 	}).(DurationPtrOutput)
 }
 
-// Maximum percentage of hosts in the load balancing pool for the backend service that can be ejected. Defaults to 50%.
+// Maximum percentage of backend endpoints in the load balancing pool for the backend service that can be ejected if the ejection conditions are met. Defaults to 50%.
 func (o OutlierDetectionPtrOutput) MaxEjectionPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -40838,7 +41390,7 @@ func (o OutlierDetectionPtrOutput) MaxEjectionPercent() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of hosts in a cluster that must have enough request volume to detect success rate outliers. If the number of hosts is less than this setting, outlier detection via success rate statistics is not performed for any host in the cluster. Defaults to 5.
+// The number of backend endpoints in the load balancing pool that must have enough request volume to detect success rate outliers. If the number of backend endpoints is fewer than this setting, outlier detection via success rate statistics is not performed for any backend endpoint in the load balancing pool. Defaults to 5. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionPtrOutput) SuccessRateMinimumHosts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -40848,7 +41400,7 @@ func (o OutlierDetectionPtrOutput) SuccessRateMinimumHosts() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this host in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that host. Defaults to 100.
+// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this backend endpoint in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that backend endpoint. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionPtrOutput) SuccessRateRequestVolume() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -40858,7 +41410,7 @@ func (o OutlierDetectionPtrOutput) SuccessRateRequestVolume() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900.
+// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * successRateStdevFactor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionPtrOutput) SuccessRateStdevFactor() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -40870,27 +41422,27 @@ func (o OutlierDetectionPtrOutput) SuccessRateStdevFactor() pulumi.IntPtrOutput 
 
 // Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
 type OutlierDetectionResponse struct {
-	// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
+	// The base time that a backend endpoint is ejected for. Defaults to 30000ms or 30s. After a backend endpoint is returned back to the load balancing pool, it can be ejected again in another ejection analysis. Thus, the total ejection time is equal to the base ejection time multiplied by the number of times the backend endpoint has been ejected. Defaults to 30000ms or 30s.
 	BaseEjectionTime DurationResponse `pulumi:"baseEjectionTime"`
-	// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Number of consecutive errors before a backend endpoint is ejected from the load balancing pool. When the backend endpoint is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
 	ConsecutiveErrors int `pulumi:"consecutiveErrors"`
-	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
 	ConsecutiveGatewayFailure int `pulumi:"consecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
 	EnforcingConsecutiveErrors int `pulumi:"enforcingConsecutiveErrors"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
 	EnforcingConsecutiveGatewayFailure int `pulumi:"enforcingConsecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+	// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 	EnforcingSuccessRate int `pulumi:"enforcingSuccessRate"`
-	// Time interval between ejection analysis sweeps. This can result in both new ejections as well as hosts being returned to service. Defaults to 1 second.
+	// Time interval between ejection analysis sweeps. This can result in both new ejections and backend endpoints being returned to service. The interval is equal to the number of seconds as defined in outlierDetection.interval.seconds plus the number of nanoseconds as defined in outlierDetection.interval.nanos. Defaults to 1 second.
 	Interval DurationResponse `pulumi:"interval"`
-	// Maximum percentage of hosts in the load balancing pool for the backend service that can be ejected. Defaults to 50%.
+	// Maximum percentage of backend endpoints in the load balancing pool for the backend service that can be ejected if the ejection conditions are met. Defaults to 50%.
 	MaxEjectionPercent int `pulumi:"maxEjectionPercent"`
-	// The number of hosts in a cluster that must have enough request volume to detect success rate outliers. If the number of hosts is less than this setting, outlier detection via success rate statistics is not performed for any host in the cluster. Defaults to 5.
+	// The number of backend endpoints in the load balancing pool that must have enough request volume to detect success rate outliers. If the number of backend endpoints is fewer than this setting, outlier detection via success rate statistics is not performed for any backend endpoint in the load balancing pool. Defaults to 5. Not supported when the backend service uses Serverless NEG.
 	SuccessRateMinimumHosts int `pulumi:"successRateMinimumHosts"`
-	// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this host in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that host. Defaults to 100.
+	// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this backend endpoint in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that backend endpoint. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 	SuccessRateRequestVolume int `pulumi:"successRateRequestVolume"`
-	// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900.
+	// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * successRateStdevFactor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900. Not supported when the backend service uses Serverless NEG.
 	SuccessRateStdevFactor int `pulumi:"successRateStdevFactor"`
 }
 
@@ -40915,57 +41467,57 @@ func (o OutlierDetectionResponseOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
+// The base time that a backend endpoint is ejected for. Defaults to 30000ms or 30s. After a backend endpoint is returned back to the load balancing pool, it can be ejected again in another ejection analysis. Thus, the total ejection time is equal to the base ejection time multiplied by the number of times the backend endpoint has been ejected. Defaults to 30000ms or 30s.
 func (o OutlierDetectionResponseOutput) BaseEjectionTime() DurationResponseOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) DurationResponse { return v.BaseEjectionTime }).(DurationResponseOutput)
 }
 
-// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Number of consecutive errors before a backend endpoint is ejected from the load balancing pool. When the backend endpoint is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
 func (o OutlierDetectionResponseOutput) ConsecutiveErrors() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.ConsecutiveErrors }).(pulumi.IntOutput)
 }
 
-// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
 func (o OutlierDetectionResponseOutput) ConsecutiveGatewayFailure() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.ConsecutiveGatewayFailure }).(pulumi.IntOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
 func (o OutlierDetectionResponseOutput) EnforcingConsecutiveErrors() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.EnforcingConsecutiveErrors }).(pulumi.IntOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
 func (o OutlierDetectionResponseOutput) EnforcingConsecutiveGatewayFailure() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.EnforcingConsecutiveGatewayFailure }).(pulumi.IntOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+// The percentage chance that a backend endpoint will be ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionResponseOutput) EnforcingSuccessRate() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.EnforcingSuccessRate }).(pulumi.IntOutput)
 }
 
-// Time interval between ejection analysis sweeps. This can result in both new ejections as well as hosts being returned to service. Defaults to 1 second.
+// Time interval between ejection analysis sweeps. This can result in both new ejections and backend endpoints being returned to service. The interval is equal to the number of seconds as defined in outlierDetection.interval.seconds plus the number of nanoseconds as defined in outlierDetection.interval.nanos. Defaults to 1 second.
 func (o OutlierDetectionResponseOutput) Interval() DurationResponseOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) DurationResponse { return v.Interval }).(DurationResponseOutput)
 }
 
-// Maximum percentage of hosts in the load balancing pool for the backend service that can be ejected. Defaults to 50%.
+// Maximum percentage of backend endpoints in the load balancing pool for the backend service that can be ejected if the ejection conditions are met. Defaults to 50%.
 func (o OutlierDetectionResponseOutput) MaxEjectionPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.MaxEjectionPercent }).(pulumi.IntOutput)
 }
 
-// The number of hosts in a cluster that must have enough request volume to detect success rate outliers. If the number of hosts is less than this setting, outlier detection via success rate statistics is not performed for any host in the cluster. Defaults to 5.
+// The number of backend endpoints in the load balancing pool that must have enough request volume to detect success rate outliers. If the number of backend endpoints is fewer than this setting, outlier detection via success rate statistics is not performed for any backend endpoint in the load balancing pool. Defaults to 5. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionResponseOutput) SuccessRateMinimumHosts() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.SuccessRateMinimumHosts }).(pulumi.IntOutput)
 }
 
-// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this host in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that host. Defaults to 100.
+// The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this backend endpoint in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that backend endpoint. Defaults to 100. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionResponseOutput) SuccessRateRequestVolume() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.SuccessRateRequestVolume }).(pulumi.IntOutput)
 }
 
-// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900.
+// This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * successRateStdevFactor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900. Not supported when the backend service uses Serverless NEG.
 func (o OutlierDetectionResponseOutput) SuccessRateStdevFactor() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.SuccessRateStdevFactor }).(pulumi.IntOutput)
 }
@@ -42230,9 +42782,9 @@ func (o PacketMirroringNetworkInfoResponseOutput) Url() pulumi.StringOutput {
 
 // A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcher struct {
-	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
 	DefaultCustomErrorResponsePolicy *CustomErrorResponsePolicy `pulumi:"defaultCustomErrorResponsePolicy"`
-	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction *HttpRouteAction `pulumi:"defaultRouteAction"`
 	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
 	DefaultService *string `pulumi:"defaultService"`
@@ -42263,9 +42815,9 @@ type PathMatcherInput interface {
 
 // A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherArgs struct {
-	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
 	DefaultCustomErrorResponsePolicy CustomErrorResponsePolicyPtrInput `pulumi:"defaultCustomErrorResponsePolicy"`
-	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction HttpRouteActionPtrInput `pulumi:"defaultRouteAction"`
 	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
 	DefaultService pulumi.StringPtrInput `pulumi:"defaultService"`
@@ -42353,12 +42905,12 @@ func (o PathMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[PathMatc
 	}
 }
 
-// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
 func (o PathMatcherOutput) DefaultCustomErrorResponsePolicy() CustomErrorResponsePolicyPtrOutput {
 	return o.ApplyT(func(v PathMatcher) *CustomErrorResponsePolicy { return v.DefaultCustomErrorResponsePolicy }).(CustomErrorResponsePolicyPtrOutput)
 }
 
-// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
+// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
 func (o PathMatcherOutput) DefaultRouteAction() HttpRouteActionPtrOutput {
 	return o.ApplyT(func(v PathMatcher) *HttpRouteAction { return v.DefaultRouteAction }).(HttpRouteActionPtrOutput)
 }
@@ -42426,9 +42978,9 @@ func (o PathMatcherArrayOutput) Index(i pulumi.IntInput) PathMatcherOutput {
 
 // A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherResponse struct {
-	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
 	DefaultCustomErrorResponsePolicy CustomErrorResponsePolicyResponse `pulumi:"defaultCustomErrorResponsePolicy"`
-	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction HttpRouteActionResponse `pulumi:"defaultRouteAction"`
 	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
 	DefaultService string `pulumi:"defaultService"`
@@ -42467,14 +43019,14 @@ func (o PathMatcherResponseOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
 func (o PathMatcherResponseOutput) DefaultCustomErrorResponsePolicy() CustomErrorResponsePolicyResponseOutput {
 	return o.ApplyT(func(v PathMatcherResponse) CustomErrorResponsePolicyResponse {
 		return v.DefaultCustomErrorResponsePolicy
 	}).(CustomErrorResponsePolicyResponseOutput)
 }
 
-// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
+// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
 func (o PathMatcherResponseOutput) DefaultRouteAction() HttpRouteActionResponseOutput {
 	return o.ApplyT(func(v PathMatcherResponse) HttpRouteActionResponse { return v.DefaultRouteAction }).(HttpRouteActionResponseOutput)
 }
@@ -42542,11 +43094,11 @@ func (o PathMatcherResponseArrayOutput) Index(i pulumi.IntInput) PathMatcherResp
 
 // A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
 type PathRule struct {
-	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for global external Application Load Balancers.
 	CustomErrorResponsePolicy *CustomErrorResponsePolicy `pulumi:"customErrorResponsePolicy"`
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths []string `pulumi:"paths"`
-	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path rule's routeAction.
+	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a path rule's routeAction.
 	RouteAction *HttpRouteAction `pulumi:"routeAction"`
 	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service *string `pulumi:"service"`
@@ -42567,11 +43119,11 @@ type PathRuleInput interface {
 
 // A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
 type PathRuleArgs struct {
-	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for global external Application Load Balancers.
 	CustomErrorResponsePolicy CustomErrorResponsePolicyPtrInput `pulumi:"customErrorResponsePolicy"`
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
-	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path rule's routeAction.
+	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a path rule's routeAction.
 	RouteAction HttpRouteActionPtrInput `pulumi:"routeAction"`
 	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service pulumi.StringPtrInput `pulumi:"service"`
@@ -42649,7 +43201,7 @@ func (o PathRuleOutput) ToOutput(ctx context.Context) pulumix.Output[PathRule] {
 	}
 }
 
-// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for global external Application Load Balancers.
 func (o PathRuleOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyPtrOutput {
 	return o.ApplyT(func(v PathRule) *CustomErrorResponsePolicy { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyPtrOutput)
 }
@@ -42659,7 +43211,7 @@ func (o PathRuleOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PathRule) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path rule's routeAction.
+// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a path rule's routeAction.
 func (o PathRuleOutput) RouteAction() HttpRouteActionPtrOutput {
 	return o.ApplyT(func(v PathRule) *HttpRouteAction { return v.RouteAction }).(HttpRouteActionPtrOutput)
 }
@@ -42702,11 +43254,11 @@ func (o PathRuleArrayOutput) Index(i pulumi.IntInput) PathRuleOutput {
 
 // A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
 type PathRuleResponse struct {
-	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for global external Application Load Balancers.
 	CustomErrorResponsePolicy CustomErrorResponsePolicyResponse `pulumi:"customErrorResponsePolicy"`
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths []string `pulumi:"paths"`
-	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path rule's routeAction.
+	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a path rule's routeAction.
 	RouteAction HttpRouteActionResponse `pulumi:"routeAction"`
 	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service string `pulumi:"service"`
@@ -42735,7 +43287,7 @@ func (o PathRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Pat
 	}
 }
 
-// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for global external Application Load Balancers.
 func (o PathRuleResponseOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyResponseOutput {
 	return o.ApplyT(func(v PathRuleResponse) CustomErrorResponsePolicyResponse { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyResponseOutput)
 }
@@ -42745,7 +43297,7 @@ func (o PathRuleResponseOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PathRuleResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path rule's routeAction.
+// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a path rule's routeAction.
 func (o PathRuleResponseOutput) RouteAction() HttpRouteActionResponseOutput {
 	return o.ApplyT(func(v PathRuleResponse) HttpRouteActionResponse { return v.RouteAction }).(HttpRouteActionResponseOutput)
 }
@@ -43890,14 +44442,18 @@ func (o PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput) Index(i 
 
 // Represents a sub PublicDelegatedPrefix.
 type PublicDelegatedPrefixPublicDelegatedSubPrefix struct {
+	// The allocatable prefix length supported by this PublicDelegatedSubPrefix.
+	AllocatablePrefixLength *int `pulumi:"allocatablePrefixLength"`
 	// Name of the project scoping this PublicDelegatedSubPrefix.
 	DelegateeProject *string `pulumi:"delegateeProject"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+	// The IP address range, in CIDR format, represented by this sub public delegated prefix.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// Whether the sub prefix is delegated to create Address resources in the delegatee project.
 	IsAddress *bool `pulumi:"isAddress"`
+	// The PublicDelegatedSubPrefix mode for IPv6 only.
+	Mode *PublicDelegatedPrefixPublicDelegatedSubPrefixMode `pulumi:"mode"`
 	// The name of the sub public delegated prefix.
 	Name *string `pulumi:"name"`
 }
@@ -43915,14 +44471,18 @@ type PublicDelegatedPrefixPublicDelegatedSubPrefixInput interface {
 
 // Represents a sub PublicDelegatedPrefix.
 type PublicDelegatedPrefixPublicDelegatedSubPrefixArgs struct {
+	// The allocatable prefix length supported by this PublicDelegatedSubPrefix.
+	AllocatablePrefixLength pulumi.IntPtrInput `pulumi:"allocatablePrefixLength"`
 	// Name of the project scoping this PublicDelegatedSubPrefix.
 	DelegateeProject pulumi.StringPtrInput `pulumi:"delegateeProject"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+	// The IP address range, in CIDR format, represented by this sub public delegated prefix.
 	IpCidrRange pulumi.StringPtrInput `pulumi:"ipCidrRange"`
 	// Whether the sub prefix is delegated to create Address resources in the delegatee project.
 	IsAddress pulumi.BoolPtrInput `pulumi:"isAddress"`
+	// The PublicDelegatedSubPrefix mode for IPv6 only.
+	Mode PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrInput `pulumi:"mode"`
 	// The name of the sub public delegated prefix.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -43997,6 +44557,11 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) ToOutput(ctx contex
 	}
 }
 
+// The allocatable prefix length supported by this PublicDelegatedSubPrefix.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) AllocatablePrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *int { return v.AllocatablePrefixLength }).(pulumi.IntPtrOutput)
+}
+
 // Name of the project scoping this PublicDelegatedSubPrefix.
 func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) DelegateeProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.DelegateeProject }).(pulumi.StringPtrOutput)
@@ -44007,7 +44572,7 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) Description() pulum
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+// The IP address range, in CIDR format, represented by this sub public delegated prefix.
 func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) IpCidrRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.IpCidrRange }).(pulumi.StringPtrOutput)
 }
@@ -44015,6 +44580,13 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) IpCidrRange() pulum
 // Whether the sub prefix is delegated to create Address resources in the delegatee project.
 func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) IsAddress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *bool { return v.IsAddress }).(pulumi.BoolPtrOutput)
+}
+
+// The PublicDelegatedSubPrefix mode for IPv6 only.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) Mode() PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *PublicDelegatedPrefixPublicDelegatedSubPrefixMode {
+		return v.Mode
+	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixModePtrOutput)
 }
 
 // The name of the sub public delegated prefix.
@@ -44050,14 +44622,18 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput) Index(i pulumi
 
 // Represents a sub PublicDelegatedPrefix.
 type PublicDelegatedPrefixPublicDelegatedSubPrefixResponse struct {
+	// The allocatable prefix length supported by this PublicDelegatedSubPrefix.
+	AllocatablePrefixLength int `pulumi:"allocatablePrefixLength"`
 	// Name of the project scoping this PublicDelegatedSubPrefix.
 	DelegateeProject string `pulumi:"delegateeProject"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+	// The IP address range, in CIDR format, represented by this sub public delegated prefix.
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// Whether the sub prefix is delegated to create Address resources in the delegatee project.
 	IsAddress bool `pulumi:"isAddress"`
+	// The PublicDelegatedSubPrefix mode for IPv6 only.
+	Mode string `pulumi:"mode"`
 	// The name of the sub public delegated prefix.
 	Name string `pulumi:"name"`
 	// The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
@@ -44087,6 +44663,11 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) ToOutput(ct
 	}
 }
 
+// The allocatable prefix length supported by this PublicDelegatedSubPrefix.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) AllocatablePrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefixResponse) int { return v.AllocatablePrefixLength }).(pulumi.IntOutput)
+}
+
 // Name of the project scoping this PublicDelegatedSubPrefix.
 func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) DelegateeProject() pulumi.StringOutput {
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefixResponse) string { return v.DelegateeProject }).(pulumi.StringOutput)
@@ -44097,7 +44678,7 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) Description
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefixResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+// The IP address range, in CIDR format, represented by this sub public delegated prefix.
 func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefixResponse) string { return v.IpCidrRange }).(pulumi.StringOutput)
 }
@@ -44105,6 +44686,11 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) IpCidrRange
 // Whether the sub prefix is delegated to create Address resources in the delegatee project.
 func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) IsAddress() pulumi.BoolOutput {
 	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefixResponse) bool { return v.IsAddress }).(pulumi.BoolOutput)
+}
+
+// The PublicDelegatedSubPrefix mode for IPv6 only.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefixResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // The name of the sub public delegated prefix.
@@ -44644,12 +45230,16 @@ func (o QueuingPolicyResponseOutput) ValidUntilTime() pulumi.StringOutput {
 type QuotaExceededInfoResponse struct {
 	// The map holding related quota dimensions.
 	Dimensions map[string]string `pulumi:"dimensions"`
+	// Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+	FutureLimit float64 `pulumi:"futureLimit"`
 	// Current effective quota limit. The limit's unit depends on the quota type or metric.
 	Limit float64 `pulumi:"limit"`
 	// The name of the quota limit.
 	LimitName string `pulumi:"limitName"`
 	// The Compute Engine quota metric name.
 	MetricName string `pulumi:"metricName"`
+	// Rollout status of the future quota limit.
+	RolloutStatus string `pulumi:"rolloutStatus"`
 }
 
 // Additional details for quota exceeded error for resource quota.
@@ -44678,6 +45268,11 @@ func (o QuotaExceededInfoResponseOutput) Dimensions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v QuotaExceededInfoResponse) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
+// Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+func (o QuotaExceededInfoResponseOutput) FutureLimit() pulumi.Float64Output {
+	return o.ApplyT(func(v QuotaExceededInfoResponse) float64 { return v.FutureLimit }).(pulumi.Float64Output)
+}
+
 // Current effective quota limit. The limit's unit depends on the quota type or metric.
 func (o QuotaExceededInfoResponseOutput) Limit() pulumi.Float64Output {
 	return o.ApplyT(func(v QuotaExceededInfoResponse) float64 { return v.Limit }).(pulumi.Float64Output)
@@ -44691,6 +45286,11 @@ func (o QuotaExceededInfoResponseOutput) LimitName() pulumi.StringOutput {
 // The Compute Engine quota metric name.
 func (o QuotaExceededInfoResponseOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v QuotaExceededInfoResponse) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Rollout status of the future quota limit.
+func (o QuotaExceededInfoResponseOutput) RolloutStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaExceededInfoResponse) string { return v.RolloutStatus }).(pulumi.StringOutput)
 }
 
 type RbacPolicy struct {
@@ -45237,6 +45837,10 @@ func (o RequestMirrorPolicyResponseOutput) BackendService() pulumi.StringOutput 
 type ReservationType struct {
 	// Reservation for aggregated resources, providing shape flexibility.
 	AggregateReservation *AllocationAggregateReservation `pulumi:"aggregateReservation"`
+	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	DeleteAfterDuration *Duration `pulumi:"deleteAfterDuration"`
+	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	DeleteAtTime *string `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -45268,6 +45872,10 @@ type ReservationTypeInput interface {
 type ReservationTypeArgs struct {
 	// Reservation for aggregated resources, providing shape flexibility.
 	AggregateReservation AllocationAggregateReservationPtrInput `pulumi:"aggregateReservation"`
+	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	DeleteAfterDuration DurationPtrInput `pulumi:"deleteAfterDuration"`
+	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	DeleteAtTime pulumi.StringPtrInput `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -45357,6 +45965,16 @@ func (o ReservationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[Rese
 // Reservation for aggregated resources, providing shape flexibility.
 func (o ReservationTypeOutput) AggregateReservation() AllocationAggregateReservationPtrOutput {
 	return o.ApplyT(func(v ReservationType) *AllocationAggregateReservation { return v.AggregateReservation }).(AllocationAggregateReservationPtrOutput)
+}
+
+// Duration time relative to reservation creation when GCE will automatically delete this resource.
+func (o ReservationTypeOutput) DeleteAfterDuration() DurationPtrOutput {
+	return o.ApplyT(func(v ReservationType) *Duration { return v.DeleteAfterDuration }).(DurationPtrOutput)
+}
+
+// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+func (o ReservationTypeOutput) DeleteAtTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReservationType) *string { return v.DeleteAtTime }).(pulumi.StringPtrOutput)
 }
 
 // An optional description of this resource. Provide this property when you create the resource.
@@ -45678,6 +46296,10 @@ type ReservationResponse struct {
 	Commitment string `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	DeleteAfterDuration DurationResponse `pulumi:"deleteAfterDuration"`
+	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	DeleteAtTime string `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
 	// Type of the resource. Always compute#reservations for reservations.
@@ -45740,6 +46362,16 @@ func (o ReservationResponseOutput) Commitment() pulumi.StringOutput {
 // Creation timestamp in RFC3339 text format.
 func (o ReservationResponseOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Duration time relative to reservation creation when GCE will automatically delete this resource.
+func (o ReservationResponseOutput) DeleteAfterDuration() DurationResponseOutput {
+	return o.ApplyT(func(v ReservationResponse) DurationResponse { return v.DeleteAfterDuration }).(DurationResponseOutput)
+}
+
+// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+func (o ReservationResponseOutput) DeleteAtTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ReservationResponse) string { return v.DeleteAtTime }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource. Provide this property when you create the resource.
@@ -46458,6 +47090,8 @@ type ResourcePolicyGroupPlacementPolicy struct {
 	MaxDistance *int `pulumi:"maxDistance"`
 	// Scope specifies the availability domain to which the VMs should be spread.
 	Scope *ResourcePolicyGroupPlacementPolicyScope `pulumi:"scope"`
+	// Specifies the number of slices in a multislice workload.
+	SliceCount *int `pulumi:"sliceCount"`
 	// Specifies instances to hosts placement relationship
 	Style *ResourcePolicyGroupPlacementPolicyStyle `pulumi:"style"`
 	// Specifies the shape of the TPU slice
@@ -46489,6 +47123,8 @@ type ResourcePolicyGroupPlacementPolicyArgs struct {
 	MaxDistance pulumi.IntPtrInput `pulumi:"maxDistance"`
 	// Scope specifies the availability domain to which the VMs should be spread.
 	Scope ResourcePolicyGroupPlacementPolicyScopePtrInput `pulumi:"scope"`
+	// Specifies the number of slices in a multislice workload.
+	SliceCount pulumi.IntPtrInput `pulumi:"sliceCount"`
 	// Specifies instances to hosts placement relationship
 	Style ResourcePolicyGroupPlacementPolicyStylePtrInput `pulumi:"style"`
 	// Specifies the shape of the TPU slice
@@ -46622,6 +47258,11 @@ func (o ResourcePolicyGroupPlacementPolicyOutput) Scope() ResourcePolicyGroupPla
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *ResourcePolicyGroupPlacementPolicyScope { return v.Scope }).(ResourcePolicyGroupPlacementPolicyScopePtrOutput)
 }
 
+// Specifies the number of slices in a multislice workload.
+func (o ResourcePolicyGroupPlacementPolicyOutput) SliceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *int { return v.SliceCount }).(pulumi.IntPtrOutput)
+}
+
 // Specifies instances to hosts placement relationship
 func (o ResourcePolicyGroupPlacementPolicyOutput) Style() ResourcePolicyGroupPlacementPolicyStylePtrOutput {
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *ResourcePolicyGroupPlacementPolicyStyle { return v.Style }).(ResourcePolicyGroupPlacementPolicyStylePtrOutput)
@@ -46717,6 +47358,16 @@ func (o ResourcePolicyGroupPlacementPolicyPtrOutput) Scope() ResourcePolicyGroup
 	}).(ResourcePolicyGroupPlacementPolicyScopePtrOutput)
 }
 
+// Specifies the number of slices in a multislice workload.
+func (o ResourcePolicyGroupPlacementPolicyPtrOutput) SliceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SliceCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // Specifies instances to hosts placement relationship
 func (o ResourcePolicyGroupPlacementPolicyPtrOutput) Style() ResourcePolicyGroupPlacementPolicyStylePtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) *ResourcePolicyGroupPlacementPolicyStyle {
@@ -46759,6 +47410,8 @@ type ResourcePolicyGroupPlacementPolicyResponse struct {
 	MaxDistance int `pulumi:"maxDistance"`
 	// Scope specifies the availability domain to which the VMs should be spread.
 	Scope string `pulumi:"scope"`
+	// Specifies the number of slices in a multislice workload.
+	SliceCount int `pulumi:"sliceCount"`
 	// Specifies instances to hosts placement relationship
 	Style string `pulumi:"style"`
 	// Specifies the shape of the TPU slice
@@ -46811,6 +47464,11 @@ func (o ResourcePolicyGroupPlacementPolicyResponseOutput) MaxDistance() pulumi.I
 // Scope specifies the availability domain to which the VMs should be spread.
 func (o ResourcePolicyGroupPlacementPolicyResponseOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicyResponse) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Specifies the number of slices in a multislice workload.
+func (o ResourcePolicyGroupPlacementPolicyResponseOutput) SliceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicyResponse) int { return v.SliceCount }).(pulumi.IntOutput)
 }
 
 // Specifies instances to hosts placement relationship
@@ -49663,13 +50321,48 @@ func (o ResourcePolicyWeeklyCycleResponseOutput) DayOfWeeks() ResourcePolicyWeek
 	}).(ResourcePolicyWeeklyCycleDayOfWeekResponseArrayOutput)
 }
 
+type ResourceStatusLastInstanceTerminationDetailsResponse struct {
+	// Reason for termination
+	TerminationReason string `pulumi:"terminationReason"`
+}
+
+type ResourceStatusLastInstanceTerminationDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceStatusLastInstanceTerminationDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceStatusLastInstanceTerminationDetailsResponse)(nil)).Elem()
+}
+
+func (o ResourceStatusLastInstanceTerminationDetailsResponseOutput) ToResourceStatusLastInstanceTerminationDetailsResponseOutput() ResourceStatusLastInstanceTerminationDetailsResponseOutput {
+	return o
+}
+
+func (o ResourceStatusLastInstanceTerminationDetailsResponseOutput) ToResourceStatusLastInstanceTerminationDetailsResponseOutputWithContext(ctx context.Context) ResourceStatusLastInstanceTerminationDetailsResponseOutput {
+	return o
+}
+
+func (o ResourceStatusLastInstanceTerminationDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceStatusLastInstanceTerminationDetailsResponse] {
+	return pulumix.Output[ResourceStatusLastInstanceTerminationDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Reason for termination
+func (o ResourceStatusLastInstanceTerminationDetailsResponseOutput) TerminationReason() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceStatusLastInstanceTerminationDetailsResponse) string { return v.TerminationReason }).(pulumi.StringOutput)
+}
+
 // Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
 type ResourceStatusResponse struct {
+	// Contains last termination details why the instance was terminated.
+	LastInstanceTerminationDetails ResourceStatusLastInstanceTerminationDetailsResponse `pulumi:"lastInstanceTerminationDetails"`
 	// An opaque ID of the host on which the VM is running.
 	PhysicalHost string                           `pulumi:"physicalHost"`
 	Scheduling   ResourceStatusSchedulingResponse `pulumi:"scheduling"`
 	// Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
 	ServiceIntegrationStatuses map[string]string `pulumi:"serviceIntegrationStatuses"`
+	// Details about stopping state of instance
+	ShutdownDetails     ResourceStatusShutdownDetailsResponse `pulumi:"shutdownDetails"`
+	UpcomingMaintenance UpcomingMaintenanceResponse           `pulumi:"upcomingMaintenance"`
 }
 
 // Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
@@ -49693,6 +50386,13 @@ func (o ResourceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
+// Contains last termination details why the instance was terminated.
+func (o ResourceStatusResponseOutput) LastInstanceTerminationDetails() ResourceStatusLastInstanceTerminationDetailsResponseOutput {
+	return o.ApplyT(func(v ResourceStatusResponse) ResourceStatusLastInstanceTerminationDetailsResponse {
+		return v.LastInstanceTerminationDetails
+	}).(ResourceStatusLastInstanceTerminationDetailsResponseOutput)
+}
+
 // An opaque ID of the host on which the VM is running.
 func (o ResourceStatusResponseOutput) PhysicalHost() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceStatusResponse) string { return v.PhysicalHost }).(pulumi.StringOutput)
@@ -49705,6 +50405,15 @@ func (o ResourceStatusResponseOutput) Scheduling() ResourceStatusSchedulingRespo
 // Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
 func (o ResourceStatusResponseOutput) ServiceIntegrationStatuses() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceStatusResponse) map[string]string { return v.ServiceIntegrationStatuses }).(pulumi.StringMapOutput)
+}
+
+// Details about stopping state of instance
+func (o ResourceStatusResponseOutput) ShutdownDetails() ResourceStatusShutdownDetailsResponseOutput {
+	return o.ApplyT(func(v ResourceStatusResponse) ResourceStatusShutdownDetailsResponse { return v.ShutdownDetails }).(ResourceStatusShutdownDetailsResponseOutput)
+}
+
+func (o ResourceStatusResponseOutput) UpcomingMaintenance() UpcomingMaintenanceResponseOutput {
+	return o.ApplyT(func(v ResourceStatusResponse) UpcomingMaintenanceResponse { return v.UpcomingMaintenance }).(UpcomingMaintenanceResponseOutput)
 }
 
 type ResourceStatusSchedulingResponse struct {
@@ -49742,6 +50451,59 @@ func (o ResourceStatusSchedulingResponseOutput) AvailabilityDomain() pulumi.IntO
 // Time in future when the instance will be terminated in RFC3339 text format.
 func (o ResourceStatusSchedulingResponseOutput) TerminationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceStatusSchedulingResponse) string { return v.TerminationTimestamp }).(pulumi.StringOutput)
+}
+
+// Specifies if the instance is in `SHUTTING_DOWN` state or there is a instance stopping scheduled.
+type ResourceStatusShutdownDetailsResponse struct {
+	// Duration for graceful shutdown. Only applicable when `stop_state=SHUTTING_DOWN`.
+	MaxDuration DurationResponse `pulumi:"maxDuration"`
+	// Past timestamp indicating the beginning of current `stopState` in RFC3339 text format.
+	RequestTimestamp string `pulumi:"requestTimestamp"`
+	// Current stopping state of the instance.
+	StopState string `pulumi:"stopState"`
+	// Target instance state.
+	TargetState string `pulumi:"targetState"`
+}
+
+// Specifies if the instance is in `SHUTTING_DOWN` state or there is a instance stopping scheduled.
+type ResourceStatusShutdownDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceStatusShutdownDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceStatusShutdownDetailsResponse)(nil)).Elem()
+}
+
+func (o ResourceStatusShutdownDetailsResponseOutput) ToResourceStatusShutdownDetailsResponseOutput() ResourceStatusShutdownDetailsResponseOutput {
+	return o
+}
+
+func (o ResourceStatusShutdownDetailsResponseOutput) ToResourceStatusShutdownDetailsResponseOutputWithContext(ctx context.Context) ResourceStatusShutdownDetailsResponseOutput {
+	return o
+}
+
+func (o ResourceStatusShutdownDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceStatusShutdownDetailsResponse] {
+	return pulumix.Output[ResourceStatusShutdownDetailsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Duration for graceful shutdown. Only applicable when `stop_state=SHUTTING_DOWN`.
+func (o ResourceStatusShutdownDetailsResponseOutput) MaxDuration() DurationResponseOutput {
+	return o.ApplyT(func(v ResourceStatusShutdownDetailsResponse) DurationResponse { return v.MaxDuration }).(DurationResponseOutput)
+}
+
+// Past timestamp indicating the beginning of current `stopState` in RFC3339 text format.
+func (o ResourceStatusShutdownDetailsResponseOutput) RequestTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceStatusShutdownDetailsResponse) string { return v.RequestTimestamp }).(pulumi.StringOutput)
+}
+
+// Current stopping state of the instance.
+func (o ResourceStatusShutdownDetailsResponseOutput) StopState() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceStatusShutdownDetailsResponse) string { return v.StopState }).(pulumi.StringOutput)
+}
+
+// Target instance state.
+func (o ResourceStatusShutdownDetailsResponseOutput) TargetState() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceStatusShutdownDetailsResponse) string { return v.TargetState }).(pulumi.StringOutput)
 }
 
 // A rollout policy configuration.
@@ -50369,6 +51131,8 @@ type RouterBgp struct {
 	AdvertisedIpRanges []RouterAdvertisedIpRange `pulumi:"advertisedIpRanges"`
 	// Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN, either 16-bit or 32-bit. The value will be fixed for this router resource. All VPN tunnels that link to this router will have the same local ASN.
 	Asn *int `pulumi:"asn"`
+	// Explicitly specifies a range of valid BGP Identifiers for this Router. It is provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4 BGP session ranges. Other vendors commonly call this "router ID".
+	IdentifierRange *string `pulumi:"identifierRange"`
 	// The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is three times the interval at which keepalive messages are sent, and the hold time is the maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
 	KeepaliveInterval *int `pulumi:"keepaliveInterval"`
 }
@@ -50393,6 +51157,8 @@ type RouterBgpArgs struct {
 	AdvertisedIpRanges RouterAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
 	// Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN, either 16-bit or 32-bit. The value will be fixed for this router resource. All VPN tunnels that link to this router will have the same local ASN.
 	Asn pulumi.IntPtrInput `pulumi:"asn"`
+	// Explicitly specifies a range of valid BGP Identifiers for this Router. It is provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4 BGP session ranges. Other vendors commonly call this "router ID".
+	IdentifierRange pulumi.StringPtrInput `pulumi:"identifierRange"`
 	// The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is three times the interval at which keepalive messages are sent, and the hold time is the maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
 	KeepaliveInterval pulumi.IntPtrInput `pulumi:"keepaliveInterval"`
 }
@@ -50512,6 +51278,11 @@ func (o RouterBgpOutput) Asn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RouterBgp) *int { return v.Asn }).(pulumi.IntPtrOutput)
 }
 
+// Explicitly specifies a range of valid BGP Identifiers for this Router. It is provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4 BGP session ranges. Other vendors commonly call this "router ID".
+func (o RouterBgpOutput) IdentifierRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgp) *string { return v.IdentifierRange }).(pulumi.StringPtrOutput)
+}
+
 // The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is three times the interval at which keepalive messages are sent, and the hold time is the maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
 func (o RouterBgpOutput) KeepaliveInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RouterBgp) *int { return v.KeepaliveInterval }).(pulumi.IntPtrOutput)
@@ -50587,6 +51358,16 @@ func (o RouterBgpPtrOutput) Asn() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Explicitly specifies a range of valid BGP Identifiers for this Router. It is provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4 BGP session ranges. Other vendors commonly call this "router ID".
+func (o RouterBgpPtrOutput) IdentifierRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentifierRange
+	}).(pulumi.StringPtrOutput)
+}
+
 // The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is three times the interval at which keepalive messages are sent, and the hold time is the maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
 func (o RouterBgpPtrOutput) KeepaliveInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterBgp) *int {
@@ -50614,12 +51395,20 @@ type RouterBgpPeer struct {
 	CustomLearnedRoutePriority *int `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable *RouterBgpPeerEnable `pulumi:"enable"`
+	// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+	EnableIpv4 *bool `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+	ExportPolicies []string `pulumi:"exportPolicies"`
+	// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+	ImportPolicies []string `pulumi:"importPolicies"`
 	// Name of the interface the BGP peer is associated with.
 	InterfaceName *string `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress *string `pulumi:"ipAddress"`
+	// IPv4 address of the interface inside Google Cloud Platform.
+	Ipv4NexthopAddress *string `pulumi:"ipv4NexthopAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
 	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
@@ -50630,6 +51419,8 @@ type RouterBgpPeer struct {
 	PeerAsn *int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
+	// IPv4 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv4NexthopAddress *string `pulumi:"peerIpv4NexthopAddress"`
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	PeerIpv6NexthopAddress *string `pulumi:"peerIpv6NexthopAddress"`
 	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
@@ -50664,12 +51455,20 @@ type RouterBgpPeerArgs struct {
 	CustomLearnedRoutePriority pulumi.IntPtrInput `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable RouterBgpPeerEnablePtrInput `pulumi:"enable"`
+	// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+	EnableIpv4 pulumi.BoolPtrInput `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 pulumi.BoolPtrInput `pulumi:"enableIpv6"`
+	// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+	ExportPolicies pulumi.StringArrayInput `pulumi:"exportPolicies"`
+	// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+	ImportPolicies pulumi.StringArrayInput `pulumi:"importPolicies"`
 	// Name of the interface the BGP peer is associated with.
 	InterfaceName pulumi.StringPtrInput `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// IPv4 address of the interface inside Google Cloud Platform.
+	Ipv4NexthopAddress pulumi.StringPtrInput `pulumi:"ipv4NexthopAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	Ipv6NexthopAddress pulumi.StringPtrInput `pulumi:"ipv6NexthopAddress"`
 	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
@@ -50680,6 +51479,8 @@ type RouterBgpPeerArgs struct {
 	PeerAsn pulumi.IntPtrInput `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringPtrInput `pulumi:"peerIpAddress"`
+	// IPv4 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv4NexthopAddress pulumi.StringPtrInput `pulumi:"peerIpv4NexthopAddress"`
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	PeerIpv6NexthopAddress pulumi.StringPtrInput `pulumi:"peerIpv6NexthopAddress"`
 	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
@@ -50795,9 +51596,24 @@ func (o RouterBgpPeerOutput) Enable() RouterBgpPeerEnablePtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *RouterBgpPeerEnable { return v.Enable }).(RouterBgpPeerEnablePtrOutput)
 }
 
+// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+func (o RouterBgpPeerOutput) EnableIpv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *bool { return v.EnableIpv4 }).(pulumi.BoolPtrOutput)
+}
+
 // Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 func (o RouterBgpPeerOutput) EnableIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *bool { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
+}
+
+// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+func (o RouterBgpPeerOutput) ExportPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeer) []string { return v.ExportPolicies }).(pulumi.StringArrayOutput)
+}
+
+// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+func (o RouterBgpPeerOutput) ImportPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeer) []string { return v.ImportPolicies }).(pulumi.StringArrayOutput)
 }
 
 // Name of the interface the BGP peer is associated with.
@@ -50808,6 +51624,11 @@ func (o RouterBgpPeerOutput) InterfaceName() pulumi.StringPtrOutput {
 // IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 func (o RouterBgpPeerOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// IPv4 address of the interface inside Google Cloud Platform.
+func (o RouterBgpPeerOutput) Ipv4NexthopAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *string { return v.Ipv4NexthopAddress }).(pulumi.StringPtrOutput)
 }
 
 // IPv6 address of the interface inside Google Cloud Platform.
@@ -50833,6 +51654,11 @@ func (o RouterBgpPeerOutput) PeerAsn() pulumi.IntPtrOutput {
 // IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 func (o RouterBgpPeerOutput) PeerIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.PeerIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// IPv4 address of the BGP interface outside Google Cloud Platform.
+func (o RouterBgpPeerOutput) PeerIpv4NexthopAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *string { return v.PeerIpv4NexthopAddress }).(pulumi.StringPtrOutput)
 }
 
 // IPv6 address of the BGP interface outside Google Cloud Platform.
@@ -51414,12 +52240,20 @@ type RouterBgpPeerResponse struct {
 	CustomLearnedRoutePriority int `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable string `pulumi:"enable"`
+	// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+	EnableIpv4 bool `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 bool `pulumi:"enableIpv6"`
+	// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+	ExportPolicies []string `pulumi:"exportPolicies"`
+	// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+	ImportPolicies []string `pulumi:"importPolicies"`
 	// Name of the interface the BGP peer is associated with.
 	InterfaceName string `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress string `pulumi:"ipAddress"`
+	// IPv4 address of the interface inside Google Cloud Platform.
+	Ipv4NexthopAddress string `pulumi:"ipv4NexthopAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	Ipv6NexthopAddress string `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
@@ -51432,6 +52266,8 @@ type RouterBgpPeerResponse struct {
 	PeerAsn int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress string `pulumi:"peerIpAddress"`
+	// IPv4 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv4NexthopAddress string `pulumi:"peerIpv4NexthopAddress"`
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	PeerIpv6NexthopAddress string `pulumi:"peerIpv6NexthopAddress"`
 	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
@@ -51500,9 +52336,24 @@ func (o RouterBgpPeerResponseOutput) Enable() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.Enable }).(pulumi.StringOutput)
 }
 
+// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+func (o RouterBgpPeerResponseOutput) EnableIpv4() pulumi.BoolOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) bool { return v.EnableIpv4 }).(pulumi.BoolOutput)
+}
+
 // Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 func (o RouterBgpPeerResponseOutput) EnableIpv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) bool { return v.EnableIpv6 }).(pulumi.BoolOutput)
+}
+
+// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+func (o RouterBgpPeerResponseOutput) ExportPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) []string { return v.ExportPolicies }).(pulumi.StringArrayOutput)
+}
+
+// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+func (o RouterBgpPeerResponseOutput) ImportPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) []string { return v.ImportPolicies }).(pulumi.StringArrayOutput)
 }
 
 // Name of the interface the BGP peer is associated with.
@@ -51513,6 +52364,11 @@ func (o RouterBgpPeerResponseOutput) InterfaceName() pulumi.StringOutput {
 // IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 func (o RouterBgpPeerResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// IPv4 address of the interface inside Google Cloud Platform.
+func (o RouterBgpPeerResponseOutput) Ipv4NexthopAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.Ipv4NexthopAddress }).(pulumi.StringOutput)
 }
 
 // IPv6 address of the interface inside Google Cloud Platform.
@@ -51543,6 +52399,11 @@ func (o RouterBgpPeerResponseOutput) PeerAsn() pulumi.IntOutput {
 // IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 func (o RouterBgpPeerResponseOutput) PeerIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.PeerIpAddress }).(pulumi.StringOutput)
+}
+
+// IPv4 address of the BGP interface outside Google Cloud Platform.
+func (o RouterBgpPeerResponseOutput) PeerIpv4NexthopAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.PeerIpv4NexthopAddress }).(pulumi.StringOutput)
 }
 
 // IPv6 address of the BGP interface outside Google Cloud Platform.
@@ -51590,6 +52451,8 @@ type RouterBgpResponse struct {
 	AdvertisedIpRanges []RouterAdvertisedIpRangeResponse `pulumi:"advertisedIpRanges"`
 	// Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN, either 16-bit or 32-bit. The value will be fixed for this router resource. All VPN tunnels that link to this router will have the same local ASN.
 	Asn int `pulumi:"asn"`
+	// Explicitly specifies a range of valid BGP Identifiers for this Router. It is provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4 BGP session ranges. Other vendors commonly call this "router ID".
+	IdentifierRange string `pulumi:"identifierRange"`
 	// The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is three times the interval at which keepalive messages are sent, and the hold time is the maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
 	KeepaliveInterval int `pulumi:"keepaliveInterval"`
 }
@@ -51634,6 +52497,11 @@ func (o RouterBgpResponseOutput) Asn() pulumi.IntOutput {
 	return o.ApplyT(func(v RouterBgpResponse) int { return v.Asn }).(pulumi.IntOutput)
 }
 
+// Explicitly specifies a range of valid BGP Identifiers for this Router. It is provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4 BGP session ranges. Other vendors commonly call this "router ID".
+func (o RouterBgpResponseOutput) IdentifierRange() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpResponse) string { return v.IdentifierRange }).(pulumi.StringOutput)
+}
+
 // The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is three times the interval at which keepalive messages are sent, and the hold time is the maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
 func (o RouterBgpResponseOutput) KeepaliveInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v RouterBgpResponse) int { return v.KeepaliveInterval }).(pulumi.IntOutput)
@@ -51642,9 +52510,11 @@ func (o RouterBgpResponseOutput) KeepaliveInterval() pulumi.IntOutput {
 type RouterInterface struct {
 	// IP address and range of the interface. The IP range must be in the RFC3927 link-local IP address space. The value must be a CIDR-formatted string, for example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents the IP address of the interface.
 	IpRange *string `pulumi:"ipRange"`
-	// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+	// IP version of this interface.
+	IpVersion *RouterInterfaceIpVersion `pulumi:"ipVersion"`
+	// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
 	LinkedInterconnectAttachment *string `pulumi:"linkedInterconnectAttachment"`
-	// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+	// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
 	LinkedVpnTunnel *string `pulumi:"linkedVpnTunnel"`
 	// Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
@@ -51670,9 +52540,11 @@ type RouterInterfaceInput interface {
 type RouterInterfaceArgs struct {
 	// IP address and range of the interface. The IP range must be in the RFC3927 link-local IP address space. The value must be a CIDR-formatted string, for example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents the IP address of the interface.
 	IpRange pulumi.StringPtrInput `pulumi:"ipRange"`
-	// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+	// IP version of this interface.
+	IpVersion RouterInterfaceIpVersionPtrInput `pulumi:"ipVersion"`
+	// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
 	LinkedInterconnectAttachment pulumi.StringPtrInput `pulumi:"linkedInterconnectAttachment"`
-	// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+	// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
 	LinkedVpnTunnel pulumi.StringPtrInput `pulumi:"linkedVpnTunnel"`
 	// Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -51758,12 +52630,17 @@ func (o RouterInterfaceOutput) IpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterInterface) *string { return v.IpRange }).(pulumi.StringPtrOutput)
 }
 
-// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+// IP version of this interface.
+func (o RouterInterfaceOutput) IpVersion() RouterInterfaceIpVersionPtrOutput {
+	return o.ApplyT(func(v RouterInterface) *RouterInterfaceIpVersion { return v.IpVersion }).(RouterInterfaceIpVersionPtrOutput)
+}
+
+// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
 func (o RouterInterfaceOutput) LinkedInterconnectAttachment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterInterface) *string { return v.LinkedInterconnectAttachment }).(pulumi.StringPtrOutput)
 }
 
-// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
 func (o RouterInterfaceOutput) LinkedVpnTunnel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterInterface) *string { return v.LinkedVpnTunnel }).(pulumi.StringPtrOutput)
 }
@@ -51817,9 +52694,11 @@ func (o RouterInterfaceArrayOutput) Index(i pulumi.IntInput) RouterInterfaceOutp
 type RouterInterfaceResponse struct {
 	// IP address and range of the interface. The IP range must be in the RFC3927 link-local IP address space. The value must be a CIDR-formatted string, for example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents the IP address of the interface.
 	IpRange string `pulumi:"ipRange"`
-	// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+	// IP version of this interface.
+	IpVersion string `pulumi:"ipVersion"`
+	// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
 	LinkedInterconnectAttachment string `pulumi:"linkedInterconnectAttachment"`
-	// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+	// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
 	LinkedVpnTunnel string `pulumi:"linkedVpnTunnel"`
 	// The resource that configures and manages this interface. - MANAGED_BY_USER is the default value and can be managed directly by users. - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of interface when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType string `pulumi:"managementType"`
@@ -51858,12 +52737,17 @@ func (o RouterInterfaceResponseOutput) IpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterInterfaceResponse) string { return v.IpRange }).(pulumi.StringOutput)
 }
 
-// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+// IP version of this interface.
+func (o RouterInterfaceResponseOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterInterfaceResponse) string { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// URI of the linked Interconnect attachment. It must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
 func (o RouterInterfaceResponseOutput) LinkedInterconnectAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterInterfaceResponse) string { return v.LinkedInterconnectAttachment }).(pulumi.StringOutput)
 }
 
-// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a virtual machine instance.
+// URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can have one linked resource, which can be a VPN tunnel, an Interconnect attachment, or a subnetwork.
 func (o RouterInterfaceResponseOutput) LinkedVpnTunnel() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterInterfaceResponse) string { return v.LinkedVpnTunnel }).(pulumi.StringOutput)
 }
@@ -51922,7 +52806,7 @@ func (o RouterInterfaceResponseArrayOutput) Index(i pulumi.IntInput) RouterInter
 type RouterMd5AuthenticationKey struct {
 	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
 	Key *string `pulumi:"key"`
-	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+	// Name used to identify the key. Must be unique within a router. Must be referenced by exactly one bgpPeer. Must comply with RFC1035.
 	Name *string `pulumi:"name"`
 }
 
@@ -51940,7 +52824,7 @@ type RouterMd5AuthenticationKeyInput interface {
 type RouterMd5AuthenticationKeyArgs struct {
 	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+	// Name used to identify the key. Must be unique within a router. Must be referenced by exactly one bgpPeer. Must comply with RFC1035.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -52018,7 +52902,7 @@ func (o RouterMd5AuthenticationKeyOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterMd5AuthenticationKey) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+// Name used to identify the key. Must be unique within a router. Must be referenced by exactly one bgpPeer. Must comply with RFC1035.
 func (o RouterMd5AuthenticationKeyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterMd5AuthenticationKey) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -52052,7 +52936,7 @@ func (o RouterMd5AuthenticationKeyArrayOutput) Index(i pulumi.IntInput) RouterMd
 type RouterMd5AuthenticationKeyResponse struct {
 	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
 	Key string `pulumi:"key"`
-	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+	// Name used to identify the key. Must be unique within a router. Must be referenced by exactly one bgpPeer. Must comply with RFC1035.
 	Name string `pulumi:"name"`
 }
 
@@ -52081,7 +52965,7 @@ func (o RouterMd5AuthenticationKeyResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterMd5AuthenticationKeyResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+// Name used to identify the key. Must be unique within a router. Must be referenced by exactly one bgpPeer. Must comply with RFC1035.
 func (o RouterMd5AuthenticationKeyResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterMd5AuthenticationKeyResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -52114,7 +52998,7 @@ func (o RouterMd5AuthenticationKeyResponseArrayOutput) Index(i pulumi.IntInput) 
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNat struct {
-	// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+	// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
 	AutoNetworkTier *RouterNatAutoNetworkTier `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
 	DrainNatIps []string `pulumi:"drainNatIps"`
@@ -52168,7 +53052,7 @@ type RouterNatInput interface {
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNatArgs struct {
-	// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+	// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
 	AutoNetworkTier RouterNatAutoNetworkTierPtrInput `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
 	DrainNatIps pulumi.StringArrayInput `pulumi:"drainNatIps"`
@@ -52279,7 +53163,7 @@ func (o RouterNatOutput) ToOutput(ctx context.Context) pulumix.Output[RouterNat]
 	}
 }
 
-// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
 func (o RouterNatOutput) AutoNetworkTier() RouterNatAutoNetworkTierPtrOutput {
 	return o.ApplyT(func(v RouterNat) *RouterNatAutoNetworkTier { return v.AutoNetworkTier }).(RouterNatAutoNetworkTierPtrOutput)
 }
@@ -52628,7 +53512,7 @@ func (o RouterNatLogConfigResponseOutput) Filter() pulumi.StringOutput {
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNatResponse struct {
-	// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+	// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
 	AutoNetworkTier string `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
 	DrainNatIps []string `pulumi:"drainNatIps"`
@@ -52690,7 +53574,7 @@ func (o RouterNatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Ro
 	}
 }
 
-// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
 func (o RouterNatResponseOutput) AutoNetworkTier() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatResponse) string { return v.AutoNetworkTier }).(pulumi.StringOutput)
 }
@@ -52820,7 +53704,7 @@ type RouterNatRule struct {
 	Action *RouterNatRuleAction `pulumi:"action"`
 	// An optional description of this rule.
 	Description *string `pulumi:"description"`
-	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'"
 	Match *string `pulumi:"match"`
 	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
 	RuleNumber *int `pulumi:"ruleNumber"`
@@ -52842,7 +53726,7 @@ type RouterNatRuleArgs struct {
 	Action RouterNatRuleActionPtrInput `pulumi:"action"`
 	// An optional description of this rule.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'"
 	Match pulumi.StringPtrInput `pulumi:"match"`
 	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
 	RuleNumber pulumi.IntPtrInput `pulumi:"ruleNumber"`
@@ -52927,7 +53811,7 @@ func (o RouterNatRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterNatRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'"
 func (o RouterNatRuleOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterNatRule) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
@@ -53237,7 +54121,7 @@ type RouterNatRuleResponse struct {
 	Action RouterNatRuleActionResponse `pulumi:"action"`
 	// An optional description of this rule.
 	Description string `pulumi:"description"`
-	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'"
 	Match string `pulumi:"match"`
 	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
 	RuleNumber int `pulumi:"ruleNumber"`
@@ -53273,7 +54157,7 @@ func (o RouterNatRuleResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatRuleResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'"
 func (o RouterNatRuleResponseOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatRuleResponse) string { return v.Match }).(pulumi.StringOutput)
 }
@@ -54506,7 +55390,8 @@ type Scheduling struct {
 	// Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
 	CurrentCpus *int `pulumi:"currentCpus"`
 	// Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
-	CurrentMemoryMb *string `pulumi:"currentMemoryMb"`
+	CurrentMemoryMb  *string                     `pulumi:"currentMemoryMb"`
+	GracefulShutdown *SchedulingGracefulShutdown `pulumi:"gracefulShutdown"`
 	// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 	HostErrorTimeoutSeconds *int `pulumi:"hostErrorTimeoutSeconds"`
 	// Specifies the termination action for the instance.
@@ -54557,7 +55442,8 @@ type SchedulingArgs struct {
 	// Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
 	CurrentCpus pulumi.IntPtrInput `pulumi:"currentCpus"`
 	// Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
-	CurrentMemoryMb pulumi.StringPtrInput `pulumi:"currentMemoryMb"`
+	CurrentMemoryMb  pulumi.StringPtrInput              `pulumi:"currentMemoryMb"`
+	GracefulShutdown SchedulingGracefulShutdownPtrInput `pulumi:"gracefulShutdown"`
 	// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 	HostErrorTimeoutSeconds pulumi.IntPtrInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Specifies the termination action for the instance.
@@ -54704,6 +55590,10 @@ func (o SchedulingOutput) CurrentMemoryMb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Scheduling) *string { return v.CurrentMemoryMb }).(pulumi.StringPtrOutput)
 }
 
+func (o SchedulingOutput) GracefulShutdown() SchedulingGracefulShutdownPtrOutput {
+	return o.ApplyT(func(v Scheduling) *SchedulingGracefulShutdown { return v.GracefulShutdown }).(SchedulingGracefulShutdownPtrOutput)
+}
+
 // Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 func (o SchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Scheduling) *int { return v.HostErrorTimeoutSeconds }).(pulumi.IntPtrOutput)
@@ -54844,6 +55734,15 @@ func (o SchedulingPtrOutput) CurrentMemoryMb() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o SchedulingPtrOutput) GracefulShutdown() SchedulingGracefulShutdownPtrOutput {
+	return o.ApplyT(func(v *Scheduling) *SchedulingGracefulShutdown {
+		if v == nil {
+			return nil
+		}
+		return v.GracefulShutdown
+	}).(SchedulingGracefulShutdownPtrOutput)
+}
+
 // Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 func (o SchedulingPtrOutput) HostErrorTimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Scheduling) *int {
@@ -54982,6 +55881,228 @@ func (o SchedulingPtrOutput) TerminationTime() pulumi.StringPtrOutput {
 		}
 		return v.TerminationTime
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for gracefully shutting down the instance.
+type SchedulingGracefulShutdown struct {
+	// Opts-in for graceful shutdown.
+	Enabled *bool `pulumi:"enabled"`
+	// Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
+	MaxDuration *Duration `pulumi:"maxDuration"`
+}
+
+// SchedulingGracefulShutdownInput is an input type that accepts SchedulingGracefulShutdownArgs and SchedulingGracefulShutdownOutput values.
+// You can construct a concrete instance of `SchedulingGracefulShutdownInput` via:
+//
+//	SchedulingGracefulShutdownArgs{...}
+type SchedulingGracefulShutdownInput interface {
+	pulumi.Input
+
+	ToSchedulingGracefulShutdownOutput() SchedulingGracefulShutdownOutput
+	ToSchedulingGracefulShutdownOutputWithContext(context.Context) SchedulingGracefulShutdownOutput
+}
+
+// Configuration for gracefully shutting down the instance.
+type SchedulingGracefulShutdownArgs struct {
+	// Opts-in for graceful shutdown.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
+	MaxDuration DurationPtrInput `pulumi:"maxDuration"`
+}
+
+func (SchedulingGracefulShutdownArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (i SchedulingGracefulShutdownArgs) ToSchedulingGracefulShutdownOutput() SchedulingGracefulShutdownOutput {
+	return i.ToSchedulingGracefulShutdownOutputWithContext(context.Background())
+}
+
+func (i SchedulingGracefulShutdownArgs) ToSchedulingGracefulShutdownOutputWithContext(ctx context.Context) SchedulingGracefulShutdownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingGracefulShutdownOutput)
+}
+
+func (i SchedulingGracefulShutdownArgs) ToOutput(ctx context.Context) pulumix.Output[SchedulingGracefulShutdown] {
+	return pulumix.Output[SchedulingGracefulShutdown]{
+		OutputState: i.ToSchedulingGracefulShutdownOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SchedulingGracefulShutdownArgs) ToSchedulingGracefulShutdownPtrOutput() SchedulingGracefulShutdownPtrOutput {
+	return i.ToSchedulingGracefulShutdownPtrOutputWithContext(context.Background())
+}
+
+func (i SchedulingGracefulShutdownArgs) ToSchedulingGracefulShutdownPtrOutputWithContext(ctx context.Context) SchedulingGracefulShutdownPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingGracefulShutdownOutput).ToSchedulingGracefulShutdownPtrOutputWithContext(ctx)
+}
+
+// SchedulingGracefulShutdownPtrInput is an input type that accepts SchedulingGracefulShutdownArgs, SchedulingGracefulShutdownPtr and SchedulingGracefulShutdownPtrOutput values.
+// You can construct a concrete instance of `SchedulingGracefulShutdownPtrInput` via:
+//
+//	        SchedulingGracefulShutdownArgs{...}
+//
+//	or:
+//
+//	        nil
+type SchedulingGracefulShutdownPtrInput interface {
+	pulumi.Input
+
+	ToSchedulingGracefulShutdownPtrOutput() SchedulingGracefulShutdownPtrOutput
+	ToSchedulingGracefulShutdownPtrOutputWithContext(context.Context) SchedulingGracefulShutdownPtrOutput
+}
+
+type schedulingGracefulShutdownPtrType SchedulingGracefulShutdownArgs
+
+func SchedulingGracefulShutdownPtr(v *SchedulingGracefulShutdownArgs) SchedulingGracefulShutdownPtrInput {
+	return (*schedulingGracefulShutdownPtrType)(v)
+}
+
+func (*schedulingGracefulShutdownPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (i *schedulingGracefulShutdownPtrType) ToSchedulingGracefulShutdownPtrOutput() SchedulingGracefulShutdownPtrOutput {
+	return i.ToSchedulingGracefulShutdownPtrOutputWithContext(context.Background())
+}
+
+func (i *schedulingGracefulShutdownPtrType) ToSchedulingGracefulShutdownPtrOutputWithContext(ctx context.Context) SchedulingGracefulShutdownPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingGracefulShutdownPtrOutput)
+}
+
+func (i *schedulingGracefulShutdownPtrType) ToOutput(ctx context.Context) pulumix.Output[*SchedulingGracefulShutdown] {
+	return pulumix.Output[*SchedulingGracefulShutdown]{
+		OutputState: i.ToSchedulingGracefulShutdownPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for gracefully shutting down the instance.
+type SchedulingGracefulShutdownOutput struct{ *pulumi.OutputState }
+
+func (SchedulingGracefulShutdownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (o SchedulingGracefulShutdownOutput) ToSchedulingGracefulShutdownOutput() SchedulingGracefulShutdownOutput {
+	return o
+}
+
+func (o SchedulingGracefulShutdownOutput) ToSchedulingGracefulShutdownOutputWithContext(ctx context.Context) SchedulingGracefulShutdownOutput {
+	return o
+}
+
+func (o SchedulingGracefulShutdownOutput) ToSchedulingGracefulShutdownPtrOutput() SchedulingGracefulShutdownPtrOutput {
+	return o.ToSchedulingGracefulShutdownPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingGracefulShutdownOutput) ToSchedulingGracefulShutdownPtrOutputWithContext(ctx context.Context) SchedulingGracefulShutdownPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingGracefulShutdown) *SchedulingGracefulShutdown {
+		return &v
+	}).(SchedulingGracefulShutdownPtrOutput)
+}
+
+func (o SchedulingGracefulShutdownOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingGracefulShutdown] {
+	return pulumix.Output[SchedulingGracefulShutdown]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Opts-in for graceful shutdown.
+func (o SchedulingGracefulShutdownOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchedulingGracefulShutdown) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
+func (o SchedulingGracefulShutdownOutput) MaxDuration() DurationPtrOutput {
+	return o.ApplyT(func(v SchedulingGracefulShutdown) *Duration { return v.MaxDuration }).(DurationPtrOutput)
+}
+
+type SchedulingGracefulShutdownPtrOutput struct{ *pulumi.OutputState }
+
+func (SchedulingGracefulShutdownPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (o SchedulingGracefulShutdownPtrOutput) ToSchedulingGracefulShutdownPtrOutput() SchedulingGracefulShutdownPtrOutput {
+	return o
+}
+
+func (o SchedulingGracefulShutdownPtrOutput) ToSchedulingGracefulShutdownPtrOutputWithContext(ctx context.Context) SchedulingGracefulShutdownPtrOutput {
+	return o
+}
+
+func (o SchedulingGracefulShutdownPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SchedulingGracefulShutdown] {
+	return pulumix.Output[*SchedulingGracefulShutdown]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SchedulingGracefulShutdownPtrOutput) Elem() SchedulingGracefulShutdownOutput {
+	return o.ApplyT(func(v *SchedulingGracefulShutdown) SchedulingGracefulShutdown {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulingGracefulShutdown
+		return ret
+	}).(SchedulingGracefulShutdownOutput)
+}
+
+// Opts-in for graceful shutdown.
+func (o SchedulingGracefulShutdownPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SchedulingGracefulShutdown) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
+func (o SchedulingGracefulShutdownPtrOutput) MaxDuration() DurationPtrOutput {
+	return o.ApplyT(func(v *SchedulingGracefulShutdown) *Duration {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDuration
+	}).(DurationPtrOutput)
+}
+
+// Configuration for gracefully shutting down the instance.
+type SchedulingGracefulShutdownResponse struct {
+	// Opts-in for graceful shutdown.
+	Enabled bool `pulumi:"enabled"`
+	// Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
+	MaxDuration DurationResponse `pulumi:"maxDuration"`
+}
+
+// Configuration for gracefully shutting down the instance.
+type SchedulingGracefulShutdownResponseOutput struct{ *pulumi.OutputState }
+
+func (SchedulingGracefulShutdownResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingGracefulShutdownResponse)(nil)).Elem()
+}
+
+func (o SchedulingGracefulShutdownResponseOutput) ToSchedulingGracefulShutdownResponseOutput() SchedulingGracefulShutdownResponseOutput {
+	return o
+}
+
+func (o SchedulingGracefulShutdownResponseOutput) ToSchedulingGracefulShutdownResponseOutputWithContext(ctx context.Context) SchedulingGracefulShutdownResponseOutput {
+	return o
+}
+
+func (o SchedulingGracefulShutdownResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulingGracefulShutdownResponse] {
+	return pulumix.Output[SchedulingGracefulShutdownResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Opts-in for graceful shutdown.
+func (o SchedulingGracefulShutdownResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v SchedulingGracefulShutdownResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
+func (o SchedulingGracefulShutdownResponseOutput) MaxDuration() DurationResponseOutput {
+	return o.ApplyT(func(v SchedulingGracefulShutdownResponse) DurationResponse { return v.MaxDuration }).(DurationResponseOutput)
 }
 
 // Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
@@ -55207,7 +56328,8 @@ type SchedulingResponse struct {
 	// Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
 	CurrentCpus int `pulumi:"currentCpus"`
 	// Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
-	CurrentMemoryMb string `pulumi:"currentMemoryMb"`
+	CurrentMemoryMb  string                             `pulumi:"currentMemoryMb"`
+	GracefulShutdown SchedulingGracefulShutdownResponse `pulumi:"gracefulShutdown"`
 	// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Specifies the termination action for the instance.
@@ -55277,6 +56399,10 @@ func (o SchedulingResponseOutput) CurrentCpus() pulumi.IntOutput {
 // Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
 func (o SchedulingResponseOutput) CurrentMemoryMb() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulingResponse) string { return v.CurrentMemoryMb }).(pulumi.StringOutput)
+}
+
+func (o SchedulingResponseOutput) GracefulShutdown() SchedulingGracefulShutdownResponseOutput {
+	return o.ApplyT(func(v SchedulingResponse) SchedulingGracefulShutdownResponse { return v.GracefulShutdown }).(SchedulingGracefulShutdownResponseOutput)
 }
 
 // Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
@@ -55990,6 +57116,8 @@ type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig struct {
 	Enable *bool `pulumi:"enable"`
 	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility `pulumi:"ruleVisibility"`
+	// Configuration options for layer7 adaptive protection for various customizable thresholds.
+	ThresholdConfigs []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig `pulumi:"thresholdConfigs"`
 }
 
 // SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput values.
@@ -56009,6 +57137,8 @@ type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs struct {
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrInput `pulumi:"ruleVisibility"`
+	// Configuration options for layer7 adaptive protection for various customizable thresholds.
+	ThresholdConfigs SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput `pulumi:"thresholdConfigs"`
 }
 
 func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ElementType() reflect.Type {
@@ -56119,6 +57249,13 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) Rul
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput)
 }
 
+// Configuration options for layer7 adaptive protection for various customizable thresholds.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ThresholdConfigs() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+		return v.ThresholdConfigs
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput)
+}
+
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) ElementType() reflect.Type {
@@ -56169,12 +57306,24 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) 
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput)
 }
 
+// Configuration options for layer7 adaptive protection for various customizable thresholds.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) ThresholdConfigs() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ThresholdConfigs
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput)
+}
+
 // Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse struct {
 	// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	Enable bool `pulumi:"enable"`
 	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility string `pulumi:"ruleVisibility"`
+	// Configuration options for layer7 adaptive protection for various customizable thresholds.
+	ThresholdConfigs []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse `pulumi:"thresholdConfigs"`
 }
 
 // Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
@@ -56208,6 +57357,254 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOut
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse) string {
 		return v.RuleVisibility
 	}).(pulumi.StringOutput)
+}
+
+// Configuration options for layer7 adaptive protection for various customizable thresholds.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput) ThresholdConfigs() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse) []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse {
+		return v.ThresholdConfigs
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig struct {
+	AutoDeployConfidenceThreshold       *float64 `pulumi:"autoDeployConfidenceThreshold"`
+	AutoDeployExpirationSec             *int     `pulumi:"autoDeployExpirationSec"`
+	AutoDeployImpactedBaselineThreshold *float64 `pulumi:"autoDeployImpactedBaselineThreshold"`
+	AutoDeployLoadThreshold             *float64 `pulumi:"autoDeployLoadThreshold"`
+	// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+	Name *string `pulumi:"name"`
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{...}
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs struct {
+	AutoDeployConfidenceThreshold       pulumi.Float64PtrInput `pulumi:"autoDeployConfidenceThreshold"`
+	AutoDeployExpirationSec             pulumi.IntPtrInput     `pulumi:"autoDeployExpirationSec"`
+	AutoDeployImpactedBaselineThreshold pulumi.Float64PtrInput `pulumi:"autoDeployImpactedBaselineThreshold"`
+	AutoDeployLoadThreshold             pulumi.Float64PtrInput `pulumi:"autoDeployLoadThreshold"`
+	// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput)
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig] {
+	return pulumix.Output[SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig]{
+		OutputState: i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray{ SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{...} }
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput)
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig] {
+	return pulumix.Output[[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig]{
+		OutputState: i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig] {
+	return pulumix.Output[SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.AutoDeployConfidenceThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployExpirationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *int {
+		return v.AutoDeployExpirationSec
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployImpactedBaselineThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.AutoDeployImpactedBaselineThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployLoadThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.AutoDeployLoadThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig] {
+	return pulumix.Output[[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) Index(i pulumi.IntInput) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+		return vs[0].([]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)[vs[1].(int)]
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse struct {
+	AutoDeployConfidenceThreshold       float64 `pulumi:"autoDeployConfidenceThreshold"`
+	AutoDeployExpirationSec             int     `pulumi:"autoDeployExpirationSec"`
+	AutoDeployImpactedBaselineThreshold float64 `pulumi:"autoDeployImpactedBaselineThreshold"`
+	AutoDeployLoadThreshold             float64 `pulumi:"autoDeployLoadThreshold"`
+	// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+	Name string `pulumi:"name"`
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse] {
+	return pulumix.Output[SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) AutoDeployConfidenceThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse) float64 {
+		return v.AutoDeployConfidenceThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) AutoDeployExpirationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse) int {
+		return v.AutoDeployExpirationSec
+	}).(pulumi.IntOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) AutoDeployImpactedBaselineThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse) float64 {
+		return v.AutoDeployImpactedBaselineThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) AutoDeployLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse) float64 {
+		return v.AutoDeployLoadThreshold
+	}).(pulumi.Float64Output)
+}
+
+// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse] {
+	return pulumix.Output[[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse {
+		return vs[0].([]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse)[vs[1].(int)]
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput)
 }
 
 // Configuration options for Cloud Armor Adaptive Protection (CAAP).
@@ -58141,6 +59538,8 @@ type SecurityPolicyRuleMatcher struct {
 	Config *SecurityPolicyRuleMatcherConfig `pulumi:"config"`
 	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr *Expr `pulumi:"expr"`
+	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+	ExprOptions *SecurityPolicyRuleMatcherExprOptions `pulumi:"exprOptions"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr *SecurityPolicyRuleMatcherVersionedExpr `pulumi:"versionedExpr"`
 }
@@ -58162,6 +59561,8 @@ type SecurityPolicyRuleMatcherArgs struct {
 	Config SecurityPolicyRuleMatcherConfigPtrInput `pulumi:"config"`
 	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr ExprPtrInput `pulumi:"expr"`
+	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+	ExprOptions SecurityPolicyRuleMatcherExprOptionsPtrInput `pulumi:"exprOptions"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr SecurityPolicyRuleMatcherVersionedExprPtrInput `pulumi:"versionedExpr"`
 }
@@ -58272,6 +59673,11 @@ func (o SecurityPolicyRuleMatcherOutput) Expr() ExprPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *Expr { return v.Expr }).(ExprPtrOutput)
 }
 
+// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+func (o SecurityPolicyRuleMatcherOutput) ExprOptions() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherExprOptions { return v.ExprOptions }).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
+}
+
 // Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 func (o SecurityPolicyRuleMatcherOutput) VersionedExpr() SecurityPolicyRuleMatcherVersionedExprPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherVersionedExpr { return v.VersionedExpr }).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
@@ -58325,6 +59731,16 @@ func (o SecurityPolicyRuleMatcherPtrOutput) Expr() ExprPtrOutput {
 		}
 		return v.Expr
 	}).(ExprPtrOutput)
+}
+
+// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+func (o SecurityPolicyRuleMatcherPtrOutput) ExprOptions() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherExprOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ExprOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
 }
 
 // Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
@@ -59000,1632 +60416,167 @@ func (o SecurityPolicyRuleMatcherConfigResponseOutput) SrcIpRanges() pulumi.Stri
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigResponse) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
 }
 
-// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
-type SecurityPolicyRuleMatcherResponse struct {
-	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
-	Config SecurityPolicyRuleMatcherConfigResponse `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
-	Expr ExprResponse `pulumi:"expr"`
-	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
-	VersionedExpr string `pulumi:"versionedExpr"`
+type SecurityPolicyRuleMatcherExprOptions struct {
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+	RecaptchaOptions *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions `pulumi:"recaptchaOptions"`
 }
 
-// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
-type SecurityPolicyRuleMatcherResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherResponseOutput) ToSecurityPolicyRuleMatcherResponseOutput() SecurityPolicyRuleMatcherResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherResponseOutput) ToSecurityPolicyRuleMatcherResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleMatcherResponse] {
-	return pulumix.Output[SecurityPolicyRuleMatcherResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
-func (o SecurityPolicyRuleMatcherResponseOutput) Config() SecurityPolicyRuleMatcherConfigResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) SecurityPolicyRuleMatcherConfigResponse { return v.Config }).(SecurityPolicyRuleMatcherConfigResponseOutput)
-}
-
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
-func (o SecurityPolicyRuleMatcherResponseOutput) Expr() ExprResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) ExprResponse { return v.Expr }).(ExprResponseOutput)
-}
-
-// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
-func (o SecurityPolicyRuleMatcherResponseOutput) VersionedExpr() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) string { return v.VersionedExpr }).(pulumi.StringOutput)
-}
-
-// Represents a match condition that incoming network traffic is evaluated against.
-type SecurityPolicyRuleNetworkMatcher struct {
-	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-	DestIpRanges []string `pulumi:"destIpRanges"`
-	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-	DestPorts []string `pulumi:"destPorts"`
-	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
-	IpProtocols []string `pulumi:"ipProtocols"`
-	// BGP Autonomous System Number associated with the source IP address.
-	SrcAsns []int `pulumi:"srcAsns"`
-	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-	SrcIpRanges []string `pulumi:"srcIpRanges"`
-	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-	SrcPorts []string `pulumi:"srcPorts"`
-	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
-	SrcRegionCodes []string `pulumi:"srcRegionCodes"`
-	// User-defined fields. Each element names a defined field and lists the matching values for that field.
-	UserDefinedFields []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch `pulumi:"userDefinedFields"`
-}
-
-// SecurityPolicyRuleNetworkMatcherInput is an input type that accepts SecurityPolicyRuleNetworkMatcherArgs and SecurityPolicyRuleNetworkMatcherOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherInput` via:
+// SecurityPolicyRuleMatcherExprOptionsInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsArgs and SecurityPolicyRuleMatcherExprOptionsOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsInput` via:
 //
-//	SecurityPolicyRuleNetworkMatcherArgs{...}
-type SecurityPolicyRuleNetworkMatcherInput interface {
+//	SecurityPolicyRuleMatcherExprOptionsArgs{...}
+type SecurityPolicyRuleMatcherExprOptionsInput interface {
 	pulumi.Input
 
-	ToSecurityPolicyRuleNetworkMatcherOutput() SecurityPolicyRuleNetworkMatcherOutput
-	ToSecurityPolicyRuleNetworkMatcherOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherOutput
+	ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput
+	ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsOutput
 }
 
-// Represents a match condition that incoming network traffic is evaluated against.
-type SecurityPolicyRuleNetworkMatcherArgs struct {
-	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
-	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-	DestPorts pulumi.StringArrayInput `pulumi:"destPorts"`
-	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
-	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
-	// BGP Autonomous System Number associated with the source IP address.
-	SrcAsns pulumi.IntArrayInput `pulumi:"srcAsns"`
-	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
-	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-	SrcPorts pulumi.StringArrayInput `pulumi:"srcPorts"`
-	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
-	SrcRegionCodes pulumi.StringArrayInput `pulumi:"srcRegionCodes"`
-	// User-defined fields. Each element names a defined field and lists the matching values for that field.
-	UserDefinedFields SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput `pulumi:"userDefinedFields"`
+type SecurityPolicyRuleMatcherExprOptionsArgs struct {
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+	RecaptchaOptions SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput `pulumi:"recaptchaOptions"`
 }
 
-func (SecurityPolicyRuleNetworkMatcherArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+func (SecurityPolicyRuleMatcherExprOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
 }
 
-func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherOutput() SecurityPolicyRuleNetworkMatcherOutput {
-	return i.ToSecurityPolicyRuleNetworkMatcherOutputWithContext(context.Background())
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(context.Background())
 }
 
-func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherOutput)
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsOutput)
 }
 
-func (i SecurityPolicyRuleNetworkMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcher] {
-	return pulumix.Output[SecurityPolicyRuleNetworkMatcher]{
-		OutputState: i.ToSecurityPolicyRuleNetworkMatcherOutputWithContext(ctx).OutputState,
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleMatcherExprOptions] {
+	return pulumix.Output[SecurityPolicyRuleMatcherExprOptions]{
+		OutputState: i.ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
-	return i.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Background())
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
 }
 
-func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherOutput).ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx)
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsOutput).ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx)
 }
 
-// SecurityPolicyRuleNetworkMatcherPtrInput is an input type that accepts SecurityPolicyRuleNetworkMatcherArgs, SecurityPolicyRuleNetworkMatcherPtr and SecurityPolicyRuleNetworkMatcherPtrOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherPtrInput` via:
+// SecurityPolicyRuleMatcherExprOptionsPtrInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsArgs, SecurityPolicyRuleMatcherExprOptionsPtr and SecurityPolicyRuleMatcherExprOptionsPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsPtrInput` via:
 //
-//	        SecurityPolicyRuleNetworkMatcherArgs{...}
+//	        SecurityPolicyRuleMatcherExprOptionsArgs{...}
 //
 //	or:
 //
 //	        nil
-type SecurityPolicyRuleNetworkMatcherPtrInput interface {
+type SecurityPolicyRuleMatcherExprOptionsPtrInput interface {
 	pulumi.Input
 
-	ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput
-	ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput
+	ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput
+	ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput
 }
 
-type securityPolicyRuleNetworkMatcherPtrType SecurityPolicyRuleNetworkMatcherArgs
+type securityPolicyRuleMatcherExprOptionsPtrType SecurityPolicyRuleMatcherExprOptionsArgs
 
-func SecurityPolicyRuleNetworkMatcherPtr(v *SecurityPolicyRuleNetworkMatcherArgs) SecurityPolicyRuleNetworkMatcherPtrInput {
-	return (*securityPolicyRuleNetworkMatcherPtrType)(v)
+func SecurityPolicyRuleMatcherExprOptionsPtr(v *SecurityPolicyRuleMatcherExprOptionsArgs) SecurityPolicyRuleMatcherExprOptionsPtrInput {
+	return (*securityPolicyRuleMatcherExprOptionsPtrType)(v)
 }
 
-func (*securityPolicyRuleNetworkMatcherPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+func (*securityPolicyRuleMatcherExprOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
 }
 
-func (i *securityPolicyRuleNetworkMatcherPtrType) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
-	return i.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Background())
+func (i *securityPolicyRuleMatcherExprOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
 }
 
-func (i *securityPolicyRuleNetworkMatcherPtrType) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherPtrOutput)
+func (i *securityPolicyRuleMatcherExprOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
 }
 
-func (i *securityPolicyRuleNetworkMatcherPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleNetworkMatcher] {
-	return pulumix.Output[*SecurityPolicyRuleNetworkMatcher]{
-		OutputState: i.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx).OutputState,
+func (i *securityPolicyRuleMatcherExprOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleMatcherExprOptions] {
+	return pulumix.Output[*SecurityPolicyRuleMatcherExprOptions]{
+		OutputState: i.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-// Represents a match condition that incoming network traffic is evaluated against.
-type SecurityPolicyRuleNetworkMatcherOutput struct{ *pulumi.OutputState }
+type SecurityPolicyRuleMatcherExprOptionsOutput struct{ *pulumi.OutputState }
 
-func (SecurityPolicyRuleNetworkMatcherOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+func (SecurityPolicyRuleMatcherExprOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
 }
 
-func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherOutput() SecurityPolicyRuleNetworkMatcherOutput {
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput {
 	return o
 }
 
-func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherOutput {
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsOutput {
 	return o
 }
 
-func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
-	return o.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Background())
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
 }
 
-func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleNetworkMatcher) *SecurityPolicyRuleNetworkMatcher {
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptions {
 		return &v
-	}).(SecurityPolicyRuleNetworkMatcherPtrOutput)
+	}).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
 }
 
-func (o SecurityPolicyRuleNetworkMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcher] {
-	return pulumix.Output[SecurityPolicyRuleNetworkMatcher]{
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleMatcherExprOptions] {
+	return pulumix.Output[SecurityPolicyRuleMatcherExprOptions]{
 		OutputState: o.OutputState,
 	}
 }
 
-// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-func (o SecurityPolicyRuleNetworkMatcherOutput) DestIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
+		return v.RecaptchaOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
 }
 
-// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-func (o SecurityPolicyRuleNetworkMatcherOutput) DestPorts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.DestPorts }).(pulumi.StringArrayOutput)
+type SecurityPolicyRuleMatcherExprOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
 }
 
-// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
-func (o SecurityPolicyRuleNetworkMatcherOutput) IpProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
-}
-
-// BGP Autonomous System Number associated with the source IP address.
-func (o SecurityPolicyRuleNetworkMatcherOutput) SrcAsns() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []int { return v.SrcAsns }).(pulumi.IntArrayOutput)
-}
-
-// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-func (o SecurityPolicyRuleNetworkMatcherOutput) SrcIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
-}
-
-// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-func (o SecurityPolicyRuleNetworkMatcherOutput) SrcPorts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.SrcPorts }).(pulumi.StringArrayOutput)
-}
-
-// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
-func (o SecurityPolicyRuleNetworkMatcherOutput) SrcRegionCodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.SrcRegionCodes }).(pulumi.StringArrayOutput)
-}
-
-// User-defined fields. Each element names a defined field and lists the matching values for that field.
-func (o SecurityPolicyRuleNetworkMatcherOutput) UserDefinedFields() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
-		return v.UserDefinedFields
-	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput)
-}
-
-type SecurityPolicyRuleNetworkMatcherPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleNetworkMatcherPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
 	return o
 }
 
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
 	return o
 }
 
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleNetworkMatcher] {
-	return pulumix.Output[*SecurityPolicyRuleNetworkMatcher]{
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleMatcherExprOptions] {
+	return pulumix.Output[*SecurityPolicyRuleMatcherExprOptions]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) Elem() SecurityPolicyRuleNetworkMatcherOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) SecurityPolicyRuleNetworkMatcher {
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) Elem() SecurityPolicyRuleMatcherExprOptionsOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptions) SecurityPolicyRuleMatcherExprOptions {
 		if v != nil {
 			return *v
 		}
-		var ret SecurityPolicyRuleNetworkMatcher
+		var ret SecurityPolicyRuleMatcherExprOptions
 		return ret
-	}).(SecurityPolicyRuleNetworkMatcherOutput)
+	}).(SecurityPolicyRuleMatcherExprOptionsOutput)
 }
 
-// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
 		if v == nil {
 			return nil
 		}
-		return v.DestIpRanges
-	}).(pulumi.StringArrayOutput)
-}
-
-// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) DestPorts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DestPorts
-	}).(pulumi.StringArrayOutput)
-}
-
-// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) IpProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IpProtocols
-	}).(pulumi.StringArrayOutput)
-}
-
-// BGP Autonomous System Number associated with the source IP address.
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcAsns() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []int {
-		if v == nil {
-			return nil
-		}
-		return v.SrcAsns
-	}).(pulumi.IntArrayOutput)
-}
-
-// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SrcIpRanges
-	}).(pulumi.StringArrayOutput)
-}
-
-// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcPorts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SrcPorts
-	}).(pulumi.StringArrayOutput)
-}
-
-// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcRegionCodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SrcRegionCodes
-	}).(pulumi.StringArrayOutput)
-}
-
-// User-defined fields. Each element names a defined field and lists the matching values for that field.
-func (o SecurityPolicyRuleNetworkMatcherPtrOutput) UserDefinedFields() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
-		if v == nil {
-			return nil
-		}
-		return v.UserDefinedFields
-	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput)
-}
-
-// Represents a match condition that incoming network traffic is evaluated against.
-type SecurityPolicyRuleNetworkMatcherResponse struct {
-	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-	DestIpRanges []string `pulumi:"destIpRanges"`
-	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-	DestPorts []string `pulumi:"destPorts"`
-	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
-	IpProtocols []string `pulumi:"ipProtocols"`
-	// BGP Autonomous System Number associated with the source IP address.
-	SrcAsns []int `pulumi:"srcAsns"`
-	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-	SrcIpRanges []string `pulumi:"srcIpRanges"`
-	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-	SrcPorts []string `pulumi:"srcPorts"`
-	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
-	SrcRegionCodes []string `pulumi:"srcRegionCodes"`
-	// User-defined fields. Each element names a defined field and lists the matching values for that field.
-	UserDefinedFields []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse `pulumi:"userDefinedFields"`
-}
-
-// Represents a match condition that incoming network traffic is evaluated against.
-type SecurityPolicyRuleNetworkMatcherResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleNetworkMatcherResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) ToSecurityPolicyRuleNetworkMatcherResponseOutput() SecurityPolicyRuleNetworkMatcherResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) ToSecurityPolicyRuleNetworkMatcherResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcherResponse] {
-	return pulumix.Output[SecurityPolicyRuleNetworkMatcherResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) DestIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
-}
-
-// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) DestPorts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.DestPorts }).(pulumi.StringArrayOutput)
-}
-
-// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) IpProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
-}
-
-// BGP Autonomous System Number associated with the source IP address.
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcAsns() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []int { return v.SrcAsns }).(pulumi.IntArrayOutput)
-}
-
-// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
-}
-
-// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcPorts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.SrcPorts }).(pulumi.StringArrayOutput)
-}
-
-// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcRegionCodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.SrcRegionCodes }).(pulumi.StringArrayOutput)
-}
-
-// User-defined fields. Each element names a defined field and lists the matching values for that field.
-func (o SecurityPolicyRuleNetworkMatcherResponseOutput) UserDefinedFields() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse {
-		return v.UserDefinedFields
-	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput)
-}
-
-type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch struct {
-	// Name of the user-defined field, as given in the definition.
-	Name *string `pulumi:"name"`
-	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
-	Values []string `pulumi:"values"`
-}
-
-// SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput is an input type that accepts SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs and SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput` via:
-//
-//	SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs{...}
-type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput
-	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput
-}
-
-type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs struct {
-	// Name of the user-defined field, as given in the definition.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
-	return i.ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput)
-}
-
-func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch] {
-	return pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch]{
-		OutputState: i.ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(ctx).OutputState,
-	}
-}
-
-// SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput is an input type that accepts SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray and SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput` via:
-//
-//	SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray{ SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs{...} }
-type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput
-	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput
-}
-
-type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput
-
-func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
-	return i.ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput)
-}
-
-func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch] {
-	return pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch]{
-		OutputState: i.ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch] {
-	return pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Name of the user-defined field, as given in the definition.
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch] {
-	return pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
-		return vs[0].([]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)[vs[1].(int)]
-	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput)
-}
-
-type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse struct {
-	// Name of the user-defined field, as given in the definition.
-	Name string `pulumi:"name"`
-	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
-	Values []string `pulumi:"values"`
-}
-
-type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse] {
-	return pulumix.Output[SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Name of the user-defined field, as given in the definition.
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse] {
-	return pulumix.Output[[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse {
-		return vs[0].([]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse)[vs[1].(int)]
-	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfig struct {
-	// A list of exclusions to apply during preconfigured WAF evaluation.
-	Exclusions []SecurityPolicyRulePreconfiguredWafConfigExclusion `pulumi:"exclusions"`
-}
-
-// SecurityPolicyRulePreconfiguredWafConfigInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigArgs and SecurityPolicyRulePreconfiguredWafConfigOutput values.
-// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigInput` via:
-//
-//	SecurityPolicyRulePreconfiguredWafConfigArgs{...}
-type SecurityPolicyRulePreconfiguredWafConfigInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRulePreconfiguredWafConfigOutput() SecurityPolicyRulePreconfiguredWafConfigOutput
-	ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigOutput
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigArgs struct {
-	// A list of exclusions to apply during preconfigured WAF evaluation.
-	Exclusions SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput `pulumi:"exclusions"`
-}
-
-func (SecurityPolicyRulePreconfiguredWafConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigOutput() SecurityPolicyRulePreconfiguredWafConfigOutput {
-	return i.ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigOutput)
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfig] {
-	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfig]{
-		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
-	return i.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigOutput).ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx)
-}
-
-// SecurityPolicyRulePreconfiguredWafConfigPtrInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigArgs, SecurityPolicyRulePreconfiguredWafConfigPtr and SecurityPolicyRulePreconfiguredWafConfigPtrOutput values.
-// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigPtrInput` via:
-//
-//	        SecurityPolicyRulePreconfiguredWafConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecurityPolicyRulePreconfiguredWafConfigPtrInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput
-	ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput
-}
-
-type securityPolicyRulePreconfiguredWafConfigPtrType SecurityPolicyRulePreconfiguredWafConfigArgs
-
-func SecurityPolicyRulePreconfiguredWafConfigPtr(v *SecurityPolicyRulePreconfiguredWafConfigArgs) SecurityPolicyRulePreconfiguredWafConfigPtrInput {
-	return (*securityPolicyRulePreconfiguredWafConfigPtrType)(v)
-}
-
-func (*securityPolicyRulePreconfiguredWafConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
-}
-
-func (i *securityPolicyRulePreconfiguredWafConfigPtrType) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
-	return i.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *securityPolicyRulePreconfiguredWafConfigPtrType) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigPtrOutput)
-}
-
-func (i *securityPolicyRulePreconfiguredWafConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfig] {
-	return pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfig]{
-		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigOutput() SecurityPolicyRulePreconfiguredWafConfigOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
-	return o.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRulePreconfiguredWafConfig) *SecurityPolicyRulePreconfiguredWafConfig {
-		return &v
-	}).(SecurityPolicyRulePreconfiguredWafConfigPtrOutput)
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfig] {
-	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
-// A list of exclusions to apply during preconfigured WAF evaluation.
-func (o SecurityPolicyRulePreconfiguredWafConfigOutput) Exclusions() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfig) []SecurityPolicyRulePreconfiguredWafConfigExclusion {
-		return v.Exclusions
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfig] {
-	return pulumix.Output[*SecurityPolicyRulePreconfiguredWafConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) Elem() SecurityPolicyRulePreconfiguredWafConfigOutput {
-	return o.ApplyT(func(v *SecurityPolicyRulePreconfiguredWafConfig) SecurityPolicyRulePreconfiguredWafConfig {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityPolicyRulePreconfiguredWafConfig
-		return ret
-	}).(SecurityPolicyRulePreconfiguredWafConfigOutput)
-}
-
-// A list of exclusions to apply during preconfigured WAF evaluation.
-func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) Exclusions() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRulePreconfiguredWafConfig) []SecurityPolicyRulePreconfiguredWafConfigExclusion {
-		if v == nil {
-			return nil
-		}
-		return v.Exclusions
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusion struct {
-	// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
-	RequestCookiesToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestCookiesToExclude"`
-	// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
-	RequestHeadersToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestHeadersToExclude"`
-	// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
-	RequestQueryParamsToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestQueryParamsToExclude"`
-	// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
-	RequestUrisToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestUrisToExclude"`
-	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-	TargetRuleIds []string `pulumi:"targetRuleIds"`
-	// Target WAF rule set to apply the preconfigured WAF exclusion.
-	TargetRuleSet *string `pulumi:"targetRuleSet"`
-}
-
-// SecurityPolicyRulePreconfiguredWafConfigExclusionInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionArgs and SecurityPolicyRulePreconfiguredWafConfigExclusionOutput values.
-// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionInput` via:
-//
-//	SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{...}
-type SecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionOutput
-	ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
-	// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
-	RequestCookiesToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestCookiesToExclude"`
-	// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
-	RequestHeadersToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestHeadersToExclude"`
-	// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
-	RequestQueryParamsToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestQueryParamsToExclude"`
-	// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
-	RequestUrisToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestUrisToExclude"`
-	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-	TargetRuleIds pulumi.StringArrayInput `pulumi:"targetRuleIds"`
-	// Target WAF rule set to apply the preconfigured WAF exclusion.
-	TargetRuleSet pulumi.StringPtrInput `pulumi:"targetRuleSet"`
-}
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
-	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusion] {
-	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusion]{
-		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
-// SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionArray and SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput values.
-// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput` via:
-//
-//	SecurityPolicyRulePreconfiguredWafConfigExclusionArray{ SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{...} }
-type SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput
-	ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionArray []SecurityPolicyRulePreconfiguredWafConfigExclusionInput
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
-	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusion] {
-	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusion]{
-		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusion] {
-	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusion]{
-		OutputState: o.OutputState,
-	}
-}
-
-// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestCookiesToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
-		return v.RequestCookiesToExclude
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
-}
-
-// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestHeadersToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
-		return v.RequestHeadersToExclude
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
-}
-
-// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestQueryParamsToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
-		return v.RequestQueryParamsToExclude
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
-}
-
-// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestUrisToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
-		return v.RequestUrisToExclude
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
-}
-
-// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) TargetRuleIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []string { return v.TargetRuleIds }).(pulumi.StringArrayOutput)
-}
-
-// Target WAF rule set to apply the preconfigured WAF exclusion.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) TargetRuleSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) *string { return v.TargetRuleSet }).(pulumi.StringPtrOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusion] {
-	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusion]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusion {
-		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusion)[vs[1].(int)]
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams struct {
-	// The match operator for the field.
-	Op *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp `pulumi:"op"`
-	// The value of the field.
-	Val *string `pulumi:"val"`
-}
-
-// SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs and SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput values.
-// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput` via:
-//
-//	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs{...}
-type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput
-	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs struct {
-	// The match operator for the field.
-	Op SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput `pulumi:"op"`
-	// The value of the field.
-	Val pulumi.StringPtrInput `pulumi:"val"`
-}
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
-	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput)
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams] {
-	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams]{
-		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(ctx).OutputState,
-	}
-}
-
-// SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray and SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput values.
-// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput` via:
-//
-//	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray{ SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs{...} }
-type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput
-	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
-	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
-}
-
-func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams] {
-	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams]{
-		OutputState: i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams] {
-	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The match operator for the field.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) Op() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams) *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
-		return v.Op
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
-}
-
-// The value of the field.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) Val() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams) *string { return v.Val }).(pulumi.StringPtrOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams] {
-	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
-		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)[vs[1].(int)]
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse struct {
-	// The match operator for the field.
-	Op string `pulumi:"op"`
-	// The value of the field.
-	Val string `pulumi:"val"`
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse] {
-	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The match operator for the field.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) Op() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse) string { return v.Op }).(pulumi.StringOutput)
-}
-
-// The value of the field.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) Val() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse) string { return v.Val }).(pulumi.StringOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse] {
-	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
-		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse)[vs[1].(int)]
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionResponse struct {
-	// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
-	RequestCookiesToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestCookiesToExclude"`
-	// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
-	RequestHeadersToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestHeadersToExclude"`
-	// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
-	RequestQueryParamsToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestQueryParamsToExclude"`
-	// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
-	RequestUrisToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestUrisToExclude"`
-	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-	TargetRuleIds []string `pulumi:"targetRuleIds"`
-	// Target WAF rule set to apply the preconfigured WAF exclusion.
-	TargetRuleSet string `pulumi:"targetRuleSet"`
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionResponse] {
-	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigExclusionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestCookiesToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
-		return v.RequestCookiesToExclude
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
-}
-
-// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestHeadersToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
-		return v.RequestHeadersToExclude
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
-}
-
-// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestQueryParamsToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
-		return v.RequestQueryParamsToExclude
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
-}
-
-// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestUrisToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
-		return v.RequestUrisToExclude
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
-}
-
-// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) TargetRuleIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []string { return v.TargetRuleIds }).(pulumi.StringArrayOutput)
-}
-
-// Target WAF rule set to apply the preconfigured WAF exclusion.
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) TargetRuleSet() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) string { return v.TargetRuleSet }).(pulumi.StringOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionResponse] {
-	return pulumix.Output[[]SecurityPolicyRulePreconfiguredWafConfigExclusionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusionResponse {
-		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusionResponse)[vs[1].(int)]
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput)
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigResponse struct {
-	// A list of exclusions to apply during preconfigured WAF evaluation.
-	Exclusions []SecurityPolicyRulePreconfiguredWafConfigExclusionResponse `pulumi:"exclusions"`
-}
-
-type SecurityPolicyRulePreconfiguredWafConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigResponseOutput() SecurityPolicyRulePreconfiguredWafConfigResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigResponse] {
-	return pulumix.Output[SecurityPolicyRulePreconfiguredWafConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
-// A list of exclusions to apply during preconfigured WAF evaluation.
-func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) Exclusions() SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionResponse {
-		return v.Exclusions
-	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptions struct {
-	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-	BanDurationSec *int `pulumi:"banDurationSec"`
-	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-	BanThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"banThreshold"`
-	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-	ConformAction *string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
-	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
-	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig `pulumi:"enforceOnKeyConfigs"`
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
-	ExceedAction *string `pulumi:"exceedAction"`
-	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
-	ExceedActionRpcStatus *SecurityPolicyRuleRateLimitOptionsRpcStatus `pulumi:"exceedActionRpcStatus"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-	ExceedRedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"exceedRedirectOptions"`
-	// Threshold at which to begin ratelimiting.
-	RateLimitThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"rateLimitThreshold"`
-}
-
-// SecurityPolicyRuleRateLimitOptionsInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsArgs and SecurityPolicyRuleRateLimitOptionsOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsInput` via:
-//
-//	SecurityPolicyRuleRateLimitOptionsArgs{...}
-type SecurityPolicyRuleRateLimitOptionsInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleRateLimitOptionsOutput() SecurityPolicyRuleRateLimitOptionsOutput
-	ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsOutput
-}
-
-type SecurityPolicyRuleRateLimitOptionsArgs struct {
-	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-	BanDurationSec pulumi.IntPtrInput `pulumi:"banDurationSec"`
-	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"banThreshold"`
-	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
-	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
-	EnforceOnKeyConfigs SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput `pulumi:"enforceOnKeyConfigs"`
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
-	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
-	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
-	ExceedActionRpcStatus SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput `pulumi:"exceedActionRpcStatus"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"exceedRedirectOptions"`
-	// Threshold at which to begin ratelimiting.
-	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"rateLimitThreshold"`
-}
-
-func (SecurityPolicyRuleRateLimitOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsOutput() SecurityPolicyRuleRateLimitOptionsOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsOutput)
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleRateLimitOptions] {
-	return pulumix.Output[SecurityPolicyRuleRateLimitOptions]{
-		OutputState: i.ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsOutput).ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx)
-}
-
-// SecurityPolicyRuleRateLimitOptionsPtrInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsArgs, SecurityPolicyRuleRateLimitOptionsPtr and SecurityPolicyRuleRateLimitOptionsPtrOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsPtrInput` via:
-//
-//	        SecurityPolicyRuleRateLimitOptionsArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecurityPolicyRuleRateLimitOptionsPtrInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput
-	ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput
-}
-
-type securityPolicyRuleRateLimitOptionsPtrType SecurityPolicyRuleRateLimitOptionsArgs
-
-func SecurityPolicyRuleRateLimitOptionsPtr(v *SecurityPolicyRuleRateLimitOptionsArgs) SecurityPolicyRuleRateLimitOptionsPtrInput {
-	return (*securityPolicyRuleRateLimitOptionsPtrType)(v)
-}
-
-func (*securityPolicyRuleRateLimitOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
-}
-
-func (i *securityPolicyRuleRateLimitOptionsPtrType) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i *securityPolicyRuleRateLimitOptionsPtrType) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
-}
-
-func (i *securityPolicyRuleRateLimitOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRateLimitOptions] {
-	return pulumix.Output[*SecurityPolicyRuleRateLimitOptions]{
-		OutputState: i.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type SecurityPolicyRuleRateLimitOptionsOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsOutput() SecurityPolicyRuleRateLimitOptionsOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
-	return o.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptions {
-		return &v
-	}).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityPolicyRuleRateLimitOptions] {
-	return pulumix.Output[SecurityPolicyRuleRateLimitOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-func (o SecurityPolicyRuleRateLimitOptionsOutput) BanDurationSec() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *int { return v.BanDurationSec }).(pulumi.IntPtrOutput)
-}
-
-// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-func (o SecurityPolicyRuleRateLimitOptionsOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
-		return v.BanThreshold
-	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
-}
-
-// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ConformAction }).(pulumi.StringPtrOutput)
-}
-
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
-		return v.EnforceOnKey
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
-}
-
-// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
-func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
-		return v.EnforceOnKeyConfigs
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput)
-}
-
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
-}
-
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
-func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ExceedAction }).(pulumi.StringPtrOutput)
-}
-
-// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
-func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
-		return v.ExceedActionRpcStatus
-	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
-}
-
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
-		return v.ExceedRedirectOptions
-	}).(SecurityPolicyRuleRedirectOptionsPtrOutput)
-}
-
-// Threshold at which to begin ratelimiting.
-func (o SecurityPolicyRuleRateLimitOptionsOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
-		return v.RateLimitThreshold
-	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyRuleRateLimitOptions] {
-	return pulumix.Output[*SecurityPolicyRuleRateLimitOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) SecurityPolicyRuleRateLimitOptions {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityPolicyRuleRateLimitOptions
-		return ret
-	}).(SecurityPolicyRuleRateLimitOptionsOutput)
-}
-
-// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) BanDurationSec() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *int {
-		if v == nil {
-			return nil
-		}
-		return v.BanDurationSec
-	}).(pulumi.IntPtrOutput)
-}
-
-// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
-		if v == nil {
-			return nil
-		}
-		return v.BanThreshold
-	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
-}
-
-// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ConformAction
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
-		if v == nil {
-			return nil
-		}
-		return v.EnforceOnKey
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
-}
-
-// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
-		if v == nil {
-			return nil
-		}
-		return v.EnforceOnKeyConfigs
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput)
-}
-
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EnforceOnKeyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ExceedAction
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
-		if v == nil {
-			return nil
-		}
-		return v.ExceedActionRpcStatus
-	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
-}
-
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
-		if v == nil {
-			return nil
-		}
-		return v.ExceedRedirectOptions
-	}).(SecurityPolicyRuleRedirectOptionsPtrOutput)
-}
-
-// Threshold at which to begin ratelimiting.
-func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
-		if v == nil {
-			return nil
-		}
-		return v.RateLimitThreshold
-	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+		return v.RecaptchaOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
 }
 
 func init() {
@@ -60709,6 +60660,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigPtrInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceUsedByInput)(nil)).Elem(), BackendServiceUsedByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceUsedByArrayInput)(nil)).Elem(), BackendServiceUsedByArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourceInput)(nil)).Elem(), BulkInsertInstanceResourceArgs{})
@@ -61036,6 +60989,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SavedDiskArrayInput)(nil)).Elem(), SavedDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingInput)(nil)).Elem(), SchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingPtrInput)(nil)).Elem(), SchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingGracefulShutdownInput)(nil)).Elem(), SchedulingGracefulShutdownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingGracefulShutdownPtrInput)(nil)).Elem(), SchedulingGracefulShutdownArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityInput)(nil)).Elem(), SchedulingNodeAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityArrayInput)(nil)).Elem(), SchedulingNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SdsConfigInput)(nil)).Elem(), SdsConfigArgs{})
@@ -61046,6 +61001,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
@@ -61072,18 +61029,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPortArrayInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigDestinationPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherPtrInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigPtrInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsArgs{})
 	pulumi.RegisterOutputType(AWSV4SignatureOutput{})
 	pulumi.RegisterOutputType(AWSV4SignaturePtrOutput{})
 	pulumi.RegisterOutputType(AWSV4SignatureResponseOutput{})
@@ -61223,6 +61170,10 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceLogConfigOutput{})
 	pulumi.RegisterOutputType(BackendServiceLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(BackendServiceUsedByOutput{})
+	pulumi.RegisterOutputType(BackendServiceUsedByArrayOutput{})
+	pulumi.RegisterOutputType(BackendServiceUsedByResponseOutput{})
+	pulumi.RegisterOutputType(BackendServiceUsedByResponseArrayOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -61245,6 +61196,8 @@ func init() {
 	pulumi.RegisterOutputType(ClientTlsSettingsOutput{})
 	pulumi.RegisterOutputType(ClientTlsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ClientTlsSettingsResponseOutput{})
+	pulumi.RegisterOutputType(CommitmentResourceStatusCancellationInformationResponseOutput{})
+	pulumi.RegisterOutputType(CommitmentResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(ConditionOutput{})
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
 	pulumi.RegisterOutputType(ConditionResponseOutput{})
@@ -61570,6 +61523,7 @@ func init() {
 	pulumi.RegisterOutputType(MetadataItemsItemResponseOutput{})
 	pulumi.RegisterOutputType(MetadataItemsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetadataResponseOutput{})
+	pulumi.RegisterOutputType(MoneyResponseOutput{})
 	pulumi.RegisterOutputType(MutualTlsOutput{})
 	pulumi.RegisterOutputType(MutualTlsPtrOutput{})
 	pulumi.RegisterOutputType(MutualTlsResponseOutput{})
@@ -61763,8 +61717,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleDayOfWeekResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleDayOfWeekResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleResponseOutput{})
+	pulumi.RegisterOutputType(ResourceStatusLastInstanceTerminationDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(ResourceStatusSchedulingResponseOutput{})
+	pulumi.RegisterOutputType(ResourceStatusShutdownDetailsResponseOutput{})
 	pulumi.RegisterOutputType(RolloutPolicyOutput{})
 	pulumi.RegisterOutputType(RolloutPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RolloutPolicyResponseOutput{})
@@ -61833,6 +61789,9 @@ func init() {
 	pulumi.RegisterOutputType(SavedDiskResponseArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingOutput{})
 	pulumi.RegisterOutputType(SchedulingPtrOutput{})
+	pulumi.RegisterOutputType(SchedulingGracefulShutdownOutput{})
+	pulumi.RegisterOutputType(SchedulingGracefulShutdownPtrOutput{})
+	pulumi.RegisterOutputType(SchedulingGracefulShutdownResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseOutput{})
@@ -61849,6 +61808,10 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigPtrOutput{})
@@ -61891,25 +61854,6 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherPtrOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigPtrOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsPtrOutput{})
 }

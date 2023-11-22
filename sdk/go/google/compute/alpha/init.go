@@ -251,6 +251,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionNotificationEndpoint{}
 	case "google-native:compute/alpha:RegionSecurityPolicy":
 		r = &RegionSecurityPolicy{}
+	case "google-native:compute/alpha:RegionSnapshot":
+		r = &RegionSnapshot{}
+	case "google-native:compute/alpha:RegionSnapshotIamBinding":
+		r = &RegionSnapshotIamBinding{}
+	case "google-native:compute/alpha:RegionSnapshotIamMember":
+		r = &RegionSnapshotIamMember{}
+	case "google-native:compute/alpha:RegionSnapshotIamPolicy":
+		r = &RegionSnapshotIamPolicy{}
 	case "google-native:compute/alpha:RegionSslCertificate":
 		r = &RegionSslCertificate{}
 	case "google-native:compute/alpha:RegionSslPolicy":

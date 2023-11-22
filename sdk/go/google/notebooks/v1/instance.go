@@ -46,6 +46,8 @@ type Instance struct {
 	InstallGpuDriver pulumi.BoolOutput `pulumi:"installGpuDriver"`
 	// Required. User-defined unique ID of this instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// Checks how feasible a migration from UmN to WbI is.
+	InstanceMigrationEligibility InstanceMigrationEligibilityResponseOutput `pulumi:"instanceMigrationEligibility"`
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 	InstanceOwners pulumi.StringArrayOutput `pulumi:"instanceOwners"`
 	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
@@ -55,8 +57,10 @@ type Instance struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
-	// Custom metadata to apply to this instance.
+	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
+	// Bool indicating whether this notebook has been migrated to a Workbench Instance
+	Migrated pulumi.BoolOutput `pulumi:"migrated"`
 	// The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
@@ -65,7 +69,7 @@ type Instance struct {
 	NicType pulumi.StringOutput `pulumi:"nicType"`
 	// If true, the notebook instance will not register with the proxy.
 	NoProxyAccess pulumi.BoolOutput `pulumi:"noProxyAccess"`
-	// If true, no public IP will be assigned to this instance.
+	// If true, no external IP will be assigned to this instance.
 	NoPublicIp pulumi.BoolOutput `pulumi:"noPublicIp"`
 	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk pulumi.BoolOutput `pulumi:"noRemoveDataDisk"`
@@ -179,7 +183,7 @@ type instanceArgs struct {
 	Location *string           `pulumi:"location"`
 	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType string `pulumi:"machineType"`
-	// Custom metadata to apply to this instance.
+	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network *string `pulumi:"network"`
@@ -187,7 +191,7 @@ type instanceArgs struct {
 	NicType *InstanceNicType `pulumi:"nicType"`
 	// If true, the notebook instance will not register with the proxy.
 	NoProxyAccess *bool `pulumi:"noProxyAccess"`
-	// If true, no public IP will be assigned to this instance.
+	// If true, no external IP will be assigned to this instance.
 	NoPublicIp *bool `pulumi:"noPublicIp"`
 	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk *bool `pulumi:"noRemoveDataDisk"`
@@ -245,7 +249,7 @@ type InstanceArgs struct {
 	Location pulumi.StringPtrInput
 	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringInput
-	// Custom metadata to apply to this instance.
+	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
 	Metadata pulumi.StringMapInput
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network pulumi.StringPtrInput
@@ -253,7 +257,7 @@ type InstanceArgs struct {
 	NicType InstanceNicTypePtrInput
 	// If true, the notebook instance will not register with the proxy.
 	NoProxyAccess pulumi.BoolPtrInput
-	// If true, no public IP will be assigned to this instance.
+	// If true, no external IP will be assigned to this instance.
 	NoPublicIp pulumi.BoolPtrInput
 	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk pulumi.BoolPtrInput
@@ -397,6 +401,11 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// Checks how feasible a migration from UmN to WbI is.
+func (o InstanceOutput) InstanceMigrationEligibility() InstanceMigrationEligibilityResponseOutput {
+	return o.ApplyT(func(v *Instance) InstanceMigrationEligibilityResponseOutput { return v.InstanceMigrationEligibility }).(InstanceMigrationEligibilityResponseOutput)
+}
+
 // Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 func (o InstanceOutput) InstanceOwners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.InstanceOwners }).(pulumi.StringArrayOutput)
@@ -421,9 +430,14 @@ func (o InstanceOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MachineType }).(pulumi.StringOutput)
 }
 
-// Custom metadata to apply to this instance.
+// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=“BUCKET”"`.
 func (o InstanceOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Bool indicating whether this notebook has been migrated to a Workbench Instance
+func (o InstanceOutput) Migrated() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.Migrated }).(pulumi.BoolOutput)
 }
 
 // The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
@@ -446,7 +460,7 @@ func (o InstanceOutput) NoProxyAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.NoProxyAccess }).(pulumi.BoolOutput)
 }
 
-// If true, no public IP will be assigned to this instance.
+// If true, no external IP will be assigned to this instance.
 func (o InstanceOutput) NoPublicIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.NoPublicIp }).(pulumi.BoolOutput)
 }

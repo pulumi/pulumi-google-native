@@ -52,7 +52,7 @@ type LookupRegionCommitmentResult struct {
 	Plan string `pulumi:"plan"`
 	// URL of the region where this commitment may be used.
 	Region string `pulumi:"region"`
-	// List of reservations in this commitment.
+	// List of create-on-create reseravtions for this commitment.
 	Reservations []ReservationResponse `pulumi:"reservations"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources []ResourceCommitmentResponse `pulumi:"resources"`
@@ -168,7 +168,7 @@ func (o LookupRegionCommitmentResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// List of reservations in this commitment.
+// List of create-on-create reseravtions for this commitment.
 func (o LookupRegionCommitmentResultOutput) Reservations() ReservationResponseArrayOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) []ReservationResponse { return v.Reservations }).(ReservationResponseArrayOutput)
 }

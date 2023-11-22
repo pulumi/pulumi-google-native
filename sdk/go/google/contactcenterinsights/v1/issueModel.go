@@ -24,7 +24,11 @@ type IssueModel struct {
 	InputDataConfig GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput `pulumi:"inputDataConfig"`
 	// Number of issues in this issue model.
 	IssueCount pulumi.StringOutput `pulumi:"issueCount"`
-	Location   pulumi.StringOutput `pulumi:"location"`
+	// Language of the model.
+	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
+	Location     pulumi.StringOutput `pulumi:"location"`
+	// Type of the model.
+	ModelType pulumi.StringOutput `pulumi:"modelType"`
 	// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -85,7 +89,11 @@ type issueModelArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Configs for the input data that used to create the issue model.
 	InputDataConfig *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig `pulumi:"inputDataConfig"`
-	Location        *string                                                      `pulumi:"location"`
+	// Language of the model.
+	LanguageCode *string `pulumi:"languageCode"`
+	Location     *string `pulumi:"location"`
+	// Type of the model.
+	ModelType *IssueModelModelType `pulumi:"modelType"`
 	// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -97,7 +105,11 @@ type IssueModelArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Configs for the input data that used to create the issue model.
 	InputDataConfig GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrInput
-	Location        pulumi.StringPtrInput
+	// Language of the model.
+	LanguageCode pulumi.StringPtrInput
+	Location     pulumi.StringPtrInput
+	// Type of the model.
+	ModelType IssueModelModelTypePtrInput
 	// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
@@ -174,8 +186,18 @@ func (o IssueModelOutput) IssueCount() pulumi.StringOutput {
 	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.IssueCount }).(pulumi.StringOutput)
 }
 
+// Language of the model.
+func (o IssueModelOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
 func (o IssueModelOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Type of the model.
+func (o IssueModelOutput) ModelType() pulumi.StringOutput {
+	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.ModelType }).(pulumi.StringOutput)
 }
 
 // Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}

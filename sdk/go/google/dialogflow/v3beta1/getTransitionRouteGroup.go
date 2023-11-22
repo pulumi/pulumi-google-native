@@ -35,7 +35,7 @@ type LookupTransitionRouteGroupArgs struct {
 type LookupTransitionRouteGroupResult struct {
 	// The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
 	DisplayName string `pulumi:"displayName"`
-	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 	Name string `pulumi:"name"`
 	// Transition routes associated with the TransitionRouteGroup.
 	TransitionRoutes []GoogleCloudDialogflowCxV3beta1TransitionRouteResponse `pulumi:"transitionRoutes"`
@@ -92,7 +92,7 @@ func (o LookupTransitionRouteGroupResultOutput) DisplayName() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupTransitionRouteGroupResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
 func (o LookupTransitionRouteGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransitionRouteGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }

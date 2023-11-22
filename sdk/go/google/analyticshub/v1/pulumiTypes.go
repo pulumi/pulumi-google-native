@@ -945,6 +945,346 @@ func (o DataProviderResponseOutput) PrimaryContact() pulumi.StringOutput {
 	return o.ApplyT(func(v DataProviderResponse) string { return v.PrimaryContact }).(pulumi.StringOutput)
 }
 
+// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+type DcrExchangeConfig struct {
+}
+
+// DcrExchangeConfigInput is an input type that accepts DcrExchangeConfigArgs and DcrExchangeConfigOutput values.
+// You can construct a concrete instance of `DcrExchangeConfigInput` via:
+//
+//	DcrExchangeConfigArgs{...}
+type DcrExchangeConfigInput interface {
+	pulumi.Input
+
+	ToDcrExchangeConfigOutput() DcrExchangeConfigOutput
+	ToDcrExchangeConfigOutputWithContext(context.Context) DcrExchangeConfigOutput
+}
+
+// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+type DcrExchangeConfigArgs struct {
+}
+
+func (DcrExchangeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DcrExchangeConfig)(nil)).Elem()
+}
+
+func (i DcrExchangeConfigArgs) ToDcrExchangeConfigOutput() DcrExchangeConfigOutput {
+	return i.ToDcrExchangeConfigOutputWithContext(context.Background())
+}
+
+func (i DcrExchangeConfigArgs) ToDcrExchangeConfigOutputWithContext(ctx context.Context) DcrExchangeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DcrExchangeConfigOutput)
+}
+
+func (i DcrExchangeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DcrExchangeConfig] {
+	return pulumix.Output[DcrExchangeConfig]{
+		OutputState: i.ToDcrExchangeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DcrExchangeConfigArgs) ToDcrExchangeConfigPtrOutput() DcrExchangeConfigPtrOutput {
+	return i.ToDcrExchangeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DcrExchangeConfigArgs) ToDcrExchangeConfigPtrOutputWithContext(ctx context.Context) DcrExchangeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DcrExchangeConfigOutput).ToDcrExchangeConfigPtrOutputWithContext(ctx)
+}
+
+// DcrExchangeConfigPtrInput is an input type that accepts DcrExchangeConfigArgs, DcrExchangeConfigPtr and DcrExchangeConfigPtrOutput values.
+// You can construct a concrete instance of `DcrExchangeConfigPtrInput` via:
+//
+//	        DcrExchangeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DcrExchangeConfigPtrInput interface {
+	pulumi.Input
+
+	ToDcrExchangeConfigPtrOutput() DcrExchangeConfigPtrOutput
+	ToDcrExchangeConfigPtrOutputWithContext(context.Context) DcrExchangeConfigPtrOutput
+}
+
+type dcrExchangeConfigPtrType DcrExchangeConfigArgs
+
+func DcrExchangeConfigPtr(v *DcrExchangeConfigArgs) DcrExchangeConfigPtrInput {
+	return (*dcrExchangeConfigPtrType)(v)
+}
+
+func (*dcrExchangeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DcrExchangeConfig)(nil)).Elem()
+}
+
+func (i *dcrExchangeConfigPtrType) ToDcrExchangeConfigPtrOutput() DcrExchangeConfigPtrOutput {
+	return i.ToDcrExchangeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dcrExchangeConfigPtrType) ToDcrExchangeConfigPtrOutputWithContext(ctx context.Context) DcrExchangeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DcrExchangeConfigPtrOutput)
+}
+
+func (i *dcrExchangeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DcrExchangeConfig] {
+	return pulumix.Output[*DcrExchangeConfig]{
+		OutputState: i.ToDcrExchangeConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+type DcrExchangeConfigOutput struct{ *pulumi.OutputState }
+
+func (DcrExchangeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DcrExchangeConfig)(nil)).Elem()
+}
+
+func (o DcrExchangeConfigOutput) ToDcrExchangeConfigOutput() DcrExchangeConfigOutput {
+	return o
+}
+
+func (o DcrExchangeConfigOutput) ToDcrExchangeConfigOutputWithContext(ctx context.Context) DcrExchangeConfigOutput {
+	return o
+}
+
+func (o DcrExchangeConfigOutput) ToDcrExchangeConfigPtrOutput() DcrExchangeConfigPtrOutput {
+	return o.ToDcrExchangeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DcrExchangeConfigOutput) ToDcrExchangeConfigPtrOutputWithContext(ctx context.Context) DcrExchangeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DcrExchangeConfig) *DcrExchangeConfig {
+		return &v
+	}).(DcrExchangeConfigPtrOutput)
+}
+
+func (o DcrExchangeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DcrExchangeConfig] {
+	return pulumix.Output[DcrExchangeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+type DcrExchangeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DcrExchangeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DcrExchangeConfig)(nil)).Elem()
+}
+
+func (o DcrExchangeConfigPtrOutput) ToDcrExchangeConfigPtrOutput() DcrExchangeConfigPtrOutput {
+	return o
+}
+
+func (o DcrExchangeConfigPtrOutput) ToDcrExchangeConfigPtrOutputWithContext(ctx context.Context) DcrExchangeConfigPtrOutput {
+	return o
+}
+
+func (o DcrExchangeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DcrExchangeConfig] {
+	return pulumix.Output[*DcrExchangeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DcrExchangeConfigPtrOutput) Elem() DcrExchangeConfigOutput {
+	return o.ApplyT(func(v *DcrExchangeConfig) DcrExchangeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DcrExchangeConfig
+		return ret
+	}).(DcrExchangeConfigOutput)
+}
+
+// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+type DcrExchangeConfigResponse struct {
+}
+
+// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+type DcrExchangeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DcrExchangeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DcrExchangeConfigResponse)(nil)).Elem()
+}
+
+func (o DcrExchangeConfigResponseOutput) ToDcrExchangeConfigResponseOutput() DcrExchangeConfigResponseOutput {
+	return o
+}
+
+func (o DcrExchangeConfigResponseOutput) ToDcrExchangeConfigResponseOutputWithContext(ctx context.Context) DcrExchangeConfigResponseOutput {
+	return o
+}
+
+func (o DcrExchangeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DcrExchangeConfigResponse] {
+	return pulumix.Output[DcrExchangeConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Default Analytics Hub data exchange, used for secured data sharing.
+type DefaultExchangeConfig struct {
+}
+
+// DefaultExchangeConfigInput is an input type that accepts DefaultExchangeConfigArgs and DefaultExchangeConfigOutput values.
+// You can construct a concrete instance of `DefaultExchangeConfigInput` via:
+//
+//	DefaultExchangeConfigArgs{...}
+type DefaultExchangeConfigInput interface {
+	pulumi.Input
+
+	ToDefaultExchangeConfigOutput() DefaultExchangeConfigOutput
+	ToDefaultExchangeConfigOutputWithContext(context.Context) DefaultExchangeConfigOutput
+}
+
+// Default Analytics Hub data exchange, used for secured data sharing.
+type DefaultExchangeConfigArgs struct {
+}
+
+func (DefaultExchangeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultExchangeConfig)(nil)).Elem()
+}
+
+func (i DefaultExchangeConfigArgs) ToDefaultExchangeConfigOutput() DefaultExchangeConfigOutput {
+	return i.ToDefaultExchangeConfigOutputWithContext(context.Background())
+}
+
+func (i DefaultExchangeConfigArgs) ToDefaultExchangeConfigOutputWithContext(ctx context.Context) DefaultExchangeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultExchangeConfigOutput)
+}
+
+func (i DefaultExchangeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DefaultExchangeConfig] {
+	return pulumix.Output[DefaultExchangeConfig]{
+		OutputState: i.ToDefaultExchangeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i DefaultExchangeConfigArgs) ToDefaultExchangeConfigPtrOutput() DefaultExchangeConfigPtrOutput {
+	return i.ToDefaultExchangeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultExchangeConfigArgs) ToDefaultExchangeConfigPtrOutputWithContext(ctx context.Context) DefaultExchangeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultExchangeConfigOutput).ToDefaultExchangeConfigPtrOutputWithContext(ctx)
+}
+
+// DefaultExchangeConfigPtrInput is an input type that accepts DefaultExchangeConfigArgs, DefaultExchangeConfigPtr and DefaultExchangeConfigPtrOutput values.
+// You can construct a concrete instance of `DefaultExchangeConfigPtrInput` via:
+//
+//	        DefaultExchangeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultExchangeConfigPtrInput interface {
+	pulumi.Input
+
+	ToDefaultExchangeConfigPtrOutput() DefaultExchangeConfigPtrOutput
+	ToDefaultExchangeConfigPtrOutputWithContext(context.Context) DefaultExchangeConfigPtrOutput
+}
+
+type defaultExchangeConfigPtrType DefaultExchangeConfigArgs
+
+func DefaultExchangeConfigPtr(v *DefaultExchangeConfigArgs) DefaultExchangeConfigPtrInput {
+	return (*defaultExchangeConfigPtrType)(v)
+}
+
+func (*defaultExchangeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultExchangeConfig)(nil)).Elem()
+}
+
+func (i *defaultExchangeConfigPtrType) ToDefaultExchangeConfigPtrOutput() DefaultExchangeConfigPtrOutput {
+	return i.ToDefaultExchangeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultExchangeConfigPtrType) ToDefaultExchangeConfigPtrOutputWithContext(ctx context.Context) DefaultExchangeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultExchangeConfigPtrOutput)
+}
+
+func (i *defaultExchangeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DefaultExchangeConfig] {
+	return pulumix.Output[*DefaultExchangeConfig]{
+		OutputState: i.ToDefaultExchangeConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Default Analytics Hub data exchange, used for secured data sharing.
+type DefaultExchangeConfigOutput struct{ *pulumi.OutputState }
+
+func (DefaultExchangeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultExchangeConfig)(nil)).Elem()
+}
+
+func (o DefaultExchangeConfigOutput) ToDefaultExchangeConfigOutput() DefaultExchangeConfigOutput {
+	return o
+}
+
+func (o DefaultExchangeConfigOutput) ToDefaultExchangeConfigOutputWithContext(ctx context.Context) DefaultExchangeConfigOutput {
+	return o
+}
+
+func (o DefaultExchangeConfigOutput) ToDefaultExchangeConfigPtrOutput() DefaultExchangeConfigPtrOutput {
+	return o.ToDefaultExchangeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultExchangeConfigOutput) ToDefaultExchangeConfigPtrOutputWithContext(ctx context.Context) DefaultExchangeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultExchangeConfig) *DefaultExchangeConfig {
+		return &v
+	}).(DefaultExchangeConfigPtrOutput)
+}
+
+func (o DefaultExchangeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultExchangeConfig] {
+	return pulumix.Output[DefaultExchangeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+type DefaultExchangeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultExchangeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultExchangeConfig)(nil)).Elem()
+}
+
+func (o DefaultExchangeConfigPtrOutput) ToDefaultExchangeConfigPtrOutput() DefaultExchangeConfigPtrOutput {
+	return o
+}
+
+func (o DefaultExchangeConfigPtrOutput) ToDefaultExchangeConfigPtrOutputWithContext(ctx context.Context) DefaultExchangeConfigPtrOutput {
+	return o
+}
+
+func (o DefaultExchangeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultExchangeConfig] {
+	return pulumix.Output[*DefaultExchangeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DefaultExchangeConfigPtrOutput) Elem() DefaultExchangeConfigOutput {
+	return o.ApplyT(func(v *DefaultExchangeConfig) DefaultExchangeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultExchangeConfig
+		return ret
+	}).(DefaultExchangeConfigOutput)
+}
+
+// Default Analytics Hub data exchange, used for secured data sharing.
+type DefaultExchangeConfigResponse struct {
+}
+
+// Default Analytics Hub data exchange, used for secured data sharing.
+type DefaultExchangeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DefaultExchangeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultExchangeConfigResponse)(nil)).Elem()
+}
+
+func (o DefaultExchangeConfigResponseOutput) ToDefaultExchangeConfigResponseOutput() DefaultExchangeConfigResponseOutput {
+	return o
+}
+
+func (o DefaultExchangeConfigResponseOutput) ToDefaultExchangeConfigResponseOutputWithContext(ctx context.Context) DefaultExchangeConfigResponseOutput {
+	return o
+}
+
+func (o DefaultExchangeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultExchangeConfigResponse] {
+	return pulumix.Output[DefaultExchangeConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1441,6 +1781,457 @@ func (o PublisherResponseOutput) PrimaryContact() pulumi.StringOutput {
 	return o.ApplyT(func(v PublisherResponse) string { return v.PrimaryContact }).(pulumi.StringOutput)
 }
 
+// Restricted export config, used to configure restricted export on linked dataset.
+type RestrictedExportConfig struct {
+	// Optional. If true, enable restricted export.
+	Enabled *bool `pulumi:"enabled"`
+	// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+	RestrictQueryResult *bool `pulumi:"restrictQueryResult"`
+}
+
+// RestrictedExportConfigInput is an input type that accepts RestrictedExportConfigArgs and RestrictedExportConfigOutput values.
+// You can construct a concrete instance of `RestrictedExportConfigInput` via:
+//
+//	RestrictedExportConfigArgs{...}
+type RestrictedExportConfigInput interface {
+	pulumi.Input
+
+	ToRestrictedExportConfigOutput() RestrictedExportConfigOutput
+	ToRestrictedExportConfigOutputWithContext(context.Context) RestrictedExportConfigOutput
+}
+
+// Restricted export config, used to configure restricted export on linked dataset.
+type RestrictedExportConfigArgs struct {
+	// Optional. If true, enable restricted export.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+	RestrictQueryResult pulumi.BoolPtrInput `pulumi:"restrictQueryResult"`
+}
+
+func (RestrictedExportConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestrictedExportConfig)(nil)).Elem()
+}
+
+func (i RestrictedExportConfigArgs) ToRestrictedExportConfigOutput() RestrictedExportConfigOutput {
+	return i.ToRestrictedExportConfigOutputWithContext(context.Background())
+}
+
+func (i RestrictedExportConfigArgs) ToRestrictedExportConfigOutputWithContext(ctx context.Context) RestrictedExportConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestrictedExportConfigOutput)
+}
+
+func (i RestrictedExportConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RestrictedExportConfig] {
+	return pulumix.Output[RestrictedExportConfig]{
+		OutputState: i.ToRestrictedExportConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RestrictedExportConfigArgs) ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput {
+	return i.ToRestrictedExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RestrictedExportConfigArgs) ToRestrictedExportConfigPtrOutputWithContext(ctx context.Context) RestrictedExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestrictedExportConfigOutput).ToRestrictedExportConfigPtrOutputWithContext(ctx)
+}
+
+// RestrictedExportConfigPtrInput is an input type that accepts RestrictedExportConfigArgs, RestrictedExportConfigPtr and RestrictedExportConfigPtrOutput values.
+// You can construct a concrete instance of `RestrictedExportConfigPtrInput` via:
+//
+//	        RestrictedExportConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestrictedExportConfigPtrInput interface {
+	pulumi.Input
+
+	ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput
+	ToRestrictedExportConfigPtrOutputWithContext(context.Context) RestrictedExportConfigPtrOutput
+}
+
+type restrictedExportConfigPtrType RestrictedExportConfigArgs
+
+func RestrictedExportConfigPtr(v *RestrictedExportConfigArgs) RestrictedExportConfigPtrInput {
+	return (*restrictedExportConfigPtrType)(v)
+}
+
+func (*restrictedExportConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestrictedExportConfig)(nil)).Elem()
+}
+
+func (i *restrictedExportConfigPtrType) ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput {
+	return i.ToRestrictedExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *restrictedExportConfigPtrType) ToRestrictedExportConfigPtrOutputWithContext(ctx context.Context) RestrictedExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestrictedExportConfigPtrOutput)
+}
+
+func (i *restrictedExportConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestrictedExportConfig] {
+	return pulumix.Output[*RestrictedExportConfig]{
+		OutputState: i.ToRestrictedExportConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Restricted export config, used to configure restricted export on linked dataset.
+type RestrictedExportConfigOutput struct{ *pulumi.OutputState }
+
+func (RestrictedExportConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestrictedExportConfig)(nil)).Elem()
+}
+
+func (o RestrictedExportConfigOutput) ToRestrictedExportConfigOutput() RestrictedExportConfigOutput {
+	return o
+}
+
+func (o RestrictedExportConfigOutput) ToRestrictedExportConfigOutputWithContext(ctx context.Context) RestrictedExportConfigOutput {
+	return o
+}
+
+func (o RestrictedExportConfigOutput) ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput {
+	return o.ToRestrictedExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RestrictedExportConfigOutput) ToRestrictedExportConfigPtrOutputWithContext(ctx context.Context) RestrictedExportConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestrictedExportConfig) *RestrictedExportConfig {
+		return &v
+	}).(RestrictedExportConfigPtrOutput)
+}
+
+func (o RestrictedExportConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RestrictedExportConfig] {
+	return pulumix.Output[RestrictedExportConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. If true, enable restricted export.
+func (o RestrictedExportConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestrictedExportConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+func (o RestrictedExportConfigOutput) RestrictQueryResult() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestrictedExportConfig) *bool { return v.RestrictQueryResult }).(pulumi.BoolPtrOutput)
+}
+
+type RestrictedExportConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RestrictedExportConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestrictedExportConfig)(nil)).Elem()
+}
+
+func (o RestrictedExportConfigPtrOutput) ToRestrictedExportConfigPtrOutput() RestrictedExportConfigPtrOutput {
+	return o
+}
+
+func (o RestrictedExportConfigPtrOutput) ToRestrictedExportConfigPtrOutputWithContext(ctx context.Context) RestrictedExportConfigPtrOutput {
+	return o
+}
+
+func (o RestrictedExportConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestrictedExportConfig] {
+	return pulumix.Output[*RestrictedExportConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestrictedExportConfigPtrOutput) Elem() RestrictedExportConfigOutput {
+	return o.ApplyT(func(v *RestrictedExportConfig) RestrictedExportConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RestrictedExportConfig
+		return ret
+	}).(RestrictedExportConfigOutput)
+}
+
+// Optional. If true, enable restricted export.
+func (o RestrictedExportConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestrictedExportConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+func (o RestrictedExportConfigPtrOutput) RestrictQueryResult() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestrictedExportConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictQueryResult
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Restricted export config, used to configure restricted export on linked dataset.
+type RestrictedExportConfigResponse struct {
+	// Optional. If true, enable restricted export.
+	Enabled bool `pulumi:"enabled"`
+	// If true, restrict direct table access(read api/tabledata.list) on linked table.
+	RestrictDirectTableAccess bool `pulumi:"restrictDirectTableAccess"`
+	// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+	RestrictQueryResult bool `pulumi:"restrictQueryResult"`
+}
+
+// Restricted export config, used to configure restricted export on linked dataset.
+type RestrictedExportConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RestrictedExportConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestrictedExportConfigResponse)(nil)).Elem()
+}
+
+func (o RestrictedExportConfigResponseOutput) ToRestrictedExportConfigResponseOutput() RestrictedExportConfigResponseOutput {
+	return o
+}
+
+func (o RestrictedExportConfigResponseOutput) ToRestrictedExportConfigResponseOutputWithContext(ctx context.Context) RestrictedExportConfigResponseOutput {
+	return o
+}
+
+func (o RestrictedExportConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestrictedExportConfigResponse] {
+	return pulumix.Output[RestrictedExportConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. If true, enable restricted export.
+func (o RestrictedExportConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v RestrictedExportConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// If true, restrict direct table access(read api/tabledata.list) on linked table.
+func (o RestrictedExportConfigResponseOutput) RestrictDirectTableAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v RestrictedExportConfigResponse) bool { return v.RestrictDirectTableAccess }).(pulumi.BoolOutput)
+}
+
+// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+func (o RestrictedExportConfigResponseOutput) RestrictQueryResult() pulumi.BoolOutput {
+	return o.ApplyT(func(v RestrictedExportConfigResponse) bool { return v.RestrictQueryResult }).(pulumi.BoolOutput)
+}
+
+// Sharing environment is a behavior model for sharing data within a data exchange. This option is configurable for a data exchange.
+type SharingEnvironmentConfig struct {
+	// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+	DcrExchangeConfig *DcrExchangeConfig `pulumi:"dcrExchangeConfig"`
+	// Default Analytics Hub data exchange, used for secured data sharing.
+	DefaultExchangeConfig *DefaultExchangeConfig `pulumi:"defaultExchangeConfig"`
+}
+
+// SharingEnvironmentConfigInput is an input type that accepts SharingEnvironmentConfigArgs and SharingEnvironmentConfigOutput values.
+// You can construct a concrete instance of `SharingEnvironmentConfigInput` via:
+//
+//	SharingEnvironmentConfigArgs{...}
+type SharingEnvironmentConfigInput interface {
+	pulumi.Input
+
+	ToSharingEnvironmentConfigOutput() SharingEnvironmentConfigOutput
+	ToSharingEnvironmentConfigOutputWithContext(context.Context) SharingEnvironmentConfigOutput
+}
+
+// Sharing environment is a behavior model for sharing data within a data exchange. This option is configurable for a data exchange.
+type SharingEnvironmentConfigArgs struct {
+	// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+	DcrExchangeConfig DcrExchangeConfigPtrInput `pulumi:"dcrExchangeConfig"`
+	// Default Analytics Hub data exchange, used for secured data sharing.
+	DefaultExchangeConfig DefaultExchangeConfigPtrInput `pulumi:"defaultExchangeConfig"`
+}
+
+func (SharingEnvironmentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharingEnvironmentConfig)(nil)).Elem()
+}
+
+func (i SharingEnvironmentConfigArgs) ToSharingEnvironmentConfigOutput() SharingEnvironmentConfigOutput {
+	return i.ToSharingEnvironmentConfigOutputWithContext(context.Background())
+}
+
+func (i SharingEnvironmentConfigArgs) ToSharingEnvironmentConfigOutputWithContext(ctx context.Context) SharingEnvironmentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharingEnvironmentConfigOutput)
+}
+
+func (i SharingEnvironmentConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SharingEnvironmentConfig] {
+	return pulumix.Output[SharingEnvironmentConfig]{
+		OutputState: i.ToSharingEnvironmentConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SharingEnvironmentConfigArgs) ToSharingEnvironmentConfigPtrOutput() SharingEnvironmentConfigPtrOutput {
+	return i.ToSharingEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SharingEnvironmentConfigArgs) ToSharingEnvironmentConfigPtrOutputWithContext(ctx context.Context) SharingEnvironmentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharingEnvironmentConfigOutput).ToSharingEnvironmentConfigPtrOutputWithContext(ctx)
+}
+
+// SharingEnvironmentConfigPtrInput is an input type that accepts SharingEnvironmentConfigArgs, SharingEnvironmentConfigPtr and SharingEnvironmentConfigPtrOutput values.
+// You can construct a concrete instance of `SharingEnvironmentConfigPtrInput` via:
+//
+//	        SharingEnvironmentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SharingEnvironmentConfigPtrInput interface {
+	pulumi.Input
+
+	ToSharingEnvironmentConfigPtrOutput() SharingEnvironmentConfigPtrOutput
+	ToSharingEnvironmentConfigPtrOutputWithContext(context.Context) SharingEnvironmentConfigPtrOutput
+}
+
+type sharingEnvironmentConfigPtrType SharingEnvironmentConfigArgs
+
+func SharingEnvironmentConfigPtr(v *SharingEnvironmentConfigArgs) SharingEnvironmentConfigPtrInput {
+	return (*sharingEnvironmentConfigPtrType)(v)
+}
+
+func (*sharingEnvironmentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharingEnvironmentConfig)(nil)).Elem()
+}
+
+func (i *sharingEnvironmentConfigPtrType) ToSharingEnvironmentConfigPtrOutput() SharingEnvironmentConfigPtrOutput {
+	return i.ToSharingEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sharingEnvironmentConfigPtrType) ToSharingEnvironmentConfigPtrOutputWithContext(ctx context.Context) SharingEnvironmentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharingEnvironmentConfigPtrOutput)
+}
+
+func (i *sharingEnvironmentConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SharingEnvironmentConfig] {
+	return pulumix.Output[*SharingEnvironmentConfig]{
+		OutputState: i.ToSharingEnvironmentConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Sharing environment is a behavior model for sharing data within a data exchange. This option is configurable for a data exchange.
+type SharingEnvironmentConfigOutput struct{ *pulumi.OutputState }
+
+func (SharingEnvironmentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharingEnvironmentConfig)(nil)).Elem()
+}
+
+func (o SharingEnvironmentConfigOutput) ToSharingEnvironmentConfigOutput() SharingEnvironmentConfigOutput {
+	return o
+}
+
+func (o SharingEnvironmentConfigOutput) ToSharingEnvironmentConfigOutputWithContext(ctx context.Context) SharingEnvironmentConfigOutput {
+	return o
+}
+
+func (o SharingEnvironmentConfigOutput) ToSharingEnvironmentConfigPtrOutput() SharingEnvironmentConfigPtrOutput {
+	return o.ToSharingEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SharingEnvironmentConfigOutput) ToSharingEnvironmentConfigPtrOutputWithContext(ctx context.Context) SharingEnvironmentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SharingEnvironmentConfig) *SharingEnvironmentConfig {
+		return &v
+	}).(SharingEnvironmentConfigPtrOutput)
+}
+
+func (o SharingEnvironmentConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SharingEnvironmentConfig] {
+	return pulumix.Output[SharingEnvironmentConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+func (o SharingEnvironmentConfigOutput) DcrExchangeConfig() DcrExchangeConfigPtrOutput {
+	return o.ApplyT(func(v SharingEnvironmentConfig) *DcrExchangeConfig { return v.DcrExchangeConfig }).(DcrExchangeConfigPtrOutput)
+}
+
+// Default Analytics Hub data exchange, used for secured data sharing.
+func (o SharingEnvironmentConfigOutput) DefaultExchangeConfig() DefaultExchangeConfigPtrOutput {
+	return o.ApplyT(func(v SharingEnvironmentConfig) *DefaultExchangeConfig { return v.DefaultExchangeConfig }).(DefaultExchangeConfigPtrOutput)
+}
+
+type SharingEnvironmentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SharingEnvironmentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharingEnvironmentConfig)(nil)).Elem()
+}
+
+func (o SharingEnvironmentConfigPtrOutput) ToSharingEnvironmentConfigPtrOutput() SharingEnvironmentConfigPtrOutput {
+	return o
+}
+
+func (o SharingEnvironmentConfigPtrOutput) ToSharingEnvironmentConfigPtrOutputWithContext(ctx context.Context) SharingEnvironmentConfigPtrOutput {
+	return o
+}
+
+func (o SharingEnvironmentConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SharingEnvironmentConfig] {
+	return pulumix.Output[*SharingEnvironmentConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SharingEnvironmentConfigPtrOutput) Elem() SharingEnvironmentConfigOutput {
+	return o.ApplyT(func(v *SharingEnvironmentConfig) SharingEnvironmentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SharingEnvironmentConfig
+		return ret
+	}).(SharingEnvironmentConfigOutput)
+}
+
+// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+func (o SharingEnvironmentConfigPtrOutput) DcrExchangeConfig() DcrExchangeConfigPtrOutput {
+	return o.ApplyT(func(v *SharingEnvironmentConfig) *DcrExchangeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DcrExchangeConfig
+	}).(DcrExchangeConfigPtrOutput)
+}
+
+// Default Analytics Hub data exchange, used for secured data sharing.
+func (o SharingEnvironmentConfigPtrOutput) DefaultExchangeConfig() DefaultExchangeConfigPtrOutput {
+	return o.ApplyT(func(v *SharingEnvironmentConfig) *DefaultExchangeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultExchangeConfig
+	}).(DefaultExchangeConfigPtrOutput)
+}
+
+// Sharing environment is a behavior model for sharing data within a data exchange. This option is configurable for a data exchange.
+type SharingEnvironmentConfigResponse struct {
+	// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+	DcrExchangeConfig DcrExchangeConfigResponse `pulumi:"dcrExchangeConfig"`
+	// Default Analytics Hub data exchange, used for secured data sharing.
+	DefaultExchangeConfig DefaultExchangeConfigResponse `pulumi:"defaultExchangeConfig"`
+}
+
+// Sharing environment is a behavior model for sharing data within a data exchange. This option is configurable for a data exchange.
+type SharingEnvironmentConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SharingEnvironmentConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharingEnvironmentConfigResponse)(nil)).Elem()
+}
+
+func (o SharingEnvironmentConfigResponseOutput) ToSharingEnvironmentConfigResponseOutput() SharingEnvironmentConfigResponseOutput {
+	return o
+}
+
+func (o SharingEnvironmentConfigResponseOutput) ToSharingEnvironmentConfigResponseOutputWithContext(ctx context.Context) SharingEnvironmentConfigResponseOutput {
+	return o
+}
+
+func (o SharingEnvironmentConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SharingEnvironmentConfigResponse] {
+	return pulumix.Output[SharingEnvironmentConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+func (o SharingEnvironmentConfigResponseOutput) DcrExchangeConfig() DcrExchangeConfigResponseOutput {
+	return o.ApplyT(func(v SharingEnvironmentConfigResponse) DcrExchangeConfigResponse { return v.DcrExchangeConfig }).(DcrExchangeConfigResponseOutput)
+}
+
+// Default Analytics Hub data exchange, used for secured data sharing.
+func (o SharingEnvironmentConfigResponseOutput) DefaultExchangeConfig() DefaultExchangeConfigResponseOutput {
+	return o.ApplyT(func(v SharingEnvironmentConfigResponse) DefaultExchangeConfigResponse { return v.DefaultExchangeConfig }).(DefaultExchangeConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
@@ -1451,10 +2242,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProviderInput)(nil)).Elem(), DataProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProviderPtrInput)(nil)).Elem(), DataProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DcrExchangeConfigInput)(nil)).Elem(), DcrExchangeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DcrExchangeConfigPtrInput)(nil)).Elem(), DcrExchangeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultExchangeConfigInput)(nil)).Elem(), DefaultExchangeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultExchangeConfigPtrInput)(nil)).Elem(), DefaultExchangeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublisherInput)(nil)).Elem(), PublisherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublisherPtrInput)(nil)).Elem(), PublisherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestrictedExportConfigInput)(nil)).Elem(), RestrictedExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestrictedExportConfigPtrInput)(nil)).Elem(), RestrictedExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SharingEnvironmentConfigInput)(nil)).Elem(), SharingEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SharingEnvironmentConfigPtrInput)(nil)).Elem(), SharingEnvironmentConfigArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -1472,10 +2271,22 @@ func init() {
 	pulumi.RegisterOutputType(DataProviderOutput{})
 	pulumi.RegisterOutputType(DataProviderPtrOutput{})
 	pulumi.RegisterOutputType(DataProviderResponseOutput{})
+	pulumi.RegisterOutputType(DcrExchangeConfigOutput{})
+	pulumi.RegisterOutputType(DcrExchangeConfigPtrOutput{})
+	pulumi.RegisterOutputType(DcrExchangeConfigResponseOutput{})
+	pulumi.RegisterOutputType(DefaultExchangeConfigOutput{})
+	pulumi.RegisterOutputType(DefaultExchangeConfigPtrOutput{})
+	pulumi.RegisterOutputType(DefaultExchangeConfigResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(PublisherOutput{})
 	pulumi.RegisterOutputType(PublisherPtrOutput{})
 	pulumi.RegisterOutputType(PublisherResponseOutput{})
+	pulumi.RegisterOutputType(RestrictedExportConfigOutput{})
+	pulumi.RegisterOutputType(RestrictedExportConfigPtrOutput{})
+	pulumi.RegisterOutputType(RestrictedExportConfigResponseOutput{})
+	pulumi.RegisterOutputType(SharingEnvironmentConfigOutput{})
+	pulumi.RegisterOutputType(SharingEnvironmentConfigPtrOutput{})
+	pulumi.RegisterOutputType(SharingEnvironmentConfigResponseOutput{})
 }

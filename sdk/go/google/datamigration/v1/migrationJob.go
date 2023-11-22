@@ -48,10 +48,12 @@ type MigrationJob struct {
 	MigrationJobId pulumi.StringOutput `pulumi:"migrationJobId"`
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+	PerformanceConfig PerformanceConfigResponseOutput `pulumi:"performanceConfig"`
 	// The current migration job phase.
 	Phase   pulumi.StringOutput `pulumi:"phase"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityResponseOutput `pulumi:"reverseSshConnectivity"`
@@ -151,9 +153,11 @@ type migrationJobArgs struct {
 	// Required. The ID of the instance to create.
 	MigrationJobId string `pulumi:"migrationJobId"`
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
-	// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	Name *string `pulumi:"name"`
+	// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+	PerformanceConfig *PerformanceConfig `pulumi:"performanceConfig"`
+	Project           *string            `pulumi:"project"`
+	// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId *string `pulumi:"requestId"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity *ReverseSshConnectivity `pulumi:"reverseSshConnectivity"`
@@ -195,9 +199,11 @@ type MigrationJobArgs struct {
 	// Required. The ID of the instance to create.
 	MigrationJobId pulumi.StringInput
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
-	// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	Name pulumi.StringPtrInput
+	// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+	PerformanceConfig PerformanceConfigPtrInput
+	Project           pulumi.StringPtrInput
+	// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrInput
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityPtrInput
@@ -343,6 +349,11 @@ func (o MigrationJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+func (o MigrationJobOutput) PerformanceConfig() PerformanceConfigResponseOutput {
+	return o.ApplyT(func(v *MigrationJob) PerformanceConfigResponseOutput { return v.PerformanceConfig }).(PerformanceConfigResponseOutput)
+}
+
 // The current migration job phase.
 func (o MigrationJobOutput) Phase() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Phase }).(pulumi.StringOutput)
@@ -352,7 +363,7 @@ func (o MigrationJobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 func (o MigrationJobOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }

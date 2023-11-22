@@ -200,15 +200,15 @@ func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 type GceRegionalPersistentDiskReclaimPolicy string
 
 const (
 	// Do not use.
 	GceRegionalPersistentDiskReclaimPolicyReclaimPolicyUnspecified = GceRegionalPersistentDiskReclaimPolicy("RECLAIM_POLICY_UNSPECIFIED")
-	// The persistent disk will be deleted with the workstation.
+	// Delete the persistent disk when deleting the workstation.
 	GceRegionalPersistentDiskReclaimPolicyDelete = GceRegionalPersistentDiskReclaimPolicy("DELETE")
-	// The persistent disk will be remain after the workstation is deleted, and the administrator must manually delete the disk.
+	// Keep the persistent disk when deleting the workstation. An administrator must manually delete the disk.
 	GceRegionalPersistentDiskReclaimPolicyRetain = GceRegionalPersistentDiskReclaimPolicy("RETAIN")
 )
 

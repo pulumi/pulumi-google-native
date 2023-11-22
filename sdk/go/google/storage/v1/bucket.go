@@ -30,6 +30,8 @@ type Bucket struct {
 	DefaultEventBasedHold pulumi.BoolOutput `pulumi:"defaultEventBasedHold"`
 	// Default access controls to apply to new objects when no ACL is provided.
 	DefaultObjectAcl ObjectAccessControlResponseArrayOutput `pulumi:"defaultObjectAcl"`
+	// When set to true, object retention is enabled for this bucket.
+	EnableObjectRetention pulumi.BoolPtrOutput `pulumi:"enableObjectRetention"`
 	// Encryption configuration for a bucket.
 	Encryption BucketEncryptionResponseOutput `pulumi:"encryption"`
 	// HTTP 1.1 Entity tag for the bucket.
@@ -52,6 +54,8 @@ type Bucket struct {
 	Metageneration pulumi.StringOutput `pulumi:"metageneration"`
 	// The name of the bucket.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The bucket's object retention config.
+	ObjectRetention BucketObjectRetentionResponseOutput `pulumi:"objectRetention"`
 	// The owner of the bucket. This is always the project team's owner group.
 	Owner BucketOwnerResponseOutput `pulumi:"owner"`
 	// Apply a predefined set of access controls to this bucket.
@@ -72,6 +76,8 @@ type Bucket struct {
 	SatisfiesPZS pulumi.BoolOutput `pulumi:"satisfiesPZS"`
 	// The URI of this bucket.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+	SoftDeletePolicy BucketSoftDeletePolicyResponseOutput `pulumi:"softDeletePolicy"`
 	// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
 	StorageClass pulumi.StringOutput `pulumi:"storageClass"`
 	// The creation time of the bucket in RFC 3339 format.
@@ -144,6 +150,8 @@ type bucketArgs struct {
 	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
 	// Default access controls to apply to new objects when no ACL is provided.
 	DefaultObjectAcl []ObjectAccessControlType `pulumi:"defaultObjectAcl"`
+	// When set to true, object retention is enabled for this bucket.
+	EnableObjectRetention *bool `pulumi:"enableObjectRetention"`
 	// Encryption configuration for a bucket.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// HTTP 1.1 Entity tag for the bucket.
@@ -168,6 +176,8 @@ type bucketArgs struct {
 	Metageneration *string `pulumi:"metageneration"`
 	// The name of the bucket.
 	Name *string `pulumi:"name"`
+	// The bucket's object retention config.
+	ObjectRetention *BucketObjectRetention `pulumi:"objectRetention"`
 	// The owner of the bucket. This is always the project team's owner group.
 	Owner *BucketOwner `pulumi:"owner"`
 	// Apply a predefined set of access controls to this bucket.
@@ -188,6 +198,8 @@ type bucketArgs struct {
 	SatisfiesPZS *bool `pulumi:"satisfiesPZS"`
 	// The URI of this bucket.
 	SelfLink *string `pulumi:"selfLink"`
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+	SoftDeletePolicy *BucketSoftDeletePolicy `pulumi:"softDeletePolicy"`
 	// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
 	StorageClass *string `pulumi:"storageClass"`
 	// The creation time of the bucket in RFC 3339 format.
@@ -218,6 +230,8 @@ type BucketArgs struct {
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// Default access controls to apply to new objects when no ACL is provided.
 	DefaultObjectAcl ObjectAccessControlTypeArrayInput
+	// When set to true, object retention is enabled for this bucket.
+	EnableObjectRetention pulumi.BoolPtrInput
 	// Encryption configuration for a bucket.
 	Encryption BucketEncryptionPtrInput
 	// HTTP 1.1 Entity tag for the bucket.
@@ -242,6 +256,8 @@ type BucketArgs struct {
 	Metageneration pulumi.StringPtrInput
 	// The name of the bucket.
 	Name pulumi.StringPtrInput
+	// The bucket's object retention config.
+	ObjectRetention BucketObjectRetentionPtrInput
 	// The owner of the bucket. This is always the project team's owner group.
 	Owner BucketOwnerPtrInput
 	// Apply a predefined set of access controls to this bucket.
@@ -262,6 +278,8 @@ type BucketArgs struct {
 	SatisfiesPZS pulumi.BoolPtrInput
 	// The URI of this bucket.
 	SelfLink pulumi.StringPtrInput
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+	SoftDeletePolicy BucketSoftDeletePolicyPtrInput
 	// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
 	StorageClass pulumi.StringPtrInput
 	// The creation time of the bucket in RFC 3339 format.
@@ -360,6 +378,11 @@ func (o BucketOutput) DefaultObjectAcl() ObjectAccessControlResponseArrayOutput 
 	return o.ApplyT(func(v *Bucket) ObjectAccessControlResponseArrayOutput { return v.DefaultObjectAcl }).(ObjectAccessControlResponseArrayOutput)
 }
 
+// When set to true, object retention is enabled for this bucket.
+func (o BucketOutput) EnableObjectRetention() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.EnableObjectRetention }).(pulumi.BoolPtrOutput)
+}
+
 // Encryption configuration for a bucket.
 func (o BucketOutput) Encryption() BucketEncryptionResponseOutput {
 	return o.ApplyT(func(v *Bucket) BucketEncryptionResponseOutput { return v.Encryption }).(BucketEncryptionResponseOutput)
@@ -415,6 +438,11 @@ func (o BucketOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The bucket's object retention config.
+func (o BucketOutput) ObjectRetention() BucketObjectRetentionResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketObjectRetentionResponseOutput { return v.ObjectRetention }).(BucketObjectRetentionResponseOutput)
+}
+
 // The owner of the bucket. This is always the project team's owner group.
 func (o BucketOutput) Owner() BucketOwnerResponseOutput {
 	return o.ApplyT(func(v *Bucket) BucketOwnerResponseOutput { return v.Owner }).(BucketOwnerResponseOutput)
@@ -463,6 +491,11 @@ func (o BucketOutput) SatisfiesPZS() pulumi.BoolOutput {
 // The URI of this bucket.
 func (o BucketOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
+func (o BucketOutput) SoftDeletePolicy() BucketSoftDeletePolicyResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketSoftDeletePolicyResponseOutput { return v.SoftDeletePolicy }).(BucketSoftDeletePolicyResponseOutput)
 }
 
 // The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.

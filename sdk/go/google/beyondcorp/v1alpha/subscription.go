@@ -29,7 +29,7 @@ type Subscription struct {
 	// Unique resource name of the Subscription. The name is ignored when creating a subscription.
 	Name           pulumi.StringOutput `pulumi:"name"`
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// Number of seats in the subscription.
+	// Optional. Number of seats in the subscription.
 	SeatCount pulumi.StringOutput `pulumi:"seatCount"`
 	// SKU of subscription.
 	Sku pulumi.StringOutput `pulumi:"sku"`
@@ -99,6 +99,8 @@ type subscriptionArgs struct {
 	// Unique resource name of the Subscription. The name is ignored when creating a subscription.
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
+	// Optional. Number of seats in the subscription.
+	SeatCount *string `pulumi:"seatCount"`
 	// SKU of subscription.
 	Sku SubscriptionSku `pulumi:"sku"`
 	// Type of subscription.
@@ -111,6 +113,8 @@ type SubscriptionArgs struct {
 	// Unique resource name of the Subscription. The name is ignored when creating a subscription.
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
+	// Optional. Number of seats in the subscription.
+	SeatCount pulumi.StringPtrInput
 	// SKU of subscription.
 	Sku SubscriptionSkuInput
 	// Type of subscription.
@@ -194,7 +198,7 @@ func (o SubscriptionOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Number of seats in the subscription.
+// Optional. Number of seats in the subscription.
 func (o SubscriptionOutput) SeatCount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.SeatCount }).(pulumi.StringOutput)
 }

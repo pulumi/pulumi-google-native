@@ -20,6 +20,10 @@ type MigratingVm struct {
 
 	// Details of the VM from an AWS source.
 	AwsSourceVmDetails AwsSourceVmDetailsResponseOutput `pulumi:"awsSourceVmDetails"`
+	// Details of the VM from an Azure source.
+	AzureSourceVmDetails AzureSourceVmDetailsResponseOutput `pulumi:"azureSourceVmDetails"`
+	// Details of the target Persistent Disks in Compute Engine.
+	ComputeEngineDisksTargetDefaults ComputeEngineDisksTargetDefaultsResponseOutput `pulumi:"computeEngineDisksTargetDefaults"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponseOutput `pulumi:"computeEngineTargetDefaults"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
@@ -73,6 +77,8 @@ type MigratingVm struct {
 	TargetDefaults TargetVMDetailsResponseOutput `pulumi:"targetDefaults"`
 	// The last time the migrating VM resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Details of the VM from a Vmware source.
+	VmwareSourceVmDetails VmwareSourceVmDetailsResponseOutput `pulumi:"vmwareSourceVmDetails"`
 }
 
 // NewMigratingVm registers a new resource with the given unique name, arguments, and options.
@@ -128,6 +134,8 @@ func (MigratingVmState) ElementType() reflect.Type {
 }
 
 type migratingVmArgs struct {
+	// Details of the target Persistent Disks in Compute Engine.
+	ComputeEngineDisksTargetDefaults *ComputeEngineDisksTargetDefaults `pulumi:"computeEngineDisksTargetDefaults"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults *ComputeEngineTargetDefaults `pulumi:"computeEngineTargetDefaults"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
@@ -159,6 +167,8 @@ type migratingVmArgs struct {
 
 // The set of arguments for constructing a MigratingVm resource.
 type MigratingVmArgs struct {
+	// Details of the target Persistent Disks in Compute Engine.
+	ComputeEngineDisksTargetDefaults ComputeEngineDisksTargetDefaultsPtrInput
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsPtrInput
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
@@ -240,6 +250,18 @@ func (o MigratingVmOutput) ToOutput(ctx context.Context) pulumix.Output[*Migrati
 // Details of the VM from an AWS source.
 func (o MigratingVmOutput) AwsSourceVmDetails() AwsSourceVmDetailsResponseOutput {
 	return o.ApplyT(func(v *MigratingVm) AwsSourceVmDetailsResponseOutput { return v.AwsSourceVmDetails }).(AwsSourceVmDetailsResponseOutput)
+}
+
+// Details of the VM from an Azure source.
+func (o MigratingVmOutput) AzureSourceVmDetails() AzureSourceVmDetailsResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) AzureSourceVmDetailsResponseOutput { return v.AzureSourceVmDetails }).(AzureSourceVmDetailsResponseOutput)
+}
+
+// Details of the target Persistent Disks in Compute Engine.
+func (o MigratingVmOutput) ComputeEngineDisksTargetDefaults() ComputeEngineDisksTargetDefaultsResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) ComputeEngineDisksTargetDefaultsResponseOutput {
+		return v.ComputeEngineDisksTargetDefaults
+	}).(ComputeEngineDisksTargetDefaultsResponseOutput)
 }
 
 // Details of the target VM in Compute Engine.
@@ -371,6 +393,11 @@ func (o MigratingVmOutput) TargetDefaults() TargetVMDetailsResponseOutput {
 // The last time the migrating VM resource was updated.
 func (o MigratingVmOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Details of the VM from a Vmware source.
+func (o MigratingVmOutput) VmwareSourceVmDetails() VmwareSourceVmDetailsResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) VmwareSourceVmDetailsResponseOutput { return v.VmwareSourceVmDetails }).(VmwareSourceVmDetailsResponseOutput)
 }
 
 func init() {

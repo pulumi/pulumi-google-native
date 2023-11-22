@@ -29,6 +29,8 @@ type Runtime struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab stats.
 	Metrics RuntimeMetricsResponseOutput `pulumi:"metrics"`
+	// Bool indicating whether this notebook has been migrated to a Workbench Instance
+	Migrated pulumi.BoolOutput `pulumi:"migrated"`
 	// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -36,6 +38,8 @@ type Runtime struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Required. User-defined unique ID of this Runtime.
 	RuntimeId pulumi.StringOutput `pulumi:"runtimeId"`
+	// Checks how feasible a migration from GmN to WbI is.
+	RuntimeMigrationEligibility RuntimeMigrationEligibilityResponseOutput `pulumi:"runtimeMigrationEligibility"`
 	// The config settings for software inside the runtime.
 	SoftwareConfig RuntimeSoftwareConfigResponseOutput `pulumi:"softwareConfig"`
 	// Runtime state.
@@ -207,6 +211,11 @@ func (o RuntimeOutput) Metrics() RuntimeMetricsResponseOutput {
 	return o.ApplyT(func(v *Runtime) RuntimeMetricsResponseOutput { return v.Metrics }).(RuntimeMetricsResponseOutput)
 }
 
+// Bool indicating whether this notebook has been migrated to a Workbench Instance
+func (o RuntimeOutput) Migrated() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.BoolOutput { return v.Migrated }).(pulumi.BoolOutput)
+}
+
 // The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
 func (o RuntimeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -224,6 +233,11 @@ func (o RuntimeOutput) RequestId() pulumi.StringPtrOutput {
 // Required. User-defined unique ID of this Runtime.
 func (o RuntimeOutput) RuntimeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.RuntimeId }).(pulumi.StringOutput)
+}
+
+// Checks how feasible a migration from GmN to WbI is.
+func (o RuntimeOutput) RuntimeMigrationEligibility() RuntimeMigrationEligibilityResponseOutput {
+	return o.ApplyT(func(v *Runtime) RuntimeMigrationEligibilityResponseOutput { return v.RuntimeMigrationEligibility }).(RuntimeMigrationEligibilityResponseOutput)
 }
 
 // The config settings for software inside the runtime.

@@ -757,7 +757,7 @@ func (in *googleCloudRunV2TrafficTargetTypePtr) ToOutput(ctx context.Context) pu
 	}
 }
 
-// Traffic VPC egress settings.
+// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
 type GoogleCloudRunV2VpcAccessEgress string
 
 const (

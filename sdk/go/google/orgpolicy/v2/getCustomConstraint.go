@@ -31,7 +31,7 @@ type LookupCustomConstraintArgs struct {
 type LookupCustomConstraintResult struct {
 	// Allow or deny type.
 	ActionType string `pulumi:"actionType"`
-	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
 	Condition string `pulumi:"condition"`
 	// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
 	Description string `pulumi:"description"`
@@ -94,7 +94,7 @@ func (o LookupCustomConstraintResultOutput) ActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomConstraintResult) string { return v.ActionType }).(pulumi.StringOutput)
 }
 
-// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
 func (o LookupCustomConstraintResultOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomConstraintResult) string { return v.Condition }).(pulumi.StringOutput)
 }

@@ -29,7 +29,7 @@ type OrganizationMuteConfig struct {
 	MostRecentEditor pulumi.StringOutput `pulumi:"mostRecentEditor"`
 	// Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.
 	MuteConfigId pulumi.StringOutput `pulumi:"muteConfigId"`
-	// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+	// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
 	Name           pulumi.StringOutput `pulumi:"name"`
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The most recent time at which the mute config was updated. This field is set by the server and will be ignored if provided on config creation or update.
@@ -98,7 +98,7 @@ type organizationMuteConfigArgs struct {
 	Filter string `pulumi:"filter"`
 	// Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.
 	MuteConfigId string `pulumi:"muteConfigId"`
-	// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+	// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
 }
@@ -113,7 +113,7 @@ type OrganizationMuteConfigArgs struct {
 	Filter pulumi.StringInput
 	// Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.
 	MuteConfigId pulumi.StringInput
-	// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+	// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 }
@@ -197,7 +197,7 @@ func (o OrganizationMuteConfigOutput) MuteConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.MuteConfigId }).(pulumi.StringOutput)
 }
 
-// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
 func (o OrganizationMuteConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -14,11 +14,10 @@ import (
 )
 
 // Creates a new DeliveryPipeline in a given project and location.
-// Auto-naming is currently not supported for this resource.
 type DeliveryPipeline struct {
 	pulumi.CustomResourceState
 
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Information around the state of the Delivery Pipeline.
 	Condition PipelineConditionResponseOutput `pulumi:"condition"`
@@ -30,10 +29,10 @@ type DeliveryPipeline struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+	// Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -97,7 +96,7 @@ func (DeliveryPipelineState) ElementType() reflect.Type {
 }
 
 type deliveryPipelineArgs struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Required. ID of the `DeliveryPipeline`.
 	DeliveryPipelineId string `pulumi:"deliveryPipelineId"`
@@ -105,10 +104,10 @@ type deliveryPipelineArgs struct {
 	Description *string `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+	// Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -121,7 +120,7 @@ type deliveryPipelineArgs struct {
 
 // The set of arguments for constructing a DeliveryPipeline resource.
 type DeliveryPipelineArgs struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
 	Annotations pulumi.StringMapInput
 	// Required. ID of the `DeliveryPipeline`.
 	DeliveryPipelineId pulumi.StringInput
@@ -129,10 +128,10 @@ type DeliveryPipelineArgs struct {
 	Description pulumi.StringPtrInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+	// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+	// Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -192,7 +191,7 @@ func (o DeliveryPipelineOutput) ToOutput(ctx context.Context) pulumix.Output[*De
 	}
 }
 
-// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
 func (o DeliveryPipelineOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -222,7 +221,7 @@ func (o DeliveryPipelineOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o DeliveryPipelineOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -231,7 +230,7 @@ func (o DeliveryPipelineOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+// Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
 func (o DeliveryPipelineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -19,7 +19,9 @@ type NodePool struct {
 
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingResponseOutput `pulumi:"autoscaling"`
-	ClusterId   pulumi.StringOutput               `pulumi:"clusterId"`
+	// Enable best effort provisioning for nodes
+	BestEffortProvisioning BestEffortProvisioningResponseOutput `pulumi:"bestEffortProvisioning"`
+	ClusterId              pulumi.StringOutput                  `pulumi:"clusterId"`
 	// Which conditions caused the current node pool state.
 	Conditions StatusConditionResponseArrayOutput `pulumi:"conditions"`
 	// The node configuration of the pool.
@@ -46,6 +48,8 @@ type NodePool struct {
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize pulumi.IntOutput    `pulumi:"podIpv4CidrSize"`
 	Project         pulumi.StringOutput `pulumi:"project"`
+	// Specifies the configuration of queued provisioning.
+	QueuedProvisioning QueuedProvisioningResponseOutput `pulumi:"queuedProvisioning"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
@@ -113,6 +117,8 @@ func (NodePoolState) ElementType() reflect.Type {
 type nodePoolArgs struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
+	// Enable best effort provisioning for nodes
+	BestEffortProvisioning *BestEffortProvisioning `pulumi:"bestEffortProvisioning"`
 	// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
 	//
 	// Deprecated: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
@@ -144,6 +150,8 @@ type nodePoolArgs struct {
 	//
 	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	Project *string `pulumi:"project"`
+	// Specifies the configuration of queued provisioning.
+	QueuedProvisioning *QueuedProvisioning `pulumi:"queuedProvisioning"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
@@ -158,6 +166,8 @@ type nodePoolArgs struct {
 type NodePoolArgs struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingPtrInput
+	// Enable best effort provisioning for nodes
+	BestEffortProvisioning BestEffortProvisioningPtrInput
 	// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
 	//
 	// Deprecated: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
@@ -189,6 +199,8 @@ type NodePoolArgs struct {
 	//
 	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	Project pulumi.StringPtrInput
+	// Specifies the configuration of queued provisioning.
+	QueuedProvisioning QueuedProvisioningPtrInput
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput
 	// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
@@ -251,6 +263,11 @@ func (o NodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*NodePool] 
 // Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 func (o NodePoolOutput) Autoscaling() NodePoolAutoscalingResponseOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolAutoscalingResponseOutput { return v.Autoscaling }).(NodePoolAutoscalingResponseOutput)
+}
+
+// Enable best effort provisioning for nodes
+func (o NodePoolOutput) BestEffortProvisioning() BestEffortProvisioningResponseOutput {
+	return o.ApplyT(func(v *NodePool) BestEffortProvisioningResponseOutput { return v.BestEffortProvisioning }).(BestEffortProvisioningResponseOutput)
 }
 
 func (o NodePoolOutput) ClusterId() pulumi.StringOutput {
@@ -323,6 +340,11 @@ func (o NodePoolOutput) PodIpv4CidrSize() pulumi.IntOutput {
 
 func (o NodePoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the configuration of queued provisioning.
+func (o NodePoolOutput) QueuedProvisioning() QueuedProvisioningResponseOutput {
+	return o.ApplyT(func(v *NodePool) QueuedProvisioningResponseOutput { return v.QueuedProvisioning }).(QueuedProvisioningResponseOutput)
 }
 
 // [Output only] Server-defined URL for the resource.

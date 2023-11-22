@@ -34,6 +34,8 @@ type InstanceGroupManager struct {
 	FailoverAction pulumi.StringOutput `pulumi:"failoverAction"`
 	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
+	// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+	InstanceFlexibilityPolicy InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput `pulumi:"instanceFlexibilityPolicy"`
 	// The URL of the Instance Group resource.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
 	// The repair policy for this managed instance group.
@@ -57,6 +59,8 @@ type InstanceGroupManager struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	// Standby policy for stopped and suspended instances.
+	StandbyPolicy InstanceGroupManagerStandbyPolicyResponseOutput `pulumi:"standbyPolicy"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyResponseOutput `pulumi:"statefulPolicy"`
 	// The status of this managed instance group.
@@ -65,6 +69,10 @@ type InstanceGroupManager struct {
 	TargetPools pulumi.StringArrayOutput `pulumi:"targetPools"`
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
+	// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
+	TargetStoppedSize pulumi.IntOutput `pulumi:"targetStoppedSize"`
+	// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
+	TargetSuspendedSize pulumi.IntOutput `pulumi:"targetSuspendedSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyResponseOutput `pulumi:"updatePolicy"`
 	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
@@ -129,6 +137,8 @@ type instanceGroupManagerArgs struct {
 	DistributionPolicy *DistributionPolicy `pulumi:"distributionPolicy"`
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction *InstanceGroupManagerFailoverAction `pulumi:"failoverAction"`
+	// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+	InstanceFlexibilityPolicy *InstanceGroupManagerInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
 	// The repair policy for this managed instance group.
 	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
@@ -144,12 +154,18 @@ type instanceGroupManagerArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Standby policy for stopped and suspended instances.
+	StandbyPolicy *InstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy *StatefulPolicy `pulumi:"statefulPolicy"`
 	// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
 	TargetPools []string `pulumi:"targetPools"`
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize *int `pulumi:"targetSize"`
+	// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
+	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
+	// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
+	TargetSuspendedSize *int `pulumi:"targetSuspendedSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
 	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
@@ -171,6 +187,8 @@ type InstanceGroupManagerArgs struct {
 	DistributionPolicy DistributionPolicyPtrInput
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction InstanceGroupManagerFailoverActionPtrInput
+	// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+	InstanceFlexibilityPolicy InstanceGroupManagerInstanceFlexibilityPolicyPtrInput
 	// The repair policy for this managed instance group.
 	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
@@ -186,12 +204,18 @@ type InstanceGroupManagerArgs struct {
 	RequestId pulumi.StringPtrInput
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount pulumi.StringPtrInput
+	// Standby policy for stopped and suspended instances.
+	StandbyPolicy InstanceGroupManagerStandbyPolicyPtrInput
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyPtrInput
 	// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
 	TargetPools pulumi.StringArrayInput
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize pulumi.IntPtrInput
+	// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
+	TargetStoppedSize pulumi.IntPtrInput
+	// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
+	TargetSuspendedSize pulumi.IntPtrInput
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
 	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
@@ -299,6 +323,13 @@ func (o InstanceGroupManagerOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
+// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+func (o InstanceGroupManagerOutput) InstanceFlexibilityPolicy() InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput {
+		return v.InstanceFlexibilityPolicy
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput)
+}
+
 // The URL of the Instance Group resource.
 func (o InstanceGroupManagerOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.InstanceGroup }).(pulumi.StringOutput)
@@ -360,6 +391,11 @@ func (o InstanceGroupManagerOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
+// Standby policy for stopped and suspended instances.
+func (o InstanceGroupManagerOutput) StandbyPolicy() InstanceGroupManagerStandbyPolicyResponseOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerStandbyPolicyResponseOutput { return v.StandbyPolicy }).(InstanceGroupManagerStandbyPolicyResponseOutput)
+}
+
 // Stateful configuration for this Instanced Group Manager
 func (o InstanceGroupManagerOutput) StatefulPolicy() StatefulPolicyResponseOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) StatefulPolicyResponseOutput { return v.StatefulPolicy }).(StatefulPolicyResponseOutput)
@@ -378,6 +414,16 @@ func (o InstanceGroupManagerOutput) TargetPools() pulumi.StringArrayOutput {
 // The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 func (o InstanceGroupManagerOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.IntOutput { return v.TargetSize }).(pulumi.IntOutput)
+}
+
+// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
+func (o InstanceGroupManagerOutput) TargetStoppedSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) pulumi.IntOutput { return v.TargetStoppedSize }).(pulumi.IntOutput)
+}
+
+// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
+func (o InstanceGroupManagerOutput) TargetSuspendedSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) pulumi.IntOutput { return v.TargetSuspendedSize }).(pulumi.IntOutput)
 }
 
 // The update policy for this managed instance group.

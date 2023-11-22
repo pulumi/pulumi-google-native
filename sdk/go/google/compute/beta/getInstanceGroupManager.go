@@ -48,6 +48,8 @@ type LookupInstanceGroupManagerResult struct {
 	FailoverAction string `pulumi:"failoverAction"`
 	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint string `pulumi:"fingerprint"`
+	// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+	InstanceFlexibilityPolicy InstanceGroupManagerInstanceFlexibilityPolicyResponse `pulumi:"instanceFlexibilityPolicy"`
 	// The URL of the Instance Group resource.
 	InstanceGroup string `pulumi:"instanceGroup"`
 	// The repair policy for this managed instance group.
@@ -68,6 +70,8 @@ type LookupInstanceGroupManagerResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
+	// Standby policy for stopped and suspended instances.
+	StandbyPolicy InstanceGroupManagerStandbyPolicyResponse `pulumi:"standbyPolicy"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyResponse `pulumi:"statefulPolicy"`
 	// The status of this managed instance group.
@@ -76,6 +80,10 @@ type LookupInstanceGroupManagerResult struct {
 	TargetPools []string `pulumi:"targetPools"`
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize int `pulumi:"targetSize"`
+	// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
+	TargetStoppedSize int `pulumi:"targetStoppedSize"`
+	// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
+	TargetSuspendedSize int `pulumi:"targetSuspendedSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyResponse `pulumi:"updatePolicy"`
 	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
@@ -178,6 +186,13 @@ func (o LookupInstanceGroupManagerResultOutput) Fingerprint() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
+// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+func (o LookupInstanceGroupManagerResultOutput) InstanceFlexibilityPolicy() InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) InstanceGroupManagerInstanceFlexibilityPolicyResponse {
+		return v.InstanceFlexibilityPolicy
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput)
+}
+
 // The URL of the Instance Group resource.
 func (o LookupInstanceGroupManagerResultOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.InstanceGroup }).(pulumi.StringOutput)
@@ -230,6 +245,13 @@ func (o LookupInstanceGroupManagerResultOutput) ServiceAccount() pulumi.StringOu
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
+// Standby policy for stopped and suspended instances.
+func (o LookupInstanceGroupManagerResultOutput) StandbyPolicy() InstanceGroupManagerStandbyPolicyResponseOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) InstanceGroupManagerStandbyPolicyResponse {
+		return v.StandbyPolicy
+	}).(InstanceGroupManagerStandbyPolicyResponseOutput)
+}
+
 // Stateful configuration for this Instanced Group Manager
 func (o LookupInstanceGroupManagerResultOutput) StatefulPolicy() StatefulPolicyResponseOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) StatefulPolicyResponse { return v.StatefulPolicy }).(StatefulPolicyResponseOutput)
@@ -248,6 +270,16 @@ func (o LookupInstanceGroupManagerResultOutput) TargetPools() pulumi.StringArray
 // The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 func (o LookupInstanceGroupManagerResultOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) int { return v.TargetSize }).(pulumi.IntOutput)
+}
+
+// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
+func (o LookupInstanceGroupManagerResultOutput) TargetStoppedSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) int { return v.TargetStoppedSize }).(pulumi.IntOutput)
+}
+
+// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
+func (o LookupInstanceGroupManagerResultOutput) TargetSuspendedSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) int { return v.TargetSuspendedSize }).(pulumi.IntOutput)
 }
 
 // The update policy for this managed instance group.

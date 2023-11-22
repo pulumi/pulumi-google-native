@@ -41,6 +41,7 @@ type LookupBudgetResult struct {
 	Name string `pulumi:"name"`
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	NotificationsRule GoogleCloudBillingBudgetsV1NotificationsRuleResponse `pulumi:"notificationsRule"`
+	OwnershipScope    string                                               `pulumi:"ownershipScope"`
 	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules []GoogleCloudBillingBudgetsV1ThresholdRuleResponse `pulumi:"thresholdRules"`
 }
@@ -117,6 +118,10 @@ func (o LookupBudgetResultOutput) NotificationsRule() GoogleCloudBillingBudgetsV
 	return o.ApplyT(func(v LookupBudgetResult) GoogleCloudBillingBudgetsV1NotificationsRuleResponse {
 		return v.NotificationsRule
 	}).(GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput)
+}
+
+func (o LookupBudgetResultOutput) OwnershipScope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBudgetResult) string { return v.OwnershipScope }).(pulumi.StringOutput)
 }
 
 // Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.

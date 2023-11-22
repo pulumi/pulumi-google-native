@@ -462,6 +462,8 @@ func (o GoogleCloudRetailV2ColorInfoResponseOutput) Colors() pulumi.StringArrayO
 type GoogleCloudRetailV2Condition struct {
 	// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
 	ActiveTimeRange []GoogleCloudRetailV2ConditionTimeRange `pulumi:"activeTimeRange"`
+	// Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
+	PageCategories []string `pulumi:"pageCategories"`
 	// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
 	QueryTerms []GoogleCloudRetailV2ConditionQueryTerm `pulumi:"queryTerms"`
 }
@@ -481,6 +483,8 @@ type GoogleCloudRetailV2ConditionInput interface {
 type GoogleCloudRetailV2ConditionArgs struct {
 	// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
 	ActiveTimeRange GoogleCloudRetailV2ConditionTimeRangeArrayInput `pulumi:"activeTimeRange"`
+	// Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
+	PageCategories pulumi.StringArrayInput `pulumi:"pageCategories"`
 	// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
 	QueryTerms GoogleCloudRetailV2ConditionQueryTermArrayInput `pulumi:"queryTerms"`
 }
@@ -586,6 +590,11 @@ func (o GoogleCloudRetailV2ConditionOutput) ActiveTimeRange() GoogleCloudRetailV
 	return o.ApplyT(func(v GoogleCloudRetailV2Condition) []GoogleCloudRetailV2ConditionTimeRange { return v.ActiveTimeRange }).(GoogleCloudRetailV2ConditionTimeRangeArrayOutput)
 }
 
+// Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
+func (o GoogleCloudRetailV2ConditionOutput) PageCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2Condition) []string { return v.PageCategories }).(pulumi.StringArrayOutput)
+}
+
 // A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
 func (o GoogleCloudRetailV2ConditionOutput) QueryTerms() GoogleCloudRetailV2ConditionQueryTermArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2Condition) []GoogleCloudRetailV2ConditionQueryTerm { return v.QueryTerms }).(GoogleCloudRetailV2ConditionQueryTermArrayOutput)
@@ -629,6 +638,16 @@ func (o GoogleCloudRetailV2ConditionPtrOutput) ActiveTimeRange() GoogleCloudReta
 		}
 		return v.ActiveTimeRange
 	}).(GoogleCloudRetailV2ConditionTimeRangeArrayOutput)
+}
+
+// Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
+func (o GoogleCloudRetailV2ConditionPtrOutput) PageCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2Condition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PageCategories
+	}).(pulumi.StringArrayOutput)
 }
 
 // A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
@@ -843,6 +862,8 @@ func (o GoogleCloudRetailV2ConditionQueryTermResponseArrayOutput) Index(i pulumi
 type GoogleCloudRetailV2ConditionResponse struct {
 	// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
 	ActiveTimeRange []GoogleCloudRetailV2ConditionTimeRangeResponse `pulumi:"activeTimeRange"`
+	// Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
+	PageCategories []string `pulumi:"pageCategories"`
 	// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
 	QueryTerms []GoogleCloudRetailV2ConditionQueryTermResponse `pulumi:"queryTerms"`
 }
@@ -873,6 +894,11 @@ func (o GoogleCloudRetailV2ConditionResponseOutput) ActiveTimeRange() GoogleClou
 	return o.ApplyT(func(v GoogleCloudRetailV2ConditionResponse) []GoogleCloudRetailV2ConditionTimeRangeResponse {
 		return v.ActiveTimeRange
 	}).(GoogleCloudRetailV2ConditionTimeRangeResponseArrayOutput)
+}
+
+// Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
+func (o GoogleCloudRetailV2ConditionResponseOutput) PageCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2ConditionResponse) []string { return v.PageCategories }).(pulumi.StringArrayOutput)
 }
 
 // A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
@@ -2474,7 +2500,7 @@ type GoogleCloudRetailV2ProductResponse struct {
 	AvailableQuantity int `pulumi:"availableQuantity"`
 	// The timestamp when this Product becomes available for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT.
 	AvailableTime string `pulumi:"availableTime"`
-	// The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
+	// The brands of the product. A maximum of 30 brands are allowed unless overridden through the Google Cloud console. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
 	Brands []string `pulumi:"brands"`
 	// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
 	Categories []string `pulumi:"categories"`
@@ -2580,7 +2606,7 @@ func (o GoogleCloudRetailV2ProductResponseOutput) AvailableTime() pulumi.StringO
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) string { return v.AvailableTime }).(pulumi.StringOutput)
 }
 
-// The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
+// The brands of the product. A maximum of 30 brands are allowed unless overridden through the Google Cloud console. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
 func (o GoogleCloudRetailV2ProductResponseOutput) Brands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) []string { return v.Brands }).(pulumi.StringArrayOutput)
 }
@@ -3192,12 +3218,16 @@ type GoogleCloudRetailV2Rule struct {
 	DoNotAssociateAction *GoogleCloudRetailV2RuleDoNotAssociateAction `pulumi:"doNotAssociateAction"`
 	// Filters results.
 	FilterAction *GoogleCloudRetailV2RuleFilterAction `pulumi:"filterAction"`
+	// Force returns an attribute as a facet in the request.
+	ForceReturnFacetAction *GoogleCloudRetailV2RuleForceReturnFacetAction `pulumi:"forceReturnFacetAction"`
 	// Ignores specific terms from query during search.
 	IgnoreAction *GoogleCloudRetailV2RuleIgnoreAction `pulumi:"ignoreAction"`
 	// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
 	OnewaySynonymsAction *GoogleCloudRetailV2RuleOnewaySynonymsAction `pulumi:"onewaySynonymsAction"`
 	// Redirects a shopper to a specific page.
 	RedirectAction *GoogleCloudRetailV2RuleRedirectAction `pulumi:"redirectAction"`
+	// Remove an attribute as a facet in the request (if present).
+	RemoveFacetAction *GoogleCloudRetailV2RuleRemoveFacetAction `pulumi:"removeFacetAction"`
 	// Replaces specific terms in the query.
 	ReplacementAction *GoogleCloudRetailV2RuleReplacementAction `pulumi:"replacementAction"`
 	// Treats a set of terms as synonyms of one another.
@@ -3225,12 +3255,16 @@ type GoogleCloudRetailV2RuleArgs struct {
 	DoNotAssociateAction GoogleCloudRetailV2RuleDoNotAssociateActionPtrInput `pulumi:"doNotAssociateAction"`
 	// Filters results.
 	FilterAction GoogleCloudRetailV2RuleFilterActionPtrInput `pulumi:"filterAction"`
+	// Force returns an attribute as a facet in the request.
+	ForceReturnFacetAction GoogleCloudRetailV2RuleForceReturnFacetActionPtrInput `pulumi:"forceReturnFacetAction"`
 	// Ignores specific terms from query during search.
 	IgnoreAction GoogleCloudRetailV2RuleIgnoreActionPtrInput `pulumi:"ignoreAction"`
 	// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
 	OnewaySynonymsAction GoogleCloudRetailV2RuleOnewaySynonymsActionPtrInput `pulumi:"onewaySynonymsAction"`
 	// Redirects a shopper to a specific page.
 	RedirectAction GoogleCloudRetailV2RuleRedirectActionPtrInput `pulumi:"redirectAction"`
+	// Remove an attribute as a facet in the request (if present).
+	RemoveFacetAction GoogleCloudRetailV2RuleRemoveFacetActionPtrInput `pulumi:"removeFacetAction"`
 	// Replaces specific terms in the query.
 	ReplacementAction GoogleCloudRetailV2RuleReplacementActionPtrInput `pulumi:"replacementAction"`
 	// Treats a set of terms as synonyms of one another.
@@ -3355,6 +3389,13 @@ func (o GoogleCloudRetailV2RuleOutput) FilterAction() GoogleCloudRetailV2RuleFil
 	return o.ApplyT(func(v GoogleCloudRetailV2Rule) *GoogleCloudRetailV2RuleFilterAction { return v.FilterAction }).(GoogleCloudRetailV2RuleFilterActionPtrOutput)
 }
 
+// Force returns an attribute as a facet in the request.
+func (o GoogleCloudRetailV2RuleOutput) ForceReturnFacetAction() GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2Rule) *GoogleCloudRetailV2RuleForceReturnFacetAction {
+		return v.ForceReturnFacetAction
+	}).(GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput)
+}
+
 // Ignores specific terms from query during search.
 func (o GoogleCloudRetailV2RuleOutput) IgnoreAction() GoogleCloudRetailV2RuleIgnoreActionPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2Rule) *GoogleCloudRetailV2RuleIgnoreAction { return v.IgnoreAction }).(GoogleCloudRetailV2RuleIgnoreActionPtrOutput)
@@ -3370,6 +3411,11 @@ func (o GoogleCloudRetailV2RuleOutput) OnewaySynonymsAction() GoogleCloudRetailV
 // Redirects a shopper to a specific page.
 func (o GoogleCloudRetailV2RuleOutput) RedirectAction() GoogleCloudRetailV2RuleRedirectActionPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2Rule) *GoogleCloudRetailV2RuleRedirectAction { return v.RedirectAction }).(GoogleCloudRetailV2RuleRedirectActionPtrOutput)
+}
+
+// Remove an attribute as a facet in the request (if present).
+func (o GoogleCloudRetailV2RuleOutput) RemoveFacetAction() GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2Rule) *GoogleCloudRetailV2RuleRemoveFacetAction { return v.RemoveFacetAction }).(GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput)
 }
 
 // Replaces specific terms in the query.
@@ -3454,6 +3500,16 @@ func (o GoogleCloudRetailV2RulePtrOutput) FilterAction() GoogleCloudRetailV2Rule
 	}).(GoogleCloudRetailV2RuleFilterActionPtrOutput)
 }
 
+// Force returns an attribute as a facet in the request.
+func (o GoogleCloudRetailV2RulePtrOutput) ForceReturnFacetAction() GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2Rule) *GoogleCloudRetailV2RuleForceReturnFacetAction {
+		if v == nil {
+			return nil
+		}
+		return v.ForceReturnFacetAction
+	}).(GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput)
+}
+
 // Ignores specific terms from query during search.
 func (o GoogleCloudRetailV2RulePtrOutput) IgnoreAction() GoogleCloudRetailV2RuleIgnoreActionPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2Rule) *GoogleCloudRetailV2RuleIgnoreAction {
@@ -3482,6 +3538,16 @@ func (o GoogleCloudRetailV2RulePtrOutput) RedirectAction() GoogleCloudRetailV2Ru
 		}
 		return v.RedirectAction
 	}).(GoogleCloudRetailV2RuleRedirectActionPtrOutput)
+}
+
+// Remove an attribute as a facet in the request (if present).
+func (o GoogleCloudRetailV2RulePtrOutput) RemoveFacetAction() GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2Rule) *GoogleCloudRetailV2RuleRemoveFacetAction {
+		if v == nil {
+			return nil
+		}
+		return v.RemoveFacetAction
+	}).(GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput)
 }
 
 // Replaces specific terms in the query.
@@ -4170,6 +4236,410 @@ func (o GoogleCloudRetailV2RuleFilterActionResponseOutput) Filter() pulumi.Strin
 	return o.ApplyT(func(v GoogleCloudRetailV2RuleFilterActionResponse) string { return v.Filter }).(pulumi.StringOutput)
 }
 
+// Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key "size" is not already in the top 8 slots, then the facet "size" will appear at a position close to 8. b) The facet key "size" in among the top 8 positions in the request, then it will stay at its current rank.
+type GoogleCloudRetailV2RuleForceReturnFacetAction struct {
+	// Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
+	FacetPositionAdjustments []GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment `pulumi:"facetPositionAdjustments"`
+}
+
+// GoogleCloudRetailV2RuleForceReturnFacetActionInput is an input type that accepts GoogleCloudRetailV2RuleForceReturnFacetActionArgs and GoogleCloudRetailV2RuleForceReturnFacetActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2RuleForceReturnFacetActionInput` via:
+//
+//	GoogleCloudRetailV2RuleForceReturnFacetActionArgs{...}
+type GoogleCloudRetailV2RuleForceReturnFacetActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2RuleForceReturnFacetActionOutput() GoogleCloudRetailV2RuleForceReturnFacetActionOutput
+	ToGoogleCloudRetailV2RuleForceReturnFacetActionOutputWithContext(context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionOutput
+}
+
+// Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key "size" is not already in the top 8 slots, then the facet "size" will appear at a position close to 8. b) The facet key "size" in among the top 8 positions in the request, then it will stay at its current rank.
+type GoogleCloudRetailV2RuleForceReturnFacetActionArgs struct {
+	// Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
+	FacetPositionAdjustments GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayInput `pulumi:"facetPositionAdjustments"`
+}
+
+func (GoogleCloudRetailV2RuleForceReturnFacetActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2RuleForceReturnFacetAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionArgs) ToGoogleCloudRetailV2RuleForceReturnFacetActionOutput() GoogleCloudRetailV2RuleForceReturnFacetActionOutput {
+	return i.ToGoogleCloudRetailV2RuleForceReturnFacetActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionArgs) ToGoogleCloudRetailV2RuleForceReturnFacetActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2RuleForceReturnFacetActionOutput)
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetAction] {
+	return pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetAction]{
+		OutputState: i.ToGoogleCloudRetailV2RuleForceReturnFacetActionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionArgs) ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput() GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput {
+	return i.ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionArgs) ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2RuleForceReturnFacetActionOutput).ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2RuleForceReturnFacetActionPtrInput is an input type that accepts GoogleCloudRetailV2RuleForceReturnFacetActionArgs, GoogleCloudRetailV2RuleForceReturnFacetActionPtr and GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2RuleForceReturnFacetActionPtrInput` via:
+//
+//	        GoogleCloudRetailV2RuleForceReturnFacetActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRetailV2RuleForceReturnFacetActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput() GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput
+	ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutputWithContext(context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput
+}
+
+type googleCloudRetailV2RuleForceReturnFacetActionPtrType GoogleCloudRetailV2RuleForceReturnFacetActionArgs
+
+func GoogleCloudRetailV2RuleForceReturnFacetActionPtr(v *GoogleCloudRetailV2RuleForceReturnFacetActionArgs) GoogleCloudRetailV2RuleForceReturnFacetActionPtrInput {
+	return (*googleCloudRetailV2RuleForceReturnFacetActionPtrType)(v)
+}
+
+func (*googleCloudRetailV2RuleForceReturnFacetActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2RuleForceReturnFacetAction)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2RuleForceReturnFacetActionPtrType) ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput() GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput {
+	return i.ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2RuleForceReturnFacetActionPtrType) ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput)
+}
+
+func (i *googleCloudRetailV2RuleForceReturnFacetActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2RuleForceReturnFacetAction] {
+	return pulumix.Output[*GoogleCloudRetailV2RuleForceReturnFacetAction]{
+		OutputState: i.ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key "size" is not already in the top 8 slots, then the facet "size" will appear at a position close to 8. b) The facet key "size" in among the top 8 positions in the request, then it will stay at its current rank.
+type GoogleCloudRetailV2RuleForceReturnFacetActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2RuleForceReturnFacetActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2RuleForceReturnFacetAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionOutput() GoogleCloudRetailV2RuleForceReturnFacetActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput() GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput {
+	return o.ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2RuleForceReturnFacetAction) *GoogleCloudRetailV2RuleForceReturnFacetAction {
+		return &v
+	}).(GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput)
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetAction] {
+	return pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionOutput) FacetPositionAdjustments() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2RuleForceReturnFacetAction) []GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment {
+		return v.FacetPositionAdjustments
+	}).(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput)
+}
+
+type GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2RuleForceReturnFacetAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput() GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2RuleForceReturnFacetAction] {
+	return pulumix.Output[*GoogleCloudRetailV2RuleForceReturnFacetAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput) Elem() GoogleCloudRetailV2RuleForceReturnFacetActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2RuleForceReturnFacetAction) GoogleCloudRetailV2RuleForceReturnFacetAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2RuleForceReturnFacetAction
+		return ret
+	}).(GoogleCloudRetailV2RuleForceReturnFacetActionOutput)
+}
+
+// Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput) FacetPositionAdjustments() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2RuleForceReturnFacetAction) []GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment {
+		if v == nil {
+			return nil
+		}
+		return v.FacetPositionAdjustments
+	}).(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput)
+}
+
+// Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified position.
+type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment struct {
+	// The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
+	AttributeName *string `pulumi:"attributeName"`
+	// This is the position in the request as explained above. It should be strictly positive be at most 100.
+	Position *int `pulumi:"position"`
+}
+
+// GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentInput is an input type that accepts GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs and GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentInput` via:
+//
+//	GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs{...}
+type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput
+	ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutputWithContext(context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput
+}
+
+// Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified position.
+type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs struct {
+	// The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// This is the position in the request as explained above. It should be strictly positive be at most 100.
+	Position pulumi.IntPtrInput `pulumi:"position"`
+}
+
+func (GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput {
+	return i.ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput)
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment] {
+	return pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment]{
+		OutputState: i.ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayInput is an input type that accepts GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArray and GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayInput` via:
+//
+//	GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArray{ GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs{...} }
+type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput
+	ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutputWithContext(context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput
+}
+
+type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArray []GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentInput
+
+func (GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArray) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput {
+	return i.ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArray) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput)
+}
+
+func (i GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment] {
+	return pulumix.Output[[]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment]{
+		OutputState: i.ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified position.
+type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment] {
+	return pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput) AttributeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment) *string {
+		return v.AttributeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is the position in the request as explained above. It should be strictly positive be at most 100.
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment) *int { return v.Position }).(pulumi.IntPtrOutput)
+}
+
+type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment] {
+	return pulumix.Output[[]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment {
+		return vs[0].([]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment)[vs[1].(int)]
+	}).(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput)
+}
+
+// Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified position.
+type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse struct {
+	// The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
+	AttributeName string `pulumi:"attributeName"`
+	// This is the position in the request as explained above. It should be strictly positive be at most 100.
+	Position int `pulumi:"position"`
+}
+
+// Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified position.
+type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse] {
+	return pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse) string {
+		return v.AttributeName
+	}).(pulumi.StringOutput)
+}
+
+// This is the position in the request as explained above. It should be strictly positive be at most 100.
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse) int {
+		return v.Position
+	}).(pulumi.IntOutput)
+}
+
+type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse] {
+	return pulumix.Output[[]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse {
+		return vs[0].([]GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput)
+}
+
+// Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key "size" is not already in the top 8 slots, then the facet "size" will appear at a position close to 8. b) The facet key "size" in among the top 8 positions in the request, then it will stay at its current rank.
+type GoogleCloudRetailV2RuleForceReturnFacetActionResponse struct {
+	// Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
+	FacetPositionAdjustments []GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse `pulumi:"facetPositionAdjustments"`
+}
+
+// Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size" and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key "size" is not already in the top 8 slots, then the facet "size" will appear at a position close to 8. b) The facet key "size" in among the top 8 positions in the request, then it will stay at its current rank.
+type GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2RuleForceReturnFacetActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput() GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput) ToGoogleCloudRetailV2RuleForceReturnFacetActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetActionResponse] {
+	return pulumix.Output[GoogleCloudRetailV2RuleForceReturnFacetActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
+func (o GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput) FacetPositionAdjustments() GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2RuleForceReturnFacetActionResponse) []GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponse {
+		return v.FacetPositionAdjustments
+	}).(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput)
+}
+
 // Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
 type GoogleCloudRetailV2RuleIgnoreAction struct {
 	// Terms to ignore in the search query.
@@ -4614,7 +5084,7 @@ func (o GoogleCloudRetailV2RuleOnewaySynonymsActionResponseOutput) Synonyms() pu
 	return o.ApplyT(func(v GoogleCloudRetailV2RuleOnewaySynonymsActionResponse) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
 }
 
-// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+// Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
 type GoogleCloudRetailV2RuleRedirectAction struct {
 	// URL must have length equal or less than 2000 characters.
 	RedirectUri *string `pulumi:"redirectUri"`
@@ -4631,7 +5101,7 @@ type GoogleCloudRetailV2RuleRedirectActionInput interface {
 	ToGoogleCloudRetailV2RuleRedirectActionOutputWithContext(context.Context) GoogleCloudRetailV2RuleRedirectActionOutput
 }
 
-// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+// Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
 type GoogleCloudRetailV2RuleRedirectActionArgs struct {
 	// URL must have length equal or less than 2000 characters.
 	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
@@ -4702,7 +5172,7 @@ func (i *googleCloudRetailV2RuleRedirectActionPtrType) ToOutput(ctx context.Cont
 	}
 }
 
-// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+// Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
 type GoogleCloudRetailV2RuleRedirectActionOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2RuleRedirectActionOutput) ElementType() reflect.Type {
@@ -4778,13 +5248,13 @@ func (o GoogleCloudRetailV2RuleRedirectActionPtrOutput) RedirectUri() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+// Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
 type GoogleCloudRetailV2RuleRedirectActionResponse struct {
 	// URL must have length equal or less than 2000 characters.
 	RedirectUri string `pulumi:"redirectUri"`
 }
 
-// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+// Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
 type GoogleCloudRetailV2RuleRedirectActionResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2RuleRedirectActionResponseOutput) ElementType() reflect.Type {
@@ -4808,6 +5278,202 @@ func (o GoogleCloudRetailV2RuleRedirectActionResponseOutput) ToOutput(ctx contex
 // URL must have length equal or less than 2000 characters.
 func (o GoogleCloudRetailV2RuleRedirectActionResponseOutput) RedirectUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2RuleRedirectActionResponse) string { return v.RedirectUri }).(pulumi.StringOutput)
+}
+
+// Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name "size", then facet key "size" will be removed from the request (if it is present).
+type GoogleCloudRetailV2RuleRemoveFacetAction struct {
+	// The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
+	AttributeNames []string `pulumi:"attributeNames"`
+}
+
+// GoogleCloudRetailV2RuleRemoveFacetActionInput is an input type that accepts GoogleCloudRetailV2RuleRemoveFacetActionArgs and GoogleCloudRetailV2RuleRemoveFacetActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2RuleRemoveFacetActionInput` via:
+//
+//	GoogleCloudRetailV2RuleRemoveFacetActionArgs{...}
+type GoogleCloudRetailV2RuleRemoveFacetActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2RuleRemoveFacetActionOutput() GoogleCloudRetailV2RuleRemoveFacetActionOutput
+	ToGoogleCloudRetailV2RuleRemoveFacetActionOutputWithContext(context.Context) GoogleCloudRetailV2RuleRemoveFacetActionOutput
+}
+
+// Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name "size", then facet key "size" will be removed from the request (if it is present).
+type GoogleCloudRetailV2RuleRemoveFacetActionArgs struct {
+	// The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
+	AttributeNames pulumi.StringArrayInput `pulumi:"attributeNames"`
+}
+
+func (GoogleCloudRetailV2RuleRemoveFacetActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2RuleRemoveFacetAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2RuleRemoveFacetActionArgs) ToGoogleCloudRetailV2RuleRemoveFacetActionOutput() GoogleCloudRetailV2RuleRemoveFacetActionOutput {
+	return i.ToGoogleCloudRetailV2RuleRemoveFacetActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2RuleRemoveFacetActionArgs) ToGoogleCloudRetailV2RuleRemoveFacetActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleRemoveFacetActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2RuleRemoveFacetActionOutput)
+}
+
+func (i GoogleCloudRetailV2RuleRemoveFacetActionArgs) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2RuleRemoveFacetAction] {
+	return pulumix.Output[GoogleCloudRetailV2RuleRemoveFacetAction]{
+		OutputState: i.ToGoogleCloudRetailV2RuleRemoveFacetActionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GoogleCloudRetailV2RuleRemoveFacetActionArgs) ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutput() GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput {
+	return i.ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2RuleRemoveFacetActionArgs) ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2RuleRemoveFacetActionOutput).ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2RuleRemoveFacetActionPtrInput is an input type that accepts GoogleCloudRetailV2RuleRemoveFacetActionArgs, GoogleCloudRetailV2RuleRemoveFacetActionPtr and GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2RuleRemoveFacetActionPtrInput` via:
+//
+//	        GoogleCloudRetailV2RuleRemoveFacetActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRetailV2RuleRemoveFacetActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutput() GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput
+	ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutputWithContext(context.Context) GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput
+}
+
+type googleCloudRetailV2RuleRemoveFacetActionPtrType GoogleCloudRetailV2RuleRemoveFacetActionArgs
+
+func GoogleCloudRetailV2RuleRemoveFacetActionPtr(v *GoogleCloudRetailV2RuleRemoveFacetActionArgs) GoogleCloudRetailV2RuleRemoveFacetActionPtrInput {
+	return (*googleCloudRetailV2RuleRemoveFacetActionPtrType)(v)
+}
+
+func (*googleCloudRetailV2RuleRemoveFacetActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2RuleRemoveFacetAction)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2RuleRemoveFacetActionPtrType) ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutput() GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput {
+	return i.ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2RuleRemoveFacetActionPtrType) ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput)
+}
+
+func (i *googleCloudRetailV2RuleRemoveFacetActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2RuleRemoveFacetAction] {
+	return pulumix.Output[*GoogleCloudRetailV2RuleRemoveFacetAction]{
+		OutputState: i.ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name "size", then facet key "size" will be removed from the request (if it is present).
+type GoogleCloudRetailV2RuleRemoveFacetActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2RuleRemoveFacetActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2RuleRemoveFacetAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionOutput) ToGoogleCloudRetailV2RuleRemoveFacetActionOutput() GoogleCloudRetailV2RuleRemoveFacetActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionOutput) ToGoogleCloudRetailV2RuleRemoveFacetActionOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleRemoveFacetActionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionOutput) ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutput() GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput {
+	return o.ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionOutput) ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2RuleRemoveFacetAction) *GoogleCloudRetailV2RuleRemoveFacetAction {
+		return &v
+	}).(GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput)
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2RuleRemoveFacetAction] {
+	return pulumix.Output[GoogleCloudRetailV2RuleRemoveFacetAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
+func (o GoogleCloudRetailV2RuleRemoveFacetActionOutput) AttributeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2RuleRemoveFacetAction) []string { return v.AttributeNames }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2RuleRemoveFacetAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput) ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutput() GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput) ToGoogleCloudRetailV2RuleRemoveFacetActionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudRetailV2RuleRemoveFacetAction] {
+	return pulumix.Output[*GoogleCloudRetailV2RuleRemoveFacetAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput) Elem() GoogleCloudRetailV2RuleRemoveFacetActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2RuleRemoveFacetAction) GoogleCloudRetailV2RuleRemoveFacetAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2RuleRemoveFacetAction
+		return ret
+	}).(GoogleCloudRetailV2RuleRemoveFacetActionOutput)
+}
+
+// The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
+func (o GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput) AttributeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2RuleRemoveFacetAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AttributeNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name "size", then facet key "size" will be removed from the request (if it is present).
+type GoogleCloudRetailV2RuleRemoveFacetActionResponse struct {
+	// The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
+	AttributeNames []string `pulumi:"attributeNames"`
+}
+
+// Removes an attribute/facet in the request if is present. * Rule Condition: Must specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both. * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name "size", then facet key "size" will be removed from the request (if it is present).
+type GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2RuleRemoveFacetActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput) ToGoogleCloudRetailV2RuleRemoveFacetActionResponseOutput() GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput) ToGoogleCloudRetailV2RuleRemoveFacetActionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleCloudRetailV2RuleRemoveFacetActionResponse] {
+	return pulumix.Output[GoogleCloudRetailV2RuleRemoveFacetActionResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
+func (o GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput) AttributeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2RuleRemoveFacetActionResponse) []string { return v.AttributeNames }).(pulumi.StringArrayOutput)
 }
 
 // Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
@@ -5068,12 +5734,16 @@ type GoogleCloudRetailV2RuleResponse struct {
 	DoNotAssociateAction GoogleCloudRetailV2RuleDoNotAssociateActionResponse `pulumi:"doNotAssociateAction"`
 	// Filters results.
 	FilterAction GoogleCloudRetailV2RuleFilterActionResponse `pulumi:"filterAction"`
+	// Force returns an attribute as a facet in the request.
+	ForceReturnFacetAction GoogleCloudRetailV2RuleForceReturnFacetActionResponse `pulumi:"forceReturnFacetAction"`
 	// Ignores specific terms from query during search.
 	IgnoreAction GoogleCloudRetailV2RuleIgnoreActionResponse `pulumi:"ignoreAction"`
 	// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
 	OnewaySynonymsAction GoogleCloudRetailV2RuleOnewaySynonymsActionResponse `pulumi:"onewaySynonymsAction"`
 	// Redirects a shopper to a specific page.
 	RedirectAction GoogleCloudRetailV2RuleRedirectActionResponse `pulumi:"redirectAction"`
+	// Remove an attribute as a facet in the request (if present).
+	RemoveFacetAction GoogleCloudRetailV2RuleRemoveFacetActionResponse `pulumi:"removeFacetAction"`
 	// Replaces specific terms in the query.
 	ReplacementAction GoogleCloudRetailV2RuleReplacementActionResponse `pulumi:"replacementAction"`
 	// Treats a set of terms as synonyms of one another.
@@ -5127,6 +5797,13 @@ func (o GoogleCloudRetailV2RuleResponseOutput) FilterAction() GoogleCloudRetailV
 	}).(GoogleCloudRetailV2RuleFilterActionResponseOutput)
 }
 
+// Force returns an attribute as a facet in the request.
+func (o GoogleCloudRetailV2RuleResponseOutput) ForceReturnFacetAction() GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2RuleResponse) GoogleCloudRetailV2RuleForceReturnFacetActionResponse {
+		return v.ForceReturnFacetAction
+	}).(GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput)
+}
+
 // Ignores specific terms from query during search.
 func (o GoogleCloudRetailV2RuleResponseOutput) IgnoreAction() GoogleCloudRetailV2RuleIgnoreActionResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2RuleResponse) GoogleCloudRetailV2RuleIgnoreActionResponse {
@@ -5146,6 +5823,13 @@ func (o GoogleCloudRetailV2RuleResponseOutput) RedirectAction() GoogleCloudRetai
 	return o.ApplyT(func(v GoogleCloudRetailV2RuleResponse) GoogleCloudRetailV2RuleRedirectActionResponse {
 		return v.RedirectAction
 	}).(GoogleCloudRetailV2RuleRedirectActionResponseOutput)
+}
+
+// Remove an attribute as a facet in the request (if present).
+func (o GoogleCloudRetailV2RuleResponseOutput) RemoveFacetAction() GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2RuleResponse) GoogleCloudRetailV2RuleRemoveFacetActionResponse {
+		return v.RemoveFacetAction
+	}).(GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput)
 }
 
 // Replaces specific terms in the query.
@@ -5787,12 +6471,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleDoNotAssociateActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2RuleDoNotAssociateActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleFilterActionInput)(nil)).Elem(), GoogleCloudRetailV2RuleFilterActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleFilterActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2RuleFilterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleForceReturnFacetActionInput)(nil)).Elem(), GoogleCloudRetailV2RuleForceReturnFacetActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleForceReturnFacetActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2RuleForceReturnFacetActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentInput)(nil)).Elem(), GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayInput)(nil)).Elem(), GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleIgnoreActionInput)(nil)).Elem(), GoogleCloudRetailV2RuleIgnoreActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleIgnoreActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2RuleIgnoreActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleOnewaySynonymsActionInput)(nil)).Elem(), GoogleCloudRetailV2RuleOnewaySynonymsActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleOnewaySynonymsActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2RuleOnewaySynonymsActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleRedirectActionInput)(nil)).Elem(), GoogleCloudRetailV2RuleRedirectActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleRedirectActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2RuleRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleRemoveFacetActionInput)(nil)).Elem(), GoogleCloudRetailV2RuleRemoveFacetActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleRemoveFacetActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2RuleRemoveFacetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleReplacementActionInput)(nil)).Elem(), GoogleCloudRetailV2RuleReplacementActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleReplacementActionPtrInput)(nil)).Elem(), GoogleCloudRetailV2RuleReplacementActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2RuleTwowaySynonymsActionInput)(nil)).Elem(), GoogleCloudRetailV2RuleTwowaySynonymsActionArgs{})
@@ -5861,6 +6551,13 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleFilterActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleFilterActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleFilterActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleForceReturnFacetActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleForceReturnFacetActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleForceReturnFacetActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleIgnoreActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleIgnoreActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleIgnoreActionResponseOutput{})
@@ -5870,6 +6567,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleRedirectActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleRedirectActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleRedirectActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleRemoveFacetActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleRemoveFacetActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleRemoveFacetActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleReplacementActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleReplacementActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2RuleReplacementActionResponseOutput{})

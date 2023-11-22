@@ -27,6 +27,7 @@ type LookupNamespaceArgs struct {
 	Location    string  `pulumi:"location"`
 	NamespaceId string  `pulumi:"namespaceId"`
 	Project     *string `pulumi:"project"`
+	ScopeId     string  `pulumi:"scopeId"`
 }
 
 type LookupNamespaceResult struct {
@@ -34,8 +35,12 @@ type LookupNamespaceResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// When the namespace was deleted.
 	DeleteTime string `pulumi:"deleteTime"`
+	// Optional. Labels for this Namespace.
+	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
 	Name string `pulumi:"name"`
+	// Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels map[string]string `pulumi:"namespaceLabels"`
 	// Scope associated with the namespace
 	Scope string `pulumi:"scope"`
 	// State of the namespace resource.
@@ -63,6 +68,7 @@ type LookupNamespaceOutputArgs struct {
 	Location    pulumi.StringInput    `pulumi:"location"`
 	NamespaceId pulumi.StringInput    `pulumi:"namespaceId"`
 	Project     pulumi.StringPtrInput `pulumi:"project"`
+	ScopeId     pulumi.StringInput    `pulumi:"scopeId"`
 }
 
 func (LookupNamespaceOutputArgs) ElementType() reflect.Type {
@@ -99,9 +105,19 @@ func (o LookupNamespaceResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// Optional. Labels for this Namespace.
+func (o LookupNamespaceResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
 func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
+func (o LookupNamespaceResultOutput) NamespaceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) map[string]string { return v.NamespaceLabels }).(pulumi.StringMapOutput)
 }
 
 // Scope associated with the namespace

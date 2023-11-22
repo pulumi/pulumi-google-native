@@ -30,7 +30,7 @@ type UptimeCheckConfig struct {
 	IsInternal pulumi.BoolOutput `pulumi:"isInternal"`
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service cloud_run_revision
 	MonitoredResource MonitoredResourceResponseOutput `pulumi:"monitoredResource"`
-	// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+	// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
 	Period  pulumi.StringOutput `pulumi:"period"`
@@ -39,6 +39,8 @@ type UptimeCheckConfig struct {
 	ResourceGroup ResourceGroupResponseOutput `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
 	SelectedRegions pulumi.StringArrayOutput `pulumi:"selectedRegions"`
+	// Specifies a Synthetic Monitor to invoke.
+	SyntheticMonitor SyntheticMonitorTargetResponseOutput `pulumi:"syntheticMonitor"`
 	// Contains information needed to make a TCP check.
 	TcpCheck TcpCheckResponseOutput `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
@@ -105,7 +107,7 @@ type uptimeCheckConfigArgs struct {
 	IsInternal *bool `pulumi:"isInternal"`
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service cloud_run_revision
 	MonitoredResource *MonitoredResource `pulumi:"monitoredResource"`
-	// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+	// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
 	Name *string `pulumi:"name"`
 	// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
 	Period  *string `pulumi:"period"`
@@ -114,6 +116,8 @@ type uptimeCheckConfigArgs struct {
 	ResourceGroup *ResourceGroup `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
 	SelectedRegions []UptimeCheckConfigSelectedRegionsItem `pulumi:"selectedRegions"`
+	// Specifies a Synthetic Monitor to invoke.
+	SyntheticMonitor *SyntheticMonitorTarget `pulumi:"syntheticMonitor"`
 	// Contains information needed to make a TCP check.
 	TcpCheck *TcpCheck `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
@@ -138,7 +142,7 @@ type UptimeCheckConfigArgs struct {
 	IsInternal pulumi.BoolPtrInput
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service cloud_run_revision
 	MonitoredResource MonitoredResourcePtrInput
-	// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+	// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
 	Name pulumi.StringPtrInput
 	// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
 	Period  pulumi.StringPtrInput
@@ -147,6 +151,8 @@ type UptimeCheckConfigArgs struct {
 	ResourceGroup ResourceGroupPtrInput
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
 	SelectedRegions UptimeCheckConfigSelectedRegionsItemArrayInput
+	// Specifies a Synthetic Monitor to invoke.
+	SyntheticMonitor SyntheticMonitorTargetPtrInput
 	// Contains information needed to make a TCP check.
 	TcpCheck TcpCheckPtrInput
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
@@ -239,7 +245,7 @@ func (o UptimeCheckConfigOutput) MonitoredResource() MonitoredResourceResponseOu
 	return o.ApplyT(func(v *UptimeCheckConfig) MonitoredResourceResponseOutput { return v.MonitoredResource }).(MonitoredResourceResponseOutput)
 }
 
-// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+// Identifier. A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
 func (o UptimeCheckConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -261,6 +267,11 @@ func (o UptimeCheckConfigOutput) ResourceGroup() ResourceGroupResponseOutput {
 // The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
 func (o UptimeCheckConfigOutput) SelectedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringArrayOutput { return v.SelectedRegions }).(pulumi.StringArrayOutput)
+}
+
+// Specifies a Synthetic Monitor to invoke.
+func (o UptimeCheckConfigOutput) SyntheticMonitor() SyntheticMonitorTargetResponseOutput {
+	return o.ApplyT(func(v *UptimeCheckConfig) SyntheticMonitorTargetResponseOutput { return v.SyntheticMonitor }).(SyntheticMonitorTargetResponseOutput)
 }
 
 // Contains information needed to make a TCP check.

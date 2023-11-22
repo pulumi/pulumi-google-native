@@ -38,7 +38,7 @@ type LookupLineageEventResult struct {
 	Links []GoogleCloudDatacatalogLineageV1EventLinkResponse `pulumi:"links"`
 	// Immutable. The resource name of the lineage event. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`. Can be specified or auto-assigned. {lineage_event} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
 	Name string `pulumi:"name"`
-	// Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+	// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -102,7 +102,7 @@ func (o LookupLineageEventResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLineageEventResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
+// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
 func (o LookupLineageEventResultOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLineageEventResult) string { return v.StartTime }).(pulumi.StringOutput)
 }

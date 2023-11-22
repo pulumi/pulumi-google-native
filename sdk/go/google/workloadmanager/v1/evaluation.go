@@ -21,6 +21,8 @@ type Evaluation struct {
 
 	// [Output only] Create time stamp
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The Cloud Storage bucket name for custom rules.
+	CustomRulesBucket pulumi.StringOutput `pulumi:"customRulesBucket"`
 	// Description of the Evaluation
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Required. Id of the requesting object
@@ -41,7 +43,7 @@ type Evaluation struct {
 	RuleNames pulumi.StringArrayOutput `pulumi:"ruleNames"`
 	// [Output only] The updated rule ids if exist.
 	RuleVersions pulumi.StringArrayOutput `pulumi:"ruleVersions"`
-	// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+	// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// [Output only] Update time stamp
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -96,6 +98,8 @@ func (EvaluationState) ElementType() reflect.Type {
 }
 
 type evaluationArgs struct {
+	// The Cloud Storage bucket name for custom rules.
+	CustomRulesBucket *string `pulumi:"customRulesBucket"`
 	// Description of the Evaluation
 	Description *string `pulumi:"description"`
 	// Required. Id of the requesting object
@@ -112,12 +116,14 @@ type evaluationArgs struct {
 	ResourceFilter *ResourceFilter `pulumi:"resourceFilter"`
 	// the name of the rule
 	RuleNames []string `pulumi:"ruleNames"`
-	// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+	// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
 	Schedule *string `pulumi:"schedule"`
 }
 
 // The set of arguments for constructing a Evaluation resource.
 type EvaluationArgs struct {
+	// The Cloud Storage bucket name for custom rules.
+	CustomRulesBucket pulumi.StringPtrInput
 	// Description of the Evaluation
 	Description pulumi.StringPtrInput
 	// Required. Id of the requesting object
@@ -134,7 +140,7 @@ type EvaluationArgs struct {
 	ResourceFilter ResourceFilterPtrInput
 	// the name of the rule
 	RuleNames pulumi.StringArrayInput
-	// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+	// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
 	Schedule pulumi.StringPtrInput
 }
 
@@ -192,6 +198,11 @@ func (o EvaluationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The Cloud Storage bucket name for custom rules.
+func (o EvaluationOutput) CustomRulesBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.CustomRulesBucket }).(pulumi.StringOutput)
+}
+
 // Description of the Evaluation
 func (o EvaluationOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -245,7 +256,7 @@ func (o EvaluationOutput) RuleVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringArrayOutput { return v.RuleVersions }).(pulumi.StringArrayOutput)
 }
 
-// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
 func (o EvaluationOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
 }

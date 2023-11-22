@@ -39,7 +39,7 @@ type LookupOrganizationMuteConfigResult struct {
 	Filter string `pulumi:"filter"`
 	// Email address of the user who last edited the mute config. This field is set by the server and will be ignored if provided on config creation or update.
 	MostRecentEditor string `pulumi:"mostRecentEditor"`
-	// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+	// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
 	Name string `pulumi:"name"`
 	// The most recent time at which the mute config was updated. This field is set by the server and will be ignored if provided on config creation or update.
 	UpdateTime string `pulumi:"updateTime"`
@@ -112,7 +112,7 @@ func (o LookupOrganizationMuteConfigResultOutput) MostRecentEditor() pulumi.Stri
 	return o.ApplyT(func(v LookupOrganizationMuteConfigResult) string { return v.MostRecentEditor }).(pulumi.StringOutput)
 }
 
-// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
 func (o LookupOrganizationMuteConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationMuteConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }

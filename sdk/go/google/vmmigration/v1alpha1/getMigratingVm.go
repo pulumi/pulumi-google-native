@@ -34,6 +34,10 @@ type LookupMigratingVmArgs struct {
 type LookupMigratingVmResult struct {
 	// Details of the VM from an AWS source.
 	AwsSourceVmDetails AwsSourceVmDetailsResponse `pulumi:"awsSourceVmDetails"`
+	// Details of the VM from an Azure source.
+	AzureSourceVmDetails AzureSourceVmDetailsResponse `pulumi:"azureSourceVmDetails"`
+	// Details of the target Persistent Disks in Compute Engine.
+	ComputeEngineDisksTargetDefaults ComputeEngineDisksTargetDefaultsResponse `pulumi:"computeEngineDisksTargetDefaults"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponse `pulumi:"computeEngineTargetDefaults"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
@@ -80,6 +84,8 @@ type LookupMigratingVmResult struct {
 	TargetDefaults TargetVMDetailsResponse `pulumi:"targetDefaults"`
 	// The last time the migrating VM resource was updated.
 	UpdateTime string `pulumi:"updateTime"`
+	// Details of the VM from a Vmware source.
+	VmwareSourceVmDetails VmwareSourceVmDetailsResponse `pulumi:"vmwareSourceVmDetails"`
 }
 
 func LookupMigratingVmOutput(ctx *pulumi.Context, args LookupMigratingVmOutputArgs, opts ...pulumi.InvokeOption) LookupMigratingVmResultOutput {
@@ -130,6 +136,18 @@ func (o LookupMigratingVmResultOutput) ToOutput(ctx context.Context) pulumix.Out
 // Details of the VM from an AWS source.
 func (o LookupMigratingVmResultOutput) AwsSourceVmDetails() AwsSourceVmDetailsResponseOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) AwsSourceVmDetailsResponse { return v.AwsSourceVmDetails }).(AwsSourceVmDetailsResponseOutput)
+}
+
+// Details of the VM from an Azure source.
+func (o LookupMigratingVmResultOutput) AzureSourceVmDetails() AzureSourceVmDetailsResponseOutput {
+	return o.ApplyT(func(v LookupMigratingVmResult) AzureSourceVmDetailsResponse { return v.AzureSourceVmDetails }).(AzureSourceVmDetailsResponseOutput)
+}
+
+// Details of the target Persistent Disks in Compute Engine.
+func (o LookupMigratingVmResultOutput) ComputeEngineDisksTargetDefaults() ComputeEngineDisksTargetDefaultsResponseOutput {
+	return o.ApplyT(func(v LookupMigratingVmResult) ComputeEngineDisksTargetDefaultsResponse {
+		return v.ComputeEngineDisksTargetDefaults
+	}).(ComputeEngineDisksTargetDefaultsResponseOutput)
 }
 
 // Details of the target VM in Compute Engine.
@@ -241,6 +259,11 @@ func (o LookupMigratingVmResultOutput) TargetDefaults() TargetVMDetailsResponseO
 // The last time the migrating VM resource was updated.
 func (o LookupMigratingVmResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Details of the VM from a Vmware source.
+func (o LookupMigratingVmResultOutput) VmwareSourceVmDetails() VmwareSourceVmDetailsResponseOutput {
+	return o.ApplyT(func(v LookupMigratingVmResult) VmwareSourceVmDetailsResponse { return v.VmwareSourceVmDetails }).(VmwareSourceVmDetailsResponseOutput)
 }
 
 func init() {

@@ -31,7 +31,7 @@ type ServiceLevelObjective struct {
 	ServiceId     pulumi.StringOutput `pulumi:"serviceId"`
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator ServiceLevelIndicatorResponseOutput `pulumi:"serviceLevelIndicator"`
-	// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+	// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
 	ServiceLevelObjectiveId pulumi.StringPtrOutput `pulumi:"serviceLevelObjectiveId"`
 	// Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
 	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
@@ -107,7 +107,7 @@ type serviceLevelObjectiveArgs struct {
 	ServiceId     string  `pulumi:"serviceId"`
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator *ServiceLevelIndicator `pulumi:"serviceLevelIndicator"`
-	// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+	// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
 	ServiceLevelObjectiveId *string `pulumi:"serviceLevelObjectiveId"`
 	// Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -130,7 +130,7 @@ type ServiceLevelObjectiveArgs struct {
 	ServiceId     pulumi.StringInput
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator ServiceLevelIndicatorPtrInput
-	// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+	// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
 	ServiceLevelObjectiveId pulumi.StringPtrInput
 	// Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
 	UserLabels pulumi.StringMapInput
@@ -221,7 +221,7 @@ func (o ServiceLevelObjectiveOutput) ServiceLevelIndicator() ServiceLevelIndicat
 	return o.ApplyT(func(v *ServiceLevelObjective) ServiceLevelIndicatorResponseOutput { return v.ServiceLevelIndicator }).(ServiceLevelIndicatorResponseOutput)
 }
 
-// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
 func (o ServiceLevelObjectiveOutput) ServiceLevelObjectiveId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringPtrOutput { return v.ServiceLevelObjectiveId }).(pulumi.StringPtrOutput)
 }

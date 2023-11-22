@@ -30,7 +30,8 @@ type Budget struct {
 	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OwnershipScope pulumi.StringOutput `pulumi:"ownershipScope"`
 	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponseArrayOutput `pulumi:"thresholdRules"`
 }
@@ -95,7 +96,8 @@ type budgetArgs struct {
 	// User data for display name in UI. Validation: <= 60 chars.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
-	Etag *string `pulumi:"etag"`
+	Etag           *string               `pulumi:"etag"`
+	OwnershipScope *BudgetOwnershipScope `pulumi:"ownershipScope"`
 	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules []GoogleCloudBillingBudgetsV1beta1ThresholdRule `pulumi:"thresholdRules"`
 }
@@ -112,7 +114,8 @@ type BudgetArgs struct {
 	// User data for display name in UI. Validation: <= 60 chars.
 	DisplayName pulumi.StringPtrInput
 	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
-	Etag pulumi.StringPtrInput
+	Etag           pulumi.StringPtrInput
+	OwnershipScope BudgetOwnershipScopePtrInput
 	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules GoogleCloudBillingBudgetsV1beta1ThresholdRuleArrayInput
 }
@@ -198,6 +201,10 @@ func (o BudgetOutput) Etag() pulumi.StringOutput {
 // Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
 func (o BudgetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o BudgetOutput) OwnershipScope() pulumi.StringOutput {
+	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.OwnershipScope }).(pulumi.StringOutput)
 }
 
 // Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.

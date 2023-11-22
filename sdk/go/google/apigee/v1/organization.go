@@ -20,9 +20,9 @@ type Organization struct {
 
 	// Addon configurations of the Apigee organization.
 	AddonsConfig GoogleCloudApigeeV1AddonsConfigResponseOutput `pulumi:"addonsConfig"`
-	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	//
-	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// Deprecated: Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringOutput `pulumi:"analyticsRegion"`
 	// Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	ApiConsumerDataEncryptionKeyName pulumi.StringOutput `pulumi:"apiConsumerDataEncryptionKeyName"`
@@ -46,6 +46,8 @@ type Organization struct {
 	CustomerName pulumi.StringOutput `pulumi:"customerName"`
 	// Description of the Apigee organization.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+	DisableVpcPeering pulumi.BoolOutput `pulumi:"disableVpcPeering"`
 	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// List of environments in the Apigee organization.
@@ -70,6 +72,8 @@ type Organization struct {
 	RuntimeType pulumi.StringOutput `pulumi:"runtimeType"`
 	// State of the organization. Values other than ACTIVE means the resource is not ready to use.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Subscription plan that the customer has purchased. Output only.
+	SubscriptionPlan pulumi.StringOutput `pulumi:"subscriptionPlan"`
 	// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
 	//
 	// Deprecated: Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
@@ -133,9 +137,9 @@ func (OrganizationState) ElementType() reflect.Type {
 type organizationArgs struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig *GoogleCloudApigeeV1AddonsConfig `pulumi:"addonsConfig"`
-	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	//
-	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// Deprecated: Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion string `pulumi:"analyticsRegion"`
 	// Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	ApiConsumerDataEncryptionKeyName *string `pulumi:"apiConsumerDataEncryptionKeyName"`
@@ -153,6 +157,8 @@ type organizationArgs struct {
 	CustomerName *string `pulumi:"customerName"`
 	// Description of the Apigee organization.
 	Description *string `pulumi:"description"`
+	// Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+	DisableVpcPeering *bool `pulumi:"disableVpcPeering"`
 	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName *string `pulumi:"displayName"`
 	// Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
@@ -173,9 +179,9 @@ type organizationArgs struct {
 type OrganizationArgs struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig GoogleCloudApigeeV1AddonsConfigPtrInput
-	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	//
-	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// Deprecated: Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringInput
 	// Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	ApiConsumerDataEncryptionKeyName pulumi.StringPtrInput
@@ -193,6 +199,8 @@ type OrganizationArgs struct {
 	CustomerName pulumi.StringPtrInput
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrInput
+	// Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+	DisableVpcPeering pulumi.BoolPtrInput
 	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName pulumi.StringPtrInput
 	// Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
@@ -263,9 +271,9 @@ func (o OrganizationOutput) AddonsConfig() GoogleCloudApigeeV1AddonsConfigRespon
 	return o.ApplyT(func(v *Organization) GoogleCloudApigeeV1AddonsConfigResponseOutput { return v.AddonsConfig }).(GoogleCloudApigeeV1AddonsConfigResponseOutput)
 }
 
-// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+// DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 //
-// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+// Deprecated: Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 func (o OrganizationOutput) AnalyticsRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.AnalyticsRegion }).(pulumi.StringOutput)
 }
@@ -323,6 +331,11 @@ func (o OrganizationOutput) CustomerName() pulumi.StringOutput {
 // Description of the Apigee organization.
 func (o OrganizationOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Flag that specifies whether the VPC Peering through Private Google Access should be disabled between the consumer network and Apigee. Valid only when RuntimeType is set to CLOUD. Required if an authorizedNetwork on the consumer project is not provided, in which case the flag should be set to true. The value must be set before the creation of any Apigee runtime instance and can be updated only when there are no runtime instances. **Note:** Apigee will be deprecating the vpc peering model that requires you to provide 'authorizedNetwork', by making the non-peering model as the default way of provisioning Apigee organization in future. So, this will be a temporary flag to enable the transition. Not supported for Apigee hybrid.
+func (o OrganizationOutput) DisableVpcPeering() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Organization) pulumi.BoolOutput { return v.DisableVpcPeering }).(pulumi.BoolOutput)
 }
 
 // Display name for the Apigee organization. Unused, but reserved for future use.
@@ -383,6 +396,11 @@ func (o OrganizationOutput) RuntimeType() pulumi.StringOutput {
 // State of the organization. Values other than ACTIVE means the resource is not ready to use.
 func (o OrganizationOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Subscription plan that the customer has purchased. Output only.
+func (o OrganizationOutput) SubscriptionPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.SubscriptionPlan }).(pulumi.StringOutput)
 }
 
 // DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).

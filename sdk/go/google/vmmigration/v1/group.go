@@ -27,6 +27,8 @@ type Group struct {
 	// Required. The group identifier.
 	GroupId  pulumi.StringOutput `pulumi:"groupId"`
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Immutable. The target type of this group.
+	MigrationTargetType pulumi.StringOutput `pulumi:"migrationTargetType"`
 	// The Group name.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -92,7 +94,9 @@ type groupArgs struct {
 	// Required. The group identifier.
 	GroupId  string  `pulumi:"groupId"`
 	Location *string `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	// Immutable. The target type of this group.
+	MigrationTargetType *GroupMigrationTargetType `pulumi:"migrationTargetType"`
+	Project             *string                   `pulumi:"project"`
 	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 }
@@ -106,7 +110,9 @@ type GroupArgs struct {
 	// Required. The group identifier.
 	GroupId  pulumi.StringInput
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// Immutable. The target type of this group.
+	MigrationTargetType GroupMigrationTargetTypePtrInput
+	Project             pulumi.StringPtrInput
 	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 }
@@ -182,6 +188,11 @@ func (o GroupOutput) GroupId() pulumi.StringOutput {
 
 func (o GroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Immutable. The target type of this group.
+func (o GroupOutput) MigrationTargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.MigrationTargetType }).(pulumi.StringOutput)
 }
 
 // The Group name.

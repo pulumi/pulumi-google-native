@@ -11,6 +11,192 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
+type AppProfilePriority string
+
+const (
+	// Default value. Mapped to PRIORITY_HIGH (the legacy behavior) on creation.
+	AppProfilePriorityPriorityUnspecified = AppProfilePriority("PRIORITY_UNSPECIFIED")
+	AppProfilePriorityPriorityLow         = AppProfilePriority("PRIORITY_LOW")
+	AppProfilePriorityPriorityMedium      = AppProfilePriority("PRIORITY_MEDIUM")
+	AppProfilePriorityPriorityHigh        = AppProfilePriority("PRIORITY_HIGH")
+)
+
+func (AppProfilePriority) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfilePriority)(nil)).Elem()
+}
+
+func (e AppProfilePriority) ToAppProfilePriorityOutput() AppProfilePriorityOutput {
+	return pulumi.ToOutput(e).(AppProfilePriorityOutput)
+}
+
+func (e AppProfilePriority) ToAppProfilePriorityOutputWithContext(ctx context.Context) AppProfilePriorityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AppProfilePriorityOutput)
+}
+
+func (e AppProfilePriority) ToAppProfilePriorityPtrOutput() AppProfilePriorityPtrOutput {
+	return e.ToAppProfilePriorityPtrOutputWithContext(context.Background())
+}
+
+func (e AppProfilePriority) ToAppProfilePriorityPtrOutputWithContext(ctx context.Context) AppProfilePriorityPtrOutput {
+	return AppProfilePriority(e).ToAppProfilePriorityOutputWithContext(ctx).ToAppProfilePriorityPtrOutputWithContext(ctx)
+}
+
+func (e AppProfilePriority) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AppProfilePriority) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AppProfilePriority) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AppProfilePriority) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AppProfilePriorityOutput struct{ *pulumi.OutputState }
+
+func (AppProfilePriorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfilePriority)(nil)).Elem()
+}
+
+func (o AppProfilePriorityOutput) ToAppProfilePriorityOutput() AppProfilePriorityOutput {
+	return o
+}
+
+func (o AppProfilePriorityOutput) ToAppProfilePriorityOutputWithContext(ctx context.Context) AppProfilePriorityOutput {
+	return o
+}
+
+func (o AppProfilePriorityOutput) ToAppProfilePriorityPtrOutput() AppProfilePriorityPtrOutput {
+	return o.ToAppProfilePriorityPtrOutputWithContext(context.Background())
+}
+
+func (o AppProfilePriorityOutput) ToAppProfilePriorityPtrOutputWithContext(ctx context.Context) AppProfilePriorityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppProfilePriority) *AppProfilePriority {
+		return &v
+	}).(AppProfilePriorityPtrOutput)
+}
+
+func (o AppProfilePriorityOutput) ToOutput(ctx context.Context) pulumix.Output[AppProfilePriority] {
+	return pulumix.Output[AppProfilePriority]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AppProfilePriorityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AppProfilePriorityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AppProfilePriority) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AppProfilePriorityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AppProfilePriorityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AppProfilePriority) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppProfilePriorityPtrOutput struct{ *pulumi.OutputState }
+
+func (AppProfilePriorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfilePriority)(nil)).Elem()
+}
+
+func (o AppProfilePriorityPtrOutput) ToAppProfilePriorityPtrOutput() AppProfilePriorityPtrOutput {
+	return o
+}
+
+func (o AppProfilePriorityPtrOutput) ToAppProfilePriorityPtrOutputWithContext(ctx context.Context) AppProfilePriorityPtrOutput {
+	return o
+}
+
+func (o AppProfilePriorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppProfilePriority] {
+	return pulumix.Output[*AppProfilePriority]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AppProfilePriorityPtrOutput) Elem() AppProfilePriorityOutput {
+	return o.ApplyT(func(v *AppProfilePriority) AppProfilePriority {
+		if v != nil {
+			return *v
+		}
+		var ret AppProfilePriority
+		return ret
+	}).(AppProfilePriorityOutput)
+}
+
+func (o AppProfilePriorityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AppProfilePriorityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AppProfilePriority) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AppProfilePriorityInput is an input type that accepts AppProfilePriorityArgs and AppProfilePriorityOutput values.
+// You can construct a concrete instance of `AppProfilePriorityInput` via:
+//
+//	AppProfilePriorityArgs{...}
+type AppProfilePriorityInput interface {
+	pulumi.Input
+
+	ToAppProfilePriorityOutput() AppProfilePriorityOutput
+	ToAppProfilePriorityOutputWithContext(context.Context) AppProfilePriorityOutput
+}
+
+var appProfilePriorityPtrType = reflect.TypeOf((**AppProfilePriority)(nil)).Elem()
+
+type AppProfilePriorityPtrInput interface {
+	pulumi.Input
+
+	ToAppProfilePriorityPtrOutput() AppProfilePriorityPtrOutput
+	ToAppProfilePriorityPtrOutputWithContext(context.Context) AppProfilePriorityPtrOutput
+}
+
+type appProfilePriorityPtr string
+
+func AppProfilePriorityPtr(v string) AppProfilePriorityPtrInput {
+	return (*appProfilePriorityPtr)(&v)
+}
+
+func (*appProfilePriorityPtr) ElementType() reflect.Type {
+	return appProfilePriorityPtrType
+}
+
+func (in *appProfilePriorityPtr) ToAppProfilePriorityPtrOutput() AppProfilePriorityPtrOutput {
+	return pulumi.ToOutput(in).(AppProfilePriorityPtrOutput)
+}
+
+func (in *appProfilePriorityPtr) ToAppProfilePriorityPtrOutputWithContext(ctx context.Context) AppProfilePriorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AppProfilePriorityPtrOutput)
+}
+
+func (in *appProfilePriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*AppProfilePriority] {
+	return pulumix.Output[*AppProfilePriority]{
+		OutputState: in.ToAppProfilePriorityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The log type that this config enables.
 type AuditLogConfigLogType string
 
@@ -574,6 +760,192 @@ func (in *instanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Instanc
 	}
 }
 
+// The priority of requests sent using this app profile.
+type StandardIsolationPriority string
+
+const (
+	// Default value. Mapped to PRIORITY_HIGH (the legacy behavior) on creation.
+	StandardIsolationPriorityPriorityUnspecified = StandardIsolationPriority("PRIORITY_UNSPECIFIED")
+	StandardIsolationPriorityPriorityLow         = StandardIsolationPriority("PRIORITY_LOW")
+	StandardIsolationPriorityPriorityMedium      = StandardIsolationPriority("PRIORITY_MEDIUM")
+	StandardIsolationPriorityPriorityHigh        = StandardIsolationPriority("PRIORITY_HIGH")
+)
+
+func (StandardIsolationPriority) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardIsolationPriority)(nil)).Elem()
+}
+
+func (e StandardIsolationPriority) ToStandardIsolationPriorityOutput() StandardIsolationPriorityOutput {
+	return pulumi.ToOutput(e).(StandardIsolationPriorityOutput)
+}
+
+func (e StandardIsolationPriority) ToStandardIsolationPriorityOutputWithContext(ctx context.Context) StandardIsolationPriorityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StandardIsolationPriorityOutput)
+}
+
+func (e StandardIsolationPriority) ToStandardIsolationPriorityPtrOutput() StandardIsolationPriorityPtrOutput {
+	return e.ToStandardIsolationPriorityPtrOutputWithContext(context.Background())
+}
+
+func (e StandardIsolationPriority) ToStandardIsolationPriorityPtrOutputWithContext(ctx context.Context) StandardIsolationPriorityPtrOutput {
+	return StandardIsolationPriority(e).ToStandardIsolationPriorityOutputWithContext(ctx).ToStandardIsolationPriorityPtrOutputWithContext(ctx)
+}
+
+func (e StandardIsolationPriority) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StandardIsolationPriority) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StandardIsolationPriority) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StandardIsolationPriority) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StandardIsolationPriorityOutput struct{ *pulumi.OutputState }
+
+func (StandardIsolationPriorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardIsolationPriority)(nil)).Elem()
+}
+
+func (o StandardIsolationPriorityOutput) ToStandardIsolationPriorityOutput() StandardIsolationPriorityOutput {
+	return o
+}
+
+func (o StandardIsolationPriorityOutput) ToStandardIsolationPriorityOutputWithContext(ctx context.Context) StandardIsolationPriorityOutput {
+	return o
+}
+
+func (o StandardIsolationPriorityOutput) ToStandardIsolationPriorityPtrOutput() StandardIsolationPriorityPtrOutput {
+	return o.ToStandardIsolationPriorityPtrOutputWithContext(context.Background())
+}
+
+func (o StandardIsolationPriorityOutput) ToStandardIsolationPriorityPtrOutputWithContext(ctx context.Context) StandardIsolationPriorityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardIsolationPriority) *StandardIsolationPriority {
+		return &v
+	}).(StandardIsolationPriorityPtrOutput)
+}
+
+func (o StandardIsolationPriorityOutput) ToOutput(ctx context.Context) pulumix.Output[StandardIsolationPriority] {
+	return pulumix.Output[StandardIsolationPriority]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StandardIsolationPriorityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StandardIsolationPriorityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StandardIsolationPriority) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StandardIsolationPriorityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StandardIsolationPriorityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StandardIsolationPriority) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StandardIsolationPriorityPtrOutput struct{ *pulumi.OutputState }
+
+func (StandardIsolationPriorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardIsolationPriority)(nil)).Elem()
+}
+
+func (o StandardIsolationPriorityPtrOutput) ToStandardIsolationPriorityPtrOutput() StandardIsolationPriorityPtrOutput {
+	return o
+}
+
+func (o StandardIsolationPriorityPtrOutput) ToStandardIsolationPriorityPtrOutputWithContext(ctx context.Context) StandardIsolationPriorityPtrOutput {
+	return o
+}
+
+func (o StandardIsolationPriorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardIsolationPriority] {
+	return pulumix.Output[*StandardIsolationPriority]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o StandardIsolationPriorityPtrOutput) Elem() StandardIsolationPriorityOutput {
+	return o.ApplyT(func(v *StandardIsolationPriority) StandardIsolationPriority {
+		if v != nil {
+			return *v
+		}
+		var ret StandardIsolationPriority
+		return ret
+	}).(StandardIsolationPriorityOutput)
+}
+
+func (o StandardIsolationPriorityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StandardIsolationPriorityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StandardIsolationPriority) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StandardIsolationPriorityInput is an input type that accepts StandardIsolationPriorityArgs and StandardIsolationPriorityOutput values.
+// You can construct a concrete instance of `StandardIsolationPriorityInput` via:
+//
+//	StandardIsolationPriorityArgs{...}
+type StandardIsolationPriorityInput interface {
+	pulumi.Input
+
+	ToStandardIsolationPriorityOutput() StandardIsolationPriorityOutput
+	ToStandardIsolationPriorityOutputWithContext(context.Context) StandardIsolationPriorityOutput
+}
+
+var standardIsolationPriorityPtrType = reflect.TypeOf((**StandardIsolationPriority)(nil)).Elem()
+
+type StandardIsolationPriorityPtrInput interface {
+	pulumi.Input
+
+	ToStandardIsolationPriorityPtrOutput() StandardIsolationPriorityPtrOutput
+	ToStandardIsolationPriorityPtrOutputWithContext(context.Context) StandardIsolationPriorityPtrOutput
+}
+
+type standardIsolationPriorityPtr string
+
+func StandardIsolationPriorityPtr(v string) StandardIsolationPriorityPtrInput {
+	return (*standardIsolationPriorityPtr)(&v)
+}
+
+func (*standardIsolationPriorityPtr) ElementType() reflect.Type {
+	return standardIsolationPriorityPtrType
+}
+
+func (in *standardIsolationPriorityPtr) ToStandardIsolationPriorityPtrOutput() StandardIsolationPriorityPtrOutput {
+	return pulumi.ToOutput(in).(StandardIsolationPriorityPtrOutput)
+}
+
+func (in *standardIsolationPriorityPtr) ToStandardIsolationPriorityPtrOutputWithContext(ctx context.Context) StandardIsolationPriorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StandardIsolationPriorityPtrOutput)
+}
+
+func (in *standardIsolationPriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*StandardIsolationPriority] {
+	return pulumix.Output[*StandardIsolationPriority]{
+		OutputState: in.ToStandardIsolationPriorityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
 type TableGranularity string
 
@@ -760,20 +1132,28 @@ func (in *tableGranularityPtr) ToOutput(ctx context.Context) pulumix.Output[*Tab
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfilePriorityInput)(nil)).Elem(), AppProfilePriority("PRIORITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfilePriorityPtrInput)(nil)).Elem(), AppProfilePriority("PRIORITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDefaultStorageTypeInput)(nil)).Elem(), ClusterDefaultStorageType("STORAGE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDefaultStorageTypePtrInput)(nil)).Elem(), ClusterDefaultStorageType("STORAGE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypeInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypePtrInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardIsolationPriorityInput)(nil)).Elem(), StandardIsolationPriority("PRIORITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardIsolationPriorityPtrInput)(nil)).Elem(), StandardIsolationPriority("PRIORITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TableGranularityInput)(nil)).Elem(), TableGranularity("TIMESTAMP_GRANULARITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TableGranularityPtrInput)(nil)).Elem(), TableGranularity("TIMESTAMP_GRANULARITY_UNSPECIFIED"))
+	pulumi.RegisterOutputType(AppProfilePriorityOutput{})
+	pulumi.RegisterOutputType(AppProfilePriorityPtrOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultStorageTypeOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultStorageTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceTypeOutput{})
 	pulumi.RegisterOutputType(InstanceTypePtrOutput{})
+	pulumi.RegisterOutputType(StandardIsolationPriorityOutput{})
+	pulumi.RegisterOutputType(StandardIsolationPriorityPtrOutput{})
 	pulumi.RegisterOutputType(TableGranularityOutput{})
 	pulumi.RegisterOutputType(TableGranularityPtrOutput{})
 }

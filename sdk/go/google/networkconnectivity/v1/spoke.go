@@ -21,27 +21,35 @@ type Spoke struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An optional description of the spoke.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. The name of the group that this spoke is associated with.
+	Group pulumi.StringOutput `pulumi:"group"`
 	// Immutable. The name of the hub that this spoke is attached to.
 	Hub pulumi.StringOutput `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// VLAN attachments that are associated with the spoke.
 	LinkedInterconnectAttachments LinkedInterconnectAttachmentsResponseOutput `pulumi:"linkedInterconnectAttachments"`
 	// Router appliance instances that are associated with the spoke.
 	LinkedRouterApplianceInstances LinkedRouterApplianceInstancesResponseOutput `pulumi:"linkedRouterApplianceInstances"`
+	// Optional. VPC network that is associated with the spoke.
+	LinkedVpcNetwork LinkedVpcNetworkResponseOutput `pulumi:"linkedVpcNetwork"`
 	// VPN tunnels that are associated with the spoke.
 	LinkedVpnTunnels LinkedVpnTunnelsResponseOutput `pulumi:"linkedVpnTunnels"`
 	Location         pulumi.StringOutput            `pulumi:"location"`
 	// Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
+	Reasons StateReasonResponseArrayOutput `pulumi:"reasons"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Required. Unique id for the spoke to create.
 	SpokeId pulumi.StringOutput `pulumi:"spokeId"`
+	// The type of resource associated with the spoke.
+	SpokeType pulumi.StringOutput `pulumi:"spokeType"`
 	// The current lifecycle state of this spoke.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+	// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
 	// The time the spoke was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -98,21 +106,25 @@ func (SpokeState) ElementType() reflect.Type {
 type spokeArgs struct {
 	// An optional description of the spoke.
 	Description *string `pulumi:"description"`
+	// Optional. The name of the group that this spoke is associated with.
+	Group *string `pulumi:"group"`
 	// Immutable. The name of the hub that this spoke is attached to.
 	Hub *string `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels map[string]string `pulumi:"labels"`
 	// VLAN attachments that are associated with the spoke.
 	LinkedInterconnectAttachments *LinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
 	// Router appliance instances that are associated with the spoke.
 	LinkedRouterApplianceInstances *LinkedRouterApplianceInstances `pulumi:"linkedRouterApplianceInstances"`
+	// Optional. VPC network that is associated with the spoke.
+	LinkedVpcNetwork *LinkedVpcNetwork `pulumi:"linkedVpcNetwork"`
 	// VPN tunnels that are associated with the spoke.
 	LinkedVpnTunnels *LinkedVpnTunnels `pulumi:"linkedVpnTunnels"`
 	Location         *string           `pulumi:"location"`
 	// Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Required. Unique id for the spoke to create.
 	SpokeId string `pulumi:"spokeId"`
@@ -122,21 +134,25 @@ type spokeArgs struct {
 type SpokeArgs struct {
 	// An optional description of the spoke.
 	Description pulumi.StringPtrInput
+	// Optional. The name of the group that this spoke is associated with.
+	Group pulumi.StringPtrInput
 	// Immutable. The name of the hub that this spoke is attached to.
 	Hub pulumi.StringPtrInput
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels pulumi.StringMapInput
 	// VLAN attachments that are associated with the spoke.
 	LinkedInterconnectAttachments LinkedInterconnectAttachmentsPtrInput
 	// Router appliance instances that are associated with the spoke.
 	LinkedRouterApplianceInstances LinkedRouterApplianceInstancesPtrInput
+	// Optional. VPC network that is associated with the spoke.
+	LinkedVpcNetwork LinkedVpcNetworkPtrInput
 	// VPN tunnels that are associated with the spoke.
 	LinkedVpnTunnels LinkedVpnTunnelsPtrInput
 	Location         pulumi.StringPtrInput
 	// Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Required. Unique id for the spoke to create.
 	SpokeId pulumi.StringInput
@@ -201,12 +217,17 @@ func (o SpokeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. The name of the group that this spoke is associated with.
+func (o SpokeOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
 // Immutable. The name of the hub that this spoke is attached to.
 func (o SpokeOutput) Hub() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Hub }).(pulumi.StringOutput)
 }
 
-// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 func (o SpokeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -219,6 +240,11 @@ func (o SpokeOutput) LinkedInterconnectAttachments() LinkedInterconnectAttachmen
 // Router appliance instances that are associated with the spoke.
 func (o SpokeOutput) LinkedRouterApplianceInstances() LinkedRouterApplianceInstancesResponseOutput {
 	return o.ApplyT(func(v *Spoke) LinkedRouterApplianceInstancesResponseOutput { return v.LinkedRouterApplianceInstances }).(LinkedRouterApplianceInstancesResponseOutput)
+}
+
+// Optional. VPC network that is associated with the spoke.
+func (o SpokeOutput) LinkedVpcNetwork() LinkedVpcNetworkResponseOutput {
+	return o.ApplyT(func(v *Spoke) LinkedVpcNetworkResponseOutput { return v.LinkedVpcNetwork }).(LinkedVpcNetworkResponseOutput)
 }
 
 // VPN tunnels that are associated with the spoke.
@@ -239,7 +265,12 @@ func (o SpokeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+// The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE` state.
+func (o SpokeOutput) Reasons() StateReasonResponseArrayOutput {
+	return o.ApplyT(func(v *Spoke) StateReasonResponseArrayOutput { return v.Reasons }).(StateReasonResponseArrayOutput)
+}
+
+// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 func (o SpokeOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
@@ -249,12 +280,17 @@ func (o SpokeOutput) SpokeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.SpokeId }).(pulumi.StringOutput)
 }
 
+// The type of resource associated with the spoke.
+func (o SpokeOutput) SpokeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.SpokeType }).(pulumi.StringOutput)
+}
+
 // The current lifecycle state of this spoke.
 func (o SpokeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
 func (o SpokeOutput) UniqueId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.UniqueId }).(pulumi.StringOutput)
 }

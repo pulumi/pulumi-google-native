@@ -1006,6 +1006,8 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 type ConfigVariable struct {
 	// Value is a bool.
 	BoolValue *bool `pulumi:"boolValue"`
+	// Value is a Encryption Key.
+	EncryptionKeyValue *EncryptionKey `pulumi:"encryptionKeyValue"`
 	// Value is an integer
 	IntValue *string `pulumi:"intValue"`
 	// Key of the config variable.
@@ -1031,6 +1033,8 @@ type ConfigVariableInput interface {
 type ConfigVariableArgs struct {
 	// Value is a bool.
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Value is a Encryption Key.
+	EncryptionKeyValue EncryptionKeyPtrInput `pulumi:"encryptionKeyValue"`
 	// Value is an integer
 	IntValue pulumi.StringPtrInput `pulumi:"intValue"`
 	// Key of the config variable.
@@ -1056,6 +1060,53 @@ func (i ConfigVariableArgs) ToConfigVariableOutputWithContext(ctx context.Contex
 func (i ConfigVariableArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigVariable] {
 	return pulumix.Output[ConfigVariable]{
 		OutputState: i.ToConfigVariableOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConfigVariableArgs) ToConfigVariablePtrOutput() ConfigVariablePtrOutput {
+	return i.ToConfigVariablePtrOutputWithContext(context.Background())
+}
+
+func (i ConfigVariableArgs) ToConfigVariablePtrOutputWithContext(ctx context.Context) ConfigVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigVariableOutput).ToConfigVariablePtrOutputWithContext(ctx)
+}
+
+// ConfigVariablePtrInput is an input type that accepts ConfigVariableArgs, ConfigVariablePtr and ConfigVariablePtrOutput values.
+// You can construct a concrete instance of `ConfigVariablePtrInput` via:
+//
+//	        ConfigVariableArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigVariablePtrInput interface {
+	pulumi.Input
+
+	ToConfigVariablePtrOutput() ConfigVariablePtrOutput
+	ToConfigVariablePtrOutputWithContext(context.Context) ConfigVariablePtrOutput
+}
+
+type configVariablePtrType ConfigVariableArgs
+
+func ConfigVariablePtr(v *ConfigVariableArgs) ConfigVariablePtrInput {
+	return (*configVariablePtrType)(v)
+}
+
+func (*configVariablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigVariable)(nil)).Elem()
+}
+
+func (i *configVariablePtrType) ToConfigVariablePtrOutput() ConfigVariablePtrOutput {
+	return i.ToConfigVariablePtrOutputWithContext(context.Background())
+}
+
+func (i *configVariablePtrType) ToConfigVariablePtrOutputWithContext(ctx context.Context) ConfigVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigVariablePtrOutput)
+}
+
+func (i *configVariablePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigVariable] {
+	return pulumix.Output[*ConfigVariable]{
+		OutputState: i.ToConfigVariablePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -1105,6 +1156,16 @@ func (o ConfigVariableOutput) ToConfigVariableOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ConfigVariableOutput) ToConfigVariablePtrOutput() ConfigVariablePtrOutput {
+	return o.ToConfigVariablePtrOutputWithContext(context.Background())
+}
+
+func (o ConfigVariableOutput) ToConfigVariablePtrOutputWithContext(ctx context.Context) ConfigVariablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigVariable) *ConfigVariable {
+		return &v
+	}).(ConfigVariablePtrOutput)
+}
+
 func (o ConfigVariableOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigVariable] {
 	return pulumix.Output[ConfigVariable]{
 		OutputState: o.OutputState,
@@ -1114,6 +1175,11 @@ func (o ConfigVariableOutput) ToOutput(ctx context.Context) pulumix.Output[Confi
 // Value is a bool.
 func (o ConfigVariableOutput) BoolValue() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfigVariable) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
+}
+
+// Value is a Encryption Key.
+func (o ConfigVariableOutput) EncryptionKeyValue() EncryptionKeyPtrOutput {
+	return o.ApplyT(func(v ConfigVariable) *EncryptionKey { return v.EncryptionKeyValue }).(EncryptionKeyPtrOutput)
 }
 
 // Value is an integer
@@ -1134,6 +1200,96 @@ func (o ConfigVariableOutput) SecretValue() SecretPtrOutput {
 // Value is a string.
 func (o ConfigVariableOutput) StringValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigVariable) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type ConfigVariablePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigVariablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigVariable)(nil)).Elem()
+}
+
+func (o ConfigVariablePtrOutput) ToConfigVariablePtrOutput() ConfigVariablePtrOutput {
+	return o
+}
+
+func (o ConfigVariablePtrOutput) ToConfigVariablePtrOutputWithContext(ctx context.Context) ConfigVariablePtrOutput {
+	return o
+}
+
+func (o ConfigVariablePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigVariable] {
+	return pulumix.Output[*ConfigVariable]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigVariablePtrOutput) Elem() ConfigVariableOutput {
+	return o.ApplyT(func(v *ConfigVariable) ConfigVariable {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigVariable
+		return ret
+	}).(ConfigVariableOutput)
+}
+
+// Value is a bool.
+func (o ConfigVariablePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigVariable) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Value is a Encryption Key.
+func (o ConfigVariablePtrOutput) EncryptionKeyValue() EncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *ConfigVariable) *EncryptionKey {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionKeyValue
+	}).(EncryptionKeyPtrOutput)
+}
+
+// Value is an integer
+func (o ConfigVariablePtrOutput) IntValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigVariable) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key of the config variable.
+func (o ConfigVariablePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigVariable) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value is a secret.
+func (o ConfigVariablePtrOutput) SecretValue() SecretPtrOutput {
+	return o.ApplyT(func(v *ConfigVariable) *Secret {
+		if v == nil {
+			return nil
+		}
+		return v.SecretValue
+	}).(SecretPtrOutput)
+}
+
+// Value is a string.
+func (o ConfigVariablePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigVariable) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConfigVariableArrayOutput struct{ *pulumi.OutputState }
@@ -1166,6 +1322,8 @@ func (o ConfigVariableArrayOutput) Index(i pulumi.IntInput) ConfigVariableOutput
 type ConfigVariableResponse struct {
 	// Value is a bool.
 	BoolValue bool `pulumi:"boolValue"`
+	// Value is a Encryption Key.
+	EncryptionKeyValue EncryptionKeyResponse `pulumi:"encryptionKeyValue"`
 	// Value is an integer
 	IntValue string `pulumi:"intValue"`
 	// Key of the config variable.
@@ -1200,6 +1358,11 @@ func (o ConfigVariableResponseOutput) ToOutput(ctx context.Context) pulumix.Outp
 // Value is a bool.
 func (o ConfigVariableResponseOutput) BoolValue() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigVariableResponse) bool { return v.BoolValue }).(pulumi.BoolOutput)
+}
+
+// Value is a Encryption Key.
+func (o ConfigVariableResponseOutput) EncryptionKeyValue() EncryptionKeyResponseOutput {
+	return o.ApplyT(func(v ConfigVariableResponse) EncryptionKeyResponse { return v.EncryptionKeyValue }).(EncryptionKeyResponseOutput)
 }
 
 // Value is an integer
@@ -1292,6 +1455,80 @@ func (o ConnectionStatusResponseOutput) State() pulumi.StringOutput {
 // Status provides detailed information for the state.
 func (o ConnectionStatusResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version
+type ConnectorVersionInfraConfigResponse struct {
+	// The window used for ratelimiting runtime requests to connections.
+	ConnectionRatelimitWindowSeconds string `pulumi:"connectionRatelimitWindowSeconds"`
+	// HPA autoscaling config.
+	HpaConfig HPAConfigResponse `pulumi:"hpaConfig"`
+	// Max QPS supported for internal requests originating from Connd.
+	InternalclientRatelimitThreshold string `pulumi:"internalclientRatelimitThreshold"`
+	// Max QPS supported by the connector version before throttling of requests.
+	RatelimitThreshold string `pulumi:"ratelimitThreshold"`
+	// System resource limits.
+	ResourceLimits ResourceLimitsResponse `pulumi:"resourceLimits"`
+	// System resource requests.
+	ResourceRequests ResourceRequestsResponse `pulumi:"resourceRequests"`
+	// The name of shared connector deployment.
+	SharedDeployment string `pulumi:"sharedDeployment"`
+}
+
+// This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version
+type ConnectorVersionInfraConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectorVersionInfraConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorVersionInfraConfigResponse)(nil)).Elem()
+}
+
+func (o ConnectorVersionInfraConfigResponseOutput) ToConnectorVersionInfraConfigResponseOutput() ConnectorVersionInfraConfigResponseOutput {
+	return o
+}
+
+func (o ConnectorVersionInfraConfigResponseOutput) ToConnectorVersionInfraConfigResponseOutputWithContext(ctx context.Context) ConnectorVersionInfraConfigResponseOutput {
+	return o
+}
+
+func (o ConnectorVersionInfraConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorVersionInfraConfigResponse] {
+	return pulumix.Output[ConnectorVersionInfraConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The window used for ratelimiting runtime requests to connections.
+func (o ConnectorVersionInfraConfigResponseOutput) ConnectionRatelimitWindowSeconds() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorVersionInfraConfigResponse) string { return v.ConnectionRatelimitWindowSeconds }).(pulumi.StringOutput)
+}
+
+// HPA autoscaling config.
+func (o ConnectorVersionInfraConfigResponseOutput) HpaConfig() HPAConfigResponseOutput {
+	return o.ApplyT(func(v ConnectorVersionInfraConfigResponse) HPAConfigResponse { return v.HpaConfig }).(HPAConfigResponseOutput)
+}
+
+// Max QPS supported for internal requests originating from Connd.
+func (o ConnectorVersionInfraConfigResponseOutput) InternalclientRatelimitThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorVersionInfraConfigResponse) string { return v.InternalclientRatelimitThreshold }).(pulumi.StringOutput)
+}
+
+// Max QPS supported by the connector version before throttling of requests.
+func (o ConnectorVersionInfraConfigResponseOutput) RatelimitThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorVersionInfraConfigResponse) string { return v.RatelimitThreshold }).(pulumi.StringOutput)
+}
+
+// System resource limits.
+func (o ConnectorVersionInfraConfigResponseOutput) ResourceLimits() ResourceLimitsResponseOutput {
+	return o.ApplyT(func(v ConnectorVersionInfraConfigResponse) ResourceLimitsResponse { return v.ResourceLimits }).(ResourceLimitsResponseOutput)
+}
+
+// System resource requests.
+func (o ConnectorVersionInfraConfigResponseOutput) ResourceRequests() ResourceRequestsResponseOutput {
+	return o.ApplyT(func(v ConnectorVersionInfraConfigResponse) ResourceRequestsResponse { return v.ResourceRequests }).(ResourceRequestsResponseOutput)
+}
+
+// The name of shared connector deployment.
+func (o ConnectorVersionInfraConfigResponseOutput) SharedDeployment() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorVersionInfraConfigResponse) string { return v.SharedDeployment }).(pulumi.StringOutput)
 }
 
 // Log configuration for the connection.
@@ -1674,6 +1911,53 @@ func (i DestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[Dest
 	}
 }
 
+func (i DestinationConfigArgs) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
+	return i.ToDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DestinationConfigArgs) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigOutput).ToDestinationConfigPtrOutputWithContext(ctx)
+}
+
+// DestinationConfigPtrInput is an input type that accepts DestinationConfigArgs, DestinationConfigPtr and DestinationConfigPtrOutput values.
+// You can construct a concrete instance of `DestinationConfigPtrInput` via:
+//
+//	        DestinationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DestinationConfigPtrInput interface {
+	pulumi.Input
+
+	ToDestinationConfigPtrOutput() DestinationConfigPtrOutput
+	ToDestinationConfigPtrOutputWithContext(context.Context) DestinationConfigPtrOutput
+}
+
+type destinationConfigPtrType DestinationConfigArgs
+
+func DestinationConfigPtr(v *DestinationConfigArgs) DestinationConfigPtrInput {
+	return (*destinationConfigPtrType)(v)
+}
+
+func (*destinationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DestinationConfig)(nil)).Elem()
+}
+
+func (i *destinationConfigPtrType) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
+	return i.ToDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *destinationConfigPtrType) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigPtrOutput)
+}
+
+func (i *destinationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DestinationConfig] {
+	return pulumix.Output[*DestinationConfig]{
+		OutputState: i.ToDestinationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DestinationConfigArrayInput is an input type that accepts DestinationConfigArray and DestinationConfigArrayOutput values.
 // You can construct a concrete instance of `DestinationConfigArrayInput` via:
 //
@@ -1720,6 +2004,16 @@ func (o DestinationConfigOutput) ToDestinationConfigOutputWithContext(ctx contex
 	return o
 }
 
+func (o DestinationConfigOutput) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
+	return o.ToDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DestinationConfigOutput) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DestinationConfig) *DestinationConfig {
+		return &v
+	}).(DestinationConfigPtrOutput)
+}
+
 func (o DestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationConfig] {
 	return pulumix.Output[DestinationConfig]{
 		OutputState: o.OutputState,
@@ -1734,6 +2028,56 @@ func (o DestinationConfigOutput) Destinations() DestinationArrayOutput {
 // The key is the destination identifier that is supported by the Connector.
 func (o DestinationConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type DestinationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DestinationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DestinationConfig)(nil)).Elem()
+}
+
+func (o DestinationConfigPtrOutput) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
+	return o
+}
+
+func (o DestinationConfigPtrOutput) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
+	return o
+}
+
+func (o DestinationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DestinationConfig] {
+	return pulumix.Output[*DestinationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DestinationConfigPtrOutput) Elem() DestinationConfigOutput {
+	return o.ApplyT(func(v *DestinationConfig) DestinationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DestinationConfig
+		return ret
+	}).(DestinationConfigOutput)
+}
+
+// The destinations for the key.
+func (o DestinationConfigPtrOutput) Destinations() DestinationArrayOutput {
+	return o.ApplyT(func(v *DestinationConfig) []Destination {
+		if v == nil {
+			return nil
+		}
+		return v.Destinations
+	}).(DestinationArrayOutput)
+}
+
+// The key is the destination identifier that is supported by the Connector.
+func (o DestinationConfigPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
 }
 
 type DestinationConfigArrayOutput struct{ *pulumi.OutputState }
@@ -1895,6 +2239,1178 @@ func (o DestinationResponseArrayOutput) Index(i pulumi.IntInput) DestinationResp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationResponse {
 		return vs[0].([]DestinationResponse)[vs[1].(int)]
 	}).(DestinationResponseOutput)
+}
+
+// Encryption Key value.
+type EncryptionKey struct {
+	// The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+	// Type.
+	Type *EncryptionKeyType `pulumi:"type"`
+}
+
+// EncryptionKeyInput is an input type that accepts EncryptionKeyArgs and EncryptionKeyOutput values.
+// You can construct a concrete instance of `EncryptionKeyInput` via:
+//
+//	EncryptionKeyArgs{...}
+type EncryptionKeyInput interface {
+	pulumi.Input
+
+	ToEncryptionKeyOutput() EncryptionKeyOutput
+	ToEncryptionKeyOutputWithContext(context.Context) EncryptionKeyOutput
+}
+
+// Encryption Key value.
+type EncryptionKeyArgs struct {
+	// The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+	// Type.
+	Type EncryptionKeyTypePtrInput `pulumi:"type"`
+}
+
+func (EncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionKey)(nil)).Elem()
+}
+
+func (i EncryptionKeyArgs) ToEncryptionKeyOutput() EncryptionKeyOutput {
+	return i.ToEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i EncryptionKeyArgs) ToEncryptionKeyOutputWithContext(ctx context.Context) EncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyOutput)
+}
+
+func (i EncryptionKeyArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionKey] {
+	return pulumix.Output[EncryptionKey]{
+		OutputState: i.ToEncryptionKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EncryptionKeyArgs) ToEncryptionKeyPtrOutput() EncryptionKeyPtrOutput {
+	return i.ToEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionKeyArgs) ToEncryptionKeyPtrOutputWithContext(ctx context.Context) EncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyOutput).ToEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// EncryptionKeyPtrInput is an input type that accepts EncryptionKeyArgs, EncryptionKeyPtr and EncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `EncryptionKeyPtrInput` via:
+//
+//	        EncryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionKeyPtrOutput() EncryptionKeyPtrOutput
+	ToEncryptionKeyPtrOutputWithContext(context.Context) EncryptionKeyPtrOutput
+}
+
+type encryptionKeyPtrType EncryptionKeyArgs
+
+func EncryptionKeyPtr(v *EncryptionKeyArgs) EncryptionKeyPtrInput {
+	return (*encryptionKeyPtrType)(v)
+}
+
+func (*encryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionKey)(nil)).Elem()
+}
+
+func (i *encryptionKeyPtrType) ToEncryptionKeyPtrOutput() EncryptionKeyPtrOutput {
+	return i.ToEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionKeyPtrType) ToEncryptionKeyPtrOutputWithContext(ctx context.Context) EncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionKeyPtrOutput)
+}
+
+func (i *encryptionKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKey] {
+	return pulumix.Output[*EncryptionKey]{
+		OutputState: i.ToEncryptionKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Encryption Key value.
+type EncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (EncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionKey)(nil)).Elem()
+}
+
+func (o EncryptionKeyOutput) ToEncryptionKeyOutput() EncryptionKeyOutput {
+	return o
+}
+
+func (o EncryptionKeyOutput) ToEncryptionKeyOutputWithContext(ctx context.Context) EncryptionKeyOutput {
+	return o
+}
+
+func (o EncryptionKeyOutput) ToEncryptionKeyPtrOutput() EncryptionKeyPtrOutput {
+	return o.ToEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionKeyOutput) ToEncryptionKeyPtrOutputWithContext(ctx context.Context) EncryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionKey) *EncryptionKey {
+		return &v
+	}).(EncryptionKeyPtrOutput)
+}
+
+func (o EncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionKey] {
+	return pulumix.Output[EncryptionKey]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+func (o EncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+// Type.
+func (o EncryptionKeyOutput) Type() EncryptionKeyTypePtrOutput {
+	return o.ApplyT(func(v EncryptionKey) *EncryptionKeyType { return v.Type }).(EncryptionKeyTypePtrOutput)
+}
+
+type EncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionKey)(nil)).Elem()
+}
+
+func (o EncryptionKeyPtrOutput) ToEncryptionKeyPtrOutput() EncryptionKeyPtrOutput {
+	return o
+}
+
+func (o EncryptionKeyPtrOutput) ToEncryptionKeyPtrOutputWithContext(ctx context.Context) EncryptionKeyPtrOutput {
+	return o
+}
+
+func (o EncryptionKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKey] {
+	return pulumix.Output[*EncryptionKey]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EncryptionKeyPtrOutput) Elem() EncryptionKeyOutput {
+	return o.ApplyT(func(v *EncryptionKey) EncryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionKey
+		return ret
+	}).(EncryptionKeyOutput)
+}
+
+// The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+func (o EncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type.
+func (o EncryptionKeyPtrOutput) Type() EncryptionKeyTypePtrOutput {
+	return o.ApplyT(func(v *EncryptionKey) *EncryptionKeyType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(EncryptionKeyTypePtrOutput)
+}
+
+// Encryption Key value.
+type EncryptionKeyResponse struct {
+	// The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// Type.
+	Type string `pulumi:"type"`
+}
+
+// Encryption Key value.
+type EncryptionKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionKeyResponse)(nil)).Elem()
+}
+
+func (o EncryptionKeyResponseOutput) ToEncryptionKeyResponseOutput() EncryptionKeyResponseOutput {
+	return o
+}
+
+func (o EncryptionKeyResponseOutput) ToEncryptionKeyResponseOutputWithContext(ctx context.Context) EncryptionKeyResponseOutput {
+	return o
+}
+
+func (o EncryptionKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionKeyResponse] {
+	return pulumix.Output[EncryptionKeyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+func (o EncryptionKeyResponseOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionKeyResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Type.
+func (o EncryptionKeyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionKeyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Endpoint message includes details of the Destination endpoint.
+type EndPoint struct {
+	// The URI of the Endpoint.
+	EndpointUri *string `pulumi:"endpointUri"`
+	// List of Header to be added to the Endpoint.
+	Headers []Header `pulumi:"headers"`
+}
+
+// EndPointInput is an input type that accepts EndPointArgs and EndPointOutput values.
+// You can construct a concrete instance of `EndPointInput` via:
+//
+//	EndPointArgs{...}
+type EndPointInput interface {
+	pulumi.Input
+
+	ToEndPointOutput() EndPointOutput
+	ToEndPointOutputWithContext(context.Context) EndPointOutput
+}
+
+// Endpoint message includes details of the Destination endpoint.
+type EndPointArgs struct {
+	// The URI of the Endpoint.
+	EndpointUri pulumi.StringPtrInput `pulumi:"endpointUri"`
+	// List of Header to be added to the Endpoint.
+	Headers HeaderArrayInput `pulumi:"headers"`
+}
+
+func (EndPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndPoint)(nil)).Elem()
+}
+
+func (i EndPointArgs) ToEndPointOutput() EndPointOutput {
+	return i.ToEndPointOutputWithContext(context.Background())
+}
+
+func (i EndPointArgs) ToEndPointOutputWithContext(ctx context.Context) EndPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndPointOutput)
+}
+
+func (i EndPointArgs) ToOutput(ctx context.Context) pulumix.Output[EndPoint] {
+	return pulumix.Output[EndPoint]{
+		OutputState: i.ToEndPointOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EndPointArgs) ToEndPointPtrOutput() EndPointPtrOutput {
+	return i.ToEndPointPtrOutputWithContext(context.Background())
+}
+
+func (i EndPointArgs) ToEndPointPtrOutputWithContext(ctx context.Context) EndPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndPointOutput).ToEndPointPtrOutputWithContext(ctx)
+}
+
+// EndPointPtrInput is an input type that accepts EndPointArgs, EndPointPtr and EndPointPtrOutput values.
+// You can construct a concrete instance of `EndPointPtrInput` via:
+//
+//	        EndPointArgs{...}
+//
+//	or:
+//
+//	        nil
+type EndPointPtrInput interface {
+	pulumi.Input
+
+	ToEndPointPtrOutput() EndPointPtrOutput
+	ToEndPointPtrOutputWithContext(context.Context) EndPointPtrOutput
+}
+
+type endPointPtrType EndPointArgs
+
+func EndPointPtr(v *EndPointArgs) EndPointPtrInput {
+	return (*endPointPtrType)(v)
+}
+
+func (*endPointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndPoint)(nil)).Elem()
+}
+
+func (i *endPointPtrType) ToEndPointPtrOutput() EndPointPtrOutput {
+	return i.ToEndPointPtrOutputWithContext(context.Background())
+}
+
+func (i *endPointPtrType) ToEndPointPtrOutputWithContext(ctx context.Context) EndPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndPointPtrOutput)
+}
+
+func (i *endPointPtrType) ToOutput(ctx context.Context) pulumix.Output[*EndPoint] {
+	return pulumix.Output[*EndPoint]{
+		OutputState: i.ToEndPointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Endpoint message includes details of the Destination endpoint.
+type EndPointOutput struct{ *pulumi.OutputState }
+
+func (EndPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndPoint)(nil)).Elem()
+}
+
+func (o EndPointOutput) ToEndPointOutput() EndPointOutput {
+	return o
+}
+
+func (o EndPointOutput) ToEndPointOutputWithContext(ctx context.Context) EndPointOutput {
+	return o
+}
+
+func (o EndPointOutput) ToEndPointPtrOutput() EndPointPtrOutput {
+	return o.ToEndPointPtrOutputWithContext(context.Background())
+}
+
+func (o EndPointOutput) ToEndPointPtrOutputWithContext(ctx context.Context) EndPointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndPoint) *EndPoint {
+		return &v
+	}).(EndPointPtrOutput)
+}
+
+func (o EndPointOutput) ToOutput(ctx context.Context) pulumix.Output[EndPoint] {
+	return pulumix.Output[EndPoint]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The URI of the Endpoint.
+func (o EndPointOutput) EndpointUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndPoint) *string { return v.EndpointUri }).(pulumi.StringPtrOutput)
+}
+
+// List of Header to be added to the Endpoint.
+func (o EndPointOutput) Headers() HeaderArrayOutput {
+	return o.ApplyT(func(v EndPoint) []Header { return v.Headers }).(HeaderArrayOutput)
+}
+
+type EndPointPtrOutput struct{ *pulumi.OutputState }
+
+func (EndPointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndPoint)(nil)).Elem()
+}
+
+func (o EndPointPtrOutput) ToEndPointPtrOutput() EndPointPtrOutput {
+	return o
+}
+
+func (o EndPointPtrOutput) ToEndPointPtrOutputWithContext(ctx context.Context) EndPointPtrOutput {
+	return o
+}
+
+func (o EndPointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndPoint] {
+	return pulumix.Output[*EndPoint]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EndPointPtrOutput) Elem() EndPointOutput {
+	return o.ApplyT(func(v *EndPoint) EndPoint {
+		if v != nil {
+			return *v
+		}
+		var ret EndPoint
+		return ret
+	}).(EndPointOutput)
+}
+
+// The URI of the Endpoint.
+func (o EndPointPtrOutput) EndpointUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Header to be added to the Endpoint.
+func (o EndPointPtrOutput) Headers() HeaderArrayOutput {
+	return o.ApplyT(func(v *EndPoint) []Header {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(HeaderArrayOutput)
+}
+
+// Endpoint message includes details of the Destination endpoint.
+type EndPointResponse struct {
+	// The URI of the Endpoint.
+	EndpointUri string `pulumi:"endpointUri"`
+	// List of Header to be added to the Endpoint.
+	Headers []HeaderResponse `pulumi:"headers"`
+}
+
+// Endpoint message includes details of the Destination endpoint.
+type EndPointResponseOutput struct{ *pulumi.OutputState }
+
+func (EndPointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndPointResponse)(nil)).Elem()
+}
+
+func (o EndPointResponseOutput) ToEndPointResponseOutput() EndPointResponseOutput {
+	return o
+}
+
+func (o EndPointResponseOutput) ToEndPointResponseOutputWithContext(ctx context.Context) EndPointResponseOutput {
+	return o
+}
+
+func (o EndPointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndPointResponse] {
+	return pulumix.Output[EndPointResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The URI of the Endpoint.
+func (o EndPointResponseOutput) EndpointUri() pulumi.StringOutput {
+	return o.ApplyT(func(v EndPointResponse) string { return v.EndpointUri }).(pulumi.StringOutput)
+}
+
+// List of Header to be added to the Endpoint.
+func (o EndPointResponseOutput) Headers() HeaderResponseArrayOutput {
+	return o.ApplyT(func(v EndPointResponse) []HeaderResponse { return v.Headers }).(HeaderResponseArrayOutput)
+}
+
+// Message for EventSubscription Destination to act on receiving an event
+type EventSubscriptionDestination struct {
+	// OPTION 1: Hit an endpoint when we receive an event.
+	Endpoint *EndPoint `pulumi:"endpoint"`
+	// Service account needed for runtime plane to trigger IP workflow.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// type of the destination
+	Type *EventSubscriptionDestinationType `pulumi:"type"`
+}
+
+// EventSubscriptionDestinationInput is an input type that accepts EventSubscriptionDestinationArgs and EventSubscriptionDestinationOutput values.
+// You can construct a concrete instance of `EventSubscriptionDestinationInput` via:
+//
+//	EventSubscriptionDestinationArgs{...}
+type EventSubscriptionDestinationInput interface {
+	pulumi.Input
+
+	ToEventSubscriptionDestinationOutput() EventSubscriptionDestinationOutput
+	ToEventSubscriptionDestinationOutputWithContext(context.Context) EventSubscriptionDestinationOutput
+}
+
+// Message for EventSubscription Destination to act on receiving an event
+type EventSubscriptionDestinationArgs struct {
+	// OPTION 1: Hit an endpoint when we receive an event.
+	Endpoint EndPointPtrInput `pulumi:"endpoint"`
+	// Service account needed for runtime plane to trigger IP workflow.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// type of the destination
+	Type EventSubscriptionDestinationTypePtrInput `pulumi:"type"`
+}
+
+func (EventSubscriptionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i EventSubscriptionDestinationArgs) ToEventSubscriptionDestinationOutput() EventSubscriptionDestinationOutput {
+	return i.ToEventSubscriptionDestinationOutputWithContext(context.Background())
+}
+
+func (i EventSubscriptionDestinationArgs) ToEventSubscriptionDestinationOutputWithContext(ctx context.Context) EventSubscriptionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionDestinationOutput)
+}
+
+func (i EventSubscriptionDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[EventSubscriptionDestination] {
+	return pulumix.Output[EventSubscriptionDestination]{
+		OutputState: i.ToEventSubscriptionDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EventSubscriptionDestinationArgs) ToEventSubscriptionDestinationPtrOutput() EventSubscriptionDestinationPtrOutput {
+	return i.ToEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i EventSubscriptionDestinationArgs) ToEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) EventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionDestinationOutput).ToEventSubscriptionDestinationPtrOutputWithContext(ctx)
+}
+
+// EventSubscriptionDestinationPtrInput is an input type that accepts EventSubscriptionDestinationArgs, EventSubscriptionDestinationPtr and EventSubscriptionDestinationPtrOutput values.
+// You can construct a concrete instance of `EventSubscriptionDestinationPtrInput` via:
+//
+//	        EventSubscriptionDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventSubscriptionDestinationPtrInput interface {
+	pulumi.Input
+
+	ToEventSubscriptionDestinationPtrOutput() EventSubscriptionDestinationPtrOutput
+	ToEventSubscriptionDestinationPtrOutputWithContext(context.Context) EventSubscriptionDestinationPtrOutput
+}
+
+type eventSubscriptionDestinationPtrType EventSubscriptionDestinationArgs
+
+func EventSubscriptionDestinationPtr(v *EventSubscriptionDestinationArgs) EventSubscriptionDestinationPtrInput {
+	return (*eventSubscriptionDestinationPtrType)(v)
+}
+
+func (*eventSubscriptionDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i *eventSubscriptionDestinationPtrType) ToEventSubscriptionDestinationPtrOutput() EventSubscriptionDestinationPtrOutput {
+	return i.ToEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSubscriptionDestinationPtrType) ToEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) EventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSubscriptionDestinationPtrOutput)
+}
+
+func (i *eventSubscriptionDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*EventSubscriptionDestination] {
+	return pulumix.Output[*EventSubscriptionDestination]{
+		OutputState: i.ToEventSubscriptionDestinationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Message for EventSubscription Destination to act on receiving an event
+type EventSubscriptionDestinationOutput struct{ *pulumi.OutputState }
+
+func (EventSubscriptionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o EventSubscriptionDestinationOutput) ToEventSubscriptionDestinationOutput() EventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o EventSubscriptionDestinationOutput) ToEventSubscriptionDestinationOutputWithContext(ctx context.Context) EventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o EventSubscriptionDestinationOutput) ToEventSubscriptionDestinationPtrOutput() EventSubscriptionDestinationPtrOutput {
+	return o.ToEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o EventSubscriptionDestinationOutput) ToEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) EventSubscriptionDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventSubscriptionDestination) *EventSubscriptionDestination {
+		return &v
+	}).(EventSubscriptionDestinationPtrOutput)
+}
+
+func (o EventSubscriptionDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[EventSubscriptionDestination] {
+	return pulumix.Output[EventSubscriptionDestination]{
+		OutputState: o.OutputState,
+	}
+}
+
+// OPTION 1: Hit an endpoint when we receive an event.
+func (o EventSubscriptionDestinationOutput) Endpoint() EndPointPtrOutput {
+	return o.ApplyT(func(v EventSubscriptionDestination) *EndPoint { return v.Endpoint }).(EndPointPtrOutput)
+}
+
+// Service account needed for runtime plane to trigger IP workflow.
+func (o EventSubscriptionDestinationOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSubscriptionDestination) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// type of the destination
+func (o EventSubscriptionDestinationOutput) Type() EventSubscriptionDestinationTypePtrOutput {
+	return o.ApplyT(func(v EventSubscriptionDestination) *EventSubscriptionDestinationType { return v.Type }).(EventSubscriptionDestinationTypePtrOutput)
+}
+
+type EventSubscriptionDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSubscriptionDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o EventSubscriptionDestinationPtrOutput) ToEventSubscriptionDestinationPtrOutput() EventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o EventSubscriptionDestinationPtrOutput) ToEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) EventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o EventSubscriptionDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventSubscriptionDestination] {
+	return pulumix.Output[*EventSubscriptionDestination]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EventSubscriptionDestinationPtrOutput) Elem() EventSubscriptionDestinationOutput {
+	return o.ApplyT(func(v *EventSubscriptionDestination) EventSubscriptionDestination {
+		if v != nil {
+			return *v
+		}
+		var ret EventSubscriptionDestination
+		return ret
+	}).(EventSubscriptionDestinationOutput)
+}
+
+// OPTION 1: Hit an endpoint when we receive an event.
+func (o EventSubscriptionDestinationPtrOutput) Endpoint() EndPointPtrOutput {
+	return o.ApplyT(func(v *EventSubscriptionDestination) *EndPoint {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(EndPointPtrOutput)
+}
+
+// Service account needed for runtime plane to trigger IP workflow.
+func (o EventSubscriptionDestinationPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// type of the destination
+func (o EventSubscriptionDestinationPtrOutput) Type() EventSubscriptionDestinationTypePtrOutput {
+	return o.ApplyT(func(v *EventSubscriptionDestination) *EventSubscriptionDestinationType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(EventSubscriptionDestinationTypePtrOutput)
+}
+
+// Message for EventSubscription Destination to act on receiving an event
+type EventSubscriptionDestinationResponse struct {
+	// OPTION 1: Hit an endpoint when we receive an event.
+	Endpoint EndPointResponse `pulumi:"endpoint"`
+	// Service account needed for runtime plane to trigger IP workflow.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// type of the destination
+	Type string `pulumi:"type"`
+}
+
+// Message for EventSubscription Destination to act on receiving an event
+type EventSubscriptionDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (EventSubscriptionDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o EventSubscriptionDestinationResponseOutput) ToEventSubscriptionDestinationResponseOutput() EventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o EventSubscriptionDestinationResponseOutput) ToEventSubscriptionDestinationResponseOutputWithContext(ctx context.Context) EventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o EventSubscriptionDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventSubscriptionDestinationResponse] {
+	return pulumix.Output[EventSubscriptionDestinationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// OPTION 1: Hit an endpoint when we receive an event.
+func (o EventSubscriptionDestinationResponseOutput) Endpoint() EndPointResponseOutput {
+	return o.ApplyT(func(v EventSubscriptionDestinationResponse) EndPointResponse { return v.Endpoint }).(EndPointResponseOutput)
+}
+
+// Service account needed for runtime plane to trigger IP workflow.
+func (o EventSubscriptionDestinationResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v EventSubscriptionDestinationResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// type of the destination
+func (o EventSubscriptionDestinationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EventSubscriptionDestinationResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// EventSubscription Status denotes the status of the EventSubscription resource.
+type EventSubscriptionStatus struct {
+}
+
+// EventSubscription Status denotes the status of the EventSubscription resource.
+type EventSubscriptionStatusResponse struct {
+	// Description of the state.
+	Description string `pulumi:"description"`
+	// State of Event Subscription resource.
+	State string `pulumi:"state"`
+}
+
+// EventSubscription Status denotes the status of the EventSubscription resource.
+type EventSubscriptionStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (EventSubscriptionStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSubscriptionStatusResponse)(nil)).Elem()
+}
+
+func (o EventSubscriptionStatusResponseOutput) ToEventSubscriptionStatusResponseOutput() EventSubscriptionStatusResponseOutput {
+	return o
+}
+
+func (o EventSubscriptionStatusResponseOutput) ToEventSubscriptionStatusResponseOutputWithContext(ctx context.Context) EventSubscriptionStatusResponseOutput {
+	return o
+}
+
+func (o EventSubscriptionStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventSubscriptionStatusResponse] {
+	return pulumix.Output[EventSubscriptionStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Description of the state.
+func (o EventSubscriptionStatusResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v EventSubscriptionStatusResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// State of Event Subscription resource.
+func (o EventSubscriptionStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v EventSubscriptionStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Eventing Configuration of a connection
+type EventingConfig struct {
+	// Additional eventing related field values
+	AdditionalVariables []ConfigVariable `pulumi:"additionalVariables"`
+	// Auth details for the webhook adapter.
+	AuthConfig *AuthConfig `pulumi:"authConfig"`
+	// Encryption key (can be either Google managed or CMEK).
+	EncryptionKey *ConfigVariable `pulumi:"encryptionKey"`
+	// Enrichment Enabled.
+	EnrichmentEnabled *bool `pulumi:"enrichmentEnabled"`
+	// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+	EventsListenerIngressEndpoint *string `pulumi:"eventsListenerIngressEndpoint"`
+	// Optional. Private Connectivity Enabled.
+	PrivateConnectivityEnabled *bool `pulumi:"privateConnectivityEnabled"`
+	// Registration endpoint for auto registration.
+	RegistrationDestinationConfig *DestinationConfig `pulumi:"registrationDestinationConfig"`
+}
+
+// EventingConfigInput is an input type that accepts EventingConfigArgs and EventingConfigOutput values.
+// You can construct a concrete instance of `EventingConfigInput` via:
+//
+//	EventingConfigArgs{...}
+type EventingConfigInput interface {
+	pulumi.Input
+
+	ToEventingConfigOutput() EventingConfigOutput
+	ToEventingConfigOutputWithContext(context.Context) EventingConfigOutput
+}
+
+// Eventing Configuration of a connection
+type EventingConfigArgs struct {
+	// Additional eventing related field values
+	AdditionalVariables ConfigVariableArrayInput `pulumi:"additionalVariables"`
+	// Auth details for the webhook adapter.
+	AuthConfig AuthConfigPtrInput `pulumi:"authConfig"`
+	// Encryption key (can be either Google managed or CMEK).
+	EncryptionKey ConfigVariablePtrInput `pulumi:"encryptionKey"`
+	// Enrichment Enabled.
+	EnrichmentEnabled pulumi.BoolPtrInput `pulumi:"enrichmentEnabled"`
+	// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+	EventsListenerIngressEndpoint pulumi.StringPtrInput `pulumi:"eventsListenerIngressEndpoint"`
+	// Optional. Private Connectivity Enabled.
+	PrivateConnectivityEnabled pulumi.BoolPtrInput `pulumi:"privateConnectivityEnabled"`
+	// Registration endpoint for auto registration.
+	RegistrationDestinationConfig DestinationConfigPtrInput `pulumi:"registrationDestinationConfig"`
+}
+
+func (EventingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventingConfig)(nil)).Elem()
+}
+
+func (i EventingConfigArgs) ToEventingConfigOutput() EventingConfigOutput {
+	return i.ToEventingConfigOutputWithContext(context.Background())
+}
+
+func (i EventingConfigArgs) ToEventingConfigOutputWithContext(ctx context.Context) EventingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventingConfigOutput)
+}
+
+func (i EventingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EventingConfig] {
+	return pulumix.Output[EventingConfig]{
+		OutputState: i.ToEventingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i EventingConfigArgs) ToEventingConfigPtrOutput() EventingConfigPtrOutput {
+	return i.ToEventingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EventingConfigArgs) ToEventingConfigPtrOutputWithContext(ctx context.Context) EventingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventingConfigOutput).ToEventingConfigPtrOutputWithContext(ctx)
+}
+
+// EventingConfigPtrInput is an input type that accepts EventingConfigArgs, EventingConfigPtr and EventingConfigPtrOutput values.
+// You can construct a concrete instance of `EventingConfigPtrInput` via:
+//
+//	        EventingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventingConfigPtrInput interface {
+	pulumi.Input
+
+	ToEventingConfigPtrOutput() EventingConfigPtrOutput
+	ToEventingConfigPtrOutputWithContext(context.Context) EventingConfigPtrOutput
+}
+
+type eventingConfigPtrType EventingConfigArgs
+
+func EventingConfigPtr(v *EventingConfigArgs) EventingConfigPtrInput {
+	return (*eventingConfigPtrType)(v)
+}
+
+func (*eventingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventingConfig)(nil)).Elem()
+}
+
+func (i *eventingConfigPtrType) ToEventingConfigPtrOutput() EventingConfigPtrOutput {
+	return i.ToEventingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *eventingConfigPtrType) ToEventingConfigPtrOutputWithContext(ctx context.Context) EventingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventingConfigPtrOutput)
+}
+
+func (i *eventingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EventingConfig] {
+	return pulumix.Output[*EventingConfig]{
+		OutputState: i.ToEventingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Eventing Configuration of a connection
+type EventingConfigOutput struct{ *pulumi.OutputState }
+
+func (EventingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventingConfig)(nil)).Elem()
+}
+
+func (o EventingConfigOutput) ToEventingConfigOutput() EventingConfigOutput {
+	return o
+}
+
+func (o EventingConfigOutput) ToEventingConfigOutputWithContext(ctx context.Context) EventingConfigOutput {
+	return o
+}
+
+func (o EventingConfigOutput) ToEventingConfigPtrOutput() EventingConfigPtrOutput {
+	return o.ToEventingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EventingConfigOutput) ToEventingConfigPtrOutputWithContext(ctx context.Context) EventingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventingConfig) *EventingConfig {
+		return &v
+	}).(EventingConfigPtrOutput)
+}
+
+func (o EventingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EventingConfig] {
+	return pulumix.Output[EventingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Additional eventing related field values
+func (o EventingConfigOutput) AdditionalVariables() ConfigVariableArrayOutput {
+	return o.ApplyT(func(v EventingConfig) []ConfigVariable { return v.AdditionalVariables }).(ConfigVariableArrayOutput)
+}
+
+// Auth details for the webhook adapter.
+func (o EventingConfigOutput) AuthConfig() AuthConfigPtrOutput {
+	return o.ApplyT(func(v EventingConfig) *AuthConfig { return v.AuthConfig }).(AuthConfigPtrOutput)
+}
+
+// Encryption key (can be either Google managed or CMEK).
+func (o EventingConfigOutput) EncryptionKey() ConfigVariablePtrOutput {
+	return o.ApplyT(func(v EventingConfig) *ConfigVariable { return v.EncryptionKey }).(ConfigVariablePtrOutput)
+}
+
+// Enrichment Enabled.
+func (o EventingConfigOutput) EnrichmentEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EventingConfig) *bool { return v.EnrichmentEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+func (o EventingConfigOutput) EventsListenerIngressEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventingConfig) *string { return v.EventsListenerIngressEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Private Connectivity Enabled.
+func (o EventingConfigOutput) PrivateConnectivityEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EventingConfig) *bool { return v.PrivateConnectivityEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Registration endpoint for auto registration.
+func (o EventingConfigOutput) RegistrationDestinationConfig() DestinationConfigPtrOutput {
+	return o.ApplyT(func(v EventingConfig) *DestinationConfig { return v.RegistrationDestinationConfig }).(DestinationConfigPtrOutput)
+}
+
+type EventingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EventingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventingConfig)(nil)).Elem()
+}
+
+func (o EventingConfigPtrOutput) ToEventingConfigPtrOutput() EventingConfigPtrOutput {
+	return o
+}
+
+func (o EventingConfigPtrOutput) ToEventingConfigPtrOutputWithContext(ctx context.Context) EventingConfigPtrOutput {
+	return o
+}
+
+func (o EventingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventingConfig] {
+	return pulumix.Output[*EventingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EventingConfigPtrOutput) Elem() EventingConfigOutput {
+	return o.ApplyT(func(v *EventingConfig) EventingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EventingConfig
+		return ret
+	}).(EventingConfigOutput)
+}
+
+// Additional eventing related field values
+func (o EventingConfigPtrOutput) AdditionalVariables() ConfigVariableArrayOutput {
+	return o.ApplyT(func(v *EventingConfig) []ConfigVariable {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalVariables
+	}).(ConfigVariableArrayOutput)
+}
+
+// Auth details for the webhook adapter.
+func (o EventingConfigPtrOutput) AuthConfig() AuthConfigPtrOutput {
+	return o.ApplyT(func(v *EventingConfig) *AuthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuthConfig
+	}).(AuthConfigPtrOutput)
+}
+
+// Encryption key (can be either Google managed or CMEK).
+func (o EventingConfigPtrOutput) EncryptionKey() ConfigVariablePtrOutput {
+	return o.ApplyT(func(v *EventingConfig) *ConfigVariable {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionKey
+	}).(ConfigVariablePtrOutput)
+}
+
+// Enrichment Enabled.
+func (o EventingConfigPtrOutput) EnrichmentEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EventingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnrichmentEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+func (o EventingConfigPtrOutput) EventsListenerIngressEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventsListenerIngressEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Private Connectivity Enabled.
+func (o EventingConfigPtrOutput) PrivateConnectivityEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EventingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateConnectivityEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Registration endpoint for auto registration.
+func (o EventingConfigPtrOutput) RegistrationDestinationConfig() DestinationConfigPtrOutput {
+	return o.ApplyT(func(v *EventingConfig) *DestinationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RegistrationDestinationConfig
+	}).(DestinationConfigPtrOutput)
+}
+
+// Eventing Configuration of a connection
+type EventingConfigResponse struct {
+	// Additional eventing related field values
+	AdditionalVariables []ConfigVariableResponse `pulumi:"additionalVariables"`
+	// Auth details for the webhook adapter.
+	AuthConfig AuthConfigResponse `pulumi:"authConfig"`
+	// Encryption key (can be either Google managed or CMEK).
+	EncryptionKey ConfigVariableResponse `pulumi:"encryptionKey"`
+	// Enrichment Enabled.
+	EnrichmentEnabled bool `pulumi:"enrichmentEnabled"`
+	// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+	EventsListenerIngressEndpoint string `pulumi:"eventsListenerIngressEndpoint"`
+	// Optional. Private Connectivity Enabled.
+	PrivateConnectivityEnabled bool `pulumi:"privateConnectivityEnabled"`
+	// Registration endpoint for auto registration.
+	RegistrationDestinationConfig DestinationConfigResponse `pulumi:"registrationDestinationConfig"`
+}
+
+// Eventing Configuration of a connection
+type EventingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (EventingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventingConfigResponse)(nil)).Elem()
+}
+
+func (o EventingConfigResponseOutput) ToEventingConfigResponseOutput() EventingConfigResponseOutput {
+	return o
+}
+
+func (o EventingConfigResponseOutput) ToEventingConfigResponseOutputWithContext(ctx context.Context) EventingConfigResponseOutput {
+	return o
+}
+
+func (o EventingConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventingConfigResponse] {
+	return pulumix.Output[EventingConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Additional eventing related field values
+func (o EventingConfigResponseOutput) AdditionalVariables() ConfigVariableResponseArrayOutput {
+	return o.ApplyT(func(v EventingConfigResponse) []ConfigVariableResponse { return v.AdditionalVariables }).(ConfigVariableResponseArrayOutput)
+}
+
+// Auth details for the webhook adapter.
+func (o EventingConfigResponseOutput) AuthConfig() AuthConfigResponseOutput {
+	return o.ApplyT(func(v EventingConfigResponse) AuthConfigResponse { return v.AuthConfig }).(AuthConfigResponseOutput)
+}
+
+// Encryption key (can be either Google managed or CMEK).
+func (o EventingConfigResponseOutput) EncryptionKey() ConfigVariableResponseOutput {
+	return o.ApplyT(func(v EventingConfigResponse) ConfigVariableResponse { return v.EncryptionKey }).(ConfigVariableResponseOutput)
+}
+
+// Enrichment Enabled.
+func (o EventingConfigResponseOutput) EnrichmentEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EventingConfigResponse) bool { return v.EnrichmentEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+func (o EventingConfigResponseOutput) EventsListenerIngressEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v EventingConfigResponse) string { return v.EventsListenerIngressEndpoint }).(pulumi.StringOutput)
+}
+
+// Optional. Private Connectivity Enabled.
+func (o EventingConfigResponseOutput) PrivateConnectivityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EventingConfigResponse) bool { return v.PrivateConnectivityEnabled }).(pulumi.BoolOutput)
+}
+
+// Registration endpoint for auto registration.
+func (o EventingConfigResponseOutput) RegistrationDestinationConfig() DestinationConfigResponseOutput {
+	return o.ApplyT(func(v EventingConfigResponse) DestinationConfigResponse { return v.RegistrationDestinationConfig }).(DestinationConfigResponseOutput)
+}
+
+// Eventing runtime data has the details related to eventing managed by the system.
+type EventingRuntimeDataResponse struct {
+	// Events listener endpoint. The value will populated after provisioning the events listener.
+	EventsListenerEndpoint string `pulumi:"eventsListenerEndpoint"`
+	// Events listener PSC Service attachment. The value will be populated after provisioning the events listener with private connectivity enabled.
+	EventsListenerPscSa string `pulumi:"eventsListenerPscSa"`
+	// Current status of eventing.
+	Status EventingStatusResponse `pulumi:"status"`
+}
+
+// Eventing runtime data has the details related to eventing managed by the system.
+type EventingRuntimeDataResponseOutput struct{ *pulumi.OutputState }
+
+func (EventingRuntimeDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventingRuntimeDataResponse)(nil)).Elem()
+}
+
+func (o EventingRuntimeDataResponseOutput) ToEventingRuntimeDataResponseOutput() EventingRuntimeDataResponseOutput {
+	return o
+}
+
+func (o EventingRuntimeDataResponseOutput) ToEventingRuntimeDataResponseOutputWithContext(ctx context.Context) EventingRuntimeDataResponseOutput {
+	return o
+}
+
+func (o EventingRuntimeDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventingRuntimeDataResponse] {
+	return pulumix.Output[EventingRuntimeDataResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Events listener endpoint. The value will populated after provisioning the events listener.
+func (o EventingRuntimeDataResponseOutput) EventsListenerEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v EventingRuntimeDataResponse) string { return v.EventsListenerEndpoint }).(pulumi.StringOutput)
+}
+
+// Events listener PSC Service attachment. The value will be populated after provisioning the events listener with private connectivity enabled.
+func (o EventingRuntimeDataResponseOutput) EventsListenerPscSa() pulumi.StringOutput {
+	return o.ApplyT(func(v EventingRuntimeDataResponse) string { return v.EventsListenerPscSa }).(pulumi.StringOutput)
+}
+
+// Current status of eventing.
+func (o EventingRuntimeDataResponseOutput) Status() EventingStatusResponseOutput {
+	return o.ApplyT(func(v EventingRuntimeDataResponse) EventingStatusResponse { return v.Status }).(EventingStatusResponseOutput)
+}
+
+// EventingStatus indicates the state of eventing.
+type EventingStatusResponse struct {
+	// Description of error if State is set to "ERROR".
+	Description string `pulumi:"description"`
+	// State.
+	State string `pulumi:"state"`
+}
+
+// EventingStatus indicates the state of eventing.
+type EventingStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (EventingStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventingStatusResponse)(nil)).Elem()
+}
+
+func (o EventingStatusResponseOutput) ToEventingStatusResponseOutput() EventingStatusResponseOutput {
+	return o
+}
+
+func (o EventingStatusResponseOutput) ToEventingStatusResponseOutputWithContext(ctx context.Context) EventingStatusResponseOutput {
+	return o
+}
+
+func (o EventingStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventingStatusResponse] {
+	return pulumix.Output[EventingStatusResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Description of error if State is set to "ERROR".
+func (o EventingStatusResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v EventingStatusResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// State.
+func (o EventingStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v EventingStatusResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2169,6 +3685,465 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Autoscaling config for connector deployment system metrics.
+type HPAConfigResponse struct {
+	// Percent CPU utilization where HPA triggers autoscaling.
+	CpuUtilizationThreshold string `pulumi:"cpuUtilizationThreshold"`
+	// Percent Memory utilization where HPA triggers autoscaling.
+	MemoryUtilizationThreshold string `pulumi:"memoryUtilizationThreshold"`
+}
+
+// Autoscaling config for connector deployment system metrics.
+type HPAConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (HPAConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HPAConfigResponse)(nil)).Elem()
+}
+
+func (o HPAConfigResponseOutput) ToHPAConfigResponseOutput() HPAConfigResponseOutput {
+	return o
+}
+
+func (o HPAConfigResponseOutput) ToHPAConfigResponseOutputWithContext(ctx context.Context) HPAConfigResponseOutput {
+	return o
+}
+
+func (o HPAConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HPAConfigResponse] {
+	return pulumix.Output[HPAConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Percent CPU utilization where HPA triggers autoscaling.
+func (o HPAConfigResponseOutput) CpuUtilizationThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v HPAConfigResponse) string { return v.CpuUtilizationThreshold }).(pulumi.StringOutput)
+}
+
+// Percent Memory utilization where HPA triggers autoscaling.
+func (o HPAConfigResponseOutput) MemoryUtilizationThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v HPAConfigResponse) string { return v.MemoryUtilizationThreshold }).(pulumi.StringOutput)
+}
+
+// Header details for a given header to be added to Endpoint.
+type Header struct {
+	// Key of Header.
+	Key *string `pulumi:"key"`
+	// Value of Header.
+	Value *string `pulumi:"value"`
+}
+
+// HeaderInput is an input type that accepts HeaderArgs and HeaderOutput values.
+// You can construct a concrete instance of `HeaderInput` via:
+//
+//	HeaderArgs{...}
+type HeaderInput interface {
+	pulumi.Input
+
+	ToHeaderOutput() HeaderOutput
+	ToHeaderOutputWithContext(context.Context) HeaderOutput
+}
+
+// Header details for a given header to be added to Endpoint.
+type HeaderArgs struct {
+	// Key of Header.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Value of Header.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (HeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Header)(nil)).Elem()
+}
+
+func (i HeaderArgs) ToHeaderOutput() HeaderOutput {
+	return i.ToHeaderOutputWithContext(context.Background())
+}
+
+func (i HeaderArgs) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderOutput)
+}
+
+func (i HeaderArgs) ToOutput(ctx context.Context) pulumix.Output[Header] {
+	return pulumix.Output[Header]{
+		OutputState: i.ToHeaderOutputWithContext(ctx).OutputState,
+	}
+}
+
+// HeaderArrayInput is an input type that accepts HeaderArray and HeaderArrayOutput values.
+// You can construct a concrete instance of `HeaderArrayInput` via:
+//
+//	HeaderArray{ HeaderArgs{...} }
+type HeaderArrayInput interface {
+	pulumi.Input
+
+	ToHeaderArrayOutput() HeaderArrayOutput
+	ToHeaderArrayOutputWithContext(context.Context) HeaderArrayOutput
+}
+
+type HeaderArray []HeaderInput
+
+func (HeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Header)(nil)).Elem()
+}
+
+func (i HeaderArray) ToHeaderArrayOutput() HeaderArrayOutput {
+	return i.ToHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i HeaderArray) ToHeaderArrayOutputWithContext(ctx context.Context) HeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderArrayOutput)
+}
+
+func (i HeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]Header] {
+	return pulumix.Output[[]Header]{
+		OutputState: i.ToHeaderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Header details for a given header to be added to Endpoint.
+type HeaderOutput struct{ *pulumi.OutputState }
+
+func (HeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Header)(nil)).Elem()
+}
+
+func (o HeaderOutput) ToHeaderOutput() HeaderOutput {
+	return o
+}
+
+func (o HeaderOutput) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput {
+	return o
+}
+
+func (o HeaderOutput) ToOutput(ctx context.Context) pulumix.Output[Header] {
+	return pulumix.Output[Header]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Key of Header.
+func (o HeaderOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Header) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Value of Header.
+func (o HeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Header) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type HeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (HeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Header)(nil)).Elem()
+}
+
+func (o HeaderArrayOutput) ToHeaderArrayOutput() HeaderArrayOutput {
+	return o
+}
+
+func (o HeaderArrayOutput) ToHeaderArrayOutputWithContext(ctx context.Context) HeaderArrayOutput {
+	return o
+}
+
+func (o HeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Header] {
+	return pulumix.Output[[]Header]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HeaderArrayOutput) Index(i pulumi.IntInput) HeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Header {
+		return vs[0].([]Header)[vs[1].(int)]
+	}).(HeaderOutput)
+}
+
+// Header details for a given header to be added to Endpoint.
+type HeaderResponse struct {
+	// Key of Header.
+	Key string `pulumi:"key"`
+	// Value of Header.
+	Value string `pulumi:"value"`
+}
+
+// Header details for a given header to be added to Endpoint.
+type HeaderResponseOutput struct{ *pulumi.OutputState }
+
+func (HeaderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderResponse)(nil)).Elem()
+}
+
+func (o HeaderResponseOutput) ToHeaderResponseOutput() HeaderResponseOutput {
+	return o
+}
+
+func (o HeaderResponseOutput) ToHeaderResponseOutputWithContext(ctx context.Context) HeaderResponseOutput {
+	return o
+}
+
+func (o HeaderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HeaderResponse] {
+	return pulumix.Output[HeaderResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Key of Header.
+func (o HeaderResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v HeaderResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of Header.
+func (o HeaderResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v HeaderResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type HeaderResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HeaderResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HeaderResponse)(nil)).Elem()
+}
+
+func (o HeaderResponseArrayOutput) ToHeaderResponseArrayOutput() HeaderResponseArrayOutput {
+	return o
+}
+
+func (o HeaderResponseArrayOutput) ToHeaderResponseArrayOutputWithContext(ctx context.Context) HeaderResponseArrayOutput {
+	return o
+}
+
+func (o HeaderResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HeaderResponse] {
+	return pulumix.Output[[]HeaderResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o HeaderResponseArrayOutput) Index(i pulumi.IntInput) HeaderResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HeaderResponse {
+		return vs[0].([]HeaderResponse)[vs[1].(int)]
+	}).(HeaderResponseOutput)
+}
+
+// JMS message denotes the source of the event
+type JMS struct {
+	// Optional. Name of the JMS source. i.e. queueName or topicName
+	Name *string `pulumi:"name"`
+	// Optional. Type of the JMS Source. i.e. Queue or Topic
+	Type *JMSType `pulumi:"type"`
+}
+
+// JMSInput is an input type that accepts JMSArgs and JMSOutput values.
+// You can construct a concrete instance of `JMSInput` via:
+//
+//	JMSArgs{...}
+type JMSInput interface {
+	pulumi.Input
+
+	ToJMSOutput() JMSOutput
+	ToJMSOutputWithContext(context.Context) JMSOutput
+}
+
+// JMS message denotes the source of the event
+type JMSArgs struct {
+	// Optional. Name of the JMS source. i.e. queueName or topicName
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. Type of the JMS Source. i.e. Queue or Topic
+	Type JMSTypePtrInput `pulumi:"type"`
+}
+
+func (JMSArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JMS)(nil)).Elem()
+}
+
+func (i JMSArgs) ToJMSOutput() JMSOutput {
+	return i.ToJMSOutputWithContext(context.Background())
+}
+
+func (i JMSArgs) ToJMSOutputWithContext(ctx context.Context) JMSOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JMSOutput)
+}
+
+func (i JMSArgs) ToOutput(ctx context.Context) pulumix.Output[JMS] {
+	return pulumix.Output[JMS]{
+		OutputState: i.ToJMSOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i JMSArgs) ToJMSPtrOutput() JMSPtrOutput {
+	return i.ToJMSPtrOutputWithContext(context.Background())
+}
+
+func (i JMSArgs) ToJMSPtrOutputWithContext(ctx context.Context) JMSPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JMSOutput).ToJMSPtrOutputWithContext(ctx)
+}
+
+// JMSPtrInput is an input type that accepts JMSArgs, JMSPtr and JMSPtrOutput values.
+// You can construct a concrete instance of `JMSPtrInput` via:
+//
+//	        JMSArgs{...}
+//
+//	or:
+//
+//	        nil
+type JMSPtrInput interface {
+	pulumi.Input
+
+	ToJMSPtrOutput() JMSPtrOutput
+	ToJMSPtrOutputWithContext(context.Context) JMSPtrOutput
+}
+
+type jmsPtrType JMSArgs
+
+func JMSPtr(v *JMSArgs) JMSPtrInput {
+	return (*jmsPtrType)(v)
+}
+
+func (*jmsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JMS)(nil)).Elem()
+}
+
+func (i *jmsPtrType) ToJMSPtrOutput() JMSPtrOutput {
+	return i.ToJMSPtrOutputWithContext(context.Background())
+}
+
+func (i *jmsPtrType) ToJMSPtrOutputWithContext(ctx context.Context) JMSPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JMSPtrOutput)
+}
+
+func (i *jmsPtrType) ToOutput(ctx context.Context) pulumix.Output[*JMS] {
+	return pulumix.Output[*JMS]{
+		OutputState: i.ToJMSPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// JMS message denotes the source of the event
+type JMSOutput struct{ *pulumi.OutputState }
+
+func (JMSOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JMS)(nil)).Elem()
+}
+
+func (o JMSOutput) ToJMSOutput() JMSOutput {
+	return o
+}
+
+func (o JMSOutput) ToJMSOutputWithContext(ctx context.Context) JMSOutput {
+	return o
+}
+
+func (o JMSOutput) ToJMSPtrOutput() JMSPtrOutput {
+	return o.ToJMSPtrOutputWithContext(context.Background())
+}
+
+func (o JMSOutput) ToJMSPtrOutputWithContext(ctx context.Context) JMSPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JMS) *JMS {
+		return &v
+	}).(JMSPtrOutput)
+}
+
+func (o JMSOutput) ToOutput(ctx context.Context) pulumix.Output[JMS] {
+	return pulumix.Output[JMS]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Name of the JMS source. i.e. queueName or topicName
+func (o JMSOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JMS) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Type of the JMS Source. i.e. Queue or Topic
+func (o JMSOutput) Type() JMSTypePtrOutput {
+	return o.ApplyT(func(v JMS) *JMSType { return v.Type }).(JMSTypePtrOutput)
+}
+
+type JMSPtrOutput struct{ *pulumi.OutputState }
+
+func (JMSPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JMS)(nil)).Elem()
+}
+
+func (o JMSPtrOutput) ToJMSPtrOutput() JMSPtrOutput {
+	return o
+}
+
+func (o JMSPtrOutput) ToJMSPtrOutputWithContext(ctx context.Context) JMSPtrOutput {
+	return o
+}
+
+func (o JMSPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JMS] {
+	return pulumix.Output[*JMS]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JMSPtrOutput) Elem() JMSOutput {
+	return o.ApplyT(func(v *JMS) JMS {
+		if v != nil {
+			return *v
+		}
+		var ret JMS
+		return ret
+	}).(JMSOutput)
+}
+
+// Optional. Name of the JMS source. i.e. queueName or topicName
+func (o JMSPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JMS) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Type of the JMS Source. i.e. Queue or Topic
+func (o JMSPtrOutput) Type() JMSTypePtrOutput {
+	return o.ApplyT(func(v *JMS) *JMSType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(JMSTypePtrOutput)
+}
+
+// JMS message denotes the source of the event
+type JMSResponse struct {
+	// Optional. Name of the JMS source. i.e. queueName or topicName
+	Name string `pulumi:"name"`
+	// Optional. Type of the JMS Source. i.e. Queue or Topic
+	Type string `pulumi:"type"`
+}
+
+// JMS message denotes the source of the event
+type JMSResponseOutput struct{ *pulumi.OutputState }
+
+func (JMSResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JMSResponse)(nil)).Elem()
+}
+
+func (o JMSResponseOutput) ToJMSResponseOutput() JMSResponseOutput {
+	return o
+}
+
+func (o JMSResponseOutput) ToJMSResponseOutputWithContext(ctx context.Context) JMSResponseOutput {
+	return o
+}
+
+func (o JMSResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JMSResponse] {
+	return pulumix.Output[JMSResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Name of the JMS source. i.e. queueName or topicName
+func (o JMSResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JMSResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Type of the JMS Source. i.e. Queue or Topic
+func (o JMSResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v JMSResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // JWT claims used for the jwt-bearer authorization grant.
@@ -2867,6 +4842,8 @@ func (o NodeConfigResponseOutput) MinNodeCount() pulumi.IntOutput {
 type Oauth2AuthCodeFlow struct {
 	// Authorization code to be exchanged for access and refresh tokens.
 	AuthCode *string `pulumi:"authCode"`
+	// Auth URL for Authorization Code Flow
+	AuthUri *string `pulumi:"authUri"`
 	// Client ID for user-provided OAuth app.
 	ClientId *string `pulumi:"clientId"`
 	// Client secret for user-provided OAuth app.
@@ -2896,6 +4873,8 @@ type Oauth2AuthCodeFlowInput interface {
 type Oauth2AuthCodeFlowArgs struct {
 	// Authorization code to be exchanged for access and refresh tokens.
 	AuthCode pulumi.StringPtrInput `pulumi:"authCode"`
+	// Auth URL for Authorization Code Flow
+	AuthUri pulumi.StringPtrInput `pulumi:"authUri"`
 	// Client ID for user-provided OAuth app.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Client secret for user-provided OAuth app.
@@ -3011,6 +4990,11 @@ func (o Oauth2AuthCodeFlowOutput) AuthCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Oauth2AuthCodeFlow) *string { return v.AuthCode }).(pulumi.StringPtrOutput)
 }
 
+// Auth URL for Authorization Code Flow
+func (o Oauth2AuthCodeFlowOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlow) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
 // Client ID for user-provided OAuth app.
 func (o Oauth2AuthCodeFlowOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Oauth2AuthCodeFlow) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -3081,6 +5065,16 @@ func (o Oauth2AuthCodeFlowPtrOutput) AuthCode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Auth URL for Authorization Code Flow
+func (o Oauth2AuthCodeFlowPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Oauth2AuthCodeFlow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // Client ID for user-provided OAuth app.
 func (o Oauth2AuthCodeFlowPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Oauth2AuthCodeFlow) *string {
@@ -3145,6 +5139,8 @@ func (o Oauth2AuthCodeFlowPtrOutput) Scopes() pulumi.StringArrayOutput {
 type Oauth2AuthCodeFlowResponse struct {
 	// Authorization code to be exchanged for access and refresh tokens.
 	AuthCode string `pulumi:"authCode"`
+	// Auth URL for Authorization Code Flow
+	AuthUri string `pulumi:"authUri"`
 	// Client ID for user-provided OAuth app.
 	ClientId string `pulumi:"clientId"`
 	// Client secret for user-provided OAuth app.
@@ -3183,6 +5179,11 @@ func (o Oauth2AuthCodeFlowResponseOutput) ToOutput(ctx context.Context) pulumix.
 // Authorization code to be exchanged for access and refresh tokens.
 func (o Oauth2AuthCodeFlowResponseOutput) AuthCode() pulumi.StringOutput {
 	return o.ApplyT(func(v Oauth2AuthCodeFlowResponse) string { return v.AuthCode }).(pulumi.StringOutput)
+}
+
+// Auth URL for Authorization Code Flow
+func (o Oauth2AuthCodeFlowResponseOutput) AuthUri() pulumi.StringOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlowResponse) string { return v.AuthUri }).(pulumi.StringOutput)
 }
 
 // Client ID for user-provided OAuth app.
@@ -3657,6 +5658,84 @@ func (o Oauth2JwtBearerResponseOutput) ClientKey() SecretResponseOutput {
 // JwtClaims providers fields to generate the token.
 func (o Oauth2JwtBearerResponseOutput) JwtClaims() JwtClaimsResponseOutput {
 	return o.ApplyT(func(v Oauth2JwtBearerResponse) JwtClaimsResponse { return v.JwtClaims }).(JwtClaimsResponseOutput)
+}
+
+// Resource limits defined for connection pods of a given connector type.
+type ResourceLimitsResponse struct {
+	// CPU limit.
+	Cpu string `pulumi:"cpu"`
+	// Memory limit.
+	Memory string `pulumi:"memory"`
+}
+
+// Resource limits defined for connection pods of a given connector type.
+type ResourceLimitsResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceLimitsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceLimitsResponse)(nil)).Elem()
+}
+
+func (o ResourceLimitsResponseOutput) ToResourceLimitsResponseOutput() ResourceLimitsResponseOutput {
+	return o
+}
+
+func (o ResourceLimitsResponseOutput) ToResourceLimitsResponseOutputWithContext(ctx context.Context) ResourceLimitsResponseOutput {
+	return o
+}
+
+func (o ResourceLimitsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceLimitsResponse] {
+	return pulumix.Output[ResourceLimitsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// CPU limit.
+func (o ResourceLimitsResponseOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceLimitsResponse) string { return v.Cpu }).(pulumi.StringOutput)
+}
+
+// Memory limit.
+func (o ResourceLimitsResponseOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceLimitsResponse) string { return v.Memory }).(pulumi.StringOutput)
+}
+
+// Resource requests defined for connection pods of a given connector type.
+type ResourceRequestsResponse struct {
+	// CPU request.
+	Cpu string `pulumi:"cpu"`
+	// Memory request.
+	Memory string `pulumi:"memory"`
+}
+
+// Resource requests defined for connection pods of a given connector type.
+type ResourceRequestsResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceRequestsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRequestsResponse)(nil)).Elem()
+}
+
+func (o ResourceRequestsResponseOutput) ToResourceRequestsResponseOutput() ResourceRequestsResponseOutput {
+	return o
+}
+
+func (o ResourceRequestsResponseOutput) ToResourceRequestsResponseOutputWithContext(ctx context.Context) ResourceRequestsResponseOutput {
+	return o
+}
+
+func (o ResourceRequestsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRequestsResponse] {
+	return pulumix.Output[ResourceRequestsResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// CPU request.
+func (o ResourceRequestsResponseOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRequestsResponse) string { return v.Cpu }).(pulumi.StringOutput)
+}
+
+// Memory request.
+func (o ResourceRequestsResponseOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRequestsResponse) string { return v.Memory }).(pulumi.StringOutput)
 }
 
 // Secret provides a reference to entries in Secret Manager.
@@ -4791,15 +6870,29 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableInput)(nil)).Elem(), ConfigVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariablePtrInput)(nil)).Elem(), ConfigVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableArrayInput)(nil)).Elem(), ConfigVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorsLogConfigInput)(nil)).Elem(), ConnectorsLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorsLogConfigPtrInput)(nil)).Elem(), ConnectorsLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationInput)(nil)).Elem(), DestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationArrayInput)(nil)).Elem(), DestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigInput)(nil)).Elem(), DestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigPtrInput)(nil)).Elem(), DestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigArrayInput)(nil)).Elem(), DestinationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyInput)(nil)).Elem(), EncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyPtrInput)(nil)).Elem(), EncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndPointInput)(nil)).Elem(), EndPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndPointPtrInput)(nil)).Elem(), EndPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSubscriptionDestinationInput)(nil)).Elem(), EventSubscriptionDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSubscriptionDestinationPtrInput)(nil)).Elem(), EventSubscriptionDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventingConfigInput)(nil)).Elem(), EventingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventingConfigPtrInput)(nil)).Elem(), EventingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderInput)(nil)).Elem(), HeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderArrayInput)(nil)).Elem(), HeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JMSInput)(nil)).Elem(), JMSArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JMSPtrInput)(nil)).Elem(), JMSArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtClaimsInput)(nil)).Elem(), JwtClaimsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtClaimsPtrInput)(nil)).Elem(), JwtClaimsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LockConfigInput)(nil)).Elem(), LockConfigArgs{})
@@ -4836,24 +6929,50 @@ func init() {
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConfigVariableOutput{})
+	pulumi.RegisterOutputType(ConfigVariablePtrOutput{})
 	pulumi.RegisterOutputType(ConfigVariableArrayOutput{})
 	pulumi.RegisterOutputType(ConfigVariableResponseOutput{})
 	pulumi.RegisterOutputType(ConfigVariableResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionStatusResponseOutput{})
+	pulumi.RegisterOutputType(ConnectorVersionInfraConfigResponseOutput{})
 	pulumi.RegisterOutputType(ConnectorsLogConfigOutput{})
 	pulumi.RegisterOutputType(ConnectorsLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorsLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(DestinationOutput{})
 	pulumi.RegisterOutputType(DestinationArrayOutput{})
 	pulumi.RegisterOutputType(DestinationConfigOutput{})
+	pulumi.RegisterOutputType(DestinationConfigPtrOutput{})
 	pulumi.RegisterOutputType(DestinationConfigArrayOutput{})
 	pulumi.RegisterOutputType(DestinationConfigResponseOutput{})
 	pulumi.RegisterOutputType(DestinationConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(DestinationResponseOutput{})
 	pulumi.RegisterOutputType(DestinationResponseArrayOutput{})
+	pulumi.RegisterOutputType(EncryptionKeyOutput{})
+	pulumi.RegisterOutputType(EncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionKeyResponseOutput{})
+	pulumi.RegisterOutputType(EndPointOutput{})
+	pulumi.RegisterOutputType(EndPointPtrOutput{})
+	pulumi.RegisterOutputType(EndPointResponseOutput{})
+	pulumi.RegisterOutputType(EventSubscriptionDestinationOutput{})
+	pulumi.RegisterOutputType(EventSubscriptionDestinationPtrOutput{})
+	pulumi.RegisterOutputType(EventSubscriptionDestinationResponseOutput{})
+	pulumi.RegisterOutputType(EventSubscriptionStatusResponseOutput{})
+	pulumi.RegisterOutputType(EventingConfigOutput{})
+	pulumi.RegisterOutputType(EventingConfigPtrOutput{})
+	pulumi.RegisterOutputType(EventingConfigResponseOutput{})
+	pulumi.RegisterOutputType(EventingRuntimeDataResponseOutput{})
+	pulumi.RegisterOutputType(EventingStatusResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(HPAConfigResponseOutput{})
+	pulumi.RegisterOutputType(HeaderOutput{})
+	pulumi.RegisterOutputType(HeaderArrayOutput{})
+	pulumi.RegisterOutputType(HeaderResponseOutput{})
+	pulumi.RegisterOutputType(HeaderResponseArrayOutput{})
+	pulumi.RegisterOutputType(JMSOutput{})
+	pulumi.RegisterOutputType(JMSPtrOutput{})
+	pulumi.RegisterOutputType(JMSResponseOutput{})
 	pulumi.RegisterOutputType(JwtClaimsOutput{})
 	pulumi.RegisterOutputType(JwtClaimsPtrOutput{})
 	pulumi.RegisterOutputType(JwtClaimsResponseOutput{})
@@ -4872,6 +6991,8 @@ func init() {
 	pulumi.RegisterOutputType(Oauth2JwtBearerOutput{})
 	pulumi.RegisterOutputType(Oauth2JwtBearerPtrOutput{})
 	pulumi.RegisterOutputType(Oauth2JwtBearerResponseOutput{})
+	pulumi.RegisterOutputType(ResourceLimitsResponseOutput{})
+	pulumi.RegisterOutputType(ResourceRequestsResponseOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretPtrOutput{})
 	pulumi.RegisterOutputType(SecretResponseOutput{})

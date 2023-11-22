@@ -198,7 +198,7 @@ func (in *mavenRepositoryConfigVersionPolicyPtr) ToOutput(ctx context.Context) p
 	}
 }
 
-// The format of packages that are stored in the repository.
+// Optional. The format of packages that are stored in the repository.
 type RepositoryFormat string
 
 const (

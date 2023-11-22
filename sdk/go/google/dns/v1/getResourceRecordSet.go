@@ -35,7 +35,7 @@ type LookupResourceRecordSetResult struct {
 	Kind string `pulumi:"kind"`
 	// For example, www.example.com.
 	Name string `pulumi:"name"`
-	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+	// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
 	RoutingPolicy RRSetRoutingPolicyResponse `pulumi:"routingPolicy"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas []string `pulumi:"rrdatas"`
@@ -101,7 +101,7 @@ func (o LookupResourceRecordSetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceRecordSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
 func (o LookupResourceRecordSetResultOutput) RoutingPolicy() RRSetRoutingPolicyResponseOutput {
 	return o.ApplyT(func(v LookupResourceRecordSetResult) RRSetRoutingPolicyResponse { return v.RoutingPolicy }).(RRSetRoutingPolicyResponseOutput)
 }

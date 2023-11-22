@@ -16,7 +16,7 @@ var _ = internal.GetEnvOrDefault
 
 // Authorization defines the On-Prem cluster authorization configuration to bootstrap onto the admin cluster.
 type Authorization struct {
-	// For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+	// For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
 	AdminUsers []ClusterUser `pulumi:"adminUsers"`
 }
 
@@ -33,7 +33,7 @@ type AuthorizationInput interface {
 
 // Authorization defines the On-Prem cluster authorization configuration to bootstrap onto the admin cluster.
 type AuthorizationArgs struct {
-	// For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+	// For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
 	AdminUsers ClusterUserArrayInput `pulumi:"adminUsers"`
 }
 
@@ -133,7 +133,7 @@ func (o AuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[Author
 	}
 }
 
-// For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+// For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
 func (o AuthorizationOutput) AdminUsers() ClusterUserArrayOutput {
 	return o.ApplyT(func(v Authorization) []ClusterUser { return v.AdminUsers }).(ClusterUserArrayOutput)
 }
@@ -168,7 +168,7 @@ func (o AuthorizationPtrOutput) Elem() AuthorizationOutput {
 	}).(AuthorizationOutput)
 }
 
-// For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+// For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
 func (o AuthorizationPtrOutput) AdminUsers() ClusterUserArrayOutput {
 	return o.ApplyT(func(v *Authorization) []ClusterUser {
 		if v == nil {
@@ -180,7 +180,7 @@ func (o AuthorizationPtrOutput) AdminUsers() ClusterUserArrayOutput {
 
 // Authorization defines the On-Prem cluster authorization configuration to bootstrap onto the admin cluster.
 type AuthorizationResponse struct {
-	// For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+	// For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
 	AdminUsers []ClusterUserResponse `pulumi:"adminUsers"`
 }
 
@@ -205,7 +205,7 @@ func (o AuthorizationResponseOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// For VMware user, bare metal user and standalone clusters, users that will be granted the cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users will be granted the view role, which is a view only access.
+// For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
 func (o AuthorizationResponseOutput) AdminUsers() ClusterUserResponseArrayOutput {
 	return o.ApplyT(func(v AuthorizationResponse) []ClusterUserResponse { return v.AdminUsers }).(ClusterUserResponseArrayOutput)
 }
@@ -609,7 +609,7 @@ type BareMetalAdminControlPlaneConfig struct {
 	// Customizes the default API server args. Only a subset of customized flags are supported. Please refer to the API server documentation below to know the exact format: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
 	ApiServerArgs []BareMetalAdminApiServerArgument `pulumi:"apiServerArgs"`
 	// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
-	ControlPlaneNodePoolConfig *BareMetalAdminControlPlaneNodePoolConfig `pulumi:"controlPlaneNodePoolConfig"`
+	ControlPlaneNodePoolConfig BareMetalAdminControlPlaneNodePoolConfig `pulumi:"controlPlaneNodePoolConfig"`
 }
 
 // BareMetalAdminControlPlaneConfigInput is an input type that accepts BareMetalAdminControlPlaneConfigArgs and BareMetalAdminControlPlaneConfigOutput values.
@@ -628,7 +628,7 @@ type BareMetalAdminControlPlaneConfigArgs struct {
 	// Customizes the default API server args. Only a subset of customized flags are supported. Please refer to the API server documentation below to know the exact format: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
 	ApiServerArgs BareMetalAdminApiServerArgumentArrayInput `pulumi:"apiServerArgs"`
 	// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
-	ControlPlaneNodePoolConfig BareMetalAdminControlPlaneNodePoolConfigPtrInput `pulumi:"controlPlaneNodePoolConfig"`
+	ControlPlaneNodePoolConfig BareMetalAdminControlPlaneNodePoolConfigInput `pulumi:"controlPlaneNodePoolConfig"`
 }
 
 func (BareMetalAdminControlPlaneConfigArgs) ElementType() reflect.Type {
@@ -733,10 +733,10 @@ func (o BareMetalAdminControlPlaneConfigOutput) ApiServerArgs() BareMetalAdminAp
 }
 
 // Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
-func (o BareMetalAdminControlPlaneConfigOutput) ControlPlaneNodePoolConfig() BareMetalAdminControlPlaneNodePoolConfigPtrOutput {
-	return o.ApplyT(func(v BareMetalAdminControlPlaneConfig) *BareMetalAdminControlPlaneNodePoolConfig {
+func (o BareMetalAdminControlPlaneConfigOutput) ControlPlaneNodePoolConfig() BareMetalAdminControlPlaneNodePoolConfigOutput {
+	return o.ApplyT(func(v BareMetalAdminControlPlaneConfig) BareMetalAdminControlPlaneNodePoolConfig {
 		return v.ControlPlaneNodePoolConfig
-	}).(BareMetalAdminControlPlaneNodePoolConfigPtrOutput)
+	}).(BareMetalAdminControlPlaneNodePoolConfigOutput)
 }
 
 type BareMetalAdminControlPlaneConfigPtrOutput struct{ *pulumi.OutputState }
@@ -785,7 +785,7 @@ func (o BareMetalAdminControlPlaneConfigPtrOutput) ControlPlaneNodePoolConfig() 
 		if v == nil {
 			return nil
 		}
-		return v.ControlPlaneNodePoolConfig
+		return &v.ControlPlaneNodePoolConfig
 	}).(BareMetalAdminControlPlaneNodePoolConfigPtrOutput)
 }
 
@@ -835,7 +835,7 @@ func (o BareMetalAdminControlPlaneConfigResponseOutput) ControlPlaneNodePoolConf
 // BareMetalAdminControlPlaneNodePoolConfig specifies the control plane node pool configuration. We have a control plane specific node pool config so that we can flexible about supporting control plane specific fields in the future.
 type BareMetalAdminControlPlaneNodePoolConfig struct {
 	// The generic configuration for a node pool running the control plane.
-	NodePoolConfig *BareMetalNodePoolConfig `pulumi:"nodePoolConfig"`
+	NodePoolConfig BareMetalNodePoolConfig `pulumi:"nodePoolConfig"`
 }
 
 // BareMetalAdminControlPlaneNodePoolConfigInput is an input type that accepts BareMetalAdminControlPlaneNodePoolConfigArgs and BareMetalAdminControlPlaneNodePoolConfigOutput values.
@@ -852,7 +852,7 @@ type BareMetalAdminControlPlaneNodePoolConfigInput interface {
 // BareMetalAdminControlPlaneNodePoolConfig specifies the control plane node pool configuration. We have a control plane specific node pool config so that we can flexible about supporting control plane specific fields in the future.
 type BareMetalAdminControlPlaneNodePoolConfigArgs struct {
 	// The generic configuration for a node pool running the control plane.
-	NodePoolConfig BareMetalNodePoolConfigPtrInput `pulumi:"nodePoolConfig"`
+	NodePoolConfig BareMetalNodePoolConfigInput `pulumi:"nodePoolConfig"`
 }
 
 func (BareMetalAdminControlPlaneNodePoolConfigArgs) ElementType() reflect.Type {
@@ -952,8 +952,8 @@ func (o BareMetalAdminControlPlaneNodePoolConfigOutput) ToOutput(ctx context.Con
 }
 
 // The generic configuration for a node pool running the control plane.
-func (o BareMetalAdminControlPlaneNodePoolConfigOutput) NodePoolConfig() BareMetalNodePoolConfigPtrOutput {
-	return o.ApplyT(func(v BareMetalAdminControlPlaneNodePoolConfig) *BareMetalNodePoolConfig { return v.NodePoolConfig }).(BareMetalNodePoolConfigPtrOutput)
+func (o BareMetalAdminControlPlaneNodePoolConfigOutput) NodePoolConfig() BareMetalNodePoolConfigOutput {
+	return o.ApplyT(func(v BareMetalAdminControlPlaneNodePoolConfig) BareMetalNodePoolConfig { return v.NodePoolConfig }).(BareMetalNodePoolConfigOutput)
 }
 
 type BareMetalAdminControlPlaneNodePoolConfigPtrOutput struct{ *pulumi.OutputState }
@@ -992,7 +992,7 @@ func (o BareMetalAdminControlPlaneNodePoolConfigPtrOutput) NodePoolConfig() Bare
 		if v == nil {
 			return nil
 		}
-		return v.NodePoolConfig
+		return &v.NodePoolConfig
 	}).(BareMetalNodePoolConfigPtrOutput)
 }
 
@@ -4796,6 +4796,202 @@ func (o BareMetalClusterOperationsConfigResponseOutput) EnableApplicationLogs() 
 	return o.ApplyT(func(v BareMetalClusterOperationsConfigResponse) bool { return v.EnableApplicationLogs }).(pulumi.BoolOutput)
 }
 
+// BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+type BareMetalClusterUpgradePolicy struct {
+	// Specifies which upgrade policy to use.
+	Policy *BareMetalClusterUpgradePolicyPolicy `pulumi:"policy"`
+}
+
+// BareMetalClusterUpgradePolicyInput is an input type that accepts BareMetalClusterUpgradePolicyArgs and BareMetalClusterUpgradePolicyOutput values.
+// You can construct a concrete instance of `BareMetalClusterUpgradePolicyInput` via:
+//
+//	BareMetalClusterUpgradePolicyArgs{...}
+type BareMetalClusterUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToBareMetalClusterUpgradePolicyOutput() BareMetalClusterUpgradePolicyOutput
+	ToBareMetalClusterUpgradePolicyOutputWithContext(context.Context) BareMetalClusterUpgradePolicyOutput
+}
+
+// BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+type BareMetalClusterUpgradePolicyArgs struct {
+	// Specifies which upgrade policy to use.
+	Policy BareMetalClusterUpgradePolicyPolicyPtrInput `pulumi:"policy"`
+}
+
+func (BareMetalClusterUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyOutput() BareMetalClusterUpgradePolicyOutput {
+	return i.ToBareMetalClusterUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterUpgradePolicyOutput)
+}
+
+func (i BareMetalClusterUpgradePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicy] {
+	return pulumix.Output[BareMetalClusterUpgradePolicy]{
+		OutputState: i.ToBareMetalClusterUpgradePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput {
+	return i.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterUpgradePolicyOutput).ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// BareMetalClusterUpgradePolicyPtrInput is an input type that accepts BareMetalClusterUpgradePolicyArgs, BareMetalClusterUpgradePolicyPtr and BareMetalClusterUpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `BareMetalClusterUpgradePolicyPtrInput` via:
+//
+//	        BareMetalClusterUpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalClusterUpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput
+	ToBareMetalClusterUpgradePolicyPtrOutputWithContext(context.Context) BareMetalClusterUpgradePolicyPtrOutput
+}
+
+type bareMetalClusterUpgradePolicyPtrType BareMetalClusterUpgradePolicyArgs
+
+func BareMetalClusterUpgradePolicyPtr(v *BareMetalClusterUpgradePolicyArgs) BareMetalClusterUpgradePolicyPtrInput {
+	return (*bareMetalClusterUpgradePolicyPtrType)(v)
+}
+
+func (*bareMetalClusterUpgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (i *bareMetalClusterUpgradePolicyPtrType) ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput {
+	return i.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalClusterUpgradePolicyPtrType) ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterUpgradePolicyPtrOutput)
+}
+
+func (i *bareMetalClusterUpgradePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicy] {
+	return pulumix.Output[*BareMetalClusterUpgradePolicy]{
+		OutputState: i.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+type BareMetalClusterUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (BareMetalClusterUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (o BareMetalClusterUpgradePolicyOutput) ToBareMetalClusterUpgradePolicyOutput() BareMetalClusterUpgradePolicyOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyOutput) ToBareMetalClusterUpgradePolicyOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyOutput) ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput {
+	return o.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalClusterUpgradePolicyOutput) ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterUpgradePolicy) *BareMetalClusterUpgradePolicy {
+		return &v
+	}).(BareMetalClusterUpgradePolicyPtrOutput)
+}
+
+func (o BareMetalClusterUpgradePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicy] {
+	return pulumix.Output[BareMetalClusterUpgradePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies which upgrade policy to use.
+func (o BareMetalClusterUpgradePolicyOutput) Policy() BareMetalClusterUpgradePolicyPolicyPtrOutput {
+	return o.ApplyT(func(v BareMetalClusterUpgradePolicy) *BareMetalClusterUpgradePolicyPolicy { return v.Policy }).(BareMetalClusterUpgradePolicyPolicyPtrOutput)
+}
+
+type BareMetalClusterUpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalClusterUpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (o BareMetalClusterUpgradePolicyPtrOutput) ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyPtrOutput) ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicy] {
+	return pulumix.Output[*BareMetalClusterUpgradePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BareMetalClusterUpgradePolicyPtrOutput) Elem() BareMetalClusterUpgradePolicyOutput {
+	return o.ApplyT(func(v *BareMetalClusterUpgradePolicy) BareMetalClusterUpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalClusterUpgradePolicy
+		return ret
+	}).(BareMetalClusterUpgradePolicyOutput)
+}
+
+// Specifies which upgrade policy to use.
+func (o BareMetalClusterUpgradePolicyPtrOutput) Policy() BareMetalClusterUpgradePolicyPolicyPtrOutput {
+	return o.ApplyT(func(v *BareMetalClusterUpgradePolicy) *BareMetalClusterUpgradePolicyPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(BareMetalClusterUpgradePolicyPolicyPtrOutput)
+}
+
+// BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+type BareMetalClusterUpgradePolicyResponse struct {
+	// Specifies which upgrade policy to use.
+	Policy string `pulumi:"policy"`
+}
+
+// BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+type BareMetalClusterUpgradePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (BareMetalClusterUpgradePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalClusterUpgradePolicyResponse)(nil)).Elem()
+}
+
+func (o BareMetalClusterUpgradePolicyResponseOutput) ToBareMetalClusterUpgradePolicyResponseOutput() BareMetalClusterUpgradePolicyResponseOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyResponseOutput) ToBareMetalClusterUpgradePolicyResponseOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyResponseOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicyResponse] {
+	return pulumix.Output[BareMetalClusterUpgradePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies which upgrade policy to use.
+func (o BareMetalClusterUpgradePolicyResponseOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v BareMetalClusterUpgradePolicyResponse) string { return v.Policy }).(pulumi.StringOutput)
+}
+
 // Specifies the control plane configuration.
 type BareMetalControlPlaneConfig struct {
 	// Customizes the default API server args. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
@@ -5363,7 +5559,7 @@ func (o BareMetalIslandModeCidrConfigResponseOutput) ServiceAddressCidrBlocks() 
 	return o.ApplyT(func(v BareMetalIslandModeCidrConfigResponse) []string { return v.ServiceAddressCidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// KubeletConfig defines the modifiable kubelet configurations for baremetal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
+// KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
 type BareMetalKubeletConfig struct {
 	// The maximum size of bursty pulls, temporarily allows pulls to burst to this number, while still not exceeding registry_pull_qps. The value must not be a negative number. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 10.
 	RegistryBurst *int `pulumi:"registryBurst"`
@@ -5384,7 +5580,7 @@ type BareMetalKubeletConfigInput interface {
 	ToBareMetalKubeletConfigOutputWithContext(context.Context) BareMetalKubeletConfigOutput
 }
 
-// KubeletConfig defines the modifiable kubelet configurations for baremetal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
+// KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
 type BareMetalKubeletConfigArgs struct {
 	// The maximum size of bursty pulls, temporarily allows pulls to burst to this number, while still not exceeding registry_pull_qps. The value must not be a negative number. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 10.
 	RegistryBurst pulumi.IntPtrInput `pulumi:"registryBurst"`
@@ -5459,7 +5655,7 @@ func (i *bareMetalKubeletConfigPtrType) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// KubeletConfig defines the modifiable kubelet configurations for baremetal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
+// KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
 type BareMetalKubeletConfigOutput struct{ *pulumi.OutputState }
 
 func (BareMetalKubeletConfigOutput) ElementType() reflect.Type {
@@ -5565,7 +5761,7 @@ func (o BareMetalKubeletConfigPtrOutput) SerializeImagePullsDisabled() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// KubeletConfig defines the modifiable kubelet configurations for baremetal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
+// KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
 type BareMetalKubeletConfigResponse struct {
 	// The maximum size of bursty pulls, temporarily allows pulls to burst to this number, while still not exceeding registry_pull_qps. The value must not be a negative number. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 10.
 	RegistryBurst int `pulumi:"registryBurst"`
@@ -5575,7 +5771,7 @@ type BareMetalKubeletConfigResponse struct {
 	SerializeImagePullsDisabled bool `pulumi:"serializeImagePullsDisabled"`
 }
 
-// KubeletConfig defines the modifiable kubelet configurations for baremetal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
+// KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes fields supported in GKE (see https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
 type BareMetalKubeletConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (BareMetalKubeletConfigResponseOutput) ElementType() reflect.Type {
@@ -8086,7 +8282,7 @@ func (o BareMetalNodeConfigResponseArrayOutput) Index(i pulumi.IntInput) BareMet
 
 // BareMetalNodePoolConfig describes the configuration of all nodes within a given bare metal node pool.
 type BareMetalNodePoolConfig struct {
-	// The modifiable kubelet configurations for the baremetal machines.
+	// The modifiable kubelet configurations for the bare metal machines.
 	KubeletConfig *BareMetalKubeletConfig `pulumi:"kubeletConfig"`
 	// The labels assigned to nodes of this node pool. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -8111,7 +8307,7 @@ type BareMetalNodePoolConfigInput interface {
 
 // BareMetalNodePoolConfig describes the configuration of all nodes within a given bare metal node pool.
 type BareMetalNodePoolConfigArgs struct {
-	// The modifiable kubelet configurations for the baremetal machines.
+	// The modifiable kubelet configurations for the bare metal machines.
 	KubeletConfig BareMetalKubeletConfigPtrInput `pulumi:"kubeletConfig"`
 	// The labels assigned to nodes of this node pool. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -8219,7 +8415,7 @@ func (o BareMetalNodePoolConfigOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// The modifiable kubelet configurations for the baremetal machines.
+// The modifiable kubelet configurations for the bare metal machines.
 func (o BareMetalNodePoolConfigOutput) KubeletConfig() BareMetalKubeletConfigPtrOutput {
 	return o.ApplyT(func(v BareMetalNodePoolConfig) *BareMetalKubeletConfig { return v.KubeletConfig }).(BareMetalKubeletConfigPtrOutput)
 }
@@ -8274,7 +8470,7 @@ func (o BareMetalNodePoolConfigPtrOutput) Elem() BareMetalNodePoolConfigOutput {
 	}).(BareMetalNodePoolConfigOutput)
 }
 
-// The modifiable kubelet configurations for the baremetal machines.
+// The modifiable kubelet configurations for the bare metal machines.
 func (o BareMetalNodePoolConfigPtrOutput) KubeletConfig() BareMetalKubeletConfigPtrOutput {
 	return o.ApplyT(func(v *BareMetalNodePoolConfig) *BareMetalKubeletConfig {
 		if v == nil {
@@ -8326,7 +8522,7 @@ func (o BareMetalNodePoolConfigPtrOutput) Taints() NodeTaintArrayOutput {
 
 // BareMetalNodePoolConfig describes the configuration of all nodes within a given bare metal node pool.
 type BareMetalNodePoolConfigResponse struct {
-	// The modifiable kubelet configurations for the baremetal machines.
+	// The modifiable kubelet configurations for the bare metal machines.
 	KubeletConfig BareMetalKubeletConfigResponse `pulumi:"kubeletConfig"`
 	// The labels assigned to nodes of this node pool. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -8359,7 +8555,7 @@ func (o BareMetalNodePoolConfigResponseOutput) ToOutput(ctx context.Context) pul
 	}
 }
 
-// The modifiable kubelet configurations for the baremetal machines.
+// The modifiable kubelet configurations for the bare metal machines.
 func (o BareMetalNodePoolConfigResponseOutput) KubeletConfig() BareMetalKubeletConfigResponseOutput {
 	return o.ApplyT(func(v BareMetalNodePoolConfigResponse) BareMetalKubeletConfigResponse { return v.KubeletConfig }).(BareMetalKubeletConfigResponseOutput)
 }
@@ -8382,6 +8578,204 @@ func (o BareMetalNodePoolConfigResponseOutput) OperatingSystem() pulumi.StringOu
 // The initial taints assigned to nodes of this node pool.
 func (o BareMetalNodePoolConfigResponseOutput) Taints() NodeTaintResponseArrayOutput {
 	return o.ApplyT(func(v BareMetalNodePoolConfigResponse) []NodeTaintResponse { return v.Taints }).(NodeTaintResponseArrayOutput)
+}
+
+// BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+type BareMetalNodePoolUpgradePolicy struct {
+	// The parallel upgrade settings for worker node pools.
+	ParallelUpgradeConfig *BareMetalParallelUpgradeConfig `pulumi:"parallelUpgradeConfig"`
+}
+
+// BareMetalNodePoolUpgradePolicyInput is an input type that accepts BareMetalNodePoolUpgradePolicyArgs and BareMetalNodePoolUpgradePolicyOutput values.
+// You can construct a concrete instance of `BareMetalNodePoolUpgradePolicyInput` via:
+//
+//	BareMetalNodePoolUpgradePolicyArgs{...}
+type BareMetalNodePoolUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToBareMetalNodePoolUpgradePolicyOutput() BareMetalNodePoolUpgradePolicyOutput
+	ToBareMetalNodePoolUpgradePolicyOutputWithContext(context.Context) BareMetalNodePoolUpgradePolicyOutput
+}
+
+// BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+type BareMetalNodePoolUpgradePolicyArgs struct {
+	// The parallel upgrade settings for worker node pools.
+	ParallelUpgradeConfig BareMetalParallelUpgradeConfigPtrInput `pulumi:"parallelUpgradeConfig"`
+}
+
+func (BareMetalNodePoolUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalNodePoolUpgradePolicy)(nil)).Elem()
+}
+
+func (i BareMetalNodePoolUpgradePolicyArgs) ToBareMetalNodePoolUpgradePolicyOutput() BareMetalNodePoolUpgradePolicyOutput {
+	return i.ToBareMetalNodePoolUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i BareMetalNodePoolUpgradePolicyArgs) ToBareMetalNodePoolUpgradePolicyOutputWithContext(ctx context.Context) BareMetalNodePoolUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolUpgradePolicyOutput)
+}
+
+func (i BareMetalNodePoolUpgradePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolUpgradePolicy] {
+	return pulumix.Output[BareMetalNodePoolUpgradePolicy]{
+		OutputState: i.ToBareMetalNodePoolUpgradePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BareMetalNodePoolUpgradePolicyArgs) ToBareMetalNodePoolUpgradePolicyPtrOutput() BareMetalNodePoolUpgradePolicyPtrOutput {
+	return i.ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalNodePoolUpgradePolicyArgs) ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalNodePoolUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolUpgradePolicyOutput).ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// BareMetalNodePoolUpgradePolicyPtrInput is an input type that accepts BareMetalNodePoolUpgradePolicyArgs, BareMetalNodePoolUpgradePolicyPtr and BareMetalNodePoolUpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `BareMetalNodePoolUpgradePolicyPtrInput` via:
+//
+//	        BareMetalNodePoolUpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalNodePoolUpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalNodePoolUpgradePolicyPtrOutput() BareMetalNodePoolUpgradePolicyPtrOutput
+	ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(context.Context) BareMetalNodePoolUpgradePolicyPtrOutput
+}
+
+type bareMetalNodePoolUpgradePolicyPtrType BareMetalNodePoolUpgradePolicyArgs
+
+func BareMetalNodePoolUpgradePolicyPtr(v *BareMetalNodePoolUpgradePolicyArgs) BareMetalNodePoolUpgradePolicyPtrInput {
+	return (*bareMetalNodePoolUpgradePolicyPtrType)(v)
+}
+
+func (*bareMetalNodePoolUpgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalNodePoolUpgradePolicy)(nil)).Elem()
+}
+
+func (i *bareMetalNodePoolUpgradePolicyPtrType) ToBareMetalNodePoolUpgradePolicyPtrOutput() BareMetalNodePoolUpgradePolicyPtrOutput {
+	return i.ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalNodePoolUpgradePolicyPtrType) ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalNodePoolUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolUpgradePolicyPtrOutput)
+}
+
+func (i *bareMetalNodePoolUpgradePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolUpgradePolicy] {
+	return pulumix.Output[*BareMetalNodePoolUpgradePolicy]{
+		OutputState: i.ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+type BareMetalNodePoolUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (BareMetalNodePoolUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalNodePoolUpgradePolicy)(nil)).Elem()
+}
+
+func (o BareMetalNodePoolUpgradePolicyOutput) ToBareMetalNodePoolUpgradePolicyOutput() BareMetalNodePoolUpgradePolicyOutput {
+	return o
+}
+
+func (o BareMetalNodePoolUpgradePolicyOutput) ToBareMetalNodePoolUpgradePolicyOutputWithContext(ctx context.Context) BareMetalNodePoolUpgradePolicyOutput {
+	return o
+}
+
+func (o BareMetalNodePoolUpgradePolicyOutput) ToBareMetalNodePoolUpgradePolicyPtrOutput() BareMetalNodePoolUpgradePolicyPtrOutput {
+	return o.ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalNodePoolUpgradePolicyOutput) ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalNodePoolUpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalNodePoolUpgradePolicy) *BareMetalNodePoolUpgradePolicy {
+		return &v
+	}).(BareMetalNodePoolUpgradePolicyPtrOutput)
+}
+
+func (o BareMetalNodePoolUpgradePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolUpgradePolicy] {
+	return pulumix.Output[BareMetalNodePoolUpgradePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The parallel upgrade settings for worker node pools.
+func (o BareMetalNodePoolUpgradePolicyOutput) ParallelUpgradeConfig() BareMetalParallelUpgradeConfigPtrOutput {
+	return o.ApplyT(func(v BareMetalNodePoolUpgradePolicy) *BareMetalParallelUpgradeConfig { return v.ParallelUpgradeConfig }).(BareMetalParallelUpgradeConfigPtrOutput)
+}
+
+type BareMetalNodePoolUpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalNodePoolUpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalNodePoolUpgradePolicy)(nil)).Elem()
+}
+
+func (o BareMetalNodePoolUpgradePolicyPtrOutput) ToBareMetalNodePoolUpgradePolicyPtrOutput() BareMetalNodePoolUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o BareMetalNodePoolUpgradePolicyPtrOutput) ToBareMetalNodePoolUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalNodePoolUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o BareMetalNodePoolUpgradePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePoolUpgradePolicy] {
+	return pulumix.Output[*BareMetalNodePoolUpgradePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BareMetalNodePoolUpgradePolicyPtrOutput) Elem() BareMetalNodePoolUpgradePolicyOutput {
+	return o.ApplyT(func(v *BareMetalNodePoolUpgradePolicy) BareMetalNodePoolUpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalNodePoolUpgradePolicy
+		return ret
+	}).(BareMetalNodePoolUpgradePolicyOutput)
+}
+
+// The parallel upgrade settings for worker node pools.
+func (o BareMetalNodePoolUpgradePolicyPtrOutput) ParallelUpgradeConfig() BareMetalParallelUpgradeConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalNodePoolUpgradePolicy) *BareMetalParallelUpgradeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ParallelUpgradeConfig
+	}).(BareMetalParallelUpgradeConfigPtrOutput)
+}
+
+// BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+type BareMetalNodePoolUpgradePolicyResponse struct {
+	// The parallel upgrade settings for worker node pools.
+	ParallelUpgradeConfig BareMetalParallelUpgradeConfigResponse `pulumi:"parallelUpgradeConfig"`
+}
+
+// BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
+type BareMetalNodePoolUpgradePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (BareMetalNodePoolUpgradePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalNodePoolUpgradePolicyResponse)(nil)).Elem()
+}
+
+func (o BareMetalNodePoolUpgradePolicyResponseOutput) ToBareMetalNodePoolUpgradePolicyResponseOutput() BareMetalNodePoolUpgradePolicyResponseOutput {
+	return o
+}
+
+func (o BareMetalNodePoolUpgradePolicyResponseOutput) ToBareMetalNodePoolUpgradePolicyResponseOutputWithContext(ctx context.Context) BareMetalNodePoolUpgradePolicyResponseOutput {
+	return o
+}
+
+func (o BareMetalNodePoolUpgradePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalNodePoolUpgradePolicyResponse] {
+	return pulumix.Output[BareMetalNodePoolUpgradePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The parallel upgrade settings for worker node pools.
+func (o BareMetalNodePoolUpgradePolicyResponseOutput) ParallelUpgradeConfig() BareMetalParallelUpgradeConfigResponseOutput {
+	return o.ApplyT(func(v BareMetalNodePoolUpgradePolicyResponse) BareMetalParallelUpgradeConfigResponse {
+		return v.ParallelUpgradeConfig
+	}).(BareMetalParallelUpgradeConfigResponseOutput)
 }
 
 // Specifies operating system settings for cluster provisioning.
@@ -8578,6 +8972,228 @@ func (o BareMetalOsEnvironmentConfigResponseOutput) ToOutput(ctx context.Context
 // Whether the package repo should not be included when initializing bare metal machines.
 func (o BareMetalOsEnvironmentConfigResponseOutput) PackageRepoExcluded() pulumi.BoolOutput {
 	return o.ApplyT(func(v BareMetalOsEnvironmentConfigResponse) bool { return v.PackageRepoExcluded }).(pulumi.BoolOutput)
+}
+
+// BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
+type BareMetalParallelUpgradeConfig struct {
+	// The maximum number of nodes that can be upgraded at once.
+	ConcurrentNodes *int `pulumi:"concurrentNodes"`
+	// The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
+	MinimumAvailableNodes *int `pulumi:"minimumAvailableNodes"`
+}
+
+// BareMetalParallelUpgradeConfigInput is an input type that accepts BareMetalParallelUpgradeConfigArgs and BareMetalParallelUpgradeConfigOutput values.
+// You can construct a concrete instance of `BareMetalParallelUpgradeConfigInput` via:
+//
+//	BareMetalParallelUpgradeConfigArgs{...}
+type BareMetalParallelUpgradeConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalParallelUpgradeConfigOutput() BareMetalParallelUpgradeConfigOutput
+	ToBareMetalParallelUpgradeConfigOutputWithContext(context.Context) BareMetalParallelUpgradeConfigOutput
+}
+
+// BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
+type BareMetalParallelUpgradeConfigArgs struct {
+	// The maximum number of nodes that can be upgraded at once.
+	ConcurrentNodes pulumi.IntPtrInput `pulumi:"concurrentNodes"`
+	// The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
+	MinimumAvailableNodes pulumi.IntPtrInput `pulumi:"minimumAvailableNodes"`
+}
+
+func (BareMetalParallelUpgradeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalParallelUpgradeConfig)(nil)).Elem()
+}
+
+func (i BareMetalParallelUpgradeConfigArgs) ToBareMetalParallelUpgradeConfigOutput() BareMetalParallelUpgradeConfigOutput {
+	return i.ToBareMetalParallelUpgradeConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalParallelUpgradeConfigArgs) ToBareMetalParallelUpgradeConfigOutputWithContext(ctx context.Context) BareMetalParallelUpgradeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalParallelUpgradeConfigOutput)
+}
+
+func (i BareMetalParallelUpgradeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalParallelUpgradeConfig] {
+	return pulumix.Output[BareMetalParallelUpgradeConfig]{
+		OutputState: i.ToBareMetalParallelUpgradeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BareMetalParallelUpgradeConfigArgs) ToBareMetalParallelUpgradeConfigPtrOutput() BareMetalParallelUpgradeConfigPtrOutput {
+	return i.ToBareMetalParallelUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalParallelUpgradeConfigArgs) ToBareMetalParallelUpgradeConfigPtrOutputWithContext(ctx context.Context) BareMetalParallelUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalParallelUpgradeConfigOutput).ToBareMetalParallelUpgradeConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalParallelUpgradeConfigPtrInput is an input type that accepts BareMetalParallelUpgradeConfigArgs, BareMetalParallelUpgradeConfigPtr and BareMetalParallelUpgradeConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalParallelUpgradeConfigPtrInput` via:
+//
+//	        BareMetalParallelUpgradeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalParallelUpgradeConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalParallelUpgradeConfigPtrOutput() BareMetalParallelUpgradeConfigPtrOutput
+	ToBareMetalParallelUpgradeConfigPtrOutputWithContext(context.Context) BareMetalParallelUpgradeConfigPtrOutput
+}
+
+type bareMetalParallelUpgradeConfigPtrType BareMetalParallelUpgradeConfigArgs
+
+func BareMetalParallelUpgradeConfigPtr(v *BareMetalParallelUpgradeConfigArgs) BareMetalParallelUpgradeConfigPtrInput {
+	return (*bareMetalParallelUpgradeConfigPtrType)(v)
+}
+
+func (*bareMetalParallelUpgradeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalParallelUpgradeConfig)(nil)).Elem()
+}
+
+func (i *bareMetalParallelUpgradeConfigPtrType) ToBareMetalParallelUpgradeConfigPtrOutput() BareMetalParallelUpgradeConfigPtrOutput {
+	return i.ToBareMetalParallelUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalParallelUpgradeConfigPtrType) ToBareMetalParallelUpgradeConfigPtrOutputWithContext(ctx context.Context) BareMetalParallelUpgradeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalParallelUpgradeConfigPtrOutput)
+}
+
+func (i *bareMetalParallelUpgradeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalParallelUpgradeConfig] {
+	return pulumix.Output[*BareMetalParallelUpgradeConfig]{
+		OutputState: i.ToBareMetalParallelUpgradeConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
+type BareMetalParallelUpgradeConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalParallelUpgradeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalParallelUpgradeConfig)(nil)).Elem()
+}
+
+func (o BareMetalParallelUpgradeConfigOutput) ToBareMetalParallelUpgradeConfigOutput() BareMetalParallelUpgradeConfigOutput {
+	return o
+}
+
+func (o BareMetalParallelUpgradeConfigOutput) ToBareMetalParallelUpgradeConfigOutputWithContext(ctx context.Context) BareMetalParallelUpgradeConfigOutput {
+	return o
+}
+
+func (o BareMetalParallelUpgradeConfigOutput) ToBareMetalParallelUpgradeConfigPtrOutput() BareMetalParallelUpgradeConfigPtrOutput {
+	return o.ToBareMetalParallelUpgradeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalParallelUpgradeConfigOutput) ToBareMetalParallelUpgradeConfigPtrOutputWithContext(ctx context.Context) BareMetalParallelUpgradeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalParallelUpgradeConfig) *BareMetalParallelUpgradeConfig {
+		return &v
+	}).(BareMetalParallelUpgradeConfigPtrOutput)
+}
+
+func (o BareMetalParallelUpgradeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalParallelUpgradeConfig] {
+	return pulumix.Output[BareMetalParallelUpgradeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The maximum number of nodes that can be upgraded at once.
+func (o BareMetalParallelUpgradeConfigOutput) ConcurrentNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BareMetalParallelUpgradeConfig) *int { return v.ConcurrentNodes }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
+func (o BareMetalParallelUpgradeConfigOutput) MinimumAvailableNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BareMetalParallelUpgradeConfig) *int { return v.MinimumAvailableNodes }).(pulumi.IntPtrOutput)
+}
+
+type BareMetalParallelUpgradeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalParallelUpgradeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalParallelUpgradeConfig)(nil)).Elem()
+}
+
+func (o BareMetalParallelUpgradeConfigPtrOutput) ToBareMetalParallelUpgradeConfigPtrOutput() BareMetalParallelUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalParallelUpgradeConfigPtrOutput) ToBareMetalParallelUpgradeConfigPtrOutputWithContext(ctx context.Context) BareMetalParallelUpgradeConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalParallelUpgradeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalParallelUpgradeConfig] {
+	return pulumix.Output[*BareMetalParallelUpgradeConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BareMetalParallelUpgradeConfigPtrOutput) Elem() BareMetalParallelUpgradeConfigOutput {
+	return o.ApplyT(func(v *BareMetalParallelUpgradeConfig) BareMetalParallelUpgradeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalParallelUpgradeConfig
+		return ret
+	}).(BareMetalParallelUpgradeConfigOutput)
+}
+
+// The maximum number of nodes that can be upgraded at once.
+func (o BareMetalParallelUpgradeConfigPtrOutput) ConcurrentNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BareMetalParallelUpgradeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConcurrentNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
+func (o BareMetalParallelUpgradeConfigPtrOutput) MinimumAvailableNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BareMetalParallelUpgradeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumAvailableNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
+type BareMetalParallelUpgradeConfigResponse struct {
+	// The maximum number of nodes that can be upgraded at once.
+	ConcurrentNodes int `pulumi:"concurrentNodes"`
+	// The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
+	MinimumAvailableNodes int `pulumi:"minimumAvailableNodes"`
+}
+
+// BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.
+type BareMetalParallelUpgradeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BareMetalParallelUpgradeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalParallelUpgradeConfigResponse)(nil)).Elem()
+}
+
+func (o BareMetalParallelUpgradeConfigResponseOutput) ToBareMetalParallelUpgradeConfigResponseOutput() BareMetalParallelUpgradeConfigResponseOutput {
+	return o
+}
+
+func (o BareMetalParallelUpgradeConfigResponseOutput) ToBareMetalParallelUpgradeConfigResponseOutputWithContext(ctx context.Context) BareMetalParallelUpgradeConfigResponseOutput {
+	return o
+}
+
+func (o BareMetalParallelUpgradeConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalParallelUpgradeConfigResponse] {
+	return pulumix.Output[BareMetalParallelUpgradeConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The maximum number of nodes that can be upgraded at once.
+func (o BareMetalParallelUpgradeConfigResponseOutput) ConcurrentNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v BareMetalParallelUpgradeConfigResponse) int { return v.ConcurrentNodes }).(pulumi.IntOutput)
+}
+
+// The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
+func (o BareMetalParallelUpgradeConfigResponseOutput) MinimumAvailableNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v BareMetalParallelUpgradeConfigResponse) int { return v.MinimumAvailableNodes }).(pulumi.IntOutput)
 }
 
 // Specifies load balancer ports for the bare metal user cluster.
@@ -9949,6 +10565,202 @@ func (o BareMetalWorkloadNodeConfigResponseOutput) ContainerRuntime() pulumi.Str
 // The maximum number of pods a node can run. The size of the CIDR range assigned to the node will be derived from this parameter.
 func (o BareMetalWorkloadNodeConfigResponseOutput) MaxPodsPerNode() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalWorkloadNodeConfigResponse) string { return v.MaxPodsPerNode }).(pulumi.StringOutput)
+}
+
+// Configuration for Binary Authorization.
+type BinaryAuthorization struct {
+	// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+	EvaluationMode *BinaryAuthorizationEvaluationMode `pulumi:"evaluationMode"`
+}
+
+// BinaryAuthorizationInput is an input type that accepts BinaryAuthorizationArgs and BinaryAuthorizationOutput values.
+// You can construct a concrete instance of `BinaryAuthorizationInput` via:
+//
+//	BinaryAuthorizationArgs{...}
+type BinaryAuthorizationInput interface {
+	pulumi.Input
+
+	ToBinaryAuthorizationOutput() BinaryAuthorizationOutput
+	ToBinaryAuthorizationOutputWithContext(context.Context) BinaryAuthorizationOutput
+}
+
+// Configuration for Binary Authorization.
+type BinaryAuthorizationArgs struct {
+	// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+	EvaluationMode BinaryAuthorizationEvaluationModePtrInput `pulumi:"evaluationMode"`
+}
+
+func (BinaryAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BinaryAuthorization)(nil)).Elem()
+}
+
+func (i BinaryAuthorizationArgs) ToBinaryAuthorizationOutput() BinaryAuthorizationOutput {
+	return i.ToBinaryAuthorizationOutputWithContext(context.Background())
+}
+
+func (i BinaryAuthorizationArgs) ToBinaryAuthorizationOutputWithContext(ctx context.Context) BinaryAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BinaryAuthorizationOutput)
+}
+
+func (i BinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[BinaryAuthorization] {
+	return pulumix.Output[BinaryAuthorization]{
+		OutputState: i.ToBinaryAuthorizationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BinaryAuthorizationArgs) ToBinaryAuthorizationPtrOutput() BinaryAuthorizationPtrOutput {
+	return i.ToBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i BinaryAuthorizationArgs) ToBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BinaryAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BinaryAuthorizationOutput).ToBinaryAuthorizationPtrOutputWithContext(ctx)
+}
+
+// BinaryAuthorizationPtrInput is an input type that accepts BinaryAuthorizationArgs, BinaryAuthorizationPtr and BinaryAuthorizationPtrOutput values.
+// You can construct a concrete instance of `BinaryAuthorizationPtrInput` via:
+//
+//	        BinaryAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BinaryAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToBinaryAuthorizationPtrOutput() BinaryAuthorizationPtrOutput
+	ToBinaryAuthorizationPtrOutputWithContext(context.Context) BinaryAuthorizationPtrOutput
+}
+
+type binaryAuthorizationPtrType BinaryAuthorizationArgs
+
+func BinaryAuthorizationPtr(v *BinaryAuthorizationArgs) BinaryAuthorizationPtrInput {
+	return (*binaryAuthorizationPtrType)(v)
+}
+
+func (*binaryAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BinaryAuthorization)(nil)).Elem()
+}
+
+func (i *binaryAuthorizationPtrType) ToBinaryAuthorizationPtrOutput() BinaryAuthorizationPtrOutput {
+	return i.ToBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *binaryAuthorizationPtrType) ToBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BinaryAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BinaryAuthorizationPtrOutput)
+}
+
+func (i *binaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorization] {
+	return pulumix.Output[*BinaryAuthorization]{
+		OutputState: i.ToBinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Configuration for Binary Authorization.
+type BinaryAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (BinaryAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BinaryAuthorization)(nil)).Elem()
+}
+
+func (o BinaryAuthorizationOutput) ToBinaryAuthorizationOutput() BinaryAuthorizationOutput {
+	return o
+}
+
+func (o BinaryAuthorizationOutput) ToBinaryAuthorizationOutputWithContext(ctx context.Context) BinaryAuthorizationOutput {
+	return o
+}
+
+func (o BinaryAuthorizationOutput) ToBinaryAuthorizationPtrOutput() BinaryAuthorizationPtrOutput {
+	return o.ToBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationOutput) ToBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BinaryAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BinaryAuthorization) *BinaryAuthorization {
+		return &v
+	}).(BinaryAuthorizationPtrOutput)
+}
+
+func (o BinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[BinaryAuthorization] {
+	return pulumix.Output[BinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+func (o BinaryAuthorizationOutput) EvaluationMode() BinaryAuthorizationEvaluationModePtrOutput {
+	return o.ApplyT(func(v BinaryAuthorization) *BinaryAuthorizationEvaluationMode { return v.EvaluationMode }).(BinaryAuthorizationEvaluationModePtrOutput)
+}
+
+type BinaryAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (BinaryAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BinaryAuthorization)(nil)).Elem()
+}
+
+func (o BinaryAuthorizationPtrOutput) ToBinaryAuthorizationPtrOutput() BinaryAuthorizationPtrOutput {
+	return o
+}
+
+func (o BinaryAuthorizationPtrOutput) ToBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BinaryAuthorizationPtrOutput {
+	return o
+}
+
+func (o BinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BinaryAuthorization] {
+	return pulumix.Output[*BinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BinaryAuthorizationPtrOutput) Elem() BinaryAuthorizationOutput {
+	return o.ApplyT(func(v *BinaryAuthorization) BinaryAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret BinaryAuthorization
+		return ret
+	}).(BinaryAuthorizationOutput)
+}
+
+// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+func (o BinaryAuthorizationPtrOutput) EvaluationMode() BinaryAuthorizationEvaluationModePtrOutput {
+	return o.ApplyT(func(v *BinaryAuthorization) *BinaryAuthorizationEvaluationMode {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMode
+	}).(BinaryAuthorizationEvaluationModePtrOutput)
+}
+
+// Configuration for Binary Authorization.
+type BinaryAuthorizationResponse struct {
+	// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+	EvaluationMode string `pulumi:"evaluationMode"`
+}
+
+// Configuration for Binary Authorization.
+type BinaryAuthorizationResponseOutput struct{ *pulumi.OutputState }
+
+func (BinaryAuthorizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BinaryAuthorizationResponse)(nil)).Elem()
+}
+
+func (o BinaryAuthorizationResponseOutput) ToBinaryAuthorizationResponseOutput() BinaryAuthorizationResponseOutput {
+	return o
+}
+
+func (o BinaryAuthorizationResponseOutput) ToBinaryAuthorizationResponseOutputWithContext(ctx context.Context) BinaryAuthorizationResponseOutput {
+	return o
+}
+
+func (o BinaryAuthorizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BinaryAuthorizationResponse] {
+	return pulumix.Output[BinaryAuthorizationResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
+func (o BinaryAuthorizationResponseOutput) EvaluationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v BinaryAuthorizationResponse) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -11974,6 +12786,202 @@ func (o VmwareAutoResizeConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VmwareAutoResizeConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+type VmwareClusterUpgradePolicy struct {
+	// Controls whether the upgrade applies to the control plane only.
+	ControlPlaneOnly *bool `pulumi:"controlPlaneOnly"`
+}
+
+// VmwareClusterUpgradePolicyInput is an input type that accepts VmwareClusterUpgradePolicyArgs and VmwareClusterUpgradePolicyOutput values.
+// You can construct a concrete instance of `VmwareClusterUpgradePolicyInput` via:
+//
+//	VmwareClusterUpgradePolicyArgs{...}
+type VmwareClusterUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToVmwareClusterUpgradePolicyOutput() VmwareClusterUpgradePolicyOutput
+	ToVmwareClusterUpgradePolicyOutputWithContext(context.Context) VmwareClusterUpgradePolicyOutput
+}
+
+// VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+type VmwareClusterUpgradePolicyArgs struct {
+	// Controls whether the upgrade applies to the control plane only.
+	ControlPlaneOnly pulumi.BoolPtrInput `pulumi:"controlPlaneOnly"`
+}
+
+func (VmwareClusterUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (i VmwareClusterUpgradePolicyArgs) ToVmwareClusterUpgradePolicyOutput() VmwareClusterUpgradePolicyOutput {
+	return i.ToVmwareClusterUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i VmwareClusterUpgradePolicyArgs) ToVmwareClusterUpgradePolicyOutputWithContext(ctx context.Context) VmwareClusterUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareClusterUpgradePolicyOutput)
+}
+
+func (i VmwareClusterUpgradePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareClusterUpgradePolicy] {
+	return pulumix.Output[VmwareClusterUpgradePolicy]{
+		OutputState: i.ToVmwareClusterUpgradePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VmwareClusterUpgradePolicyArgs) ToVmwareClusterUpgradePolicyPtrOutput() VmwareClusterUpgradePolicyPtrOutput {
+	return i.ToVmwareClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareClusterUpgradePolicyArgs) ToVmwareClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) VmwareClusterUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareClusterUpgradePolicyOutput).ToVmwareClusterUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// VmwareClusterUpgradePolicyPtrInput is an input type that accepts VmwareClusterUpgradePolicyArgs, VmwareClusterUpgradePolicyPtr and VmwareClusterUpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `VmwareClusterUpgradePolicyPtrInput` via:
+//
+//	        VmwareClusterUpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareClusterUpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToVmwareClusterUpgradePolicyPtrOutput() VmwareClusterUpgradePolicyPtrOutput
+	ToVmwareClusterUpgradePolicyPtrOutputWithContext(context.Context) VmwareClusterUpgradePolicyPtrOutput
+}
+
+type vmwareClusterUpgradePolicyPtrType VmwareClusterUpgradePolicyArgs
+
+func VmwareClusterUpgradePolicyPtr(v *VmwareClusterUpgradePolicyArgs) VmwareClusterUpgradePolicyPtrInput {
+	return (*vmwareClusterUpgradePolicyPtrType)(v)
+}
+
+func (*vmwareClusterUpgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (i *vmwareClusterUpgradePolicyPtrType) ToVmwareClusterUpgradePolicyPtrOutput() VmwareClusterUpgradePolicyPtrOutput {
+	return i.ToVmwareClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareClusterUpgradePolicyPtrType) ToVmwareClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) VmwareClusterUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareClusterUpgradePolicyPtrOutput)
+}
+
+func (i *vmwareClusterUpgradePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareClusterUpgradePolicy] {
+	return pulumix.Output[*VmwareClusterUpgradePolicy]{
+		OutputState: i.ToVmwareClusterUpgradePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+type VmwareClusterUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (VmwareClusterUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (o VmwareClusterUpgradePolicyOutput) ToVmwareClusterUpgradePolicyOutput() VmwareClusterUpgradePolicyOutput {
+	return o
+}
+
+func (o VmwareClusterUpgradePolicyOutput) ToVmwareClusterUpgradePolicyOutputWithContext(ctx context.Context) VmwareClusterUpgradePolicyOutput {
+	return o
+}
+
+func (o VmwareClusterUpgradePolicyOutput) ToVmwareClusterUpgradePolicyPtrOutput() VmwareClusterUpgradePolicyPtrOutput {
+	return o.ToVmwareClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareClusterUpgradePolicyOutput) ToVmwareClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) VmwareClusterUpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareClusterUpgradePolicy) *VmwareClusterUpgradePolicy {
+		return &v
+	}).(VmwareClusterUpgradePolicyPtrOutput)
+}
+
+func (o VmwareClusterUpgradePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareClusterUpgradePolicy] {
+	return pulumix.Output[VmwareClusterUpgradePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Controls whether the upgrade applies to the control plane only.
+func (o VmwareClusterUpgradePolicyOutput) ControlPlaneOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmwareClusterUpgradePolicy) *bool { return v.ControlPlaneOnly }).(pulumi.BoolPtrOutput)
+}
+
+type VmwareClusterUpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareClusterUpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (o VmwareClusterUpgradePolicyPtrOutput) ToVmwareClusterUpgradePolicyPtrOutput() VmwareClusterUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o VmwareClusterUpgradePolicyPtrOutput) ToVmwareClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) VmwareClusterUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o VmwareClusterUpgradePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareClusterUpgradePolicy] {
+	return pulumix.Output[*VmwareClusterUpgradePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VmwareClusterUpgradePolicyPtrOutput) Elem() VmwareClusterUpgradePolicyOutput {
+	return o.ApplyT(func(v *VmwareClusterUpgradePolicy) VmwareClusterUpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareClusterUpgradePolicy
+		return ret
+	}).(VmwareClusterUpgradePolicyOutput)
+}
+
+// Controls whether the upgrade applies to the control plane only.
+func (o VmwareClusterUpgradePolicyPtrOutput) ControlPlaneOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmwareClusterUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlaneOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+type VmwareClusterUpgradePolicyResponse struct {
+	// Controls whether the upgrade applies to the control plane only.
+	ControlPlaneOnly bool `pulumi:"controlPlaneOnly"`
+}
+
+// VmwareClusterUpgradePolicy defines the cluster upgrade policy.
+type VmwareClusterUpgradePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (VmwareClusterUpgradePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareClusterUpgradePolicyResponse)(nil)).Elem()
+}
+
+func (o VmwareClusterUpgradePolicyResponseOutput) ToVmwareClusterUpgradePolicyResponseOutput() VmwareClusterUpgradePolicyResponseOutput {
+	return o
+}
+
+func (o VmwareClusterUpgradePolicyResponseOutput) ToVmwareClusterUpgradePolicyResponseOutputWithContext(ctx context.Context) VmwareClusterUpgradePolicyResponseOutput {
+	return o
+}
+
+func (o VmwareClusterUpgradePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareClusterUpgradePolicyResponse] {
+	return pulumix.Output[VmwareClusterUpgradePolicyResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Controls whether the upgrade applies to the control plane only.
+func (o VmwareClusterUpgradePolicyResponseOutput) ControlPlaneOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v VmwareClusterUpgradePolicyResponse) bool { return v.ControlPlaneOnly }).(pulumi.BoolOutput)
+}
+
 // Specifies control plane node config for the VMware user cluster.
 type VmwareControlPlaneNodeConfig struct {
 	// AutoResizeConfig provides auto resizing configurations.
@@ -11984,6 +12992,8 @@ type VmwareControlPlaneNodeConfig struct {
 	Memory *string `pulumi:"memory"`
 	// The number of control plane nodes for this VMware user cluster. (default: 1 replica).
 	Replicas *string `pulumi:"replicas"`
+	// Vsphere-specific config.
+	VsphereConfig *VmwareControlPlaneVsphereConfig `pulumi:"vsphereConfig"`
 }
 
 // VmwareControlPlaneNodeConfigInput is an input type that accepts VmwareControlPlaneNodeConfigArgs and VmwareControlPlaneNodeConfigOutput values.
@@ -12007,6 +13017,8 @@ type VmwareControlPlaneNodeConfigArgs struct {
 	Memory pulumi.StringPtrInput `pulumi:"memory"`
 	// The number of control plane nodes for this VMware user cluster. (default: 1 replica).
 	Replicas pulumi.StringPtrInput `pulumi:"replicas"`
+	// Vsphere-specific config.
+	VsphereConfig VmwareControlPlaneVsphereConfigPtrInput `pulumi:"vsphereConfig"`
 }
 
 func (VmwareControlPlaneNodeConfigArgs) ElementType() reflect.Type {
@@ -12125,6 +13137,11 @@ func (o VmwareControlPlaneNodeConfigOutput) Replicas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareControlPlaneNodeConfig) *string { return v.Replicas }).(pulumi.StringPtrOutput)
 }
 
+// Vsphere-specific config.
+func (o VmwareControlPlaneNodeConfigOutput) VsphereConfig() VmwareControlPlaneVsphereConfigPtrOutput {
+	return o.ApplyT(func(v VmwareControlPlaneNodeConfig) *VmwareControlPlaneVsphereConfig { return v.VsphereConfig }).(VmwareControlPlaneVsphereConfigPtrOutput)
+}
+
 type VmwareControlPlaneNodeConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (VmwareControlPlaneNodeConfigPtrOutput) ElementType() reflect.Type {
@@ -12193,6 +13210,16 @@ func (o VmwareControlPlaneNodeConfigPtrOutput) Replicas() pulumi.StringPtrOutput
 		}
 		return v.Replicas
 	}).(pulumi.StringPtrOutput)
+}
+
+// Vsphere-specific config.
+func (o VmwareControlPlaneNodeConfigPtrOutput) VsphereConfig() VmwareControlPlaneVsphereConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareControlPlaneNodeConfig) *VmwareControlPlaneVsphereConfig {
+		if v == nil {
+			return nil
+		}
+		return v.VsphereConfig
+	}).(VmwareControlPlaneVsphereConfigPtrOutput)
 }
 
 // Specifies control plane node config for the VMware user cluster.
@@ -12454,9 +13481,194 @@ func (o VmwareControlPlaneV2ConfigResponseOutput) ControlPlaneIpBlock() VmwareIp
 }
 
 // Specifies control plane node config.
+type VmwareControlPlaneVsphereConfig struct {
+	// The Vsphere datastore used by the control plane Node.
+	Datastore *string `pulumi:"datastore"`
+	// The Vsphere storage policy used by the control plane Node.
+	StoragePolicyName *string `pulumi:"storagePolicyName"`
+}
+
+// VmwareControlPlaneVsphereConfigInput is an input type that accepts VmwareControlPlaneVsphereConfigArgs and VmwareControlPlaneVsphereConfigOutput values.
+// You can construct a concrete instance of `VmwareControlPlaneVsphereConfigInput` via:
+//
+//	VmwareControlPlaneVsphereConfigArgs{...}
+type VmwareControlPlaneVsphereConfigInput interface {
+	pulumi.Input
+
+	ToVmwareControlPlaneVsphereConfigOutput() VmwareControlPlaneVsphereConfigOutput
+	ToVmwareControlPlaneVsphereConfigOutputWithContext(context.Context) VmwareControlPlaneVsphereConfigOutput
+}
+
+// Specifies control plane node config.
+type VmwareControlPlaneVsphereConfigArgs struct {
+	// The Vsphere datastore used by the control plane Node.
+	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
+	// The Vsphere storage policy used by the control plane Node.
+	StoragePolicyName pulumi.StringPtrInput `pulumi:"storagePolicyName"`
+}
+
+func (VmwareControlPlaneVsphereConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareControlPlaneVsphereConfig)(nil)).Elem()
+}
+
+func (i VmwareControlPlaneVsphereConfigArgs) ToVmwareControlPlaneVsphereConfigOutput() VmwareControlPlaneVsphereConfigOutput {
+	return i.ToVmwareControlPlaneVsphereConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareControlPlaneVsphereConfigArgs) ToVmwareControlPlaneVsphereConfigOutputWithContext(ctx context.Context) VmwareControlPlaneVsphereConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareControlPlaneVsphereConfigOutput)
+}
+
+func (i VmwareControlPlaneVsphereConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneVsphereConfig] {
+	return pulumix.Output[VmwareControlPlaneVsphereConfig]{
+		OutputState: i.ToVmwareControlPlaneVsphereConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VmwareControlPlaneVsphereConfigArgs) ToVmwareControlPlaneVsphereConfigPtrOutput() VmwareControlPlaneVsphereConfigPtrOutput {
+	return i.ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareControlPlaneVsphereConfigArgs) ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(ctx context.Context) VmwareControlPlaneVsphereConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareControlPlaneVsphereConfigOutput).ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareControlPlaneVsphereConfigPtrInput is an input type that accepts VmwareControlPlaneVsphereConfigArgs, VmwareControlPlaneVsphereConfigPtr and VmwareControlPlaneVsphereConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareControlPlaneVsphereConfigPtrInput` via:
+//
+//	        VmwareControlPlaneVsphereConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareControlPlaneVsphereConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareControlPlaneVsphereConfigPtrOutput() VmwareControlPlaneVsphereConfigPtrOutput
+	ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(context.Context) VmwareControlPlaneVsphereConfigPtrOutput
+}
+
+type vmwareControlPlaneVsphereConfigPtrType VmwareControlPlaneVsphereConfigArgs
+
+func VmwareControlPlaneVsphereConfigPtr(v *VmwareControlPlaneVsphereConfigArgs) VmwareControlPlaneVsphereConfigPtrInput {
+	return (*vmwareControlPlaneVsphereConfigPtrType)(v)
+}
+
+func (*vmwareControlPlaneVsphereConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareControlPlaneVsphereConfig)(nil)).Elem()
+}
+
+func (i *vmwareControlPlaneVsphereConfigPtrType) ToVmwareControlPlaneVsphereConfigPtrOutput() VmwareControlPlaneVsphereConfigPtrOutput {
+	return i.ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareControlPlaneVsphereConfigPtrType) ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(ctx context.Context) VmwareControlPlaneVsphereConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareControlPlaneVsphereConfigPtrOutput)
+}
+
+func (i *vmwareControlPlaneVsphereConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareControlPlaneVsphereConfig] {
+	return pulumix.Output[*VmwareControlPlaneVsphereConfig]{
+		OutputState: i.ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Specifies control plane node config.
+type VmwareControlPlaneVsphereConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareControlPlaneVsphereConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareControlPlaneVsphereConfig)(nil)).Elem()
+}
+
+func (o VmwareControlPlaneVsphereConfigOutput) ToVmwareControlPlaneVsphereConfigOutput() VmwareControlPlaneVsphereConfigOutput {
+	return o
+}
+
+func (o VmwareControlPlaneVsphereConfigOutput) ToVmwareControlPlaneVsphereConfigOutputWithContext(ctx context.Context) VmwareControlPlaneVsphereConfigOutput {
+	return o
+}
+
+func (o VmwareControlPlaneVsphereConfigOutput) ToVmwareControlPlaneVsphereConfigPtrOutput() VmwareControlPlaneVsphereConfigPtrOutput {
+	return o.ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareControlPlaneVsphereConfigOutput) ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(ctx context.Context) VmwareControlPlaneVsphereConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareControlPlaneVsphereConfig) *VmwareControlPlaneVsphereConfig {
+		return &v
+	}).(VmwareControlPlaneVsphereConfigPtrOutput)
+}
+
+func (o VmwareControlPlaneVsphereConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareControlPlaneVsphereConfig] {
+	return pulumix.Output[VmwareControlPlaneVsphereConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Vsphere datastore used by the control plane Node.
+func (o VmwareControlPlaneVsphereConfigOutput) Datastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareControlPlaneVsphereConfig) *string { return v.Datastore }).(pulumi.StringPtrOutput)
+}
+
+// The Vsphere storage policy used by the control plane Node.
+func (o VmwareControlPlaneVsphereConfigOutput) StoragePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareControlPlaneVsphereConfig) *string { return v.StoragePolicyName }).(pulumi.StringPtrOutput)
+}
+
+type VmwareControlPlaneVsphereConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareControlPlaneVsphereConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareControlPlaneVsphereConfig)(nil)).Elem()
+}
+
+func (o VmwareControlPlaneVsphereConfigPtrOutput) ToVmwareControlPlaneVsphereConfigPtrOutput() VmwareControlPlaneVsphereConfigPtrOutput {
+	return o
+}
+
+func (o VmwareControlPlaneVsphereConfigPtrOutput) ToVmwareControlPlaneVsphereConfigPtrOutputWithContext(ctx context.Context) VmwareControlPlaneVsphereConfigPtrOutput {
+	return o
+}
+
+func (o VmwareControlPlaneVsphereConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareControlPlaneVsphereConfig] {
+	return pulumix.Output[*VmwareControlPlaneVsphereConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VmwareControlPlaneVsphereConfigPtrOutput) Elem() VmwareControlPlaneVsphereConfigOutput {
+	return o.ApplyT(func(v *VmwareControlPlaneVsphereConfig) VmwareControlPlaneVsphereConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareControlPlaneVsphereConfig
+		return ret
+	}).(VmwareControlPlaneVsphereConfigOutput)
+}
+
+// The Vsphere datastore used by the control plane Node.
+func (o VmwareControlPlaneVsphereConfigPtrOutput) Datastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareControlPlaneVsphereConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Datastore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Vsphere storage policy used by the control plane Node.
+func (o VmwareControlPlaneVsphereConfigPtrOutput) StoragePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareControlPlaneVsphereConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePolicyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies control plane node config.
 type VmwareControlPlaneVsphereConfigResponse struct {
 	// The Vsphere datastore used by the control plane Node.
 	Datastore string `pulumi:"datastore"`
+	// The Vsphere storage policy used by the control plane Node.
+	StoragePolicyName string `pulumi:"storagePolicyName"`
 }
 
 // Specifies control plane node config.
@@ -12483,6 +13695,11 @@ func (o VmwareControlPlaneVsphereConfigResponseOutput) ToOutput(ctx context.Cont
 // The Vsphere datastore used by the control plane Node.
 func (o VmwareControlPlaneVsphereConfigResponseOutput) Datastore() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareControlPlaneVsphereConfigResponse) string { return v.Datastore }).(pulumi.StringOutput)
+}
+
+// The Vsphere storage policy used by the control plane Node.
+func (o VmwareControlPlaneVsphereConfigResponseOutput) StoragePolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareControlPlaneVsphereConfigResponse) string { return v.StoragePolicyName }).(pulumi.StringOutput)
 }
 
 // Contains configurations for Dataplane V2, which is optimized dataplane for Kubernetes networking. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2
@@ -14183,6 +15400,8 @@ type VmwareLoadBalancerConfigResponse struct {
 	ManualLbConfig VmwareManualLbConfigResponse `pulumi:"manualLbConfig"`
 	// Configuration for MetalLB typed load balancers.
 	MetalLbConfig VmwareMetalLbConfigResponse `pulumi:"metalLbConfig"`
+	// Configuration for Seesaw typed load balancers.
+	SeesawConfig VmwareSeesawConfigResponse `pulumi:"seesawConfig"`
 	// The VIPs used by the load balancer.
 	VipConfig VmwareVipConfigResponse `pulumi:"vipConfig"`
 }
@@ -14221,6 +15440,11 @@ func (o VmwareLoadBalancerConfigResponseOutput) ManualLbConfig() VmwareManualLbC
 // Configuration for MetalLB typed load balancers.
 func (o VmwareLoadBalancerConfigResponseOutput) MetalLbConfig() VmwareMetalLbConfigResponseOutput {
 	return o.ApplyT(func(v VmwareLoadBalancerConfigResponse) VmwareMetalLbConfigResponse { return v.MetalLbConfig }).(VmwareMetalLbConfigResponseOutput)
+}
+
+// Configuration for Seesaw typed load balancers.
+func (o VmwareLoadBalancerConfigResponseOutput) SeesawConfig() VmwareSeesawConfigResponseOutput {
+	return o.ApplyT(func(v VmwareLoadBalancerConfigResponse) VmwareSeesawConfigResponse { return v.SeesawConfig }).(VmwareSeesawConfigResponseOutput)
 }
 
 // The VIPs used by the load balancer.
@@ -15051,6 +16275,8 @@ type VmwareNodeConfig struct {
 	Replicas *string `pulumi:"replicas"`
 	// The initial taints assigned to nodes of this node pool.
 	Taints []NodeTaint `pulumi:"taints"`
+	// Specifies the vSphere config for node pool.
+	VsphereConfig *VmwareVsphereConfig `pulumi:"vsphereConfig"`
 }
 
 // VmwareNodeConfigInput is an input type that accepts VmwareNodeConfigArgs and VmwareNodeConfigOutput values.
@@ -15084,6 +16310,8 @@ type VmwareNodeConfigArgs struct {
 	Replicas pulumi.StringPtrInput `pulumi:"replicas"`
 	// The initial taints assigned to nodes of this node pool.
 	Taints NodeTaintArrayInput `pulumi:"taints"`
+	// Specifies the vSphere config for node pool.
+	VsphereConfig VmwareVsphereConfigPtrInput `pulumi:"vsphereConfig"`
 }
 
 func (VmwareNodeConfigArgs) ElementType() reflect.Type {
@@ -15168,6 +16396,11 @@ func (o VmwareNodeConfigOutput) Replicas() pulumi.StringPtrOutput {
 // The initial taints assigned to nodes of this node pool.
 func (o VmwareNodeConfigOutput) Taints() NodeTaintArrayOutput {
 	return o.ApplyT(func(v VmwareNodeConfig) []NodeTaint { return v.Taints }).(NodeTaintArrayOutput)
+}
+
+// Specifies the vSphere config for node pool.
+func (o VmwareNodeConfigOutput) VsphereConfig() VmwareVsphereConfigPtrOutput {
+	return o.ApplyT(func(v VmwareNodeConfig) *VmwareVsphereConfig { return v.VsphereConfig }).(VmwareVsphereConfigPtrOutput)
 }
 
 // Parameters that describe the configuration of all nodes within a given node pool.
@@ -15485,6 +16718,73 @@ func (o VmwareNodePoolAutoscalingConfigResponseOutput) MaxReplicas() pulumi.IntO
 // Minimum number of replicas in the NodePool.
 func (o VmwareNodePoolAutoscalingConfigResponseOutput) MinReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v VmwareNodePoolAutoscalingConfigResponse) int { return v.MinReplicas }).(pulumi.IntOutput)
+}
+
+// VmwareSeesawConfig represents configuration parameters for an already existing Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update Seesaw configurations it can only bind a pre-existing configuration to a new user cluster. IMPORTANT: When attempting to create a user cluster with a pre-existing Seesaw load balancer you will need to follow some preparation steps before calling the 'CreateVmwareCluster' API method. First you will need to create the user cluster's namespace via kubectl. The namespace will need to use the following naming convention : -gke-onprem-mgmt or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.local_name' to disambiguate collisions; for more context see the documentation of 'VmwareCluster.local_name'. Once the namespace is created you will need to create a secret resource via kubectl. This secret will contain copies of your Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The credentials must be keyed with the following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key', 'seesaw-ssh-ca-cert'.
+type VmwareSeesawConfigResponse struct {
+	// Enable two load balancer VMs to achieve a highly-available Seesaw load balancer.
+	EnableHa bool `pulumi:"enableHa"`
+	// In general the following format should be used for the Seesaw group name: seesaw-for-[cluster_name].
+	Group string `pulumi:"group"`
+	// The IP Blocks to be used by the Seesaw load balancer
+	IpBlocks []VmwareIpBlockResponse `pulumi:"ipBlocks"`
+	// MasterIP is the IP announced by the master of Seesaw group.
+	MasterIp string `pulumi:"masterIp"`
+	// Name to be used by Stackdriver.
+	StackdriverName string `pulumi:"stackdriverName"`
+	// Names of the VMs created for this Seesaw group.
+	Vms []string `pulumi:"vms"`
+}
+
+// VmwareSeesawConfig represents configuration parameters for an already existing Seesaw load balancer. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update Seesaw configurations it can only bind a pre-existing configuration to a new user cluster. IMPORTANT: When attempting to create a user cluster with a pre-existing Seesaw load balancer you will need to follow some preparation steps before calling the 'CreateVmwareCluster' API method. First you will need to create the user cluster's namespace via kubectl. The namespace will need to use the following naming convention : -gke-onprem-mgmt or -gke-onprem-mgmt depending on whether you used the 'VmwareCluster.local_name' to disambiguate collisions; for more context see the documentation of 'VmwareCluster.local_name'. Once the namespace is created you will need to create a secret resource via kubectl. This secret will contain copies of your Seesaw credentials. The Secret must be called 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The credentials must be keyed with the following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key', 'seesaw-ssh-ca-cert'.
+type VmwareSeesawConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (VmwareSeesawConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareSeesawConfigResponse)(nil)).Elem()
+}
+
+func (o VmwareSeesawConfigResponseOutput) ToVmwareSeesawConfigResponseOutput() VmwareSeesawConfigResponseOutput {
+	return o
+}
+
+func (o VmwareSeesawConfigResponseOutput) ToVmwareSeesawConfigResponseOutputWithContext(ctx context.Context) VmwareSeesawConfigResponseOutput {
+	return o
+}
+
+func (o VmwareSeesawConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareSeesawConfigResponse] {
+	return pulumix.Output[VmwareSeesawConfigResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enable two load balancer VMs to achieve a highly-available Seesaw load balancer.
+func (o VmwareSeesawConfigResponseOutput) EnableHa() pulumi.BoolOutput {
+	return o.ApplyT(func(v VmwareSeesawConfigResponse) bool { return v.EnableHa }).(pulumi.BoolOutput)
+}
+
+// In general the following format should be used for the Seesaw group name: seesaw-for-[cluster_name].
+func (o VmwareSeesawConfigResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareSeesawConfigResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// The IP Blocks to be used by the Seesaw load balancer
+func (o VmwareSeesawConfigResponseOutput) IpBlocks() VmwareIpBlockResponseArrayOutput {
+	return o.ApplyT(func(v VmwareSeesawConfigResponse) []VmwareIpBlockResponse { return v.IpBlocks }).(VmwareIpBlockResponseArrayOutput)
+}
+
+// MasterIP is the IP announced by the master of Seesaw group.
+func (o VmwareSeesawConfigResponseOutput) MasterIp() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareSeesawConfigResponse) string { return v.MasterIp }).(pulumi.StringOutput)
+}
+
+// Name to be used by Stackdriver.
+func (o VmwareSeesawConfigResponseOutput) StackdriverName() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareSeesawConfigResponse) string { return v.StackdriverName }).(pulumi.StringOutput)
+}
+
+// Names of the VMs created for this Seesaw group.
+func (o VmwareSeesawConfigResponseOutput) Vms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmwareSeesawConfigResponse) []string { return v.Vms }).(pulumi.StringArrayOutput)
 }
 
 // Represents the network configuration required for the VMware user clusters with Static IP configurations.
@@ -15880,6 +17180,284 @@ func (o VmwareStorageConfigResponseOutput) VsphereCsiDisabled() pulumi.BoolOutpu
 }
 
 // Represents configuration for the VMware VCenter for the user cluster.
+type VmwareVCenterConfig struct {
+	// Contains the vCenter CA certificate public key for SSL verification.
+	CaCertData *string `pulumi:"caCertData"`
+	// The name of the vCenter cluster for the user cluster.
+	Cluster *string `pulumi:"cluster"`
+	// The name of the vCenter datacenter for the user cluster.
+	Datacenter *string `pulumi:"datacenter"`
+	// The name of the vCenter datastore for the user cluster.
+	Datastore *string `pulumi:"datastore"`
+	// The name of the vCenter folder for the user cluster.
+	Folder *string `pulumi:"folder"`
+	// The name of the vCenter resource pool for the user cluster.
+	ResourcePool *string `pulumi:"resourcePool"`
+	// The name of the vCenter storage policy for the user cluster.
+	StoragePolicyName *string `pulumi:"storagePolicyName"`
+}
+
+// VmwareVCenterConfigInput is an input type that accepts VmwareVCenterConfigArgs and VmwareVCenterConfigOutput values.
+// You can construct a concrete instance of `VmwareVCenterConfigInput` via:
+//
+//	VmwareVCenterConfigArgs{...}
+type VmwareVCenterConfigInput interface {
+	pulumi.Input
+
+	ToVmwareVCenterConfigOutput() VmwareVCenterConfigOutput
+	ToVmwareVCenterConfigOutputWithContext(context.Context) VmwareVCenterConfigOutput
+}
+
+// Represents configuration for the VMware VCenter for the user cluster.
+type VmwareVCenterConfigArgs struct {
+	// Contains the vCenter CA certificate public key for SSL verification.
+	CaCertData pulumi.StringPtrInput `pulumi:"caCertData"`
+	// The name of the vCenter cluster for the user cluster.
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// The name of the vCenter datacenter for the user cluster.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// The name of the vCenter datastore for the user cluster.
+	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
+	// The name of the vCenter folder for the user cluster.
+	Folder pulumi.StringPtrInput `pulumi:"folder"`
+	// The name of the vCenter resource pool for the user cluster.
+	ResourcePool pulumi.StringPtrInput `pulumi:"resourcePool"`
+	// The name of the vCenter storage policy for the user cluster.
+	StoragePolicyName pulumi.StringPtrInput `pulumi:"storagePolicyName"`
+}
+
+func (VmwareVCenterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareVCenterConfig)(nil)).Elem()
+}
+
+func (i VmwareVCenterConfigArgs) ToVmwareVCenterConfigOutput() VmwareVCenterConfigOutput {
+	return i.ToVmwareVCenterConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareVCenterConfigArgs) ToVmwareVCenterConfigOutputWithContext(ctx context.Context) VmwareVCenterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareVCenterConfigOutput)
+}
+
+func (i VmwareVCenterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareVCenterConfig] {
+	return pulumix.Output[VmwareVCenterConfig]{
+		OutputState: i.ToVmwareVCenterConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VmwareVCenterConfigArgs) ToVmwareVCenterConfigPtrOutput() VmwareVCenterConfigPtrOutput {
+	return i.ToVmwareVCenterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareVCenterConfigArgs) ToVmwareVCenterConfigPtrOutputWithContext(ctx context.Context) VmwareVCenterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareVCenterConfigOutput).ToVmwareVCenterConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareVCenterConfigPtrInput is an input type that accepts VmwareVCenterConfigArgs, VmwareVCenterConfigPtr and VmwareVCenterConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareVCenterConfigPtrInput` via:
+//
+//	        VmwareVCenterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareVCenterConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareVCenterConfigPtrOutput() VmwareVCenterConfigPtrOutput
+	ToVmwareVCenterConfigPtrOutputWithContext(context.Context) VmwareVCenterConfigPtrOutput
+}
+
+type vmwareVCenterConfigPtrType VmwareVCenterConfigArgs
+
+func VmwareVCenterConfigPtr(v *VmwareVCenterConfigArgs) VmwareVCenterConfigPtrInput {
+	return (*vmwareVCenterConfigPtrType)(v)
+}
+
+func (*vmwareVCenterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareVCenterConfig)(nil)).Elem()
+}
+
+func (i *vmwareVCenterConfigPtrType) ToVmwareVCenterConfigPtrOutput() VmwareVCenterConfigPtrOutput {
+	return i.ToVmwareVCenterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareVCenterConfigPtrType) ToVmwareVCenterConfigPtrOutputWithContext(ctx context.Context) VmwareVCenterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareVCenterConfigPtrOutput)
+}
+
+func (i *vmwareVCenterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareVCenterConfig] {
+	return pulumix.Output[*VmwareVCenterConfig]{
+		OutputState: i.ToVmwareVCenterConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Represents configuration for the VMware VCenter for the user cluster.
+type VmwareVCenterConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareVCenterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareVCenterConfig)(nil)).Elem()
+}
+
+func (o VmwareVCenterConfigOutput) ToVmwareVCenterConfigOutput() VmwareVCenterConfigOutput {
+	return o
+}
+
+func (o VmwareVCenterConfigOutput) ToVmwareVCenterConfigOutputWithContext(ctx context.Context) VmwareVCenterConfigOutput {
+	return o
+}
+
+func (o VmwareVCenterConfigOutput) ToVmwareVCenterConfigPtrOutput() VmwareVCenterConfigPtrOutput {
+	return o.ToVmwareVCenterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareVCenterConfigOutput) ToVmwareVCenterConfigPtrOutputWithContext(ctx context.Context) VmwareVCenterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareVCenterConfig) *VmwareVCenterConfig {
+		return &v
+	}).(VmwareVCenterConfigPtrOutput)
+}
+
+func (o VmwareVCenterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVCenterConfig] {
+	return pulumix.Output[VmwareVCenterConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Contains the vCenter CA certificate public key for SSL verification.
+func (o VmwareVCenterConfigOutput) CaCertData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareVCenterConfig) *string { return v.CaCertData }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter cluster for the user cluster.
+func (o VmwareVCenterConfigOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareVCenterConfig) *string { return v.Cluster }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter datacenter for the user cluster.
+func (o VmwareVCenterConfigOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareVCenterConfig) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter datastore for the user cluster.
+func (o VmwareVCenterConfigOutput) Datastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareVCenterConfig) *string { return v.Datastore }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter folder for the user cluster.
+func (o VmwareVCenterConfigOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareVCenterConfig) *string { return v.Folder }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter resource pool for the user cluster.
+func (o VmwareVCenterConfigOutput) ResourcePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareVCenterConfig) *string { return v.ResourcePool }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter storage policy for the user cluster.
+func (o VmwareVCenterConfigOutput) StoragePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareVCenterConfig) *string { return v.StoragePolicyName }).(pulumi.StringPtrOutput)
+}
+
+type VmwareVCenterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareVCenterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareVCenterConfig)(nil)).Elem()
+}
+
+func (o VmwareVCenterConfigPtrOutput) ToVmwareVCenterConfigPtrOutput() VmwareVCenterConfigPtrOutput {
+	return o
+}
+
+func (o VmwareVCenterConfigPtrOutput) ToVmwareVCenterConfigPtrOutputWithContext(ctx context.Context) VmwareVCenterConfigPtrOutput {
+	return o
+}
+
+func (o VmwareVCenterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareVCenterConfig] {
+	return pulumix.Output[*VmwareVCenterConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VmwareVCenterConfigPtrOutput) Elem() VmwareVCenterConfigOutput {
+	return o.ApplyT(func(v *VmwareVCenterConfig) VmwareVCenterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareVCenterConfig
+		return ret
+	}).(VmwareVCenterConfigOutput)
+}
+
+// Contains the vCenter CA certificate public key for SSL verification.
+func (o VmwareVCenterConfigPtrOutput) CaCertData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareVCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertData
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter cluster for the user cluster.
+func (o VmwareVCenterConfigPtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareVCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter datacenter for the user cluster.
+func (o VmwareVCenterConfigPtrOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareVCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Datacenter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter datastore for the user cluster.
+func (o VmwareVCenterConfigPtrOutput) Datastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareVCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Datastore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter folder for the user cluster.
+func (o VmwareVCenterConfigPtrOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareVCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Folder
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter resource pool for the user cluster.
+func (o VmwareVCenterConfigPtrOutput) ResourcePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareVCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcePool
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter storage policy for the user cluster.
+func (o VmwareVCenterConfigPtrOutput) StoragePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareVCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePolicyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents configuration for the VMware VCenter for the user cluster.
 type VmwareVCenterConfigResponse struct {
 	// The vCenter IP address.
 	Address string `pulumi:"address"`
@@ -15895,6 +17473,8 @@ type VmwareVCenterConfigResponse struct {
 	Folder string `pulumi:"folder"`
 	// The name of the vCenter resource pool for the user cluster.
 	ResourcePool string `pulumi:"resourcePool"`
+	// The name of the vCenter storage policy for the user cluster.
+	StoragePolicyName string `pulumi:"storagePolicyName"`
 }
 
 // Represents configuration for the VMware VCenter for the user cluster.
@@ -15951,6 +17531,11 @@ func (o VmwareVCenterConfigResponseOutput) Folder() pulumi.StringOutput {
 // The name of the vCenter resource pool for the user cluster.
 func (o VmwareVCenterConfigResponseOutput) ResourcePool() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareVCenterConfigResponse) string { return v.ResourcePool }).(pulumi.StringOutput)
+}
+
+// The name of the vCenter storage policy for the user cluster.
+func (o VmwareVCenterConfigResponseOutput) StoragePolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareVCenterConfigResponse) string { return v.StoragePolicyName }).(pulumi.StringOutput)
 }
 
 // Specifies the VIP config for the VMware user cluster load balancer.
@@ -16176,9 +17761,213 @@ func (o VmwareVipConfigResponseOutput) IngressVip() pulumi.StringOutput {
 }
 
 // VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
+type VmwareVsphereConfig struct {
+	// The name of the vCenter datastore. Inherited from the user cluster.
+	Datastore *string `pulumi:"datastore"`
+	// Vsphere host groups to apply to all VMs in the node pool
+	HostGroups []string `pulumi:"hostGroups"`
+	// Tags to apply to VMs.
+	Tags []VmwareVsphereTag `pulumi:"tags"`
+}
+
+// VmwareVsphereConfigInput is an input type that accepts VmwareVsphereConfigArgs and VmwareVsphereConfigOutput values.
+// You can construct a concrete instance of `VmwareVsphereConfigInput` via:
+//
+//	VmwareVsphereConfigArgs{...}
+type VmwareVsphereConfigInput interface {
+	pulumi.Input
+
+	ToVmwareVsphereConfigOutput() VmwareVsphereConfigOutput
+	ToVmwareVsphereConfigOutputWithContext(context.Context) VmwareVsphereConfigOutput
+}
+
+// VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
+type VmwareVsphereConfigArgs struct {
+	// The name of the vCenter datastore. Inherited from the user cluster.
+	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
+	// Vsphere host groups to apply to all VMs in the node pool
+	HostGroups pulumi.StringArrayInput `pulumi:"hostGroups"`
+	// Tags to apply to VMs.
+	Tags VmwareVsphereTagArrayInput `pulumi:"tags"`
+}
+
+func (VmwareVsphereConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareVsphereConfig)(nil)).Elem()
+}
+
+func (i VmwareVsphereConfigArgs) ToVmwareVsphereConfigOutput() VmwareVsphereConfigOutput {
+	return i.ToVmwareVsphereConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareVsphereConfigArgs) ToVmwareVsphereConfigOutputWithContext(ctx context.Context) VmwareVsphereConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareVsphereConfigOutput)
+}
+
+func (i VmwareVsphereConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareVsphereConfig] {
+	return pulumix.Output[VmwareVsphereConfig]{
+		OutputState: i.ToVmwareVsphereConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VmwareVsphereConfigArgs) ToVmwareVsphereConfigPtrOutput() VmwareVsphereConfigPtrOutput {
+	return i.ToVmwareVsphereConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareVsphereConfigArgs) ToVmwareVsphereConfigPtrOutputWithContext(ctx context.Context) VmwareVsphereConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareVsphereConfigOutput).ToVmwareVsphereConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareVsphereConfigPtrInput is an input type that accepts VmwareVsphereConfigArgs, VmwareVsphereConfigPtr and VmwareVsphereConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareVsphereConfigPtrInput` via:
+//
+//	        VmwareVsphereConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareVsphereConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareVsphereConfigPtrOutput() VmwareVsphereConfigPtrOutput
+	ToVmwareVsphereConfigPtrOutputWithContext(context.Context) VmwareVsphereConfigPtrOutput
+}
+
+type vmwareVsphereConfigPtrType VmwareVsphereConfigArgs
+
+func VmwareVsphereConfigPtr(v *VmwareVsphereConfigArgs) VmwareVsphereConfigPtrInput {
+	return (*vmwareVsphereConfigPtrType)(v)
+}
+
+func (*vmwareVsphereConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareVsphereConfig)(nil)).Elem()
+}
+
+func (i *vmwareVsphereConfigPtrType) ToVmwareVsphereConfigPtrOutput() VmwareVsphereConfigPtrOutput {
+	return i.ToVmwareVsphereConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareVsphereConfigPtrType) ToVmwareVsphereConfigPtrOutputWithContext(ctx context.Context) VmwareVsphereConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareVsphereConfigPtrOutput)
+}
+
+func (i *vmwareVsphereConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VmwareVsphereConfig] {
+	return pulumix.Output[*VmwareVsphereConfig]{
+		OutputState: i.ToVmwareVsphereConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
+type VmwareVsphereConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareVsphereConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareVsphereConfig)(nil)).Elem()
+}
+
+func (o VmwareVsphereConfigOutput) ToVmwareVsphereConfigOutput() VmwareVsphereConfigOutput {
+	return o
+}
+
+func (o VmwareVsphereConfigOutput) ToVmwareVsphereConfigOutputWithContext(ctx context.Context) VmwareVsphereConfigOutput {
+	return o
+}
+
+func (o VmwareVsphereConfigOutput) ToVmwareVsphereConfigPtrOutput() VmwareVsphereConfigPtrOutput {
+	return o.ToVmwareVsphereConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareVsphereConfigOutput) ToVmwareVsphereConfigPtrOutputWithContext(ctx context.Context) VmwareVsphereConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareVsphereConfig) *VmwareVsphereConfig {
+		return &v
+	}).(VmwareVsphereConfigPtrOutput)
+}
+
+func (o VmwareVsphereConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVsphereConfig] {
+	return pulumix.Output[VmwareVsphereConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the vCenter datastore. Inherited from the user cluster.
+func (o VmwareVsphereConfigOutput) Datastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareVsphereConfig) *string { return v.Datastore }).(pulumi.StringPtrOutput)
+}
+
+// Vsphere host groups to apply to all VMs in the node pool
+func (o VmwareVsphereConfigOutput) HostGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmwareVsphereConfig) []string { return v.HostGroups }).(pulumi.StringArrayOutput)
+}
+
+// Tags to apply to VMs.
+func (o VmwareVsphereConfigOutput) Tags() VmwareVsphereTagArrayOutput {
+	return o.ApplyT(func(v VmwareVsphereConfig) []VmwareVsphereTag { return v.Tags }).(VmwareVsphereTagArrayOutput)
+}
+
+type VmwareVsphereConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareVsphereConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareVsphereConfig)(nil)).Elem()
+}
+
+func (o VmwareVsphereConfigPtrOutput) ToVmwareVsphereConfigPtrOutput() VmwareVsphereConfigPtrOutput {
+	return o
+}
+
+func (o VmwareVsphereConfigPtrOutput) ToVmwareVsphereConfigPtrOutputWithContext(ctx context.Context) VmwareVsphereConfigPtrOutput {
+	return o
+}
+
+func (o VmwareVsphereConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareVsphereConfig] {
+	return pulumix.Output[*VmwareVsphereConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VmwareVsphereConfigPtrOutput) Elem() VmwareVsphereConfigOutput {
+	return o.ApplyT(func(v *VmwareVsphereConfig) VmwareVsphereConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareVsphereConfig
+		return ret
+	}).(VmwareVsphereConfigOutput)
+}
+
+// The name of the vCenter datastore. Inherited from the user cluster.
+func (o VmwareVsphereConfigPtrOutput) Datastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareVsphereConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Datastore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Vsphere host groups to apply to all VMs in the node pool
+func (o VmwareVsphereConfigPtrOutput) HostGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmwareVsphereConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HostGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// Tags to apply to VMs.
+func (o VmwareVsphereConfigPtrOutput) Tags() VmwareVsphereTagArrayOutput {
+	return o.ApplyT(func(v *VmwareVsphereConfig) []VmwareVsphereTag {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(VmwareVsphereTagArrayOutput)
+}
+
+// VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
 type VmwareVsphereConfigResponse struct {
 	// The name of the vCenter datastore. Inherited from the user cluster.
 	Datastore string `pulumi:"datastore"`
+	// Vsphere host groups to apply to all VMs in the node pool
+	HostGroups []string `pulumi:"hostGroups"`
 	// Tags to apply to VMs.
 	Tags []VmwareVsphereTagResponse `pulumi:"tags"`
 }
@@ -16209,9 +17998,147 @@ func (o VmwareVsphereConfigResponseOutput) Datastore() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareVsphereConfigResponse) string { return v.Datastore }).(pulumi.StringOutput)
 }
 
+// Vsphere host groups to apply to all VMs in the node pool
+func (o VmwareVsphereConfigResponseOutput) HostGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmwareVsphereConfigResponse) []string { return v.HostGroups }).(pulumi.StringArrayOutput)
+}
+
 // Tags to apply to VMs.
 func (o VmwareVsphereConfigResponseOutput) Tags() VmwareVsphereTagResponseArrayOutput {
 	return o.ApplyT(func(v VmwareVsphereConfigResponse) []VmwareVsphereTagResponse { return v.Tags }).(VmwareVsphereTagResponseArrayOutput)
+}
+
+// VmwareVsphereTag describes a vSphere tag to be placed on VMs in the node pool. For more information, see https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
+type VmwareVsphereTag struct {
+	// The Vsphere tag category.
+	Category *string `pulumi:"category"`
+	// The Vsphere tag name.
+	Tag *string `pulumi:"tag"`
+}
+
+// VmwareVsphereTagInput is an input type that accepts VmwareVsphereTagArgs and VmwareVsphereTagOutput values.
+// You can construct a concrete instance of `VmwareVsphereTagInput` via:
+//
+//	VmwareVsphereTagArgs{...}
+type VmwareVsphereTagInput interface {
+	pulumi.Input
+
+	ToVmwareVsphereTagOutput() VmwareVsphereTagOutput
+	ToVmwareVsphereTagOutputWithContext(context.Context) VmwareVsphereTagOutput
+}
+
+// VmwareVsphereTag describes a vSphere tag to be placed on VMs in the node pool. For more information, see https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
+type VmwareVsphereTagArgs struct {
+	// The Vsphere tag category.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// The Vsphere tag name.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (VmwareVsphereTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareVsphereTag)(nil)).Elem()
+}
+
+func (i VmwareVsphereTagArgs) ToVmwareVsphereTagOutput() VmwareVsphereTagOutput {
+	return i.ToVmwareVsphereTagOutputWithContext(context.Background())
+}
+
+func (i VmwareVsphereTagArgs) ToVmwareVsphereTagOutputWithContext(ctx context.Context) VmwareVsphereTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareVsphereTagOutput)
+}
+
+func (i VmwareVsphereTagArgs) ToOutput(ctx context.Context) pulumix.Output[VmwareVsphereTag] {
+	return pulumix.Output[VmwareVsphereTag]{
+		OutputState: i.ToVmwareVsphereTagOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VmwareVsphereTagArrayInput is an input type that accepts VmwareVsphereTagArray and VmwareVsphereTagArrayOutput values.
+// You can construct a concrete instance of `VmwareVsphereTagArrayInput` via:
+//
+//	VmwareVsphereTagArray{ VmwareVsphereTagArgs{...} }
+type VmwareVsphereTagArrayInput interface {
+	pulumi.Input
+
+	ToVmwareVsphereTagArrayOutput() VmwareVsphereTagArrayOutput
+	ToVmwareVsphereTagArrayOutputWithContext(context.Context) VmwareVsphereTagArrayOutput
+}
+
+type VmwareVsphereTagArray []VmwareVsphereTagInput
+
+func (VmwareVsphereTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareVsphereTag)(nil)).Elem()
+}
+
+func (i VmwareVsphereTagArray) ToVmwareVsphereTagArrayOutput() VmwareVsphereTagArrayOutput {
+	return i.ToVmwareVsphereTagArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareVsphereTagArray) ToVmwareVsphereTagArrayOutputWithContext(ctx context.Context) VmwareVsphereTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareVsphereTagArrayOutput)
+}
+
+func (i VmwareVsphereTagArray) ToOutput(ctx context.Context) pulumix.Output[[]VmwareVsphereTag] {
+	return pulumix.Output[[]VmwareVsphereTag]{
+		OutputState: i.ToVmwareVsphereTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// VmwareVsphereTag describes a vSphere tag to be placed on VMs in the node pool. For more information, see https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
+type VmwareVsphereTagOutput struct{ *pulumi.OutputState }
+
+func (VmwareVsphereTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareVsphereTag)(nil)).Elem()
+}
+
+func (o VmwareVsphereTagOutput) ToVmwareVsphereTagOutput() VmwareVsphereTagOutput {
+	return o
+}
+
+func (o VmwareVsphereTagOutput) ToVmwareVsphereTagOutputWithContext(ctx context.Context) VmwareVsphereTagOutput {
+	return o
+}
+
+func (o VmwareVsphereTagOutput) ToOutput(ctx context.Context) pulumix.Output[VmwareVsphereTag] {
+	return pulumix.Output[VmwareVsphereTag]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The Vsphere tag category.
+func (o VmwareVsphereTagOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareVsphereTag) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// The Vsphere tag name.
+func (o VmwareVsphereTagOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareVsphereTag) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type VmwareVsphereTagArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareVsphereTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareVsphereTag)(nil)).Elem()
+}
+
+func (o VmwareVsphereTagArrayOutput) ToVmwareVsphereTagArrayOutput() VmwareVsphereTagArrayOutput {
+	return o
+}
+
+func (o VmwareVsphereTagArrayOutput) ToVmwareVsphereTagArrayOutputWithContext(ctx context.Context) VmwareVsphereTagArrayOutput {
+	return o
+}
+
+func (o VmwareVsphereTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VmwareVsphereTag] {
+	return pulumix.Output[[]VmwareVsphereTag]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VmwareVsphereTagArrayOutput) Index(i pulumi.IntInput) VmwareVsphereTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareVsphereTag {
+		return vs[0].([]VmwareVsphereTag)[vs[1].(int)]
+	}).(VmwareVsphereTagOutput)
 }
 
 // VmwareVsphereTag describes a vSphere tag to be placed on VMs in the node pool. For more information, see https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
@@ -16324,6 +18251,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalBgpPeerConfigArrayInput)(nil)).Elem(), BareMetalBgpPeerConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterOperationsConfigInput)(nil)).Elem(), BareMetalClusterOperationsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterOperationsConfigPtrInput)(nil)).Elem(), BareMetalClusterOperationsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterUpgradePolicyInput)(nil)).Elem(), BareMetalClusterUpgradePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterUpgradePolicyPtrInput)(nil)).Elem(), BareMetalClusterUpgradePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalControlPlaneConfigInput)(nil)).Elem(), BareMetalControlPlaneConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalControlPlaneNodePoolConfigInput)(nil)).Elem(), BareMetalControlPlaneNodePoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalIslandModeCidrConfigInput)(nil)).Elem(), BareMetalIslandModeCidrConfigArgs{})
@@ -16354,8 +18283,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalNodeConfigArrayInput)(nil)).Elem(), BareMetalNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalNodePoolConfigInput)(nil)).Elem(), BareMetalNodePoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalNodePoolConfigPtrInput)(nil)).Elem(), BareMetalNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalNodePoolUpgradePolicyInput)(nil)).Elem(), BareMetalNodePoolUpgradePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalNodePoolUpgradePolicyPtrInput)(nil)).Elem(), BareMetalNodePoolUpgradePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalOsEnvironmentConfigInput)(nil)).Elem(), BareMetalOsEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalOsEnvironmentConfigPtrInput)(nil)).Elem(), BareMetalOsEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalParallelUpgradeConfigInput)(nil)).Elem(), BareMetalParallelUpgradeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalParallelUpgradeConfigPtrInput)(nil)).Elem(), BareMetalParallelUpgradeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalPortConfigInput)(nil)).Elem(), BareMetalPortConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalPortConfigPtrInput)(nil)).Elem(), BareMetalPortConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalProxyConfigInput)(nil)).Elem(), BareMetalProxyConfigArgs{})
@@ -16369,6 +18302,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalVipConfigPtrInput)(nil)).Elem(), BareMetalVipConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalWorkloadNodeConfigInput)(nil)).Elem(), BareMetalWorkloadNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalWorkloadNodeConfigPtrInput)(nil)).Elem(), BareMetalWorkloadNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationInput)(nil)).Elem(), BinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationPtrInput)(nil)).Elem(), BinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUserInput)(nil)).Elem(), ClusterUserArgs{})
@@ -16385,10 +18320,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAutoRepairConfigPtrInput)(nil)).Elem(), VmwareAutoRepairConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAutoResizeConfigInput)(nil)).Elem(), VmwareAutoResizeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAutoResizeConfigPtrInput)(nil)).Elem(), VmwareAutoResizeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareClusterUpgradePolicyInput)(nil)).Elem(), VmwareClusterUpgradePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareClusterUpgradePolicyPtrInput)(nil)).Elem(), VmwareClusterUpgradePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareControlPlaneNodeConfigInput)(nil)).Elem(), VmwareControlPlaneNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareControlPlaneNodeConfigPtrInput)(nil)).Elem(), VmwareControlPlaneNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareControlPlaneV2ConfigInput)(nil)).Elem(), VmwareControlPlaneV2ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareControlPlaneV2ConfigPtrInput)(nil)).Elem(), VmwareControlPlaneV2ConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareControlPlaneVsphereConfigInput)(nil)).Elem(), VmwareControlPlaneVsphereConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareControlPlaneVsphereConfigPtrInput)(nil)).Elem(), VmwareControlPlaneVsphereConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareDataplaneV2ConfigInput)(nil)).Elem(), VmwareDataplaneV2ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareDataplaneV2ConfigPtrInput)(nil)).Elem(), VmwareDataplaneV2ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareDhcpIpConfigInput)(nil)).Elem(), VmwareDhcpIpConfigArgs{})
@@ -16417,8 +18356,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareStaticIpConfigPtrInput)(nil)).Elem(), VmwareStaticIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareStorageConfigInput)(nil)).Elem(), VmwareStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareStorageConfigPtrInput)(nil)).Elem(), VmwareStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVCenterConfigInput)(nil)).Elem(), VmwareVCenterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVCenterConfigPtrInput)(nil)).Elem(), VmwareVCenterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVipConfigInput)(nil)).Elem(), VmwareVipConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVipConfigPtrInput)(nil)).Elem(), VmwareVipConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVsphereConfigInput)(nil)).Elem(), VmwareVsphereConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVsphereConfigPtrInput)(nil)).Elem(), VmwareVsphereConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVsphereTagInput)(nil)).Elem(), VmwareVsphereTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVsphereTagArrayInput)(nil)).Elem(), VmwareVsphereTagArray{})
 	pulumi.RegisterOutputType(AuthorizationOutput{})
 	pulumi.RegisterOutputType(AuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationResponseOutput{})
@@ -16494,6 +18439,9 @@ func init() {
 	pulumi.RegisterOutputType(BareMetalClusterOperationsConfigOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterOperationsConfigPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterOperationsConfigResponseOutput{})
+	pulumi.RegisterOutputType(BareMetalClusterUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(BareMetalClusterUpgradePolicyPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalClusterUpgradePolicyResponseOutput{})
 	pulumi.RegisterOutputType(BareMetalControlPlaneConfigOutput{})
 	pulumi.RegisterOutputType(BareMetalControlPlaneConfigResponseOutput{})
 	pulumi.RegisterOutputType(BareMetalControlPlaneNodePoolConfigOutput{})
@@ -16549,9 +18497,15 @@ func init() {
 	pulumi.RegisterOutputType(BareMetalNodePoolConfigOutput{})
 	pulumi.RegisterOutputType(BareMetalNodePoolConfigPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalNodePoolConfigResponseOutput{})
+	pulumi.RegisterOutputType(BareMetalNodePoolUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(BareMetalNodePoolUpgradePolicyPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalNodePoolUpgradePolicyResponseOutput{})
 	pulumi.RegisterOutputType(BareMetalOsEnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(BareMetalOsEnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalOsEnvironmentConfigResponseOutput{})
+	pulumi.RegisterOutputType(BareMetalParallelUpgradeConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalParallelUpgradeConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalParallelUpgradeConfigResponseOutput{})
 	pulumi.RegisterOutputType(BareMetalPortConfigOutput{})
 	pulumi.RegisterOutputType(BareMetalPortConfigPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalPortConfigResponseOutput{})
@@ -16572,6 +18526,9 @@ func init() {
 	pulumi.RegisterOutputType(BareMetalWorkloadNodeConfigOutput{})
 	pulumi.RegisterOutputType(BareMetalWorkloadNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalWorkloadNodeConfigResponseOutput{})
+	pulumi.RegisterOutputType(BinaryAuthorizationOutput{})
+	pulumi.RegisterOutputType(BinaryAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(BinaryAuthorizationResponseOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -16608,12 +18565,17 @@ func init() {
 	pulumi.RegisterOutputType(VmwareAutoResizeConfigOutput{})
 	pulumi.RegisterOutputType(VmwareAutoResizeConfigPtrOutput{})
 	pulumi.RegisterOutputType(VmwareAutoResizeConfigResponseOutput{})
+	pulumi.RegisterOutputType(VmwareClusterUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(VmwareClusterUpgradePolicyPtrOutput{})
+	pulumi.RegisterOutputType(VmwareClusterUpgradePolicyResponseOutput{})
 	pulumi.RegisterOutputType(VmwareControlPlaneNodeConfigOutput{})
 	pulumi.RegisterOutputType(VmwareControlPlaneNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(VmwareControlPlaneNodeConfigResponseOutput{})
 	pulumi.RegisterOutputType(VmwareControlPlaneV2ConfigOutput{})
 	pulumi.RegisterOutputType(VmwareControlPlaneV2ConfigPtrOutput{})
 	pulumi.RegisterOutputType(VmwareControlPlaneV2ConfigResponseOutput{})
+	pulumi.RegisterOutputType(VmwareControlPlaneVsphereConfigOutput{})
+	pulumi.RegisterOutputType(VmwareControlPlaneVsphereConfigPtrOutput{})
 	pulumi.RegisterOutputType(VmwareControlPlaneVsphereConfigResponseOutput{})
 	pulumi.RegisterOutputType(VmwareDataplaneV2ConfigOutput{})
 	pulumi.RegisterOutputType(VmwareDataplaneV2ConfigPtrOutput{})
@@ -16653,17 +18615,24 @@ func init() {
 	pulumi.RegisterOutputType(VmwareNodePoolAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(VmwareNodePoolAutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(VmwareNodePoolAutoscalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(VmwareSeesawConfigResponseOutput{})
 	pulumi.RegisterOutputType(VmwareStaticIpConfigOutput{})
 	pulumi.RegisterOutputType(VmwareStaticIpConfigPtrOutput{})
 	pulumi.RegisterOutputType(VmwareStaticIpConfigResponseOutput{})
 	pulumi.RegisterOutputType(VmwareStorageConfigOutput{})
 	pulumi.RegisterOutputType(VmwareStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(VmwareStorageConfigResponseOutput{})
+	pulumi.RegisterOutputType(VmwareVCenterConfigOutput{})
+	pulumi.RegisterOutputType(VmwareVCenterConfigPtrOutput{})
 	pulumi.RegisterOutputType(VmwareVCenterConfigResponseOutput{})
 	pulumi.RegisterOutputType(VmwareVipConfigOutput{})
 	pulumi.RegisterOutputType(VmwareVipConfigPtrOutput{})
 	pulumi.RegisterOutputType(VmwareVipConfigResponseOutput{})
+	pulumi.RegisterOutputType(VmwareVsphereConfigOutput{})
+	pulumi.RegisterOutputType(VmwareVsphereConfigPtrOutput{})
 	pulumi.RegisterOutputType(VmwareVsphereConfigResponseOutput{})
+	pulumi.RegisterOutputType(VmwareVsphereTagOutput{})
+	pulumi.RegisterOutputType(VmwareVsphereTagArrayOutput{})
 	pulumi.RegisterOutputType(VmwareVsphereTagResponseOutput{})
 	pulumi.RegisterOutputType(VmwareVsphereTagResponseArrayOutput{})
 }

@@ -198,6 +198,193 @@ func (in *animationFadeFadeTypePtr) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
+type DashConfigSegmentReferenceScheme string
+
+const (
+	// The segment reference scheme is not specified.
+	DashConfigSegmentReferenceSchemeSegmentReferenceSchemeUnspecified = DashConfigSegmentReferenceScheme("SEGMENT_REFERENCE_SCHEME_UNSPECIFIED")
+	// Explicitly lists the URLs of media files for each segment. For example, if SegmentSettings.individual_segments is `true`, then the manifest contains fields similar to the following: ``` xml ...  ```
+	DashConfigSegmentReferenceSchemeSegmentList = DashConfigSegmentReferenceScheme("SEGMENT_LIST")
+	// SegmentSettings.individual_segments must be set to `true` to use this segment reference scheme. Uses the DASH specification `` tag to determine the URLs of media files for each segment. For example: ``` xml ...  ```
+	DashConfigSegmentReferenceSchemeSegmentTemplateNumber = DashConfigSegmentReferenceScheme("SEGMENT_TEMPLATE_NUMBER")
+)
+
+func (DashConfigSegmentReferenceScheme) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashConfigSegmentReferenceScheme)(nil)).Elem()
+}
+
+func (e DashConfigSegmentReferenceScheme) ToDashConfigSegmentReferenceSchemeOutput() DashConfigSegmentReferenceSchemeOutput {
+	return pulumi.ToOutput(e).(DashConfigSegmentReferenceSchemeOutput)
+}
+
+func (e DashConfigSegmentReferenceScheme) ToDashConfigSegmentReferenceSchemeOutputWithContext(ctx context.Context) DashConfigSegmentReferenceSchemeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DashConfigSegmentReferenceSchemeOutput)
+}
+
+func (e DashConfigSegmentReferenceScheme) ToDashConfigSegmentReferenceSchemePtrOutput() DashConfigSegmentReferenceSchemePtrOutput {
+	return e.ToDashConfigSegmentReferenceSchemePtrOutputWithContext(context.Background())
+}
+
+func (e DashConfigSegmentReferenceScheme) ToDashConfigSegmentReferenceSchemePtrOutputWithContext(ctx context.Context) DashConfigSegmentReferenceSchemePtrOutput {
+	return DashConfigSegmentReferenceScheme(e).ToDashConfigSegmentReferenceSchemeOutputWithContext(ctx).ToDashConfigSegmentReferenceSchemePtrOutputWithContext(ctx)
+}
+
+func (e DashConfigSegmentReferenceScheme) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DashConfigSegmentReferenceScheme) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DashConfigSegmentReferenceScheme) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DashConfigSegmentReferenceScheme) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DashConfigSegmentReferenceSchemeOutput struct{ *pulumi.OutputState }
+
+func (DashConfigSegmentReferenceSchemeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashConfigSegmentReferenceScheme)(nil)).Elem()
+}
+
+func (o DashConfigSegmentReferenceSchemeOutput) ToDashConfigSegmentReferenceSchemeOutput() DashConfigSegmentReferenceSchemeOutput {
+	return o
+}
+
+func (o DashConfigSegmentReferenceSchemeOutput) ToDashConfigSegmentReferenceSchemeOutputWithContext(ctx context.Context) DashConfigSegmentReferenceSchemeOutput {
+	return o
+}
+
+func (o DashConfigSegmentReferenceSchemeOutput) ToDashConfigSegmentReferenceSchemePtrOutput() DashConfigSegmentReferenceSchemePtrOutput {
+	return o.ToDashConfigSegmentReferenceSchemePtrOutputWithContext(context.Background())
+}
+
+func (o DashConfigSegmentReferenceSchemeOutput) ToDashConfigSegmentReferenceSchemePtrOutputWithContext(ctx context.Context) DashConfigSegmentReferenceSchemePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashConfigSegmentReferenceScheme) *DashConfigSegmentReferenceScheme {
+		return &v
+	}).(DashConfigSegmentReferenceSchemePtrOutput)
+}
+
+func (o DashConfigSegmentReferenceSchemeOutput) ToOutput(ctx context.Context) pulumix.Output[DashConfigSegmentReferenceScheme] {
+	return pulumix.Output[DashConfigSegmentReferenceScheme]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DashConfigSegmentReferenceSchemeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DashConfigSegmentReferenceSchemeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DashConfigSegmentReferenceScheme) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DashConfigSegmentReferenceSchemeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DashConfigSegmentReferenceSchemeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DashConfigSegmentReferenceScheme) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DashConfigSegmentReferenceSchemePtrOutput struct{ *pulumi.OutputState }
+
+func (DashConfigSegmentReferenceSchemePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashConfigSegmentReferenceScheme)(nil)).Elem()
+}
+
+func (o DashConfigSegmentReferenceSchemePtrOutput) ToDashConfigSegmentReferenceSchemePtrOutput() DashConfigSegmentReferenceSchemePtrOutput {
+	return o
+}
+
+func (o DashConfigSegmentReferenceSchemePtrOutput) ToDashConfigSegmentReferenceSchemePtrOutputWithContext(ctx context.Context) DashConfigSegmentReferenceSchemePtrOutput {
+	return o
+}
+
+func (o DashConfigSegmentReferenceSchemePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DashConfigSegmentReferenceScheme] {
+	return pulumix.Output[*DashConfigSegmentReferenceScheme]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o DashConfigSegmentReferenceSchemePtrOutput) Elem() DashConfigSegmentReferenceSchemeOutput {
+	return o.ApplyT(func(v *DashConfigSegmentReferenceScheme) DashConfigSegmentReferenceScheme {
+		if v != nil {
+			return *v
+		}
+		var ret DashConfigSegmentReferenceScheme
+		return ret
+	}).(DashConfigSegmentReferenceSchemeOutput)
+}
+
+func (o DashConfigSegmentReferenceSchemePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DashConfigSegmentReferenceSchemePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DashConfigSegmentReferenceScheme) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DashConfigSegmentReferenceSchemeInput is an input type that accepts DashConfigSegmentReferenceSchemeArgs and DashConfigSegmentReferenceSchemeOutput values.
+// You can construct a concrete instance of `DashConfigSegmentReferenceSchemeInput` via:
+//
+//	DashConfigSegmentReferenceSchemeArgs{...}
+type DashConfigSegmentReferenceSchemeInput interface {
+	pulumi.Input
+
+	ToDashConfigSegmentReferenceSchemeOutput() DashConfigSegmentReferenceSchemeOutput
+	ToDashConfigSegmentReferenceSchemeOutputWithContext(context.Context) DashConfigSegmentReferenceSchemeOutput
+}
+
+var dashConfigSegmentReferenceSchemePtrType = reflect.TypeOf((**DashConfigSegmentReferenceScheme)(nil)).Elem()
+
+type DashConfigSegmentReferenceSchemePtrInput interface {
+	pulumi.Input
+
+	ToDashConfigSegmentReferenceSchemePtrOutput() DashConfigSegmentReferenceSchemePtrOutput
+	ToDashConfigSegmentReferenceSchemePtrOutputWithContext(context.Context) DashConfigSegmentReferenceSchemePtrOutput
+}
+
+type dashConfigSegmentReferenceSchemePtr string
+
+func DashConfigSegmentReferenceSchemePtr(v string) DashConfigSegmentReferenceSchemePtrInput {
+	return (*dashConfigSegmentReferenceSchemePtr)(&v)
+}
+
+func (*dashConfigSegmentReferenceSchemePtr) ElementType() reflect.Type {
+	return dashConfigSegmentReferenceSchemePtrType
+}
+
+func (in *dashConfigSegmentReferenceSchemePtr) ToDashConfigSegmentReferenceSchemePtrOutput() DashConfigSegmentReferenceSchemePtrOutput {
+	return pulumi.ToOutput(in).(DashConfigSegmentReferenceSchemePtrOutput)
+}
+
+func (in *dashConfigSegmentReferenceSchemePtr) ToDashConfigSegmentReferenceSchemePtrOutputWithContext(ctx context.Context) DashConfigSegmentReferenceSchemePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DashConfigSegmentReferenceSchemePtrOutput)
+}
+
+func (in *dashConfigSegmentReferenceSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*DashConfigSegmentReferenceScheme] {
+	return pulumix.Output[*DashConfigSegmentReferenceScheme]{
+		OutputState: in.ToDashConfigSegmentReferenceSchemePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
 type JobMode string
 
@@ -382,6 +569,193 @@ func (in *jobModePtr) ToJobModePtrOutputWithContext(ctx context.Context) JobMode
 func (in *jobModePtr) ToOutput(ctx context.Context) pulumix.Output[*JobMode] {
 	return pulumix.Output[*JobMode]{
 		OutputState: in.ToJobModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The optimization strategy of the job. The default is `AUTODETECT`.
+type JobOptimization string
+
+const (
+	// The optimization strategy is not specified.
+	JobOptimizationOptimizationStrategyUnspecified = JobOptimization("OPTIMIZATION_STRATEGY_UNSPECIFIED")
+	// Prioritize job processing speed.
+	JobOptimizationAutodetect = JobOptimization("AUTODETECT")
+	// Disable all optimizations.
+	JobOptimizationDisabled = JobOptimization("DISABLED")
+)
+
+func (JobOptimization) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobOptimization)(nil)).Elem()
+}
+
+func (e JobOptimization) ToJobOptimizationOutput() JobOptimizationOutput {
+	return pulumi.ToOutput(e).(JobOptimizationOutput)
+}
+
+func (e JobOptimization) ToJobOptimizationOutputWithContext(ctx context.Context) JobOptimizationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobOptimizationOutput)
+}
+
+func (e JobOptimization) ToJobOptimizationPtrOutput() JobOptimizationPtrOutput {
+	return e.ToJobOptimizationPtrOutputWithContext(context.Background())
+}
+
+func (e JobOptimization) ToJobOptimizationPtrOutputWithContext(ctx context.Context) JobOptimizationPtrOutput {
+	return JobOptimization(e).ToJobOptimizationOutputWithContext(ctx).ToJobOptimizationPtrOutputWithContext(ctx)
+}
+
+func (e JobOptimization) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobOptimization) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobOptimization) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JobOptimization) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobOptimizationOutput struct{ *pulumi.OutputState }
+
+func (JobOptimizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobOptimization)(nil)).Elem()
+}
+
+func (o JobOptimizationOutput) ToJobOptimizationOutput() JobOptimizationOutput {
+	return o
+}
+
+func (o JobOptimizationOutput) ToJobOptimizationOutputWithContext(ctx context.Context) JobOptimizationOutput {
+	return o
+}
+
+func (o JobOptimizationOutput) ToJobOptimizationPtrOutput() JobOptimizationPtrOutput {
+	return o.ToJobOptimizationPtrOutputWithContext(context.Background())
+}
+
+func (o JobOptimizationOutput) ToJobOptimizationPtrOutputWithContext(ctx context.Context) JobOptimizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobOptimization) *JobOptimization {
+		return &v
+	}).(JobOptimizationPtrOutput)
+}
+
+func (o JobOptimizationOutput) ToOutput(ctx context.Context) pulumix.Output[JobOptimization] {
+	return pulumix.Output[JobOptimization]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JobOptimizationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobOptimizationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobOptimization) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobOptimizationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobOptimizationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobOptimization) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobOptimizationPtrOutput struct{ *pulumi.OutputState }
+
+func (JobOptimizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobOptimization)(nil)).Elem()
+}
+
+func (o JobOptimizationPtrOutput) ToJobOptimizationPtrOutput() JobOptimizationPtrOutput {
+	return o
+}
+
+func (o JobOptimizationPtrOutput) ToJobOptimizationPtrOutputWithContext(ctx context.Context) JobOptimizationPtrOutput {
+	return o
+}
+
+func (o JobOptimizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobOptimization] {
+	return pulumix.Output[*JobOptimization]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JobOptimizationPtrOutput) Elem() JobOptimizationOutput {
+	return o.ApplyT(func(v *JobOptimization) JobOptimization {
+		if v != nil {
+			return *v
+		}
+		var ret JobOptimization
+		return ret
+	}).(JobOptimizationOutput)
+}
+
+func (o JobOptimizationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobOptimizationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobOptimization) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JobOptimizationInput is an input type that accepts JobOptimizationArgs and JobOptimizationOutput values.
+// You can construct a concrete instance of `JobOptimizationInput` via:
+//
+//	JobOptimizationArgs{...}
+type JobOptimizationInput interface {
+	pulumi.Input
+
+	ToJobOptimizationOutput() JobOptimizationOutput
+	ToJobOptimizationOutputWithContext(context.Context) JobOptimizationOutput
+}
+
+var jobOptimizationPtrType = reflect.TypeOf((**JobOptimization)(nil)).Elem()
+
+type JobOptimizationPtrInput interface {
+	pulumi.Input
+
+	ToJobOptimizationPtrOutput() JobOptimizationPtrOutput
+	ToJobOptimizationPtrOutputWithContext(context.Context) JobOptimizationPtrOutput
+}
+
+type jobOptimizationPtr string
+
+func JobOptimizationPtr(v string) JobOptimizationPtrInput {
+	return (*jobOptimizationPtr)(&v)
+}
+
+func (*jobOptimizationPtr) ElementType() reflect.Type {
+	return jobOptimizationPtrType
+}
+
+func (in *jobOptimizationPtr) ToJobOptimizationPtrOutput() JobOptimizationPtrOutput {
+	return pulumi.ToOutput(in).(JobOptimizationPtrOutput)
+}
+
+func (in *jobOptimizationPtr) ToJobOptimizationPtrOutputWithContext(ctx context.Context) JobOptimizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobOptimizationPtrOutput)
+}
+
+func (in *jobOptimizationPtr) ToOutput(ctx context.Context) pulumix.Output[*JobOptimization] {
+	return pulumix.Output[*JobOptimization]{
+		OutputState: in.ToJobOptimizationPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -575,14 +949,22 @@ func (in *manifestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Manifes
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadeFadeTypeInput)(nil)).Elem(), AnimationFadeFadeType("FADE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadeFadeTypePtrInput)(nil)).Elem(), AnimationFadeFadeType("FADE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DashConfigSegmentReferenceSchemeInput)(nil)).Elem(), DashConfigSegmentReferenceScheme("SEGMENT_REFERENCE_SCHEME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DashConfigSegmentReferenceSchemePtrInput)(nil)).Elem(), DashConfigSegmentReferenceScheme("SEGMENT_REFERENCE_SCHEME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobModeInput)(nil)).Elem(), JobMode("PROCESSING_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobModePtrInput)(nil)).Elem(), JobMode("PROCESSING_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobOptimizationInput)(nil)).Elem(), JobOptimization("OPTIMIZATION_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobOptimizationPtrInput)(nil)).Elem(), JobOptimization("OPTIMIZATION_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ManifestTypeInput)(nil)).Elem(), ManifestType("MANIFEST_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ManifestTypePtrInput)(nil)).Elem(), ManifestType("MANIFEST_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AnimationFadeFadeTypeOutput{})
 	pulumi.RegisterOutputType(AnimationFadeFadeTypePtrOutput{})
+	pulumi.RegisterOutputType(DashConfigSegmentReferenceSchemeOutput{})
+	pulumi.RegisterOutputType(DashConfigSegmentReferenceSchemePtrOutput{})
 	pulumi.RegisterOutputType(JobModeOutput{})
 	pulumi.RegisterOutputType(JobModePtrOutput{})
+	pulumi.RegisterOutputType(JobOptimizationOutput{})
+	pulumi.RegisterOutputType(JobOptimizationPtrOutput{})
 	pulumi.RegisterOutputType(ManifestTypeOutput{})
 	pulumi.RegisterOutputType(ManifestTypePtrOutput{})
 }

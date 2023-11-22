@@ -31,7 +31,7 @@ type Cluster struct {
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 	ServeNodes pulumi.IntOutput `pulumi:"serveNodes"`
 	// The current state of the cluster.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -103,7 +103,7 @@ type clusterArgs struct {
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 	ServeNodes *int `pulumi:"serveNodes"`
 }
 
@@ -123,7 +123,7 @@ type ClusterArgs struct {
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 	ServeNodes pulumi.IntPtrInput
 }
 
@@ -214,7 +214,7 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 func (o ClusterOutput) ServeNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ServeNodes }).(pulumi.IntOutput)
 }

@@ -43,13 +43,17 @@ type LookupInstanceGroupManagerResizeRequestResult struct {
 	Name string `pulumi:"name"`
 	// When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
 	QueuingPolicy QueuingPolicyResponse `pulumi:"queuingPolicy"`
+	// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+	RequestedRunDuration DurationResponse `pulumi:"requestedRunDuration"`
+	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
+	ResizeBy int `pulumi:"resizeBy"`
 	// The URL for this resize request. The server defines this URL.
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
 	// [Output only] Current state of the request.
 	State string `pulumi:"state"`
-	// [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
+	// [Output only] Status of the request.
 	Status InstanceGroupManagerResizeRequestStatusResponse `pulumi:"status"`
 	// The URL of a zone where the resize request is located. Populated only for zonal resize requests.
 	Zone string `pulumi:"zone"`
@@ -129,6 +133,16 @@ func (o LookupInstanceGroupManagerResizeRequestResultOutput) QueuingPolicy() Que
 	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) QueuingPolicyResponse { return v.QueuingPolicy }).(QueuingPolicyResponseOutput)
 }
 
+// Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+func (o LookupInstanceGroupManagerResizeRequestResultOutput) RequestedRunDuration() DurationResponseOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) DurationResponse { return v.RequestedRunDuration }).(DurationResponseOutput)
+}
+
+// The number of instances to be created by this resize request. The group's target size will be increased by this number.
+func (o LookupInstanceGroupManagerResizeRequestResultOutput) ResizeBy() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) int { return v.ResizeBy }).(pulumi.IntOutput)
+}
+
 // The URL for this resize request. The server defines this URL.
 func (o LookupInstanceGroupManagerResizeRequestResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) string { return v.SelfLink }).(pulumi.StringOutput)
@@ -144,7 +158,7 @@ func (o LookupInstanceGroupManagerResizeRequestResultOutput) State() pulumi.Stri
 	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
+// [Output only] Status of the request.
 func (o LookupInstanceGroupManagerResizeRequestResultOutput) Status() InstanceGroupManagerResizeRequestStatusResponseOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) InstanceGroupManagerResizeRequestStatusResponse {
 		return v.Status
