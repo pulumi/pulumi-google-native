@@ -3,7 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-Bug fixes:
+### Bug fixes
 
 - Remove `validateOnly` query parameter from SDK properties
   [#865](https://github.com/pulumi/pulumi-google-native/issues/865)
@@ -13,6 +13,830 @@ Bug fixes:
   [#911](https://github.com/pulumi/pulumi-google-native/pull/911)
 - Disable autonaming for `google-native:iam:v1/OrganizationRole` 
   [#905](https://github.com/pulumi/pulumi-google-native/pull/905)
+
+### Upstream breaking changes
+
+#### Resources
+- `🔴` "google-native:apigee/v1:App" missing
+- "google-native:appengine/v1:App":
+    - `🟡` inputs: "parent" missing
+    - `🟡` properties: "parent" missing output "parent"
+- `🔴` "google-native:appengine/v1:Application" missing
+- "google-native:appengine/v1beta:App":
+    - `🟡` inputs: "parent" missing
+    - `🟡` properties: "parent" missing output "parent"
+- `🔴` "google-native:appengine/v1beta:Application" missing
+- `🟢` "google-native:artifactregistry/v1:Repository": required inputs: "repositoryId" input has changed to Required
+- `🟢` "google-native:artifactregistry/v1beta1:Repository": required inputs: "repositoryId" input has changed to Required
+- `🟢` "google-native:artifactregistry/v1beta2:Repository": required inputs: "repositoryId" input has changed to Required
+- `🟡` "google-native:assuredworkloads/v1:Workload": inputs: "ekmProvisioningResponse" missing
+- "google-native:assuredworkloads/v1beta1:Workload":
+    - `🟡` inputs: "ekmProvisioningResponse" missing
+    - `🟡` properties: "controls" missing output "controls"
+- `🔴` "google-native:baremetalsolution/v2:Instance" missing
+- `🔴` "google-native:beyondcorp/v1:OrganizationTenantIamBinding" missing
+- `🔴` "google-native:beyondcorp/v1:OrganizationTenantIamMember" missing
+- `🔴` "google-native:beyondcorp/v1:OrganizationTenantIamPolicy" missing
+- `🔴` "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamBinding" missing
+- `🔴` "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamMember" missing
+- `🔴` "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamPolicy" missing
+- `🔴` "google-native:beyondcorp/v1alpha:ClientConnectorService" missing
+- `🔴` "google-native:beyondcorp/v1alpha:ClientGateway" missing
+- "google-native:beyondcorp/v1alpha:ProxyConfig":
+    - inputs:
+        - `🟡` "authenticationInfo" missing
+        - `🟡` "tenantId" missing
+    - properties:
+        - `🟡` "authenticationInfo" missing output "authenticationInfo"
+        - `🟡` "tenantId" missing output "tenantId"
+    - `🟢` required inputs: "partnerTenantId" input has changed to Required
+- `🔴` "google-native:beyondcorp/v1alpha:Tenant" missing
+- `🔴` "google-native:bigquery/v2:RowAccessPolicyIamBinding" missing
+- `🔴` "google-native:bigquery/v2:RowAccessPolicyIamMember" missing
+- `🔴` "google-native:bigquery/v2:RowAccessPolicyIamPolicy" missing
+- `🟡` "google-native:bigtableadmin/v2:Table": inputs: "stats" missing
+- "google-native:compute/alpha:StoragePool":
+    - `🟡` inputs: "type" missing
+    - `🟡` properties: "type" missing output "type"
+- `🟢` "google-native:datalineage/v1:LineageEvent": required inputs: "startTime" input has changed to Required
+- "google-native:gkehub/v1:Binding":
+    - `🟡` inputs: "fleet" missing
+    - `🟡` properties: "fleet" missing output "fleet"
+- "google-native:gkehub/v1:Scope":
+    - `🟡` inputs: "allMemberships" missing
+    - `🟡` properties: "allMemberships" missing output "allMemberships"
+- "google-native:gkehub/v1alpha:Binding":
+    - `🟡` inputs: "fleet" missing
+    - `🟡` properties: "fleet" missing output "fleet"
+- "google-native:gkehub/v1alpha:Namespace":
+    - `🟡` inputs: "namespaceId" missing
+    - `🟡` properties: "namespaceId" missing output "namespaceId"
+    - required inputs:
+        - `🟢` "scopeId" input has changed to Required
+        - `🟢` "scopeNamespaceId" input has changed to Required
+- `🔴` "google-native:gkehub/v1alpha:Rbacrolebinding" missing
+- "google-native:gkehub/v1alpha:Scope":
+    - `🟡` inputs: "allMemberships" missing
+    - `🟡` properties: "allMemberships" missing output "allMemberships"
+- "google-native:gkehub/v1beta:Binding":
+    - `🟡` inputs: "fleet" missing
+    - `🟡` properties: "fleet" missing output "fleet"
+- "google-native:gkehub/v1beta:Namespace":
+    - `🟡` inputs: "namespaceId" missing
+    - `🟡` properties: "namespaceId" missing output "namespaceId"
+    - required inputs:
+        - `🟢` "scopeId" input has changed to Required
+        - `🟢` "scopeNamespaceId" input has changed to Required
+- `🔴` "google-native:gkehub/v1beta:Rbacrolebinding" missing
+- "google-native:gkehub/v1beta:Scope":
+    - `🟡` inputs: "allMemberships" missing
+    - `🟡` properties: "allMemberships" missing output "allMemberships"
+- `🟢` "google-native:gkeonprem/v1:VmwareCluster": required inputs: "onPremVersion" input has changed to Required
+- `🟢` "google-native:integrations/v1alpha:AuthConfig": required inputs: "displayName" input has changed to Required
+- `🟢` "google-native:integrations/v1alpha:Certificate": required inputs: "displayName" input has changed to Required
+- `🔴` "google-native:networkconnectivity/v1:ServiceClass" missing
+- `🟢` "google-native:recaptchaenterprise/v1:Key": required inputs: "displayName" input has changed to Required
+- `🔴` "google-native:securitycenter/v1:CustomModule" missing
+- `🔴` "google-native:securitycenter/v1:FolderCustomModule" missing
+- `🔴` "google-native:securitycenter/v1:OrganizationCustomModule" missing
+- `🔴` "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamBinding" missing
+- `🔴` "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamMember" missing
+- `🔴` "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamPolicy" missing
+- `🔴` "google-native:servicedirectory/v1beta1:RegistrationPolicyIamBinding" missing
+- `🔴` "google-native:servicedirectory/v1beta1:RegistrationPolicyIamMember" missing
+- `🔴` "google-native:servicedirectory/v1beta1:RegistrationPolicyIamPolicy" missing
+
+#### Functions
+- `🔴` "google-native:apigee/v1:getApp" missing
+- `🔴` "google-native:apigee/v1:getKey" missing
+- `🔴` "google-native:appengine/v1:getApplication" missing
+- `🔴` "google-native:appengine/v1beta:getApplication" missing
+- `🔴` "google-native:baremetalsolution/v2:getInstance" missing
+- `🔴` "google-native:beyondcorp/v1:getOrganizationTenantIamPolicy" missing
+- `🔴` "google-native:beyondcorp/v1:getOrganizationTenantProxyConfigIamPolicy" missing
+- `🔴` "google-native:beyondcorp/v1alpha:getClientConnectorService" missing
+- `🔴` "google-native:beyondcorp/v1alpha:getClientGateway" missing
+- "google-native:beyondcorp/v1alpha:getProxyConfig": inputs:
+    - `🟡` "tenantId" missing input "tenantId"
+    - `🟢` required: "partnerTenantId" input has changed to Required
+- `🔴` "google-native:beyondcorp/v1alpha:getTenant" missing
+- `🔴` "google-native:bigquery/v2:getRowAccessPolicyIamPolicy" missing
+- `🟢` "google-native:gkehub/v1alpha:getNamespace": inputs: required: "scopeId" input has changed to Required
+- `🔴` "google-native:gkehub/v1alpha:getRbacrolebinding" missing
+- `🟢` "google-native:gkehub/v1beta:getNamespace": inputs: required: "scopeId" input has changed to Required
+- `🔴` "google-native:gkehub/v1beta:getRbacrolebinding" missing
+- `🔴` "google-native:networkconnectivity/v1:getServiceClass" missing
+- `🔴` "google-native:securitycenter/v1:getCustomModule" missing
+- `🔴` "google-native:securitycenter/v1:getFolderCustomModule" missing
+- `🔴` "google-native:securitycenter/v1:getOrganizationCustomModule" missing
+- `🔴` "google-native:servicedirectory/v1beta1:getNamespaceServiceWorkloadIamPolicy" missing
+- `🔴` "google-native:servicedirectory/v1beta1:getRegistrationPolicyIamPolicy" missing
+
+#### Types
+- `🟢` "google-native:accesscontextmanager/v1:ConditionResponse": required: "vpcNetworkSources" property has changed to Required
+- "google-native:accesscontextmanager/v1:EgressFromResponse": required:
+    - `🟢` "sourceRestriction" property has changed to Required
+    - `🟢` "sources" property has changed to Required
+- `🟢` "google-native:apigee/v1:GoogleCloudApigeeV1AddonsConfigResponse": required: "analyticsConfig" property has changed to Required
+- `🔴` "google-native:apigee/v1:GoogleCloudApigeeV1ApiCategoryDataResponse" missing
+- `🔴` "google-native:appengine/v1:ApplicationDatabaseType" missing
+- `🔴` "google-native:appengine/v1:ApplicationServingStatus" missing
+- `🔴` "google-native:appengine/v1beta:ApplicationDatabaseType" missing
+- `🔴` "google-native:appengine/v1beta:ApplicationServingStatus" missing
+- "google-native:artifactregistry/v1:RemoteRepositoryConfigResponse": required:
+    - `🟢` "aptRepository" property has changed to Required
+    - `🟢` "upstreamCredentials" property has changed to Required
+    - `🟢` "yumRepository" property has changed to Required
+- "google-native:assuredworkloads/v1:GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse": required:
+    - `🟢` "acknowledgedResourceViolationCount" property has changed to Required
+    - `🟢` "activeResourceViolationCount" property has changed to Required
+- `🔴` "google-native:assuredworkloads/v1:GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse" missing
+- `🔴` "google-native:assuredworkloads/v1:GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain" missing
+- `🔴` "google-native:assuredworkloads/v1:GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping" missing
+- `🔴` "google-native:assuredworkloads/v1:GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState" missing
+- `🟡` "google-native:assuredworkloads/v1:GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions": properties: "remediateFolderViolations" missing
+- "google-native:assuredworkloads/v1:GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse":
+    - `🟡` properties: "remediateFolderViolations" missing
+    - required:
+        - `🟢` "assuredWorkloadsMonitoring" property has changed to Required
+        - `🟢` "remediateFolderViolations" property is no longer Required
+        - `🟢` "serviceAccessApprover" property has changed to Required
+- `🔴` "google-native:assuredworkloads/v1beta1:GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse" missing
+- `🔴` "google-native:assuredworkloads/v1beta1:GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse" missing
+- "google-native:assuredworkloads/v1beta1:GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse": required:
+    - `🟢` "acknowledgedResourceViolationCount" property has changed to Required
+    - `🟢` "activeResourceViolationCount" property has changed to Required
+- `🔴` "google-native:assuredworkloads/v1beta1:GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse" missing
+- `🔴` "google-native:assuredworkloads/v1beta1:GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain" missing
+- `🔴` "google-native:assuredworkloads/v1beta1:GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping" missing
+- `🔴` "google-native:assuredworkloads/v1beta1:GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState" missing
+- `🟡` "google-native:assuredworkloads/v1beta1:GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions": properties: "remediateFolderViolations" missing
+- "google-native:assuredworkloads/v1beta1:GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse":
+    - `🟡` properties: "remediateFolderViolations" missing
+    - required:
+        - `🟢` "assuredWorkloadsMonitoring" property has changed to Required
+        - `🟢` "remediateFolderViolations" property is no longer Required
+        - `🟢` "serviceAccessApprover" property has changed to Required
+- `🟢` "google-native:baremetalsolution/v2:InstanceConfigResponse": required: "sshKeyNames" property has changed to Required
+- `🔴` "google-native:baremetalsolution/v2:InstanceWorkloadProfile" missing
+- `🔴` "google-native:baremetalsolution/v2:Lun" missing
+- `🔴` "google-native:baremetalsolution/v2:LunMultiprotocolType" missing
+- `🔴` "google-native:baremetalsolution/v2:LunResponse" missing
+- `🔴` "google-native:baremetalsolution/v2:LunState" missing
+- `🔴` "google-native:baremetalsolution/v2:LunStorageType" missing
+- `🔴` "google-native:baremetalsolution/v2:NetworkAddressReservationResponse" missing
+- `🔴` "google-native:baremetalsolution/v2:NetworkMountPointResponse" missing
+- `🔴` "google-native:baremetalsolution/v2:NetworkResponse" missing
+- `🔴` "google-native:baremetalsolution/v2:QosPolicyResponse" missing
+- `🔴` "google-native:baremetalsolution/v2:SnapshotReservationDetail" missing
+- `🔴` "google-native:baremetalsolution/v2:SnapshotReservationDetailResponse" missing
+- `🔴` "google-native:baremetalsolution/v2:VRFResponse" missing
+- `🔴` "google-native:baremetalsolution/v2:VlanAttachmentResponse" missing
+- `🔴` "google-native:baremetalsolution/v2:Volume" missing
+- `🟡` "google-native:baremetalsolution/v2:VolumeConfig": properties: "storageAggregatePool" missing
+- "google-native:baremetalsolution/v2:VolumeConfigResponse":
+    - `🟡` properties: "storageAggregatePool" missing
+    - `🟢` required: "storageAggregatePool" property is no longer Required
+- `🔴` "google-native:baremetalsolution/v2:VolumePerformanceTier" missing
+- `🔴` "google-native:baremetalsolution/v2:VolumeResponse" missing
+- `🔴` "google-native:baremetalsolution/v2:VolumeSnapshotAutoDeleteBehavior" missing
+- `🔴` "google-native:baremetalsolution/v2:VolumeState" missing
+- `🔴` "google-native:baremetalsolution/v2:VolumeStorageType" missing
+- `🔴` "google-native:baremetalsolution/v2:VolumeWorkloadProfile" missing
+- `🟢` "google-native:batch/v1:AcceleratorResponse": required: "driverVersion" property has changed to Required
+- `🟢` "google-native:batch/v1:InstancePolicyResponse": required: "reservation" property has changed to Required
+- `🟢` "google-native:batch/v1:LogsPolicyResponse": required: "cloudLoggingOption" property has changed to Required
+- `🟢` "google-native:batch/v1:RunnableResponse": required: "displayName" property has changed to Required
+- `🟢` "google-native:batch/v1:TaskGroupResponse": required: "schedulingPolicy" property has changed to Required
+- `🔴` "google-native:beyondcorp/v1alpha:Config" missing
+- `🔴` "google-native:beyondcorp/v1alpha:ConfigResponse" missing
+- `🔴` "google-native:beyondcorp/v1alpha:ConfigTransportProtocol" missing
+- `🔴` "google-native:beyondcorp/v1alpha:DestinationRoute" missing
+- `🔴` "google-native:beyondcorp/v1alpha:DestinationRouteResponse" missing
+- `🔴` "google-native:beyondcorp/v1alpha:Egress" missing
+- `🔴` "google-native:beyondcorp/v1alpha:EgressResponse" missing
+- `🔴` "google-native:beyondcorp/v1alpha:GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo" missing
+- `🔴` "google-native:beyondcorp/v1alpha:GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse" missing
+- `🟢` "google-native:beyondcorp/v1alpha:GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse": required: "internalTenantId" property has changed to Required
+- `🔴` "google-native:beyondcorp/v1alpha:Ingress" missing
+- `🔴` "google-native:beyondcorp/v1alpha:IngressResponse" missing
+- `🔴` "google-native:beyondcorp/v1alpha:PeeredVpc" missing
+- `🔴` "google-native:beyondcorp/v1alpha:PeeredVpcResponse" missing
+- `🟢` "google-native:bigquery/v2:ArgumentResponse": required: "isAggregate" property has changed to Required
+- "google-native:bigquery/v2:ExternalDataConfigurationResponse": required:
+    - `🟢` "fileSetSpecType" property has changed to Required
+    - `🟢` "jsonOptions" property has changed to Required
+- `🟢` "google-native:bigquery/v2:JobConfigurationLoadResponse": required: "fileSetSpecType" property has changed to Required
+- "google-native:bigquery/v2:ModelReference": required:
+    - `🟢` "datasetId" property has changed to Required
+    - `🟢` "modelId" property has changed to Required
+    - `🟢` "project" property has changed to Required
+- "google-native:bigquery/v2:RoutineReference": required:
+    - `🟢` "datasetId" property has changed to Required
+    - `🟢` "project" property has changed to Required
+    - `🟢` "routineId" property has changed to Required
+- "google-native:bigquery/v2:SearchStatisticsResponse":
+    - `🟡` properties: "indexUnusedReason" missing
+    - required:
+        - `🟢` "indexUnusedReason" property is no longer Required
+        - `🟢` "indexUnusedReasons" property has changed to Required
+- "google-native:bigquery/v2:SparkLoggingInfoResponse":
+    - `🟡` properties: "projectId" missing
+    - required:
+        - `🟢` "project" property has changed to Required
+        - `🟢` "projectId" property is no longer Required
+- `🟢` "google-native:bigquery/v2:StandardSqlDataTypeResponse": required: "rangeElementType" property has changed to Required
+- `🟢` "google-native:bigquery/v2:TableFieldSchemaResponse": required: "rangeElementType" property has changed to Required
+- `🔴` "google-native:bigtableadmin/v2:TableStats" missing
+- `🟢` "google-native:billingbudgets/v1:GoogleCloudBillingBudgetsV1FilterResponse": required: "resourceAncestors" property has changed to Required
+- `🟢` "google-native:billingbudgets/v1:GoogleCloudBillingBudgetsV1NotificationsRuleResponse": required: "enableProjectLevelRecipients" property has changed to Required
+- `🟢` "google-native:billingbudgets/v1beta1:GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse": required: "enableProjectLevelRecipients" property has changed to Required
+- `🟢` "google-native:billingbudgets/v1beta1:GoogleCloudBillingBudgetsV1beta1FilterResponse": required: "resourceAncestors" property has changed to Required
+- `🟢` "google-native:binaryauthorization/v1:PkixPublicKeyResponse": required: "keyId" property has changed to Required
+- `🟡` "google-native:cloudasset/v1:Options": properties: "includeDenyPolicyAnalysis" missing
+- "google-native:cloudasset/v1:OptionsResponse":
+    - `🟡` properties: "includeDenyPolicyAnalysis" missing
+    - `🟢` required: "includeDenyPolicyAnalysis" property is no longer Required
+- `🟢` "google-native:cloudbuild/v1:BitbucketServerConfigResponse": required: "peeredNetworkIpRange" property has changed to Required
+- `🟢` "google-native:cloudbuild/v1:BuildOptionsResponse": required: "automapSubstitutions" property has changed to Required
+- `🟢` "google-native:cloudbuild/v1:BuildStepResponse": required: "automapSubstitutions" property has changed to Required
+- "google-native:cloudbuild/v1:SourceProvenanceResponse": required:
+    - `🟢` "resolvedConnectedRepository" property has changed to Required
+    - `🟢` "resolvedGitSource" property has changed to Required
+- `🟢` "google-native:cloudbuild/v1:SourceResponse": required: "connectedRepository" property has changed to Required
+- `🟢` "google-native:cloudbuild/v1:StorageSourceResponse": required: "sourceFetcher" property has changed to Required
+- "google-native:clouddeploy/v1:CanaryDeploymentResponse": required:
+    - `🟢` "postdeploy" property has changed to Required
+    - `🟢` "predeploy" property has changed to Required
+- `🟢` "google-native:clouddeploy/v1:CloudRunMetadataResponse": required: "job" property has changed to Required
+- "google-native:clouddeploy/v1:DeploymentJobsResponse": required:
+    - `🟢` "postdeployJob" property has changed to Required
+    - `🟢` "predeployJob" property has changed to Required
+- `🟢` "google-native:clouddeploy/v1:GatewayServiceMeshResponse": required: "routeUpdateWaitTime" property has changed to Required
+- "google-native:clouddeploy/v1:JobResponse": required:
+    - `🟢` "postdeployJob" property has changed to Required
+    - `🟢` "predeployJob" property has changed to Required
+- `🟢` "google-native:clouddeploy/v1:MetadataResponse": required: "automation" property has changed to Required
+- "google-native:clouddeploy/v1:PhaseConfigResponse": required:
+    - `🟢` "postdeploy" property has changed to Required
+    - `🟢` "predeploy" property has changed to Required
+- `🟢` "google-native:clouddeploy/v1:ServiceNetworkingResponse": required: "disablePodOverprovisioning" property has changed to Required
+- `🟢` "google-native:clouddeploy/v1:StageResponse": required: "deployParameters" property has changed to Required
+- "google-native:clouddeploy/v1:StandardResponse": required:
+    - `🟢` "postdeploy" property has changed to Required
+    - `🟢` "predeploy" property has changed to Required
+- `🟢` "google-native:clouddeploy/v1:TargetResponse": required: "deployParameters" property has changed to Required
+- `🟢` "google-native:cloudfunctions/v2:BuildConfigResponse": required: "sourceToken" property has changed to Required
+- `🟡` "google-native:cloudfunctions/v2:RepoSource": properties: "invertRegex" missing
+- "google-native:cloudfunctions/v2:RepoSourceResponse":
+    - `🟡` properties: "invertRegex" missing
+    - `🟢` required: "invertRegex" property is no longer Required
+- `🟢` "google-native:cloudfunctions/v2:SourceProvenanceResponse": required: "gitUri" property has changed to Required
+- `🟢` "google-native:cloudfunctions/v2:SourceResponse": required: "gitUri" property has changed to Required
+- `🟢` "google-native:cloudfunctions/v2alpha:BuildConfigResponse": required: "sourceToken" property has changed to Required
+- `🟡` "google-native:cloudfunctions/v2alpha:RepoSource": properties: "invertRegex" missing
+- "google-native:cloudfunctions/v2alpha:RepoSourceResponse":
+    - `🟡` properties: "invertRegex" missing
+    - `🟢` required: "invertRegex" property is no longer Required
+- `🟢` "google-native:cloudfunctions/v2alpha:SourceProvenanceResponse": required: "gitUri" property has changed to Required
+- `🟢` "google-native:cloudfunctions/v2alpha:SourceResponse": required: "gitUri" property has changed to Required
+- `🟢` "google-native:cloudfunctions/v2beta:BuildConfigResponse": required: "sourceToken" property has changed to Required
+- `🟡` "google-native:cloudfunctions/v2beta:RepoSource": properties: "invertRegex" missing
+- "google-native:cloudfunctions/v2beta:RepoSourceResponse":
+    - `🟡` properties: "invertRegex" missing
+    - `🟢` required: "invertRegex" property is no longer Required
+- `🟢` "google-native:cloudfunctions/v2beta:SourceProvenanceResponse": required: "gitUri" property has changed to Required
+- `🟢` "google-native:cloudfunctions/v2beta:SourceResponse": required: "gitUri" property has changed to Required
+- "google-native:cloudidentity/v1:GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse": required:
+    - `🟢` "ctsProfileMatch" property has changed to Required
+    - `🟢` "hasPotentiallyHarmfulApps" property has changed to Required
+    - `🟢` "verifiedBoot" property has changed to Required
+    - `🟢` "verifyAppsEnabled" property has changed to Required
+- "google-native:cloudidentity/v1beta1:AndroidAttributesResponse": required:
+    - `🟢` "ctsProfileMatch" property has changed to Required
+    - `🟢` "hasPotentiallyHarmfulApps" property has changed to Required
+    - `🟢` "verifiedBoot" property has changed to Required
+    - `🟢` "verifyAppsEnabled" property has changed to Required
+- `🟢` "google-native:composer/v1:DatabaseConfigResponse": required: "zone" property has changed to Required
+- `🟢` "google-native:composer/v1:EnvironmentConfigResponse": required: "resilienceMode" property has changed to Required
+- `🟢` "google-native:composer/v1:WorkloadsConfigResponse": required: "triggerer" property has changed to Required
+- `🟢` "google-native:composer/v1beta1:DatabaseConfigResponse": required: "zone" property has changed to Required
+- `🟢` "google-native:composer/v1beta1:EnvironmentConfigResponse": required: "resilienceMode" property has changed to Required
+- `🟢` "google-native:compute/alpha:AllocationAggregateReservationResponse": required: "workloadType" property has changed to Required
+- `🟢` "google-native:compute/alpha:BackendResponse": required: "preference" property has changed to Required
+- `🟢` "google-native:compute/alpha:DiskResourceStatusResponse": required: "usedBytes" property has changed to Required
+- `🟢` "google-native:compute/alpha:FutureReservationStatusLastKnownGoodStateResponse": required: "lockTime" property has changed to Required
+- `🟢` "google-native:compute/alpha:InstanceGroupManagerInstanceFlexibilityPolicyResponse": required
+
+### New resources
+
+- `aiplatform/v1.Artifact`
+- `aiplatform/v1.BatchPredictionJob`
+- `aiplatform/v1.Context`
+- `aiplatform/v1.CustomJob`
+- `aiplatform/v1.DataLabelingJob`
+- `aiplatform/v1.Dataset`
+- `aiplatform/v1.DatasetVersion`
+- `aiplatform/v1.DeploymentResourcePool`
+- `aiplatform/v1.Endpoint`
+- `aiplatform/v1.EntityType`
+- `aiplatform/v1.Execution`
+- `aiplatform/v1.Experiment`
+- `aiplatform/v1.FeatureGroup`
+- `aiplatform/v1.FeatureGroupFeature`
+- `aiplatform/v1.FeatureOnlineStore`
+- `aiplatform/v1.FeatureStoreFeature`
+- `aiplatform/v1.FeatureView`
+- `aiplatform/v1.Featurestore`
+- `aiplatform/v1.FeaturestoreEntityTypeIamBinding`
+- `aiplatform/v1.FeaturestoreEntityTypeIamMember`
+- `aiplatform/v1.FeaturestoreEntityTypeIamPolicy`
+- `aiplatform/v1.FeaturestoreIamBinding`
+- `aiplatform/v1.FeaturestoreIamMember`
+- `aiplatform/v1.FeaturestoreIamPolicy`
+- `aiplatform/v1.HyperparameterTuningJob`
+- `aiplatform/v1.Index`
+- `aiplatform/v1.IndexEndpoint`
+- `aiplatform/v1.MetadataSchema`
+- `aiplatform/v1.MetadataStore`
+- `aiplatform/v1.ModelDeploymentMonitoringJob`
+- `aiplatform/v1.NasJob`
+- `aiplatform/v1.NotebookRuntimeTemplate`
+- `aiplatform/v1.NotebookRuntimeTemplateIamBinding`
+- `aiplatform/v1.NotebookRuntimeTemplateIamMember`
+- `aiplatform/v1.NotebookRuntimeTemplateIamPolicy`
+- `aiplatform/v1.PipelineJob`
+- `aiplatform/v1.Run`
+- `aiplatform/v1.Schedule`
+- `aiplatform/v1.SpecialistPool`
+- `aiplatform/v1.Study`
+- `aiplatform/v1.Tensorboard`
+- `aiplatform/v1.TimeSeries`
+- `aiplatform/v1.TrainingPipeline`
+- `aiplatform/v1.Trial`
+- `aiplatform/v1beta1.Artifact`
+- `aiplatform/v1beta1.BatchPredictionJob`
+- `aiplatform/v1beta1.Context`
+- `aiplatform/v1beta1.CustomJob`
+- `aiplatform/v1beta1.DataLabelingJob`
+- `aiplatform/v1beta1.Dataset`
+- `aiplatform/v1beta1.DatasetVersion`
+- `aiplatform/v1beta1.DeploymentResourcePool`
+- `aiplatform/v1beta1.Endpoint`
+- `aiplatform/v1beta1.EndpointIamBinding`
+- `aiplatform/v1beta1.EndpointIamMember`
+- `aiplatform/v1beta1.EndpointIamPolicy`
+- `aiplatform/v1beta1.EntityType`
+- `aiplatform/v1beta1.Execution`
+- `aiplatform/v1beta1.Experiment`
+- `aiplatform/v1beta1.FeatureGroup`
+- `aiplatform/v1beta1.FeatureGroupFeature`
+- `aiplatform/v1beta1.FeatureOnlineStore`
+- `aiplatform/v1beta1.FeatureStoreFeature`
+- `aiplatform/v1beta1.FeatureView`
+- `aiplatform/v1beta1.Featurestore`
+- `aiplatform/v1beta1.FeaturestoreEntityTypeIamBinding`
+- `aiplatform/v1beta1.FeaturestoreEntityTypeIamMember`
+- `aiplatform/v1beta1.FeaturestoreEntityTypeIamPolicy`
+- `aiplatform/v1beta1.FeaturestoreIamBinding`
+- `aiplatform/v1beta1.FeaturestoreIamMember`
+- `aiplatform/v1beta1.FeaturestoreIamPolicy`
+- `aiplatform/v1beta1.HyperparameterTuningJob`
+- `aiplatform/v1beta1.Index`
+- `aiplatform/v1beta1.IndexEndpoint`
+- `aiplatform/v1beta1.MetadataSchema`
+- `aiplatform/v1beta1.MetadataStore`
+- `aiplatform/v1beta1.ModelDeploymentMonitoringJob`
+- `aiplatform/v1beta1.ModelIamBinding`
+- `aiplatform/v1beta1.ModelIamMember`
+- `aiplatform/v1beta1.ModelIamPolicy`
+- `aiplatform/v1beta1.NasJob`
+- `aiplatform/v1beta1.NotebookRuntimeTemplate`
+- `aiplatform/v1beta1.NotebookRuntimeTemplateIamBinding`
+- `aiplatform/v1beta1.NotebookRuntimeTemplateIamMember`
+- `aiplatform/v1beta1.NotebookRuntimeTemplateIamPolicy`
+- `aiplatform/v1beta1.PersistentResource`
+- `aiplatform/v1beta1.PipelineJob`
+- `aiplatform/v1beta1.Run`
+- `aiplatform/v1beta1.Schedule`
+- `aiplatform/v1beta1.SpecialistPool`
+- `aiplatform/v1beta1.Study`
+- `aiplatform/v1beta1.Tensorboard`
+- `aiplatform/v1beta1.TimeSeries`
+- `aiplatform/v1beta1.TrainingPipeline`
+- `aiplatform/v1beta1.Trial`
+- `alloydb/v1.Backup`
+- `alloydb/v1.Cluster`
+- `alloydb/v1.Instance`
+- `alloydb/v1.User`
+- `alloydb/v1alpha.Backup`
+- `alloydb/v1alpha.Cluster`
+- `alloydb/v1alpha.Instance`
+- `alloydb/v1alpha.User`
+- `alloydb/v1beta.Backup`
+- `alloydb/v1beta.Cluster`
+- `alloydb/v1beta.Instance`
+- `alloydb/v1beta.User`
+- `analyticshub/v1.SubscriptionIamBinding`
+- `analyticshub/v1.SubscriptionIamMember`
+- `analyticshub/v1.SubscriptionIamPolicy`
+- `apigee/v1.AppGroupApp`
+- `apigee/v1.Appgroup`
+- `apigee/v1.DeveloperApp`
+- `apigee/v1.SecurityAction`
+- `apigee/v1.SecurityProfile`
+- `apigeeregistry/v1.DocumentIamBinding`
+- `apigeeregistry/v1.DocumentIamMember`
+- `apigeeregistry/v1.DocumentIamPolicy`
+- `backupdr/v1.ManagementServer`
+- `backupdr/v1.ManagementServerIamBinding`
+- `backupdr/v1.ManagementServerIamMember`
+- `backupdr/v1.ManagementServerIamPolicy`
+- `beyondcorp/v1.OrganizationPartnerTenantBrowserDlpRuleIamBinding`
+- `beyondcorp/v1.OrganizationPartnerTenantBrowserDlpRuleIamMember`
+- `beyondcorp/v1.OrganizationPartnerTenantBrowserDlpRuleIamPolicy`
+- `beyondcorp/v1.OrganizationPartnerTenantIamBinding`
+- `beyondcorp/v1.OrganizationPartnerTenantIamMember`
+- `beyondcorp/v1.OrganizationPartnerTenantIamPolicy`
+- `beyondcorp/v1.OrganizationPartnerTenantProxyConfigIamBinding`
+- `beyondcorp/v1.OrganizationPartnerTenantProxyConfigIamMember`
+- `beyondcorp/v1.OrganizationPartnerTenantProxyConfigIamPolicy`
+- `beyondcorp/v1alpha.ApplicationDomainIamBinding`
+- `beyondcorp/v1alpha.ApplicationDomainIamMember`
+- `beyondcorp/v1alpha.ApplicationDomainIamPolicy`
+- `beyondcorp/v1alpha.BrowserDlpRule`
+- `beyondcorp/v1alpha.OrganizationPartnerTenantBrowserDlpRuleIamBinding`
+- `beyondcorp/v1alpha.OrganizationPartnerTenantBrowserDlpRuleIamMember`
+- `beyondcorp/v1alpha.OrganizationPartnerTenantBrowserDlpRuleIamPolicy`
+- `beyondcorp/v1alpha.OrganizationPartnerTenantIamBinding`
+- `beyondcorp/v1alpha.OrganizationPartnerTenantIamMember`
+- `beyondcorp/v1alpha.OrganizationPartnerTenantIamPolicy`
+- `beyondcorp/v1alpha.OrganizationPartnerTenantProxyConfigIamBinding`
+- `beyondcorp/v1alpha.OrganizationPartnerTenantProxyConfigIamMember`
+- `beyondcorp/v1alpha.OrganizationPartnerTenantProxyConfigIamPolicy`
+- `beyondcorp/v1alpha.PartnerTenant`
+- `biglake/v1.Catalog`
+- `biglake/v1.Database`
+- `biglake/v1.Table`
+- `bigquerydatapolicy/v1.DataPolicy`
+- `bigquerydatapolicy/v1.DataPolicyIamBinding`
+- `bigquerydatapolicy/v1.DataPolicyIamMember`
+- `bigquerydatapolicy/v1.DataPolicyIamPolicy`
+- `binaryauthorization/v1.Policy`
+- `blockchainnodeengine/v1.BlockchainNode`
+- `cloudbuild/v2.Connection`
+- `cloudbuild/v2.ConnectionIamBinding`
+- `cloudbuild/v2.ConnectionIamMember`
+- `cloudbuild/v2.ConnectionIamPolicy`
+- `cloudbuild/v2.Repository`
+- `clouddeploy/v1.Automation`
+- `cloudsupport/v2.Case`
+- `compute/alpha.RegionSnapshot`
+- `compute/alpha.RegionSnapshotIamBinding`
+- `compute/alpha.RegionSnapshotIamMember`
+- `compute/alpha.RegionSnapshotIamPolicy`
+- `compute/beta.FutureReservation`
+- `compute/beta.InstanceGroupManagerResizeRequest`
+- `compute/v1.BackendBucketIamBinding`
+- `compute/v1.BackendBucketIamMember`
+- `compute/v1.BackendBucketIamPolicy`
+- `connectors/v1.CustomConnector`
+- `connectors/v1.CustomConnectorVersion`
+- `connectors/v1.EventSubscription`
+- `dataform/v1beta1.CollectionIamBinding`
+- `dataform/v1beta1.CollectionIamMember`
+- `dataform/v1beta1.CollectionIamPolicy`
+- `datamigration/v1.MappingRule`
+- `dataplex/v1.GovernanceRuleIamBinding`
+- `dataplex/v1.GovernanceRuleIamMember`
+- `dataplex/v1.GovernanceRuleIamPolicy`
+- `dataproc/v1.Session`
+- `dataproc/v1.SessionTemplate`
+- `discoveryengine/v1alpha.Conversation`
+- `discoveryengine/v1alpha.DataStore`
+- `discoveryengine/v1alpha.Engine`
+- `discoveryengine/v1alpha.Schema`
+- `discoveryengine/v1beta.Conversation`
+- `discoveryengine/v1beta.Schema`
+- `dlp/v2.DiscoveryConfig`
+- `firebasehosting/v1beta1.CustomDomain`
+- `gkehub/v1.Fleet`
+- `gkehub/v1.Namespace`
+- `gkehub/v1.Rbacrolebinding`
+- `gkehub/v1.ScopeIamBinding`
+- `gkehub/v1.ScopeIamMember`
+- `gkehub/v1.ScopeIamPolicy`
+- `gkehub/v1alpha.MembershipRbacRoleBinding`
+- `gkehub/v1alpha.ScopeIamBinding`
+- `gkehub/v1alpha.ScopeIamMember`
+- `gkehub/v1alpha.ScopeIamPolicy`
+- `gkehub/v1alpha.ScopeRbacRoleBinding`
+- `gkehub/v1beta.Membership`
+- `gkehub/v1beta.MembershipRbacRoleBinding`
+- `gkehub/v1beta.ScopeIamBinding`
+- `gkehub/v1beta.ScopeIamMember`
+- `gkehub/v1beta.ScopeIamPolicy`
+- `gkehub/v1beta.ScopeRbacRoleBinding`
+- `integrations/v1alpha.TestCase`
+- `looker/v1.Instance`
+- `looker/v1.InstanceBackupIamBinding`
+- `looker/v1.InstanceBackupIamMember`
+- `looker/v1.InstanceBackupIamPolicy`
+- `looker/v1.InstanceIamBinding`
+- `looker/v1.InstanceIamMember`
+- `looker/v1.InstanceIamPolicy`
+- `migrationcenter/v1.Group`
+- `migrationcenter/v1.ImportDataFile`
+- `migrationcenter/v1.ImportJob`
+- `migrationcenter/v1.PreferenceSet`
+- `migrationcenter/v1.Report`
+- `migrationcenter/v1.ReportConfig`
+- `migrationcenter/v1.Source`
+- `networkconnectivity/v1.HubGroupIamBinding`
+- `networkconnectivity/v1.HubGroupIamMember`
+- `networkconnectivity/v1.HubGroupIamPolicy`
+- `networkconnectivity/v1.PolicyBasedRoute`
+- `networksecurity/v1.AddressGroup`
+- `networksecurity/v1.AddressGroupIamBinding`
+- `networksecurity/v1.AddressGroupIamMember`
+- `networksecurity/v1.AddressGroupIamPolicy`
+- `networksecurity/v1beta1.FirewallEndpoint`
+- `networksecurity/v1beta1.FirewallEndpointAssociation`
+- `networksecurity/v1beta1.SecurityProfile`
+- `networksecurity/v1beta1.SecurityProfileGroup`
+- `networkservices/v1beta1.LbRouteExtension`
+- `networkservices/v1beta1.LbTrafficExtension`
+- `networkservices/v1beta1.ServiceLbPolicy`
+- `networkservices/v1beta1.ServiceLbPolicyIamBinding`
+- `networkservices/v1beta1.ServiceLbPolicyIamMember`
+- `networkservices/v1beta1.ServiceLbPolicyIamPolicy`
+- `notebooks/v2.Instance`
+- `policysimulator/v1alpha.FolderReplay`
+- `policysimulator/v1alpha.OrganizationReplay`
+- `policysimulator/v1alpha.Replay`
+- `policysimulator/v1beta.FolderReplay`
+- `policysimulator/v1beta.OrganizationReplay`
+- `policysimulator/v1beta.Replay`
+- `rapidmigrationassessment/v1.Annotation`
+- `rapidmigrationassessment/v1.Collector`
+- `redis/v1.Cluster`
+- `redis/v1beta1.Cluster`
+- `securitycenter/v1.FolderSecurityHealthAnalyticsSettingCustomModule`
+- `securitycenter/v1.OrganizationEventThreatDetectionSettingCustomModule`
+- `securitycenter/v1.OrganizationSecurityHealthAnalyticsSettingCustomModule`
+- `securitycenter/v1.ProjectSecurityHealthAnalyticsSettingCustomModule`
+- `storage/v1.ManagedFolder`
+- `storage/v1.ManagedFolderIamBinding`
+- `storage/v1.ManagedFolderIamMember`
+- `storage/v1.ManagedFolderIamPolicy`
+- `testing/v1.DeviceSession`
+- `vmwareengine/v1.Cluster`
+- `vmwareengine/v1.ExternalAccessRule`
+- `vmwareengine/v1.ExternalAddress`
+- `vmwareengine/v1.HcxActivationKey`
+- `vmwareengine/v1.LoggingServer`
+- `vmwareengine/v1.ManagementDnsZoneBinding`
+- `vmwareengine/v1.NetworkPeering`
+- `vmwareengine/v1.NetworkPolicy`
+- `vmwareengine/v1.PrivateCloud`
+- `vmwareengine/v1.PrivateCloudClusterIamBinding`
+- `vmwareengine/v1.PrivateCloudClusterIamMember`
+- `vmwareengine/v1.PrivateCloudClusterIamPolicy`
+- `vmwareengine/v1.PrivateCloudHcxActivationKeyIamBinding`
+- `vmwareengine/v1.PrivateCloudHcxActivationKeyIamMember`
+- `vmwareengine/v1.PrivateCloudHcxActivationKeyIamPolicy`
+- `vmwareengine/v1.PrivateCloudIamBinding`
+- `vmwareengine/v1.PrivateCloudIamMember`
+- `vmwareengine/v1.PrivateCloudIamPolicy`
+- `vmwareengine/v1.PrivateConnection`
+- `vmwareengine/v1.VmwareEngineNetwork`
+- `workstations/v1.Workstation`
+- `workstations/v1.WorkstationCluster`
+- `workstations/v1.WorkstationClusterWorkstationConfigIamBinding`
+- `workstations/v1.WorkstationClusterWorkstationConfigIamMember`
+- `workstations/v1.WorkstationClusterWorkstationConfigIamPolicy`
+- `workstations/v1.WorkstationClusterWorkstationConfigWorkstationIamBinding`
+- `workstations/v1.WorkstationClusterWorkstationConfigWorkstationIamMember`
+- `workstations/v1.WorkstationClusterWorkstationConfigWorkstationIamPolicy`
+- `workstations/v1.WorkstationConfig`
+
+### New functions
+
+- `aiplatform/v1.getArtifact`
+- `aiplatform/v1.getBatchPredictionJob`
+- `aiplatform/v1.getContext`
+- `aiplatform/v1.getCustomJob`
+- `aiplatform/v1.getDataLabelingJob`
+- `aiplatform/v1.getDataset`
+- `aiplatform/v1.getDatasetVersion`
+- `aiplatform/v1.getDeploymentResourcePool`
+- `aiplatform/v1.getEndpoint`
+- `aiplatform/v1.getEntityType`
+- `aiplatform/v1.getExecution`
+- `aiplatform/v1.getExperiment`
+- `aiplatform/v1.getFeatureGroup`
+- `aiplatform/v1.getFeatureGroupFeature`
+- `aiplatform/v1.getFeatureOnlineStore`
+- `aiplatform/v1.getFeatureStoreFeature`
+- `aiplatform/v1.getFeatureView`
+- `aiplatform/v1.getFeaturestore`
+- `aiplatform/v1.getFeaturestoreEntityTypeIamPolicy`
+- `aiplatform/v1.getFeaturestoreIamPolicy`
+- `aiplatform/v1.getHyperparameterTuningJob`
+- `aiplatform/v1.getIndex`
+- `aiplatform/v1.getIndexEndpoint`
+- `aiplatform/v1.getMetadataSchema`
+- `aiplatform/v1.getMetadataStore`
+- `aiplatform/v1.getModelDeploymentMonitoringJob`
+- `aiplatform/v1.getNasJob`
+- `aiplatform/v1.getNotebookRuntimeTemplate`
+- `aiplatform/v1.getNotebookRuntimeTemplateIamPolicy`
+- `aiplatform/v1.getPipelineJob`
+- `aiplatform/v1.getRun`
+- `aiplatform/v1.getSchedule`
+- `aiplatform/v1.getSpecialistPool`
+- `aiplatform/v1.getStudy`
+- `aiplatform/v1.getTensorboard`
+- `aiplatform/v1.getTimeSeries`
+- `aiplatform/v1.getTrainingPipeline`
+- `aiplatform/v1.getTrial`
+- `aiplatform/v1beta1.getArtifact`
+- `aiplatform/v1beta1.getBatchPredictionJob`
+- `aiplatform/v1beta1.getContext`
+- `aiplatform/v1beta1.getCustomJob`
+- `aiplatform/v1beta1.getDataLabelingJob`
+- `aiplatform/v1beta1.getDataset`
+- `aiplatform/v1beta1.getDatasetVersion`
+- `aiplatform/v1beta1.getDeploymentResourcePool`
+- `aiplatform/v1beta1.getEndpoint`
+- `aiplatform/v1beta1.getEndpointIamPolicy`
+- `aiplatform/v1beta1.getEntityType`
+- `aiplatform/v1beta1.getExecution`
+- `aiplatform/v1beta1.getExperiment`
+- `aiplatform/v1beta1.getFeatureGroup`
+- `aiplatform/v1beta1.getFeatureGroupFeature`
+- `aiplatform/v1beta1.getFeatureOnlineStore`
+- `aiplatform/v1beta1.getFeatureStoreFeature`
+- `aiplatform/v1beta1.getFeatureView`
+- `aiplatform/v1beta1.getFeaturestore`
+- `aiplatform/v1beta1.getFeaturestoreEntityTypeIamPolicy`
+- `aiplatform/v1beta1.getFeaturestoreIamPolicy`
+- `aiplatform/v1beta1.getHyperparameterTuningJob`
+- `aiplatform/v1beta1.getIndex`
+- `aiplatform/v1beta1.getIndexEndpoint`
+- `aiplatform/v1beta1.getMetadataSchema`
+- `aiplatform/v1beta1.getMetadataStore`
+- `aiplatform/v1beta1.getModelDeploymentMonitoringJob`
+- `aiplatform/v1beta1.getModelIamPolicy`
+- `aiplatform/v1beta1.getNasJob`
+- `aiplatform/v1beta1.getNotebookRuntimeTemplate`
+- `aiplatform/v1beta1.getNotebookRuntimeTemplateIamPolicy`
+- `aiplatform/v1beta1.getPersistentResource`
+- `aiplatform/v1beta1.getPipelineJob`
+- `aiplatform/v1beta1.getRun`
+- `aiplatform/v1beta1.getSchedule`
+- `aiplatform/v1beta1.getSpecialistPool`
+- `aiplatform/v1beta1.getStudy`
+- `aiplatform/v1beta1.getTensorboard`
+- `aiplatform/v1beta1.getTimeSeries`
+- `aiplatform/v1beta1.getTrainingPipeline`
+- `aiplatform/v1beta1.getTrial`
+- `alloydb/v1.getBackup`
+- `alloydb/v1.getCluster`
+- `alloydb/v1.getInstance`
+- `alloydb/v1.getUser`
+- `alloydb/v1alpha.getBackup`
+- `alloydb/v1alpha.getCluster`
+- `alloydb/v1alpha.getInstance`
+- `alloydb/v1alpha.getUser`
+- `alloydb/v1beta.getBackup`
+- `alloydb/v1beta.getCluster`
+- `alloydb/v1beta.getInstance`
+- `alloydb/v1beta.getUser`
+- `analyticshub/v1.getSubscriptionIamPolicy`
+- `apigee/v1.getAppGroupApp`
+- `apigee/v1.getAppGroupAppKey`
+- `apigee/v1.getAppgroup`
+- `apigee/v1.getDeveloperApp`
+- `apigee/v1.getDeveloperAppKey`
+- `apigee/v1.getSecurityAction`
+- `apigee/v1.getSecurityProfile`
+- `apigeeregistry/v1.getDocumentIamPolicy`
+- `backupdr/v1.getManagementServer`
+- `backupdr/v1.getManagementServerIamPolicy`
+- `beyondcorp/v1.getOrganizationPartnerTenantBrowserDlpRuleIamPolicy`
+- `beyondcorp/v1.getOrganizationPartnerTenantIamPolicy`
+- `beyondcorp/v1.getOrganizationPartnerTenantProxyConfigIamPolicy`
+- `beyondcorp/v1alpha.getApplicationDomainIamPolicy`
+- `beyondcorp/v1alpha.getBrowserDlpRule`
+- `beyondcorp/v1alpha.getOrganizationPartnerTenantBrowserDlpRuleIamPolicy`
+- `beyondcorp/v1alpha.getOrganizationPartnerTenantIamPolicy`
+- `beyondcorp/v1alpha.getOrganizationPartnerTenantProxyConfigIamPolicy`
+- `beyondcorp/v1alpha.getPartnerTenant`
+- `biglake/v1.getCatalog`
+- `biglake/v1.getDatabase`
+- `biglake/v1.getTable`
+- `bigquerydatapolicy/v1.getDataPolicy`
+- `bigquerydatapolicy/v1.getDataPolicyIamPolicy`
+- `binaryauthorization/v1.getPolicy`
+- `blockchainnodeengine/v1.getBlockchainNode`
+- `cloudbuild/v2.getConnection`
+- `cloudbuild/v2.getConnectionIamPolicy`
+- `cloudbuild/v2.getRepository`
+- `clouddeploy/v1.getAutomation`
+- `cloudsupport/v2.getCase`
+- `compute/alpha.getRegionSnapshot`
+- `compute/alpha.getRegionSnapshotIamPolicy`
+- `compute/beta.getFutureReservation`
+- `compute/beta.getInstanceGroupManagerResizeRequest`
+- `compute/v1.getBackendBucketIamPolicy`
+- `connectors/v1.getCustomConnector`
+- `connectors/v1.getCustomConnectorVersion`
+- `connectors/v1.getEventSubscription`
+- `dataform/v1beta1.getCollectionIamPolicy`
+- `datamigration/v1.getMappingRule`
+- `dataplex/v1.getGovernanceRuleIamPolicy`
+- `dataproc/v1.getSession`
+- `dataproc/v1.getSessionTemplate`
+- `discoveryengine/v1alpha.getConversation`
+- `discoveryengine/v1alpha.getDataStore`
+- `discoveryengine/v1alpha.getEngine`
+- `discoveryengine/v1alpha.getSchema`
+- `discoveryengine/v1beta.getConversation`
+- `discoveryengine/v1beta.getSchema`
+- `dlp/v2.getDiscoveryConfig`
+- `firebasehosting/v1beta1.getCustomDomain`
+- `gkehub/v1.getFleet`
+- `gkehub/v1.getNamespace`
+- `gkehub/v1.getRbacrolebinding`
+- `gkehub/v1.getScopeIamPolicy`
+- `gkehub/v1alpha.getMembershipRbacRoleBinding`
+- `gkehub/v1alpha.getScopeIamPolicy`
+- `gkehub/v1alpha.getScopeRbacRoleBinding`
+- `gkehub/v1beta.getMembership`
+- `gkehub/v1beta.getMembershipRbacRoleBinding`
+- `gkehub/v1beta.getScopeIamPolicy`
+- `gkehub/v1beta.getScopeRbacRoleBinding`
+- `integrations/v1alpha.getTestCase`
+- `looker/v1.getInstance`
+- `looker/v1.getInstanceBackupIamPolicy`
+- `looker/v1.getInstanceIamPolicy`
+- `migrationcenter/v1.getGroup`
+- `migrationcenter/v1.getImportDataFile`
+- `migrationcenter/v1.getImportJob`
+- `migrationcenter/v1.getPreferenceSet`
+- `migrationcenter/v1.getReport`
+- `migrationcenter/v1.getReportConfig`
+- `migrationcenter/v1.getSource`
+- `networkconnectivity/v1.getHubGroupIamPolicy`
+- `networkconnectivity/v1.getPolicyBasedRoute`
+- `networksecurity/v1.getAddressGroup`
+- `networksecurity/v1.getAddressGroupIamPolicy`
+- `networksecurity/v1beta1.getFirewallEndpoint`
+- `networksecurity/v1beta1.getFirewallEndpointAssociation`
+- `networksecurity/v1beta1.getSecurityProfile`
+- `networksecurity/v1beta1.getSecurityProfileGroup`
+- `networkservices/v1beta1.getLbRouteExtension`
+- `networkservices/v1beta1.getLbTrafficExtension`
+- `networkservices/v1beta1.getServiceLbPolicy`
+- `networkservices/v1beta1.getServiceLbPolicyIamPolicy`
+- `notebooks/v2.getInstance`
+- `policysimulator/v1alpha.getFolderReplay`
+- `policysimulator/v1alpha.getOrganizationReplay`
+- `policysimulator/v1alpha.getReplay`
+- `policysimulator/v1beta.getFolderReplay`
+- `policysimulator/v1beta.getOrganizationReplay`
+- `policysimulator/v1beta.getReplay`
+- `rapidmigrationassessment/v1.getAnnotation`
+- `rapidmigrationassessment/v1.getCollector`
+- `redis/v1.getCluster`
+- `redis/v1beta1.getCluster`
+- `securitycenter/v1.getFolderSecurityHealthAnalyticsSettingCustomModule`
+- `securitycenter/v1.getOrganizationEventThreatDetectionSettingCustomModule`
+- `securitycenter/v1.getOrganizationSecurityHealthAnalyticsSettingCustomModule`
+- `securitycenter/v1.getProjectSecurityHealthAnalyticsSettingCustomModule`
+- `storage/v1.getManagedFolder`
+- `storage/v1.getManagedFolderIamPolicy`
+- `testing/v1.getDeviceSession`
+- `vmwareengine/v1.getCluster`
+- `vmwareengine/v1.getExternalAccessRule`
+- `vmwareengine/v1.getExternalAddress`
+- `vmwareengine/v1.getHcxActivationKey`
+- `vmwareengine/v1.getLoggingServer`
+- `vmwareengine/v1.getManagementDnsZoneBinding`
+- `vmwareengine/v1.getNetworkPeering`
+- `vmwareengine/v1.getNetworkPolicy`
+- `vmwareengine/v1.getPrivateCloud`
+- `vmwareengine/v1.getPrivateCloudClusterIamPolicy`
+- `vmwareengine/v1.getPrivateCloudHcxActivationKeyIamPolicy`
+- `vmwareengine/v1.getPrivateCloudIamPolicy`
+- `vmwareengine/v1.getPrivateConnection`
+- `vmwareengine/v1.getVmwareEngineNetwork`
+- `workstations/v1.getWorkstation`
+- `workstations/v1.getWorkstationCluster`
+- `workstations/v1.getWorkstationClusterWorkstationConfigIamPolicy`
+- `workstations/v1.getWorkstationClusterWorkstationConfigWorkstationIamPolicy`
+- `workstations/v1.getWorkstationConfig`
 
 ## v0.30.0 (2023-04-14)
 Upstream breaking changes:
