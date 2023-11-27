@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClientTlsPolicyIamPolicy{}
 	case "google-native:networksecurity/v1:GatewaySecurityPolicy":
 		r = &GatewaySecurityPolicy{}
+	case "google-native:networksecurity/v1:OrganizationAddressGroup":
+		r = &OrganizationAddressGroup{}
 	case "google-native:networksecurity/v1:Rule":
 		r = &Rule{}
 	case "google-native:networksecurity/v1:ServerTlsPolicy":

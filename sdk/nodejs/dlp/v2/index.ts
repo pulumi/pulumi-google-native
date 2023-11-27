@@ -45,6 +45,11 @@ export const getJobTrigger: typeof import("./getJobTrigger").getJobTrigger = nul
 export const getJobTriggerOutput: typeof import("./getJobTrigger").getJobTriggerOutput = null as any;
 utilities.lazyLoad(exports, ["getJobTrigger","getJobTriggerOutput"], () => require("./getJobTrigger"));
 
+export { GetOrganizationDiscoveryConfigArgs, GetOrganizationDiscoveryConfigResult, GetOrganizationDiscoveryConfigOutputArgs } from "./getOrganizationDiscoveryConfig";
+export const getOrganizationDiscoveryConfig: typeof import("./getOrganizationDiscoveryConfig").getOrganizationDiscoveryConfig = null as any;
+export const getOrganizationDiscoveryConfigOutput: typeof import("./getOrganizationDiscoveryConfig").getOrganizationDiscoveryConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationDiscoveryConfig","getOrganizationDiscoveryConfigOutput"], () => require("./getOrganizationDiscoveryConfig"));
+
 export { GetOrganizationInspectTemplateArgs, GetOrganizationInspectTemplateResult, GetOrganizationInspectTemplateOutputArgs } from "./getOrganizationInspectTemplate";
 export const getOrganizationInspectTemplate: typeof import("./getOrganizationInspectTemplate").getOrganizationInspectTemplate = null as any;
 export const getOrganizationInspectTemplateOutput: typeof import("./getOrganizationInspectTemplate").getOrganizationInspectTemplateOutput = null as any;
@@ -74,6 +79,11 @@ export { JobTriggerArgs } from "./jobTrigger";
 export type JobTrigger = import("./jobTrigger").JobTrigger;
 export const JobTrigger: typeof import("./jobTrigger").JobTrigger = null as any;
 utilities.lazyLoad(exports, ["JobTrigger"], () => require("./jobTrigger"));
+
+export { OrganizationDiscoveryConfigArgs } from "./organizationDiscoveryConfig";
+export type OrganizationDiscoveryConfig = import("./organizationDiscoveryConfig").OrganizationDiscoveryConfig;
+export const OrganizationDiscoveryConfig: typeof import("./organizationDiscoveryConfig").OrganizationDiscoveryConfig = null as any;
+utilities.lazyLoad(exports, ["OrganizationDiscoveryConfig"], () => require("./organizationDiscoveryConfig"));
 
 export { OrganizationInspectTemplateArgs } from "./organizationInspectTemplate";
 export type OrganizationInspectTemplate = import("./organizationInspectTemplate").OrganizationInspectTemplate;
@@ -113,6 +123,8 @@ const _module = {
                 return new InspectTemplate(name, <any>undefined, { urn })
             case "google-native:dlp/v2:JobTrigger":
                 return new JobTrigger(name, <any>undefined, { urn })
+            case "google-native:dlp/v2:OrganizationDiscoveryConfig":
+                return new OrganizationDiscoveryConfig(name, <any>undefined, { urn })
             case "google-native:dlp/v2:OrganizationInspectTemplate":
                 return new OrganizationInspectTemplate(name, <any>undefined, { urn })
             case "google-native:dlp/v2:OrganizationJobTrigger":

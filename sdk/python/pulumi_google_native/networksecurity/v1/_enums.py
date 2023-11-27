@@ -9,6 +9,7 @@ __all__ = [
     'AuthorizationPolicyAction',
     'GoogleIamV1AuditLogConfigLogType',
     'MTLSPolicyClientValidationMode',
+    'OrganizationAddressGroupType',
     'RuleBasicProfile',
     'TlsInspectionPolicyMinTlsVersion',
     'TlsInspectionPolicyTlsFeatureProfile',
@@ -88,6 +89,24 @@ class MTLSPolicyClientValidationMode(str, Enum):
     REJECT_INVALID = "REJECT_INVALID"
     """
     Require a client certificate and allow connection to the backend only if validation of the client certificate passed. If set, requires a reference to non-empty TrustConfig specified in `client_validation_trust_config`.
+    """
+
+
+class OrganizationAddressGroupType(str, Enum):
+    """
+    Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    IPV4 = "IPV4"
+    """
+    IP v4 ranges.
+    """
+    IPV6 = "IPV6"
+    """
+    IP v6 ranges.
     """
 
 

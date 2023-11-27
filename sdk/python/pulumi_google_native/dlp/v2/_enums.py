@@ -37,6 +37,7 @@ __all__ = [
     'GooglePrivacyDlpV2TimePartConfigPartToExtract',
     'GooglePrivacyDlpV2ValueDayOfWeekValue',
     'JobTriggerStatus',
+    'OrganizationDiscoveryConfigStatus',
     'OrganizationJobTriggerStatus',
 ]
 
@@ -800,6 +801,24 @@ class JobTriggerStatus(str, Enum):
     CANCELLED = "CANCELLED"
     """
     Trigger is cancelled and can not be resumed.
+    """
+
+
+class OrganizationDiscoveryConfigStatus(str, Enum):
+    """
+    Required. A status for this configuration.
+    """
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
+    """
+    Unused
+    """
+    RUNNING = "RUNNING"
+    """
+    The discovery config is currently active.
+    """
+    PAUSED = "PAUSED"
+    """
+    The discovery config is paused temporarily.
     """
 
 

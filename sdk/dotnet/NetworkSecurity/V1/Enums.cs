@@ -176,6 +176,47 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
     }
 
     /// <summary>
+    /// Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+    /// </summary>
+    [EnumType]
+    public readonly struct OrganizationAddressGroupType : IEquatable<OrganizationAddressGroupType>
+    {
+        private readonly string _value;
+
+        private OrganizationAddressGroupType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static OrganizationAddressGroupType TypeUnspecified { get; } = new OrganizationAddressGroupType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// IP v4 ranges.
+        /// </summary>
+        public static OrganizationAddressGroupType Ipv4 { get; } = new OrganizationAddressGroupType("IPV4");
+        /// <summary>
+        /// IP v6 ranges.
+        /// </summary>
+        public static OrganizationAddressGroupType Ipv6 { get; } = new OrganizationAddressGroupType("IPV6");
+
+        public static bool operator ==(OrganizationAddressGroupType left, OrganizationAddressGroupType right) => left.Equals(right);
+        public static bool operator !=(OrganizationAddressGroupType left, OrganizationAddressGroupType right) => !left.Equals(right);
+
+        public static explicit operator string(OrganizationAddressGroupType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is OrganizationAddressGroupType other && Equals(other);
+        public bool Equals(OrganizationAddressGroupType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. Profile which tells what the primitive action should be.
     /// </summary>
     [EnumType]

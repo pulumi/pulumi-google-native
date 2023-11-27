@@ -828,6 +828,26 @@ export const JobTriggerStatus = {
  */
 export type JobTriggerStatus = (typeof JobTriggerStatus)[keyof typeof JobTriggerStatus];
 
+export const OrganizationDiscoveryConfigStatus = {
+    /**
+     * Unused
+     */
+    StatusUnspecified: "STATUS_UNSPECIFIED",
+    /**
+     * The discovery config is currently active.
+     */
+    Running: "RUNNING",
+    /**
+     * The discovery config is paused temporarily.
+     */
+    Paused: "PAUSED",
+} as const;
+
+/**
+ * Required. A status for this configuration.
+ */
+export type OrganizationDiscoveryConfigStatus = (typeof OrganizationDiscoveryConfigStatus)[keyof typeof OrganizationDiscoveryConfigStatus];
+
 export const OrganizationJobTriggerStatus = {
     /**
      * Unused.

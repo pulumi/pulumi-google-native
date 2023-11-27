@@ -6435,6 +6435,193 @@ func (in *jobTriggerStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*Job
 	}
 }
 
+// Required. A status for this configuration.
+type OrganizationDiscoveryConfigStatus string
+
+const (
+	// Unused
+	OrganizationDiscoveryConfigStatusStatusUnspecified = OrganizationDiscoveryConfigStatus("STATUS_UNSPECIFIED")
+	// The discovery config is currently active.
+	OrganizationDiscoveryConfigStatusRunning = OrganizationDiscoveryConfigStatus("RUNNING")
+	// The discovery config is paused temporarily.
+	OrganizationDiscoveryConfigStatusPaused = OrganizationDiscoveryConfigStatus("PAUSED")
+)
+
+func (OrganizationDiscoveryConfigStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationDiscoveryConfigStatus)(nil)).Elem()
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToOrganizationDiscoveryConfigStatusOutput() OrganizationDiscoveryConfigStatusOutput {
+	return pulumi.ToOutput(e).(OrganizationDiscoveryConfigStatusOutput)
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToOrganizationDiscoveryConfigStatusOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationDiscoveryConfigStatusOutput)
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToOrganizationDiscoveryConfigStatusPtrOutput() OrganizationDiscoveryConfigStatusPtrOutput {
+	return e.ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusPtrOutput {
+	return OrganizationDiscoveryConfigStatus(e).ToOrganizationDiscoveryConfigStatusOutputWithContext(ctx).ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx)
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationDiscoveryConfigStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OrganizationDiscoveryConfigStatusOutput struct{ *pulumi.OutputState }
+
+func (OrganizationDiscoveryConfigStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationDiscoveryConfigStatus)(nil)).Elem()
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToOrganizationDiscoveryConfigStatusOutput() OrganizationDiscoveryConfigStatusOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToOrganizationDiscoveryConfigStatusOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToOrganizationDiscoveryConfigStatusPtrOutput() OrganizationDiscoveryConfigStatusPtrOutput {
+	return o.ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationDiscoveryConfigStatus) *OrganizationDiscoveryConfigStatus {
+		return &v
+	}).(OrganizationDiscoveryConfigStatusPtrOutput)
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationDiscoveryConfigStatus] {
+	return pulumix.Output[OrganizationDiscoveryConfigStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationDiscoveryConfigStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationDiscoveryConfigStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationDiscoveryConfigStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationDiscoveryConfigStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationDiscoveryConfigStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationDiscoveryConfigStatus)(nil)).Elem()
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) ToOrganizationDiscoveryConfigStatusPtrOutput() OrganizationDiscoveryConfigStatusPtrOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusPtrOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationDiscoveryConfigStatus] {
+	return pulumix.Output[*OrganizationDiscoveryConfigStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) Elem() OrganizationDiscoveryConfigStatusOutput {
+	return o.ApplyT(func(v *OrganizationDiscoveryConfigStatus) OrganizationDiscoveryConfigStatus {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationDiscoveryConfigStatus
+		return ret
+	}).(OrganizationDiscoveryConfigStatusOutput)
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationDiscoveryConfigStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationDiscoveryConfigStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OrganizationDiscoveryConfigStatusInput is an input type that accepts OrganizationDiscoveryConfigStatusArgs and OrganizationDiscoveryConfigStatusOutput values.
+// You can construct a concrete instance of `OrganizationDiscoveryConfigStatusInput` via:
+//
+//	OrganizationDiscoveryConfigStatusArgs{...}
+type OrganizationDiscoveryConfigStatusInput interface {
+	pulumi.Input
+
+	ToOrganizationDiscoveryConfigStatusOutput() OrganizationDiscoveryConfigStatusOutput
+	ToOrganizationDiscoveryConfigStatusOutputWithContext(context.Context) OrganizationDiscoveryConfigStatusOutput
+}
+
+var organizationDiscoveryConfigStatusPtrType = reflect.TypeOf((**OrganizationDiscoveryConfigStatus)(nil)).Elem()
+
+type OrganizationDiscoveryConfigStatusPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationDiscoveryConfigStatusPtrOutput() OrganizationDiscoveryConfigStatusPtrOutput
+	ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(context.Context) OrganizationDiscoveryConfigStatusPtrOutput
+}
+
+type organizationDiscoveryConfigStatusPtr string
+
+func OrganizationDiscoveryConfigStatusPtr(v string) OrganizationDiscoveryConfigStatusPtrInput {
+	return (*organizationDiscoveryConfigStatusPtr)(&v)
+}
+
+func (*organizationDiscoveryConfigStatusPtr) ElementType() reflect.Type {
+	return organizationDiscoveryConfigStatusPtrType
+}
+
+func (in *organizationDiscoveryConfigStatusPtr) ToOrganizationDiscoveryConfigStatusPtrOutput() OrganizationDiscoveryConfigStatusPtrOutput {
+	return pulumi.ToOutput(in).(OrganizationDiscoveryConfigStatusPtrOutput)
+}
+
+func (in *organizationDiscoveryConfigStatusPtr) ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx context.Context) OrganizationDiscoveryConfigStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationDiscoveryConfigStatusPtrOutput)
+}
+
+func (in *organizationDiscoveryConfigStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationDiscoveryConfigStatus] {
+	return pulumix.Output[*OrganizationDiscoveryConfigStatus]{
+		OutputState: in.ToOrganizationDiscoveryConfigStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. A status for this trigger.
 type OrganizationJobTriggerStatus string
 
@@ -6695,6 +6882,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValueDayOfWeekValuePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ValueDayOfWeekValue("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerStatusInput)(nil)).Elem(), JobTriggerStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerStatusPtrInput)(nil)).Elem(), JobTriggerStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationDiscoveryConfigStatusInput)(nil)).Elem(), OrganizationDiscoveryConfigStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationDiscoveryConfigStatusPtrInput)(nil)).Elem(), OrganizationDiscoveryConfigStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationJobTriggerStatusInput)(nil)).Elem(), OrganizationJobTriggerStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationJobTriggerStatusPtrInput)(nil)).Elem(), OrganizationJobTriggerStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterOutputType(DiscoveryConfigStatusOutput{})
@@ -6767,6 +6956,8 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput{})
 	pulumi.RegisterOutputType(JobTriggerStatusOutput{})
 	pulumi.RegisterOutputType(JobTriggerStatusPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationDiscoveryConfigStatusOutput{})
+	pulumi.RegisterOutputType(OrganizationDiscoveryConfigStatusPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationJobTriggerStatusOutput{})
 	pulumi.RegisterOutputType(OrganizationJobTriggerStatusPtrOutput{})
 }

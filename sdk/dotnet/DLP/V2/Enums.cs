@@ -1506,6 +1506,47 @@ namespace Pulumi.GoogleNative.DLP.V2
     }
 
     /// <summary>
+    /// Required. A status for this configuration.
+    /// </summary>
+    [EnumType]
+    public readonly struct OrganizationDiscoveryConfigStatus : IEquatable<OrganizationDiscoveryConfigStatus>
+    {
+        private readonly string _value;
+
+        private OrganizationDiscoveryConfigStatus(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused
+        /// </summary>
+        public static OrganizationDiscoveryConfigStatus StatusUnspecified { get; } = new OrganizationDiscoveryConfigStatus("STATUS_UNSPECIFIED");
+        /// <summary>
+        /// The discovery config is currently active.
+        /// </summary>
+        public static OrganizationDiscoveryConfigStatus Running { get; } = new OrganizationDiscoveryConfigStatus("RUNNING");
+        /// <summary>
+        /// The discovery config is paused temporarily.
+        /// </summary>
+        public static OrganizationDiscoveryConfigStatus Paused { get; } = new OrganizationDiscoveryConfigStatus("PAUSED");
+
+        public static bool operator ==(OrganizationDiscoveryConfigStatus left, OrganizationDiscoveryConfigStatus right) => left.Equals(right);
+        public static bool operator !=(OrganizationDiscoveryConfigStatus left, OrganizationDiscoveryConfigStatus right) => !left.Equals(right);
+
+        public static explicit operator string(OrganizationDiscoveryConfigStatus value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is OrganizationDiscoveryConfigStatus other && Equals(other);
+        public bool Equals(OrganizationDiscoveryConfigStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. A status for this trigger.
     /// </summary>
     [EnumType]

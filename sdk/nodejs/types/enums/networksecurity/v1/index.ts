@@ -86,6 +86,26 @@ export const MTLSPolicyClientValidationMode = {
  */
 export type MTLSPolicyClientValidationMode = (typeof MTLSPolicyClientValidationMode)[keyof typeof MTLSPolicyClientValidationMode];
 
+export const OrganizationAddressGroupType = {
+    /**
+     * Default value.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * IP v4 ranges.
+     */
+    Ipv4: "IPV4",
+    /**
+     * IP v6 ranges.
+     */
+    Ipv6: "IPV6",
+} as const;
+
+/**
+ * Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+ */
+export type OrganizationAddressGroupType = (typeof OrganizationAddressGroupType)[keyof typeof OrganizationAddressGroupType];
+
 export const RuleBasicProfile = {
     /**
      * If there is not a mentioned action for the target.

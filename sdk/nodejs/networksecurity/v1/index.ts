@@ -105,6 +105,11 @@ export const getGatewaySecurityPolicy: typeof import("./getGatewaySecurityPolicy
 export const getGatewaySecurityPolicyOutput: typeof import("./getGatewaySecurityPolicy").getGatewaySecurityPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getGatewaySecurityPolicy","getGatewaySecurityPolicyOutput"], () => require("./getGatewaySecurityPolicy"));
 
+export { GetOrganizationAddressGroupArgs, GetOrganizationAddressGroupResult, GetOrganizationAddressGroupOutputArgs } from "./getOrganizationAddressGroup";
+export const getOrganizationAddressGroup: typeof import("./getOrganizationAddressGroup").getOrganizationAddressGroup = null as any;
+export const getOrganizationAddressGroupOutput: typeof import("./getOrganizationAddressGroup").getOrganizationAddressGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationAddressGroup","getOrganizationAddressGroupOutput"], () => require("./getOrganizationAddressGroup"));
+
 export { GetRuleArgs, GetRuleResult, GetRuleOutputArgs } from "./getRule";
 export const getRule: typeof import("./getRule").getRule = null as any;
 export const getRuleOutput: typeof import("./getRule").getRuleOutput = null as any;
@@ -129,6 +134,11 @@ export { GetUrlListArgs, GetUrlListResult, GetUrlListOutputArgs } from "./getUrl
 export const getUrlList: typeof import("./getUrlList").getUrlList = null as any;
 export const getUrlListOutput: typeof import("./getUrlList").getUrlListOutput = null as any;
 utilities.lazyLoad(exports, ["getUrlList","getUrlListOutput"], () => require("./getUrlList"));
+
+export { OrganizationAddressGroupArgs } from "./organizationAddressGroup";
+export type OrganizationAddressGroup = import("./organizationAddressGroup").OrganizationAddressGroup;
+export const OrganizationAddressGroup: typeof import("./organizationAddressGroup").OrganizationAddressGroup = null as any;
+utilities.lazyLoad(exports, ["OrganizationAddressGroup"], () => require("./organizationAddressGroup"));
 
 export { RuleArgs } from "./rule";
 export type Rule = import("./rule").Rule;
@@ -199,6 +209,8 @@ const _module = {
                 return new ClientTlsPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:GatewaySecurityPolicy":
                 return new GatewaySecurityPolicy(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:OrganizationAddressGroup":
+                return new OrganizationAddressGroup(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:Rule":
                 return new Rule(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:ServerTlsPolicy":

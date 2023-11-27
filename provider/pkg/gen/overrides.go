@@ -83,7 +83,7 @@ var resourceNameByPathOverrides = map[string]string{
 	"dlp_v2.json:v2/organizations/{organizationsId}/deidentifyTemplates":                         "",
 	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates": "OrganizationsDeidentifyTemplate",
 	"dlp_v2.json:v2/organizations/{organizationsId}/inspectTemplates":                            "",
-	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/discoveryConfigs":    "",
+	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/discoveryConfigs":    "OrganizationDiscoveryConfig",
 	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates":    "OrganizationInspectTemplate",
 	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers":         "OrganizationJobTrigger",
 	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes":     "",
@@ -134,7 +134,8 @@ var resourceNameByPathOverrides = map[string]string{
 	// Network Security.
 	"networksecurity_v1beta1.json:v1beta1/organizations/{organizationsId}/locations/{locationsId}/addressGroups": "OrganizationAddressGroup",
 	"networksecurity_v1beta1.json:v1beta1/projects/{projectsId}/locations/{locationsId}/addressGroups":           "AddressGroup",
-	"networksecurity_v1.json:v1/organizations/{organizationsId}/locations/{locationsId}/addressGroups":           "",
+	"networksecurity_v1.json:v1/organizations/{organizationsId}/locations/{locationsId}/addressGroups":           "OrganizationAddressGroup",
+	"networksecurity_v1.json:v1/projects/{projectsId}/locations/{locationsId}/addressGroups":                     "AddressGroup",
 
 	// Org Policy.
 	"orgpolicy_v2.json:v2/folders/{foldersId}/policies":             "FolderPolicy",

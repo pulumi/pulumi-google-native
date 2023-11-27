@@ -26,11 +26,13 @@ from .get_authorization_policy_iam_policy import *
 from .get_client_tls_policy import *
 from .get_client_tls_policy_iam_policy import *
 from .get_gateway_security_policy import *
+from .get_organization_address_group import *
 from .get_rule import *
 from .get_server_tls_policy import *
 from .get_server_tls_policy_iam_policy import *
 from .get_tls_inspection_policy import *
 from .get_url_list import *
+from .organization_address_group import *
 from .rule import *
 from .server_tls_policy import *
 from .server_tls_policy_iam_binding import *
